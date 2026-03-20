@@ -13,7 +13,7 @@ export const APP_INFO = {
 export const practiceGuide = [
   {
     id: 'moede-klienten',
-    icon: '🤲',
+    icon: '○',
     title: 'At Møde Klienten',
     subtitle: 'Filosofien bag tilgangen',
     sections: [
@@ -43,7 +43,7 @@ export const practiceGuide = [
   },
   {
     id: 'foerste-samtale',
-    icon: '💬',
+    icon: '∿',
     title: 'Den Første Samtale',
     subtitle: 'Tre centrale temaer at berøre',
     sections: [
@@ -79,7 +79,7 @@ export const practiceGuide = [
   },
   {
     id: 'samtale-til-moenster',
-    icon: '🔍',
+    icon: '◇',
     title: 'Fra Samtale til Mønster',
     subtitle: 'Samtalens dynamik og mønsterafdækning',
     sections: [
@@ -115,7 +115,7 @@ export const practiceGuide = [
   },
   {
     id: 'otte-grundspoergsmaal',
-    icon: '🧭',
+    icon: '⊞',
     title: 'De Otte Grundspørgsmål',
     subtitle: 'En ramme for mønsterafdækning',
     sections: [
@@ -178,7 +178,7 @@ export const practiceGuide = [
   },
   {
     id: 'arbejde-med-moenstre',
-    icon: '🌀',
+    icon: '≋',
     title: 'At Arbejde med Mønstre',
     subtitle: 'Mønstret som indgang — ikke som årsag',
     sections: [
@@ -207,7 +207,7 @@ export const practiceGuide = [
   },
   {
     id: 'vores-rolle',
-    icon: '⚖️',
+    icon: '△',
     title: 'Vores Rolle',
     subtitle: 'Grænser, ansvar og integration',
     sections: [
@@ -298,7 +298,7 @@ export const organs = [
     partner: 'Tyktarm',
     time: '03-05',
     color: '#C0C0C0',
-    icon: '🫁',
+    icon: '肺',
     description: [
       'Lungerne kaldes "Den Skrøbelige Organtype" og er det mest udsatte organ for ydre sygdomsfaktorer. Som det øverste organ i kroppen er de først til at møde sygdom fra omverdenen og fungerer som kroppens første forsvarslinje.',
       'Lungerne distribuerer forsvars-energien til huden og muskelvævet, hvor det fungerer som et "usynligt skjold" mod bakterier, vira og klimatiske påvirkninger som kulde og vind.',
@@ -392,7 +392,7 @@ export const organs = [
     partner: 'Lunger',
     time: '05-07',
     color: '#C0C0C0',
-    icon: '🔄',
+    icon: '腸',
     description: [
       'Tyktarmen kaldes "Transportørens Mester" og er ansvarlig for at modtage affaldsprodukter fra tyndtarmen, absorbere væskeindhold og danne afføring til elimination.',
       'Tyktarmen fungerer ikke kun som fysisk rensningsorgan, men fjerner også mentalt og emotionelt "skrald" fra alle kropsfunktioner. Når dette organ fungerer optimalt, opstår der ikke kun en ren krop, men også et klart sind.',
@@ -485,7 +485,7 @@ export const organs = [
     partner: 'Milt',
     time: '07-09',
     color: '#DAA520',
-    icon: '🏺',
+    icon: '胃',
     description: [
       'Mavesækken kaldes sammen med milten "Roden af Det Postnatale" og er fundamentet for fordøjelsen og produktionen af energi efter fødslen.',
       'Mavesækken modtager føden og "modner og rådner" den gennem en fermenteringsproces, som nedbryder maden til en tilstand, hvor næringsstofferne kan ekstraheres.',
@@ -578,7 +578,7 @@ export const organs = [
     partner: 'Mavesæk',
     time: '09-11',
     color: '#DAA520',
-    icon: '🌾',
+    icon: '脾',
     description: [
       'Milten kaldes "Roden af Det Postnatale" og er grundlaget for energi- og blodproduktion efter fødslen. En svag milt kan påvirke alle andre organer, da den er kroppens centrale energikilde.',
       'Milten transformerer føde til næring og transporterer den til hele kroppen. Svag milt-funktion resulterer i dårlig absorption af næring, træthed og svaghed.',
@@ -671,7 +671,7 @@ export const organs = [
     partner: 'Tyndtarm',
     time: '11-13',
     color: '#DC143C',
-    icon: '❤️',
+    icon: '心',
     description: [
       'Hjertet kaldes "Kejseren" af alle organer og er det vigtigste organ. Det regerer blod og blodkar, mens det huser sindet - bevidsthed og sjæl.',
       'Hjertet kontrollerer mental aktivitet, hukommelse, tankeprocesser og alle emotioner. Det åbner til tungen og viser sig i ansigtsfarven.',
@@ -764,7 +764,7 @@ export const organs = [
     partner: 'Hjerte',
     time: '13-15',
     color: '#DC143C',
-    icon: '⚖️',
+    icon: '小',
     description: [
       'Tyndtarmen kaldes "Separatoren af det Rene fra det Urene" og har både fysiske og mentale funktioner.',
       'Fysisk modtager den føde fra mavesækken og adskiller brugbare næringsstoffer fra affaldsprodukter. Mentalt adskiller den klare tanker fra uklare.',
@@ -857,7 +857,7 @@ export const organs = [
     partner: 'Nyrer',
     time: '15-17',
     color: '#191970',
-    icon: '💧',
+    icon: '膀',
     description: [
       'Blæren kaldes "Reservoirets Minister" og er ansvarlig for at lagre og udskille væskeaffald samt regulere væskemetabolismen.',
       'Som den længste energibane i kroppen løber den fra øjenkrog over hovedet ned langs rygsøjlen til lilletå, central for ryg-, nakke- og benproblemer.',
@@ -950,7 +950,7 @@ export const organs = [
     partner: 'Blære',
     time: '17-19',
     color: '#191970',
-    icon: '🌊',
+    icon: '腎',
     description: [
       'Nyrerne kaldes "Livets Rod" og er det vigtigste organ, da de lagrer livs-essensen og er roden til al energi i kroppen.',
       'Nyrerne kontrollerer vækst, udvikling, reproduktion og aldring gennem livscyklusser på 7 år for kvinder og 8 år for mænd.',
@@ -1043,7 +1043,7 @@ export const organs = [
     partner: 'San Jiao',
     time: '19-21',
     color: '#8B0000',
-    icon: '🛡️',
+    icon: '包',
     description: [
       'Pericardium kaldes "Hjertets Beskytter" og er den første forsvarslinje mod sygdom udefra og emotionelle skader.',
       'Det fungerer som et fysisk og psykologisk skjold for hjertet. Ved akutte febersygdomme rammes pericardiet først - ikke hjertet.',
@@ -1136,7 +1136,7 @@ export const organs = [
     partner: 'Pericardium',
     time: '21-23',
     color: '#8B0000',
-    icon: '🎭',
+    icon: '焦',
     description: [
       'San Jiao er det mest mystiske koncept i kroppen - "organet der har navn men ingen form". Det er en funktionel enhed der koordinerer tre "brændere".',
       'Øvre brænder: hjerte og lunger. Mellem brænder: milt og mave. Nedre brænder: lever, nyrer og tarm.',
@@ -1229,7 +1229,7 @@ export const organs = [
     partner: 'Lever',
     time: '23-01',
     color: '#228B22',
-    icon: '⚡',
+    icon: '膽',
     description: [
       'Galdeblæren kaldes "Beslutningstageren" og arbejder tæt sammen med leveren. Den har kroppens længste energibane.',
       'Galdeblærens hovedopgave er at lagre galdevæske og sende den til tarmen for at nedbryde fedt.',
@@ -1322,7 +1322,7 @@ export const organs = [
     partner: 'Galdeblære',
     time: '01-03',
     color: '#228B22',
-    icon: '🌿',
+    icon: '肝',
     description: [
       'Leveren kaldes "Generalen" og er kroppens vigtigste organ for at få energien til at flyde frit. Blokeret lever-energi er et af de mest almindelige problemer i dag.',
       'Leverens vigtigste opgave er at sikre at energien flyder glat og frit. Stress, frustrationer og uopfyldte ønsker påvirker direkte leverens evne.',
@@ -1993,7 +1993,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Milt-punkt 4',
     coupledPoint: 'Pericardium-punkt 6',
     partnerMeridian: 'Yin Wei Mai',
-    icon: '🔴',
+    icon: '衝',
     level: 'Den dybeste konstitutionelle kanal — grundlaget for al energi og blod i kroppen',
     relatedOrgans: ['Milt', 'Nyrer', 'Lever', 'Hjerte'],
     pathway: [
@@ -2093,7 +2093,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Lunge-punkt 7',
     coupledPoint: 'Nyre-punkt 6',
     partnerMeridian: 'Yin Qiao Mai',
-    icon: '🌙',
+    icon: '任',
     level: 'Kroppens primære yin-kanal — nærer, køler og modtager',
     relatedOrgans: ['Nyrer', 'Lunger', 'Hjerte', 'Lever'],
     pathway: [
@@ -2193,7 +2193,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Tyndtarms-punkt 3',
     coupledPoint: 'Blære-punkt 62',
     partnerMeridian: 'Yang Qiao Mai',
-    icon: '☀️',
+    icon: '督',
     level: 'Kroppens primære yang-kanal — styrer, løfter og beskytter',
     relatedOrgans: ['Nyrer', 'Hjerte', 'Hjerne'],
     pathway: [
@@ -2294,7 +2294,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Galdeblære-punkt 41',
     coupledPoint: 'San Jiao-punkt 5',
     partnerMeridian: 'Yang Wei Mai',
-    icon: '🔗',
+    icon: '帶',
     level: 'Kroppens horisontale integrator — binder alle vertikale kanaler sammen',
     relatedOrgans: ['Galdeblære', 'Lever', 'Nyrer', 'Milt'],
     pathway: [
@@ -2394,7 +2394,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Nyre-punkt 6',
     coupledPoint: 'Lunge-punkt 7',
     partnerMeridian: 'Ren Mai',
-    icon: '🌑',
+    icon: '蹻',
     level: 'Bevægelsens yin-side — indadvendthed, søvn og selvindsigt',
     relatedOrgans: ['Nyrer', 'Lunger', 'Blære'],
     pathway: [
@@ -2494,7 +2494,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Blære-punkt 62',
     coupledPoint: 'Tyndtarms-punkt 3',
     partnerMeridian: 'Du Mai',
-    icon: '☀️',
+    icon: '陽',
     level: 'Bevægelsens yang-side — årvågenhed, handling og engagement',
     relatedOrgans: ['Blære', 'Tyndtarm', 'Galdeblære'],
     pathway: [
@@ -2594,7 +2594,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'Pericardium-punkt 6',
     coupledPoint: 'Milt-punkt 4',
     partnerMeridian: 'Chong Mai',
-    icon: '💜',
+    icon: '維',
     level: 'Det indre bindeled — sammenhæng, mening og emotionel dybde',
     relatedOrgans: ['Pericardium', 'Milt', 'Hjerte', 'Lever'],
     pathway: [
@@ -2694,7 +2694,7 @@ export const extraordinaryMeridians = [
     openingPoint: 'San Jiao-punkt 5',
     coupledPoint: 'Galdeblære-punkt 41',
     partnerMeridian: 'Dai Mai',
-    icon: '🟡',
+    icon: '衛',
     level: 'Det ydre bindeled — beskyttelse, transformation og ydre styrke',
     relatedOrgans: ['San Jiao', 'Galdeblære', 'Tyndtarm', 'Blære'],
     pathway: [
@@ -2816,7 +2816,7 @@ export const fiveElements = [
     organs: ['Lever', 'Galdeblære'],
     season: 'Forår',
     emotion: 'Vrede',
-    icon: '🌳',
+    icon: '木',
     direction: 'Øst',
     climate: 'Vind',
     taste: 'Sur',
@@ -2866,7 +2866,7 @@ export const fiveElements = [
     organs: ['Hjerte', 'Tyndtarm', 'Pericardium', 'San Jiao'],
     season: 'Sommer',
     emotion: 'Glæde',
-    icon: '🔥',
+    icon: '火',
     direction: 'Syd',
     climate: 'Varme',
     taste: 'Bitter',
@@ -2916,7 +2916,7 @@ export const fiveElements = [
     organs: ['Milt', 'Mavesæk'],
     season: 'Sen sommer',
     emotion: 'Bekymring',
-    icon: '🌾',
+    icon: '土',
     direction: 'Centrum',
     climate: 'Fugt',
     taste: 'Sød',
@@ -2966,7 +2966,7 @@ export const fiveElements = [
     organs: ['Lunger', 'Tyktarm'],
     season: 'Efterår',
     emotion: 'Sorg',
-    icon: '⚔️',
+    icon: '金',
     direction: 'Vest',
     climate: 'Tørhed',
     taste: 'Skarp',
@@ -3016,7 +3016,7 @@ export const fiveElements = [
     organs: ['Nyrer', 'Blære'],
     season: 'Vinter',
     emotion: 'Frygt',
-    icon: '💧',
+    icon: '水',
     direction: 'Nord',
     climate: 'Kulde',
     taste: 'Salt',

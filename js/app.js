@@ -202,9 +202,9 @@ function renderElements() {
 function renderFoundation() {
   const grid = document.getElementById('foundation-grid');
   const items = [
-    { key: 'yinYang', icon: '☯️', title: tcmFoundation.yinYang.title, desc: tcmFoundation.yinYang.subtitle },
-    { key: 'elementCycles', icon: '🔄', title: tcmFoundation.elementCycles.title, desc: tcmFoundation.elementCycles.subtitle },
-    { key: 'organPartnership', icon: '🤝', title: tcmFoundation.organPartnership.title, desc: tcmFoundation.organPartnership.subtitle }
+    { key: 'yinYang', icon: '☯', title: tcmFoundation.yinYang.title, desc: tcmFoundation.yinYang.subtitle },
+    { key: 'elementCycles', icon: '◎', title: tcmFoundation.elementCycles.title, desc: tcmFoundation.elementCycles.subtitle },
+    { key: 'organPartnership', icon: '⇌', title: tcmFoundation.organPartnership.title, desc: tcmFoundation.organPartnership.subtitle }
   ];
 
   grid.innerHTML = items.map(item => `
@@ -947,7 +947,7 @@ function showInfoModal(infoId) {
   if (!info) return;
 
   // Reuse practice detail screen for info display
-  document.getElementById('practice-detail-icon').textContent = 'ℹ️';
+  document.getElementById('practice-detail-icon').textContent = '◌';
   document.getElementById('practice-detail-title').textContent = info.title;
   document.getElementById('practice-detail-subtitle').textContent = '';
 
@@ -1041,7 +1041,7 @@ function performSearch(query) {
     const section = tcmFoundation[key];
     const searchable = [section.title, section.subtitle, ...section.description].join(' ').toLowerCase();
     if (searchable.includes(query)) {
-      results.foundation.push({ type: 'foundation', data: key, icon: '☯️', name: section.title, meta: section.subtitle });
+      results.foundation.push({ type: 'foundation', data: key, icon: '☯', name: section.title, meta: section.subtitle });
     }
   });
 
@@ -1050,7 +1050,7 @@ function performSearch(query) {
     const searchable = [ov.name, ov.nickname, ov.element, ov.emotion, ov.keyFunction, ov.classicSigns, ...ov.quickSigns, ...ov.symptomer].join(' ').toLowerCase();
     if (searchable.includes(query)) {
       const organ = organs.find(o => o.id === ov.organId);
-      results.overviews.push({ type: 'overview', data: ov, icon: organ ? organ.icon : '📋', name: `${ov.name} Oversigt`, meta: ov.quickSigns.slice(0, 3).join(' · ') });
+      results.overviews.push({ type: 'overview', data: ov, icon: organ ? organ.icon : '〇', name: `${ov.name} Oversigt`, meta: ov.quickSigns.slice(0, 3).join(' · ') });
     }
   });
 
@@ -1139,7 +1139,7 @@ function renderOverviewOrganGrid() {
     return `
       <div class="overview-card" data-ov-organ="${ov.organId}">
         <div class="overview-card-header">
-          <span class="overview-card-icon">${organ ? organ.icon : '🔵'}</span>
+          <span class="overview-card-icon">${organ ? organ.icon : '〇'}</span>
           <div class="overview-card-title-area">
             <div class="overview-card-name">${ov.name} <span class="overview-card-chinese">${ov.chinese}</span></div>
             <div class="overview-card-meta">${ov.element} · ${ov.time} · ${ov.partner}</div>
@@ -1168,7 +1168,7 @@ function renderOverviewMeridianGrid() {
     return `
       <div class="overview-card overview-card-meridian" data-ov-meridian="${mov.meridianId}">
         <div class="overview-card-header">
-          <span class="overview-card-icon">${m ? m.icon : '🔮'}</span>
+          <span class="overview-card-icon">${m ? m.icon : '〇'}</span>
           <div class="overview-card-title-area">
             <div class="overview-card-name">${mov.name}</div>
             <div class="overview-card-meta">${mov.aka}</div>
@@ -1267,7 +1267,7 @@ function showOverviewDetail(ov, type) {
   const organ = type === 'organ' ? organs.find(o => o.id === ov.organId) : null;
   const meridian = type === 'meridian' ? extraordinaryMeridians.find(m => m.id === ov.meridianId) : null;
 
-  document.getElementById('overview-detail-icon').textContent = organ ? organ.icon : (meridian ? meridian.icon : '📋');
+  document.getElementById('overview-detail-icon').textContent = organ ? organ.icon : (meridian ? meridian.icon : '〇');
   document.getElementById('overview-detail-name').textContent = ov.name;
   document.getElementById('overview-detail-nickname').textContent = type === 'organ' ? `"${ov.nickname}"` : ov.aka;
 

@@ -295,9 +295,12 @@ body {
 }
 
 .organ-card-icon {
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 8px;
   display: block;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .organ-card-name {
@@ -366,9 +369,12 @@ body {
 }
 
 .meridian-card-icon {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 8px;
   display: block;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .meridian-card-name {
@@ -466,8 +472,11 @@ body {
 }
 
 .element-card-icon {
-  font-size: 24px;
+  font-size: 26px;
   flex-shrink: 0;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .element-card-info {
@@ -539,6 +548,8 @@ body {
 .foundation-card-icon {
   font-size: 24px;
   flex-shrink: 0;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .foundation-card-info {
@@ -588,8 +599,11 @@ body {
 }
 
 .practice-card-icon {
-  font-size: 24px;
+  font-size: 22px;
   flex-shrink: 0;
+  font-weight: 300;
+  opacity: 0.85;
+  letter-spacing: 1px;
 }
 
 .practice-card-info {
@@ -690,7 +704,10 @@ body {
 }
 
 .detail-icon {
-  font-size: 28px;
+  font-size: 30px;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .detail-title-area h1 {
@@ -1102,6 +1119,9 @@ body {
 .element-organ-icon {
   font-size: 22px;
   flex-shrink: 0;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .element-organ-info {
@@ -1755,6 +1775,9 @@ body {
   flex-shrink: 0;
   width: 32px;
   text-align: center;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .search-result-info {
@@ -1866,8 +1889,11 @@ body {
 }
 
 .overview-card-icon {
-  font-size: 24px;
+  font-size: 26px;
   flex-shrink: 0;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .overview-card-title-area {
