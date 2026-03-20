@@ -7,6 +7,287 @@ export const APP_INFO = {
   author: 'Anne Marie Clement'
 };
 
+// ============================================
+// Practice Guide — "I Praksis"
+// ============================================
+export const practiceGuide = [
+  {
+    id: 'moede-klienten',
+    icon: '🤲',
+    title: 'At Møde Klienten',
+    subtitle: 'Filosofien bag tilgangen',
+    sections: [
+      {
+        heading: 'Mønstrene Bag — To Perspektiver',
+        paragraphs: [
+          'Titlen "Mønstrene Bag" indeholder to parallelle perspektiver. Det første er meget direkte og peger på, at vi som behandlere er interesseret i at forstå og kortlægge mønstrene bag klientens tilstand.',
+          'Samtidig peger titlen også på, at der kan ligge mønstre, som ikke er tydelige ved første øjekast. At klientens symptomer tilsyneladende udtrykker ét billede, men at der under dette billede kan ligge nogle mønstre, som i højere grad vil gøre det muligt for os at møde dem på det niveau, hvorfra deres symptomer udspringer.'
+        ]
+      },
+      {
+        heading: 'At Møde Klienten Hvor De Er',
+        paragraphs: [
+          'Når vi møder vores klient første gang, er vi interesserede i dels at møde dem, hvor de er, og dels at forstå, hvad der ligger bag deres nuværende tilstand. At arbejde med mønstrene bag favner begge dele — det giver os mulighed for at lytte til hele deres fortælling og samtidigt i samtalen tilføje nuancer til deres historie.',
+          'Det fundamentale udgangspunkt er respekten for klientens egen fortælling og kroppens egen visdom. TCM-forståelsen giver os et kort, men det er altid klienten og deres system, der viser os vejen.'
+        ]
+      },
+      {
+        heading: 'En Invitation — Ikke en Protokol',
+        paragraphs: [
+          'Dette er ikke en manual, men en inspirationskilde. Intentionen er ikke, at du skal lære det udenad eller følge det som en protokol — men at du lader det væve sig ind i din praksis på den måde, der giver mening for dig.',
+          'Måske begynder du med blot at stille nogle flere spørgsmål i dine indledende samtaler. Måske begynder du at lægge mærke til tidsmønstre i klienters symptomer. Måske åbner forståelsen af emotionelle forbindelser til organer nogle nye samtaler med dine klienter.',
+          'Det væsentlige er, at du tager det i dit eget tempo og lader det vokse naturligt ind i dit arbejde.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'foerste-samtale',
+    icon: '💬',
+    title: 'Den Første Samtale',
+    subtitle: 'Tre centrale temaer at berøre',
+    sections: [
+      {
+        heading: 'De Grundlæggende Trin',
+        paragraphs: [
+          'Den generelle indgang til den første behandling med en ny klient indeholder bestemte trin: en invitation til at fortælle, hvad de gerne vil have hjælp til, og en lytning til deres situation og de ønsker, de har for behandlingen.',
+          'Mens de fortæller, opstår der ofte en dialog — spørgsmål undervejs gør det til en dynamisk samtale, hvor fortællingen får så mange nuancer med som muligt.'
+        ]
+      },
+      {
+        heading: '1. Medicin',
+        paragraphs: [
+          'Hør om de tager medicin af nogen slags. Bland dig aldrig i deres medicin, men tal med dem om det — særligt i forhold til de symptomer, de ønsker hjælp til.',
+          'Medicin kan udgøre en terapiforhindring: en tilstand, hvor hele klientens system er påvirket på en måde, der kortslutter kroppens naturlige evne til at balancere og regulere sig selv. Det er en tilstand, hvor de trods forskellige tiltag ikke oplever egentlig forandring.'
+        ]
+      },
+      {
+        heading: '2. Generelle Livsomstændigheder',
+        paragraphs: [
+          'Spørg altid til deres generelle livsomstændigheder — helbred, familiesituation, arbejdsliv og alt det, som udgør essensen af deres liv. Konteksten for vores liv er altid direkte vævet ind i vores tilstand.',
+          'Denne del af samtalen kan give indsigt i, hvorvidt symptomerne udspringer fra låste tilstande i systemet, eller om de i højere grad er kompenserende processer, som kroppen tvinges til at starte op i forhold til en kontekst, som ikke udgør en støttende ressource.'
+        ]
+      },
+      {
+        heading: '3. Historik — Sygdomme, Begivenheder og Arvæv',
+        paragraphs: [
+          'Spørg specifikt til deres historik i forhold til sygdomme og større begivenheder. Har der været markante skift og overgange, som har udgjort en slags "før og efter" i deres liv? Lyt efter den kronologiske rækkefølge, da den kan give vigtige informationer om sammenhænge med den nuværende tilstand.',
+          'Spørg også specifikt til uheld, ulykker og arvæv. Ligesom medicin kan arvæv udgøre en terapiforhindring — aktivt arvæv, som ikke er blevet normaliseret, kan påvirke hele systemets evne til regulering.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'samtale-til-moenster',
+    icon: '🔍',
+    title: 'Fra Samtale til Mønster',
+    subtitle: 'Samtalens dynamik og mønsterafdækning',
+    sections: [
+      {
+        heading: 'Samtalens Dynamik — At Invitere Nuancer Frem',
+        paragraphs: [
+          'Start samtalen med at spørge til deres ønske for behandlingen og derefter lade dem fortælle. Undervejs opstår en dialog, hvor din spørgen skaber en naturlig mulighed for, at fortællingen får så mange nuancer med som muligt.',
+          'Under hele samtalen lytter du med afsæt i din forståelse af principperne bag TCM. Efter deres fortælling har du næsten altid en fornemmelse af nogle mønstre.'
+        ]
+      },
+      {
+        heading: 'Fra Åben Samtale til Specifik Mønsterafdækning',
+        paragraphs: [
+          'Når de har fortalt alt det, de havde på hjerte, begynder du at stille mere specifikke spørgsmål. Det er her, muligheden opstår for at afdække og gøre eventuelle mønstre endnu tydeligere.',
+          'Du ønsker at verificere din fornemmelse af bestemte mønstre. Du kan stille specifikke spørgsmål om temaer, som de måske ikke naturligt har berørt endnu — spørgsmål der kan kaste lys over, hvorvidt din fornemmelse af deres underliggende mønster er på rette spor.'
+        ]
+      },
+      {
+        heading: 'Eksempel: Organspecifikke Spørgsmål',
+        paragraphs: [
+          'Har du f.eks. en fornemmelse af et underliggende mønster i forhold til leveren, kan du stille specifikke spørgsmål om øjne, sener og led, evnen til at tåle alkohol, cyklusmønstre hos kvinder, søvn og følelsesmæssige udtryk.',
+          'På den måde kan du næsten udkrystallisere det mønster, som ligger bag deres tilstand — det dominerende bag deres samlede symptombillede. De 8 kortlæggende temaer under hvert organ i denne app er netop designet til dette formål.'
+        ]
+      },
+      {
+        heading: 'At Blive Hørt — En Terapeutisk Værdi i Sig Selv',
+        paragraphs: [
+          'Den nysgerrige del af samtalen har den vigtige konsekvens, at klienten føler sig mødt og oplever en oprigtig interesse for hele deres tilstand. Mange kommer fra besøg hos specialister, hvor de har oplevet, at der ikke var interesse for hele deres fortælling.',
+          'Vores vedvarende spørgen ind til deres tilstand skaber en oplevelse af, at de endelig bliver hørt — at nogen endelig er interesseret i at lytte til hele deres fortælling. Dette er i sig selv terapeutisk.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'otte-grundspoergsmaal',
+    icon: '🧭',
+    title: 'De Otte Grundspørgsmål',
+    subtitle: 'En ramme for mønsterafdækning',
+    sections: [
+      {
+        heading: 'En Ramme På Tværs af Organsystemer',
+        paragraphs: [
+          'Otte centrale spørgsmålsområder danner en ramme, der gør det muligt at få et overblik over klientens tilstand på tværs af de forskellige organsystemer. Ved at berøre disse otte områder får du en bred forståelse af, hvor eventuelle ubalancer kan ligge, og hvilke organer der kan være involveret.',
+          'Disse otte områder afspejles direkte i de 8 kortlæggende temaer, som du finder under hvert organ i denne app.'
+        ]
+      },
+      {
+        heading: '1. Tidsmæssige Mønstre',
+        paragraphs: [
+          'Hvornår opstår eller forværres symptomerne? Er der et mønster i forhold til tidspunkter på døgnet (organuret) eller årstider (fem-element cyklussen)? Konsistente tidsmønstre peger ofte direkte mod specifikke organer.'
+        ]
+      },
+      {
+        heading: '2. Energiniveau & Træthed',
+        paragraphs: [
+          'Hvordan er deres generelle energiniveau? Hvornår på dagen er energien højest og lavest? Kronisk træthed, pludselige energidyk eller rastløshed kan alle pege mod bestemte organmønstre.'
+        ]
+      },
+      {
+        heading: '3. Fordøjelse & Appetit',
+        paragraphs: [
+          'Hvordan fungerer fordøjelsen? Appetit, oppustethed, mavesmerter, afføringsmønstre og madpræferencer giver vigtige informationer om særligt Milt, Mavesæk, Lever og Tyktarm.'
+        ]
+      },
+      {
+        heading: '4. Søvn & Drømme',
+        paragraphs: [
+          'Hvordan er deres søvn? Svært ved at falde i søvn, opvågning på bestemte tidspunkter, drømmeintensitet og søvnkvalitet afspejler ofte specifikke organmønstre — især via organuret.'
+        ]
+      },
+      {
+        heading: '5. Emotionelle Tilstande',
+        paragraphs: [
+          'Hvilke følelser dominerer? Vedvarende vrede eller frustration (Lever), bekymring og overtænkning (Milt), sorg (Lunger), frygt (Nyrer) eller uro og angst (Hjerte) peger alle mod bestemte elementer og organer.'
+        ]
+      },
+      {
+        heading: '6. Temperatur & Klimafølsomhed',
+        paragraphs: [
+          'Fryser de let eller har de det for varmt? Reagerer de på kulde, varme, fugt eller vind? Temperaturpræferencer og klimafølsomhed er direkte udtryk for Yin-Yang balancen i kroppen.'
+        ]
+      },
+      {
+        heading: '7. Smerter & Fysiske Symptomer',
+        paragraphs: [
+          'Hvor i kroppen oplever de smerter eller ubehag? Smertekarakter (skarp, dumpende, vandrende, fast), lokation og timing giver værdifulde informationer om hvilke meridianer og organer der er involveret.'
+        ]
+      },
+      {
+        heading: '8. Væskebalance & Tørst',
+        paragraphs: [
+          'Hvordan er deres væskebalance? Tørstmønstre, vandladning, tendens til ødemer eller tørhed fortæller om Nyrernes funktion, Miltens transformation af væsker og den generelle Yin-Yang balance.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'arbejde-med-moenstre',
+    icon: '🌀',
+    title: 'At Arbejde med Mønstre',
+    subtitle: 'Mønstret som indgang — ikke som årsag',
+    sections: [
+      {
+        heading: 'Mønstret Er Ikke Det Samme Som Årsagen',
+        paragraphs: [
+          'En væsentlig del af forståelsen bag TCM er, at et dominerende mønster ikke er det samme som årsagen til klientens tilstand. Inden for det specifikke mønster kan der være tale om forskellige tilstande — f.eks. kan leveren enten være for rebelsk, dens energi stagneret, eller den kan simpelthen mangle livskraft.',
+          'Yderligere kan leveren sagtens være det dominerende mønster, men årsagen kan skyldes et helt andet organ, som er i ubalance og tvinger leveren til en anderledes funktion. Mønstret er aldrig udtømmende i sig selv, men det kan pege på den dominerende tilstand og skabe en indgang til behandlingen.'
+        ]
+      },
+      {
+        heading: 'Når Flere Mønstre Er Aktive Samtidigt',
+        paragraphs: [
+          'Livet er komplekst, og alle organer er altid i indbyrdes udveksling. Det er ikke muligt at se det enkelte organ uden for dets kontekst, og derfor vil der altid i forskellige grader være flere mønstre aktive på samme tid.',
+          'Kunsten er at vurdere, om ét mønster dominerer tilstrækkeligt til at være den oplagte indgang. Hvis flere mønstre er til stede samtidigt uden et tydeligt dominerende, kan det være oplagt at arbejde med en af de ekstraordinære meridianer, der fungerer på et dybere niveau og kan balancere flere mønstre samtidigt.'
+        ]
+      },
+      {
+        heading: 'Over Flere Behandlinger',
+        paragraphs: [
+          'Mønstre kan bruges som reference over et behandlingsforløb. Hvis det rette mønster er valgt, og der har været en terapeutisk proces, vil klienten ved næste behandling fortælle om ændringer i forhold til det oprindelige mønster.',
+          'Når det oprindelige mønster begynder at bevæge sig og forandres, skabes mulighed for, at dybere liggende tilstande begynder at træde frem. Disse dybere lag indeholder samtidig det største potentiale for fornyet livskraft og en samlet bevægelse mod mere fri og balanceret funktion.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'vores-rolle',
+    icon: '⚖️',
+    title: 'Vores Rolle',
+    subtitle: 'Grænser, ansvar og integration',
+    sections: [
+      {
+        heading: 'Grænser og Ansvar',
+        paragraphs: [
+          'Det er vigtigt at understrege, at vores rolle aldrig er at diagnosticere eller behandle sygdomme i vestlig medicinsk forstand. Vi stiller ikke diagnoser som en læge ville gøre, og vi blander os aldrig i klientens medicinske behandling.',
+          'Når vi taler om "mønstre" og benytter TCM som forståelsesramme, er det en måde at organisere vores iagttagelser og guide vores behandling — ikke en medicinsk diagnose. Hvis vi fornemmer, at klienten har brug for medicinsk udredning, opfordrer vi altid til at kontakte deres læge.'
+        ]
+      },
+      {
+        heading: 'Integration med Kropsterapi',
+        paragraphs: [
+          'En af de store styrker ved at kombinere TCM-forståelsen med kropsterapi er, at begge systemer deler en dyb respekt for kroppens egen intelligens og evne til selvregulering. Hvor TCM giver os en forståelsesramme og et diagnostisk kort til at identificere mønstre, giver kropsterapien os en behandlingsform, der tillader kroppen selv at prioritere, hvor helingsprocessen skal ske.',
+          'TCM benyttes aldrig som en protokol, men snarere som en inspirationskilde. Meridianforløb, organsystemer og energetiske mønstre bliver indgange til behandlingen — døre vi kan åbne — men det er altid klientens system, der bestemmer, hvilken dør vi går igennem, og hvad der sker på den anden side.'
+        ]
+      },
+      {
+        heading: 'De Seks Niveauer af Organforståelse',
+        paragraphs: [
+          'I TCM repræsenterer hvert organ et komplekst energisystem, der påvirker hele mennesket på seks niveauer: det energetiske (qi-flow og meridianbaner), det fysiske (konkrete funktioner og strukturer), det psykiske (tankemønstre og mental klarhed), det emotionelle (følelsesmæssige forbindelser), det sansemæssige (organet "åbner" til en bestemt sans) og det spirituelle (aspekter af vores dybere essens).',
+          'Denne flerlagede forståelse giver en rigere og mere nuanceret tilgang, hvor fysiske symptomer altid ses i sammenhæng med emotionelle, mentale og energetiske kvaliteter. Det er denne dybde, som hvert organ i denne app præsenteres med.'
+        ]
+      }
+    ]
+  }
+];
+
+// ============================================
+// Section Introductions
+// ============================================
+export const sectionIntros = {
+  practice: {
+    title: 'I Praksis',
+    paragraphs: [
+      'Denne sektion er din vejledning til at bruge mønstrene i praksis. Her finder du en konkret tilgang til den første samtale med klienten, de otte grundspørgsmål der danner rammen for mønsterafdækning, og en forståelse af, hvordan mønstre kan bruges som indgang til behandling.',
+      'Materialet er ikke en protokol, men en inspirationskilde — tænkt til at væve sig ind i din praksis på den måde, der giver mening for dig. Tag det i dit eget tempo og lad det vokse naturligt ind i dit arbejde.'
+    ]
+  },
+  organs: {
+    title: 'De 12 Organer & Meridianer',
+    paragraphs: [
+      'I Traditionel Kinesisk Medicin betragtes organer som langt mere end blot fysiske strukturer med specifikke fysiologiske funktioner. Hvert organ repræsenterer et komplekst energisystem, der påvirker og gennemtrænger hele mennesket på adskillige niveauer — energetisk, fysisk, psykisk, emotionelt, sansemæssigt og spirituelt.',
+      'Når vi taler om "lever" eller "hjerte" i TCM, refererer vi derfor ikke kun til det fysiske organ, men til hele dette komplekse system af relationer og funktioner. Det giver en rigere og mere nuanceret forståelse af menneskets sundhed, hvor fysiske symptomer altid ses i sammenhæng med emotionelle, mentale og energetiske kvaliteter.',
+      'Hvert organ præsenteres her med dets funktioner, karakteristika og konkrete spørgsmål fordelt på otte kortlæggende temaer, som kan hjælpe med at tydeliggøre mønstre i en tilstand. Det handler om at lytte til kroppens fortælling og forstå de dybere sammenhænge bag symptomerne.'
+    ]
+  },
+  extraordinary: {
+    title: 'De 8 Ekstraordinære Meridianer',
+    paragraphs: [
+      'De ekstraordinære meridianer udgør kroppens dybere energireservoirer og konstitutionelle fundamenter. Hvor de 12 hovedmeridianer håndterer dagligdagens energistrøm, arbejder de ekstraordinære meridianer på et dybere niveau — de lagrer og regulerer den essens, vi er født med, og forbinder os til vores mest fundamentale livskraft.',
+      'Disse otte meridianer bliver særligt relevante ved kroniske, komplekse eller konstitutionelle ubalancer. Når flere mønstre er aktive samtidigt, og der ikke fremstår et tydeligt og entydigt mønster, kan de ekstraordinære meridianer tilbyde en indgang, der fungerer på et anderledes og dybere niveau med egenskaber til at balancere flere mønstre samtidigt.',
+      'Fra Chong Mai — det allerførste kar der dannes i fosteret — til Yin og Yang Wei Mai, der væver fortid og nutid sammen, repræsenterer disse meridianer de dybeste lag af vores energetiske konstitution og potentialet for dyb, varig forandring.'
+    ]
+  },
+  elements: {
+    title: 'De Fem Elementer',
+    paragraphs: [
+      'Fem-element teorien (Wu Xing) beskriver, hvordan naturens fem elementer — Træ, Ild, Jord, Metal og Vand — afspejles i kroppens organsystemer. Dette er ikke bare symbolik, men et praktisk system til at forstå, hvordan organer påvirker hinanden i sundhed og sygdom.',
+      'Elementerne er forbundet i to fundamentale cyklusser: Skabelses-cyklussen, hvor hvert element nærer det næste som en mor nærer sit barn, og Kontrol-cyklussen, hvor hvert element holder et andet i balance for at forhindre overvækst. Når begge cyklusser fungerer harmonisk, er kroppen i balance.',
+      'Teorien giver os mulighed for at se mønstre, der rækker ud over det enkelte organ. Et symptom i ét organ kan have sin rod i et andet element, og følelsesmæssige mønstre følger elementernes cyklusser. Ved at forstå disse relationelle forbindelser får vi et kraftfuldt redskab til at arbejde med hele mennesket.'
+    ]
+  },
+  overviews: {
+    title: 'Oversigter',
+    paragraphs: [
+      'Denne sektion giver dig hurtige oversigter til daglig brug i klinikken. Her finder du kompakte referencekort for alle 12 organer og de 8 ekstraordinære meridianer — designet til at give overblik med ét blik.',
+      'Symptom-tabellen hjælper dig med at koble specifikke symptomer til de relevante organsystemer, og samtalestrukturen giver et forslag til, hvordan du kan strukturere den indledende samtale med en ny klient.'
+    ]
+  },
+  foundation: {
+    title: 'TCM Grundprincipper',
+    paragraphs: [
+      'Før vi dykker ned i de enkelte organer og meridianer, er det væsentligt at forstå de overordnede principper, som TCM bygger sin tilgang på. Fire centrale perspektiver fungerer som et sammenhængende kompas: Yin-Yang princippet, Organuret, Fem-element teorien og Zang-Fu systemet.',
+      'Yin-Yang giver os det grundlæggende spørgsmål om, hvor ubalancen ligger. Organuret giver den tidsmæssige dimension — hvornår viser symptomet sig? Fem-element teorien viser de relationelle forbindelser mellem organerne, og Zang-Fu systemet giver den funktionelle forståelse af organernes parforhold.',
+      'Sammen giver disse perspektiver et kraftfuldt diagnostisk værktøj, der gør det muligt at se ud over isolerede symptomer og i stedet forstå de dybere mønstre og sammenhænge i en tilstand. De overlapper, supplerer og forstærker hinanden — og udgør fundamentet for alt det, der følger.'
+    ]
+  }
+};
+
 export const organs = [
   {
     id: 'lunger',
@@ -1127,6 +1408,582 @@ export const organs = [
   }
 ];
 
+// ============================================
+// Organ Overviews — Quick Reference Cards
+// ============================================
+export const organOverviews = [
+  {
+    organId: 'lunger',
+    name: 'Lunger',
+    chinese: '肺',
+    nickname: 'Den Skrøbelige Organtype',
+    time: '03-05',
+    partner: 'Tyktarm',
+    element: 'Metal',
+    opensTo: 'Næsen',
+    showsIn: 'Huden & håret',
+    emotion: 'Sorg og evnen til at give slip',
+    houses: 'Den kropslige sjæl (Po)',
+    keyFunction: 'Styrer forsvar-energien, regulerer vejrtrækningen og kontrollerer energi',
+    classicSigns: 'Hyppige forkølelser, tør hud, opvågning 03-05, ubearbejdet sorg, astma eller vejrtrækningsproblemer',
+    quickSigns: [
+      'Gentagne forkølelser',
+      'Tør hud',
+      'Overfladisk vejrtrækning',
+      'Kronisk hoste',
+      'Svag stemme',
+      'Tilstoppet næse',
+      'Sorg og melankoli',
+      'Svagt immunforsvar',
+      'Vågner kl. 03-05',
+      'Svært ved at give slip'
+    ],
+    symptomer: ['Hoste', 'Bihindebetændelse/tilstoppet næse', 'Stakåndet/forpustet', 'Svær ubalance', 'Træthed', 'Spændt thorax', 'Svag stemme', 'Astma/åndenød', 'Hyppige forkølelser'],
+    fysiske: ['Ødematisk hals', 'Ashgrå farve', 'Hud og næse', 'Regulerer vandpassagen', 'Kontrollerer blodkarrene', 'Styrer vejrtrækning', 'Manifesterer sig i kroppens legemshår', 'Farve: Hvid', 'Smag: Skarp', 'Årstid: Efterår', 'Klima: Tørhed', 'Lyd: Gråd'],
+    funktioner: ['Spreder qi gennem kroppen', 'Næres af milt qi', 'Kontrollerer qi', 'Næsens slimhinder', 'Element: Metal', 'Partner: Tyktarmen', 'Emotion: Sorg, bekymring', 'Forsvarer qi (Wei Qi)', 'Evnen til at slippe taget']
+  },
+  {
+    organId: 'tyktarm',
+    name: 'Tyktarm',
+    chinese: '大腸',
+    nickname: 'Transportørens Mester',
+    time: '05-07',
+    partner: 'Lunger',
+    element: 'Metal',
+    opensTo: 'Næsen (via lunger)',
+    showsIn: 'Huden',
+    emotion: 'Fastholdelse og evnen til at give slip',
+    houses: null,
+    keyFunction: 'Modtager affaldsprodukter, absorberer væske og danner afføring til elimination',
+    classicSigns: 'Forstoppelse, hudproblemer, svært ved at slippe taget emotionelt, manglende morgeneliminering',
+    quickSigns: [
+      'Forstoppelse eller diarré',
+      'Bughuldsmerter',
+      'Oppustet bughule',
+      'Uren hud',
+      'Hudlidelser',
+      'Ødem i nedre del af kroppen',
+      'Borborygmi (tarmlyde)',
+      'Irritation/uro',
+      'Uskyldighed ved afføring',
+      'Svært ved at give slip'
+    ],
+    symptomer: ['Forstoppelse/diarré', 'Bughuldsmerter', 'Oppustet bughule', 'Uren hud', 'Hudlidelser', 'Ødem i nedre del af kroppen', 'Borborygmi (tarmlyde)', 'Irritation/uro', 'Uskyldighed ved afføring'],
+    fysiske: ['Absorberer væske fra afføring', 'Kontrollerer modtagelse og elimination', 'Hjælper os til at give slip', 'Kontrollerer yderside af armen', 'Påvirkes af tørhed og varme', 'Manifesterer sig i huden', 'Farve: Hvid', 'Smag: Skarp', 'Lugt: Duftende', 'Lyd: Gråd'],
+    funktioner: ['Løber fra pegefinger til ansigt', 'Yin/yang-par med lungen', 'Transporterer affaldsstoffer', 'Påvirkes af følelser', 'Beriger ren krop, sind og sjæl', 'Partner: Lunger', 'Emotion: Sorg (uforløst)', 'Manglende evne til at give slip', 'Kontrol og stivhed', 'Mentalt og emotionelt "skrald"']
+  },
+  {
+    organId: 'mavesaek',
+    name: 'Mavesæk',
+    chinese: '胃',
+    nickname: 'Roden af Det Postnatale',
+    time: '07-09',
+    partner: 'Milt',
+    element: 'Jord',
+    opensTo: 'Munden',
+    showsIn: 'Læberne & tandkødet',
+    emotion: 'Bekymring og grublen',
+    houses: null,
+    keyFunction: 'Modtager og nedbryder føde, roden til al postnatal energi',
+    classicSigns: 'Kvalme, sure opstød, oppustethed, manglende appetit, tørhed, mundproblemer',
+    quickSigns: [
+      'Kvalme og sure opstød',
+      'Oppustethed efter måltider',
+      'Dårlig ånde',
+      'Tør mund og læber',
+      'Halsbrand',
+      'Bekymring og grublen',
+      'Voldsom eller manglende sult',
+      'Tandkødsproblemer',
+      'Træthed efter spisning',
+      'Problemer kl. 07-09'
+    ],
+    symptomer: ['Kvalme/sure opstød', 'Oppustethed', 'Halsbrand', 'Appetitmangel', 'Tør mund', 'Bøvsen/hikke', 'Tandkødsbetændelse', 'Dårlig ånde', 'Mavesmerter'],
+    fysiske: ['Nedadgående energibevægelse', 'Modner og rådner føde', 'Kilde til kropsvæsker', 'Viser sig i mund og læber', 'Farve: Gul', 'Smag: Sød', 'Årstid: Sen sommer', 'Klima: Fugtighed', 'Lyd: Sang'],
+    funktioner: ['Partner med milten', 'Fundamentet for postnatal energi', 'Kontrollerer nedadgående bevægelse', 'Emotion: Bekymring, grublen', 'Element: Jord', 'Behøver rigelig fugtighed', 'Rebelsk energi giver kvalme']
+  },
+  {
+    organId: 'milt',
+    name: 'Milt',
+    chinese: '脾',
+    nickname: 'Roden af Det Postnatale',
+    time: '09-11',
+    partner: 'Mavesæk',
+    element: 'Jord',
+    opensTo: 'Munden',
+    showsIn: 'Læberne',
+    emotion: 'Bekymringer og grublen',
+    houses: 'Intellektet (Yi)',
+    keyFunction: 'Transformerer og transporterer næring, holder blod og organer på plads',
+    classicSigns: 'Ødemer, sukkertrang, træthed efter spisen, løs afføring, bekymring, overvægt',
+    quickSigns: [
+      'Ødemer',
+      'Svage lemmer',
+      'Sukkertrang',
+      'Bekymringer/grublen',
+      'Træt efter spisen',
+      'Tendens til blødninger',
+      'Løs afføring',
+      'Overvægt',
+      'Nedsat appetit',
+      'Ubehag ved at sidde længe'
+    ],
+    symptomer: ['Ødemer', 'Løs afføring', 'Oppustethed', 'Sukkertrang', 'Nedsat appetit', 'Træthed efter spisning', 'Tendens til blødninger', 'Svage muskler', 'Overvægt'],
+    fysiske: ['Transformerer og transporterer næring', 'Holder blod i karrene', 'Holder organer på plads', 'Viser sig i læberne', 'Kontrollerer muskler og lemmer', 'Farve: Gul', 'Smag: Sød', 'Årstid: Sen sommer', 'Klima: Fugtighed', 'Lyd: Sang'],
+    funktioner: ['Partner med mavesækken', 'Kilde til blod og qi', 'Huser intellektet (Yi)', 'Opadgående energibevægelse', 'Emotion: Bekymring, grublen', 'Element: Jord', 'Holder blod i karrene']
+  },
+  {
+    organId: 'hjerte',
+    name: 'Hjerte',
+    chinese: '心',
+    nickname: 'Kejseren',
+    time: '11-13',
+    partner: 'Tyndtarm',
+    element: 'Ild',
+    opensTo: 'Tungen',
+    showsIn: 'Ansigtsfarven',
+    emotion: 'Glæde og overexcitation',
+    houses: 'Sindet (Shen)',
+    keyFunction: 'Regerer blod og blodkar, huser sindet og bevidstheden',
+    classicSigns: 'Hjertebanken, søvnproblemer, angst, bleg ansigtsfarve, nattesved, mental uklarhed',
+    quickSigns: [
+      'Hjertebanken',
+      'Søvnproblemer',
+      'Mental uklarhed',
+      'Angst og rastløshed',
+      'Bleg ansigtsfarve',
+      'Kolde hænder',
+      'Nattesved',
+      'Hukommelsesbesvær',
+      'Overdreven svedtendens',
+      'Manglende glæde'
+    ],
+    symptomer: ['Hjertebanken', 'Søvnløshed', 'Angst/rastløshed', 'Bleg ansigtsfarve', 'Kolde hænder/fødder', 'Nattesved', 'Hukommelsesproblemer', 'Brystsmerter', 'Mental forvirring'],
+    fysiske: ['Regerer blod og blodkar', 'Kontrollerer sved', 'Åbner til tungen', 'Viser sig i ansigtsfarven', 'Kontrollerer blodets cirkulation', 'Farve: Rød', 'Smag: Bitter', 'Årstid: Sommer', 'Klima: Varme', 'Lyd: Latter'],
+    funktioner: ['Huser sindet (Shen)', 'Alle emotioner påvirker hjertet', 'Kontrollerer mental aktivitet', 'Styrer hukommelse og tanker', 'Emotion: Glæde', 'Element: Ild', 'Partner: Tyndtarm', 'Sved er hjertets væske']
+  },
+  {
+    organId: 'tyndtarm',
+    name: 'Tyndtarm',
+    chinese: '小腸',
+    nickname: 'Separatoren',
+    time: '13-15',
+    partner: 'Hjerte',
+    element: 'Ild',
+    opensTo: 'Øret',
+    showsIn: 'Ansigtsfarven',
+    emotion: 'Forvirring og uklarhed',
+    houses: null,
+    keyFunction: 'Adskiller det rene fra det urene — fysisk og mentalt',
+    classicSigns: 'Bugsmerter, urinproblemer, mental forvirring, dårlig dømmekraft, øreproblemer',
+    quickSigns: [
+      'Bugsmerter og oppustethed',
+      'Tynd/løs afføring',
+      'Urinproblemer',
+      'Mental forvirring',
+      'Dårlig dømmekraft',
+      'Øreproblemer/tinnitus',
+      'Nakkestivhed',
+      'Smerter langs lillefinger',
+      'Overvældet af indtryk',
+      'Manglende skelneevne'
+    ],
+    symptomer: ['Bugsmerter', 'Oppustethed', 'Tynd/løs afføring', 'Urinproblemer', 'Smerter i nedre bug', 'Tarmuroen', 'Dårlig næringsoptag', 'Øresmerter', 'Nakkestivhed'],
+    fysiske: ['Adskiller rent fra urent', 'Modtager fra mavesækken', 'Sender affald til tyktarm og blære', 'Energibane fra lillefinger til øre', 'Farve: Rød', 'Smag: Bitter', 'Årstid: Sommer', 'Klima: Varme', 'Lyd: Latter'],
+    funktioner: ['Hjertets sekretær', 'Sorterer alle indtryk', 'Beskytter sindet', 'Dømmekraft og skelneevne', 'Emotion: Forvirring', 'Element: Ild', 'Partner: Hjerte', 'Spirituel separation']
+  },
+  {
+    organId: 'blaere',
+    name: 'Blære',
+    chinese: '膀胱',
+    nickname: 'Reservoirets Minister',
+    time: '15-17',
+    partner: 'Nyrer',
+    element: 'Vand',
+    opensTo: 'Øjet (via øjenkrog)',
+    showsIn: 'Håret på hovedet',
+    emotion: 'Frygt og jalousi',
+    houses: null,
+    keyFunction: 'Lagrer og udskiller væskeaffald, længste energibane i kroppen',
+    classicSigns: 'Hyppig vandladning, rygsmerter, nakkestivhed, øjenproblemer, inkontinens',
+    quickSigns: [
+      'Hyppig vandladning',
+      'Rygsmerter',
+      'Nakkestivhed',
+      'Øjenproblemer',
+      'Hovedpine fra nakken',
+      'Inkontinens',
+      'Natlig vandladning',
+      'Bensmerter (bagside)',
+      'Frygt og angst',
+      'Stress-respons'
+    ],
+    symptomer: ['Hyppig vandladning', 'Inkontinens', 'Rygsmerter', 'Nakkestivhed', 'Hovedpine', 'Øjenproblemer', 'Bensmerter (bagside)', 'Smerte ved vandladning', 'Natlig vandladning'],
+    fysiske: ['Lagrer og udskiller urin', 'Længste energibane i kroppen', 'Fra øjenkrog til lilletå', 'Langs rygsøjlen', 'Kræver nyre-yang', 'Farve: Sort/mørkeblå', 'Smag: Salt', 'Årstid: Vinter', 'Klima: Kulde', 'Lyd: Stønnen'],
+    funktioner: ['Partner med nyrerne', 'Autonome nervesystem', 'Stress-respons', 'Tidligt varslingssystem', 'Emotion: Frygt, jalousi', 'Element: Vand', 'Evnen til at holde eller slippe']
+  },
+  {
+    organId: 'nyrer',
+    name: 'Nyrer',
+    chinese: '腎',
+    nickname: 'Livets Rod',
+    time: '17-19',
+    partner: 'Blære',
+    element: 'Vand',
+    opensTo: 'Ørerne',
+    showsIn: 'Håret på hovedet',
+    emotion: 'Angst og frygt',
+    houses: 'Viljen (Zhi)',
+    keyFunction: 'Lagrer livets essens, styrer vækst, forplantning og aldring',
+    classicSigns: 'Lændesmerter, svage knæ, tinnitus, hårtab, kronisk træthed, kuldefølsomhed',
+    quickSigns: [
+      'Lændesmerter',
+      'Svage knæ',
+      'Tinnitus',
+      'Hårtab/gråt hår',
+      'Hyppig natlig vandladning',
+      'Svage tænder',
+      'Kronisk træthed',
+      'Kuldefølsomhed',
+      'Angst og frygt',
+      'Nedsat libido'
+    ],
+    symptomer: ['Lændesmerter', 'Svage knæ', 'Tinnitus', 'Hårtab/gråt hår', 'Hyppig natlig vandladning', 'Svage tænder', 'Kronisk træthed', 'Kuldefølsomhed', 'Nedsat libido'],
+    fysiske: ['Lagrer essens (Jing)', 'Styrer knogler og tænder', 'Producerer marv', 'Åbner til ørerne', 'Viser sig i håret', 'Farve: Sort/mørkeblå', 'Smag: Salt', 'Årstid: Vinter', 'Klima: Kulde', 'Lyd: Stønnen'],
+    funktioner: ['Livets rod og fundament', 'Styrer vækst og forplantning', 'Huser viljen (Zhi)', 'Ming Men — livets port', 'Emotion: Frygt, angst', 'Element: Vand', 'Partner: Blære', 'Yin-yang balancens rod']
+  },
+  {
+    organId: 'pericardium',
+    name: 'Pericardium',
+    chinese: '心包',
+    nickname: 'Hjertets Beskytter',
+    time: '19-21',
+    partner: 'San Jiao',
+    element: 'Ild',
+    opensTo: 'Tungen',
+    showsIn: 'Ansigtsfarven',
+    emotion: 'Emotionel sårbarhed og grænser',
+    houses: null,
+    keyFunction: 'Beskytter hjertet mod sygdom og emotionelle skader',
+    classicSigns: 'Brystsmerter, angst, søvnløshed, relationsproblemer, emotionel lukkethed',
+    quickSigns: [
+      'Brystsmerter/trykken',
+      'Hjertebanken',
+      'Angst og uro',
+      'Søvnløshed',
+      'Emotionel lukkethed',
+      'Relationsproblemer',
+      'Kolde hænder',
+      'Mundsår',
+      'Sårbarhed',
+      'Svært ved intimitet'
+    ],
+    symptomer: ['Brystsmerter', 'Hjertebanken', 'Angst', 'Søvnløshed', 'Mundsår', 'Mental forvirring', 'Indre uro', 'Emotionel ustabilitet', 'Kolde hænder/fødder'],
+    fysiske: ['Beskytter hjertet', 'Første forsvarslinje', 'Porten til hjertet', 'Forbindelse til livmoder', 'Energibane fra bryst til håndflade', 'Farve: Rød', 'Smag: Bitter', 'Årstid: Sommer', 'Klima: Varme'],
+    funktioner: ['Emotionel balance', 'Følelsesmæssige grænser', 'Bevægelse mod andre', 'Styrer intimitet og tillid', 'Emotion: Sårbarhed, lukkethed', 'Element: Ild', 'Partner: San Jiao', 'Åbner og lukker hjertet']
+  },
+  {
+    organId: 'sanjiao',
+    name: 'San Jiao',
+    chinese: '三焦',
+    nickname: 'Kroppens Dirigent',
+    time: '21-23',
+    partner: 'Pericardium',
+    element: 'Ild',
+    opensTo: 'Øret',
+    showsIn: 'Hele kroppen',
+    emotion: 'Ubalance og disharmoni',
+    houses: null,
+    keyFunction: 'Koordinerer tre brændere, distribuerer energi og styrer vandmetabolisme',
+    classicSigns: 'Væskeretention, temperaturubalance, ødem, dårlig energiflow, koordinationsproblemer',
+    quickSigns: [
+      'Væskeretention/ødem',
+      'Temperatursvingninger',
+      'Dårlig energiflow',
+      'Fordøjelsesproblemer',
+      'Vejrtrækningsbesvær',
+      'Urinproblemer',
+      'Nakke- og skulderstivhed',
+      'Øreproblemer',
+      'Tung krop',
+      'Ubalance mellem kropsregioner'
+    ],
+    symptomer: ['Ødem/væskeretention', 'Temperatursvingninger', 'Fordøjelsesproblemer', 'Vejrtrækningsbesvær', 'Urinproblemer', 'Nakkestivhed', 'Øreproblemer', 'Trykken i brystet', 'Tung krop'],
+    fysiske: ['Tre brændere (øvre, mellem, nedre)', 'Har navn men ingen form', 'Styrer vandmetabolisme', 'Distribuerer oprindelig energi', 'Regulerer temperatur', 'Farve: Rød', 'Smag: Bitter', 'Årstid: Sommer'],
+    funktioner: ['Kroppens dirigent', 'Koordinerer alle organer', 'Mobiliserer nyre-energi', 'Kontrollerer vandpassager', 'Emotion: Disharmoni', 'Element: Ild', 'Partner: Pericardium', 'Forbinder øvre, mellem og nedre']
+  },
+  {
+    organId: 'galdeblaere',
+    name: 'Galdeblære',
+    chinese: '膽',
+    nickname: 'Beslutningstageren',
+    time: '23-01',
+    partner: 'Lever',
+    element: 'Træ',
+    opensTo: 'Øjnene',
+    showsIn: 'Sener og ledbånd',
+    emotion: 'Ubeslutsomhed og frygt',
+    houses: null,
+    keyFunction: 'Lagrer galdevæske, styrer beslutningstagning og mod',
+    classicSigns: 'Ubeslutsomhed, hovedpine i tindinger, fordøjelsesproblemer med fedt, søvnproblemer 23-01',
+    quickSigns: [
+      'Ubeslutsomhed',
+      'Hovedpine i tindingerne',
+      'Problemer med fedt',
+      'Bitter smag i munden',
+      'Søvnproblemer kl. 23-01',
+      'Stive sener',
+      'Hofteproblemer',
+      'Mangel på mod',
+      'Øjenproblemer',
+      'Forstyrrende drømme'
+    ],
+    symptomer: ['Hovedpine i tindinger', 'Ubeslutsomhed', 'Kvalme ved fedt', 'Bitter smag', 'Søvnproblemer', 'Stive sener', 'Hofteproblemer', 'Svimmelhed', 'Øjenirritationer'],
+    fysiske: ['Lagrer galdevæske', 'Nedbryder fedt', 'Længste energibane', 'Fra øjenkrog til 4. tå', 'Nærer sener og ledbånd', 'Farve: Grøn', 'Smag: Sur', 'Årstid: Forår', 'Klima: Vind', 'Lyd: Råb'],
+    funktioner: ['Beslutninger og mod', 'Leverens partner i handling', 'Styrer drømme', 'Giver livsretning', 'Emotion: Ubeslutsomhed, frygt', 'Element: Træ', 'Partner: Lever', 'Kreativitet og planlægning']
+  },
+  {
+    organId: 'lever',
+    name: 'Lever',
+    chinese: '肝',
+    nickname: 'Generalen',
+    time: '01-03',
+    partner: 'Galdeblære',
+    element: 'Træ',
+    opensTo: 'Øjnene',
+    showsIn: 'Neglene',
+    emotion: 'Vrede og irritation',
+    houses: 'Den eteriske sjæl (Hun)',
+    keyFunction: 'Sikrer frit energi-flow, lagrer blod, kontrollerer sener',
+    classicSigns: 'Anspændte øjne, vrede og irritation, stive led, hovedpiner, cyklusforstyrrelser',
+    quickSigns: [
+      'Anspændte øjne',
+      'Stive og ømme led',
+      'Vrede og irritation',
+      'Cyklus-forstyrrelser',
+      'Tendens til kramper',
+      'Hovedpiner',
+      'Sensitiv ift. alkohol',
+      'Porøse negle',
+      'Vågner mellem kl. 01-03',
+      'Hyppige mareridt'
+    ],
+    symptomer: ['Anspændte øjne', 'Stive led', 'Irritabilitet/vrede', 'Hovedpiner', 'Cyklusforstyrrelser', 'Kramper/spasmer', 'Ribbensmerter', 'Depression', 'Oppustethed'],
+    fysiske: ['Sikrer frit energi-flow', 'Lagrer blod', 'Kontrollerer sener', 'Åbner til øjnene', 'Viser sig i neglene', 'Farve: Grøn', 'Smag: Sur', 'Årstid: Forår', 'Klima: Vind', 'Lyd: Råb'],
+    funktioner: ['Generalen — planlægger', 'Huser den eteriske sjæl (Hun)', 'Styrer planer og drømme', 'Central for kvinders sundhed', 'Emotion: Vrede, frustration', 'Element: Træ', 'Partner: Galdeblære', 'Kreativitet og visioner']
+  }
+];
+
+// ============================================
+// Extraordinary Meridian Overviews
+// ============================================
+export const meridianOverviews = [
+  {
+    meridianId: 'chongmai',
+    name: 'Chong Mai',
+    aka: 'Gennemtrængende Kar',
+    primarySymptoms: ['Menstruationsforstyrrelser', 'Ubalance i blodsituation', 'Fertilitetsproblemer', 'Mavesmerter', 'Brystspændinger', 'Emotionel ustabilitet', 'Tiltræk i lyskeregion', 'Uro i mellemgulv'],
+    functions: ['"Blodets Hav" — Nærer blod', 'Regulerer blod — Forbinder til alle yin-organer', 'Regulerer qi i maven', 'Forbinder pre-natal til post-natal', 'Indflydelse på fertilitet og reproduktion', 'Balancerer yin/yang i dybden løg'],
+    manifestations: ['Kaldet "Havet af Meridianer"', 'Primær meridian for blod', 'Kroppens Midt-linje', 'Krafcenter for Modér/Mand', 'Forbinder til alle yin-organer', 'Knuder i reproduktive system'],
+    energetics: ['Forbinder Nyre-qi med blod', 'Styrer menstruation', 'Præ-natal essens', 'Emotionel ustabilhed', 'Åbningspunkt SP-4, Makkerpunkt PC-6']
+  },
+  {
+    meridianId: 'renmai',
+    name: 'Ren Mai',
+    aka: 'Undfangelseskarret',
+    primarySymptoms: ['Menstruationsforstyrrelser', 'Fertilitets-/barselsproblemer', 'Brystspænding', 'Problemer med urogenitale system', 'Fødselskomplikationer', 'Tankekompressor'],
+    functions: ['Yins Hav — Nærer alle yin-organer', 'Styrer alle yin-meridianer', 'Regulerer hormonal balance', 'Forbinder til livmoder', 'Styrke hormonal balance', 'Nøgle reproduktive sundhed'],
+    manifestations: ['Kontrollerer alle yin-organer', 'Løber centralt foran kroppen', 'Forbinder undfangelse til fødsel', 'Styrer reproduktive organer', 'Forbinder til alle yin-meridianer'],
+    energetics: ['Forbinder til varme/kulde-balance', 'Regulerer menstruation', 'Moderlighed og næring', 'Åbningspunkt LU-7, Makkerpunkt KI-6']
+  },
+  {
+    meridianId: 'dumai',
+    name: 'Du Mai',
+    aka: 'Styringskarret',
+    primarySymptoms: ['Rygsmerter', 'Nakkestivhed', 'Hovedpine — Nosologiske problemer', 'Rygsøuleproblemer', 'Svimmelhed', 'Tremor', 'Ubalance i yang-aspektet'],
+    functions: ['Yangs Hav — Styrer al yang', 'Kontrollerer nervesystemet', 'Regulerer alle yang-meridianer', 'Styrke og oprejsthed', 'Hjerne og rygrad — forbinder alle yang-organer'],
+    manifestations: ['Løber langs rygsøjlen', 'Forbinder alle yang-meridianer', 'Styrer viljen og beslutsomhed', 'Styrer viljestyrke og selvtillid', 'Forbinder til hjernen'],
+    energetics: ['Låst energi centralt bag på kroppen', 'For yangpræget: overaktivering', 'For yinpræget: nedtrykt, svag', 'Åbningspunkt SI-3, Makkerpunkt BL-62']
+  },
+  {
+    meridianId: 'daimai',
+    name: 'Dai Mai',
+    aka: 'Bæltekarret',
+    primarySymptoms: ['Hofte- og taljesmarter', 'Underlivsproblemer', 'Gynækologiske problemer', 'Energistagnation mellemgulv', 'Forståelsesbesvær afg qi', 'Overvægt']
+    ,
+    functions: ['Eneste horisontale meridian', 'Regulerer vandretilslutningen mellem øvre og nedre', 'Kontrollerer alle vertikale meridianer', 'Binder alle meridians together', 'Styrer nedre brænder'],
+    manifestations: ['Løber som et bælte om taljen', 'Holder meridianer sammenkoordineret', 'Regulerer qi-flow op/ned', 'Styrer mobilitet i hoften', 'Modtager stagnation fra lever'],
+    energetics: ['Påvirkes af frustration og stagnation', 'Lever-qi stagnation samler sig her', 'Kvindesygdomme', 'Åbningspunkt GB-41, Makkerpunkt TE-5']
+  },
+  {
+    meridianId: 'yinqiaomai',
+    name: 'Yin Qiao Mai',
+    aka: 'Yin Bevægelseskarret',
+    primarySymptoms: ['Indadskuet', 'Hypersomni — for meget søvn', 'Svaghed indvendig i benene', 'Øjne der lukker sig', 'Søvnproblemer', 'Indadvendt tilstand'],
+    functions: ['Kontrollerer yin-sider af benet', 'Regulerer øjenåbning (for lukket)', 'Styrer indadvendthed vs. udadvendthed', 'Absorberer overskydende yin', 'Balance mellem søvn og vågen tilstand'],
+    manifestations: ['Starter indvendig i anklen', 'Løber langs indersiden af benet', 'Forbinder til øjnene', 'Regulerer sovelængde', 'Kontrol af kroppens yin-bevægelse'],
+    energetics: ['For meget yin: tung, træt, lukket', 'Emotionel indadskuethed', 'Åbningspunkt KI-6, Makkerpunkt LU-7']
+  },
+  {
+    meridianId: 'yangqiaomai',
+    name: 'Yang Qiao Mai',
+    aka: 'Yang Bevægelseskarret',
+    primarySymptoms: ['Søvnløshed/insomni', 'Nakke-/skulder-spændinger', 'Rastløshed', 'Ydresiden af benene', 'Øjne der er for åbne', 'Hyperaktivitet'],
+    functions: ['Kontrollerer yang-sider af benet', 'Regulerer øjenåbning (for åben)', 'Styrer udadvendthed vs. indadvendthed', 'Absorberer overskydende yang', 'Balance mellem aktivitet og hvile'],
+    manifestations: ['Starter ydersiden af anklen', 'Løber langs ydersiden af benet', 'Forbinder til nakke og hoved', 'Kontrol af kroppens yang-bevægelse', 'Muskelspænding i ydersiden'],
+    energetics: ['For meget yang: rastløs, anspændt', 'Emotionel hyperaktivitet', 'Åbningspunkt BL-62, Makkerpunkt SI-3']
+  },
+  {
+    meridianId: 'yinweimai',
+    name: 'Yin Wei Mai',
+    aka: 'Yin Forbindelseskarret',
+    primarySymptoms: ['Laterale brystsmerter', 'Hjertesmerter', 'Indesluttethed', 'Mellemgulvsproblemer', 'Angst', 'Sørgmodighed', 'Følelsesmæssig isolation'],
+    functions: ['Forbinder alle yin-meridianer', 'Forbinder yin-fortid til yin-nutid', 'Regulerer indre følelsesliv', 'Beskytter det indre rum', 'Balance mellem indre og ydre'],
+    manifestations: ['Væver yin-meridianer sammen', 'Forbinder fortid til nutid', 'Løber langs indersiden af kroppen', 'Relateret til bryst og hjerte', 'Emotionel forbindelse'],
+    energetics: ['Uforløste følelser fra fortiden', 'Sorg, angst, isolation', 'Emotionel fastholdelse', 'Åbningspunkt PC-6, Makkerpunkt SP-4']
+  },
+  {
+    meridianId: 'yangweimai',
+    name: 'Yang Wei Mai',
+    aka: 'Yang Forbindelseskarret',
+    primarySymptoms: ['Skiftende kulde-/varme-fornemmmelser', 'Feber med kulderystelser', 'Nakke-/skuldersmerter', 'Hovedpine', 'Vekslende symptomer', 'Relational usikkerhed'],
+    functions: ['Forbinder alle yang-meridianer', 'Forbinder yang-fortid til yang-nutid', 'Regulerer ydre forsvar', 'Beskytter mod ydre påvirkninger', 'Balance mellem forsvar og åbenhed'],
+    manifestations: ['Væver yang-meridianer sammen', 'Forbinder fortid til nutid ydre', 'Løber langs ydersiden af kroppen', 'Relateret til forsvar og grænser', 'Social forbindelse og relationer'],
+    energetics: ['Uforløste ydre konflikter', 'Relationelle grænser', 'Forsvarsmekanismer', 'Åbningspunkt TE-5, Makkerpunkt GB-41']
+  }
+];
+
+// ============================================
+// Symptom Cross-Reference Table
+// ============================================
+export const symptomReference = [
+  {
+    symptom: 'Hovedpine',
+    organs: ['Lever', 'Galdeblære', 'Blære', 'Mavesæk'],
+    note: 'Lokation er afgørende: tindinger (Galdeblære), top (Lever), baghoved (Blære), pande (Mavesæk)'
+  },
+  {
+    symptom: 'Søvnproblemer',
+    organs: ['Hjerte', 'Lever', 'Galdeblære', 'Pericardium', 'Nyrer'],
+    note: 'Tidspunkt for opvågning peger mod specifikt organ via organuret'
+  },
+  {
+    symptom: 'Fordøjelsesproblemer',
+    organs: ['Milt', 'Mavesæk', 'Lever', 'Tyktarm', 'Tyndtarm'],
+    note: 'Lever-qi stagnation er hyppig årsag til fordøjelsesproblemer'
+  },
+  {
+    symptom: 'Emotionel ustabilitet',
+    organs: ['Hjerte', 'Lever', 'Pericardium', 'Nyrer'],
+    note: 'Alle emotioner ender med at påvirke hjertet — men roden kan ligge andetsteds'
+  },
+  {
+    symptom: 'Hudproblemer',
+    organs: ['Lunger', 'Tyktarm', 'Milt', 'Lever'],
+    note: 'Lunger og tyktarm styrer huden; intern varme og fugt fra milt/lever viser sig i hud'
+  },
+  {
+    symptom: 'Rygsmerter',
+    organs: ['Nyrer', 'Blære', 'Lever', 'Du Mai'],
+    note: 'Lænden relaterer til nyrer; hele rygsøjlen til blæren og Du Mai'
+  },
+  {
+    symptom: 'Træthed/energimangel',
+    organs: ['Milt', 'Nyrer', 'Lunger', 'Hjerte'],
+    note: 'Milt qi-mangel er hyppigste årsag; kronisk træthed peger mod nyrer'
+  },
+  {
+    symptom: 'Angst og frygt',
+    organs: ['Nyrer', 'Hjerte', 'Pericardium', 'Galdeblære'],
+    note: 'Frygt er nyrernes emotion; angst involverer ofte hjerte og pericardium'
+  },
+  {
+    symptom: 'Øjenproblemer',
+    organs: ['Lever', 'Galdeblære', 'Blære', 'Hjerte'],
+    note: 'Leveren åbner til øjnene; blodmangel i lever giver tørre/slørede øjne'
+  },
+  {
+    symptom: 'Menstruationsproblemer',
+    organs: ['Lever', 'Milt', 'Nyrer', 'Chong Mai', 'Ren Mai'],
+    note: 'Lever lagrer blod og styrer fri flow; Chong Mai og Ren Mai er nøglemeridianer'
+  },
+  {
+    symptom: 'Ødem/væskeretention',
+    organs: ['Milt', 'Nyrer', 'Lunger', 'San Jiao', 'Blære'],
+    note: 'Milt transformerer væsker; nyrer styrer vandmetabolisme; San Jiao regulerer vandpassager'
+  },
+  {
+    symptom: 'Hjertebanken',
+    organs: ['Hjerte', 'Pericardium', 'Nyrer', 'Milt'],
+    note: 'Kan skyldes hjerte-blod mangel, pericardium-ild, eller nyre-vand der ikke kontrollerer ild'
+  },
+  {
+    symptom: 'Høreproblemer/tinnitus',
+    organs: ['Nyrer', 'Galdeblære', 'San Jiao', 'Tyndtarm'],
+    note: 'Nyrer åbner til ørerne; galdeblære og San Jiao meridianer løber forbi øret'
+  },
+  {
+    symptom: 'Smerter i ekstremiteter',
+    organs: ['Lever', 'Milt', 'Galdeblære', 'Blære'],
+    note: 'Lever styrer sener; milt styrer muskler; meridianforløb bestemmer hvilken side'
+  },
+  {
+    symptom: 'Vejrtrækningsproblemer',
+    organs: ['Lunger', 'Nyrer', 'Hjerte', 'Milt'],
+    note: 'Lunger styrer vejrtrækning; nyrer "griber" qi; milt producerer slim'
+  }
+];
+
+// ============================================
+// Conversation Structure Proposal
+// ============================================
+export const conversationStructure = {
+  title: 'Samtalestruktur Forslag',
+  subtitle: 'Et forslag til at strukturere den indledende samtale med klienten',
+  sections: [
+    {
+      heading: 'Mødet',
+      items: [
+        { label: 'Åben lytning', text: 'Invitér klienten til at fortælle frit. Lad dem fortælle i deres eget tempo.' },
+        { label: 'Lad klienten fortælle først', text: 'Stil åbne spørgsmål, lyt efter hvad der fylder.' },
+        { label: 'Første Møde — Klienten fortæller', text: 'Hvad ønsker de hjælp til? Hvad er deres situation?' }
+      ]
+    },
+    {
+      heading: 'Åben Lytning: Klienten Kommer til Orde',
+      items: [
+        { label: 'Aktiv lytning', text: 'Hvordan føler klienten sig? Hvor i kroppen mærker de det?' },
+        { label: 'De 3 indledende temaer', text: 'Medicin, generelle livsomstændigheder, historik (sygdomme, begivenheder, arvæv).' },
+        { label: 'Kontekstforståelse', text: 'Hvad er konteksten for deres liv — arbejde, familie, relationer?' }
+      ]
+    },
+    {
+      heading: 'Tema Lytte: Klinikerens Intuition',
+      items: [
+        { label: 'Let efter mønstre', text: 'Hvilke organsystemer peger klientens fortælling mod?' },
+        { label: 'Tidsmønstre', text: 'Er der tidspunkter, hvor symptomer forværres? Brug organuret.' },
+        { label: 'Emotionelle temaer', text: 'Hvilke emotioner fylder? Kobl til de relevante organer.' }
+      ]
+    },
+    {
+      heading: 'Tema Forventninger af Mønster',
+      items: [
+        { label: 'Mønster-hypotese', text: 'Hvilke mønstre tegner sig? Stil specifikke spørgsmål for at verificere.' },
+        { label: 'De 8 kortlæggende temaer', text: 'Brug de 8 temaer for det relevante organ til at uddybe.' },
+        { label: 'Verificér eller juster', text: 'Stemmer mønstret overens? Eller peger det i en anden retning?' }
+      ]
+    },
+    {
+      heading: 'Integration i Din Klinik',
+      items: [
+        { label: 'Hvile dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
+        { label: 'Tag det i dit eget tempo', text: 'Begynd med ét organ, ét element. Lad det vokse naturligt.' },
+        { label: 'Kombiner med din praksis', text: 'Brug TCM-forståelsen som inspiration, ikke som protokol.' }
+      ]
+    }
+  ]
+};
+
 export const extraordinaryMeridians = [
   {
     id: 'chongmai',
@@ -1135,7 +1992,25 @@ export const extraordinaryMeridians = [
     aka: 'Gennemtrængende Kar',
     openingPoint: 'Milt-punkt 4',
     coupledPoint: 'Pericardium-punkt 6',
+    partnerMeridian: 'Yin Wei Mai',
     icon: '🔴',
+    level: 'Den dybeste konstitutionelle kanal — grundlaget for al energi og blod i kroppen',
+    relatedOrgans: ['Milt', 'Nyrer', 'Lever', 'Hjerte'],
+    pathway: [
+      'Udspringer fra nyrerne og Mingmen (livets port) mellem nyrerne.',
+      'Forløber nedad til bækkenbunden (perineum) og forbinder med Ren Mai og Du Mai.',
+      'Stiger opad langs rygsøjlens inderside parallelt med den centrale kropsakse.',
+      'Forgrener sig til maven og brystet, passerer gennem hjertet og spreder sig til ansigtet.',
+      'En nedre gren følger benenes inderside ned til fødderne.'
+    ],
+    keyPoints: [
+      { title: 'Blodets ultimative reservoir', text: 'Styrer al blodproduktion og -cirkulation. Når Chong Mai er stærk, er blodet rigeligt og nærende.' },
+      { title: 'Livets første kanal', text: 'Det allerførste kar der dannes i fosteret — den energetiske blueprint hvorfra hele kroppen udfolder sig.' },
+      { title: 'Genetisk hukommelse', text: 'Bærer informationen fra generation til generation. Forbinder os til vores forfædres styrker og sårbarheder.' },
+      { title: 'Kvindelig sundhed', text: 'Central for hele den kvindelige cyklus: pubertet, menstruation, fertilitet, graviditet og menopause.' },
+      { title: 'Chok og traume', text: 'Absorberer livets dybeste chok og traumer. "Energien falder" når vi chokeres — det er Chong Mai der rammes.' },
+      { title: 'Oprør-energi', text: 'Når Chong Mai er forstyrret, stiger energien ukontrolleret opad: kvalme, angst, panik, følelsen af at energien "koger over".' }
+    ],
     description: [
       'Chong Mai er sandsynligvis det allerførste kar der dannes i fosteret og udgør fundamentet for kroppens energetiske struktur.',
       'Som "Blodets Hav" er den det ultimative reservoir hvorfra blod cirkulerer. Central for kvindesygdomme: menstruation, fertilitet, graviditet og menopause.',
@@ -1217,7 +2092,25 @@ export const extraordinaryMeridians = [
     aka: 'Undfangelses Kar',
     openingPoint: 'Lunge-punkt 7',
     coupledPoint: 'Nyre-punkt 6',
+    partnerMeridian: 'Yin Qiao Mai',
     icon: '🌙',
+    level: 'Kroppens primære yin-kanal — nærer, køler og modtager',
+    relatedOrgans: ['Nyrer', 'Lunger', 'Hjerte', 'Lever'],
+    pathway: [
+      'Udspringer fra livmoderen (kvinder) eller nedre Dan Tian (mænd) i det nedre bækken.',
+      'Løber opad langs kroppens midterlinje på forsiden — fra perineum over maven.',
+      'Passerer navlen, solar plexus og brystet, gennem halsen til underkæben.',
+      'Slutter ved en fordybning under underlæben (Ren-24) og forbinder med Du Mai.',
+      'Har 24 egne akupunkturpunkter langs hele denne frontale midterlinje.'
+    ],
+    keyPoints: [
+      { title: 'Yins hav og mester', text: 'Styrer og nærer al yin-energi i kroppen. Alle seks yin-meridianer mødes i Ren Mai.' },
+      { title: '24 egne punkter', text: 'En af kun to ekstraordinære meridianer med egne akupunkturpunkter — afspejler dens centrale rolle.' },
+      { title: 'Livmoderens hersker', text: 'Regulerer hele den reproduktive cyklus. Navnet "Undfangelses Kar" peger på dens forbindelse til skabelse af nyt liv.' },
+      { title: 'Nyre-hjerte-aksen', text: 'Forbinder nyrernes vand med hjertets ild — essentiel for at vand og ild kommunikerer og balancerer hinanden.' },
+      { title: 'Emotionel modtagelighed', text: 'Relaterer til evnen til at modtage — omsorg, kærlighed, næring. Ubalance skaber emotionel kulde eller overfølsomhed.' },
+      { title: 'Mikrokosmisk kredsløb', text: 'Danner sammen med Du Mai det "lille himmelske kredsløb" — den mest fundamentale energicirkulation i kroppen.' }
+    ],
     description: [
       'Ren Mai har sine egne 24 akupunkturpunkter og løber op ad kroppens midterlinje fra bækkenbunden til munden.',
       'Som "Yins Hav" påvirker den alle yin-energibanerne og nærer hele kroppens yin - de kølige, vandige, passive kræfter.',
@@ -1299,7 +2192,25 @@ export const extraordinaryMeridians = [
     aka: 'Styrings Kar',
     openingPoint: 'Tyndtarms-punkt 3',
     coupledPoint: 'Blære-punkt 62',
+    partnerMeridian: 'Yang Qiao Mai',
     icon: '☀️',
+    level: 'Kroppens primære yang-kanal — styrer, løfter og beskytter',
+    relatedOrgans: ['Nyrer', 'Hjerte', 'Hjerne'],
+    pathway: [
+      'Udspringer fra nyrerne og Mingmen, stiger ned til bækkenbunden (perineum).',
+      'Løber opad langs rygsøjlens midterlinje på bagsiden af kroppen.',
+      'Passerer nakken, over kraniet og ned over panden til næsetippen.',
+      'Slutter ved overlæben (Du-28) hvor den møder Ren Mai og fuldender kredsløbet.',
+      'Har 28 egne akupunkturpunkter. En gren går ind i hjernen via rygmarvskanalen.'
+    ],
+    keyPoints: [
+      { title: 'Yangs hav og hersker', text: 'Styrer al yang-energi i kroppen. Alle seks yang-meridianer mødes og næres af Du Mai.' },
+      { title: '28 egne punkter', text: 'Den anden af de to ekstraordinære meridianer med egne punkter — hvert punkt langs rygsøjlen er kraftfuldt.' },
+      { title: 'Hjernens forbindelse', text: 'Den eneste meridian der løber direkte ind i hjernen. Central for bevidsthed, kognition og nervesystemet.' },
+      { title: 'Rygsøjlens mester', text: 'Styrker hele rygsøjlen fra halebenet til kraniet. Kropsholdning, struktur og oprejsthed er Du Mais domæne.' },
+      { title: 'Indre autoritet', text: 'Den "styrende kanal" — forbundet med evnen til at stå oprejst i livet, tage lederskab og holde sin retning.' },
+      { title: 'Mikrokosmisk kredsløb', text: 'Sammen med Ren Mai danner den det "lille himmelske kredsløb" — den fundamentale energicirkulation mellem yin og yang.' }
+    ],
     description: [
       'Du Mai har sine egne 28 akupunkturpunkter og løber op ad rygsøjlens midterlinje fra bækkenbunden over hovedet til overlæben.',
       'Som "Yangs Hav" lagrer, nærer og bevæger den yang-energien og styrker særligt nyre-yang.',
@@ -1382,7 +2293,25 @@ export const extraordinaryMeridians = [
     aka: 'Bælte Kar',
     openingPoint: 'Galdeblære-punkt 41',
     coupledPoint: 'San Jiao-punkt 5',
+    partnerMeridian: 'Yang Wei Mai',
     icon: '🔗',
+    level: 'Kroppens horisontale integrator — binder alle vertikale kanaler sammen',
+    relatedOrgans: ['Galdeblære', 'Lever', 'Nyrer', 'Milt'],
+    pathway: [
+      'Den eneste horisontale meridian i kroppen — alle andre forløber vertikalt.',
+      'Udspringer fra Lever-13 under ribbensbuens kant og cirkler omkring taljen.',
+      'Løber som et bælte rundt om kroppen i taljeniveau, forbinder front og bag.',
+      'Krydser og "binder" alle vertikale meridianer der passerer igennem taljehøjden.',
+      'Forbinder sig med galdeblære-meridianen ved Galdeblære-26, -27 og -28 på hoften.'
+    ],
+    keyPoints: [
+      { title: 'Den eneste horisontale kanal', text: 'Unik i hele meridiansystemet — binder alle vertikale energibaner sammen som et bælte holder bukser oppe.' },
+      { title: 'Port mellem top og bund', text: 'Regulerer al energi der bevæger sig mellem overkrop og underkrop. Svaghed giver "synkende" symptomer.' },
+      { title: 'Traumernes beholder', text: 'Fungerer som en beholder der "opbevarer" uforløste traumer og følelser — bæltet snører sig sammen omkring det vi ikke vil konfrontere.' },
+      { title: 'Fugtighedens regulator', text: 'Styrer fugt i nedre del af kroppen. Kronisk udflåd, svampeinfektioner og vandophobning peger på Dai Mai-ubalance.' },
+      { title: 'Lever-galdeblære forbindelsen', text: 'Tæt forbundet med Træ-elementet. Behandler migræne, sidesmerte, vrede og frustreret beslutningsevne.' },
+      { title: 'Kroppens "harddisk"', text: 'Akkumulerer livets uforløste erfaringer lag for lag — som ringe i et træ. Behandling åbner op for dybtliggende mønstre.' }
+    ],
     description: [
       'Dai Mai er den eneste horisontale energibane i kroppen. Den løber omkring taljen som et bælte og forbinder alle vertikale energibaner.',
       'Dai Mai regulerer energiens bevægelse opad og nedad. Hvis den er svag, kan energi ikke strømme korrekt ind i benene.',
@@ -1464,7 +2393,25 @@ export const extraordinaryMeridians = [
     aka: 'Yin Stepping Vessel',
     openingPoint: 'Nyre-punkt 6',
     coupledPoint: 'Lunge-punkt 7',
+    partnerMeridian: 'Ren Mai',
     icon: '🌑',
+    level: 'Bevægelsens yin-side — indadvendthed, søvn og selvindsigt',
+    relatedOrgans: ['Nyrer', 'Lunger', 'Blære'],
+    pathway: [
+      'Udspringer fra Nyre-punkt 6 (Zhaohai) under den indre ankelfremspring.',
+      'Stiger opad langs benets inderside (mediale side) gennem læggen og låret.',
+      'Passerer gennem kønsorganerne og den nedre mave.',
+      'Fortsætter opad gennem brystet, forbi halsen til den indre øjenkrog.',
+      'Møder Yang Qiao Mai ved øjet — her afgøres balancen mellem søvn og vågenhed.'
+    ],
+    keyPoints: [
+      { title: 'Søvnens mester', text: 'Regulerer søvn/vågen-cyklusen sammen med Yang Qiao Mai. Yin Qiao Mai lukker øjnene — overskud giver overdreven søvnighed.' },
+      { title: 'Den indre ankels kraft', text: 'Udspringer fra Nyre-6, et af kroppens mest brugte akupunkturpunkter. Forbinder nyrernes dybde med bevægelsens lethed.' },
+      { title: 'Kropslig selvopfattelse', text: 'Forbundet med hvordan vi ser os selv indefra — selvværd, kropsimage og forholdet til vores egen fysiske form.' },
+      { title: 'Benets indre bane', text: 'Styrer muskeltonus og bevægelighed på benenes inderside. Svaghed giver faldne svangbuer og indadvendte fødder.' },
+      { title: 'Introvertens kanal', text: 'Den indadvendte bevægelse — evnen til at trække sig tilbage, reflektere og lytte indad. Ubalance giver overdreven tilbagetrækning.' },
+      { title: 'Øjnenes lukning', text: 'Yin Qiao Mai bringer yin til øjnene og lukker dem. Når den er i balance, falder vi let i søvn og hviler dybt.' }
+    ],
     description: [
       'Yin Qiao Mai starter ved hælen og løber op langs benets inderside, gennem kønsorganerne, brystet og til øjet.',
       'Den kontrollerer yin-energiens bevægelse og gør bevægelserne i underekstremiteterne smidige og kraftfulde.',
@@ -1546,7 +2493,25 @@ export const extraordinaryMeridians = [
     aka: 'Yang Stepping Vessel',
     openingPoint: 'Blære-punkt 62',
     coupledPoint: 'Tyndtarms-punkt 3',
+    partnerMeridian: 'Du Mai',
     icon: '☀️',
+    level: 'Bevægelsens yang-side — årvågenhed, handling og engagement',
+    relatedOrgans: ['Blære', 'Tyndtarm', 'Galdeblære'],
+    pathway: [
+      'Udspringer fra Blære-punkt 62 (Shenmai) under den ydre ankelfremspring.',
+      'Stiger opad langs benets yderside (laterale side) gennem læggen og låret.',
+      'Passerer hoften og fortsætter langs kroppens yderside over skulderen.',
+      'Løber op ad halsen langs sternocleidomastoid-musklen til mundvigen og kinden.',
+      'Ender ved den indre øjenkrog hvor den møder Yin Qiao Mai — søvn/vågen-balancen afgøres her.'
+    ],
+    keyPoints: [
+      { title: 'Årvågenhedens mester', text: 'Holder øjnene åbne og sindet vagtsomt. Overskud giver søvnløshed og hyperårvågenhed — underskud giver sløvhed.' },
+      { title: 'Den ydre ankels kraft', text: 'Udspringer fra Blære-62, et kraftcenter for yang-bevægelse. Støtter fysisk mobilitet og handlekraft.' },
+      { title: 'Verdens-engagement', text: 'Yang Qiao Mai driver os ud i verden — initiativ, mod og evnen til at handle. Overdreven aktivering giver rastløshed.' },
+      { title: 'Benets ydre bane', text: 'Styrer muskeltonus på benenes yderside. Ubalance giver stramme ydre muskler og tendens til at "gå udad".' },
+      { title: 'Projektion udadtil', text: 'I ubalance retter vi vores frustration mod andre. Yang Qiao-personligheden bebrejder omverdenen i stedet for at se indad.' },
+      { title: 'Øjnenes åbning', text: 'Yang Qiao Mai bringer yang til øjnene og åbner dem. For meget yang = kan ikke lukke øjnene = søvnløshed.' }
+    ],
     description: [
       'Yang Qiao Mai regulerer yang-energiens bevægelse og dynamik. Den påvirker den laterale (ydre) side af benene.',
       'Den kontrollerer årvågenhed og holder øjnene åbne om dagen. Yang overskud giver søvnløshed.',
@@ -1628,7 +2593,25 @@ export const extraordinaryMeridians = [
     aka: 'Yin Linking Vessel',
     openingPoint: 'Pericardium-punkt 6',
     coupledPoint: 'Milt-punkt 4',
+    partnerMeridian: 'Chong Mai',
     icon: '💜',
+    level: 'Det indre bindeled — sammenhæng, mening og emotionel dybde',
+    relatedOrgans: ['Pericardium', 'Milt', 'Hjerte', 'Lever'],
+    pathway: [
+      'Udspringer fra Nyre-punkt 9 på læggens inderside.',
+      'Stiger opad langs benets inderside og møder milt-meridianen.',
+      'Passerer maven og forbinder med lever-meridianen ved ribbensbuen.',
+      'Fortsætter opad til brystet hvor den møder Ren Mai ved halsen.',
+      'Forbinder alle yin-meridianer og skaber en indre "web" af yin-sammenhæng.'
+    ],
+    keyPoints: [
+      { title: 'Yinens indre sammenhæng', text: 'Forbinder alle yin-meridianer og skaber samhørighed mellem kroppens indre systemer. Uden Yin Wei Mai fragmenterer yin-energien.' },
+      { title: 'Emotionelt bindeled', text: 'Bærer forbindelsen mellem fortid og nutid — vores indre tidsfornemmelse og følelsen af at livet hænger sammen.' },
+      { title: 'Hjertets beskytter', text: 'Åbnes via Pericardium-6, et af de vigtigste punkter for kvalme, angst og hjertebeskyttelse. Pericardiums port til de dybere lag.' },
+      { title: 'Mening og sammenhæng', text: 'Når Yin Wei Mai er svag, mister vi fornemmelsen af at livet har mening. Fragmentering, tomhed og eksistentiel krise.' },
+      { title: 'Indre tryghed', text: 'Skaber den dybe, indre følelse af at "jeg er okay" — uafhængigt af ydre omstændigheder. Grundlæggende selvværd.' },
+      { title: 'Tidsforbindelsen', text: '"Wei" betyder at forbinde/linke. Yin Wei Mai forbinder vores indre oplevelser over tid — når den er svag, føles livet usammenhængende.' }
+    ],
     description: [
       'Yin Wei Mai forbinder og integrerer alle yin-meridianer medialt på kroppen.',
       'Den beskytter kroppens indre strukturer og yin-substans.',
@@ -1710,7 +2693,25 @@ export const extraordinaryMeridians = [
     aka: 'Yang Linking Vessel',
     openingPoint: 'San Jiao-punkt 5',
     coupledPoint: 'Galdeblære-punkt 41',
+    partnerMeridian: 'Dai Mai',
     icon: '🟡',
+    level: 'Det ydre bindeled — beskyttelse, transformation og ydre styrke',
+    relatedOrgans: ['San Jiao', 'Galdeblære', 'Tyndtarm', 'Blære'],
+    pathway: [
+      'Udspringer fra Blære-punkt 63 på den ydre ankel.',
+      'Stiger opad langs benets yderside og forbinder med galdeblære-meridianen.',
+      'Passerer hoften og kroppens laterale side op til skulderen.',
+      'Fortsætter til nakken og baghovedet, forbinder med Du Mai ved Du-16.',
+      'Forbinder alle yang-meridianer og skaber en ydre "rustning" af yang-beskyttelse.'
+    ],
+    keyPoints: [
+      { title: 'Yangens ydre sammenhæng', text: 'Forbinder alle yang-meridianer og koordinerer kroppens ydre forsvar. Yang Wei Mai er immunsystemets dybere organisator.' },
+      { title: 'Den ydre rustning', text: 'Skaber den beskyttende skal mod omverdenens påvirkninger — vind, kulde, patogener og emotionelle angreb udefra.' },
+      { title: 'Halvside-symptomer', text: 'Klassisk for vekslende feber/kulde, ondt i den ene side, migræne og symptomer der skifter fra side til side.' },
+      { title: 'Transformation og forandring', text: 'Yang Wei Mai understøtter vores evne til at transformere og tilpasse os. Svaghed giver modstand mod forandring og fastlåsthed.' },
+      { title: 'Temporal og okkipital', text: 'Forløber gennem tindingeregionen og baghovedet — central for spændingshovedpine, migræne og nakke-skulder-problematikker.' },
+      { title: 'Tidsforbindelsen udadtil', text: '"Wei" betyder at forbinde. Yang Wei Mai forbinder vores ydre oplevelser over tid — vores forhold til verdens forandringer og livsfaser.' }
+    ],
     description: [
       'Yang Wei Mai forbinder og integrerer alle yang-meridianer lateralt på kroppen.',
       'Den beskytter kroppens yderside mod eksterne patogener.',
@@ -1789,25 +2790,327 @@ export const extraordinaryMeridians = [
 
 // Organ clock data for the circular visualization
 export const organClock = [
-  { organ: 'Lunger', time: '03-05', element: 'Metal' },
-  { organ: 'Tyktarm', time: '05-07', element: 'Metal' },
-  { organ: 'Mavesæk', time: '07-09', element: 'Jord' },
-  { organ: 'Milt', time: '09-11', element: 'Jord' },
-  { organ: 'Hjerte', time: '11-13', element: 'Ild' },
-  { organ: 'Tyndtarm', time: '13-15', element: 'Ild' },
-  { organ: 'Blære', time: '15-17', element: 'Vand' },
-  { organ: 'Nyrer', time: '17-19', element: 'Vand' },
-  { organ: 'Pericardium', time: '19-21', element: 'Ild' },
-  { organ: 'San Jiao', time: '21-23', element: 'Ild' },
-  { organ: 'Galdeblære', time: '23-01', element: 'Træ' },
-  { organ: 'Lever', time: '01-03', element: 'Træ' }
+  { organ: 'Lunger', time: '03-05', element: 'Metal', startHour: 3, endHour: 5, wisdom: 'Lungernes tid. Kroppen renser og genopbygger åndedrætssystemet. Dyb søvn er vigtig nu — at vågne her kan indikere sorg eller uforløst tab.' },
+  { organ: 'Tyktarm', time: '05-07', element: 'Metal', startHour: 5, endHour: 7, wisdom: 'Tyktarmens tid. Den naturlige tid for elimination og udrensning. Et glas varmt vand ved opvågning støtter kroppens rensningsproces.' },
+  { organ: 'Mavesæk', time: '07-09', element: 'Jord', startHour: 7, endHour: 9, wisdom: 'Mavesækkens tid. Den optimale tid for dagens vigtigste måltid. Fordøjelsen er stærkest nu — spis varmt og nærende.' },
+  { organ: 'Milt', time: '09-11', element: 'Jord', startHour: 9, endHour: 11, wisdom: 'Miltens tid. Transformation og transport af næring er på sit højeste. Ideel tid for koncentreret tænkning og intellektuelt arbejde.' },
+  { organ: 'Hjerte', time: '11-13', element: 'Ild', startHour: 11, endHour: 13, wisdom: 'Hjertets tid. En tid for glæde, forbindelse og let aktivitet. Et kort middagshvil støtter hjertets energi og forebygger overbelastning.' },
+  { organ: 'Tyndtarm', time: '13-15', element: 'Ild', startHour: 13, endHour: 15, wisdom: 'Tyndtarmens tid. Kroppen sorterer og separerer det rene fra det urene — både i fordøjelsen og mentalt. God tid for beslutninger.' },
+  { organ: 'Blære', time: '15-17', element: 'Vand', startHour: 15, endHour: 17, wisdom: 'Blærens tid. Kroppens udrensning via væske er mest aktiv. Drik rigeligt med vand. Studiefokus og hukommelse er stærk nu.' },
+  { organ: 'Nyrer', time: '17-19', element: 'Vand', startHour: 17, endHour: 19, wisdom: 'Nyrernes tid. Livsenergien regenererer. En god tid at trække tempoet ned, lave blid bevægelse og forberede overgangen til aften.' },
+  { organ: 'Pericardium', time: '19-21', element: 'Ild', startHour: 19, endHour: 21, wisdom: 'Pericardiums tid. Hjertets beskytter åbner for intimitet og nærhed. Ideel tid for socialt samvær, kærlighed og emotionel forbindelse.' },
+  { organ: 'San Jiao', time: '21-23', element: 'Ild', startHour: 21, endHour: 23, wisdom: 'San Jiaos tid. De tre brændere harmoniserer kroppens systemer og forbereder søvnen. Sluk skærme, dæmp lys og lad kroppen falde til ro.' },
+  { organ: 'Galdeblære', time: '23-01', element: 'Træ', startHour: 23, endHour: 1, wisdom: 'Galdeblærens tid. Dyb søvn her er afgørende — galdeblæren fornyer mod og beslutningsevne. At være vågen svækker evnen til at træffe klare valg.' },
+  { organ: 'Lever', time: '01-03', element: 'Træ', startHour: 1, endHour: 3, wisdom: 'Leverens tid. Blodet renses og sjælen drømmer. At vågne her indikerer ofte undertrykt vrede eller frustration. Dyb søvn er essentiel for leverens detox-arbejde.' }
 ];
 
-// Five Element relationships
+// ============================================
+// Five Elements — Rich Content
+// ============================================
 export const fiveElements = [
-  { name: 'Træ', color: '#228B22', organs: ['Lever', 'Galdeblære'], season: 'Forår', emotion: 'Vrede' },
-  { name: 'Ild', color: '#DC143C', organs: ['Hjerte', 'Tyndtarm', 'Pericardium', 'San Jiao'], season: 'Sommer', emotion: 'Glæde' },
-  { name: 'Jord', color: '#DAA520', organs: ['Milt', 'Mavesæk'], season: 'Sen sommer', emotion: 'Bekymring' },
-  { name: 'Metal', color: '#C0C0C0', organs: ['Lunger', 'Tyktarm'], season: 'Efterår', emotion: 'Sorg' },
-  { name: 'Vand', color: '#191970', organs: ['Nyrer', 'Blære'], season: 'Vinter', emotion: 'Frygt' }
+  {
+    id: 'trae',
+    name: 'Træ',
+    chineseName: '木 Mù',
+    color: '#228B22',
+    organs: ['Lever', 'Galdeblære'],
+    season: 'Forår',
+    emotion: 'Vrede',
+    icon: '🌳',
+    direction: 'Øst',
+    climate: 'Vind',
+    taste: 'Sur',
+    smell: 'Harsk',
+    sound: 'Råb',
+    tissue: 'Sener & Ledbånd',
+    senseOrgan: 'Øjne',
+    bodyFluid: 'Tårer',
+    generates: 'Ild',
+    generatedBy: 'Vand',
+    controls: 'Jord',
+    controlledBy: 'Metal',
+    description: [
+      'Træ-elementet repræsenterer livets kraft til at vokse, bryde igennem og udfolde sig. Ligesom forårets første spirer presser sig gennem den frosne jord, rummer Træ den dynamiske energi der driver forandring, vision og fremadrettet bevægelse.',
+      'I kroppen styrer Træ den frie strøm af energi i alle retninger. Når Træ-energien er sund, flyder livet med smidighed og retning. Når den blokeres, opstår frustration, vrede og en følelse af at sidde fast — ligesom et træ hvis rødder er indeklemt.',
+      'Træ-elementets dybere visdom handler om balancen mellem fleksibilitet og styrke. Et sundt træ bøjer i vinden uden at knække. Mennesker med stærk Træ-energi har evnen til at planlægge, tage beslutninger og navigere forhindringer med kreativ problemløsning.',
+      'Træ-elementet huser den eteriske sjæl (Hun), som i TCM er den del af bevidstheden der drømmer, visualiserer og forestiller sig fremtiden. Når Træ er i balance, har vi levende drømme, klare visioner og evnen til at se muligheder.'
+    ],
+    correspondences: [
+      { label: 'Sæson', value: 'Forår — spirende vækst og fornyelse' },
+      { label: 'Retning', value: 'Øst — solopgangens retning, nye begyndelser' },
+      { label: 'Klima', value: 'Vind — bevægelighed, foranderlighed, uforudsigelighed' },
+      { label: 'Smag', value: 'Sur — sammentrækkende, bevarer og beskytter' },
+      { label: 'Væv', value: 'Sener & Ledbånd — fleksibilitet og elasticitet' },
+      { label: 'Sanseorgan', value: 'Øjnene — vision, overblik og fremsyn' },
+      { label: 'Lyd', value: 'Råb — den direkte, kraftfulde stemme' },
+      { label: 'Kropsvæske', value: 'Tårer — udtryk for bevægelse i sjælen' }
+    ],
+    cycles: {
+      generating: 'Vand nærer Træ — ligesom regn giver liv til planter. Dybe reserver af livsenergi (Vand) giver grundlag for vækst og vision (Træ).',
+      generated: 'Træ nærer Ild — ligesom brænde giver næring til flammen. Planlagt handling (Træ) giver retning og brændstof til glæde og passion (Ild).',
+      controlling: 'Træ kontrollerer Jord — ligesom trærødder holder jorden på plads og forhindrer erosion. Planlægning og struktur (Træ) giver retning til omsorg og næring (Jord).',
+      controlledBy: 'Metal kontrollerer Træ — ligesom en økse former træet. Grænser, disciplin og evnen til at skære fra (Metal) forhindrer ukontrolleret vækst (Træ).'
+    },
+    seasonalWisdom: [
+      'Foråret er tiden for nye begyndelser og friske projekter. Træ-energien inviterer dig til at sætte mål, lave planer og tage de første skridt.',
+      'Spis friske, grønne fødevarer og sure smage — citroner, æbler, grøntsager med bladgrønt. Disse støtter leverens rensende funktion.',
+      'Bevæg dig frit og varieret. Stræk, yoga og gåture i naturen harmoniserer Træ-energien. Undgå stillstand og monotoni.',
+      'Øv dig i at udtrykke frustration konstruktivt i stedet for at undertrykke den. Kreativ udfoldelse, journaling og samtale frigør blokeret Træ-energi.'
+    ]
+  },
+  {
+    id: 'ild',
+    name: 'Ild',
+    chineseName: '火 Huǒ',
+    color: '#DC143C',
+    organs: ['Hjerte', 'Tyndtarm', 'Pericardium', 'San Jiao'],
+    season: 'Sommer',
+    emotion: 'Glæde',
+    icon: '🔥',
+    direction: 'Syd',
+    climate: 'Varme',
+    taste: 'Bitter',
+    smell: 'Svedet',
+    sound: 'Latter',
+    tissue: 'Blodkar',
+    senseOrgan: 'Tunge',
+    bodyFluid: 'Sved',
+    generates: 'Jord',
+    generatedBy: 'Træ',
+    controls: 'Metal',
+    controlledBy: 'Vand',
+    description: [
+      'Ild-elementet er livets varme, bevidsthed og forbindelse. Det er det eneste element med fire organer — Hjerte, Tyndtarm, Pericardium og San Jiao — hvilket afspejler dets centrale rolle som kroppens "kejser" og omdrejningspunkt.',
+      'Ild repræsenterer vores evne til at føle glæde, skabe forbindelser med andre mennesker og udtrykke os selv autentisk. Når Ild-energien er i balance, stråler vi af varme, humor og tilstedeværelse. Vores kommunikation er klar og vores relationer blomstrer.',
+      'Ild-elementets skygge er enten overaktivitet — manisk energi, rastløshed, søvnløshed og uro — eller mangel, som viser sig som emotionel kulde, isolation og depression. Balance handler om at brænde stadigt, ikke for vildt eller for svagt.',
+      'I TCM huser Hjertet den bevidste ånd (Shen), som er vores klareste bevidsthed, vores evne til indsigt og vores forbindelse til mening. Når Shen er rolig, er sindet klart og øjnene strålende. Når Shen er forstyrret, ses det i forvirring, angst og urolige øjne.'
+    ],
+    correspondences: [
+      { label: 'Sæson', value: 'Sommer — maksimal udfoldelse og varme' },
+      { label: 'Retning', value: 'Syd — middagssolens retning, fuldt lys' },
+      { label: 'Klima', value: 'Varme — ekspansion, åbenhed og energi' },
+      { label: 'Smag', value: 'Bitter — rensende, nedadførende, kølende' },
+      { label: 'Væv', value: 'Blodkar — cirkulation og forbindelse' },
+      { label: 'Sanseorgan', value: 'Tungen — tale, smag og kommunikation' },
+      { label: 'Lyd', value: 'Latter — glædens spontane udtryk' },
+      { label: 'Kropsvæske', value: 'Sved — kroppens kølesystem og emotionelle udtryk' }
+    ],
+    cycles: {
+      generating: 'Træ nærer Ild — ligesom brænde holder flammen i live. Vision og planlægning (Træ) giver retning og mening til glæde og passion (Ild).',
+      generated: 'Ild nærer Jord — ligesom asken fra ilden beriger jorden. Varme, forbindelse og livsglæde (Ild) skaber grundlag for omsorg og næring (Jord).',
+      controlling: 'Ild kontrollerer Metal — ligesom ild smelter metal og giver det ny form. Glæde og varme (Ild) opløser stivhed og overdreven kontrol (Metal).',
+      controlledBy: 'Vand kontrollerer Ild — ligesom vand slukker flammen. Dyb ro, visdom og evnen til at hvile (Vand) forhindrer Ild i at brænde ukontrolleret.'
+    },
+    seasonalWisdom: [
+      'Sommeren er tiden for udfoldelse, forbindelse og glæde. Lev udadvendt, vær social og nyd livets varme øjeblikke.',
+      'Spis let og køligt — frugter, salater og bitre grøntsager. Bitre smage som rucola, artiskok og grøn te støtter hjertets funktion og køler overflødigt ild.',
+      'Undgå overophedning — både fysisk og emotionelt. Tag pauser i skyggen, drik rigeligt og søg balance mellem aktivitet og hvile.',
+      'Dyrk forbindelser og nærhed. Sommeren er Ildens sæson — lad varmen i dine relationer fylde dig op. Øv dig i at modtage glæde uden at holde igen.'
+    ]
+  },
+  {
+    id: 'jord',
+    name: 'Jord',
+    chineseName: '土 Tǔ',
+    color: '#DAA520',
+    organs: ['Milt', 'Mavesæk'],
+    season: 'Sen sommer',
+    emotion: 'Bekymring',
+    icon: '🌾',
+    direction: 'Centrum',
+    climate: 'Fugt',
+    taste: 'Sød',
+    smell: 'Duftende',
+    sound: 'Sang',
+    tissue: 'Muskler & Bindevæv',
+    senseOrgan: 'Mund & Læber',
+    bodyFluid: 'Spyt',
+    generates: 'Metal',
+    generatedBy: 'Ild',
+    controls: 'Vand',
+    controlledBy: 'Træ',
+    description: [
+      'Jord-elementet er centrum i de fem elementer — den stabile akse som de andre roterer omkring. Ligesom jorden under vores fødder giver stabilitet, repræsenterer Jord-elementet vores fundament: evnen til at nære, støtte og skabe tryghed.',
+      'Jord styrer transformation — processen hvor mad bliver til energi, oplevelser bliver til forståelse, og kaos bliver til orden. Når Jord er stærk, føler vi os centrerede, jordede og i stand til at tage os af os selv og andre.',
+      'Jord-elementets ubalance viser sig som overdreven bekymring og grublerier — tanker der kører i ring uden at nå en løsning. Fysisk manifesterer det sig som fordøjelsesproblemer, væskeophobning, træthed efter måltider og en følelse af tunghed.',
+      'Jord-elementet rummer moderkvaliteten — den ubetingede omsorg og næring. Men sund Jord kræver gensidighed: evnen til både at give og modtage omsorg. Mennesker med Jord-ubalance giver ofte for meget og glemmer at nære sig selv.'
+    ],
+    correspondences: [
+      { label: 'Sæson', value: 'Sen sommer — høst, modning og overflod' },
+      { label: 'Retning', value: 'Centrum — den stabile midte, omdrejningspunktet' },
+      { label: 'Klima', value: 'Fugt — tyngde, ophobning, træghed' },
+      { label: 'Smag', value: 'Sød — nærende, opbyggende, harmoniserende' },
+      { label: 'Væv', value: 'Muskler & Bindevæv — form, støtte og holdning' },
+      { label: 'Sanseorgan', value: 'Mund & Læber — modtagelse af næring og smag' },
+      { label: 'Lyd', value: 'Sang — den harmoniserende, forbindende stemme' },
+      { label: 'Kropsvæske', value: 'Spyt — begyndelsen af fordøjelsens transformation' }
+    ],
+    cycles: {
+      generating: 'Ild nærer Jord — ligesom aske beriger jorden. Varme, glæde og menneskelig forbindelse (Ild) skaber tryghed og evnen til at nære (Jord).',
+      generated: 'Jord nærer Metal — ligesom jorden gemmer mineraler og metaller i sit indre. Stabilitet og omsorg (Jord) danner grundlag for klarhed og grænser (Metal).',
+      controlling: 'Jord kontrollerer Vand — ligesom dæmninger og flodbredder styrer vandets løb. Struktur og stabilitet (Jord) forhindrer at dybe følelser oversvømmer os (Vand).',
+      controlledBy: 'Træ kontrollerer Jord — ligesom trærødder holder jorden på plads. Retning, planlægning og beslutningskraft (Træ) giver form til Jordens tendens til at sprede sig i alle retninger.'
+    },
+    seasonalWisdom: [
+      'Sen sommer er høstens tid — modningen, indsamlingen og fejringen af det der er vokset. Brug denne tid til at høste frugterne af forårets og sommerens indsats.',
+      'Spis varme, nærende måltider med naturligt søde fødevarer — rodfrugter, græskar, ris, hirse. Undgå rå, kold mad og sukker der belaster milten.',
+      'Skab rutiner og regelmæssighed i dine måltider. Milten elsker forudsigelighed — spis på faste tidspunkter og tygag grundigt.',
+      'Øv dig i at modtage omsorg. Hvis du altid er den der giver, så lad denne sæson handle om at lade andre nære dig. Balance i at give og modtage styrker Jord.'
+    ]
+  },
+  {
+    id: 'metal',
+    name: 'Metal',
+    chineseName: '金 Jīn',
+    color: '#C0C0C0',
+    organs: ['Lunger', 'Tyktarm'],
+    season: 'Efterår',
+    emotion: 'Sorg',
+    icon: '⚔️',
+    direction: 'Vest',
+    climate: 'Tørhed',
+    taste: 'Skarp',
+    smell: 'Rådden',
+    sound: 'Gråd',
+    tissue: 'Hud & Kropshår',
+    senseOrgan: 'Næse',
+    bodyFluid: 'Næseflåd',
+    generates: 'Vand',
+    generatedBy: 'Jord',
+    controls: 'Træ',
+    controlledBy: 'Ild',
+    description: [
+      'Metal-elementet repræsenterer renhed, præcision og evnen til at skelne det væsentlige fra det uvæsentlige. Ligesom et sværd skærer det overflødige bort, hjælper Metal os med at finde klarhed, sætte grænser og værdsætte det essentielle.',
+      'Metal er forbundet med efterårets energi — den naturlige bevægelse indad og nedad. Ligesom træerne slipper deres blade, inviterer Metal os til at give slip på det vi ikke længere har brug for og finde skønhed i enkelhed og essens.',
+      'I kroppen styrer Metal åndedrættet og huden — de to overflader hvor vi møder omverdenen. Lungerne modtager det rene udefra, mens tyktarmen udskiller det urene. Sammen skaber de kroppens evne til at sortere, rense og forny.',
+      'Metal-elementets dybere kvalitet er evnen til at finde værdi og mening i livets naturlige cyklusser af tab og fornyelse. Når Metal er i balance, kan vi sørge sund og slippe taget uden bitterhed — og dermed gøre plads til det nye.'
+    ],
+    correspondences: [
+      { label: 'Sæson', value: 'Efterår — indadvendthed, afslutning og frigørelse' },
+      { label: 'Retning', value: 'Vest — solnedgangens retning, afslutning' },
+      { label: 'Klima', value: 'Tørhed — klarhed, skarphed men også sårbarhed' },
+      { label: 'Smag', value: 'Skarp — spredende, åbnende, bevægende' },
+      { label: 'Væv', value: 'Hud & Kropshår — kroppens grænse mod omverdenen' },
+      { label: 'Sanseorgan', value: 'Næsen — lugtesans og åndedræt' },
+      { label: 'Lyd', value: 'Gråd — sorgens naturlige udtryk og frigørelse' },
+      { label: 'Kropsvæske', value: 'Næseflåd — rensning og beskyttelse af luftvejene' }
+    ],
+    cycles: {
+      generating: 'Jord nærer Metal — ligesom jorden over tid danner ædelmetaller. Stabilitet og næring (Jord) skaber grundlag for klarhed, struktur og kvalitet (Metal).',
+      generated: 'Metal nærer Vand — ligesom mineraler beriger vandkilderne. Klarhed, grænser og essens (Metal) understøtter dybde, visdom og livsenergi (Vand).',
+      controlling: 'Metal kontrollerer Træ — ligesom en økse former træet. Grænser, disciplin og evnen til at skære fra (Metal) forhindrer ukontrolleret vækst og kaos (Træ).',
+      controlledBy: 'Ild kontrollerer Metal — ligesom flammen smelter metallet. Varme, glæde og forbindelse (Ild) opbløder stivhed, isolation og overdreven perfektionisme (Metal).'
+    },
+    seasonalWisdom: [
+      'Efteråret inviterer til at trække sig indad, rydde op og give slip. Gennemgå dit liv og dine vaner — hvad tjener dig stadig, og hvad er det tid at slippe?',
+      'Spis varmende, hvide og skarpe fødevarer — ingefær, hvidløg, porre, ris, pærer. Skarpe smage åbner lungerne og styrker immunforsvaret.',
+      'Beskyt dig mod tørhed og kulde. Fugtig luft, varme drikke og nærende olier til huden støtter Metal-elementet i den tørre sæson.',
+      'Øv dig i bevidst åndedrætspraksis. Dybe, langsomme åndedrag styrker lungerne og hjælper med at bearbejde sorg. Lad tårerne flyde når de kommer — de er Metals naturlige udrensning.'
+    ]
+  },
+  {
+    id: 'vand',
+    name: 'Vand',
+    chineseName: '水 Shuǐ',
+    color: '#191970',
+    organs: ['Nyrer', 'Blære'],
+    season: 'Vinter',
+    emotion: 'Frygt',
+    icon: '💧',
+    direction: 'Nord',
+    climate: 'Kulde',
+    taste: 'Salt',
+    smell: 'Rådden/Fugtig',
+    sound: 'Stønnen',
+    tissue: 'Knogler & Tænder',
+    senseOrgan: 'Ører',
+    bodyFluid: 'Urin',
+    generates: 'Træ',
+    generatedBy: 'Metal',
+    controls: 'Ild',
+    controlledBy: 'Jord',
+    description: [
+      'Vand-elementet er livets dybeste fundament — den oprindelige kraft hvorfra alt liv udspringer. Ligesom vandet finder sin vej til havet, repræsenterer Vand vores medfødte visdom, vores dybeste reserver og vores forbindelse til livets grundlæggende mysterium.',
+      'Vand styrer nyrerne, som i TCM betragtes som "Livets Rod". Her opbevares den essens (Jing) vi arver fra vores forældre — vores konstitutionelle grundlag, som bestemmer vores livskraft, aldring og reproduktive evne.',
+      'Vand-elementets emotion er frygt — ikke kun den lammende angst, men også den sunde respekt for livets kræfter der holder os på sikker afstand af fare. Sund frygt er visdom; ubalanceret frygt er enten lammende angst eller dumdristig mangel på forsigtighed.',
+      'Vand rummer paradokset af at være både det blødeste og det stærkeste element. Vand slider sten ned over tid. Mennesker med stærk Vand-energi besidder udholdenhed, viljestyrke og evnen til at bevare roen i krise — den stille kraft der overvinder alle forhindringer.'
+    ],
+    correspondences: [
+      { label: 'Sæson', value: 'Vinter — hvile, indadvendthed og opbygning af reserver' },
+      { label: 'Retning', value: 'Nord — mørkets retning, stilhed og dybde' },
+      { label: 'Klima', value: 'Kulde — sammentrækning, bevaring og koncentration' },
+      { label: 'Smag', value: 'Salt — nedadførende, blødgørende, bevarende' },
+      { label: 'Væv', value: 'Knogler & Tænder — kroppens dybeste struktur' },
+      { label: 'Sanseorgan', value: 'Ørerne — hørelse, balance og forbindelse til nyrerne' },
+      { label: 'Lyd', value: 'Stønnen — dyb, resonerende, fra kroppens kerne' },
+      { label: 'Kropsvæske', value: 'Urin — rensning og regulering af væskebalance' }
+    ],
+    cycles: {
+      generating: 'Metal nærer Vand — ligesom mineraler beriger vandkilderne. Klarhed og essens (Metal) styrker dybde og livsreserver (Vand).',
+      generated: 'Vand nærer Træ — ligesom regn giver liv til skove. Dybe reserver, visdom og ro (Vand) giver grundlag for vækst, vision og fornyelse (Træ).',
+      controlling: 'Vand kontrollerer Ild — ligesom vand slukker flammen. Ro, dybde og visdom (Vand) forhindrer overaktivitet, uro og udbrændthed (Ild).',
+      controlledBy: 'Jord kontrollerer Vand — ligesom dæmninger styrer flodens løb. Stabilitet, struktur og jordforbindelse (Jord) forhindrer at dybe følelser oversvømmer og lammer (Vand).'
+    },
+    seasonalWisdom: [
+      'Vinteren er tiden for hvile, refleksion og genopladning. Respektér kroppens behov for mere søvn, langsommere tempo og indadvendt energi.',
+      'Spis varme, nærende og salte fødevarer — supper, gryderetter, bønner, tang, sorte bønner og nødder. Undgå rå, kold mad der dræner nyrernes varme.',
+      'Hold dig varm, især i lænden og på fødderne. Kulde svækker nyrerne direkte. Varme fodbade og varm beklædning er simple men kraftfulde værktøjer.',
+      'Undgå overanstrengelse og udmattelse. Vinteren er ikke tiden for at presse kroppen til det yderste. Bevar dine reserver — de er grundlaget for forårets fornyede energi.'
+    ]
+  }
 ];
+
+// ============================================
+// TCM Foundational Concepts
+// ============================================
+export const tcmFoundation = {
+  yinYang: {
+    title: 'Yin & Yang',
+    subtitle: 'To kræfter i evig udveksling',
+    description: [
+      'Alt i universet kan forstås som to komplementære kræfter i konstant udveksling. Yin og Yang er ikke modsætninger der bekæmper hinanden — de er partnere der definerer, skaber og transformerer hinanden i en uendelig dans.',
+      'Yin er det modtagende, det stille, det indadvendte, det mørke, det kølige og det næring. Yang er det aktive, det udadvendte, det lyse, det varme og det bevægelige. Ingen af dem kan eksistere uden den anden.',
+      'I kroppen ser vi dette princip overalt: indånding (yin) og udånding (yang), hvile (yin) og aktivitet (yang), blod (yin) og energi (yang), struktur (yin) og funktion (yang). Sundhed er den dynamiske balance mellem disse kræfter.',
+      'Hvert organ har en yin-partner og en yang-partner der arbejder sammen. Yin-organerne (lever, hjerte, milt, lunger, nyrer) lagrer og nærer. Yang-organerne (galdeblære, tyndtarm, mavesæk, tyktarm, blære) transformerer og transporterer.'
+    ],
+    pairs: [
+      { yin: 'Indre', yang: 'Ydre' },
+      { yin: 'Kulde', yang: 'Varme' },
+      { yin: 'Hvile', yang: 'Aktivitet' },
+      { yin: 'Struktur', yang: 'Funktion' },
+      { yin: 'Blod', yang: 'Energi (Qi)' },
+      { yin: 'Nat', yang: 'Dag' },
+      { yin: 'Modtagende', yang: 'Givende' },
+      { yin: 'Nedadgående', yang: 'Opadgående' }
+    ]
+  },
+  elementCycles: {
+    title: 'Elementernes Cyklusser',
+    subtitle: 'Skabelse og kontrol i balance',
+    description: [
+      'De fem elementer er forbundet i to fundamentale cyklusser der holder systemet i balance: Skabelses-cyklussen (Sheng) og Kontrol-cyklussen (Ke).',
+      'Skabelses-cyklussen (Sheng): Hvert element nærer og føder det næste — Træ → Ild → Jord → Metal → Vand → Træ. Det er en cyklus af moderlig næring, hvor hvert element er "mor" til det næste og "barn" af det forrige.',
+      'Kontrol-cyklussen (Ke): Hvert element holder et andet i balance — Træ → Jord → Vand → Ild → Metal → Træ. Det er en cyklus af sund begrænsning, hvor hvert element forhindrer et andet i at vokse ud af proportion.',
+      'Når begge cyklusser fungerer harmonisk, er kroppen i balance. Sygdom opstår når en cyklus forstyrres — enten fordi et element er for svagt til at nære det næste (svag Sheng), eller for aggressivt i sin kontrol (overdreven Ke).'
+    ],
+    shengCycle: ['Træ', 'Ild', 'Jord', 'Metal', 'Vand'],
+    keCycle: ['Træ', 'Jord', 'Vand', 'Ild', 'Metal']
+  },
+  organPartnership: {
+    title: 'Organpartnerskaber',
+    subtitle: 'Yin og Yang i samarbejde',
+    description: [
+      'Hvert yin-organ er parret med et yang-organ indenfor det samme element. De deler meridian-forbindelser, emotionelle temaer og påvirker hinanden direkte.',
+      'Yin-organerne er de "solide" organer der lagrer essens, blod og væsker. Yang-organerne er de "hule" organer der modtager, transformerer og transporterer. Sammen skaber hvert par en komplet funktionel enhed.',
+      'Når vi behandler et organ i TCM, overvejer vi altid dets partner. En ubalance i det ene organ påvirker uundgåeligt det andet — ligesom to sider af samme mønt.'
+    ],
+    pairs: [
+      { yin: 'Lever', yang: 'Galdeblære', element: 'Træ', theme: 'Planlægning og beslutning' },
+      { yin: 'Hjerte', yang: 'Tyndtarm', element: 'Ild', theme: 'Forbindelse og skelneevne' },
+      { yin: 'Milt', yang: 'Mavesæk', element: 'Jord', theme: 'Næring og transformation' },
+      { yin: 'Lunger', yang: 'Tyktarm', element: 'Metal', theme: 'Modtagelse og frigørelse' },
+      { yin: 'Nyrer', yang: 'Blære', element: 'Vand', theme: 'Bevaring og udrensning' },
+      { yin: 'Pericardium', yang: 'San Jiao', element: 'Ild', theme: 'Beskyttelse og fordeling' }
+    ]
+  }
+};
