@@ -1030,7 +1030,7 @@ body {
 .themes-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
 }
 
 .theme-item {
@@ -1131,7 +1131,7 @@ body {
 .keypoints-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .keypoint {
@@ -1240,7 +1240,7 @@ body {
   gap: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .element-organ-link:hover {
@@ -1282,7 +1282,7 @@ body {
 .correspondences-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
 }
 
 .correspondence-item {
@@ -1324,7 +1324,7 @@ body {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .cycle-card-label {
@@ -1437,7 +1437,7 @@ body {
 .pairs-grid {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .pair-row {
@@ -1505,7 +1505,7 @@ body {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
 }
 
 .partnership-card {
@@ -1975,7 +1975,7 @@ body {
 .overview-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .overview-card {
@@ -2218,7 +2218,7 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   overflow: hidden;
   transition: border-color 0.2s;
 }
@@ -2328,7 +2328,7 @@ body {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   position: relative;
 }
 
