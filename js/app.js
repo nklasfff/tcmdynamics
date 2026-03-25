@@ -49,7 +49,8 @@ function updateThemeIcon() {
 }
 
 function setupThemeToggle() {
-  document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.addEventListener('click', toggleTheme);
 }
 
 // ============================================
@@ -1465,4 +1466,12 @@ function init() {
   setInterval(renderOrganClock, 60000);
 }
 
-document.addEventListener('DOMContentLoaded', init);
+try {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+} catch(e) {
+  console.error('INIT ERROR:', e);
+}
