@@ -65,7 +65,7 @@ body {
 }
 
 #app {
-  max-width: 480px;
+  max-width: 700px;
   margin: 0 auto;
   min-height: 100vh;
   min-height: 100dvh;
@@ -1196,12 +1196,7 @@ body {
    Responsive
    ============================================ */
 
-@media (min-width: 481px) {
-  #app {
-    border-left: 1px solid var(--border-subtle);
-    border-right: 1px solid var(--border-subtle);
-  }
-}
+/* Desktop frame applied via body::after below */
 
 @media (max-width: 360px) {
   .organ-grid {
@@ -2525,4 +2520,70 @@ body {
   color: var(--text-muted);
   opacity: 0.5;
   margin-top: 4px;
+}
+
+/* ============================================
+   Desktop App Frame (768px+)
+   ============================================ */
+
+@media (min-width: 768px) {
+  /* Centrer alle skærme */
+  .screen {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centrer bundnavigation */
+  .bottom-nav {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centrer floating buttons inden for rammen */
+  .top-float-left {
+    left: calc(50% - 350px + 16px);
+  }
+
+  .top-float-right {
+    right: calc(50% - 350px + 16px);
+  }
+
+  /* Tynd vertikal ramme langs begge sider */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 700px;
+    margin: 0 auto;
+    border-left: 1.5px solid var(--accent-gold);
+    border-right: 1.5px solid var(--accent-gold);
+    pointer-events: none;
+    z-index: 150;
+    opacity: 0.15;
+  }
+
+  /* Flyt hamburger-menu ind i rammen */
+  .hamburger-menu {
+    left: calc(50% - 350px);
+  }
+
+  .hamburger-overlay {
+    max-width: 700px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centrer søge-overlay */
+  .search-overlay .search-container {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
