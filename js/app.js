@@ -7,6 +7,42 @@ import { organs, extraordinaryMeridians, organClock, fiveElements } from './data
 let currentScreen = 'home';
 
 // ============================================
+// Theme Toggle
+// ============================================
+function initTheme() {
+  const saved = localStorage.getItem('tcm-theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+  updateThemeIcon();
+}
+
+function toggleTheme() {
+  document.documentElement.setAttribute('data-theme-transitioning', '');
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('tcm-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('tcm-theme', 'light');
+  }
+  updateThemeIcon();
+  renderOrganClock();
+  setTimeout(() => document.documentElement.removeAttribute('data-theme-transitioning'), 350);
+}
+
+function updateThemeIcon() {
+  const icon = document.getElementById('theme-icon');
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  icon.textContent = isLight ? '🌙' : '☀️';
+}
+
+function setupThemeToggle() {
+  document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+}
+
+// ============================================
 // Navigation
 // ============================================
 function showScreen(screenId) {
@@ -95,11 +131,14 @@ function renderOrganClock() {
     const timeY = cy + timeR * Math.sin(midAngle);
 
     const color = elementColors[item.element] || '#666';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const fillOpacity = isLight ? '0.15' : '0.2';
+    const strokeOpacity = isLight ? '0.6' : '0.4';
 
     segments += `
       <g class="clock-segment" data-organ-name="${item.organ}">
         <path d="M${x1},${y1} A${outerR},${outerR} 0 0 1 ${x2},${y2} L${x3},${y3} A${innerR},${innerR} 0 0 0 ${x4},${y4} Z"
-              fill="${color}" fill-opacity="0.2" stroke="${color}" stroke-opacity="0.4" stroke-width="1"/>
+              fill="${color}" fill-opacity="${fillOpacity}" stroke="${color}" stroke-opacity="${strokeOpacity}" stroke-width="1"/>
         <text x="${textX}" y="${textY}" text-anchor="middle" dominant-baseline="central" font-size="10">${item.organ}</text>
         <text x="${timeX}" y="${timeY}" text-anchor="middle" dominant-baseline="central" class="clock-time">${item.time}</text>
       </g>
@@ -321,6 +360,8 @@ showScreen = function(screenId) {
 // Init
 // ============================================
 function init() {
+  initTheme();
+  setupThemeToggle();
   renderOrganGrid();
   renderMeridianGrid();
   renderOrganClock();
