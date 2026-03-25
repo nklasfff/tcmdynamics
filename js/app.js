@@ -1,10 +1,11 @@
-// Mønstrene Bag — App Logic
+// Mønstrene Bag — App Logic v2
 import { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } from './data.js';
 
 // ============================================
 // State
 // ============================================
 let currentScreen = 'home';
+let previousScreen = 'home'; // Track where we came from for back navigation
 
 // ============================================
 // Theme Toggle
@@ -57,12 +58,23 @@ function setupThemeToggle() {
 function showScreen(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(`screen-${screenId}`).classList.add('active');
+  previousScreen = currentScreen;
   currentScreen = screenId;
   window.scrollTo(0, 0);
 }
 
+// Map section screen IDs to bottom nav IDs
+const sectionToNav = {
+  'home': 'home',
+  'section-practice': 'practice',
+  'section-organs': 'organs',
+  'section-elements': 'elements',
+  'section-meridians': 'meridians',
+  'section-overviews': 'home'
+};
+
 // ============================================
-// Render Home — Organ Grid
+// Render — Organ Grid
 // ============================================
 function renderOrganGrid() {
   const grid = document.getElementById('organ-grid');
@@ -84,7 +96,7 @@ function renderOrganGrid() {
 }
 
 // ============================================
-// Render Home — Meridian Grid
+// Render — Meridian Grid
 // ============================================
 function renderMeridianGrid() {
   const grid = document.getElementById('meridian-grid');
@@ -105,7 +117,7 @@ function renderMeridianGrid() {
 }
 
 // ============================================
-// Render Home — Organ Clock (Enhanced)
+// Render — Organ Clock
 // ============================================
 function getActiveOrganIndex() {
   const now = new Date();
@@ -114,7 +126,6 @@ function getActiveOrganIndex() {
     if (item.startHour < item.endHour) {
       return hour >= item.startHour && hour < item.endHour;
     }
-    // Wraps midnight (e.g., 23-01)
     return hour >= item.startHour || hour < item.endHour;
   });
 }
@@ -179,7 +190,6 @@ function renderOrganClock() {
     `;
   });
 
-  // Current time display
   const now = new Date();
   const timeStr = now.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
   const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
@@ -194,7 +204,6 @@ function renderOrganClock() {
     </svg>
   `;
 
-  // Wisdom box below clock
   if (activeOrgan) {
     let wisdomBox = container.querySelector('.clock-wisdom');
     if (!wisdomBox) {
@@ -218,7 +227,7 @@ function renderOrganClock() {
 }
 
 // ============================================
-// Render Home — Five Elements (Enhanced)
+// Render — Five Elements
 // ============================================
 function renderElements() {
   const grid = document.getElementById('elements-grid');
@@ -245,7 +254,7 @@ function renderElements() {
 }
 
 // ============================================
-// Render Home — TCM Foundation
+// Render — TCM Foundation
 // ============================================
 function renderFoundation() {
   const grid = document.getElementById('foundation-grid');
@@ -290,7 +299,6 @@ function showElementDetail(el) {
     <span class="meta-tag">${el.climate}</span>
   `;
 
-  // Description + organ navigation
   document.getElementById('element-description').innerHTML =
     el.description.map(p => `<p>${p}</p>`).join('');
 
@@ -316,7 +324,6 @@ function showElementDetail(el) {
     </div>
   `;
 
-  // Add organ link click handlers
   document.querySelectorAll('#element-organs-nav .element-organ-link').forEach(link => {
     link.addEventListener('click', () => {
       const organ = organs.find(o => o.id === link.dataset.organId);
@@ -324,7 +331,6 @@ function showElementDetail(el) {
     });
   });
 
-  // Correspondences
   document.getElementById('element-correspondences').innerHTML =
     el.correspondences.map(c => `
       <div class="correspondence-item">
@@ -333,7 +339,6 @@ function showElementDetail(el) {
       </div>
     `).join('');
 
-  // Cycles
   document.getElementById('element-cycles').innerHTML = `
     <div class="cycle-section">
       <h3 class="cycle-title">Skabelses-cyklus (Sheng)</h3>
@@ -362,7 +367,6 @@ function showElementDetail(el) {
     </div>
   `;
 
-  // Seasonal wisdom
   document.getElementById('element-seasonal').innerHTML = `
     <div class="seasonal-header">
       <div class="seasonal-season">${el.season}</div>
@@ -465,7 +469,6 @@ function showFoundationDetail(key) {
   }
 
   document.getElementById('foundation-body').innerHTML = `<div class="description-text">${bodyHTML}</div>`;
-
   showScreen('foundation');
 }
 
@@ -484,11 +487,9 @@ function showOrganDetail(organ) {
     <span class="meta-tag">kl. ${organ.time}</span>
   `;
 
-  // Description
   document.getElementById('organ-description').innerHTML =
     organ.description.map(p => `<p>${p}</p>`).join('');
 
-  // Themes
   document.getElementById('organ-themes').innerHTML =
     organ.themes.map((theme, i) => `
       <div class="theme-item">
@@ -507,7 +508,6 @@ function showOrganDetail(organ) {
       </div>
     `).join('');
 
-  // Key points
   if (organ.keyPoints) {
     document.getElementById('organ-keypoints').innerHTML =
       organ.keyPoints.map(kp => `
@@ -518,7 +518,6 @@ function showOrganDetail(organ) {
       `).join('');
   }
 
-  // Reset tabs
   resetTabs('screen-organ');
   showScreen('organ');
   setupThemeAccordion('organ-themes');
@@ -540,11 +539,9 @@ function showMeridianDetail(meridian) {
     ${meridian.level ? `<div class="meridian-level">${meridian.level}</div>` : ''}
   `;
 
-  // Description
   document.getElementById('meridian-description').innerHTML =
     meridian.description.map(p => `<p>${p}</p>`).join('');
 
-  // Connections section (partner meridian + related organs)
   let connectionsHTML = '';
   if (meridian.partnerMeridian || meridian.relatedOrgans) {
     connectionsHTML += '<div class="meridian-connections-section">';
@@ -598,7 +595,6 @@ function showMeridianDetail(meridian) {
   }
   document.getElementById('meridian-connections').innerHTML = connectionsHTML;
 
-  // Add click handlers for connections
   document.querySelectorAll('#meridian-connections .element-organ-link[data-organ-id]').forEach(link => {
     link.addEventListener('click', () => {
       const organ = organs.find(o => o.id === link.dataset.organId);
@@ -612,7 +608,6 @@ function showMeridianDetail(meridian) {
     });
   });
 
-  // Pathway
   if (meridian.pathway) {
     document.getElementById('meridian-pathway').innerHTML = `
       <div class="pathway-section">
@@ -632,7 +627,6 @@ function showMeridianDetail(meridian) {
     `;
   }
 
-  // Key points
   if (meridian.keyPoints) {
     document.getElementById('meridian-keypoints').innerHTML =
       meridian.keyPoints.map(kp => `
@@ -643,7 +637,6 @@ function showMeridianDetail(meridian) {
       `).join('');
   }
 
-  // Themes
   document.getElementById('meridian-themes').innerHTML =
     meridian.themes.map((theme, i) => `
       <div class="theme-item">
@@ -662,7 +655,6 @@ function showMeridianDetail(meridian) {
       </div>
     `).join('');
 
-  // Reset tabs
   resetTabs('screen-meridian');
   showScreen('meridian');
   setupThemeAccordion('meridian-themes');
@@ -705,10 +697,8 @@ function setupThemeAccordion(containerId) {
       const item = header.parentElement;
       const wasOpen = item.classList.contains('open');
 
-      // Close all in this container
       container.querySelectorAll('.theme-item').forEach(i => i.classList.remove('open'));
 
-      // Toggle clicked
       if (!wasOpen) {
         item.classList.add('open');
       }
@@ -719,23 +709,51 @@ function setupThemeAccordion(containerId) {
 // ============================================
 // Back Navigation
 // ============================================
-function goHome() {
-  showScreen('home');
-  if (window._updateBottomNav) window._updateBottomNav('home');
+function goBack() {
+  // Determine where to go back to
+  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice'];
+  const sectionScreens = ['section-practice', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
+
+  if (detailScreens.includes(currentScreen)) {
+    // If we came from a section screen, go back there
+    if (sectionScreens.includes(previousScreen)) {
+      showScreen(previousScreen);
+      const navId = sectionToNav[previousScreen] || 'home';
+      if (window._updateBottomNav) window._updateBottomNav(navId);
+    } else {
+      showScreen('home');
+      if (window._updateBottomNav) window._updateBottomNav('home');
+    }
+  } else if (sectionScreens.includes(currentScreen)) {
+    showScreen('home');
+    if (window._updateBottomNav) window._updateBottomNav('home');
+  } else {
+    showScreen('home');
+    if (window._updateBottomNav) window._updateBottomNav('home');
+  }
 }
 
 function setupBackButtons() {
-  document.getElementById('btn-back-practice').addEventListener('click', goHome);
-  document.getElementById('btn-back-organ').addEventListener('click', goHome);
-  document.getElementById('btn-back-meridian').addEventListener('click', goHome);
-  document.getElementById('btn-back-element').addEventListener('click', goHome);
-  document.getElementById('btn-back-foundation').addEventListener('click', goHome);
-  document.getElementById('btn-back-overview').addEventListener('click', goHome);
+  // Detail screen back buttons
+  document.getElementById('btn-back-practice').addEventListener('click', goBack);
+  document.getElementById('btn-back-organ').addEventListener('click', goBack);
+  document.getElementById('btn-back-meridian').addEventListener('click', goBack);
+  document.getElementById('btn-back-element').addEventListener('click', goBack);
+  document.getElementById('btn-back-foundation').addEventListener('click', goBack);
+  document.getElementById('btn-back-overview').addEventListener('click', goBack);
+
+  // Section screen back buttons (data-back="home")
+  document.querySelectorAll('.back-btn[data-back="home"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showScreen('home');
+      if (window._updateBottomNav) window._updateBottomNav('home');
+    });
+  });
 
   // Browser back button
   window.addEventListener('popstate', () => {
     if (currentScreen !== 'home') {
-      showScreen('home');
+      goBack();
     }
   });
 }
@@ -745,11 +763,12 @@ const originalShowScreen = showScreen;
 showScreen = function(screenId) {
   if (screenId !== 'home' && currentScreen === 'home') {
     history.pushState({ screen: screenId }, '');
+  } else if (screenId !== currentScreen && currentScreen !== 'home') {
+    history.pushState({ screen: screenId }, '');
   }
   originalShowScreen(screenId);
 };
 
-// ============================================
 // ============================================
 // Render Practice Guide Grid
 // ============================================
@@ -838,7 +857,7 @@ function renderSectionIntros() {
 }
 
 // ============================================
-// Bottom Navigation
+// Bottom Navigation — Now shows section screens
 // ============================================
 function setupBottomNav() {
   const navItems = document.querySelectorAll('.bottom-nav-item');
@@ -855,7 +874,6 @@ function setupBottomNav() {
     });
   });
 
-  // Update active tab when back buttons navigate to home
   window._updateBottomNav = setActiveTab;
 }
 
@@ -863,45 +881,38 @@ function handleNavigation(navId) {
   switch (navId) {
     case 'home':
       showScreen('home');
-      window.scrollTo(0, 0);
       break;
     case 'practice':
-      showScreen('home');
-      setTimeout(() => {
-        document.getElementById('nav-practice').scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      showScreen('section-practice');
       break;
     case 'organs':
-      showScreen('home');
-      setTimeout(() => {
-        document.getElementById('nav-organs').scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      showScreen('section-organs');
       break;
     case 'elements':
-      showScreen('home');
-      setTimeout(() => {
-        document.getElementById('nav-elements').scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      showScreen('section-elements');
       break;
     case 'meridians':
-      showScreen('home');
-      setTimeout(() => {
-        document.getElementById('nav-extraordinary').scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-      break;
-    case 'foundation':
-      showScreen('home');
-      setTimeout(() => {
-        document.getElementById('nav-foundation').scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      showScreen('section-meridians');
       break;
     case 'overviews':
-      showScreen('home');
-      setTimeout(() => {
-        document.getElementById('nav-overviews').scrollIntoView({ behavior: 'smooth' });
-      }, 50);
+      showScreen('section-overviews');
       break;
   }
+}
+
+// ============================================
+// Hub Card Navigation
+// ============================================
+function setupHubCards() {
+  document.querySelectorAll('.hub-card[data-hub]').forEach(card => {
+    card.addEventListener('click', () => {
+      const hub = card.dataset.hub;
+      handleNavigation(hub);
+      if (window._updateBottomNav) {
+        window._updateBottomNav(hub === 'overviews' ? 'home' : hub);
+      }
+    });
+  });
 }
 
 // ============================================
@@ -935,22 +946,21 @@ function setupHamburger() {
 
   closeBtn.addEventListener('click', closeMenu);
 
-  // Close on overlay click (outside menu)
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeMenu();
   });
 
-  // Navigation links in hamburger
   menu.querySelectorAll('.hamburger-link[data-nav]').forEach(link => {
     link.addEventListener('click', () => {
       const navId = link.dataset.nav;
       closeMenu();
       handleNavigation(navId);
-      if (window._updateBottomNav) window._updateBottomNav(navId === 'foundation' ? 'home' : navId);
+      if (window._updateBottomNav) {
+        window._updateBottomNav(navId === 'overviews' ? 'home' : navId);
+      }
     });
   });
 
-  // Info links in hamburger
   menu.querySelectorAll('.hamburger-link[data-info]').forEach(link => {
     link.addEventListener('click', () => {
       const infoId = link.dataset.info;
@@ -959,7 +969,6 @@ function setupHamburger() {
     });
   });
 
-  // Close on escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
   });
@@ -994,7 +1003,6 @@ function showInfoModal(infoId) {
   const info = content[infoId];
   if (!info) return;
 
-  // Reuse practice detail screen for info display
   document.getElementById('practice-detail-icon').textContent = '◌';
   document.getElementById('practice-detail-title').textContent = info.title;
   document.getElementById('practice-detail-subtitle').textContent = '';
@@ -1052,7 +1060,6 @@ function setupSearch() {
 function performSearch(query) {
   const results = { organs: [], elements: [], meridians: [], practice: [], foundation: [], overviews: [] };
 
-  // Search organs
   organs.forEach(o => {
     const searchable = [o.name, o.nickname, o.element, o.yinYang, o.partner, ...o.description, ...(o.keyPoints || []).map(k => k.title + ' ' + k.text)].join(' ').toLowerCase();
     if (searchable.includes(query)) {
@@ -1060,7 +1067,6 @@ function performSearch(query) {
     }
   });
 
-  // Search elements
   fiveElements.forEach(el => {
     const searchable = [el.name, el.chineseName, el.season, el.emotion, ...el.organs, ...el.description].join(' ').toLowerCase();
     if (searchable.includes(query)) {
@@ -1068,7 +1074,6 @@ function performSearch(query) {
     }
   });
 
-  // Search extraordinary meridians
   extraordinaryMeridians.forEach(m => {
     const searchable = [m.name, m.nickname, m.aka || '', ...m.description, ...(m.keyPoints || []).map(k => k.title + ' ' + k.text)].join(' ').toLowerCase();
     if (searchable.includes(query)) {
@@ -1076,7 +1081,6 @@ function performSearch(query) {
     }
   });
 
-  // Search practice guide
   practiceGuide.forEach(p => {
     const searchable = [p.title, p.subtitle, ...p.sections.flatMap(s => [s.heading, ...s.paragraphs])].join(' ').toLowerCase();
     if (searchable.includes(query)) {
@@ -1084,7 +1088,6 @@ function performSearch(query) {
     }
   });
 
-  // Search foundation
   ['yinYang', 'elementCycles', 'organPartnership'].forEach(key => {
     const section = tcmFoundation[key];
     const searchable = [section.title, section.subtitle, ...section.description].join(' ').toLowerCase();
@@ -1093,7 +1096,6 @@ function performSearch(query) {
     }
   });
 
-  // Search organ overviews
   organOverviews.forEach(ov => {
     const searchable = [ov.name, ov.nickname, ov.element, ov.emotion, ov.keyFunction, ov.classicSigns, ...ov.quickSigns, ...ov.symptomer].join(' ').toLowerCase();
     if (searchable.includes(query)) {
@@ -1135,7 +1137,6 @@ function renderSearchResults(results, query, container, closeCallback) {
     </div>
   `).join('');
 
-  // Click handlers
   container.querySelectorAll('.search-result-item').forEach(el => {
     el.addEventListener('click', () => {
       const type = el.dataset.type;
@@ -1145,7 +1146,6 @@ function renderSearchResults(results, query, container, closeCallback) {
 
       closeCallback();
 
-      // Navigate after overlay fade
       setTimeout(() => {
         switch (type) {
           case 'organ': showOrganDetail(item.data); break;
@@ -1265,7 +1265,6 @@ function renderOverviewSymptoms() {
     `).join('')}
   `;
 
-  // Accordion for symptoms
   container.querySelectorAll('.symptom-ref-header').forEach(header => {
     header.addEventListener('click', () => {
       const item = header.parentElement;
@@ -1275,7 +1274,6 @@ function renderOverviewSymptoms() {
     });
   });
 
-  // Click organ tags to navigate
   container.querySelectorAll('.symptom-ref-organ-tag[data-organ-id]').forEach(tag => {
     tag.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -1322,7 +1320,6 @@ function showOverviewDetail(ov, type) {
   let bodyHTML = '';
 
   if (type === 'organ') {
-    // Info card
     bodyHTML += `
       <div class="ov-info-card">
         <div class="ov-info-row"><span class="ov-info-label">Kaldes</span><span class="ov-info-value">"${ov.nickname}"</span></div>
@@ -1336,7 +1333,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
 
-    // Key function
     bodyHTML += `
       <div class="ov-section">
         <h3 class="ov-section-title">Nøglefunktion</h3>
@@ -1344,7 +1340,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
 
-    // Classic signs
     bodyHTML += `
       <div class="ov-section">
         <h3 class="ov-section-title">Klassiske Tegn</h3>
@@ -1352,7 +1347,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
 
-    // Quick signs
     bodyHTML += `
       <div class="ov-section">
         <h3 class="ov-section-title">Hurtige Tegn</h3>
@@ -1362,7 +1356,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
 
-    // Three-column table
     bodyHTML += `
       <div class="ov-section">
         <h3 class="ov-section-title">Detaljeret Oversigt</h3>
@@ -1383,7 +1376,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
 
-    // Link to full organ page
     bodyHTML += `
       <div class="ov-section">
         <button class="ov-link-full" data-organ-id="${ov.organId}">
@@ -1392,7 +1384,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
   } else {
-    // Meridian overview detail
     bodyHTML += `
       <div class="ov-section">
         <h3 class="ov-section-title">Primære Symptomer</h3>
@@ -1416,7 +1407,6 @@ function showOverviewDetail(ov, type) {
       </div>
     `;
 
-    // Link to full meridian page
     bodyHTML += `
       <div class="ov-section" style="margin-top: 20px;">
         <button class="ov-link-full" data-meridian-id="${ov.meridianId}">
@@ -1428,7 +1418,6 @@ function showOverviewDetail(ov, type) {
 
   document.getElementById('overview-detail-body').innerHTML = bodyHTML;
 
-  // Setup link to full page
   const organLink = document.querySelector('.ov-link-full[data-organ-id]');
   if (organLink) {
     organLink.addEventListener('click', () => {
@@ -1468,6 +1457,7 @@ function init() {
   setupTabs();
   setupBackButtons();
   setupBottomNav();
+  setupHubCards();
   setupHamburger();
   setupSearch();
 

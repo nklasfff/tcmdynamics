@@ -1,10 +1,9 @@
 /* ============================================
    Mønstrene Bag — TCM i Praksis
-   Dark & Light Design
+   Exclusive Dark Design — v2 Airy Hub
    ============================================ */
 
 :root {
-  /* Dark theme (default) */
   --bg-primary: #0a0a0f;
   --bg-secondary: #12121a;
   --bg-card: #1a1a25;
@@ -37,31 +36,6 @@
 
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-/* Light theme */
-[data-theme="light"] {
-  --bg-primary: #f5f2ec;
-  --bg-secondary: #eae6de;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f0ece4;
-  --bg-elevated: #e8e4db;
-
-  --text-primary: #1a1815;
-  --text-secondary: #5a554d;
-  --text-muted: #8a857d;
-  --text-accent: #9a7b3c;
-
-  --accent-gold: #9a7b3c;
-  --accent-gold-dim: rgba(154, 123, 60, 0.12);
-  --accent-gold-glow: rgba(154, 123, 60, 0.06);
-
-  --border-subtle: rgba(154, 123, 60, 0.1);
-  --border-light: rgba(154, 123, 60, 0.2);
-  --border-active: rgba(154, 123, 60, 0.35);
-
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
-  --shadow-elevated: 0 8px 32px rgba(0,0,0,0.08);
 }
 
 /* ============================================
@@ -120,52 +94,42 @@ body {
 }
 
 /* ============================================
-   Home Header
+   Hero — Home Screen
    ============================================ */
 
-.home-header {
-  padding: calc(48px + var(--safe-top)) 24px 32px;
-  text-align: center;
+.hero {
   position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
 }
 
-.home-header::after {
-  content: '';
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-overlay {
   position: absolute;
   bottom: 0;
-  left: 24px;
-  right: 24px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+  left: 0;
+  right: 0;
+  padding: 40px 24px 28px;
+  background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 50%, transparent 100%);
 }
 
-.brand-mark {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-gold), #a08445);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+.hero-title {
   font-family: var(--font-serif);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--bg-primary);
-  letter-spacing: 1px;
-}
-
-
-.brand-title {
-  font-family: var(--font-serif);
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 400;
   letter-spacing: 2px;
   color: var(--text-primary);
   margin-bottom: 4px;
 }
 
-.brand-subtitle {
+.hero-subtitle {
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 3px;
@@ -174,50 +138,179 @@ body {
 }
 
 /* ============================================
-   Home Content
+   Home Hub — Navigation Grid
    ============================================ */
 
-.home-content {
+.home-hub {
   flex: 1;
-  padding: 0 20px 120px;
+  padding: 32px 20px 100px;
 }
 
-.home-section {
-  margin-top: 32px;
-}
-
-.section-header {
-  margin-bottom: 16px;
-  position: relative;
-  padding-left: 0;
-}
-
-.section-number {
+.home-intro {
   font-family: var(--font-serif);
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 0 8px;
+}
+
+.hub-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hub-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hub-card:hover,
+.hub-card:active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.hub-card-illustration {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
   color: var(--accent-gold);
-  display: block;
-  margin-bottom: 4px;
-  font-weight: 500;
 }
 
-.section-header h2 {
+.hub-card-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hub-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hub-card-title {
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.hub-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.hub-card-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.hub-card:hover .hub-card-arrow {
+  opacity: 1;
+  color: var(--accent-gold);
+}
+
+/* ============================================
+   Section Screen Headers
+   ============================================ */
+
+.section-screen-header {
+  padding: calc(16px + var(--safe-top)) 20px 24px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.section-screen-header .back-btn {
+  margin-bottom: 8px;
+}
+
+.section-screen-title-area {
+  text-align: center;
+}
+
+.section-screen-illustration {
+  width: 120px;
+  height: 60px;
+  margin: 0 auto 12px;
+  opacity: 0.8;
+}
+
+.section-screen-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+.section-screen-title-area h1 {
+  font-family: var(--font-serif);
+  font-size: 26px;
   font-weight: 400;
   color: var(--text-primary);
   letter-spacing: 0.5px;
 }
 
-.section-desc {
+.section-screen-subtitle {
   font-size: 12px;
   color: var(--text-muted);
-  margin-top: 2px;
+  margin-top: 4px;
   letter-spacing: 0.5px;
 }
 
-/* Section Introductions */
+/* ============================================
+   Section Screen Content
+   ============================================ */
+
+.section-screen-content {
+  flex: 1;
+  padding: 24px 20px 100px;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 24px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+
+.section-divider span {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   Section Introductions
+   ============================================ */
+
 .section-intro {
   margin-bottom: 20px;
 }
@@ -464,11 +557,42 @@ body {
   text-anchor: middle;
 }
 
+.clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.15));
+}
+
+.clock-center-active {
+  fill: var(--accent-gold) !important;
+  font-weight: 600;
+}
+
+.clock-wisdom {
+  margin-top: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.clock-wisdom-label {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.clock-wisdom-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* ============================================
    Five Elements
    ============================================ */
 
-/* Five Elements — Enhanced Cards */
 .elements-grid {
   display: flex;
   flex-direction: column;
@@ -833,6 +957,7 @@ body {
 
 .detail-content {
   flex: 1;
+  padding-bottom: 80px;
 }
 
 .tab-content {
@@ -1023,6 +1148,7 @@ body {
 
 .home-footer {
   padding: 24px;
+  padding-bottom: calc(80px + var(--safe-bottom));
   text-align: center;
   border-top: 1px solid var(--border-subtle);
 }
@@ -1069,42 +1195,6 @@ body {
   .meridian-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* ============================================
-   Clock Wisdom & Active State
-   ============================================ */
-
-.clock-segment-active path {
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.15));
-}
-
-.clock-center-active {
-  fill: var(--accent-gold) !important;
-  font-weight: 600;
-}
-
-.clock-wisdom {
-  margin-top: 16px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 16px;
-}
-
-.clock-wisdom-label {
-  font-family: var(--font-serif);
-  font-size: 14px;
-  color: var(--accent-gold);
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.clock-wisdom-text {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
 }
 
 /* ============================================
@@ -1540,36 +1630,6 @@ body {
   padding-bottom: 0;
 }
 
-/* Theme transition */
-html[data-theme-transitioning] * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-/* Light theme overrides for hardcoded dark rgba values */
-[data-theme="light"] .bottom-nav {
-  background: rgba(234, 230, 222, 0.94);
-}
-
-[data-theme="light"] .top-float-btn {
-  background: rgba(234, 230, 222, 0.9);
-}
-
-[data-theme="light"] .top-float-btn:hover {
-  background: rgba(224, 220, 210, 0.95);
-}
-
-[data-theme="light"] .search-overlay {
-  background: rgba(245, 242, 236, 0.98);
-}
-
-[data-theme="light"] .hamburger-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="light"] .clock-segment-active path {
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.1));
-}
-
 /* Selection */
 ::selection {
   background: var(--accent-gold-dim);
@@ -1588,7 +1648,6 @@ html[data-theme-transitioning] * {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-  background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
   padding: 6px 0 calc(6px + var(--safe-bottom));
   z-index: 100;
@@ -1625,19 +1684,6 @@ html[data-theme-transitioning] * {
 
 .bottom-nav-item:not(.active):hover {
   color: var(--text-secondary);
-}
-
-/* Add padding to screens so content isn't hidden behind nav */
-.home-content {
-  padding-bottom: 80px;
-}
-
-.detail-content {
-  padding-bottom: 80px;
-}
-
-.home-footer {
-  padding-bottom: calc(80px + var(--safe-bottom));
 }
 
 /* ============================================
@@ -1878,7 +1924,7 @@ html[data-theme-transitioning] * {
 .overview-tabs {
   display: flex;
   gap: 4px;
-  padding: 0 16px 16px;
+  padding: 0 0 16px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -1919,7 +1965,6 @@ html[data-theme-transitioning] * {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 0 16px;
 }
 
 .overview-card {
@@ -2148,7 +2193,7 @@ html[data-theme-transitioning] * {
 /* Symptom Reference Table */
 
 .symptom-ref-intro {
-  padding: 0 16px 12px;
+  padding: 0 0 12px;
 }
 
 .symptom-ref-intro p {
@@ -2162,7 +2207,7 @@ html[data-theme-transitioning] * {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  margin: 0 16px 8px;
+  margin: 0 0 8px;
   overflow: hidden;
   transition: border-color 0.2s;
 }
@@ -2245,7 +2290,7 @@ html[data-theme-transitioning] * {
 /* Conversation Structure */
 
 .conversation-structure {
-  padding: 0 16px;
+  padding: 0;
 }
 
 .conversation-header-info {
