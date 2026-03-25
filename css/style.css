@@ -155,42 +155,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* ============================================
-   Theme Toggle
-   ============================================ */
-
-.theme-toggle {
-  position: fixed;
-  top: calc(14px + var(--safe-top));
-  right: calc(50% - 240px + 16px);
-  z-index: 100;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: var(--shadow-card);
-  color: var(--accent-gold);
-  font-size: 18px;
-  line-height: 1;
-  padding: 0;
-}
-
-.theme-toggle:hover {
-  background: var(--bg-card-hover);
-  transform: scale(1.05);
-}
-
-@media (max-width: 480px) {
-  .theme-toggle {
-    right: 16px;
-  }
-}
 
 .brand-title {
   font-family: var(--font-serif);
@@ -1579,6 +1543,31 @@ body {
 /* Theme transition */
 html[data-theme-transitioning] * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Light theme overrides for hardcoded dark rgba values */
+[data-theme="light"] .bottom-nav {
+  background: rgba(234, 230, 222, 0.94);
+}
+
+[data-theme="light"] .top-float-btn {
+  background: rgba(234, 230, 222, 0.9);
+}
+
+[data-theme="light"] .top-float-btn:hover {
+  background: rgba(224, 220, 210, 0.95);
+}
+
+[data-theme="light"] .search-overlay {
+  background: rgba(245, 242, 236, 0.98);
+}
+
+[data-theme="light"] .hamburger-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.1));
 }
 
 /* Selection */
