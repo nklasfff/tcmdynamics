@@ -7,6 +7,42 @@ import { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation
 let currentScreen = 'home';
 
 // ============================================
+// Theme Toggle
+// ============================================
+function initTheme() {
+  const saved = localStorage.getItem('tcm-theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+  updateThemeIcon();
+}
+
+function toggleTheme() {
+  document.documentElement.setAttribute('data-theme-transitioning', '');
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('tcm-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('tcm-theme', 'light');
+  }
+  updateThemeIcon();
+  renderOrganClock();
+  setTimeout(() => document.documentElement.removeAttribute('data-theme-transitioning'), 350);
+}
+
+function updateThemeIcon() {
+  const icon = document.getElementById('theme-icon');
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  icon.textContent = isLight ? '🌙' : '☀️';
+}
+
+function setupThemeToggle() {
+  document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+}
+
+// ============================================
 // Navigation
 // ============================================
 function showScreen(screenId) {
@@ -115,9 +151,12 @@ function renderOrganClock() {
     const timeY = cy + timeR * Math.sin(midAngle);
 
     const color = elementColors[item.element] || '#666';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const isActive = i === activeIndex;
-    const fillOpacity = isActive ? '0.55' : '0.2';
-    const strokeOpacity = isActive ? '0.9' : '0.4';
+    const baseFill = isLight ? 0.15 : 0.2;
+    const fillOpacity = isActive ? '0.55' : String(baseFill);
+    const baseStroke = isLight ? 0.6 : 0.4;
+    const strokeOpacity = isActive ? '0.9' : String(baseStroke);
     const strokeWidth = isActive ? '2' : '1';
     const textWeight = isActive ? 'bold' : 'normal';
 
@@ -1403,6 +1442,8 @@ function showOverviewDetail(ov, type) {
 // Init
 // ============================================
 function init() {
+  initTheme();
+  setupThemeToggle();
   renderSectionIntros();
   renderPracticeGrid();
   renderOrganGrid();
