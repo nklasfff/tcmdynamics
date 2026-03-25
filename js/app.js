@@ -833,13 +833,20 @@ function renderSectionIntros() {
     const intro = sectionIntros[key];
     if (!container || !intro) return;
 
+    // Create a short preview (first sentence of first paragraph)
+    const firstPara = intro.paragraphs[0] || '';
+    const preview = firstPara.split(/[.!?]/)[0] + '.';
+
     container.innerHTML = `
-      <div class="section-intro-content">
+      <div class="section-intro-preview visible">
+        <p>${preview}</p>
+      </div>
+      <div class="section-intro-content collapsed">
         ${intro.paragraphs.map(p => `<p>${p}</p>`).join('')}
       </div>
-      <button class="section-intro-toggle" data-expanded="true">
-        <span class="toggle-text">Skjul introduktion</span>
-        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+      <button class="section-intro-toggle" data-expanded="false">
+        <span class="toggle-text">Læs mere</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="transform: rotate(180deg)">
           <path d="M18 15l-6-6-6 6"/>
         </svg>
       </button>
@@ -847,11 +854,13 @@ function renderSectionIntros() {
 
     const toggle = container.querySelector('.section-intro-toggle');
     const content = container.querySelector('.section-intro-content');
+    const previewEl = container.querySelector('.section-intro-preview');
     toggle.addEventListener('click', () => {
       const expanded = toggle.dataset.expanded === 'true';
       toggle.dataset.expanded = expanded ? 'false' : 'true';
       content.classList.toggle('collapsed');
-      toggle.querySelector('.toggle-text').textContent = expanded ? 'Vis introduktion' : 'Skjul introduktion';
+      previewEl.classList.toggle('visible');
+      toggle.querySelector('.toggle-text').textContent = expanded ? 'Læs mere' : 'Skjul';
       toggle.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(180deg)' : '';
     });
   });
