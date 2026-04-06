@@ -1,11 +1,16 @@
 // The Patterns Behind — App Logic v2
-import { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } from './data.js';
+import { getLangData } from './data.js';
+import { t, getLanguage, setLanguage } from './i18n.js';
 
 // ============================================
 // State
 // ============================================
 let currentScreen = 'home';
 let previousScreen = 'home'; // Track where we came from for back navigation
+
+// Language-switchable data references
+let langData = getLangData(getLanguage());
+let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } = langData;
 
 // ============================================
 // Theme Toggle
@@ -37,7 +42,7 @@ function updateThemeIcon() {
   const label = document.getElementById('theme-label');
   const btn = document.getElementById('theme-toggle');
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  if (label) label.textContent = isLight ? 'Switch to dark mode' : 'Switch to light mode';
+  if (label) label.textContent = isLight ? t('themeDarkMode') : t('themeLightMode');
   if (btn) {
     const svg = btn.querySelector('svg');
     if (svg) {
@@ -51,6 +56,190 @@ function updateThemeIcon() {
 function setupThemeToggle() {
   const btn = document.getElementById('theme-toggle');
   if (btn) btn.addEventListener('click', toggleTheme);
+}
+
+// ============================================
+// Language Toggle
+// ============================================
+function updateLangLabel() {
+  const label = document.getElementById('lang-label');
+  if (label) label.textContent = getLanguage() === 'en' ? t('langDanish') : t('langEnglish');
+}
+
+function switchLanguage() {
+  const newLang = getLanguage() === 'en' ? 'da' : 'en';
+  setLanguage(newLang);
+
+  // Swap data references
+  langData = getLangData(newLang);
+  ({ organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } = langData);
+
+  // Update all UI text
+  updateUILanguage();
+
+  // Re-render all data-driven content
+  renderSectionIntros();
+  renderPracticeGrid();
+  renderOrganGrid();
+  renderMeridianGrid();
+  renderOrganClock();
+  renderElements();
+  renderFoundation();
+  renderOverviewOrganGrid();
+  renderOverviewMeridianGrid();
+  renderOverviewSymptoms();
+  renderOverviewConversation();
+
+  // Update labels
+  updateLangLabel();
+  updateThemeIcon();
+}
+
+function updateUILanguage() {
+  // Page title and html lang
+  document.title = t('pageTitle');
+  document.documentElement.lang = getLanguage();
+
+  // Home screen
+  const brandTitle = document.querySelector('.home-brand-title');
+  const brandSubtitle = document.querySelector('.home-brand-subtitle');
+  const homeIntro = document.querySelector('.home-intro');
+  if (brandTitle) brandTitle.textContent = t('brandTitle');
+  if (brandSubtitle) brandSubtitle.textContent = t('brandSubtitle');
+  if (homeIntro) homeIntro.textContent = t('homeIntro');
+
+  // Hub cards
+  const hubCards = document.querySelectorAll('.hub-card');
+  const hubKeys = ['practice', 'organs', 'elements', 'meridians', 'overviews'];
+  const hubTitleKeys = ['hubPractice', 'hubOrgans', 'hubElements', 'hubMeridians', 'hubOverviews'];
+  const hubDescKeys = ['hubPracticeDesc', 'hubOrgansDesc', 'hubElementsDesc', 'hubMeridiansDesc', 'hubOverviewsDesc'];
+  hubCards.forEach(card => {
+    const hub = card.dataset.hub;
+    const idx = hubKeys.indexOf(hub);
+    if (idx >= 0) {
+      const title = card.querySelector('.hub-card-title');
+      const desc = card.querySelector('.hub-card-desc');
+      if (title) title.textContent = t(hubTitleKeys[idx]);
+      if (desc) desc.textContent = t(hubDescKeys[idx]);
+    }
+  });
+
+  // Section screen headers
+  const sectionMappings = [
+    { screen: 'screen-section-practice', title: 'sectionPracticeTitle', subtitle: 'sectionPracticeSubtitle' },
+    { screen: 'screen-section-organs', title: 'sectionOrgansTitle', subtitle: 'sectionOrgansSubtitle' },
+    { screen: 'screen-section-elements', title: 'sectionElementsTitle', subtitle: 'sectionElementsSubtitle' },
+    { screen: 'screen-section-meridians', title: 'sectionMeridiansTitle', subtitle: 'sectionMeridiansSubtitle' },
+    { screen: 'screen-section-overviews', title: 'sectionOverviewsTitle', subtitle: 'sectionOverviewsSubtitle' }
+  ];
+  sectionMappings.forEach(({ screen, title, subtitle }) => {
+    const el = document.getElementById(screen);
+    if (!el) return;
+    const h1 = el.querySelector('.section-screen-title-area h1');
+    const sub = el.querySelector('.section-screen-subtitle');
+    if (h1) h1.textContent = t(title);
+    if (sub) sub.textContent = t(subtitle);
+  });
+
+  // Back buttons (all say "Home" or "Back")
+  document.querySelectorAll('.back-btn[data-back="home"] span').forEach(s => s.textContent = t('backHome'));
+
+  // Section dividers
+  const dividers = document.querySelectorAll('.section-divider span');
+  dividers.forEach(d => {
+    if (d.textContent.match(/Organ Clock|Organuret/i)) d.textContent = t('btnOrganClock');
+    if (d.textContent.match(/Core Principles|Grundprincipper/i)) d.textContent = t('btnCorePrinciples');
+  });
+
+  // Overview tabs
+  const ovTabMap = { organs: 'tabOrgans', meridians: 'tabMeridians', symptoms: 'tabSymptoms', conversation: 'tabDialogue' };
+  document.querySelectorAll('.overview-tab[data-ov-tab]').forEach(tab => {
+    const key = ovTabMap[tab.dataset.ovTab];
+    if (key) tab.textContent = t(key);
+  });
+
+  // Organ detail tabs
+  document.querySelectorAll('#screen-organ .tab[data-tab]').forEach(tab => {
+    if (tab.dataset.tab === 'overview') tab.textContent = t('tabOverview');
+    if (tab.dataset.tab === 'themes') tab.textContent = t('tab8Themes');
+    if (tab.dataset.tab === 'keypoints') tab.textContent = t('tabKeyPoints');
+  });
+
+  // Element detail tabs
+  document.querySelectorAll('#screen-element .tab[data-tab]').forEach(tab => {
+    if (tab.dataset.tab === 'el-overview') tab.textContent = t('tabElOverview');
+    if (tab.dataset.tab === 'el-correspondences') tab.textContent = t('tabCorrespondences');
+    if (tab.dataset.tab === 'el-cycles') tab.textContent = t('tabCycles');
+    if (tab.dataset.tab === 'el-seasonal') tab.textContent = t('tabSeasonal');
+  });
+
+  // Meridian detail tabs
+  document.querySelectorAll('#screen-meridian .tab[data-tab]').forEach(tab => {
+    if (tab.dataset.tab === 'm-overview') tab.textContent = t('tabMOverview');
+    if (tab.dataset.tab === 'm-pathway') tab.textContent = t('tabPathway');
+    if (tab.dataset.tab === 'm-keypoints') tab.textContent = t('tabMKeyPoints');
+    if (tab.dataset.tab === 'm-themes') tab.textContent = t('tabMThemes');
+  });
+
+  // Bottom navigation
+  document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+    const nav = btn.dataset.nav;
+    const span = btn.querySelector('span');
+    if (!span) return;
+    const navMap = { home: 'navHome', practice: 'navPractice', organs: 'navOrgans', elements: 'navElements', meridians: 'navMeridians' };
+    if (navMap[nav]) span.textContent = t(navMap[nav]);
+  });
+
+  // Search
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+  const searchPlaceholder = document.querySelector('.search-placeholder');
+  if (searchPlaceholder) searchPlaceholder.textContent = t('searchTyping');
+
+  // Hamburger menu
+  const menuBrand = document.querySelector('.hamburger-brand');
+  if (menuBrand) menuBrand.textContent = t('brandTitle');
+
+  const menuSectionLabels = document.querySelectorAll('.hamburger-section-label');
+  menuSectionLabels.forEach(label => {
+    if (label.id === 'menu-label-appearance') label.textContent = t('menuAppearance');
+    if (label.id === 'menu-label-language') label.textContent = t('menuLanguage');
+    if (label.textContent.match(/Sections|Sektioner/i)) label.textContent = t('menuSections');
+    if (label.textContent.match(/Information/i)) label.textContent = t('menuInfo');
+  });
+
+  // Hamburger menu links
+  document.querySelectorAll('.hamburger-link[data-nav]').forEach(link => {
+    const nav = link.dataset.nav;
+    const text = link.childNodes[link.childNodes.length - 1];
+    if (!text || text.nodeType !== 3) return;
+    const menuMap = { home: 'menuHome', practice: 'menuPractice', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews' };
+    if (menuMap[nav]) text.textContent = '\n          ' + t(menuMap[nav]) + '\n        ';
+  });
+
+  document.querySelectorAll('.hamburger-link[data-info]').forEach(link => {
+    const info = link.dataset.info;
+    const text = link.childNodes[link.childNodes.length - 1];
+    if (!text || text.nodeType !== 3) return;
+    if (info === 'about') text.textContent = '\n          ' + t('menuAbout') + '\n        ';
+    if (info === 'howto') text.textContent = '\n          ' + t('menuHowTo') + '\n        ';
+  });
+
+  // Aria labels
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  if (hamburgerBtn) hamburgerBtn.setAttribute('aria-label', t('ariaMenu'));
+  const searchBtn = document.getElementById('search-btn');
+  if (searchBtn) searchBtn.setAttribute('aria-label', t('ariaSearch'));
+  const searchClose = document.getElementById('search-close');
+  if (searchClose) searchClose.setAttribute('aria-label', t('ariaCloseSearch'));
+  const hamburgerClose = document.getElementById('hamburger-close');
+  if (hamburgerClose) hamburgerClose.setAttribute('aria-label', t('ariaCloseMenu'));
+}
+
+function setupLanguageToggle() {
+  const btn = document.getElementById('lang-toggle');
+  if (btn) btn.addEventListener('click', switchLanguage);
+  updateLangLabel();
 }
 
 // ============================================
@@ -142,11 +331,8 @@ function renderOrganClock() {
   const timeR = outerR - 12;
 
   const elementColors = {
-    'Metal': '#9a9a9a',
-    'Earth': '#b8952e',
-    'Fire': '#c43c3c',
-    'Water': '#2e4a8b',
-    'Wood': '#2e7a2e'
+    'Metal': '#9a9a9a', 'Earth': '#b8952e', 'Fire': '#c43c3c', 'Water': '#2e4a8b', 'Wood': '#2e7a2e',
+    'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Vand': '#2e4a8b'
   };
 
   const activeIndex = getActiveOrganIndex();
@@ -192,7 +378,7 @@ function renderOrganClock() {
   });
 
   const now = new Date();
-  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  const timeStr = now.toLocaleTimeString(getLanguage() === 'da' ? 'da-DK' : 'en-US', { hour: '2-digit', minute: '2-digit' });
   const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
 
   container.innerHTML = `
@@ -201,7 +387,7 @@ function renderOrganClock() {
       <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--bg-primary)" stroke="var(--border-light)" stroke-width="0.5"/>
       <text x="${cx}" y="${cy - 14}" class="clock-center-text" font-size="11">${timeStr}</text>
       <text x="${cx}" y="${cy + 2}" class="clock-center-text clock-center-active" font-size="11">${activeOrgan ? activeOrgan.organ : ''}</text>
-      <text x="${cx}" y="${cy + 16}" class="clock-center-text" font-size="8" fill="var(--text-muted)">is active now</text>
+      <text x="${cx}" y="${cy + 16}" class="clock-center-text" font-size="8" fill="var(--text-muted)">${t('clockActiveNow')}</text>
     </svg>
   `;
 
@@ -305,7 +491,7 @@ function showElementDetail(el) {
 
   document.getElementById('element-organs-nav').innerHTML = `
     <div class="element-organs-section">
-      <h3 class="element-organs-title">${el.name} Element Organs</h3>
+      <h3 class="element-organs-title">${el.name} ${t('elementOrgansTitle')}</h3>
       ${el.organs.map(organName => {
         const organ = organs.find(o => o.name === organName);
         if (!organ) return '';
@@ -342,27 +528,27 @@ function showElementDetail(el) {
 
   document.getElementById('element-cycles').innerHTML = `
     <div class="cycle-section">
-      <h3 class="cycle-title">Generating Cycle (Sheng)</h3>
+      <h3 class="cycle-title">${t('generatingCycle')}</h3>
       <div class="cycle-diagram">
         ${renderMiniCycle(el, 'sheng')}
       </div>
       <div class="cycle-card">
-        <div class="cycle-card-label">Nourished by</div>
+        <div class="cycle-card-label">${t('nourishedBy')}</div>
         <p class="cycle-card-text">${el.cycles.generating}</p>
       </div>
       <div class="cycle-card">
-        <div class="cycle-card-label">Nourishes</div>
+        <div class="cycle-card-label">${t('nourishes')}</div>
         <p class="cycle-card-text">${el.cycles.generated}</p>
       </div>
     </div>
     <div class="cycle-section">
-      <h3 class="cycle-title">Controlling Cycle (Ke)</h3>
+      <h3 class="cycle-title">${t('controllingCycle')}</h3>
       <div class="cycle-card">
-        <div class="cycle-card-label">Controls</div>
+        <div class="cycle-card-label">${t('controls')}</div>
         <p class="cycle-card-text">${el.cycles.controlling}</p>
       </div>
       <div class="cycle-card">
-        <div class="cycle-card-label">Controlled by</div>
+        <div class="cycle-card-label">${t('controlledBy')}</div>
         <p class="cycle-card-text">${el.cycles.controlledBy}</p>
       </div>
     </div>
@@ -371,7 +557,7 @@ function showElementDetail(el) {
   document.getElementById('element-seasonal').innerHTML = `
     <div class="seasonal-header">
       <div class="seasonal-season">${el.season}</div>
-      <div class="seasonal-subtitle">Guidance for the ${el.name} season</div>
+      <div class="seasonal-subtitle">${t('seasonalGuidance')} ${el.name} ${t('seasonalGuidanceSuffix')}</div>
     </div>
     ${el.seasonalWisdom.map((tip, i) => `
       <div class="seasonal-tip">
@@ -386,17 +572,17 @@ function showElementDetail(el) {
 }
 
 function renderMiniCycle(currentEl, type) {
-  const order = ['Wood', 'Fire', 'Earth', 'Metal', 'Water'];
-  const colors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b' };
+  const elNames = [t('elWood'), t('elFire'), t('elEarth'), t('elMetal'), t('elWater')];
+  const colors = ['#2e7a2e', '#c43c3c', '#b8952e', '#9a9a9a', '#2e4a8b'];
 
-  return `<div class="mini-cycle">${order.map((name, i) => {
+  return `<div class="mini-cycle">${elNames.map((name, i) => {
     const isCurrent = name === currentEl.name;
-    const color = colors[name];
+    const color = colors[i];
     return `
       <span class="mini-cycle-node${isCurrent ? ' mini-cycle-active' : ''}" style="--node-color: ${color}">
         ${name}
       </span>
-      ${i < order.length - 1 ? '<span class="mini-cycle-arrow">→</span>' : '<span class="mini-cycle-arrow">→</span>'}
+      ${i < elNames.length - 1 ? '<span class="mini-cycle-arrow">→</span>' : '<span class="mini-cycle-arrow">→</span>'}
     `;
   }).join('')}</div>`;
 }
@@ -414,7 +600,7 @@ function showFoundationDetail(key) {
   if (key === 'yinYang') {
     bodyHTML += `
       <div class="yin-yang-pairs">
-        <h3 class="pairs-title">Yin & Yang Pairs</h3>
+        <h3 class="pairs-title">${t('yinYangPairs')}</h3>
         <div class="pairs-grid">
           ${section.pairs.map(p => `
             <div class="pair-row">
@@ -429,21 +615,21 @@ function showFoundationDetail(key) {
   }
 
   if (key === 'elementCycles') {
-    const colors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b' };
+    const colors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b', 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Vand': '#2e4a8b' };
     bodyHTML += `
       <div class="cycle-visual">
-        <h3 class="pairs-title">Generating Cycle (Sheng)</h3>
+        <h3 class="pairs-title">${t('generatingCycle')}</h3>
         <div class="cycle-flow">
           ${section.shengCycle.map((name, i) => `
-            <span class="cycle-node" style="--node-color: ${colors[name]}">${name}</span>
-            ${i < section.shengCycle.length - 1 ? '<span class="cycle-arrow">nourishes →</span>' : '<span class="cycle-arrow">nourishes →</span>'}
+            <span class="cycle-node" style="--node-color: ${colors[name] || '#999'}">${name}</span>
+            ${i < section.shengCycle.length - 1 ? `<span class="cycle-arrow">${t('nourishesArrow')}</span>` : `<span class="cycle-arrow">${t('nourishesArrow')}</span>`}
           `).join('')}
         </div>
-        <h3 class="pairs-title" style="margin-top: 24px;">Controlling Cycle (Ke)</h3>
+        <h3 class="pairs-title" style="margin-top: 24px;">${t('controllingCycle')}</h3>
         <div class="cycle-flow">
           ${section.keCycle.map((name, i) => `
-            <span class="cycle-node" style="--node-color: ${colors[name]}">${name}</span>
-            ${i < section.keCycle.length - 1 ? '<span class="cycle-arrow">controls →</span>' : '<span class="cycle-arrow">controls →</span>'}
+            <span class="cycle-node" style="--node-color: ${colors[name] || '#999'}">${name}</span>
+            ${i < section.keCycle.length - 1 ? `<span class="cycle-arrow">${t('controlsArrow')}</span>` : `<span class="cycle-arrow">${t('controlsArrow')}</span>`}
           `).join('')}
         </div>
       </div>
@@ -451,7 +637,7 @@ function showFoundationDetail(key) {
   }
 
   if (key === 'organPartnership') {
-    const elementColors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b' };
+    const elementColors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b', 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Vand': '#2e4a8b' };
     bodyHTML += `
       <div class="partnerships">
         ${section.pairs.map(p => `
@@ -534,8 +720,8 @@ function showMeridianDetail(meridian) {
 
   document.getElementById('meridian-detail-meta').innerHTML = `
     <div class="meta-points">
-      <span class="meta-point"><strong>Opening Point:</strong> ${meridian.openingPoint}</span>
-      <span class="meta-point"><strong>Coupled Point:</strong> ${meridian.coupledPoint}</span>
+      <span class="meta-point"><strong>${t('openingPoint')}</strong> ${meridian.openingPoint}</span>
+      <span class="meta-point"><strong>${t('coupledPoint')}</strong> ${meridian.coupledPoint}</span>
     </div>
     ${meridian.level ? `<div class="meridian-level">${meridian.level}</div>` : ''}
   `;
@@ -552,7 +738,7 @@ function showMeridianDetail(meridian) {
       if (partner) {
         connectionsHTML += `
           <div class="connection-block">
-            <h3 class="connection-title">Paired with</h3>
+            <h3 class="connection-title">${t('pairedWith')}</h3>
             <div class="element-organ-link" data-partner-id="${partner.id}">
               <span class="element-organ-icon">${partner.icon}</span>
               <div class="element-organ-info">
@@ -571,7 +757,7 @@ function showMeridianDetail(meridian) {
     if (meridian.relatedOrgans) {
       connectionsHTML += `
         <div class="connection-block">
-          <h3 class="connection-title">Related Organs</h3>
+          <h3 class="connection-title">${t('relatedOrgans')}</h3>
           ${meridian.relatedOrgans.map(organName => {
             const organ = organs.find(o => o.name === organName);
             if (!organ) return '';
@@ -845,7 +1031,7 @@ function renderSectionIntros() {
         ${intro.paragraphs.map(p => `<p>${p}</p>`).join('')}
       </div>
       <button class="section-intro-toggle" data-expanded="false">
-        <span class="toggle-text">Read more</span>
+        <span class="toggle-text">${t('readMore')}</span>
         <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="transform: rotate(180deg)">
           <path d="M18 15l-6-6-6 6"/>
         </svg>
@@ -860,7 +1046,7 @@ function renderSectionIntros() {
       toggle.dataset.expanded = expanded ? 'false' : 'true';
       content.classList.toggle('collapsed');
       previewEl.classList.toggle('visible');
-      toggle.querySelector('.toggle-text').textContent = expanded ? 'Read more' : 'Hide';
+      toggle.querySelector('.toggle-text').textContent = expanded ? t('readMore') : t('hide');
       toggle.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(180deg)' : '';
     });
   });
@@ -987,26 +1173,12 @@ function setupHamburger() {
 function showInfoModal(infoId) {
   const content = {
     about: {
-      title: 'About The Patterns Behind',
-      body: [
-        'The Patterns Behind is an app built as a companion tool to the material of the same name. It provides practitioners with a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
-        'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.'
-      ]
-    },
-    author: {
-      title: 'About the Author',
-      body: [
-        'Anne Marie Clement is a craniosacral therapist with many years of experience. Her approach integrates Traditional Chinese Medicine with body therapy and is built on a deep respect for the body\'s own intelligence and capacity for self-regulation.',
-        'The material The Patterns Behind stems from her many years of practice and is written as an invitation to see the body through a different lens — not as something that replaces existing approaches, but as something that can enrich and expand them.'
-      ]
+      title: t('aboutTitle'),
+      body: t('aboutBody')
     },
     howto: {
-      title: 'How to Use the App',
-      body: [
-        'Use the bottom navigation to quickly jump between sections. "In Practice" provides guidance for the conversation with your client and the eight foundational questions.',
-        'Under each organ you will find 8 mapping themes with concrete questions you can ask your client. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
-        'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
-      ]
+      title: t('howtoTitle'),
+      body: t('howtoBody')
     }
   };
 
@@ -1046,7 +1218,7 @@ function setupSearch() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     input.value = '';
-    resultsEl.innerHTML = '<div class="search-placeholder">Start typing to search...</div>';
+    resultsEl.innerHTML = '<div class="search-placeholder">${t('searchTyping')}</div>';
   }
 
   btn.addEventListener('click', openSearch);
@@ -1059,7 +1231,7 @@ function setupSearch() {
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
     if (q.length < 2) {
-      resultsEl.innerHTML = '<div class="search-placeholder">Start typing to search...</div>';
+      resultsEl.innerHTML = '<div class="search-placeholder">${t('searchTyping')}</div>';
       return;
     }
     const results = performSearch(q);
@@ -1119,16 +1291,16 @@ function performSearch(query) {
 
 function renderSearchResults(results, query, container, closeCallback) {
   const groups = [
-    { key: 'organs', label: 'Organs', items: results.organs },
-    { key: 'elements', label: 'Elements', items: results.elements },
-    { key: 'meridians', label: 'Extraordinary Meridians', items: results.meridians },
-    { key: 'practice', label: 'In Practice', items: results.practice },
-    { key: 'foundation', label: 'Core Principles', items: results.foundation },
-    { key: 'overviews', label: 'Overviews', items: results.overviews }
+    { key: 'organs', label: t('searchOrgans'), items: results.organs },
+    { key: 'elements', label: t('searchElements'), items: results.elements },
+    { key: 'meridians', label: t('searchMeridians'), items: results.meridians },
+    { key: 'practice', label: t('searchPractice'), items: results.practice },
+    { key: 'foundation', label: t('searchFoundation'), items: results.foundation },
+    { key: 'overviews', label: t('searchOverviews'), items: results.overviews }
   ].filter(g => g.items.length > 0);
 
   if (groups.length === 0) {
-    container.innerHTML = `<div class="search-no-results">No results for "${query}"</div>`;
+    container.innerHTML = `<div class="search-no-results">${t('searchNoResults')} "${query}"</div>`;
     return;
   }
 
@@ -1252,7 +1424,7 @@ function renderOverviewSymptoms() {
   const container = document.getElementById('overview-symptoms-content');
   container.innerHTML = `
     <div class="symptom-ref-intro">
-      <p>Tap a symptom to see the primary organs to investigate</p>
+      <p>${t('symptomIntro')}</p>
     </div>
     ${symptomReference.map(item => `
       <div class="symptom-ref-item">
@@ -1332,34 +1504,34 @@ function showOverviewDetail(ov, type) {
   if (type === 'organ') {
     bodyHTML += `
       <div class="ov-info-card">
-        <div class="ov-info-row"><span class="ov-info-label">Known as</span><span class="ov-info-value">"${ov.nickname}"</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Time</span><span class="ov-info-value">${ov.time}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Partner</span><span class="ov-info-value">${ov.partner}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Element</span><span class="ov-info-value">${ov.element}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Opens to</span><span class="ov-info-value">${ov.opensTo}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Shows in</span><span class="ov-info-value">${ov.showsIn}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Emotion</span><span class="ov-info-value">${ov.emotion}</span></div>
-        ${ov.houses ? `<div class="ov-info-row"><span class="ov-info-label">Houses</span><span class="ov-info-value">${ov.houses}</span></div>` : ''}
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovKnownAs')}</span><span class="ov-info-value">"${ov.nickname}"</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovTime')}</span><span class="ov-info-value">${ov.time}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovPartner')}</span><span class="ov-info-value">${ov.partner}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovElement')}</span><span class="ov-info-value">${ov.element}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovOpensTo')}</span><span class="ov-info-value">${ov.opensTo}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovShowsIn')}</span><span class="ov-info-value">${ov.showsIn}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">${t('ovEmotion')}</span><span class="ov-info-value">${ov.emotion}</span></div>
+        ${ov.houses ? `<div class="ov-info-row"><span class="ov-info-label">${t('ovHouses')}</span><span class="ov-info-value">${ov.houses}</span></div>` : ''}
       </div>
     `;
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Key Function</h3>
+        <h3 class="ov-section-title">${t('ovKeyFunction')}</h3>
         <p class="ov-section-text">${ov.keyFunction}</p>
       </div>
     `;
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Classic Signs</h3>
+        <h3 class="ov-section-title">${t('ovClassicSigns')}</h3>
         <p class="ov-section-text">${ov.classicSigns}</p>
       </div>
     `;
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Quick Signs</h3>
+        <h3 class="ov-section-title">${t('ovQuickSigns')}</h3>
         <div class="ov-signs-grid">
           ${ov.quickSigns.map(s => `<div class="ov-sign-pill">${s}</div>`).join('')}
         </div>
@@ -1368,18 +1540,18 @@ function showOverviewDetail(ov, type) {
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Detailed Overview</h3>
+        <h3 class="ov-section-title">${t('ovDetailedOverview')}</h3>
         <div class="ov-table">
           <div class="ov-table-col">
-            <div class="ov-table-col-header">Symptoms</div>
+            <div class="ov-table-col-header">${t('ovSymptoms')}</div>
             ${ov.symptomer.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
           </div>
           <div class="ov-table-col">
-            <div class="ov-table-col-header">Physical Manifestations</div>
+            <div class="ov-table-col-header">${t('ovPhysical')}</div>
             ${ov.fysiske.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
           </div>
           <div class="ov-table-col">
-            <div class="ov-table-col-header">Functions & Emotions</div>
+            <div class="ov-table-col-header">${t('ovFunctionsEmotions')}</div>
             ${ov.funktioner.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
           </div>
         </div>
@@ -1389,29 +1561,29 @@ function showOverviewDetail(ov, type) {
     bodyHTML += `
       <div class="ov-section">
         <button class="ov-link-full" data-organ-id="${ov.organId}">
-          View full ${ov.name} page with 8 mapping themes →
+          ${t('ovViewFull')} ${ov.name} ${t('ovPageWith8Themes')}
         </button>
       </div>
     `;
   } else {
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Primary Symptoms</h3>
+        <h3 class="ov-section-title">${t('ovPrimarySymptoms')}</h3>
         <div class="ov-signs-grid">
           ${ov.primarySymptoms.map(s => `<div class="ov-sign-pill">${s}</div>`).join('')}
         </div>
       </div>
       <div class="ov-table">
         <div class="ov-table-col">
-          <div class="ov-table-col-header">Functions & Properties</div>
+          <div class="ov-table-col-header">${t('ovFunctionsProperties')}</div>
           ${ov.functions.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
         </div>
         <div class="ov-table-col">
-          <div class="ov-table-col-header">Manifestations</div>
+          <div class="ov-table-col-header">${t('ovManifestations')}</div>
           ${ov.manifestations.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
         </div>
         <div class="ov-table-col">
-          <div class="ov-table-col-header">Energetics & Emotions</div>
+          <div class="ov-table-col-header">${t('ovEnergetics')}</div>
           ${ov.energetics.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
         </div>
       </div>
@@ -1420,7 +1592,7 @@ function showOverviewDetail(ov, type) {
     bodyHTML += `
       <div class="ov-section" style="margin-top: 20px;">
         <button class="ov-link-full" data-meridian-id="${ov.meridianId}">
-          View full ${ov.name} page →
+          ${t('ovViewFull')} ${ov.name} ${t('ovPageArrow')}
         </button>
       </div>
     `;
@@ -1452,6 +1624,8 @@ function showOverviewDetail(ov, type) {
 function init() {
   initTheme();
   setupThemeToggle();
+  setupLanguageToggle();
+  updateUILanguage();
   renderSectionIntros();
   renderPracticeGrid();
   renderOrganGrid();
