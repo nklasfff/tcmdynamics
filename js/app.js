@@ -1,4 +1,4 @@
-// Mønstrene Bag — App Logic v2
+// The Patterns Behind — App Logic v2
 import { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } from './data.js';
 
 // ============================================
@@ -37,7 +37,7 @@ function updateThemeIcon() {
   const label = document.getElementById('theme-label');
   const btn = document.getElementById('theme-toggle');
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  if (label) label.textContent = isLight ? 'Skift til mørk tilstand' : 'Skift til lys tilstand';
+  if (label) label.textContent = isLight ? 'Switch to dark mode' : 'Switch to light mode';
   if (btn) {
     const svg = btn.querySelector('svg');
     if (svg) {
@@ -84,7 +84,7 @@ function renderOrganGrid() {
       <span class="organ-card-icon">${organ.icon}</span>
       <div class="organ-card-name">${organ.name}</div>
       <div class="organ-card-meta">${organ.element} · ${organ.yinYang}</div>
-      <div class="organ-card-time">kl. ${organ.time}</div>
+      <div class="organ-card-time">${organ.time}</div>
     </div>
   `).join('');
 
@@ -143,10 +143,10 @@ function renderOrganClock() {
 
   const elementColors = {
     'Metal': '#9a9a9a',
-    'Jord': '#b8952e',
-    'Ild': '#c43c3c',
-    'Vand': '#2e4a8b',
-    'Træ': '#2e7a2e'
+    'Earth': '#b8952e',
+    'Fire': '#c43c3c',
+    'Water': '#2e4a8b',
+    'Wood': '#2e7a2e'
   };
 
   const activeIndex = getActiveOrganIndex();
@@ -192,7 +192,7 @@ function renderOrganClock() {
   });
 
   const now = new Date();
-  const timeStr = now.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
+  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
 
   container.innerHTML = `
@@ -201,7 +201,7 @@ function renderOrganClock() {
       <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--bg-primary)" stroke="var(--border-light)" stroke-width="0.5"/>
       <text x="${cx}" y="${cy - 14}" class="clock-center-text" font-size="11">${timeStr}</text>
       <text x="${cx}" y="${cy + 2}" class="clock-center-text clock-center-active" font-size="11">${activeOrgan ? activeOrgan.organ : ''}</text>
-      <text x="${cx}" y="${cy + 16}" class="clock-center-text" font-size="8" fill="var(--text-muted)">er aktiv nu</text>
+      <text x="${cx}" y="${cy + 16}" class="clock-center-text" font-size="8" fill="var(--text-muted)">is active now</text>
     </svg>
   `;
 
@@ -213,7 +213,7 @@ function renderOrganClock() {
       container.after(wisdomBox);
     }
     wisdomBox.innerHTML = `
-      <div class="clock-wisdom-label">${activeOrgan.organ} · kl. ${activeOrgan.time}</div>
+      <div class="clock-wisdom-label">${activeOrgan.organ} · ${activeOrgan.time}</div>
       <p class="clock-wisdom-text">${activeOrgan.wisdom}</p>
     `;
   }
@@ -305,7 +305,7 @@ function showElementDetail(el) {
 
   document.getElementById('element-organs-nav').innerHTML = `
     <div class="element-organs-section">
-      <h3 class="element-organs-title">${el.name}-elementets organer</h3>
+      <h3 class="element-organs-title">${el.name} Element Organs</h3>
       ${el.organs.map(organName => {
         const organ = organs.find(o => o.name === organName);
         if (!organ) return '';
@@ -342,27 +342,27 @@ function showElementDetail(el) {
 
   document.getElementById('element-cycles').innerHTML = `
     <div class="cycle-section">
-      <h3 class="cycle-title">Skabelses-cyklus (Sheng)</h3>
+      <h3 class="cycle-title">Generating Cycle (Sheng)</h3>
       <div class="cycle-diagram">
         ${renderMiniCycle(el, 'sheng')}
       </div>
       <div class="cycle-card">
-        <div class="cycle-card-label">Næres af</div>
+        <div class="cycle-card-label">Nourished by</div>
         <p class="cycle-card-text">${el.cycles.generating}</p>
       </div>
       <div class="cycle-card">
-        <div class="cycle-card-label">Nærer</div>
+        <div class="cycle-card-label">Nourishes</div>
         <p class="cycle-card-text">${el.cycles.generated}</p>
       </div>
     </div>
     <div class="cycle-section">
-      <h3 class="cycle-title">Kontrol-cyklus (Ke)</h3>
+      <h3 class="cycle-title">Controlling Cycle (Ke)</h3>
       <div class="cycle-card">
-        <div class="cycle-card-label">Kontrollerer</div>
+        <div class="cycle-card-label">Controls</div>
         <p class="cycle-card-text">${el.cycles.controlling}</p>
       </div>
       <div class="cycle-card">
-        <div class="cycle-card-label">Kontrolleres af</div>
+        <div class="cycle-card-label">Controlled by</div>
         <p class="cycle-card-text">${el.cycles.controlledBy}</p>
       </div>
     </div>
@@ -371,7 +371,7 @@ function showElementDetail(el) {
   document.getElementById('element-seasonal').innerHTML = `
     <div class="seasonal-header">
       <div class="seasonal-season">${el.season}</div>
-      <div class="seasonal-subtitle">Vejledning for ${el.name}-sæsonen</div>
+      <div class="seasonal-subtitle">Guidance for the ${el.name} season</div>
     </div>
     ${el.seasonalWisdom.map((tip, i) => `
       <div class="seasonal-tip">
@@ -386,8 +386,8 @@ function showElementDetail(el) {
 }
 
 function renderMiniCycle(currentEl, type) {
-  const order = ['Træ', 'Ild', 'Jord', 'Metal', 'Vand'];
-  const colors = { 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Metal': '#9a9a9a', 'Vand': '#2e4a8b' };
+  const order = ['Wood', 'Fire', 'Earth', 'Metal', 'Water'];
+  const colors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b' };
 
   return `<div class="mini-cycle">${order.map((name, i) => {
     const isCurrent = name === currentEl.name;
@@ -414,7 +414,7 @@ function showFoundationDetail(key) {
   if (key === 'yinYang') {
     bodyHTML += `
       <div class="yin-yang-pairs">
-        <h3 class="pairs-title">Yin & Yang Par</h3>
+        <h3 class="pairs-title">Yin & Yang Pairs</h3>
         <div class="pairs-grid">
           ${section.pairs.map(p => `
             <div class="pair-row">
@@ -429,21 +429,21 @@ function showFoundationDetail(key) {
   }
 
   if (key === 'elementCycles') {
-    const colors = { 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Metal': '#9a9a9a', 'Vand': '#2e4a8b' };
+    const colors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b' };
     bodyHTML += `
       <div class="cycle-visual">
-        <h3 class="pairs-title">Skabelses-cyklus (Sheng)</h3>
+        <h3 class="pairs-title">Generating Cycle (Sheng)</h3>
         <div class="cycle-flow">
           ${section.shengCycle.map((name, i) => `
             <span class="cycle-node" style="--node-color: ${colors[name]}">${name}</span>
-            ${i < section.shengCycle.length - 1 ? '<span class="cycle-arrow">nærer →</span>' : '<span class="cycle-arrow">nærer →</span>'}
+            ${i < section.shengCycle.length - 1 ? '<span class="cycle-arrow">nourishes →</span>' : '<span class="cycle-arrow">nourishes →</span>'}
           `).join('')}
         </div>
-        <h3 class="pairs-title" style="margin-top: 24px;">Kontrol-cyklus (Ke)</h3>
+        <h3 class="pairs-title" style="margin-top: 24px;">Controlling Cycle (Ke)</h3>
         <div class="cycle-flow">
           ${section.keCycle.map((name, i) => `
             <span class="cycle-node" style="--node-color: ${colors[name]}">${name}</span>
-            ${i < section.keCycle.length - 1 ? '<span class="cycle-arrow">kontrollerer →</span>' : '<span class="cycle-arrow">kontrollerer →</span>'}
+            ${i < section.keCycle.length - 1 ? '<span class="cycle-arrow">controls →</span>' : '<span class="cycle-arrow">controls →</span>'}
           `).join('')}
         </div>
       </div>
@@ -451,7 +451,7 @@ function showFoundationDetail(key) {
   }
 
   if (key === 'organPartnership') {
-    const elementColors = { 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Metal': '#9a9a9a', 'Vand': '#2e4a8b' };
+    const elementColors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b' };
     bodyHTML += `
       <div class="partnerships">
         ${section.pairs.map(p => `
@@ -485,7 +485,7 @@ function showOrganDetail(organ) {
     <span class="meta-tag"><span class="dot" style="background: ${organ.color}"></span> ${organ.element}</span>
     <span class="meta-tag">${organ.yinYang}</span>
     <span class="meta-tag">Partner: ${organ.partner}</span>
-    <span class="meta-tag">kl. ${organ.time}</span>
+    <span class="meta-tag">${organ.time}</span>
   `;
 
   document.getElementById('organ-description').innerHTML =
@@ -534,8 +534,8 @@ function showMeridianDetail(meridian) {
 
   document.getElementById('meridian-detail-meta').innerHTML = `
     <div class="meta-points">
-      <span class="meta-point"><strong>Åbningspunkt:</strong> ${meridian.openingPoint}</span>
-      <span class="meta-point"><strong>Makkerpunkt:</strong> ${meridian.coupledPoint}</span>
+      <span class="meta-point"><strong>Opening Point:</strong> ${meridian.openingPoint}</span>
+      <span class="meta-point"><strong>Coupled Point:</strong> ${meridian.coupledPoint}</span>
     </div>
     ${meridian.level ? `<div class="meridian-level">${meridian.level}</div>` : ''}
   `;
@@ -552,7 +552,7 @@ function showMeridianDetail(meridian) {
       if (partner) {
         connectionsHTML += `
           <div class="connection-block">
-            <h3 class="connection-title">Parret med</h3>
+            <h3 class="connection-title">Paired with</h3>
             <div class="element-organ-link" data-partner-id="${partner.id}">
               <span class="element-organ-icon">${partner.icon}</span>
               <div class="element-organ-info">
@@ -571,7 +571,7 @@ function showMeridianDetail(meridian) {
     if (meridian.relatedOrgans) {
       connectionsHTML += `
         <div class="connection-block">
-          <h3 class="connection-title">Relaterede organer</h3>
+          <h3 class="connection-title">Related Organs</h3>
           ${meridian.relatedOrgans.map(organName => {
             const organ = organs.find(o => o.name === organName);
             if (!organ) return '';
@@ -845,7 +845,7 @@ function renderSectionIntros() {
         ${intro.paragraphs.map(p => `<p>${p}</p>`).join('')}
       </div>
       <button class="section-intro-toggle" data-expanded="false">
-        <span class="toggle-text">Læs mere</span>
+        <span class="toggle-text">Read more</span>
         <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="transform: rotate(180deg)">
           <path d="M18 15l-6-6-6 6"/>
         </svg>
@@ -860,7 +860,7 @@ function renderSectionIntros() {
       toggle.dataset.expanded = expanded ? 'false' : 'true';
       content.classList.toggle('collapsed');
       previewEl.classList.toggle('visible');
-      toggle.querySelector('.toggle-text').textContent = expanded ? 'Læs mere' : 'Skjul';
+      toggle.querySelector('.toggle-text').textContent = expanded ? 'Read more' : 'Hide';
       toggle.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(180deg)' : '';
     });
   });
@@ -987,25 +987,25 @@ function setupHamburger() {
 function showInfoModal(infoId) {
   const content = {
     about: {
-      title: 'Om Mønstrene Bag',
+      title: 'About The Patterns Behind',
       body: [
-        'Mønstrene Bag er en app bygget som følgeværktøj til materialet af samme navn. Den giver behandlere et praktisk opslagsværk til at forstå og kortlægge mønstre hos deres klienter med afsæt i Traditionel Kinesisk Medicin.',
-        'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element teorien, organuret og de grundlæggende TCM-principper — alt sammen præsenteret med konkrete spørgsmål og temaer til brug i praksis.'
+        'The Patterns Behind is an app built as a companion tool to the material of the same name. It provides practitioners with a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
+        'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.'
       ]
     },
     author: {
-      title: 'Om Forfatteren',
+      title: 'About the Author',
       body: [
-        'Anne Marie Clement er kraniosakral-terapeut med mange års erfaring. Hendes tilgang integrerer Traditionel Kinesisk Medicin med kropsterapi og bygger på en dyb respekt for kroppens egen intelligens og evne til selvregulering.',
-        'Materialet Mønstrene Bag udspringer af hendes mange års praksis og er skrevet som en invitation til at se kroppen gennem en anderledes linse — ikke som noget der erstatter eksisterende tilgange, men som noget der kan berige og udvide dem.'
+        'Anne Marie Clement is a craniosacral therapist with many years of experience. Her approach integrates Traditional Chinese Medicine with body therapy and is built on a deep respect for the body\'s own intelligence and capacity for self-regulation.',
+        'The material The Patterns Behind stems from her many years of practice and is written as an invitation to see the body through a different lens — not as something that replaces existing approaches, but as something that can enrich and expand them.'
       ]
     },
     howto: {
-      title: 'Sådan Bruges Appen',
+      title: 'How to Use the App',
       body: [
-        'Brug bundnavigationen til hurtigt at hoppe mellem sektioner. "I Praksis" giver dig vejledning til samtalen med klienten og de otte grundspørgsmål.',
-        'Under hvert organ finder du 8 kortlæggende temaer med konkrete spørgsmål du kan stille din klient. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
-        'Tryk på et organ, element eller meridian for at se detaljer. Brug tab-navigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
+        'Use the bottom navigation to quickly jump between sections. "In Practice" provides guidance for the conversation with your client and the eight foundational questions.',
+        'Under each organ you will find 8 mapping themes with concrete questions you can ask your client. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
+        'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
       ]
     }
   };
@@ -1046,7 +1046,7 @@ function setupSearch() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     input.value = '';
-    resultsEl.innerHTML = '<div class="search-placeholder">Begynd at skrive for at søge...</div>';
+    resultsEl.innerHTML = '<div class="search-placeholder">Start typing to search...</div>';
   }
 
   btn.addEventListener('click', openSearch);
@@ -1059,7 +1059,7 @@ function setupSearch() {
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
     if (q.length < 2) {
-      resultsEl.innerHTML = '<div class="search-placeholder">Begynd at skrive for at søge...</div>';
+      resultsEl.innerHTML = '<div class="search-placeholder">Start typing to search...</div>';
       return;
     }
     const results = performSearch(q);
@@ -1073,7 +1073,7 @@ function performSearch(query) {
   organs.forEach(o => {
     const searchable = [o.name, o.nickname, o.element, o.yinYang, o.partner, ...o.description, ...(o.keyPoints || []).map(k => k.title + ' ' + k.text)].join(' ').toLowerCase();
     if (searchable.includes(query)) {
-      results.organs.push({ type: 'organ', data: o, icon: o.icon, name: o.name, meta: `${o.element} · ${o.yinYang} · kl. ${o.time}` });
+      results.organs.push({ type: 'organ', data: o, icon: o.icon, name: o.name, meta: `${o.element} · ${o.yinYang} · ${o.time}` });
     }
   });
 
@@ -1110,7 +1110,7 @@ function performSearch(query) {
     const searchable = [ov.name, ov.nickname, ov.element, ov.emotion, ov.keyFunction, ov.classicSigns, ...ov.quickSigns, ...ov.symptomer].join(' ').toLowerCase();
     if (searchable.includes(query)) {
       const organ = organs.find(o => o.id === ov.organId);
-      results.overviews.push({ type: 'overview', data: ov, icon: organ ? organ.icon : '〇', name: `${ov.name} Oversigt`, meta: ov.quickSigns.slice(0, 3).join(' · ') });
+      results.overviews.push({ type: 'overview', data: ov, icon: organ ? organ.icon : '〇', name: `${ov.name} Overview`, meta: ov.quickSigns.slice(0, 3).join(' · ') });
     }
   });
 
@@ -1119,16 +1119,16 @@ function performSearch(query) {
 
 function renderSearchResults(results, query, container, closeCallback) {
   const groups = [
-    { key: 'organs', label: 'Organer', items: results.organs },
-    { key: 'elements', label: 'Elementer', items: results.elements },
-    { key: 'meridians', label: 'Ekstraordinære Meridianer', items: results.meridians },
-    { key: 'practice', label: 'I Praksis', items: results.practice },
-    { key: 'foundation', label: 'Grundprincipper', items: results.foundation },
-    { key: 'overviews', label: 'Oversigter', items: results.overviews }
+    { key: 'organs', label: 'Organs', items: results.organs },
+    { key: 'elements', label: 'Elements', items: results.elements },
+    { key: 'meridians', label: 'Extraordinary Meridians', items: results.meridians },
+    { key: 'practice', label: 'In Practice', items: results.practice },
+    { key: 'foundation', label: 'Core Principles', items: results.foundation },
+    { key: 'overviews', label: 'Overviews', items: results.overviews }
   ].filter(g => g.items.length > 0);
 
   if (groups.length === 0) {
-    container.innerHTML = `<div class="search-no-results">Ingen resultater for "${query}"</div>`;
+    container.innerHTML = `<div class="search-no-results">No results for "${query}"</div>`;
     return;
   }
 
@@ -1252,7 +1252,7 @@ function renderOverviewSymptoms() {
   const container = document.getElementById('overview-symptoms-content');
   container.innerHTML = `
     <div class="symptom-ref-intro">
-      <p>Tryk på et symptom for at se de primære organer at undersøge</p>
+      <p>Tap a symptom to see the primary organs to investigate</p>
     </div>
     ${symptomReference.map(item => `
       <div class="symptom-ref-item">
@@ -1332,34 +1332,34 @@ function showOverviewDetail(ov, type) {
   if (type === 'organ') {
     bodyHTML += `
       <div class="ov-info-card">
-        <div class="ov-info-row"><span class="ov-info-label">Kaldes</span><span class="ov-info-value">"${ov.nickname}"</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Tid</span><span class="ov-info-value">${ov.time}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">Known as</span><span class="ov-info-value">"${ov.nickname}"</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">Time</span><span class="ov-info-value">${ov.time}</span></div>
         <div class="ov-info-row"><span class="ov-info-label">Partner</span><span class="ov-info-value">${ov.partner}</span></div>
         <div class="ov-info-row"><span class="ov-info-label">Element</span><span class="ov-info-value">${ov.element}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Åbner til</span><span class="ov-info-value">${ov.opensTo}</span></div>
-        <div class="ov-info-row"><span class="ov-info-label">Viser sig i</span><span class="ov-info-value">${ov.showsIn}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">Opens to</span><span class="ov-info-value">${ov.opensTo}</span></div>
+        <div class="ov-info-row"><span class="ov-info-label">Shows in</span><span class="ov-info-value">${ov.showsIn}</span></div>
         <div class="ov-info-row"><span class="ov-info-label">Emotion</span><span class="ov-info-value">${ov.emotion}</span></div>
-        ${ov.houses ? `<div class="ov-info-row"><span class="ov-info-label">Huser</span><span class="ov-info-value">${ov.houses}</span></div>` : ''}
+        ${ov.houses ? `<div class="ov-info-row"><span class="ov-info-label">Houses</span><span class="ov-info-value">${ov.houses}</span></div>` : ''}
       </div>
     `;
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Nøglefunktion</h3>
+        <h3 class="ov-section-title">Key Function</h3>
         <p class="ov-section-text">${ov.keyFunction}</p>
       </div>
     `;
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Klassiske Tegn</h3>
+        <h3 class="ov-section-title">Classic Signs</h3>
         <p class="ov-section-text">${ov.classicSigns}</p>
       </div>
     `;
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Hurtige Tegn</h3>
+        <h3 class="ov-section-title">Quick Signs</h3>
         <div class="ov-signs-grid">
           ${ov.quickSigns.map(s => `<div class="ov-sign-pill">${s}</div>`).join('')}
         </div>
@@ -1368,18 +1368,18 @@ function showOverviewDetail(ov, type) {
 
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Detaljeret Oversigt</h3>
+        <h3 class="ov-section-title">Detailed Overview</h3>
         <div class="ov-table">
           <div class="ov-table-col">
-            <div class="ov-table-col-header">Symptomer</div>
+            <div class="ov-table-col-header">Symptoms</div>
             ${ov.symptomer.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
           </div>
           <div class="ov-table-col">
-            <div class="ov-table-col-header">Fysiske Manifestationer</div>
+            <div class="ov-table-col-header">Physical Manifestations</div>
             ${ov.fysiske.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
           </div>
           <div class="ov-table-col">
-            <div class="ov-table-col-header">Funktioner & Emotioner</div>
+            <div class="ov-table-col-header">Functions & Emotions</div>
             ${ov.funktioner.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
           </div>
         </div>
@@ -1389,29 +1389,29 @@ function showOverviewDetail(ov, type) {
     bodyHTML += `
       <div class="ov-section">
         <button class="ov-link-full" data-organ-id="${ov.organId}">
-          Se fuld ${ov.name}-side med 8 kortlæggende temaer →
+          View full ${ov.name} page with 8 mapping themes →
         </button>
       </div>
     `;
   } else {
     bodyHTML += `
       <div class="ov-section">
-        <h3 class="ov-section-title">Primære Symptomer</h3>
+        <h3 class="ov-section-title">Primary Symptoms</h3>
         <div class="ov-signs-grid">
           ${ov.primarySymptoms.map(s => `<div class="ov-sign-pill">${s}</div>`).join('')}
         </div>
       </div>
       <div class="ov-table">
         <div class="ov-table-col">
-          <div class="ov-table-col-header">Funktioner & Egenskaber</div>
+          <div class="ov-table-col-header">Functions & Properties</div>
           ${ov.functions.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
         </div>
         <div class="ov-table-col">
-          <div class="ov-table-col-header">Manifestationer</div>
+          <div class="ov-table-col-header">Manifestations</div>
           ${ov.manifestations.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
         </div>
         <div class="ov-table-col">
-          <div class="ov-table-col-header">Energetik & Emotioner</div>
+          <div class="ov-table-col-header">Energetics & Emotions</div>
           ${ov.energetics.map(s => `<div class="ov-table-cell">${s}</div>`).join('')}
         </div>
       </div>
@@ -1420,7 +1420,7 @@ function showOverviewDetail(ov, type) {
     bodyHTML += `
       <div class="ov-section" style="margin-top: 20px;">
         <button class="ov-link-full" data-meridian-id="${ov.meridianId}">
-          Se fuld ${ov.name}-side →
+          View full ${ov.name} page →
         </button>
       </div>
     `;
