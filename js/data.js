@@ -478,486 +478,486 @@ export const organs = [
   },
   {
     id: 'mavesaek',
-    name: 'Mavesæk',
-    nickname: 'Roden af Det Postnatale',
-    element: 'Jord',
+    name: 'Stomach',
+    nickname: 'The Root of Postnatal Qi',
+    element: 'Earth',
     yinYang: 'Yang',
-    partner: 'Milt',
+    partner: 'Spleen',
     time: '07-09',
     color: '#DAA520',
     icon: '胃',
     description: [
-      'Mavesækken kaldes sammen med milten "Roden af Det Postnatale" og er fundamentet for fordøjelsen og produktionen af energi efter fødslen.',
-      'Mavesækken modtager føden og "modner og rådner" den gennem en fermenteringsproces, som nedbryder maden til en tilstand, hvor næringsstofferne kan ekstraheres.',
-      'Mavesækkens energi bevæger sig naturligt nedefter. Når mave-energien ikke kan sænke sig korrekt, opstår "rebelsk mave-energi" som viser sig som opkastning, kvalme, hikke og sure opstød.',
-      'Mavesækken og milten arbejder tæt sammen som et yin-yang par. Mavesækken modtager og nedbryder, milten transformerer og transporterer.',
-      'Mavesækken er kilden til kroppens væsker. En sund mave sikrer tilstrækkelig fugtighed, mens en udtørret mave viser sig som tør mund og forstoppelse.',
-      'Mavens sundhed ses direkte i munden, læberne og tungen. Kronisk bekymring, grublen og overtænkning skader mavesækken direkte.'
+      'The Stomach, together with the Spleen, is called "The Root of Postnatal Qi" and is the foundation for digestion and the production of Qi after birth.',
+      'The Stomach receives food and "ripens and rots" it through a fermentation process that breaks down food to a state where nutrients can be extracted.',
+      'Stomach Qi naturally moves downward. When Stomach Qi cannot descend properly, "rebellious Stomach Qi" arises, manifesting as vomiting, nausea, hiccups, and acid reflux.',
+      'The Stomach and Spleen work closely together as a Yin-Yang pair. The Stomach receives and breaks down, the Spleen transforms and transports.',
+      'The Stomach is the origin of the body\'s fluids. A healthy Stomach ensures sufficient moisture, while a depleted Stomach manifests as dry mouth and constipation.',
+      'The health of the Stomach is seen directly in the mouth, lips, and tongue. Chronic worry, rumination, and overthinking directly damage the Stomach.'
     ],
     keyPoints: [
-      { title: 'Styrer nedadgående bevægelse', text: 'Energien bevæger sig nedefter - rebelsk energi giver kvalme og opstød.' },
-      { title: 'Partner med milten', text: 'Sammen skaber de fundamentet for al postnatal energi-produktion.' },
-      { title: 'Roden af kropsvæsker', text: 'Behøver rigelig fugtighed for at fungere optimalt.' },
-      { title: 'Viser sig i munden', text: 'Sundhed ses i munden, læberne og tungens belægning.' },
-      { title: 'Forbundet med bekymring', text: 'Kronisk grublen skaber mave-energi blokering.' },
-      { title: 'Aktiv tid 07-09', text: 'Det ideelle tidspunkt for dagens største måltid.' }
+      { title: 'Governs descending movement', text: 'Qi moves downward — rebellious Qi causes nausea and acid reflux.' },
+      { title: 'Paired with the Spleen', text: 'Together they create the foundation for all postnatal Qi production.' },
+      { title: 'The root of body fluids', text: 'Requires ample moisture to function optimally.' },
+      { title: 'Manifests in the mouth', text: 'Health is seen in the mouth, lips, and tongue coating.' },
+      { title: 'Connected to worry', text: 'Chronic rumination creates Stomach Qi blockage.' },
+      { title: 'Active time 07:00-09:00', text: 'The ideal time for the largest meal of the day.' }
     ],
     themes: [
       {
-        title: 'Appetit & Spisemønster',
+        title: 'Appetite & Eating Patterns',
         questions: [
-          'Hvordan er din appetit generelt? Stærk, svag, skiftende, eller fraværende?',
-          'Hvornår på dagen er din appetit stærkest?',
-          'Har du tendens til voldsom sult eller manglende interesse for mad?'
+          'How is your appetite in general? Strong, weak, fluctuating, or absent?',
+          'When during the day is your appetite strongest?',
+          'Do you tend toward intense hunger or a lack of interest in food?'
         ]
       },
       {
-        title: 'Fordøjelsesbesvær & Maven-Symptomer',
+        title: 'Digestive Discomfort & Stomach Symptoms',
         questions: [
-          'Oplever du smerter eller ubehag i maveregionen? Hvor sidder det?',
-          'Har du bøvsen, hikke, opstød, halsbrand, eller sure opstød?',
-          'Føler du kvalme eller træthed efter måltider?'
+          'Do you experience pain or discomfort in the stomach region? Where is it located?',
+          'Do you have belching, hiccups, reflux, heartburn, or acid reflux?',
+          'Do you feel nausea or fatigue after meals?'
         ]
       },
       {
-        title: 'Mund, Læber & Smagssans',
+        title: 'Mouth, Lips & Sense of Taste',
         questions: [
-          'Hvordan er din mund? Fugtig, tør, frisk, eller med dårlig ånde?',
-          'Hvordan ser dine læber ud? Fyldige, sprukne, tørre, eller blege?',
-          'Hvordan er din smagssans? Normal, nedsat, eller forstyrret?'
+          'How is your mouth? Moist, dry, fresh, or with bad breath?',
+          'How do your lips look? Full, cracked, dry, or pale?',
+          'How is your sense of taste? Normal, diminished, or disturbed?'
         ]
       },
       {
-        title: 'Tunge & Tungebelægning',
+        title: 'Tongue & Tongue Coating',
         questions: [
-          'Hvordan ser din tunge ud? Rød, bleg, hævet, eller med tandaftryk?',
-          'Har du belægning på tungen? Tynd hvid, tyk, gul, eller ingen?',
-          'Føles din tunge tør eller fugtig? Oplever du brændende fornemmelse?'
+          'How does your tongue look? Red, pale, swollen, or with tooth marks?',
+          'Do you have a coating on the tongue? Thin white, thick, yellow, or none?',
+          'Does your tongue feel dry or moist? Do you experience a burning sensation?'
         ]
       },
       {
-        title: 'Bekymring, Grublen & Overtænkning',
+        title: 'Worry, Rumination & Overthinking',
         questions: [
-          'Har du tendens til at bekymre dig meget? Gruble over problemer uden at finde løsninger?',
-          'Oplever du vedvarende tanker der ikke vil slippe dig?',
-          'Føler du dig mentalt udtømt eller træt af overtænkning?'
+          'Do you tend to worry a lot? Ruminate over problems without finding solutions?',
+          'Do you experience persistent thoughts that won\'t let go of you?',
+          'Do you feel mentally exhausted or tired from overthinking?'
         ]
       },
       {
-        title: 'Varme, Fugtighed & Klimapåvirkning',
+        title: 'Heat, Dampness & Climate Sensitivity',
         questions: [
-          'Hvordan reagerer du på varme? Bliver du let overophedet eller tørstig?',
-          'Trives du bedre i fugtige eller tørre omgivelser?',
-          'Oplever du forværring af symptomer i sen sommer eller fugtige perioder?'
+          'How do you react to heat? Do you easily become overheated or thirsty?',
+          'Do you thrive better in humid or dry environments?',
+          'Do you experience worsening of symptoms in late summer or humid periods?'
         ]
       },
       {
-        title: 'Ben, Ansigtets Forside & Mavemeridian',
+        title: 'Legs, Front of the Face & Stomach Meridian',
         questions: [
-          'Har du smerter langs forsiden af kroppen - fra ansigtet ned over brystet til anden tå?',
-          'Oplever du smerter i knæene, særligt foran på knæet?',
-          'Har du problemer med benmusklerne - svaghed, kramper eller træthed?'
+          'Do you have pain along the front of the body — from the face down over the chest to the second toe?',
+          'Do you experience pain in the knees, particularly at the front of the knee?',
+          'Do you have problems with the leg muscles — weakness, cramps, or fatigue?'
         ]
       },
       {
-        title: 'Morgenmønster, Energi & Måltidstiming',
+        title: 'Morning Patterns, Energy & Meal Timing',
         questions: [
-          'Hvordan er din morgen? Vågen og sulten mellem kl. 07-09, eller træt?',
-          'Har du naturlig morgensult? Spiser du morgenmad?',
-          'Hvornår spiser du dit største måltid? Mærker du forskel i energi?'
+          'How is your morning? Awake and hungry between 07:00-09:00, or tired?',
+          'Do you have a natural morning appetite? Do you eat breakfast?',
+          'When do you eat your largest meal? Do you notice a difference in energy?'
         ]
       }
     ]
   },
   {
     id: 'milt',
-    name: 'Milt',
-    nickname: 'Roden af Det Postnatale',
-    element: 'Jord',
+    name: 'Spleen',
+    nickname: 'The Root of Postnatal Qi',
+    element: 'Earth',
     yinYang: 'Yin',
-    partner: 'Mavesæk',
+    partner: 'Stomach',
     time: '09-11',
     color: '#DAA520',
     icon: '脾',
     description: [
-      'Milten kaldes "Roden af Det Postnatale" og er grundlaget for energi- og blodproduktion efter fødslen. En svag milt kan påvirke alle andre organer, da den er kroppens centrale energikilde.',
-      'Milten transformerer føde til næring og transporterer den til hele kroppen. Svag milt-funktion resulterer i dårlig absorption af næring, træthed og svaghed.',
-      'Milten har en unik opadgående funktion - den hæver ren yang-energi til hovedet og holder alle organer på deres rette plads. Svækket milt kan føre til organ-prolaps.',
-      'Milten styrer blodets cirkulation og holder det inde i blodkarrene. Svag milt kan føre til let blå mærker og overdreven blødning.',
-      'Milten nærer musklerne og lemmerne. Svag milt viser sig som tynde muskler og generel træthed. Miltens sundhed ses også i læberne.',
-      'Milten huser intellektet og påvirker tænkning, koncentration og hukommelse. Overdreven mental arbejde kan svække milten.'
+      'The Spleen is called "The Root of Postnatal Qi" and is the foundation for Qi and Blood production after birth. A weak Spleen can affect all other organs, as it is the body\'s central energy source.',
+      'The Spleen transforms food into nourishment and transports it to the entire body. Weak Spleen function results in poor absorption of nutrients, fatigue, and weakness.',
+      'The Spleen has a unique ascending function — it raises pure Yang Qi to the head and holds all organs in their proper place. A weakened Spleen can lead to organ prolapse.',
+      'The Spleen governs the Blood and keeps it within the blood vessels. A weak Spleen can lead to easy bruising and excessive bleeding.',
+      'The Spleen nourishes the muscles and limbs. A weak Spleen manifests as thin muscles and general fatigue. The health of the Spleen is also seen in the lips.',
+      'The Spleen houses the Intellect (Yi) and affects thinking, concentration, and memory. Excessive mental work can weaken the Spleen.'
     ],
     keyPoints: [
-      { title: 'Transformation og transport', text: 'Transformerer føde til næring og distribuerer den til hele kroppen.' },
-      { title: 'Hæver energi opad', text: 'Holder organer på plads og hæver ren yang-energi til hovedet.' },
-      { title: 'Holder blodet i karrene', text: 'Forhindrer overdreven blødning og blå mærker.' },
-      { title: 'Styrer muskler', text: 'Nærer musklerne - sundhed ses i læberne.' },
-      { title: 'Huser intellektet', text: 'Påvirker tænkning, koncentration og hukommelse.' },
-      { title: 'Forbundet med bekymring', text: 'Kronisk bekymring skaber energi-blokering i milten.' }
+      { title: 'Transformation and transportation', text: 'Transforms food into nourishment and distributes it to the entire body.' },
+      { title: 'Raises Qi upward', text: 'Holds organs in place and raises pure Yang Qi to the head.' },
+      { title: 'Holds Blood in the vessels', text: 'Prevents excessive bleeding and bruising.' },
+      { title: 'Governs the muscles', text: 'Nourishes the muscles — health is seen in the lips.' },
+      { title: 'Houses the Intellect (Yi)', text: 'Affects thinking, concentration, and memory.' },
+      { title: 'Connected to worry', text: 'Chronic worry creates Qi blockage in the Spleen.' }
     ],
     themes: [
       {
-        title: 'Energi, Træthed & Vitalitet',
+        title: 'Energy, Fatigue & Vitality',
         questions: [
-          'Hvordan er dit energiniveau generelt? Træt, udtømt, eller velfungerende?',
-          'Føler du dig særligt træt efter måltider?',
-          'Er trætheden værst om formiddagen mellem kl. 09-11?'
+          'How is your energy level in general? Tired, exhausted, or well-functioning?',
+          'Do you feel especially tired after meals?',
+          'Is the fatigue worst in the morning between 09:00-11:00?'
         ]
       },
       {
-        title: 'Fordøjelse, Afføring & Appetit',
+        title: 'Digestion, Bowel Movements & Appetite',
         questions: [
-          'Hvordan er din afføring? Fast, løs, skiftende, eller ufuldstændigt fordøjet mad?',
-          'Hvordan er din appetit? Normal, svag, eller trang til specifikke fødevarer?',
-          'Har du oppustethed, gasbesvær, eller ubehag efter måltider?'
+          'How are your bowel movements? Firm, loose, alternating, or with incompletely digested food?',
+          'How is your appetite? Normal, weak, or craving specific foods?',
+          'Do you have bloating, gas, or discomfort after meals?'
         ]
       },
       {
-        title: 'Muskler, Lemmer & Fysisk Styrke',
+        title: 'Muscles, Limbs & Physical Strength',
         questions: [
-          'Hvordan er dine musklers tilstand? Kraftige, svage, tynde?',
-          'Føles dine lemmer tunge, svage, eller uden styrke?',
-          'Oplever du muskeltræthed selv ved lette aktiviteter?'
+          'What is the condition of your muscles? Strong, weak, thin?',
+          'Do your limbs feel heavy, weak, or lacking strength?',
+          'Do you experience muscle fatigue even with light activities?'
         ]
       },
       {
-        title: 'Blødninger, Blå Mærker & Blod',
+        title: 'Bleeding, Bruising & Blood',
         questions: [
-          'Får du let blå mærker? Små stød giver store mærker?',
-          'Har du oplevet blod i afføring, urin, eller unormal blødning?',
-          'Oplever du kraftige menstruationsblødninger eller vedvarende spotting?'
+          'Do you bruise easily? Do small bumps cause large bruises?',
+          'Have you experienced blood in stool, urine, or abnormal bleeding?',
+          'Do you experience heavy menstrual bleeding or persistent spotting?'
         ]
       },
       {
-        title: 'Bekymring, Grublen & Overtænkning',
+        title: 'Worry, Rumination & Overthinking',
         questions: [
-          'Har du tendens til at bekymre dig overdrevent?',
-          'Oplever du overtænkning eller kaotisk tankemylder?',
-          'Føler du mental træthed eller udtømthed af at tænke for meget?'
+          'Do you tend to worry excessively?',
+          'Do you experience overthinking or chaotic mental chatter?',
+          'Do you feel mental fatigue or exhaustion from thinking too much?'
         ]
       },
       {
-        title: 'Koncentration, Hukommelse & Mental Klarhed',
+        title: 'Concentration, Memory & Mental Clarity',
         questions: [
-          'Hvordan er din koncentration? Let distraheret, eller god fokus?',
-          'Hvordan er din hukommelse? God, svækket, eller glemmer du ofte ting?',
-          'Føles din tænkning klar eller uklar, tåget og træg?'
+          'How is your concentration? Easily distracted, or good focus?',
+          'How is your memory? Good, weakened, or do you often forget things?',
+          'Does your thinking feel clear or unclear, foggy, and sluggish?'
         ]
       },
       {
-        title: 'Fugtighed, Vægtproblemer & Ødem',
+        title: 'Dampness, Weight Issues & Edema',
         questions: [
-          'Har du let ved at tage på i vægt eller svært ved at tabe?',
-          'Oplever du ødem eller hævelser i kroppen?',
-          'Føler du dig tung, fyldt, eller som om du bærer ekstra vægt?'
+          'Do you gain weight easily or find it difficult to lose weight?',
+          'Do you experience edema or swelling in the body?',
+          'Do you feel heavy, full, or as if you are carrying extra weight?'
         ]
       },
       {
-        title: 'Læber, Mund & Smagssans',
+        title: 'Lips, Mouth & Sense of Taste',
         questions: [
-          'Hvordan ser dine læber ud? Røde og fugtige, eller blege og tørre?',
-          'Hvordan er din mund? Fugtig med normal spyt, eller tør?',
-          'Hvordan er din smagssans? Normal, nedsat, eller trang til søde smagsvarianter?'
+          'How do your lips look? Red and moist, or pale and dry?',
+          'How is your mouth? Moist with normal saliva, or dry?',
+          'How is your sense of taste? Normal, diminished, or craving sweet flavors?'
         ]
       }
     ]
   },
   {
     id: 'hjerte',
-    name: 'Hjerte',
-    nickname: 'Kejseren',
-    element: 'Ild',
+    name: 'Heart',
+    nickname: 'The Emperor',
+    element: 'Fire',
     yinYang: 'Yin',
-    partner: 'Tyndtarm',
+    partner: 'Small Intestine',
     time: '11-13',
     color: '#DC143C',
     icon: '心',
     description: [
-      'Hjertet kaldes "Kejseren" af alle organer og er det vigtigste organ. Det regerer blod og blodkar, mens det huser sindet - bevidsthed og sjæl.',
-      'Hjertet kontrollerer mental aktivitet, hukommelse, tankeprocesser og alle emotioner. Det åbner til tungen og viser sig i ansigtsfarven.',
-      'Hjertets primære fysiske funktion er at kontrollere blodets cirkulation. Svagt hjerteblod viser sig som hjertebanken, bleg ansigtsfarve og kolde hænder.',
-      'Hjertets mest vitale funktion er at huse sindet - den mest raffinerede form for energi. Sindet ses direkte i øjnene - glitrende øjne indikerer sundt sind.',
-      'Hjertets naturlige emotion er glæde. Sund glæde styrker hjertet, men overdreven spænding kan skade det.',
-      'Hjertet kontrollerer svedproduktion - sved betragtes som "hjertets væske". Overdreven svedtendens indikerer ofte hjerte-mangel.'
+      'The Heart is called "The Emperor" of all organs and is the most important organ. It governs blood and blood vessels while housing the mind - consciousness and spirit.',
+      'The Heart controls mental activity, memory, thought processes and all emotions. It opens to the tongue and manifests in the complexion.',
+      'The Heart\'s primary physical function is to control blood circulation. Weak Heart blood manifests as palpitations, pale complexion and cold hands.',
+      'The Heart\'s most vital function is to house the mind - the most refined form of energy. The mind is seen directly in the eyes - sparkling eyes indicate a healthy mind.',
+      'The Heart\'s natural emotion is joy. Healthy joy strengthens the Heart, but excessive excitement can damage it.',
+      'The Heart controls sweat production - sweat is considered "the Heart\'s fluid". Excessive sweating tendency often indicates Heart deficiency.'
     ],
     keyPoints: [
-      { title: 'Regerer blod og blodkar', text: 'Kontrollerer blodets cirkulation og styrke blodkarrene.' },
-      { title: 'Huser sindet', text: 'Bevidsthed, mental klarhed, følelser og personlighed.' },
-      { title: 'Kontrollerer emotioner', text: 'Alle emotioner ender med at påvirke hjertet.' },
-      { title: 'Viser sig i ansigtet', text: 'Ansigtsfarve, tungen og talens kvalitet.' },
-      { title: 'Forbundet med glæde', text: 'Den naturlige emotion der nærer hjertet.' },
-      { title: 'Styrer sved', text: 'Sved er "hjertets væske" - nattesved indikerer mangel.' }
+      { title: 'Governs blood and blood vessels', text: 'Controls blood circulation and strengthens the blood vessels.' },
+      { title: 'Houses the mind', text: 'Consciousness, mental clarity, emotions and personality.' },
+      { title: 'Controls emotions', text: 'All emotions ultimately affect the Heart.' },
+      { title: 'Manifests in the face', text: 'Complexion, tongue and quality of speech.' },
+      { title: 'Connected to joy', text: 'The natural emotion that nourishes the Heart.' },
+      { title: 'Governs sweat', text: 'Sweat is "the Heart\'s fluid" - night sweats indicate deficiency.' }
     ],
     themes: [
       {
-        title: 'Hjertebanken & Blodcirkulation',
+        title: 'Palpitations & Blood Circulation',
         questions: [
-          'Oplever du hjertebanken eller uregelmæssig hjerterytme?',
-          'Føles din puls stærk og jævn, eller svag og uregelmæssig?',
-          'Har du kolde hænder og fødder, eller problemer med cirkulationen?'
+          'Do you experience palpitations or irregular heartbeat?',
+          'Does your pulse feel strong and steady, or weak and irregular?',
+          'Do you have cold hands and feet, or problems with circulation?'
         ]
       },
       {
-        title: 'Mental Klarhed, Hukommelse & Koncentration',
+        title: 'Mental Clarity, Memory & Concentration',
         questions: [
-          'Hvordan er din mentale klarhed? Klar og skarp, eller tåget?',
-          'Hvordan er din hukommelse? God, eller glemmer du ofte ting?',
-          'Kan du koncentrere dig let, eller er du let distraheret?'
+          'How is your mental clarity? Clear and sharp, or foggy?',
+          'How is your memory? Good, or do you often forget things?',
+          'Can you concentrate easily, or are you easily distracted?'
         ]
       },
       {
-        title: 'Søvn, Drømme & Mental Ro',
+        title: 'Sleep, Dreams & Mental Peace',
         questions: [
-          'Hvordan er din søvn? Let at falde i søvn, eller ligger du vågen?',
-          'Drømmer du meget? Mareridt, intensive drømme, eller rolig søvn?',
-          'Føler du mental ro, eller rastløshed og indre uro?'
+          'How is your sleep? Easy to fall asleep, or do you lie awake?',
+          'Do you dream a lot? Nightmares, intense dreams, or peaceful sleep?',
+          'Do you feel mental peace, or restlessness and inner turmoil?'
         ]
       },
       {
-        title: 'Emotioner, Glæde & Balance',
+        title: 'Emotions, Joy & Balance',
         questions: [
-          'Oplever du glæde og entusiasme i livet, eller føler du dig ulykkelig?',
-          'Hvordan er din emotionelle balance? Stabil, eller svingende?',
-          'Føler du dig overvældet af emotioner, eller afstumpet?'
+          'Do you experience joy and enthusiasm in life, or do you feel unhappy?',
+          'How is your emotional balance? Stable, or fluctuating?',
+          'Do you feel overwhelmed by emotions, or emotionally numb?'
         ]
       },
       {
-        title: 'Ansigt, Ansigtsfarve & Øjnenes Glans',
+        title: 'Face, Complexion & Eye Radiance',
         questions: [
-          'Hvilken farve har dit ansigt? Sund rødme, bleg, eller overdrevent rød?',
-          'Har du glans i ansigtet, eller er det mat og livløst?',
-          'Hvordan ser dine øjne ud? Glitrende og livlige, eller matte?'
+          'What color is your face? Healthy redness, pale, or excessively red?',
+          'Does your face have a radiant glow, or is it dull and lifeless?',
+          'How do your eyes look? Sparkling and lively, or dull?'
         ]
       },
       {
-        title: 'Tale, Kommunikation & Tunge',
+        title: 'Speech, Communication & Tongue',
         questions: [
-          'Hvordan er din tale? Klar og sammenhængende, eller stammende?',
-          'Taler du meget, for lidt, eller passende?',
-          'Hvordan ser din tunge ud? Farve, form, og bevægelighed?'
+          'How is your speech? Clear and coherent, or stammering?',
+          'Do you talk too much, too little, or an appropriate amount?',
+          'How does your tongue look? Color, shape, and mobility?'
         ]
       },
       {
-        title: 'Sved & Kropstemperatur',
+        title: 'Sweat & Body Temperature',
         questions: [
-          'Sveder du let? Nattesved, dagsved, eller normal svedtendens?',
-          'Føler du dig ofte varm, eller har du normal kropstemperatur?',
-          'Reagerer du kraftigt på varme eller varme omgivelser?'
+          'Do you sweat easily? Night sweats, daytime sweats, or normal sweating?',
+          'Do you often feel warm, or do you have normal body temperature?',
+          'Do you react strongly to heat or warm environments?'
         ]
       },
       {
-        title: 'Middag, Energi & Bryst-området',
+        title: 'Midday, Energy & Chest Area',
         questions: [
-          'Hvordan er din energi omkring middag (kl. 11-13)?',
-          'Oplever du symptomer i brystområdet - tryk, smerte, eller ubehag?',
-          'Har du brug for hvile omkring middag, eller er du naturligt vågen?'
+          'How is your energy around midday (11-13)?',
+          'Do you experience symptoms in the chest area - pressure, pain, or discomfort?',
+          'Do you need rest around midday, or are you naturally alert?'
         ]
       }
     ]
   },
   {
     id: 'tyndtarm',
-    name: 'Tyndtarm',
-    nickname: 'Separatoren',
-    element: 'Ild',
+    name: 'Small Intestine',
+    nickname: 'The Separator',
+    element: 'Fire',
     yinYang: 'Yang',
-    partner: 'Hjerte',
+    partner: 'Heart',
     time: '13-15',
     color: '#DC143C',
     icon: '小',
     description: [
-      'Tyndtarmen kaldes "Separatoren af det Rene fra det Urene" og har både fysiske og mentale funktioner.',
-      'Fysisk modtager den føde fra mavesækken og adskiller brugbare næringsstoffer fra affaldsprodukter. Mentalt adskiller den klare tanker fra uklare.',
-      'Tyndtarmen fungerer som en "sekretær" for hjertet, der sorterer gennem alle indtryk og præsenterer kun det værdifulde for sindet.',
-      'Tyndtarmen spiller en central rolle i beslutningstagning. Den giver evnen til at vurdere hvad der er relevant - skelne mellem gode og dårlige idéer.',
-      'Som yang-partner til hjertet beskytter tyndtarmen hjertet ved at filtrere input før det når sindet.',
-      'På et spirituelt plan hjælper tyndtarmen os med at se det essentielle gode i alt og finde vores rette vej.'
+      'The Small Intestine is called "The Separator of the Pure from the Impure" and has both physical and mental functions.',
+      'Physically it receives food from the Stomach and separates usable nutrients from waste products. Mentally it separates clear thoughts from unclear ones.',
+      'The Small Intestine functions as a "secretary" to the Heart, sorting through all impressions and presenting only what is valuable to the mind.',
+      'The Small Intestine plays a central role in decision-making. It provides the ability to assess what is relevant - distinguishing between good and bad ideas.',
+      'As the Yang partner to the Heart, the Small Intestine protects the Heart by filtering input before it reaches the mind.',
+      'On a spiritual level, the Small Intestine helps us see the essential good in everything and find our true path.'
     ],
     keyPoints: [
-      { title: 'Adskiller rent fra urent', text: 'Fysisk: næringsstoffer vs. affald. Mentalt: klare vs. uklare tanker.' },
-      { title: 'Hjertets sekretær', text: 'Sorterer indtryk og præsenterer kun det værdifulde for sindet.' },
-      { title: 'Dømmekraft og beslutning', text: 'Evnen til at skelne mellem gode og dårlige idéer.' },
-      { title: 'Beskytter sindet', text: 'Filtrerer negativitet og forvirring før det når hjertet.' },
-      { title: 'Åbner til øret', text: 'Energibanen løber fra lillefinger til øret.' },
-      { title: 'Spirituel separation', text: 'Hjælper os med at finde vores rette spirituelle vej.' }
+      { title: 'Separates pure from impure', text: 'Physical: nutrients vs. waste. Mental: clear vs. unclear thoughts.' },
+      { title: 'The Heart\'s secretary', text: 'Sorts impressions and presents only what is valuable to the mind.' },
+      { title: 'Judgment and decision-making', text: 'The ability to distinguish between good and bad ideas.' },
+      { title: 'Protects the mind', text: 'Filters negativity and confusion before it reaches the Heart.' },
+      { title: 'Opens to the ear', text: 'The energy channel runs from the little finger to the ear.' },
+      { title: 'Spiritual separation', text: 'Helps us find our true spiritual path.' }
     ],
     themes: [
       {
-        title: 'Fordøjelse, Næringsoptag & Bughule',
+        title: 'Digestion, Nutrient Absorption & Abdomen',
         questions: [
-          'Hvordan er din fordøjelse? Oplever du smerter i bughulen?',
-          'Føler du at du optager næring godt fra mad?',
-          'Har du oppustethed, vandlyde i tarmene, eller skvulpende fornemmelse?'
+          'How is your digestion? Do you experience abdominal pain?',
+          'Do you feel you absorb nutrients well from food?',
+          'Do you have bloating, gurgling sounds in the intestines, or a sloshing sensation?'
         ]
       },
       {
-        title: 'Afføring & Urinfunktion',
+        title: 'Bowel Movements & Urinary Function',
         questions: [
-          'Hvordan er din afføring? Tynd, løs, forstoppet, eller normal?',
-          'Har du urinproblemer - for hyppig, for sjælden, eller smerter?',
-          'Oplever du kombinerede tarm- og urinproblemer samtidig?'
+          'How are your bowel movements? Thin, loose, constipated, or normal?',
+          'Do you have urinary problems - too frequent, too infrequent, or painful?',
+          'Do you experience combined bowel and urinary problems simultaneously?'
         ]
       },
       {
-        title: 'Mental Klarhed & Skelneevne',
+        title: 'Mental Clarity & Discernment',
         questions: [
-          'Hvordan er din mentale klarhed? Klar og fokuseret, eller uklar?',
-          'Kan du skelne vigtigt fra uvigtigt, eller føles alt overvældende?',
-          'Er dit sind roligt og organiseret, eller kaotisk?'
+          'How is your mental clarity? Clear and focused, or unclear?',
+          'Can you distinguish important from unimportant, or does everything feel overwhelming?',
+          'Is your mind calm and organized, or chaotic?'
         ]
       },
       {
-        title: 'Dømmekraft & Beslutningstagning',
+        title: 'Judgment & Decision-Making',
         questions: [
-          'Hvordan er din evne til at træffe beslutninger?',
-          'Stoler du på din dømmekraft, eller tvivler du konstant?',
-          'Føler du dig sikker i dine valg, eller angrer du ofte?'
+          'How is your ability to make decisions?',
+          'Do you trust your judgment, or do you constantly doubt?',
+          'Do you feel confident in your choices, or do you often have regrets?'
         ]
       },
       {
-        title: 'Følelsesmæssig Tilstand & Social Sikkerhed',
+        title: 'Emotional State & Social Security',
         questions: [
-          'Oplever du følelser af forladthed, ensomhed eller usikkerhed?',
-          'Føler du dig overvældet af negativitet, eller kan du se det gode?',
-          'Har du let ved at skelne mellem sunde og usunde relationer?'
+          'Do you experience feelings of abandonment, loneliness, or insecurity?',
+          'Do you feel overwhelmed by negativity, or can you see the good?',
+          'Do you find it easy to distinguish between healthy and unhealthy relationships?'
         ]
       },
       {
-        title: 'Øre, Hørelse & Nakke',
+        title: 'Ear, Hearing & Neck',
         questions: [
-          'Hvordan er din hørelse? Normal, nedsat, eller tinnitus?',
-          'Har du øreproblemer - smerter, infektioner, eller blokering?',
-          'Oplever du nakkesmerter eller stivhed, især på siderne?'
+          'How is your hearing? Normal, reduced, or tinnitus?',
+          'Do you have ear problems - pain, infections, or blockage?',
+          'Do you experience neck pain or stiffness, especially on the sides?'
         ]
       },
       {
-        title: 'Arm, Skulderblad & Tyndtarmmeridian',
+        title: 'Arm, Shoulder Blade & Small Intestine Meridian',
         questions: [
-          'Har du smerter langs lillefingerens yderside op til skulderen?',
-          'Oplever du smerter eller spændinger omkring skulderbladet?',
-          'Har du problemer i nakken, kinden, eller omkring øret?'
+          'Do you have pain along the outer side of the little finger up to the shoulder?',
+          'Do you experience pain or tension around the shoulder blade?',
+          'Do you have problems in the neck, cheek, or around the ear?'
         ]
       },
       {
-        title: 'Eftermiddag, Varme & Mental Sortering',
+        title: 'Afternoon, Heat & Mental Sorting',
         questions: [
-          'Hvordan er din energi om eftermiddagen (kl. 13-15)?',
-          'Oplever du forværring af symptomer i varme eller varmt vejr?',
-          'Er dette tidspunkt godt for beslutninger, eller føler du dig forvirret?'
+          'How is your energy in the afternoon (13-15)?',
+          'Do you experience worsening of symptoms in heat or hot weather?',
+          'Is this time good for decisions, or do you feel confused?'
         ]
       }
     ]
   },
   {
     id: 'blaere',
-    name: 'Blære',
-    nickname: 'Reservoirets Minister',
-    element: 'Vand',
+    name: 'Bladder',
+    nickname: 'Minister of the Reservoir',
+    element: 'Water',
     yinYang: 'Yang',
-    partner: 'Nyrer',
+    partner: 'Kidneys',
     time: '15-17',
     color: '#191970',
     icon: '膀',
     description: [
-      'Blæren kaldes "Reservoirets Minister" og er ansvarlig for at lagre og udskille væskeaffald samt regulere væskemetabolismen.',
-      'Som den længste energibane i kroppen løber den fra øjenkrog over hovedet ned langs rygsøjlen til lilletå, central for ryg-, nakke- og benproblemer.',
-      'Blæren bruger energi og varme fra nyre-yang til at transformere væsker. Svag nyre-yang fører til hyppig vandladning eller inkontinens.',
-      'Blærens energibane løber langs rygsøjlen hvor det autonome nervesystem befinder sig. Den er vital for stress-respons og ufrivillige funktioner.',
-      'Blære-ubalance kan vise sig som øjenproblemer, tåget syn eller hovedpine omkring øjnene.',
-      'Emotionelt er blæren forbundet med frygt, jalousi og territorium. Evnen til at "holde" eller "slippe" er central.'
+      'The Bladder is called "Minister of the Reservoir" and is responsible for storing and excreting fluid waste as well as regulating fluid metabolism.',
+      'As the longest energy channel in the body, it runs from the inner eye corner over the head down along the spine to the little toe, central for back, neck, and leg problems.',
+      'The Bladder uses energy and warmth from Kidney Yang to transform fluids. Weak Kidney Yang leads to frequent urination or incontinence.',
+      'The Bladder\'s energy channel runs along the spine where the autonomic nervous system is located. It is vital for stress response and involuntary functions.',
+      'Bladder imbalance can manifest as eye problems, blurred vision, or headaches around the eyes.',
+      'Emotionally, the Bladder is connected to fear, jealousy, and territory. The ability to "hold" or "let go" is central.'
     ],
     keyPoints: [
-      { title: 'Lagrer og udskiller urin', text: 'Kræver nyre-yang for at transformere væsker.' },
-      { title: 'Længste energibane', text: 'Fra øjenkrog over hovedet ned langs rygsøjlen til lilletå.' },
-      { title: 'Partner med nyrerne', text: 'Tidligt varslingssystem for nyre-ubalancer.' },
-      { title: 'Autonome nervesystem', text: 'Vital for kroppens stress-respons.' },
-      { title: 'Åbner til øjet', text: 'Øjenproblemer og hovedpine relateret til blæren.' },
-      { title: 'Forbundet med frygt', text: 'Jalousi, mistænksomhed og territoriel adfærd.' }
+      { title: 'Stores and excretes urine', text: 'Requires Kidney Yang to transform fluids.' },
+      { title: 'Longest energy channel', text: 'From inner eye corner over the head down along the spine to the little toe.' },
+      { title: 'Partner with the Kidneys', text: 'Early warning system for Kidney imbalances.' },
+      { title: 'Autonomic nervous system', text: 'Vital for the body\'s stress response.' },
+      { title: 'Opens to the eye', text: 'Eye problems and headaches related to the Bladder.' },
+      { title: 'Connected to fear', text: 'Jealousy, suspicion, and territorial behavior.' }
     ],
     themes: [
       {
-        title: 'Vandladning & Urinmønster',
+        title: 'Urination & Urinary Patterns',
         questions: [
-          'Hvordan er din vandladning? Hyppig, sjælden, eller normal?',
-          'Oplever du inkontinens, lækage, eller svært ved at holde urinen?',
-          'Vågner du om natten for at lade vandet? Hvor mange gange?'
+          'How is your urination? Frequent, infrequent, or normal?',
+          'Do you experience incontinence, leakage, or difficulty holding urine?',
+          'Do you wake up at night to urinate? How many times?'
         ]
       },
       {
-        title: 'Urinens Kvalitet & Farve',
+        title: 'Urine Quality & Color',
         questions: [
-          'Hvilken farve har din urin? Klar, mørk, grumset, eller meget lys?',
-          'Hvordan er mængden? Meget, lidt, eller normal?',
-          'Oplever du brændende fornemmelse eller smerte ved vandladning?'
+          'What color is your urine? Clear, dark, cloudy, or very light?',
+          'How is the volume? A lot, a little, or normal?',
+          'Do you experience a burning sensation or pain when urinating?'
         ]
       },
       {
-        title: 'Ryg, Lænd & Rygsøjle',
+        title: 'Back, Lower Back & Spine',
         questions: [
-          'Har du rygsmerter? Hvor sidder de - øvre ryg, midt-ryg, eller lænden?',
-          'Er smerterne konstante, eller kommer de og går?',
-          'Føles din ryg stiv, svag, eller ustabil?'
+          'Do you have back pain? Where is it located - upper back, mid-back, or lower back?',
+          'Is the pain constant, or does it come and go?',
+          'Does your back feel stiff, weak, or unstable?'
         ]
       },
       {
-        title: 'Nakke, Skulder & Øvre Ryg',
+        title: 'Neck, Shoulder & Upper Back',
         questions: [
-          'Har du nakkestivhed eller nakkesmerter?',
-          'Oplever du spændinger i skuldrene eller øvre ryg?',
-          'Har du hovedpine der starter i nakken og stråler fremad?'
+          'Do you have neck stiffness or neck pain?',
+          'Do you experience tension in the shoulders or upper back?',
+          'Do you have headaches that start in the neck and radiate forward?'
         ]
       },
       {
-        title: 'Ben, Bagside af Lår & Fødder',
+        title: 'Legs, Back of Thighs & Feet',
         questions: [
-          'Har du smerter ned ad benenes bagside?',
-          'Oplever du problemer med lilletåen, eller smerter i fodsålen?',
-          'Føles dine ben tunge, svage, eller uden kraft?'
+          'Do you have pain down the back of your legs?',
+          'Do you experience problems with the little toe, or pain in the sole of the foot?',
+          'Do your legs feel heavy, weak, or lacking strength?'
         ]
       },
       {
-        title: 'Øjne, Syn & Hovedpine',
+        title: 'Eyes, Vision & Headaches',
         questions: [
-          'Hvordan er dine øjne? Klare, tørre, røde, eller trætte?',
-          'Oplever du synsproblemer, tåget syn, eller øjentræthed?',
-          'Har du hovedpine omkring øjnene eller bag øjnene?'
+          'How are your eyes? Clear, dry, red, or tired?',
+          'Do you experience vision problems, blurred vision, or eye fatigue?',
+          'Do you have headaches around the eyes or behind the eyes?'
         ]
       },
       {
-        title: 'Frygt, Jalousi & Emotionel Fastholdelse',
+        title: 'Fear, Jealousy & Emotional Holding',
         questions: [
-          'Oplever du irrationel frygt, angst, eller usikkerhed?',
-          'Har du tendens til jalousi, mistænksomhed, eller territorial adfærd?',
-          'Holder du fast i vrede eller negative følelser?'
+          'Do you experience irrational fear, anxiety, or insecurity?',
+          'Do you have a tendency toward jealousy, suspicion, or territorial behavior?',
+          'Do you hold on to anger or negative feelings?'
         ]
       },
       {
-        title: 'Eftermiddag, Kulde & Stress-respons',
+        title: 'Afternoon, Cold & Stress Response',
         questions: [
-          'Hvordan er din energi om eftermiddagen (kl. 15-17)?',
-          'Hvordan reagerer du på kulde? Påvirker kulde din ryg eller blære?',
-          'Føler du dig stresset, anspændt, eller i konstant alarmberedskab?'
+          'How is your energy in the afternoon (15-17)?',
+          'How do you react to cold? Does cold affect your back or bladder?',
+          'Do you feel stressed, tense, or in constant alert mode?'
         ]
       }
     ]
   },
   {
     id: 'nyrer',
-    name: 'Nyrer',
-    nickname: 'Livets Rod',
-    element: 'Vand',
+    name: 'Kidneys',
+    nickname: 'Root of Life',
+    element: 'Water',
     yinYang: 'Yin',
-    partner: 'Blære',
+    partner: 'Bladder',
     time: '17-19',
     color: '#191970',
     icon: '腎',
     description: [
-      'Nyrerne kaldes "Livets Rod" og er det vigtigste organ, da de lagrer livs-essensen og er roden til al energi i kroppen.',
-      'Nyrerne kontrollerer vækst, udvikling, reproduktion og aldring gennem livscyklusser på 7 år for kvinder og 8 år for mænd.',
-      'Nyrernes to aspekter - Primær yin og Primær yang - er fundamentet for alle andre organers balance. Nyre-yin fugter og køler, nyre-yang varmer og aktiverer.',
-      'Nyrerne producerer marv som nærer knogler og hjerne. Stærk essens giver stærke knogler og sunde tænder.',
-      'Nyrerne "åbner til ørerne" - hørelse afhænger af nyre-essensen. Nedsat hørelse indikerer mangel.',
-      'Nyrerne gemmer viljen, beslutning og livsmod. De er forbundet med frygt - overdreven frygt skader nyrerne.'
+      'The Kidneys are called "Root of Life" and are the most important organ, as they store the life essence and are the root of all energy in the body.',
+      'The Kidneys control growth, development, reproduction, and aging through life cycles of 7 years for women and 8 years for men.',
+      'The Kidneys\' two aspects - Primary Yin and Primary Yang - are the foundation for all other organs\' balance. Kidney Yin moistens and cools, Kidney Yang warms and activates.',
+      'The Kidneys produce marrow which nourishes bones and brain. Strong essence gives strong bones and healthy teeth.',
+      'The Kidneys "open to the ears" - hearing depends on Kidney essence. Reduced hearing indicates deficiency.',
+      'The Kidneys store willpower, determination, and courage. They are connected to fear - excessive fear damages the Kidneys.'
     ],
     keyPoints: [
       { title: 'Lagrer livets essens', text: 'Medfødt essens (DNA) og erhvervet essens (fra livserfaringer).' },
@@ -1037,92 +1037,92 @@ export const organs = [
   {
     id: 'pericardium',
     name: 'Pericardium',
-    nickname: 'Hjertets Beskytter',
-    element: 'Ild',
+    nickname: 'The Heart Protector',
+    element: 'Fire',
     yinYang: 'Yin',
     partner: 'San Jiao',
     time: '19-21',
     color: '#8B0000',
     icon: '包',
     description: [
-      'Pericardium kaldes "Hjertets Beskytter" og er den første forsvarslinje mod sygdom udefra og emotionelle skader.',
-      'Det fungerer som et fysisk og psykologisk skjold for hjertet. Ved akutte febersygdomme rammes pericardiet først - ikke hjertet.',
-      'Ligesom hjertet huser pericardiet sindet og bevidstheden. Det regulerer hvor og hvornår vi åbner os emotionelt.',
-      'Pericardiet styrer følelsesmæssige grænser - "porten til hjertet" der åbner og lukker. I balance kan vi danne dybe forbindelser og beskytte os selv.',
-      'Emotionel stress kan forårsage ild i pericardiet: hjertebanken, trykken i brystet, angst, søvnløshed og mundsår.',
-      'Pericardiet har særlig relation til livmoderen - emotionel belastning kan vise sig i reproduktive problemer.'
+      'The Pericardium is called "The Heart Protector" and is the first line of defense against external disease and emotional damage.',
+      'It functions as a physical and psychological shield for the Heart. In acute febrile diseases, the Pericardium is affected first - not the Heart.',
+      'Like the Heart, the Pericardium houses the mind and consciousness. It regulates where and when we open ourselves emotionally.',
+      'The Pericardium governs emotional boundaries - "the gate to the Heart" that opens and closes. In balance, we can form deep connections and protect ourselves.',
+      'Emotional stress can cause Fire in the Pericardium: palpitations, chest oppression, anxiety, insomnia, and mouth ulcers.',
+      'The Pericardium has a special relationship to the uterus - emotional strain can manifest as reproductive problems.'
     ],
     keyPoints: [
-      { title: 'Beskytter hjertet', text: 'Første forsvarslinje mod sygdom og emotionelle skader.' },
-      { title: 'Emotionel balance', text: 'Regulerer hvornår vi åbner os emotionelt.' },
-      { title: 'Følelsesmæssige grænser', text: '"Porten til hjertet" - åbner og lukker efter behov.' },
-      { title: 'Bevægelse mod andre', text: 'Evnen til at skabe sociale og kærlige relationer.' },
-      { title: 'Pericardium-ild', text: 'Emotionel stress akkumulerer til ild med angst og uro.' },
-      { title: 'Forbindelse til livmoder', text: 'Emotionel belastning viser sig i reproduktive problemer.' }
+      { title: 'Protects the Heart', text: 'First line of defense against disease and emotional damage.' },
+      { title: 'Emotional balance', text: 'Regulates when we open ourselves emotionally.' },
+      { title: 'Emotional boundaries', text: '"The gate to the Heart" - opens and closes as needed.' },
+      { title: 'Movement toward others', text: 'The ability to create social and loving relationships.' },
+      { title: 'Pericardium Fire', text: 'Emotional stress accumulates into Fire with anxiety and restlessness.' },
+      { title: 'Connection to uterus', text: 'Emotional strain manifests as reproductive problems.' }
     ],
     themes: [
       {
-        title: 'Bryst, Hjerte & Cirkulation',
+        title: 'Chest, Heart & Circulation',
         questions: [
-          'Oplever du brystsmerter, trykken eller stramhed i brystet?',
-          'Har du hjertebanken eller uregelmæssig hjerterytme?',
-          'Føler du oppression, tyngde eller ubehag i brystområdet?'
+          'Do you experience chest pain, oppression, or tightness in the chest?',
+          'Do you have palpitations or irregular heartbeat?',
+          'Do you feel oppression, heaviness, or discomfort in the chest area?'
         ]
       },
       {
-        title: 'Emotionelle Grænser & Relationer',
+        title: 'Emotional Boundaries & Relationships',
         questions: [
-          'Hvordan er dine følelsesmæssige grænser? For åbne, lukkede, eller balancerede?',
-          'Har du svært ved at lade andre komme tæt på emotionelt?',
-          'Oplever du relationsudfordringer eller frygt for at åbne dit hjerte?'
+          'How are your emotional boundaries? Too open, closed, or balanced?',
+          'Do you find it difficult to let others get close emotionally?',
+          'Do you experience relationship challenges or fear of opening your heart?'
         ]
       },
       {
-        title: 'Sind, Søvn & Mental Balance',
+        title: 'Mind, Sleep & Mental Balance',
         questions: [
-          'Hvordan er din søvn? Dyb og rolig, eller urolig med mange drømme?',
-          'Oplever du søvnløshed med urolige tanker eller angst om natten?',
-          'Føler du mental rastløshed, uro eller manglende ro i sindet?'
+          'How is your sleep? Deep and calm, or restless with many dreams?',
+          'Do you experience insomnia with restless thoughts or anxiety at night?',
+          'Do you feel mental restlessness, agitation, or lack of peace of mind?'
         ]
       },
       {
-        title: 'Angst, Uro & Emotionel Stabilitet',
+        title: 'Anxiety, Restlessness & Emotional Stability',
         questions: [
-          'Oplever du angst, nervøsitet eller indre uro?',
-          'Føler du dig emotionelt ustabil eller let påvirket af andres følelser?',
-          'Har du svært ved at håndtere emotionelt stress?'
+          'Do you experience anxiety, nervousness, or inner restlessness?',
+          'Do you feel emotionally unstable or easily affected by others\' emotions?',
+          'Do you find it difficult to handle emotional stress?'
         ]
       },
       {
-        title: 'Febersygdomme & Varme-symptomer',
+        title: 'Febrile Diseases & Heat Symptoms',
         questions: [
-          'Har du haft høj feber med mental forvirring, især om natten?',
-          'Oplever du varme-symptomer som rødme eller indre varme?',
-          'Har du haft episoder med delirium eller mental tåge ved sygdom?'
+          'Have you had high fever with mental confusion, especially at night?',
+          'Do you experience Heat symptoms such as redness or internal Heat?',
+          'Have you had episodes of delirium or mental fog during illness?'
         ]
       },
       {
-        title: 'Mund, Tunge & Smagsoplevelse',
+        title: 'Mouth, Tongue & Taste',
         questions: [
-          'Har du mundsår, tunge-sår eller betændelse i munden?',
-          'Oplever du bitter smag i munden, særligt om morgenen?',
-          'Hvordan er din tunge? Rød i spidsen, eller normal?'
+          'Do you have mouth ulcers, tongue sores, or inflammation in the mouth?',
+          'Do you experience a bitter taste in the mouth, especially in the morning?',
+          'How is your tongue? Red at the tip, or normal?'
         ]
       },
       {
-        title: 'Hænder, Fødder & Ekstremiteter',
+        title: 'Hands, Feet & Extremities',
         questions: [
-          'Har du kolde hænder eller fødder, selvom kroppen føles varm?',
-          'Oplever du følelsesløshed, prikken eller dårlig cirkulation?',
-          'Føler du at ekstremiteterne ikke får nok blod eller varme?'
+          'Do you have cold hands or feet, even though the body feels warm?',
+          'Do you experience numbness, tingling, or poor circulation?',
+          'Do you feel that the extremities are not getting enough blood or warmth?'
         ]
       },
       {
-        title: 'Beskyttelse, Sårbarhed & Intimitet',
+        title: 'Protection, Vulnerability & Intimacy',
         questions: [
-          'Føler du dig emotionelt beskyttet og sikker, eller sårbar og udsat?',
-          'Har du svært ved at åbne dig for kærlighed, tillid eller nære relationer?',
-          'Oplever du at du beskytter dit hjerte for meget eller for lidt?'
+          'Do you feel emotionally protected and safe, or vulnerable and exposed?',
+          'Do you find it difficult to open yourself to love, trust, or close relationships?',
+          'Do you feel you protect your heart too much or too little?'
         ]
       }
     ]
@@ -1130,278 +1130,278 @@ export const organs = [
   {
     id: 'sanjiao',
     name: 'San Jiao',
-    nickname: 'Kroppens Dirigent',
-    element: 'Ild',
+    nickname: 'The Body\'s Conductor',
+    element: 'Fire',
     yinYang: 'Yang',
     partner: 'Pericardium',
     time: '21-23',
     color: '#8B0000',
     icon: '焦',
     description: [
-      'San Jiao er det mest mystiske koncept i kroppen - "organet der har navn men ingen form". Det er en funktionel enhed der koordinerer tre "brændere".',
-      'Øvre brænder: hjerte og lunger. Mellem brænder: milt og mave. Nedre brænder: lever, nyrer og tarm.',
-      'San Jiao kaldes "Kroppens Dirigent" fordi det forener alle organer til et harmonisk system, ligesom en orkesterdirigent.',
-      'En af de vigtigste funktioner er at distribuere den oprindelige energi fra nyrerne til alle organer og energibaner.',
-      'San Jiao styrer vandmetabolisme og væsketransport - fungerer som kroppens afløbssystem.',
-      'San Jiao regulerer kroptemperatur og varme gennem de tre niveauer.'
+      'San Jiao is the most mysterious concept in the body - "the organ that has a name but no form". It is a functional unit that coordinates three "burners".',
+      'Upper Burner: Heart and Lungs. Middle Burner: Spleen and Stomach. Lower Burner: Liver, Kidneys, and Intestines.',
+      'San Jiao is called "The Body\'s Conductor" because it unites all organs into a harmonious system, like an orchestra conductor.',
+      'One of its most important functions is distributing the original Qi from the Kidneys to all organs and energy pathways.',
+      'San Jiao governs water metabolism and fluid transport - functioning as the body\'s drainage system.',
+      'San Jiao regulates body temperature and warmth through the three levels.'
     ],
     keyPoints: [
-      { title: 'Har navn men ingen form', text: 'En funktionel enhed der gennemsyrer hele kroppen.' },
-      { title: 'Kroppens dirigent', text: 'Koordinerer alle organsystemers aktiviteter.' },
-      { title: 'Distribuerer oprindelig energi', text: 'Mobiliserer nyre-energi til alle organer.' },
-      { title: 'Styrer vandmetabolisme', text: 'Kontrollerer vandpassagerne som et afløbssystem.' },
-      { title: 'Tre niveauer', text: 'Øvre (åndedræt), Mellem (fordøjelse), Nedre (udskillelse).' },
-      { title: 'Regulerer temperatur', text: 'Sikrer korrekt temperaturfordeling i kroppen.' }
+      { title: 'Has name but no form', text: 'A functional unit that permeates the entire body.' },
+      { title: 'The body\'s conductor', text: 'Coordinates all organ system activities.' },
+      { title: 'Distributes original Qi', text: 'Mobilizes Kidney Qi to all organs.' },
+      { title: 'Governs water metabolism', text: 'Controls the water passages like a drainage system.' },
+      { title: 'Three levels', text: 'Upper (respiration), Middle (digestion), Lower (excretion).' },
+      { title: 'Regulates temperature', text: 'Ensures correct temperature distribution in the body.' }
     ],
     themes: [
       {
-        title: 'Væskeretention & Ødem',
+        title: 'Fluid Retention & Edema',
         questions: [
-          'Oplever du hævelser eller væskeophobning? Hvor og hvornår?',
-          'Har du problemer med urinudskillelse?',
-          'Føler du at væsker ikke cirkulerer ordentligt?'
+          'Do you experience swelling or fluid retention? Where and when?',
+          'Do you have problems with urinary excretion?',
+          'Do you feel that fluids are not circulating properly?'
         ]
       },
       {
-        title: 'Fordøjelse & Maveproblemer',
+        title: 'Digestion & Stomach Problems',
         questions: [
-          'Hvordan er din fordøjelse? Normal, oppustet, eller ubehagelig?',
-          'Oplever du trykken eller ubehag i mave- eller brystområdet?',
-          'Har du problemer med at transformere mad til energi?'
+          'How is your digestion? Normal, bloated, or uncomfortable?',
+          'Do you experience pressure or discomfort in the stomach or chest area?',
+          'Do you have problems transforming food into energy?'
         ]
       },
       {
-        title: 'Vejrtrækning & Brystproblemer',
+        title: 'Breathing & Chest Problems',
         questions: [
-          'Hvordan er din vejrtrækning? Dyb og let, eller besværet?',
-          'Føler du trykken eller stramhed i brystet?',
-          'Oplever du åndenød eller problemer med Qi-cirkulation?'
+          'How is your breathing? Deep and easy, or labored?',
+          'Do you feel pressure or tightness in the chest?',
+          'Do you experience shortness of breath or problems with Qi circulation?'
         ]
       },
       {
-        title: 'Temperaturregulering & Varme',
+        title: 'Temperature Regulation & Heat',
         questions: [
-          'Hvordan er din kroptemperatur? Stabil, eller skiftende?',
-          'Oplever du feber med kulderystelser, eller vekslende varme og kulde?',
-          'Føler du ubalance mellem varme i forskellige dele af kroppen?'
+          'How is your body temperature? Stable, or fluctuating?',
+          'Do you experience fever with chills, or alternating Heat and Cold?',
+          'Do you feel imbalance of warmth in different parts of the body?'
         ]
       },
       {
-        title: 'Energiflow & Koordination',
+        title: 'Energy Flow & Coordination',
         questions: [
-          'Hvordan er dit generelle energiniveau? Harmonisk eller ukoordineret?',
-          'Føler du at din energi ikke flyder jævnt?',
-          'Oplever du blokering mellem øvre, mellem og nedre kropsdel?'
+          'How is your general energy level? Harmonious or uncoordinated?',
+          'Do you feel that your energy does not flow smoothly?',
+          'Do you experience blockage between the upper, middle, and lower body?'
         ]
       },
       {
-        title: 'Nakke, Skulder & Øre',
+        title: 'Neck, Shoulder & Ear',
         questions: [
-          'Har du stivhed eller smerter i nakke og skuldre?',
-          'Oplever du øreproblemer, tinnitus eller høreproblemer?',
-          'Føler du ubehag langs siderne af kroppen?'
+          'Do you have stiffness or pain in the neck and shoulders?',
+          'Do you experience ear problems, tinnitus, or hearing issues?',
+          'Do you feel discomfort along the sides of the body?'
         ]
       },
       {
-        title: 'Balance mellem Tre Niveauer',
+        title: 'Balance Between Three Levels',
         questions: [
-          'Føler du ubalance mellem øvre, mave-området og nedre kropsdel?',
-          'Oplever du at problemer i ét område påvirker andre?',
-          'Har du fornemmelse af at kroppen ikke arbejder integreret?'
+          'Do you feel imbalance between the upper, stomach area, and lower body?',
+          'Do you experience problems in one area affecting others?',
+          'Do you have a sense that the body is not working in an integrated way?'
         ]
       },
       {
-        title: 'Metabolisme & Transformation',
+        title: 'Metabolism & Transformation',
         questions: [
-          'Hvordan fungerer din metabolisme? Effektiv eller træg?',
-          'Føler du at kroppen transformerer mad og energi ordentligt?',
-          'Oplever du generel ubalance i transformation og transport?'
+          'How does your metabolism function? Efficient or sluggish?',
+          'Do you feel the body transforms food and energy properly?',
+          'Do you experience general imbalance in transformation and transport?'
         ]
       }
     ]
   },
   {
     id: 'galdeblaere',
-    name: 'Galdeblære',
-    nickname: 'Beslutningstageren',
-    element: 'Træ',
+    name: 'Gallbladder',
+    nickname: 'The Decision Maker',
+    element: 'Wood',
     yinYang: 'Yang',
-    partner: 'Lever',
+    partner: 'Liver',
     time: '23-01',
     color: '#228B22',
     icon: '膽',
     description: [
-      'Galdeblæren kaldes "Beslutningstageren" og arbejder tæt sammen med leveren. Den har kroppens længste energibane.',
-      'Galdeblærens hovedopgave er at lagre galdevæske og sende den til tarmen for at nedbryde fedt.',
-      'Galdeblæren styrer vores evne til at træffe beslutninger og handle modigt. "Alle organer får deres beslutninger fra galdeblæren."',
-      'Leveren skaber ideer og planer - galdeblæren sætter dem i værk. Leveren planlægger, galdeblæren beslutter og handler.',
-      'Galdeblæren sørger for at sener og ledbånd får tilstrækkelig næring til at forblive smidige.',
-      'Galdeblæren styrer drømme og giver livsretning. Om natten giver den blodet bevægelse og skaber drømme.'
+      'The Gallbladder is called "The Decision Maker" and works closely with the Liver. It has the body\'s longest energy pathway.',
+      'The Gallbladder\'s main task is to store bile and send it to the intestines to break down fat.',
+      'The Gallbladder governs our ability to make decisions and act courageously. "All organs receive their decisions from the Gallbladder."',
+      'The Liver creates ideas and plans - the Gallbladder puts them into action. The Liver plans, the Gallbladder decides and acts.',
+      'The Gallbladder ensures that tendons and ligaments receive sufficient nourishment to remain supple.',
+      'The Gallbladder governs dreams and provides life direction. At night it gives the Blood movement and creates dreams.'
     ],
     keyPoints: [
-      { title: 'Beslutninger og mod', text: 'Styrer evnen til at beslutte og handle modigt.' },
-      { title: 'Fordøjer fedt', text: 'Lagrer galdevæske og sender den til tarmen.' },
-      { title: 'Leverens partner', text: 'Leveren planlægger, galdeblæren beslutter og handler.' },
-      { title: 'Smidige sener', text: 'Nærer sener og ledbånd for at holde dem smidige.' },
-      { title: 'Drømme og livsretning', text: 'Giver kreativitet, planlægningsevne og livsmål.' },
-      { title: 'Længste energibane', text: 'Fra øjenkrogen over hovedet ned til 4. tå.' }
+      { title: 'Decisions and courage', text: 'Governs the ability to decide and act courageously.' },
+      { title: 'Digests fat', text: 'Stores bile and sends it to the intestines.' },
+      { title: 'The Liver\'s partner', text: 'The Liver plans, the Gallbladder decides and acts.' },
+      { title: 'Supple tendons', text: 'Nourishes tendons and ligaments to keep them supple.' },
+      { title: 'Dreams and life direction', text: 'Provides creativity, planning ability, and life goals.' },
+      { title: 'Longest energy pathway', text: 'From the outer corner of the eye over the head down to the 4th toe.' }
     ],
     themes: [
       {
-        title: 'Beslutningstagning & Mod',
+        title: 'Decision Making & Courage',
         questions: [
-          'Hvordan er din evne til at træffe beslutninger?',
-          'Har du mod til at handle på dine beslutninger?',
-          'Føler du ubeslutsomhed eller mangel på handlekraft?'
+          'How is your ability to make decisions?',
+          'Do you have the courage to act on your decisions?',
+          'Do you feel indecisive or lacking in ability to take action?'
         ]
       },
       {
-        title: 'Fordøjelse & Fedt',
+        title: 'Digestion & Fat',
         questions: [
-          'Hvordan håndterer du fedtholdig mad?',
-          'Oplever du kvalme, oppustethed efter fedt eller alkohol?',
-          'Har du bitter smag i munden eller sure opstød?'
+          'How do you handle fatty food?',
+          'Do you experience nausea or bloating after fat or alcohol?',
+          'Do you have a bitter taste in the mouth or acid reflux?'
         ]
       },
       {
-        title: 'Hovedpine & Temporalregion',
+        title: 'Headache & Temporal Region',
         questions: [
-          'Oplever du hovedpine i tindingerne eller siderne af hovedet?',
-          'Har du spændingshovedpine fra nakke/skulder?',
-          'Føler du trykken eller smerte langs siderne af hovedet?'
+          'Do you experience headaches in the temples or sides of the head?',
+          'Do you have tension headaches from neck/shoulder?',
+          'Do you feel pressure or pain along the sides of the head?'
         ]
       },
       {
-        title: 'Søvn & Drømme',
+        title: 'Sleep & Dreams',
         questions: [
-          'Hvordan er din søvn mellem 23-01?',
-          'Vågner du ofte mellem 23-01 eller har forstyrrende drømme?',
-          'Ligger du vågen og grunder over beslutninger?'
+          'How is your sleep between 23-01?',
+          'Do you often wake between 23-01 or have disturbing dreams?',
+          'Do you lie awake ruminating over decisions?'
         ]
       },
       {
-        title: 'Øjne & Øre',
+        title: 'Eyes & Ears',
         questions: [
-          'Hvordan er dine øjne? Tørre, røde, irriterede?',
-          'Oplever du synsforstyrrelser eller tåget syn?',
-          'Har du øreproblemer, tinnitus eller hørelsesnedsættelse?'
+          'How are your eyes? Dry, red, irritated?',
+          'Do you experience visual disturbances or blurred vision?',
+          'Do you have ear problems, tinnitus, or hearing loss?'
         ]
       },
       {
-        title: 'Sider, Ribben & Hofter',
+        title: 'Sides, Ribs & Hips',
         questions: [
-          'Oplever du smerter under ribbenskurvaturerne?',
-          'Har du problemer langs kroppens sider?',
-          'Føler du stivhed langs Galdeblære-meridianens bane?'
+          'Do you experience pain under the rib margins?',
+          'Do you have problems along the sides of the body?',
+          'Do you feel stiffness along the Gallbladder meridian pathway?'
         ]
       },
       {
-        title: 'Sener, Ledbånd & Fleksibilitet',
+        title: 'Tendons, Ligaments & Flexibility',
         questions: [
-          'Hvordan er dine sener og ledbånd? Smidige eller stive?',
-          'Oplever du muskel-skeletsmerter eller nedsat bevægelighed?',
-          'Har du problemer med lateral bevægelse eller balance?'
+          'How are your tendons and ligaments? Supple or stiff?',
+          'Do you experience musculoskeletal pain or reduced mobility?',
+          'Do you have problems with lateral movement or balance?'
         ]
       },
       {
-        title: 'Mod, Passion & Livsretning',
+        title: 'Courage, Passion & Life Direction',
         questions: [
-          'Hvordan er din passion for livet? Stærk eller svag?',
-          'Føler du at du har livsformål og retning?',
-          'Oplever du rigiditet, frygt eller dårligt selvbillede?'
+          'How is your passion for life? Strong or weak?',
+          'Do you feel you have life purpose and direction?',
+          'Do you experience rigidity, fear, or poor self-image?'
         ]
       }
     ]
   },
   {
     id: 'lever',
-    name: 'Lever',
-    nickname: 'Generalen',
-    element: 'Træ',
+    name: 'Liver',
+    nickname: 'The General',
+    element: 'Wood',
     yinYang: 'Yin',
-    partner: 'Galdeblære',
+    partner: 'Gallbladder',
     time: '01-03',
     color: '#228B22',
     icon: '肝',
     description: [
-      'Leveren kaldes "Generalen" og er kroppens vigtigste organ for at få energien til at flyde frit. Blokeret lever-energi er et af de mest almindelige problemer i dag.',
-      'Leverens vigtigste opgave er at sikre at energien flyder glat og frit. Stress, frustrationer og uopfyldte ønsker påvirker direkte leverens evne.',
-      'Leveren lagrer blod og regulerer distribution. Denne funktion er ekstremt vigtig for kvinders sundhed - de fleste kvindesygdomme skyldes lever-problemer.',
-      'Leveren huser den del af os der er ansvarlig for planer, projekter, livsmål, kreativitet og visionær tænkning.',
-      'Leveren kontrollerer senerne. Lever-blodet fugter og nærer dem for glat bevægelse. Fingernegle afspejler lever-sundhed.',
-      'Leveren er forbundet til øjnene og giver os evnen til at se. Blokeret lever-energi gennem uløst vrede påvirker øjnene.'
+      'The Liver is called "The General" and is the body\'s most important organ for keeping energy flowing freely. Blocked Liver energy is one of the most common problems today.',
+      'The Liver\'s most important task is to ensure that energy flows smoothly and freely. Stress, frustrations, and unfulfilled desires directly affect the Liver\'s ability.',
+      'The Liver stores Blood and regulates distribution. This function is extremely important for women\'s health - most gynecological diseases are due to Liver problems.',
+      'The Liver houses the part of us responsible for plans, projects, life goals, creativity, and visionary thinking.',
+      'The Liver controls the tendons. Liver Blood moistens and nourishes them for smooth movement. Fingernails reflect Liver health.',
+      'The Liver is connected to the eyes and gives us the ability to see. Blocked Liver energy through unresolved anger affects the eyes.'
     ],
     keyPoints: [
-      { title: 'Fri energi-flow', text: 'Sikrer at energien flyder frit - stress blokerer.' },
-      { title: 'Opbevarer blod', text: 'Lagrer blod og regulerer distribution. Central for kvinders sundhed.' },
-      { title: 'Huser planer og drømme', text: 'Ansvarlig for livsmål, kreativitet og visionær tænkning.' },
-      { title: 'Styrer sener', text: 'Kontrollerer sener og bevægelse. Negle afspejler lever-sundhed.' },
-      { title: 'Giver os synet', text: 'Lever-blodet giver evnen til at se.' },
-      { title: 'Planlægger reaktioner', text: '"Generalen" der planlægger kroppens forsvarsstrategi.' }
+      { title: 'Free energy flow', text: 'Ensures energy flows freely - stress blocks it.' },
+      { title: 'Stores Blood', text: 'Stores Blood and regulates distribution. Central to women\'s health.' },
+      { title: 'Houses plans and dreams', text: 'Responsible for life goals, creativity, and visionary thinking.' },
+      { title: 'Governs tendons', text: 'Controls tendons and movement. Nails reflect Liver health.' },
+      { title: 'Gives us sight', text: 'Liver Blood provides the ability to see.' },
+      { title: 'Plans responses', text: '"The General" who plans the body\'s defense strategy.' }
     ],
     themes: [
       {
-        title: 'Qi-flow & Emotionel Tilstand',
+        title: 'Qi Flow & Emotional State',
         questions: [
-          'Hvordan er din emotionelle tilstand? Afbalanceret eller blokeret?',
-          'Oplever du irritabilitet, frustration, undertrykt vrede eller depression?',
-          'Føler du dig "stuck" i livet, eller flyder tingene let?'
+          'How is your emotional state? Balanced or blocked?',
+          'Do you experience irritability, frustration, suppressed anger, or depression?',
+          'Do you feel "stuck" in life, or do things flow easily?'
         ]
       },
       {
-        title: 'Øjne & Syn',
+        title: 'Eyes & Vision',
         questions: [
-          'Hvordan er dine øjne? Raske, fugtige og klare eller tørre?',
-          'Oplever du synsforstyrrelser, sløret syn eller "floaters"?',
-          'Har du blodsprængte, ømme eller brændende øjne ved stress?'
+          'How are your eyes? Healthy, moist, and clear, or dry?',
+          'Do you experience visual disturbances, blurred vision, or "floaters"?',
+          'Do you have bloodshot, sore, or burning eyes during stress?'
         ]
       },
       {
-        title: 'Menstruation & Gynækologi',
+        title: 'Menstruation & Gynecology',
         questions: [
-          'Hvordan er din menstruation? Regelmæssig og smertefri?',
-          'Oplever du PMS, smertefulde perioder eller uregelmæssig cyklus?',
-          'Har du sparsomme eller tunge perioder?'
+          'How is your menstruation? Regular and pain-free?',
+          'Do you experience PMS, painful periods, or irregular cycles?',
+          'Do you have scanty or heavy periods?'
         ]
       },
       {
-        title: 'Sener, Led & Bevægelse',
+        title: 'Tendons, Joints & Movement',
         questions: [
-          'Hvordan er dine sener og led? Smidige eller stive?',
-          'Oplever du kramper, spasmer, tremor eller muskelsvaghed?',
-          'Har du stivhed eller nedsat bevægelighed?'
+          'How are your tendons and joints? Supple or stiff?',
+          'Do you experience cramps, spasms, tremor, or muscle weakness?',
+          'Do you have stiffness or reduced mobility?'
         ]
       },
       {
-        title: 'Søvn & Nattevågen',
+        title: 'Sleep & Night Waking',
         questions: [
-          'Hvordan er din søvn? Dyb og uforstyrret eller urolig?',
-          'Vågner du ofte mellem 01-03 om natten?',
-          'Føler du rastløshed, frustrationer eller urolige tanker om natten?'
+          'How is your sleep? Deep and undisturbed, or restless?',
+          'Do you often wake between 01-03 at night?',
+          'Do you feel restlessness, frustration, or agitated thoughts at night?'
         ]
       },
       {
-        title: 'Ribbensmerter & Fordøjelse',
+        title: 'Rib Pain & Digestion',
         questions: [
-          'Oplever du smerter under ribbenskurvaturerne?',
-          'Har du oppustethed, opstød, sure opstød eller dårlig appetit?',
-          'Føler du trykken eller "en klump" i hals- eller bryst-området?'
+          'Do you experience pain under the rib margins?',
+          'Do you have bloating, belching, acid reflux, or poor appetite?',
+          'Do you feel pressure or "a lump" in the throat or chest area?'
         ]
       },
       {
-        title: 'Fingernegle & Blodtilstand',
+        title: 'Fingernails & Blood Condition',
         questions: [
-          'Hvordan er dine fingernegle? Sunde og stærke eller tørre og skøre?',
-          'Oplever du revnede, indbuede eller blege fingernegle?',
-          'Føler du generel træthed, svimmelhed eller bleghed?'
+          'How are your fingernails? Healthy and strong, or dry and brittle?',
+          'Do you experience cracked, ridged, or pale fingernails?',
+          'Do you feel general fatigue, dizziness, or pallor?'
         ]
       },
       {
-        title: 'Planlægning, Retning & Kreativitet',
+        title: 'Planning, Direction & Creativity',
         questions: [
-          'Hvordan er din evne til at planlægge og skabe livsretning?',
-          'Oplever du mangel på kreativitet, drømme eller målrettethed?',
-          'Føler du at du mangler beslutsomhed eller evne til at ændre dig?'
+          'How is your ability to plan and create life direction?',
+          'Do you experience lack of creativity, dreams, or sense of purpose?',
+          'Do you feel you lack decisiveness or the ability to change?'
         ]
       }
     ]
@@ -2020,7 +2020,7 @@ export const extraordinaryMeridians = [
     ],
     themes: [
       {
-        title: 'Menstruation & Gynækologi',
+        title: 'Menstruation & Gynecology',
         questions: [
           'Hvordan er din menstruation? Regelmæssig, smertefuld eller uregelmæssig?',
           'Har du gynækologiske problemer, fertilitetsudfordringer eller hormonelle ubalancer?',
@@ -2122,7 +2122,7 @@ export const extraordinaryMeridians = [
       {
         title: 'Menstruation & Reproduktion',
         questions: [
-          'Hvordan er din menstruation? Regelmæssig og smertefri?',
+          'How is your menstruation? Regular and pain-free?',
           'Har du fertilitetsproblemer eller hormonelle ubalancer?',
           'Oplever du problemer med pubertet, graviditet eller menopause?'
         ]
@@ -2437,7 +2437,7 @@ export const extraordinaryMeridians = [
         ]
       },
       {
-        title: 'Øjne & Syn',
+        title: 'Eyes & Vision',
         questions: [
           'Hvordan fungerer dine øjne? Klare eller trætte?',
           'Har du problemer med øjnenes lukning eller tørhed?',
@@ -2545,7 +2545,7 @@ export const extraordinaryMeridians = [
         ]
       },
       {
-        title: 'Øjne & Syn',
+        title: 'Eyes & Vision',
         questions: [
           'Oplever du øjentørhed eller øjentræt?',
           'Har du problemer med at lukke øjnene?',
