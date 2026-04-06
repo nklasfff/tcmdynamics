@@ -1414,7 +1414,7 @@ export const organs = [
 export const organOverviews = [
   {
     organId: 'lunger',
-    name: 'Lunger',
+    name: 'Lungs',
     chinese: '肺',
     nickname: 'Den Skrøbelige Organtype',
     time: '03-05',
