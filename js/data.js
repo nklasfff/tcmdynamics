@@ -1781,75 +1781,74 @@ export const meridianOverviews = [
   {
     meridianId: 'chongmai',
     name: 'Chong Mai',
-    aka: 'Gennemtrængende Kar',
-    primarySymptoms: ['Menstruationsforstyrrelser', 'Ubalance i blodsituation', 'Fertilitetsproblemer', 'Mavesmerter', 'Brystspændinger', 'Emotionel ustabilitet', 'Tiltræk i lyskeregion', 'Uro i mellemgulv'],
-    functions: ['"Blodets Hav" — Nærer blod', 'Regulerer blod — Forbinder til alle yin-organer', 'Regulerer qi i maven', 'Forbinder pre-natal til post-natal', 'Indflydelse på fertilitet og reproduktion', 'Balancerer yin/yang i dybden løg'],
-    manifestations: ['Kaldet "Havet af Meridianer"', 'Primær meridian for blod', 'Kroppens Midt-linje', 'Krafcenter for Modér/Mand', 'Forbinder til alle yin-organer', 'Knuder i reproduktive system'],
-    energetics: ['Forbinder Nyre-qi med blod', 'Styrer menstruation', 'Præ-natal essens', 'Emotionel ustabilhed', 'Åbningspunkt SP-4, Makkerpunkt PC-6']
+    aka: 'Penetrating Vessel',
+    primarySymptoms: ['Menstrual disorders', 'Blood imbalances', 'Fertility problems', 'Abdominal pain', 'Chest tension', 'Emotional instability', 'Groin discomfort', 'Epigastric unrest'],
+    functions: ['"Sea of Blood" — Nourishes blood', 'Regulates blood — Connects to all Yin organs', 'Regulates Qi in the abdomen', 'Connects pre-natal to post-natal', 'Influences fertility and reproduction', 'Balances Yin/Yang at the deepest level'],
+    manifestations: ['Called "Sea of Meridians"', 'Primary meridian for blood', 'Body\'s midline', 'Power center for fertility', 'Connects to all Yin organs', 'Nodes in reproductive system'],
+    energetics: ['Connects Kidney-Qi with blood', 'Governs menstruation', 'Pre-natal essence', 'Emotional instability', 'Opening point SP-4, Coupled point PC-6']
   },
   {
     meridianId: 'renmai',
     name: 'Ren Mai',
-    aka: 'Undfangelseskarret',
-    primarySymptoms: ['Menstruationsforstyrrelser', 'Fertilitets-/barselsproblemer', 'Brystspænding', 'Problemer med urogenitale system', 'Fødselskomplikationer', 'Tankekompressor'],
-    functions: ['Yins Hav — Nærer alle yin-organer', 'Styrer alle yin-meridianer', 'Regulerer hormonal balance', 'Forbinder til livmoder', 'Styrke hormonal balance', 'Nøgle reproduktive sundhed'],
-    manifestations: ['Kontrollerer alle yin-organer', 'Løber centralt foran kroppen', 'Forbinder undfangelse til fødsel', 'Styrer reproduktive organer', 'Forbinder til alle yin-meridianer'],
-    energetics: ['Forbinder til varme/kulde-balance', 'Regulerer menstruation', 'Moderlighed og næring', 'Åbningspunkt LU-7, Makkerpunkt KI-6']
+    aka: 'Conception Vessel',
+    primarySymptoms: ['Menstrual disorders', 'Fertility/maternity problems', 'Chest tension', 'Urogenital problems', 'Birth complications', 'Mental overwhelm'],
+    functions: ['Sea of Yin — Nourishes all Yin organs', 'Governs all Yin meridians', 'Regulates hormonal balance', 'Connects to the uterus', 'Strengthens hormonal balance', 'Key to reproductive health'],
+    manifestations: ['Controls all Yin organs', 'Runs centrally along the front of the body', 'Connects conception to birth', 'Governs reproductive organs', 'Connects to all Yin meridians'],
+    energetics: ['Connects to heat/cold balance', 'Regulates menstruation', 'Motherhood and nourishment', 'Opening point LU-7, Coupled point KI-6']
   },
   {
     meridianId: 'dumai',
     name: 'Du Mai',
-    aka: 'Styringskarret',
-    primarySymptoms: ['Rygsmerter', 'Nakkestivhed', 'Hovedpine — Nosologiske problemer', 'Rygsøuleproblemer', 'Svimmelhed', 'Tremor', 'Ubalance i yang-aspektet'],
-    functions: ['Yangs Hav — Styrer al yang', 'Kontrollerer nervesystemet', 'Regulerer alle yang-meridianer', 'Styrke og oprejsthed', 'Hjerne og rygrad — forbinder alle yang-organer'],
-    manifestations: ['Løber langs rygsøjlen', 'Forbinder alle yang-meridianer', 'Styrer viljen og beslutsomhed', 'Styrer viljestyrke og selvtillid', 'Forbinder til hjernen'],
-    energetics: ['Låst energi centralt bag på kroppen', 'For yangpræget: overaktivering', 'For yinpræget: nedtrykt, svag', 'Åbningspunkt SI-3, Makkerpunkt BL-62']
+    aka: 'Governing Vessel',
+    primarySymptoms: ['Back pain', 'Neck stiffness', 'Headache — neurological problems', 'Spinal problems', 'Dizziness', 'Tremor', 'Yang aspect imbalance'],
+    functions: ['Sea of Yang — Governs all Yang', 'Controls the nervous system', 'Regulates all Yang meridians', 'Strength and uprightness', 'Brain and spine — connects all Yang organs'],
+    manifestations: ['Runs along the spine', 'Connects all Yang meridians', 'Governs will and determination', 'Governs willpower and self-confidence', 'Connects to the brain'],
+    energetics: ['Locked energy centrally along the back', 'Excess Yang: overactivation', 'Excess Yin: depressed, weak', 'Opening point SI-3, Coupled point BL-62']
   },
   {
     meridianId: 'daimai',
     name: 'Dai Mai',
-    aka: 'Bæltekarret',
-    primarySymptoms: ['Hofte- og taljesmarter', 'Underlivsproblemer', 'Gynækologiske problemer', 'Energistagnation mellemgulv', 'Forståelsesbesvær afg qi', 'Overvægt']
-    ,
-    functions: ['Eneste horisontale meridian', 'Regulerer vandretilslutningen mellem øvre og nedre', 'Kontrollerer alle vertikale meridianer', 'Binder alle meridians together', 'Styrer nedre brænder'],
-    manifestations: ['Løber som et bælte om taljen', 'Holder meridianer sammenkoordineret', 'Regulerer qi-flow op/ned', 'Styrer mobilitet i hoften', 'Modtager stagnation fra lever'],
-    energetics: ['Påvirkes af frustration og stagnation', 'Lever-qi stagnation samler sig her', 'Kvindesygdomme', 'Åbningspunkt GB-41, Makkerpunkt TE-5']
+    aka: 'Belt Vessel',
+    primarySymptoms: ['Hip and waist pain', 'Lower abdominal problems', 'Gynecological problems', 'Energy stagnation in the epigastrium', 'Qi flow obstruction', 'Overweight'],
+    functions: ['The only horizontal meridian', 'Regulates the horizontal connection between upper and lower', 'Controls all vertical meridians', 'Binds all meridians together', 'Governs the Lower Burner'],
+    manifestations: ['Runs like a belt around the waist', 'Keeps meridians coordinated', 'Regulates Qi flow up/down', 'Governs hip mobility', 'Receives stagnation from the Liver'],
+    energetics: ['Affected by frustration and stagnation', 'Liver-Qi stagnation accumulates here', 'Gynecological conditions', 'Opening point GB-41, Coupled point TE-5']
   },
   {
     meridianId: 'yinqiaomai',
     name: 'Yin Qiao Mai',
-    aka: 'Yin Bevægelseskarret',
-    primarySymptoms: ['Indadskuet', 'Hypersomni — for meget søvn', 'Svaghed indvendig i benene', 'Øjne der lukker sig', 'Søvnproblemer', 'Indadvendt tilstand'],
-    functions: ['Kontrollerer yin-sider af benet', 'Regulerer øjenåbning (for lukket)', 'Styrer indadvendthed vs. udadvendthed', 'Absorberer overskydende yin', 'Balance mellem søvn og vågen tilstand'],
-    manifestations: ['Starter indvendig i anklen', 'Løber langs indersiden af benet', 'Forbinder til øjnene', 'Regulerer sovelængde', 'Kontrol af kroppens yin-bevægelse'],
-    energetics: ['For meget yin: tung, træt, lukket', 'Emotionel indadskuethed', 'Åbningspunkt KI-6, Makkerpunkt LU-7']
+    aka: 'Yin Motility Vessel',
+    primarySymptoms: ['Introversion', 'Hypersomnia — excessive sleep', 'Weakness on inner legs', 'Eyes that close', 'Sleep problems', 'Withdrawn state'],
+    functions: ['Controls Yin sides of the legs', 'Regulates eye opening (too closed)', 'Governs introversion vs. extroversion', 'Absorbs excess Yin', 'Balance between sleep and wakefulness'],
+    manifestations: ['Starts on the inner ankle', 'Runs along the inner side of the leg', 'Connects to the eyes', 'Regulates sleep duration', 'Controls the body\'s Yin movement'],
+    energetics: ['Excess Yin: heavy, tired, closed', 'Emotional introversion', 'Opening point KI-6, Coupled point LU-7']
   },
   {
     meridianId: 'yangqiaomai',
     name: 'Yang Qiao Mai',
-    aka: 'Yang Bevægelseskarret',
-    primarySymptoms: ['Søvnløshed/insomni', 'Nakke-/skulder-spændinger', 'Rastløshed', 'Ydresiden af benene', 'Øjne der er for åbne', 'Hyperaktivitet'],
-    functions: ['Kontrollerer yang-sider af benet', 'Regulerer øjenåbning (for åben)', 'Styrer udadvendthed vs. indadvendthed', 'Absorberer overskydende yang', 'Balance mellem aktivitet og hvile'],
-    manifestations: ['Starter ydersiden af anklen', 'Løber langs ydersiden af benet', 'Forbinder til nakke og hoved', 'Kontrol af kroppens yang-bevægelse', 'Muskelspænding i ydersiden'],
-    energetics: ['For meget yang: rastløs, anspændt', 'Emotionel hyperaktivitet', 'Åbningspunkt BL-62, Makkerpunkt SI-3']
+    aka: 'Yang Motility Vessel',
+    primarySymptoms: ['Insomnia/sleeplessness', 'Neck/shoulder tension', 'Restlessness', 'Outer side of the legs', 'Eyes that stay too open', 'Hyperactivity'],
+    functions: ['Controls Yang sides of the legs', 'Regulates eye opening (too open)', 'Governs extroversion vs. introversion', 'Absorbs excess Yang', 'Balance between activity and rest'],
+    manifestations: ['Starts on the outer ankle', 'Runs along the outer side of the leg', 'Connects to the neck and head', 'Controls the body\'s Yang movement', 'Muscle tension on the outer side'],
+    energetics: ['Excess Yang: restless, tense', 'Emotional hyperactivity', 'Opening point BL-62, Coupled point SI-3']
   },
   {
     meridianId: 'yinweimai',
     name: 'Yin Wei Mai',
-    aka: 'Yin Forbindelseskarret',
-    primarySymptoms: ['Laterale brystsmerter', 'Hjertesmerter', 'Indesluttethed', 'Mellemgulvsproblemer', 'Angst', 'Sørgmodighed', 'Følelsesmæssig isolation'],
-    functions: ['Forbinder alle yin-meridianer', 'Forbinder yin-fortid til yin-nutid', 'Regulerer indre følelsesliv', 'Beskytter det indre rum', 'Balance mellem indre og ydre'],
-    manifestations: ['Væver yin-meridianer sammen', 'Forbinder fortid til nutid', 'Løber langs indersiden af kroppen', 'Relateret til bryst og hjerte', 'Emotionel forbindelse'],
-    energetics: ['Uforløste følelser fra fortiden', 'Sorg, angst, isolation', 'Emotionel fastholdelse', 'Åbningspunkt PC-6, Makkerpunkt SP-4']
+    aka: 'Yin Linking Vessel',
+    primarySymptoms: ['Lateral chest pain', 'Heart pain', 'Withdrawal', 'Epigastric problems', 'Anxiety', 'Sadness', 'Emotional isolation'],
+    functions: ['Connects all Yin meridians', 'Links Yin-past to Yin-present', 'Regulates inner emotional life', 'Protects the inner space', 'Balance between inner and outer'],
+    manifestations: ['Weaves Yin meridians together', 'Connects past to present', 'Runs along the inner side of the body', 'Related to the chest and heart', 'Emotional connection'],
+    energetics: ['Unresolved feelings from the past', 'Grief, anxiety, isolation', 'Emotional holding', 'Opening point PC-6, Coupled point SP-4']
   },
   {
     meridianId: 'yangweimai',
     name: 'Yang Wei Mai',
-    aka: 'Yang Forbindelseskarret',
-    primarySymptoms: ['Skiftende kulde-/varme-fornemmmelser', 'Feber med kulderystelser', 'Nakke-/skuldersmerter', 'Hovedpine', 'Vekslende symptomer', 'Relational usikkerhed'],
-    functions: ['Forbinder alle yang-meridianer', 'Forbinder yang-fortid til yang-nutid', 'Regulerer ydre forsvar', 'Beskytter mod ydre påvirkninger', 'Balance mellem forsvar og åbenhed'],
-    manifestations: ['Væver yang-meridianer sammen', 'Forbinder fortid til nutid ydre', 'Løber langs ydersiden af kroppen', 'Relateret til forsvar og grænser', 'Social forbindelse og relationer'],
-    energetics: ['Uforløste ydre konflikter', 'Relationelle grænser', 'Forsvarsmekanismer', 'Åbningspunkt TE-5, Makkerpunkt GB-41']
+    aka: 'Yang Linking Vessel',
+    primarySymptoms: ['Alternating cold/heat sensations', 'Fever with chills', 'Neck/shoulder pain', 'Headache', 'Fluctuating symptoms', 'Relational insecurity'],
+    functions: ['Connects all Yang meridians', 'Links Yang-past to Yang-present', 'Regulates outer defense', 'Protects against external influences', 'Balance between defense and openness'],
+    manifestations: ['Weaves Yang meridians together', 'Connects past to present externally', 'Runs along the outer side of the body', 'Related to defense and boundaries', 'Social connection and relationships'],
+    energetics: ['Unresolved external conflicts', 'Relational boundaries', 'Defense mechanisms', 'Opening point TE-5, Coupled point GB-41']
   }
 ];
 
@@ -1858,79 +1857,79 @@ export const meridianOverviews = [
 // ============================================
 export const symptomReference = [
   {
-    symptom: 'Hovedpine',
-    organs: ['Lever', 'Galdeblære', 'Blære', 'Mavesæk'],
-    note: 'Lokation er afgørende: tindinger (Galdeblære), top (Lever), baghoved (Blære), pande (Mavesæk)'
+    symptom: 'Headache',
+    organs: ['Liver', 'Gallbladder', 'Bladder', 'Stomach'],
+    note: 'Location is crucial: temples (Gallbladder), vertex (Liver), occiput (Bladder), forehead (Stomach)'
   },
   {
-    symptom: 'Søvnproblemer',
-    organs: ['Hjerte', 'Lever', 'Galdeblære', 'Pericardium', 'Nyrer'],
-    note: 'Tidspunkt for opvågning peger mod specifikt organ via organuret'
+    symptom: 'Sleep problems',
+    organs: ['Heart', 'Liver', 'Gallbladder', 'Pericardium', 'Kidneys'],
+    note: 'Time of waking points to a specific organ via the organ clock'
   },
   {
-    symptom: 'Fordøjelsesproblemer',
-    organs: ['Milt', 'Mavesæk', 'Lever', 'Tyktarm', 'Tyndtarm'],
-    note: 'Lever-qi stagnation er hyppig årsag til fordøjelsesproblemer'
+    symptom: 'Digestive problems',
+    organs: ['Spleen', 'Stomach', 'Liver', 'Large Intestine', 'Small Intestine'],
+    note: 'Liver-Qi stagnation is a common cause of digestive problems'
   },
   {
-    symptom: 'Emotionel ustabilitet',
-    organs: ['Hjerte', 'Lever', 'Pericardium', 'Nyrer'],
-    note: 'Alle emotioner ender med at påvirke hjertet — men roden kan ligge andetsteds'
+    symptom: 'Emotional instability',
+    organs: ['Heart', 'Liver', 'Pericardium', 'Kidneys'],
+    note: 'All emotions ultimately affect the Heart — but the root may lie elsewhere'
   },
   {
-    symptom: 'Hudproblemer',
-    organs: ['Lunger', 'Tyktarm', 'Milt', 'Lever'],
-    note: 'Lunger og tyktarm styrer huden; intern varme og fugt fra milt/lever viser sig i hud'
+    symptom: 'Skin problems',
+    organs: ['Lungs', 'Large Intestine', 'Spleen', 'Liver'],
+    note: 'Lungs and Large Intestine govern the skin; internal heat and dampness from Spleen/Liver manifest in the skin'
   },
   {
-    symptom: 'Rygsmerter',
-    organs: ['Nyrer', 'Blære', 'Lever', 'Du Mai'],
-    note: 'Lænden relaterer til nyrer; hele rygsøjlen til blæren og Du Mai'
+    symptom: 'Back pain',
+    organs: ['Kidneys', 'Bladder', 'Liver', 'Du Mai'],
+    note: 'The lower back relates to the Kidneys; the entire spine to the Bladder and Du Mai'
   },
   {
-    symptom: 'Træthed/energimangel',
-    organs: ['Milt', 'Nyrer', 'Lunger', 'Hjerte'],
-    note: 'Milt qi-mangel er hyppigste årsag; kronisk træthed peger mod nyrer'
+    symptom: 'Fatigue/low energy',
+    organs: ['Spleen', 'Kidneys', 'Lungs', 'Heart'],
+    note: 'Spleen Qi deficiency is the most common cause; chronic fatigue points to the Kidneys'
   },
   {
-    symptom: 'Angst og frygt',
-    organs: ['Nyrer', 'Hjerte', 'Pericardium', 'Galdeblære'],
-    note: 'Frygt er nyrernes emotion; angst involverer ofte hjerte og pericardium'
+    symptom: 'Anxiety and fear',
+    organs: ['Kidneys', 'Heart', 'Pericardium', 'Gallbladder'],
+    note: 'Fear is the Kidneys\' emotion; anxiety often involves the Heart and Pericardium'
   },
   {
-    symptom: 'Øjenproblemer',
-    organs: ['Lever', 'Galdeblære', 'Blære', 'Hjerte'],
-    note: 'Leveren åbner til øjnene; blodmangel i lever giver tørre/slørede øjne'
+    symptom: 'Eye problems',
+    organs: ['Liver', 'Gallbladder', 'Bladder', 'Heart'],
+    note: 'The Liver opens to the eyes; blood deficiency in the Liver causes dry/blurred eyes'
   },
   {
-    symptom: 'Menstruationsproblemer',
-    organs: ['Lever', 'Milt', 'Nyrer', 'Chong Mai', 'Ren Mai'],
-    note: 'Lever lagrer blod og styrer fri flow; Chong Mai og Ren Mai er nøglemeridianer'
+    symptom: 'Menstrual problems',
+    organs: ['Liver', 'Spleen', 'Kidneys', 'Chong Mai', 'Ren Mai'],
+    note: 'The Liver stores blood and governs free flow; Chong Mai and Ren Mai are key meridians'
   },
   {
-    symptom: 'Ødem/væskeretention',
-    organs: ['Milt', 'Nyrer', 'Lunger', 'San Jiao', 'Blære'],
-    note: 'Milt transformerer væsker; nyrer styrer vandmetabolisme; San Jiao regulerer vandpassager'
+    symptom: 'Edema/fluid retention',
+    organs: ['Spleen', 'Kidneys', 'Lungs', 'San Jiao', 'Bladder'],
+    note: 'The Spleen transforms fluids; the Kidneys govern water metabolism; San Jiao regulates water passages'
   },
   {
-    symptom: 'Hjertebanken',
-    organs: ['Hjerte', 'Pericardium', 'Nyrer', 'Milt'],
-    note: 'Kan skyldes hjerte-blod mangel, pericardium-ild, eller nyre-vand der ikke kontrollerer ild'
+    symptom: 'Heart palpitations',
+    organs: ['Heart', 'Pericardium', 'Kidneys', 'Spleen'],
+    note: 'May be caused by Heart-blood deficiency, Pericardium fire, or Kidney-water failing to control fire'
   },
   {
-    symptom: 'Høreproblemer/tinnitus',
-    organs: ['Nyrer', 'Galdeblære', 'San Jiao', 'Tyndtarm'],
-    note: 'Nyrer åbner til ørerne; galdeblære og San Jiao meridianer løber forbi øret'
+    symptom: 'Hearing problems/tinnitus',
+    organs: ['Kidneys', 'Gallbladder', 'San Jiao', 'Small Intestine'],
+    note: 'The Kidneys open to the ears; the Gallbladder and San Jiao meridians pass by the ear'
   },
   {
-    symptom: 'Smerter i ekstremiteter',
-    organs: ['Lever', 'Milt', 'Galdeblære', 'Blære'],
-    note: 'Lever styrer sener; milt styrer muskler; meridianforløb bestemmer hvilken side'
+    symptom: 'Pain in extremities',
+    organs: ['Liver', 'Spleen', 'Gallbladder', 'Bladder'],
+    note: 'The Liver governs tendons; the Spleen governs muscles; the meridian pathway determines which side'
   },
   {
-    symptom: 'Vejrtrækningsproblemer',
-    organs: ['Lunger', 'Nyrer', 'Hjerte', 'Milt'],
-    note: 'Lunger styrer vejrtrækning; nyrer "griber" qi; milt producerer slim'
+    symptom: 'Breathing problems',
+    organs: ['Lungs', 'Kidneys', 'Heart', 'Spleen'],
+    note: 'The Lungs govern respiration; the Kidneys "grasp" Qi; the Spleen produces phlegm'
   }
 ];
 
@@ -1938,47 +1937,47 @@ export const symptomReference = [
 // Conversation Structure Proposal
 // ============================================
 export const conversationStructure = {
-  title: 'Samtalestruktur Forslag',
-  subtitle: 'Et forslag til at strukturere den indledende samtale med klienten',
+  title: 'Conversation Structure Proposal',
+  subtitle: 'A proposal for structuring the initial conversation with the client',
   sections: [
     {
-      heading: 'Mødet',
+      heading: 'The Meeting',
       items: [
-        { label: 'Åben lytning', text: 'Invitér klienten til at fortælle frit. Lad dem fortælle i deres eget tempo.' },
-        { label: 'Lad klienten fortælle først', text: 'Stil åbne spørgsmål, lyt efter hvad der fylder.' },
-        { label: 'Første Møde — Klienten fortæller', text: 'Hvad ønsker de hjælp til? Hvad er deres situation?' }
+        { label: 'Open listening', text: 'Invite the client to share freely. Let them tell their story at their own pace.' },
+        { label: 'Let the client speak first', text: 'Ask open questions, listen for what matters most.' },
+        { label: 'First Meeting — The client shares', text: 'What do they want help with? What is their situation?' }
       ]
     },
     {
-      heading: 'Åben Lytning: Klienten Kommer til Orde',
+      heading: 'Open Listening: The Client Speaks',
       items: [
-        { label: 'Aktiv lytning', text: 'Hvordan føler klienten sig? Hvor i kroppen mærker de det?' },
-        { label: 'De 3 indledende temaer', text: 'Medicin, generelle livsomstændigheder, historik (sygdomme, begivenheder, arvæv).' },
-        { label: 'Kontekstforståelse', text: 'Hvad er konteksten for deres liv — arbejde, familie, relationer?' }
+        { label: 'Active listening', text: 'How does the client feel? Where in the body do they notice it?' },
+        { label: 'The 3 opening themes', text: 'Medication, general life circumstances, history (illnesses, events, scar tissue).' },
+        { label: 'Context understanding', text: 'What is the context of their life — work, family, relationships?' }
       ]
     },
     {
-      heading: 'Tema Lytte: Klinikerens Intuition',
+      heading: 'Theme Listening: The Clinician\'s Intuition',
       items: [
-        { label: 'Let efter mønstre', text: 'Hvilke organsystemer peger klientens fortælling mod?' },
-        { label: 'Tidsmønstre', text: 'Er der tidspunkter, hvor symptomer forværres? Brug organuret.' },
-        { label: 'Emotionelle temaer', text: 'Hvilke emotioner fylder? Kobl til de relevante organer.' }
+        { label: 'Look for patterns', text: 'Which organ systems does the client\'s story point towards?' },
+        { label: 'Time patterns', text: 'Are there times when symptoms worsen? Use the organ clock.' },
+        { label: 'Emotional themes', text: 'Which emotions are prominent? Connect to the relevant organs.' }
       ]
     },
     {
-      heading: 'Tema Forventninger af Mønster',
+      heading: 'Pattern Expectations',
       items: [
-        { label: 'Mønster-hypotese', text: 'Hvilke mønstre tegner sig? Stil specifikke spørgsmål for at verificere.' },
-        { label: 'De 8 kortlæggende temaer', text: 'Brug de 8 temaer for det relevante organ til at uddybe.' },
-        { label: 'Verificér eller juster', text: 'Stemmer mønstret overens? Eller peger det i en anden retning?' }
+        { label: 'Pattern hypothesis', text: 'Which patterns are emerging? Ask specific questions to verify.' },
+        { label: 'The 8 mapping themes', text: 'Use the 8 themes for the relevant organ to go deeper.' },
+        { label: 'Verify or adjust', text: 'Does the pattern match? Or does it point in a different direction?' }
       ]
     },
     {
-      heading: 'Integration i Din Klinik',
+      heading: 'Integration in Your Practice',
       items: [
-        { label: 'Hvile dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
-        { label: 'Tag det i dit eget tempo', text: 'Begynd med ét organ, ét element. Lad det vokse naturligt.' },
-        { label: 'Kombiner med din praksis', text: 'Brug TCM-forståelsen som inspiration, ikke som protokol.' }
+        { label: 'Hold this as a map', text: 'TCM is a map — not a destination. The client and their system show the way.' },
+        { label: 'Take it at your own pace', text: 'Start with one organ, one element. Let it grow naturally.' },
+        { label: 'Combine with your practice', text: 'Use TCM understanding as inspiration, not as protocol.' }
       ]
     }
   ]
@@ -1997,90 +1996,90 @@ export const extraordinaryMeridians = [
     level: 'The deepest constitutional channel — the foundation of all energy and blood in the body',
     relatedOrgans: ['Spleen', 'Kidneys', 'Liver', 'Heart'],
     pathway: [
-      'Udspringer fra nyrerne og Mingmen (livets port) mellem nyrerne.',
-      'Forløber nedad til bækkenbunden (perineum) og forbinder med Ren Mai og Du Mai.',
-      'Stiger opad langs rygsøjlens inderside parallelt med den centrale kropsakse.',
-      'Forgrener sig til maven og brystet, passerer gennem hjertet og spreder sig til ansigtet.',
-      'En nedre gren følger benenes inderside ned til fødderne.'
+      'Originates from the kidneys and Mingmen (the gate of life) between the kidneys.',
+      'Descends to the pelvic floor (perineum) and connects with Ren Mai and Du Mai.',
+      'Ascends along the inner aspect of the spine, parallel to the central body axis.',
+      'Branches to the abdomen and chest, passes through the heart and spreads to the face.',
+      'A lower branch follows the inner aspect of the legs down to the feet.'
     ],
     keyPoints: [
-      { title: 'Blodets ultimative reservoir', text: 'Styrer al blodproduktion og -cirkulation. Når Chong Mai er stærk, er blodet rigeligt og nærende.' },
-      { title: 'Livets første kanal', text: 'Det allerførste kar der dannes i fosteret — den energetiske blueprint hvorfra hele kroppen udfolder sig.' },
-      { title: 'Genetisk hukommelse', text: 'Bærer informationen fra generation til generation. Forbinder os til vores forfædres styrker og sårbarheder.' },
-      { title: 'Kvindelig sundhed', text: 'Central for hele den kvindelige cyklus: pubertet, menstruation, fertilitet, graviditet og menopause.' },
-      { title: 'Chok og traume', text: 'Absorberer livets dybeste chok og traumer. "Energien falder" når vi chokeres — det er Chong Mai der rammes.' },
-      { title: 'Oprør-energi', text: 'Når Chong Mai er forstyrret, stiger energien ukontrolleret opad: kvalme, angst, panik, følelsen af at energien "koger over".' }
+      { title: 'The ultimate reservoir of blood', text: 'Governs all blood production and circulation. When Chong Mai is strong, the blood is abundant and nourishing.' },
+      { title: 'The first channel of life', text: 'The very first vessel formed in the embryo — the energetic blueprint from which the entire body unfolds.' },
+      { title: 'Genetic memory', text: 'Carries information from generation to generation. Connects us to the strengths and vulnerabilities of our ancestors.' },
+      { title: 'Women\'s health', text: 'Central to the entire female cycle: puberty, menstruation, fertility, pregnancy, and menopause.' },
+      { title: 'Shock and trauma', text: 'Absorbs life\'s deepest shocks and traumas. "The energy drops" when we are shocked — it is Chong Mai that is affected.' },
+      { title: 'Rebellious energy', text: 'When Chong Mai is disturbed, energy rises uncontrollably upward: nausea, anxiety, panic, the feeling that energy is "boiling over".' }
     ],
     description: [
-      'Chong Mai er sandsynligvis det allerførste kar der dannes i fosteret og udgør fundamentet for kroppens energetiske struktur.',
-      'Som "Blodets Hav" er den det ultimative reservoir hvorfra blod cirkulerer. Central for kvindesygdomme: menstruation, fertilitet, graviditet og menopause.',
-      'Chong Mai integrerer funktionerne af alle hoved-energibaner og alle organer. Den løber "bag" de 12 ordinære energibaner.',
-      'Fordi Chong Mai styrer blod - det stærkeste bånd mellem generationer - er den potent i forhold til genetisk blueprint og cellulær hukommelse.',
-      'Emotionelt relaterer Chong Mai til chok, traumer, dyb angst og eksistentiel utryghed. Den bærer generationers traumer.'
+      'Chong Mai is likely the very first vessel formed in the embryo and constitutes the foundation of the body\'s energetic structure.',
+      'As the "Sea of Blood," it is the ultimate reservoir from which blood circulates. Central to gynecological conditions: menstruation, fertility, pregnancy, and menopause.',
+      'Chong Mai integrates the functions of all primary meridians and all organs. It runs "behind" the 12 ordinary meridians.',
+      'Because Chong Mai governs blood — the strongest bond between generations — it is potent in relation to genetic blueprint and cellular memory.',
+      'Emotionally, Chong Mai relates to shock, trauma, deep anxiety, and existential insecurity. It carries the traumas of generations.'
     ],
     themes: [
       {
         title: 'Menstruation & Gynecology',
         questions: [
-          'Hvordan er din menstruation? Regelmæssig, smertefuld eller uregelmæssig?',
-          'Har du gynækologiske problemer, fertilitetsudfordringer eller hormonelle ubalancer?',
-          'Oplever du PMS, tunge eller sparsomme perioder?'
+          'How is your menstruation? Regular, painful, or irregular?',
+          'Do you have gynecological problems, fertility challenges, or hormonal imbalances?',
+          'Do you experience PMS, heavy or scanty periods?'
         ]
       },
       {
-        title: 'Fertilitet & Reproduktion',
+        title: 'Fertility & Reproduction',
         questions: [
-          'Hvordan er din fertilitet og reproduktive sundhed?',
-          'Har du svært ved at blive gravid eller oplever gentagne aborter?',
-          'Oplever du problemer relateret til graviditet, fødsel eller menopause?'
+          'How is your fertility and reproductive health?',
+          'Do you have difficulty getting pregnant or experience recurrent miscarriages?',
+          'Do you experience problems related to pregnancy, childbirth, or menopause?'
         ]
       },
       {
-        title: 'Blodcirkulation & Varme',
+        title: 'Blood Circulation & Heat',
         questions: [
-          'Hvordan er din blodcirkulation?',
-          'Har du kolde fødder, hænder eller ekstremiteter?',
-          'Føler du ubalance i blodflow?'
+          'How is your blood circulation?',
+          'Do you have cold feet, hands, or extremities?',
+          'Do you feel an imbalance in blood flow?'
         ]
       },
       {
-        title: 'Mave, Bryst & Central Akse',
+        title: 'Abdomen, Chest & Central Axis',
         questions: [
-          'Oplever du mavesmerter eller ubehag i den centrale kropsakse?',
-          'Har du brystsmerter eller ubehag?',
-          'Føler du problemer langs kroppens midterlinje?'
+          'Do you experience abdominal pain or discomfort along the central body axis?',
+          'Do you have chest pain or discomfort?',
+          'Do you feel problems along the body\'s midline?'
         ]
       },
       {
-        title: 'Chok, Traume & Angst',
+        title: 'Shock, Trauma & Anxiety',
         questions: [
-          'Har du oplevet alvorlige chokerfaringer eller traumer?',
-          'Oplever du panikangst, dyb angst eller eksistentiel utryghed?',
-          'Føler du at traumer sidder dybt i kroppen?'
+          'Have you experienced severe shocks or traumas?',
+          'Do you experience panic attacks, deep anxiety, or existential insecurity?',
+          'Do you feel that traumas are lodged deep in your body?'
         ]
       },
       {
-        title: 'Grounding & Jordforbindelse',
+        title: 'Grounding & Earth Connection',
         questions: [
-          'Føler du dig rodfæstet og jordforbundet eller flyvsk?',
-          'Har du svært ved at føle dig tryg i din krop?',
-          'Oplever du kulde eller mangel på energi i fødderne?'
+          'Do you feel rooted and grounded, or unanchored?',
+          'Do you find it difficult to feel safe in your body?',
+          'Do you experience coldness or lack of energy in your feet?'
         ]
       },
       {
-        title: 'Genetisk Arv & Familiemønstre',
+        title: 'Genetic Heritage & Family Patterns',
         questions: [
-          'Oplever du problemstillinger der går i arv i din familie?',
-          'Føler du at du bærer generationers mønstre?',
-          'Har du afhængighedsproblemer der kan relatere til genetik?'
+          'Do you experience issues that run in your family?',
+          'Do you feel that you carry generational patterns?',
+          'Do you have addiction issues that may relate to genetics?'
         ]
       },
       {
-        title: 'Kvalme, Astma & Panik',
+        title: 'Nausea, Asthma & Panic',
         questions: [
-          'Oplever du kvalme, opkast eller maverelaterede problemer?',
-          'Har du astma, vejrtrækningsproblemer eller trykken i brystet?',
-          'Føler du pludselige panikanfald eller åndenød?'
+          'Do you experience nausea, vomiting, or stomach-related problems?',
+          'Do you have asthma, breathing difficulties, or tightness in the chest?',
+          'Do you experience sudden panic attacks or shortness of breath?'
         ]
       }
     ]
@@ -2088,99 +2087,99 @@ export const extraordinaryMeridians = [
   {
     id: 'renmai',
     name: 'Ren Mai',
-    nickname: 'Yins Hav',
-    aka: 'Undfangelses Kar',
-    openingPoint: 'Lunge-punkt 7',
-    coupledPoint: 'Nyre-punkt 6',
+    nickname: 'Sea of Yin',
+    aka: 'Conception Vessel',
+    openingPoint: 'Lung-7',
+    coupledPoint: 'Kidney-6',
     partnerMeridian: 'Yin Qiao Mai',
     icon: '任',
-    level: 'Kroppens primære yin-kanal — nærer, køler og modtager',
-    relatedOrgans: ['Nyrer', 'Lunger', 'Hjerte', 'Lever'],
+    level: 'The body\'s primary Yin channel — nourishes, cools, and receives',
+    relatedOrgans: ['Kidneys', 'Lungs', 'Heart', 'Liver'],
     pathway: [
-      'Udspringer fra livmoderen (kvinder) eller nedre Dan Tian (mænd) i det nedre bækken.',
-      'Løber opad langs kroppens midterlinje på forsiden — fra perineum over maven.',
-      'Passerer navlen, solar plexus og brystet, gennem halsen til underkæben.',
-      'Slutter ved en fordybning under underlæben (Ren-24) og forbinder med Du Mai.',
-      'Har 24 egne akupunkturpunkter langs hele denne frontale midterlinje.'
+      'Originates from the uterus (women) or the lower Dan Tian (men) in the lower pelvis.',
+      'Ascends along the body\'s midline on the front — from the perineum over the abdomen.',
+      'Passes through the navel, solar plexus, and chest, through the throat to the lower jaw.',
+      'Ends at a depression below the lower lip (Ren-24) and connects with Du Mai.',
+      'Has 24 acupuncture points of its own along this entire frontal midline.'
     ],
     keyPoints: [
-      { title: 'Yins hav og mester', text: 'Styrer og nærer al yin-energi i kroppen. Alle seks yin-meridianer mødes i Ren Mai.' },
-      { title: '24 egne punkter', text: 'En af kun to ekstraordinære meridianer med egne akupunkturpunkter — afspejler dens centrale rolle.' },
-      { title: 'Livmoderens hersker', text: 'Regulerer hele den reproduktive cyklus. Navnet "Undfangelses Kar" peger på dens forbindelse til skabelse af nyt liv.' },
-      { title: 'Nyre-hjerte-aksen', text: 'Forbinder nyrernes vand med hjertets ild — essentiel for at vand og ild kommunikerer og balancerer hinanden.' },
-      { title: 'Emotionel modtagelighed', text: 'Relaterer til evnen til at modtage — omsorg, kærlighed, næring. Ubalance skaber emotionel kulde eller overfølsomhed.' },
-      { title: 'Mikrokosmisk kredsløb', text: 'Danner sammen med Du Mai det "lille himmelske kredsløb" — den mest fundamentale energicirkulation i kroppen.' }
+      { title: 'Sea and master of Yin', text: 'Governs and nourishes all Yin energy in the body. All six Yin meridians converge in Ren Mai.' },
+      { title: '24 points of its own', text: 'One of only two extraordinary meridians with its own acupuncture points — reflecting its central role.' },
+      { title: 'Ruler of the uterus', text: 'Regulates the entire reproductive cycle. The name "Conception Vessel" points to its connection with the creation of new life.' },
+      { title: 'Kidney-Heart axis', text: 'Connects the water of the kidneys with the fire of the heart — essential for water and fire to communicate and balance each other.' },
+      { title: 'Emotional receptivity', text: 'Relates to the ability to receive — care, love, nourishment. Imbalance creates emotional coldness or hypersensitivity.' },
+      { title: 'Microcosmic orbit', text: 'Together with Du Mai, forms the "small heavenly circuit" — the most fundamental energy circulation in the body.' }
     ],
     description: [
-      'Ren Mai har sine egne 24 akupunkturpunkter og løber op ad kroppens midterlinje fra bækkenbunden til munden.',
-      'Som "Yins Hav" påvirker den alle yin-energibanerne og nærer hele kroppens yin - de kølige, vandige, passive kræfter.',
-      'Ren Mai regulerer livmoderen og blodet. Ansvarlig for pubertet, menstruation, fertilitet, graviditet og menopause.',
-      'Forbinder nyrer og hjerte - en vital vej for kommunikation mellem disse organer.',
-      'Emotionelt relaterer Ren Mai til emotionel stabilitet, selvkærlighed og forbindelsen til ens autentiske selv.'
+      'Ren Mai has its own 24 acupuncture points and runs up the body\'s midline from the pelvic floor to the mouth.',
+      'As the "Sea of Yin," it influences all Yin energy pathways and nourishes the body\'s entire Yin — the cool, watery, passive forces.',
+      'Ren Mai regulates the uterus and the blood. Responsible for puberty, menstruation, fertility, pregnancy, and menopause.',
+      'Connects the kidneys and the heart — a vital pathway for communication between these organs.',
+      'Emotionally, Ren Mai relates to emotional stability, self-love, and the connection to one\'s authentic self.'
     ],
     themes: [
       {
-        title: 'Menstruation & Reproduktion',
+        title: 'Menstruation & Reproduction',
         questions: [
           'How is your menstruation? Regular and pain-free?',
-          'Har du fertilitetsproblemer eller hormonelle ubalancer?',
-          'Oplever du problemer med pubertet, graviditet eller menopause?'
+          'Do you have fertility problems or hormonal imbalances?',
+          'Do you experience problems with puberty, pregnancy, or menopause?'
         ]
       },
       {
-        title: 'Yin-Mangel & Varme-Symptomer',
+        title: 'Yin Deficiency & Heat Symptoms',
         questions: [
-          'Oplever du hedeture, nattesved, svedige håndflader?',
-          'Har du tør mund, tør hals eller konstant tørst?',
-          'Føler du rastløshed eller søvnproblemer med varme om natten?'
+          'Do you experience hot flashes, night sweats, or sweaty palms?',
+          'Do you have a dry mouth, dry throat, or constant thirst?',
+          'Do you feel restlessness or sleep problems with heat at night?'
         ]
       },
       {
-        title: 'Respiration & Bryst',
+        title: 'Respiration & Chest',
         questions: [
-          'Hvordan er din vejrtrækning? Normal eller stakåndet?',
-          'Har du astma, kronisk hoste eller problemer med dyb vejrtrækning?',
-          'Oplever du trykken i brystet eller åndenød?'
+          'How is your breathing? Normal or short of breath?',
+          'Do you have asthma, chronic cough, or difficulty breathing deeply?',
+          'Do you experience tightness in the chest or shortness of breath?'
         ]
       },
       {
-        title: 'Fordøjelse & Mave',
+        title: 'Digestion & Stomach',
         questions: [
-          'Hvordan er din fordøjelse? Oppustethed eller kvalme?',
-          'Har du mavesmerter, svag fordøjelse eller metaboliske problemer?',
-          'Oplever du dårlig appetit eller ubehag efter mad?'
+          'How is your digestion? Bloating or nausea?',
+          'Do you have stomach pain, weak digestion, or metabolic problems?',
+          'Do you experience poor appetite or discomfort after eating?'
         ]
       },
       {
-        title: 'Nedre Varmer & Urinveje',
+        title: 'Lower Burner & Urinary Tract',
         questions: [
-          'Hvordan er din vandladning? Problemer med blære?',
-          'Har du kroniske blæreproblemer eller inkontinens?',
-          'Oplever du problemer i bækkenområdet?'
+          'How is your urination? Bladder problems?',
+          'Do you have chronic bladder issues or incontinence?',
+          'Do you experience problems in the pelvic area?'
         ]
       },
       {
-        title: 'Emotionel Stabilitet & Angst',
+        title: 'Emotional Stability & Anxiety',
         questions: [
-          'Hvordan er din emotionelle tilstand? Stabil eller ustabil?',
-          'Oplever du angst, depression eller følelsesmæssig uro?',
-          'Har du svært ved at falde til ro eller søvnproblemer?'
+          'How is your emotional state? Stable or unstable?',
+          'Do you experience anxiety, depression, or emotional unrest?',
+          'Do you have difficulty calming down or sleep problems?'
         ]
       },
       {
-        title: 'Træthed & Udmattelse',
+        title: 'Fatigue & Exhaustion',
         questions: [
-          'Hvordan er dit energiniveau? Kronisk træt?',
-          'Føler du dig udtrættet eller mangler vitalitet?',
-          'Oplever du træthed efter fødsel, menopause eller sygdom?'
+          'How is your energy level? Chronically tired?',
+          'Do you feel exhausted or lacking in vitality?',
+          'Do you experience fatigue after childbirth, menopause, or illness?'
         ]
       },
       {
-        title: 'Selvkærlighed & Autenticitet',
+        title: 'Self-Love & Authenticity',
         questions: [
-          'Føler du selvkærlighed og selvaccept?',
-          'Har du forbindelse til dit autentiske selv?',
-          'Oplever du manglende motivation eller livsglæde?'
+          'Do you feel self-love and self-acceptance?',
+          'Are you connected to your authentic self?',
+          'Do you experience a lack of motivation or joy in life?'
         ]
       }
     ]
@@ -2188,100 +2187,100 @@ export const extraordinaryMeridians = [
   {
     id: 'dumai',
     name: 'Du Mai',
-    nickname: 'Yangs Hav',
-    aka: 'Styrings Kar',
-    openingPoint: 'Tyndtarms-punkt 3',
-    coupledPoint: 'Blære-punkt 62',
+    nickname: 'Sea of Yang',
+    aka: 'Governing Vessel',
+    openingPoint: 'Small Intestine-3',
+    coupledPoint: 'Bladder-62',
     partnerMeridian: 'Yang Qiao Mai',
     icon: '督',
-    level: 'Kroppens primære yang-kanal — styrer, løfter og beskytter',
-    relatedOrgans: ['Nyrer', 'Hjerte', 'Hjerne'],
+    level: 'The body\'s primary Yang channel — governs, lifts, and protects',
+    relatedOrgans: ['Kidneys', 'Heart', 'Brain'],
     pathway: [
-      'Udspringer fra nyrerne og Mingmen, stiger ned til bækkenbunden (perineum).',
-      'Løber opad langs rygsøjlens midterlinje på bagsiden af kroppen.',
-      'Passerer nakken, over kraniet og ned over panden til næsetippen.',
-      'Slutter ved overlæben (Du-28) hvor den møder Ren Mai og fuldender kredsløbet.',
-      'Har 28 egne akupunkturpunkter. En gren går ind i hjernen via rygmarvskanalen.'
+      'Originates from the Kidneys and Mingmen, descends to the pelvic floor (perineum).',
+      'Ascends along the midline of the spine on the posterior side of the body.',
+      'Passes over the neck, across the cranium, and down over the forehead to the tip of the nose.',
+      'Terminates at the upper lip (Du-28) where it meets Ren Mai and completes the circuit.',
+      'Has 28 acupuncture points of its own. A branch enters the brain via the spinal canal.'
     ],
     keyPoints: [
-      { title: 'Yangs hav og hersker', text: 'Styrer al yang-energi i kroppen. Alle seks yang-meridianer mødes og næres af Du Mai.' },
-      { title: '28 egne punkter', text: 'Den anden af de to ekstraordinære meridianer med egne punkter — hvert punkt langs rygsøjlen er kraftfuldt.' },
-      { title: 'Hjernens forbindelse', text: 'Den eneste meridian der løber direkte ind i hjernen. Central for bevidsthed, kognition og nervesystemet.' },
-      { title: 'Rygsøjlens mester', text: 'Styrker hele rygsøjlen fra halebenet til kraniet. Kropsholdning, struktur og oprejsthed er Du Mais domæne.' },
-      { title: 'Indre autoritet', text: 'Den "styrende kanal" — forbundet med evnen til at stå oprejst i livet, tage lederskab og holde sin retning.' },
-      { title: 'Mikrokosmisk kredsløb', text: 'Sammen med Ren Mai danner den det "lille himmelske kredsløb" — den fundamentale energicirkulation mellem yin og yang.' }
+      { title: 'Sea and ruler of Yang', text: 'Governs all Yang energy in the body. All six Yang meridians meet and are nourished by Du Mai.' },
+      { title: '28 points of its own', text: 'The second of the two extraordinary meridians with its own points — each point along the spine is powerful.' },
+      { title: 'Connection to the brain', text: 'The only meridian that runs directly into the brain. Central to consciousness, cognition, and the nervous system.' },
+      { title: 'Master of the spine', text: 'Strengthens the entire spine from the coccyx to the cranium. Posture, structure, and uprightness are Du Mai\'s domain.' },
+      { title: 'Inner authority', text: 'The "Governing Vessel" — connected to the ability to stand upright in life, take leadership, and hold one\'s course.' },
+      { title: 'Microcosmic orbit', text: 'Together with Ren Mai it forms the "small heavenly circuit" — the fundamental energy circulation between Yin and Yang.' }
     ],
     description: [
-      'Du Mai har sine egne 28 akupunkturpunkter og løber op ad rygsøjlens midterlinje fra bækkenbunden over hovedet til overlæben.',
-      'Som "Yangs Hav" lagrer, nærer og bevæger den yang-energien og styrker særligt nyre-yang.',
-      'Du Mai løber gennem rygmarvskanalen og ind i hjernen - central for hele nervesystemet og kognitiv funktion.',
-      'Grundet sin bane bruges Du Mai til at styrke ryg og rygsøjle, regulere struktur og kropsholdning.',
-      'Emotionelt er Du Mai forbundet med uafhængighed, beslutsomhed, selvudvikling og autoritet.',
-      'Du Mai og Ren Mai danner sammen det "mikrokosmiske kredsløb" - yin og yang i perfekt balance.'
+      'Du Mai has its own 28 acupuncture points and runs up the midline of the spine from the pelvic floor over the head to the upper lip.',
+      'As the "Sea of Yang" it stores, nourishes, and moves Yang energy, particularly strengthening Kidney-Yang.',
+      'Du Mai passes through the spinal canal and into the brain — central to the entire nervous system and cognitive function.',
+      'Due to its pathway, Du Mai is used to strengthen the back and spine, regulate structure and posture.',
+      'Emotionally, Du Mai is connected to independence, determination, self-development, and authority.',
+      'Du Mai and Ren Mai together form the "microcosmic orbit" — Yin and Yang in perfect balance.'
     ],
     themes: [
       {
-        title: 'Ryg, Rygsøjle & Struktur',
+        title: 'Back, Spine & Structure',
         questions: [
-          'Hvordan er din ryg? Stærk eller svag og smertefuld?',
-          'Har du rygsmerter, nakkestivhed eller strukturelle problemer?',
-          'Oplever du dårlig kropsholdning eller stivhed?'
+          'How is your back? Strong or weak and painful?',
+          'Do you have back pain, neck stiffness, or structural problems?',
+          'Do you experience poor posture or stiffness?'
         ]
       },
       {
-        title: 'Nervesystem & Neurologi',
+        title: 'Nervous System & Neurology',
         questions: [
-          'Hvordan fungerer dit nervesystem?',
-          'Har du neurologiske problemer, kramper eller tremor?',
-          'Oplever du nerveskader eller neurologiske symptomer?'
+          'How is your nervous system functioning?',
+          'Do you have neurological problems, cramps, or tremors?',
+          'Do you experience nerve damage or neurological symptoms?'
         ]
       },
       {
-        title: 'Hjerne, Hukommelse & Kognition',
+        title: 'Brain, Memory & Cognition',
         questions: [
-          'Hvordan er din hukommelse og kognitive funktion?',
-          'Har du svimmelhed, hovedpine eller mental tåge?',
-          'Oplever du koncentrationsbesvær?'
+          'How is your memory and cognitive function?',
+          'Do you have dizziness, headaches, or mental fog?',
+          'Do you experience difficulty concentrating?'
         ]
       },
       {
-        title: 'Yang-Energi & Vitalitet',
+        title: 'Yang Energy & Vitality',
         questions: [
-          'Hvordan er dit Yang-energiniveau? Stærkt eller svagt?',
-          'Føler du kuldefølsomhed eller mangel på vitalitet?',
-          'Har du svag Nyre-Yang eller lav metabolisme?'
+          'How is your Yang energy level? Strong or weak?',
+          'Do you feel cold sensitivity or a lack of vitality?',
+          'Do you have weak Kidney-Yang or low metabolism?'
         ]
       },
       {
-        title: 'Immunforsvar & Patogener',
+        title: 'Immune Defence & Pathogens',
         questions: [
-          'Hvordan er dit immunforsvar?',
-          'Bliver du let syg?',
-          'Oplever du problemer med at afværge sygdomme?'
+          'How is your immune defence?',
+          'Do you get sick easily?',
+          'Do you experience difficulty warding off illness?'
         ]
       },
       {
-        title: 'Hovedpine & Kranielle Problemer',
+        title: 'Headaches & Cranial Problems',
         questions: [
-          'Har du hovedpine? Hvor sidder de og hvor ofte?',
-          'Oplever du migræne eller kraniel smerte?',
-          'Føler du pres i hovedet?'
+          'Do you have headaches? Where are they located and how often?',
+          'Do you experience migraines or cranial pain?',
+          'Do you feel pressure in the head?'
         ]
       },
       {
-        title: 'Autoritet, Uafhængighed & Selv',
+        title: 'Authority, Independence & Self',
         questions: [
-          'Føler du dig uafhængig og selvsikker?',
-          'Har du autoritet over dit eget liv?',
-          'Oplever du mangel på selvtillid eller selvrealisering?'
+          'Do you feel independent and self-assured?',
+          'Do you have authority over your own life?',
+          'Do you experience a lack of self-confidence or self-realisation?'
         ]
       },
       {
-        title: 'Depression, Mani & Mental Balance',
+        title: 'Depression, Mania & Mental Balance',
         questions: [
-          'Hvordan er din mentale tilstand? Balanceret eller svingende?',
-          'Oplever du depression eller emotionel ustabilitet?',
-          'Har du problemer med at berolige sindet?'
+          'How is your mental state? Balanced or fluctuating?',
+          'Do you experience depression or emotional instability?',
+          'Do you have difficulty calming the mind?'
         ]
       }
     ]
@@ -2289,99 +2288,99 @@ export const extraordinaryMeridians = [
   {
     id: 'daimai',
     name: 'Dai Mai',
-    nickname: 'Bæltekarret',
-    aka: 'Bælte Kar',
-    openingPoint: 'Galdeblære-punkt 41',
-    coupledPoint: 'San Jiao-punkt 5',
+    nickname: 'Belt Vessel',
+    aka: 'Girdle Vessel',
+    openingPoint: 'Gallbladder-41',
+    coupledPoint: 'San Jiao-5',
     partnerMeridian: 'Yang Wei Mai',
     icon: '帶',
-    level: 'Kroppens horisontale integrator — binder alle vertikale kanaler sammen',
-    relatedOrgans: ['Galdeblære', 'Lever', 'Nyrer', 'Milt'],
+    level: 'The body\'s horizontal integrator — binds all vertical channels together',
+    relatedOrgans: ['Gallbladder', 'Liver', 'Kidneys', 'Spleen'],
     pathway: [
-      'Den eneste horisontale meridian i kroppen — alle andre forløber vertikalt.',
-      'Udspringer fra Lever-13 under ribbensbuens kant og cirkler omkring taljen.',
-      'Løber som et bælte rundt om kroppen i taljeniveau, forbinder front og bag.',
-      'Krydser og "binder" alle vertikale meridianer der passerer igennem taljehøjden.',
-      'Forbinder sig med galdeblære-meridianen ved Galdeblære-26, -27 og -28 på hoften.'
+      'The only horizontal meridian in the body — all others run vertically.',
+      'Originates from Liver-13 below the edge of the ribcage and circles around the waist.',
+      'Runs like a belt around the body at waist level, connecting front and back.',
+      'Crosses and "binds" all vertical meridians that pass through waist level.',
+      'Connects with the Gallbladder meridian at Gallbladder-26, -27, and -28 on the hip.'
     ],
     keyPoints: [
-      { title: 'Den eneste horisontale kanal', text: 'Unik i hele meridiansystemet — binder alle vertikale energibaner sammen som et bælte holder bukser oppe.' },
-      { title: 'Port mellem top og bund', text: 'Regulerer al energi der bevæger sig mellem overkrop og underkrop. Svaghed giver "synkende" symptomer.' },
-      { title: 'Traumernes beholder', text: 'Fungerer som en beholder der "opbevarer" uforløste traumer og følelser — bæltet snører sig sammen omkring det vi ikke vil konfrontere.' },
-      { title: 'Fugtighedens regulator', text: 'Styrer fugt i nedre del af kroppen. Kronisk udflåd, svampeinfektioner og vandophobning peger på Dai Mai-ubalance.' },
-      { title: 'Lever-galdeblære forbindelsen', text: 'Tæt forbundet med Træ-elementet. Behandler migræne, sidesmerte, vrede og frustreret beslutningsevne.' },
-      { title: 'Kroppens "harddisk"', text: 'Akkumulerer livets uforløste erfaringer lag for lag — som ringe i et træ. Behandling åbner op for dybtliggende mønstre.' }
+      { title: 'The only horizontal channel', text: 'Unique in the entire meridian system — binds all vertical energy pathways together the way a belt holds up trousers.' },
+      { title: 'Gateway between top and bottom', text: 'Regulates all energy moving between the upper and lower body. Weakness produces "sinking" symptoms.' },
+      { title: 'Container of trauma', text: 'Functions as a container that "stores" unresolved traumas and emotions — the belt tightens around what we refuse to confront.' },
+      { title: 'Regulator of dampness', text: 'Controls dampness in the lower body. Chronic discharge, fungal infections, and water retention point to Dai Mai imbalance.' },
+      { title: 'The Liver-Gallbladder connection', text: 'Closely connected to the Wood element. Treats migraines, lateral pain, anger, and frustrated decision-making.' },
+      { title: 'The body\'s "hard drive"', text: 'Accumulates life\'s unresolved experiences layer by layer — like rings in a tree. Treatment opens up deep-seated patterns.' }
     ],
     description: [
-      'Dai Mai er den eneste horisontale energibane i kroppen. Den løber omkring taljen som et bælte og forbinder alle vertikale energibaner.',
-      'Dai Mai regulerer energiens bevægelse opad og nedad. Hvis den er svag, kan energi ikke strømme korrekt ind i benene.',
-      'Den udtørrer fugt i nedre del og behandler urinvejsinfektioner, svampeinfektioner og udflåd.',
-      'Baseret på sin bane er Dai Mai tæt forbundet med lever og galdeblære. Den behandler migræne, vrede og galdeblæresmerte.',
-      'Emotionelt fungerer Dai Mai som beholder for følelser og traumer. Bæltet opbevarer alle vores fysiske og emotionelle traumer.'
+      'Dai Mai is the only horizontal energy pathway in the body. It runs around the waist like a belt and connects all vertical energy pathways.',
+      'Dai Mai regulates the movement of energy upward and downward. If it is weak, energy cannot flow properly into the legs.',
+      'It drains dampness from the lower body and treats urinary tract infections, fungal infections, and discharge.',
+      'Based on its pathway, Dai Mai is closely connected to the Liver and Gallbladder. It treats migraines, anger, and Gallbladder pain.',
+      'Emotionally, Dai Mai functions as a container for feelings and traumas. The belt stores all our physical and emotional traumas.'
     ],
     themes: [
       {
-        title: 'Talje, Hofter & Strukturel Balance',
+        title: 'Waist, Hips & Structural Balance',
         questions: [
-          'Hvordan føles din talje og hofter? Fleksible eller stive?',
-          'Har du taljestivhed, hoftesmerte eller strukturelle problemer?',
-          'Oplever du stramhed eller pres omkring bælte-området?'
+          'How do your waist and hips feel? Flexible or stiff?',
+          'Do you have waist stiffness, hip pain, or structural problems?',
+          'Do you experience tightness or pressure around the belt area?'
         ]
       },
       {
-        title: 'Fordeling af Energi & Integration',
+        title: 'Energy Distribution & Integration',
         questions: [
-          'Flyder energien balanceret mellem øvre og nedre kropsdel?',
-          'Føler du adskillelse mellem top og bund af kroppen?',
-          'Oplever du tyngde eller energimangel i benene?'
+          'Does energy flow in a balanced way between the upper and lower body?',
+          'Do you feel a disconnect between the top and bottom of the body?',
+          'Do you experience heaviness or lack of energy in the legs?'
         ]
       },
       {
-        title: 'Fugt, Udflåd & Nedre Jiao',
+        title: 'Dampness, Discharge & Lower Jiao',
         questions: [
-          'Har du problemer med udflåd, svampeinfektioner eller urinvejsinfektioner?',
-          'Oplever du ødemer, tung fornemmelse eller fedtophobning om taljen?',
-          'Er dit fugtniveau i nedre kropsdel balanceret?'
+          'Do you have problems with discharge, fungal infections, or urinary tract infections?',
+          'Do you experience oedema, a heavy sensation, or fat accumulation around the waist?',
+          'Is the dampness level in your lower body balanced?'
         ]
       },
       {
-        title: 'Fordøjelse & Abdominal Sundhed',
+        title: 'Digestion & Abdominal Health',
         questions: [
-          'Har du mave-oppustethed eller abdominal smerte?',
-          'Oplever du fuldhed eller stramhed omkring maven?',
-          'Hvordan fungerer din fordøjelse generelt?'
+          'Do you have abdominal bloating or abdominal pain?',
+          'Do you experience fullness or tightness around the abdomen?',
+          'How is your digestion functioning overall?'
         ]
       },
       {
-        title: 'Gynækologi & Reproduktiv Sundhed',
+        title: 'Gynaecology & Reproductive Health',
         questions: [
-          'Har du menstruationsforstyrrelser eller irregulære perioder?',
-          'Oplever du problemer med graviditet eller gynækologiske tilstande?',
-          'Har du bækken-inflammatorisk sygdom?'
+          'Do you have menstrual disturbances or irregular periods?',
+          'Do you experience problems with pregnancy or gynaecological conditions?',
+          'Do you have pelvic inflammatory disease?'
         ]
       },
       {
-        title: 'Hovedpine & Temporal Smerte',
+        title: 'Headaches & Temporal Pain',
         questions: [
-          'Har du temporal hovedpine eller migræne?',
-          'Oplever du smerte der strækker sig omkring hovedet?',
-          'Føler du svimmelhed eller pres i tindingerne?'
+          'Do you have temporal headaches or migraines?',
+          'Do you experience pain that extends around the head?',
+          'Do you feel dizziness or pressure in the temples?'
         ]
       },
       {
-        title: 'Emotionelle Grænser & Traumer',
+        title: 'Emotional Boundaries & Trauma',
         questions: [
-          'Hvordan er dine emotionelle grænser? Klare eller svage?',
-          'Føler du at du gemmer undertrykte følelser?',
-          'Oplever du emotionel sammensnøring eller fastlåsthed?'
+          'How are your emotional boundaries? Clear or weak?',
+          'Do you feel that you are hiding suppressed emotions?',
+          'Do you experience emotional constriction or a sense of being stuck?'
         ]
       },
       {
-        title: 'Beslutsomhed & Livshåndtering',
+        title: 'Decisiveness & Life Management',
         questions: [
-          'Håndterer du livets udfordringer med klarhed eller forvirring?',
-          'Har du svært ved at træffe beslutninger?',
-          'Gemmer du problemer væk i stedet for at håndtere dem?'
+          'Do you handle life\'s challenges with clarity or confusion?',
+          'Do you find it difficult to make decisions?',
+          'Do you hide problems away instead of dealing with them?'
         ]
       }
     ]
@@ -2389,99 +2388,99 @@ export const extraordinaryMeridians = [
   {
     id: 'yinqiaomai',
     name: 'Yin Qiao Mai',
-    nickname: 'Yin Bevægelseskarret',
+    nickname: 'Yin Motility Vessel',
     aka: 'Yin Stepping Vessel',
-    openingPoint: 'Nyre-punkt 6',
-    coupledPoint: 'Lunge-punkt 7',
+    openingPoint: 'Kidney point 6',
+    coupledPoint: 'Lung point 7',
     partnerMeridian: 'Ren Mai',
     icon: '蹻',
-    level: 'Bevægelsens yin-side — indadvendthed, søvn og selvindsigt',
-    relatedOrgans: ['Nyrer', 'Lunger', 'Blære'],
+    level: 'The Yin side of movement — introversion, sleep, and self-awareness',
+    relatedOrgans: ['Kidneys', 'Lungs', 'Bladder'],
     pathway: [
-      'Udspringer fra Nyre-punkt 6 (Zhaohai) under den indre ankelfremspring.',
-      'Stiger opad langs benets inderside (mediale side) gennem læggen og låret.',
-      'Passerer gennem kønsorganerne og den nedre mave.',
-      'Fortsætter opad gennem brystet, forbi halsen til den indre øjenkrog.',
-      'Møder Yang Qiao Mai ved øjet — her afgøres balancen mellem søvn og vågenhed.'
+      'Originates from Kidney point 6 (Zhaohai) below the inner ankle prominence.',
+      'Ascends along the inner side (medial side) of the leg through the calf and thigh.',
+      'Passes through the genitals and the lower abdomen.',
+      'Continues upward through the chest, past the throat to the inner corner of the eye.',
+      'Meets Yang Qiao Mai at the eye — here the balance between sleep and wakefulness is determined.'
     ],
     keyPoints: [
-      { title: 'Søvnens mester', text: 'Regulerer søvn/vågen-cyklusen sammen med Yang Qiao Mai. Yin Qiao Mai lukker øjnene — overskud giver overdreven søvnighed.' },
-      { title: 'Den indre ankels kraft', text: 'Udspringer fra Nyre-6, et af kroppens mest brugte akupunkturpunkter. Forbinder nyrernes dybde med bevægelsens lethed.' },
-      { title: 'Kropslig selvopfattelse', text: 'Forbundet med hvordan vi ser os selv indefra — selvværd, kropsimage og forholdet til vores egen fysiske form.' },
-      { title: 'Benets indre bane', text: 'Styrer muskeltonus og bevægelighed på benenes inderside. Svaghed giver faldne svangbuer og indadvendte fødder.' },
-      { title: 'Introvertens kanal', text: 'Den indadvendte bevægelse — evnen til at trække sig tilbage, reflektere og lytte indad. Ubalance giver overdreven tilbagetrækning.' },
-      { title: 'Øjnenes lukning', text: 'Yin Qiao Mai bringer yin til øjnene og lukker dem. Når den er i balance, falder vi let i søvn og hviler dybt.' }
+      { title: 'Master of Sleep', text: 'Regulates the sleep/wake cycle together with Yang Qiao Mai. Yin Qiao Mai closes the eyes — excess leads to excessive drowsiness.' },
+      { title: 'Power of the Inner Ankle', text: 'Originates from Kidney-6, one of the body\'s most widely used acupuncture points. Connects the depth of the kidneys with ease of movement.' },
+      { title: 'Bodily Self-Perception', text: 'Connected with how we see ourselves from within — self-worth, body image, and the relationship to our own physical form.' },
+      { title: 'Inner Pathway of the Leg', text: 'Controls muscle tone and mobility on the inner side of the legs. Weakness leads to fallen arches and inward-turning feet.' },
+      { title: 'Channel of the Introvert', text: 'The inward movement — the ability to withdraw, reflect, and listen inward. Imbalance leads to excessive withdrawal.' },
+      { title: 'Closing of the Eyes', text: 'Yin Qiao Mai brings Yin to the eyes and closes them. When in balance, we fall asleep easily and rest deeply.' }
     ],
     description: [
-      'Yin Qiao Mai starter ved hælen og løber op langs benets inderside, gennem kønsorganerne, brystet og til øjet.',
-      'Den kontrollerer yin-energiens bevægelse og gør bevægelserne i underekstremiteterne smidige og kraftfulde.',
-      'Yin Qiao Mais mest centrale funktion er regulering af søvn/vågen-cyklusen. Den er ansvarlig for øjnenes lukning om natten.',
-      'Emotionelt forbinder den med vores introverte side og tillader selvrefleksion. Den understøtter sundt kropsimage.',
-      'Yin Qiao Mai arbejder parvis med Yang Qiao Mai for at balancere aktivitet og hvile.'
+      'Yin Qiao Mai starts at the heel and runs up along the inner side of the leg, through the genitals, chest, and to the eye.',
+      'It controls the movement of Yin energy and makes the movements of the lower extremities smooth and powerful.',
+      'Yin Qiao Mai\'s most central function is regulating the sleep/wake cycle. It is responsible for closing the eyes at night.',
+      'Emotionally, it connects with our introverted side and allows for self-reflection. It supports healthy body image.',
+      'Yin Qiao Mai works in tandem with Yang Qiao Mai to balance activity and rest.'
     ],
     themes: [
       {
-        title: 'Søvn & Døsighed',
+        title: 'Sleep & Drowsiness',
         questions: [
-          'Hvordan er din søvn? Præget af overdreven døsighed?',
-          'Sover du for meget eller føler konstant træthed?',
-          'Har du svært ved at holde øjnene åbne om dagen?'
+          'How is your sleep? Marked by excessive drowsiness?',
+          'Do you sleep too much or feel constant fatigue?',
+          'Do you find it hard to keep your eyes open during the day?'
         ]
       },
       {
-        title: 'Benenes Inderside & Bevægelse',
+        title: 'Inner Legs & Movement',
         questions: [
-          'Hvordan føles indersiden af dine ben?',
-          'Har du smerter eller stivhed langs benets inderside?',
-          'Oplever du problemer med benenes tone eller faldne svangbuer?'
+          'How does the inner side of your legs feel?',
+          'Do you have pain or stiffness along the inner side of the leg?',
+          'Do you experience problems with leg tone or fallen arches?'
         ]
       },
       {
         title: 'Eyes & Vision',
         questions: [
-          'Hvordan fungerer dine øjne? Klare eller trætte?',
-          'Har du problemer med øjnenes lukning eller tørhed?',
-          'Oplever du problemer ved den indre øjenkrog?'
+          'How are your eyes functioning? Clear or tired?',
+          'Do you have problems with eye closure or dryness?',
+          'Do you experience problems at the inner corner of the eye?'
         ]
       },
       {
-        title: 'Abdominal & Genitale Problemer',
+        title: 'Abdominal & Genital Issues',
         questions: [
-          'Oplever du mavesmerter, specielt ensidigt?',
-          'Har du genitale problemer eller ubehag?',
-          'Oplever du urinproblemer eller smerte i nedre mave?'
+          'Do you experience abdominal pain, especially on one side?',
+          'Do you have genital problems or discomfort?',
+          'Do you experience urinary problems or pain in the lower abdomen?'
         ]
       },
       {
-        title: 'Kvindesundhed & Fødsel',
+        title: 'Women\'s Health & Childbirth',
         questions: [
-          'Har du haft komplicerede fødsler?',
-          'Oplever du smerter efter fødsel?',
-          'Har du inkontinens eller reproduktive problemer?'
+          'Have you had complicated deliveries?',
+          'Do you experience pain after childbirth?',
+          'Do you have incontinence or reproductive issues?'
         ]
       },
       {
-        title: 'Introspektion & Selvindsigt',
+        title: 'Introspection & Self-Awareness',
         questions: [
-          'Har du et sundt forhold til din krop?',
-          'Føler du selvtillid eller selvtvivl?',
-          'Har du tendens til at lukke verden ude?'
+          'Do you have a healthy relationship with your body?',
+          'Do you feel self-confidence or self-doubt?',
+          'Do you tend to shut the world out?'
         ]
       },
       {
-        title: 'Emotionel Balance & Indadvendthed',
+        title: 'Emotional Balance & Introversion',
         questions: [
-          'Vender du din vrede indad?',
-          'Føler du dig utilstrækkelig?',
-          'Trækker du dig fra sociale situationer?'
+          'Do you turn your anger inward?',
+          'Do you feel inadequate?',
+          'Do you withdraw from social situations?'
         ]
       },
       {
-        title: 'Yin-Yang Balance & Hvile',
+        title: 'Yin-Yang Balance & Rest',
         questions: [
-          'Finder du balance mellem aktivitet og hvile?',
-          'Føler du dig mere indadvendt end udadvendt?',
-          'Har du brug for mere søvn end de fleste?'
+          'Do you find balance between activity and rest?',
+          'Do you feel more introverted than extroverted?',
+          'Do you need more sleep than most people?'
         ]
       }
     ]
@@ -2489,99 +2488,99 @@ export const extraordinaryMeridians = [
   {
     id: 'yangqiaomai',
     name: 'Yang Qiao Mai',
-    nickname: 'Yang Bevægelseskarret',
+    nickname: 'Yang Motility Vessel',
     aka: 'Yang Stepping Vessel',
-    openingPoint: 'Blære-punkt 62',
-    coupledPoint: 'Tyndtarms-punkt 3',
+    openingPoint: 'Bladder point 62',
+    coupledPoint: 'Small Intestine point 3',
     partnerMeridian: 'Du Mai',
     icon: '陽',
-    level: 'Bevægelsens yang-side — årvågenhed, handling og engagement',
-    relatedOrgans: ['Blære', 'Tyndtarm', 'Galdeblære'],
+    level: 'The Yang side of movement — alertness, action, and engagement',
+    relatedOrgans: ['Bladder', 'Small Intestine', 'Gallbladder'],
     pathway: [
-      'Udspringer fra Blære-punkt 62 (Shenmai) under den ydre ankelfremspring.',
-      'Stiger opad langs benets yderside (laterale side) gennem læggen og låret.',
-      'Passerer hoften og fortsætter langs kroppens yderside over skulderen.',
-      'Løber op ad halsen langs sternocleidomastoid-musklen til mundvigen og kinden.',
-      'Ender ved den indre øjenkrog hvor den møder Yin Qiao Mai — søvn/vågen-balancen afgøres her.'
+      'Originates from Bladder point 62 (Shenmai) below the outer ankle prominence.',
+      'Ascends along the outer side (lateral side) of the leg through the calf and thigh.',
+      'Passes the hip and continues along the outer side of the body over the shoulder.',
+      'Runs up the neck along the sternocleidomastoid muscle to the corner of the mouth and cheek.',
+      'Ends at the inner corner of the eye where it meets Yin Qiao Mai — the sleep/wake balance is determined here.'
     ],
     keyPoints: [
-      { title: 'Årvågenhedens mester', text: 'Holder øjnene åbne og sindet vagtsomt. Overskud giver søvnløshed og hyperårvågenhed — underskud giver sløvhed.' },
-      { title: 'Den ydre ankels kraft', text: 'Udspringer fra Blære-62, et kraftcenter for yang-bevægelse. Støtter fysisk mobilitet og handlekraft.' },
-      { title: 'Verdens-engagement', text: 'Yang Qiao Mai driver os ud i verden — initiativ, mod og evnen til at handle. Overdreven aktivering giver rastløshed.' },
-      { title: 'Benets ydre bane', text: 'Styrer muskeltonus på benenes yderside. Ubalance giver stramme ydre muskler og tendens til at "gå udad".' },
-      { title: 'Projektion udadtil', text: 'I ubalance retter vi vores frustration mod andre. Yang Qiao-personligheden bebrejder omverdenen i stedet for at se indad.' },
-      { title: 'Øjnenes åbning', text: 'Yang Qiao Mai bringer yang til øjnene og åbner dem. For meget yang = kan ikke lukke øjnene = søvnløshed.' }
+      { title: 'Master of Alertness', text: 'Keeps the eyes open and the mind vigilant. Excess leads to insomnia and hypervigilance — deficiency leads to lethargy.' },
+      { title: 'Power of the Outer Ankle', text: 'Originates from Bladder-62, a power center for Yang movement. Supports physical mobility and capacity for action.' },
+      { title: 'Worldly Engagement', text: 'Yang Qiao Mai drives us out into the world — initiative, courage, and the ability to act. Excessive activation leads to restlessness.' },
+      { title: 'Outer Pathway of the Leg', text: 'Controls muscle tone on the outer side of the legs. Imbalance leads to tight outer muscles and a tendency to "walk outward".' },
+      { title: 'Outward Projection', text: 'In imbalance, we direct our frustration toward others. The Yang Qiao personality blames the outside world instead of looking inward.' },
+      { title: 'Opening of the Eyes', text: 'Yang Qiao Mai brings Yang to the eyes and opens them. Too much Yang = cannot close the eyes = insomnia.' }
     ],
     description: [
-      'Yang Qiao Mai regulerer yang-energiens bevægelse og dynamik. Den påvirker den laterale (ydre) side af benene.',
-      'Den kontrollerer årvågenhed og holder øjnene åbne om dagen. Yang overskud giver søvnløshed.',
-      'Yang Qiao Mai er forbundet med initiativ, handlekraft, årvågenhed og udadvendt bevægelse.',
-      'Den er vigtig for fysisk mobilitet og evnen til at engagere sig i verden.',
-      'Yang Qiao-personligheden bebrejder andre for deres problemer og kan ikke sove.'
+      'Yang Qiao Mai regulates the movement and dynamics of Yang energy. It affects the lateral (outer) side of the legs.',
+      'It controls alertness and keeps the eyes open during the day. Yang excess leads to insomnia.',
+      'Yang Qiao Mai is connected with initiative, capacity for action, alertness, and outward movement.',
+      'It is important for physical mobility and the ability to engage with the world.',
+      'The Yang Qiao personality blames others for their problems and cannot sleep.'
     ],
     themes: [
       {
-        title: 'Søvnløshed & Årvågenhed',
+        title: 'Insomnia & Alertness',
         questions: [
-          'Har du svært ved at falde i søvn?',
-          'Føler du dig hyperårvågen eller overstimuleret?',
-          'Kan dine øjne ikke lukke om natten?'
+          'Do you have difficulty falling asleep?',
+          'Do you feel hypervigilant or overstimulated?',
+          'Are your eyes unable to close at night?'
         ]
       },
       {
-        title: 'Benenes Yderside & Bevægelse',
+        title: 'Outer Legs & Movement',
         questions: [
-          'Har du smerter langs ydersiden af benene?',
-          'Oplever du stramme ydre benmuskler?',
-          'Har du problemer med fod-eversion eller ankelsvaghed?'
+          'Do you have pain along the outer side of the legs?',
+          'Do you experience tight outer leg muscles?',
+          'Do you have problems with foot eversion or ankle weakness?'
         ]
       },
       {
-        title: 'Initiativ & Handlekraft',
+        title: 'Initiative & Capacity for Action',
         questions: [
-          'Har du for meget eller for lidt initiativ?',
-          'Føler du dig rastløs og handlingshungrende?',
-          'Har du svært ved at slappe af og bare være?'
+          'Do you have too much or too little initiative?',
+          'Do you feel restless and hungry for action?',
+          'Do you find it hard to relax and just be?'
         ]
       },
       {
         title: 'Eyes & Vision',
         questions: [
-          'Oplever du øjentørhed eller øjentræt?',
-          'Har du problemer med at lukke øjnene?',
-          'Føler du visuelt overstimuleret?'
+          'Do you experience eye dryness or eye fatigue?',
+          'Do you have problems closing your eyes?',
+          'Do you feel visually overstimulated?'
         ]
       },
       {
-        title: 'Stress & Hyperaktivitet',
+        title: 'Stress & Hyperactivity',
         questions: [
-          'Er du konstant i gang og kan ikke stoppe?',
-          'Føler du dig stresset og overaktiv?',
-          'Har du svært ved at finde ro?'
+          'Are you constantly on the go and unable to stop?',
+          'Do you feel stressed and overactive?',
+          'Do you find it hard to find peace?'
         ]
       },
       {
-        title: 'Nakke, Skulder & Lateral Krop',
+        title: 'Neck, Shoulder & Lateral Body',
         questions: [
-          'Har du spændinger langs kroppens yderside?',
-          'Oplever du nakke-skulder stivhed?',
-          'Har du hofte- eller knæproblemer lateralt?'
+          'Do you have tension along the outer side of the body?',
+          'Do you experience neck-shoulder stiffness?',
+          'Do you have lateral hip or knee problems?'
         ]
       },
       {
-        title: 'Immunforsvar & Ydre Beskyttelse',
+        title: 'Immune System & External Protection',
         questions: [
-          'Hvordan er dit immunforsvar?',
-          'Reagerer du kraftigt på ydre påvirkninger?',
-          'Føler du dig udsat eller ubeskyttet?'
+          'How is your immune system?',
+          'Do you react strongly to external influences?',
+          'Do you feel exposed or unprotected?'
         ]
       },
       {
-        title: 'Udadvendthed & Verdens-engagement',
+        title: 'Extroversion & Worldly Engagement',
         questions: [
-          'Er du for udadvendt og mister dig selv?',
-          'Bebrejder du andre for dine problemer?',
-          'Har du svært ved at vende blikket indad?'
+          'Are you too extroverted and losing yourself?',
+          'Do you blame others for your problems?',
+          'Do you find it hard to turn your gaze inward?'
         ]
       }
     ]
@@ -2589,99 +2588,99 @@ export const extraordinaryMeridians = [
   {
     id: 'yinweimai',
     name: 'Yin Wei Mai',
-    nickname: 'Yin Forbindelseskarret',
+    nickname: 'Yin Linking Vessel',
     aka: 'Yin Linking Vessel',
-    openingPoint: 'Pericardium-punkt 6',
-    coupledPoint: 'Milt-punkt 4',
+    openingPoint: 'Pericardium-6',
+    coupledPoint: 'Spleen-4',
     partnerMeridian: 'Chong Mai',
     icon: '維',
-    level: 'Det indre bindeled — sammenhæng, mening og emotionel dybde',
-    relatedOrgans: ['Pericardium', 'Milt', 'Hjerte', 'Lever'],
+    level: 'The inner link — coherence, meaning, and emotional depth',
+    relatedOrgans: ['Pericardium', 'Spleen', 'Heart', 'Liver'],
     pathway: [
-      'Udspringer fra Nyre-punkt 9 på læggens inderside.',
-      'Stiger opad langs benets inderside og møder milt-meridianen.',
-      'Passerer maven og forbinder med lever-meridianen ved ribbensbuen.',
-      'Fortsætter opad til brystet hvor den møder Ren Mai ved halsen.',
-      'Forbinder alle yin-meridianer og skaber en indre "web" af yin-sammenhæng.'
+      'Originates from Kidney-9 on the medial side of the calf.',
+      'Ascends along the medial aspect of the leg and meets the Spleen meridian.',
+      'Passes the abdomen and connects with the Liver meridian at the costal margin.',
+      'Continues upward to the chest where it meets Ren Mai at the throat.',
+      'Connects all Yin meridians and creates an inner "web" of Yin coherence.'
     ],
     keyPoints: [
-      { title: 'Yinens indre sammenhæng', text: 'Forbinder alle yin-meridianer og skaber samhørighed mellem kroppens indre systemer. Uden Yin Wei Mai fragmenterer yin-energien.' },
-      { title: 'Emotionelt bindeled', text: 'Bærer forbindelsen mellem fortid og nutid — vores indre tidsfornemmelse og følelsen af at livet hænger sammen.' },
-      { title: 'Hjertets beskytter', text: 'Åbnes via Pericardium-6, et af de vigtigste punkter for kvalme, angst og hjertebeskyttelse. Pericardiums port til de dybere lag.' },
-      { title: 'Mening og sammenhæng', text: 'Når Yin Wei Mai er svag, mister vi fornemmelsen af at livet har mening. Fragmentering, tomhed og eksistentiel krise.' },
-      { title: 'Indre tryghed', text: 'Skaber den dybe, indre følelse af at "jeg er okay" — uafhængigt af ydre omstændigheder. Grundlæggende selvværd.' },
-      { title: 'Tidsforbindelsen', text: '"Wei" betyder at forbinde/linke. Yin Wei Mai forbinder vores indre oplevelser over tid — når den er svag, føles livet usammenhængende.' }
+      { title: 'Inner coherence of Yin', text: 'Connects all Yin meridians and creates cohesion between the body\'s inner systems. Without Yin Wei Mai, Yin energy becomes fragmented.' },
+      { title: 'Emotional link', text: 'Carries the connection between past and present — our inner sense of time and the feeling that life holds together.' },
+      { title: 'Protector of the Heart', text: 'Opened via Pericardium-6, one of the most important points for nausea, anxiety, and Heart protection. The Pericardium\'s gateway to the deeper layers.' },
+      { title: 'Meaning and coherence', text: 'When Yin Wei Mai is weak, we lose the sense that life has meaning. Fragmentation, emptiness, and existential crisis.' },
+      { title: 'Inner security', text: 'Creates the deep, inner feeling of "I am okay" — independent of external circumstances. Fundamental self-worth.' },
+      { title: 'The time connection', text: '"Wei" means to connect/link. Yin Wei Mai connects our inner experiences over time — when it is weak, life feels incoherent.' }
     ],
     description: [
-      'Yin Wei Mai forbinder og integrerer alle yin-meridianer medialt på kroppen.',
-      'Den beskytter kroppens indre strukturer og yin-substans.',
-      'Fungerer som en "indre sammenhængskraft" der holder yin-energien samlet.',
-      'Vigtig for emotionel stabilitet, indre tryghed og følelsen af sammenhæng indefra.',
-      'Relaterer til selvværd, livsmening og forbindelse til det indre selv.'
+      'Yin Wei Mai connects and integrates all Yin meridians on the medial aspect of the body.',
+      'It protects the body\'s inner structures and Yin substance.',
+      'Functions as an "inner cohesive force" that keeps Yin energy unified.',
+      'Important for emotional stability, inner security, and the feeling of coherence from within.',
+      'Relates to self-worth, life purpose, and connection to the inner self.'
     ],
     themes: [
       {
-        title: 'Hjerte, Blod & Cirkulation',
+        title: 'Heart, Blood & Circulation',
         questions: [
-          'Oplever du hjertebanken eller brystsmerter?',
-          'Har du blodmangel eller dårlig cirkulation?',
-          'Føler du tyngde eller trykken i brystet?'
+          'Do you experience heart palpitations or chest pain?',
+          'Do you have anemia or poor circulation?',
+          'Do you feel heaviness or pressure in the chest?'
         ]
       },
       {
-        title: 'Emotionel Sammenhæng & Mening',
+        title: 'Emotional Coherence & Meaning',
         questions: [
-          'Føler du sammenhæng og mening i dit liv?',
-          'Oplever du fragmentering eller meningsløshed?',
-          'Har du forbindelse til dine dybeste værdier?'
+          'Do you feel coherence and meaning in your life?',
+          'Do you experience fragmentation or meaninglessness?',
+          'Are you connected to your deepest values?'
         ]
       },
       {
-        title: 'Selvværd & Indre Tryghed',
+        title: 'Self-Worth & Inner Security',
         questions: [
-          'Hvordan er dit selvværd? Stabilt eller svingende?',
-          'Føler du indre tryghed eller usikkerhed?',
-          'Oplever du mangel på selvtillid?'
+          'How is your self-worth? Stable or fluctuating?',
+          'Do you feel inner security or insecurity?',
+          'Do you experience a lack of self-confidence?'
         ]
       },
       {
-        title: 'Yin-Næring & Substans',
+        title: 'Yin Nourishment & Substance',
         questions: [
-          'Føler du dig udtømt eller udmattet?',
-          'Har du tørhed, varme eller yin-mangel symptomer?',
-          'Oplever du kronisk træthed?'
+          'Do you feel depleted or exhausted?',
+          'Do you have dryness, heat, or Yin deficiency symptoms?',
+          'Do you experience chronic fatigue?'
         ]
       },
       {
-        title: 'Søvn & Mental Ro',
+        title: 'Sleep & Mental Calm',
         questions: [
-          'Hvordan er din søvn? Rolig eller urolig?',
-          'Oplever du angst eller uro om natten?',
-          'Har du svært ved at finde indre ro?'
+          'How is your sleep? Restful or restless?',
+          'Do you experience anxiety or restlessness at night?',
+          'Do you find it difficult to achieve inner calm?'
         ]
       },
       {
-        title: 'Relationer & Forbindelse',
+        title: 'Relationships & Connection',
         questions: [
-          'Føler du dig forbundet med andre?',
-          'Har du svært ved nære relationer?',
-          'Oplever du ensomhed eller isolation?'
+          'Do you feel connected to others?',
+          'Do you have difficulty with close relationships?',
+          'Do you experience loneliness or isolation?'
         ]
       },
       {
-        title: 'Mave, Milt & Næring',
+        title: 'Stomach, Spleen & Nourishment',
         questions: [
-          'Hvordan er din fordøjelse og næring?',
-          'Føler du dig dårligt næret emotionelt?',
-          'Har du appetitproblemer?'
+          'How is your digestion and nourishment?',
+          'Do you feel emotionally undernourished?',
+          'Do you have appetite problems?'
         ]
       },
       {
-        title: 'Livsmening & Eksistens',
+        title: 'Life Purpose & Existence',
         questions: [
-          'Har du klart livsformål?',
-          'Føler du eksistentiel uro?',
-          'Oplever du meningsløshed eller tomhed?'
+          'Do you have a clear life purpose?',
+          'Do you feel existential unease?',
+          'Do you experience meaninglessness or emptiness?'
         ]
       }
     ]
@@ -2689,99 +2688,99 @@ export const extraordinaryMeridians = [
   {
     id: 'yangweimai',
     name: 'Yang Wei Mai',
-    nickname: 'Yang Forbindelseskarret',
+    nickname: 'Yang Linking Vessel',
     aka: 'Yang Linking Vessel',
-    openingPoint: 'San Jiao-punkt 5',
-    coupledPoint: 'Galdeblære-punkt 41',
+    openingPoint: 'San Jiao-5',
+    coupledPoint: 'Gallbladder-41',
     partnerMeridian: 'Dai Mai',
     icon: '衛',
-    level: 'Det ydre bindeled — beskyttelse, transformation og ydre styrke',
-    relatedOrgans: ['San Jiao', 'Galdeblære', 'Tyndtarm', 'Blære'],
+    level: 'The outer link — protection, transformation, and outer strength',
+    relatedOrgans: ['San Jiao', 'Gallbladder', 'Small Intestine', 'Bladder'],
     pathway: [
-      'Udspringer fra Blære-punkt 63 på den ydre ankel.',
-      'Stiger opad langs benets yderside og forbinder med galdeblære-meridianen.',
-      'Passerer hoften og kroppens laterale side op til skulderen.',
-      'Fortsætter til nakken og baghovedet, forbinder med Du Mai ved Du-16.',
-      'Forbinder alle yang-meridianer og skaber en ydre "rustning" af yang-beskyttelse.'
+      'Originates from Bladder-63 on the lateral ankle.',
+      'Ascends along the lateral aspect of the leg and connects with the Gallbladder meridian.',
+      'Passes the hip and the lateral side of the body up to the shoulder.',
+      'Continues to the neck and occiput, connecting with Du Mai at Du-16.',
+      'Connects all Yang meridians and creates an outer "armor" of Yang protection.'
     ],
     keyPoints: [
-      { title: 'Yangens ydre sammenhæng', text: 'Forbinder alle yang-meridianer og koordinerer kroppens ydre forsvar. Yang Wei Mai er immunsystemets dybere organisator.' },
-      { title: 'Den ydre rustning', text: 'Skaber den beskyttende skal mod omverdenens påvirkninger — vind, kulde, patogener og emotionelle angreb udefra.' },
-      { title: 'Halvside-symptomer', text: 'Klassisk for vekslende feber/kulde, ondt i den ene side, migræne og symptomer der skifter fra side til side.' },
-      { title: 'Transformation og forandring', text: 'Yang Wei Mai understøtter vores evne til at transformere og tilpasse os. Svaghed giver modstand mod forandring og fastlåsthed.' },
-      { title: 'Temporal og okkipital', text: 'Forløber gennem tindingeregionen og baghovedet — central for spændingshovedpine, migræne og nakke-skulder-problematikker.' },
-      { title: 'Tidsforbindelsen udadtil', text: '"Wei" betyder at forbinde. Yang Wei Mai forbinder vores ydre oplevelser over tid — vores forhold til verdens forandringer og livsfaser.' }
+      { title: 'Outer coherence of Yang', text: 'Connects all Yang meridians and coordinates the body\'s external defense. Yang Wei Mai is the deeper organizer of the immune system.' },
+      { title: 'The outer armor', text: 'Creates the protective shell against external influences — wind, cold, pathogens, and emotional attacks from outside.' },
+      { title: 'Lateral symptoms', text: 'Classic for alternating fever/chills, pain on one side, migraine, and symptoms that shift from side to side.' },
+      { title: 'Transformation and change', text: 'Yang Wei Mai supports our ability to transform and adapt. Weakness leads to resistance to change and stagnation.' },
+      { title: 'Temporal and occipital', text: 'Runs through the temporal region and occiput — central for tension headaches, migraines, and neck-shoulder issues.' },
+      { title: 'The outward time connection', text: '"Wei" means to connect. Yang Wei Mai connects our outer experiences over time — our relationship to the changes of the world and life phases.' }
     ],
     description: [
-      'Yang Wei Mai forbinder og integrerer alle yang-meridianer lateralt på kroppen.',
-      'Den beskytter kroppens yderside mod eksterne patogener.',
-      'Fungerer som en "beskyttende skal" der holder yang-energien samlet.',
-      'Vigtig for immunforsvar og følelsen af at være beskyttet udadtil.',
-      'Relaterer til transformation, ydre styrke og evnen til at møde verden.'
+      'Yang Wei Mai connects and integrates all Yang meridians on the lateral aspect of the body.',
+      'It protects the outer body against external pathogens.',
+      'Functions as a "protective shell" that keeps Yang energy unified.',
+      'Important for immune defense and the feeling of being protected outwardly.',
+      'Relates to transformation, outer strength, and the ability to meet the world.'
     ],
     themes: [
       {
-        title: 'Immunforsvar & Ydre Beskyttelse',
+        title: 'Immune Defense & Outer Protection',
         questions: [
-          'Hvordan er dit immunforsvar?',
-          'Bliver du let syg af kulde eller vind?',
-          'Føler du dig ubeskyttet mod ydre påvirkninger?'
+          'How is your immune defense?',
+          'Do you easily get sick from cold or wind?',
+          'Do you feel unprotected against external influences?'
         ]
       },
       {
-        title: 'Feber, Kulderystelser & Patogener',
+        title: 'Fever, Chills & Pathogens',
         questions: [
-          'Oplever du vekslende feber og kulderystelser?',
-          'Har du kroniske infektioner?',
-          'Reagerer du kraftigt på sæsonændringer?'
+          'Do you experience alternating fever and chills?',
+          'Do you have chronic infections?',
+          'Do you react strongly to seasonal changes?'
         ]
       },
       {
-        title: 'Transformation & Forandring',
+        title: 'Transformation & Change',
         questions: [
-          'Hvordan håndterer du forandringer?',
-          'Føler du dig fastlåst eller fleksibel?',
-          'Oplever du modstand mod transformation?'
+          'How do you handle changes?',
+          'Do you feel stuck or flexible?',
+          'Do you experience resistance to transformation?'
         ]
       },
       {
-        title: 'Ydre Styrke & Handlekraft',
+        title: 'Outer Strength & Initiative',
         questions: [
-          'Føler du dig stærk i mødet med verden?',
-          'Har du handlekraft og engagement?',
-          'Oplever du svaghed eller tilbagetrækning?'
+          'Do you feel strong when facing the world?',
+          'Do you have initiative and engagement?',
+          'Do you experience weakness or withdrawal?'
         ]
       },
       {
-        title: 'Nakke, Skulder & Lateral Krop',
+        title: 'Neck, Shoulder & Lateral Body',
         questions: [
-          'Har du spændinger i nakke og skuldre?',
-          'Oplever du smerter langs kroppens sider?',
-          'Føler du stivhed i øvre ryg?'
+          'Do you have tension in the neck and shoulders?',
+          'Do you experience pain along the sides of the body?',
+          'Do you feel stiffness in the upper back?'
         ]
       },
       {
-        title: 'Hovedpine & Temporal Region',
+        title: 'Headache & Temporal Region',
         questions: [
-          'Har du temporal eller okciputal hovedpine?',
-          'Oplever du spændingshovedpine?',
-          'Føler du pres i baghovedet?'
+          'Do you have temporal or occipital headaches?',
+          'Do you experience tension headaches?',
+          'Do you feel pressure in the back of the head?'
         ]
       },
       {
-        title: 'Yang-Energi & Vitalitet',
+        title: 'Yang Energy & Vitality',
         questions: [
-          'Hvordan er din yang-energi?',
-          'Føler du kulde eller mangel på varme?',
-          'Oplever du træthed eller mangel på motivation?'
+          'How is your Yang energy?',
+          'Do you feel cold or a lack of warmth?',
+          'Do you experience fatigue or lack of motivation?'
         ]
       },
       {
-        title: 'Grænser & Ydre Relationer',
+        title: 'Boundaries & External Relationships',
         questions: [
-          'Hvordan er dine grænser mod omverdenen?',
-          'Føler du dig invaderet af andres energi?',
-          'Har du svært ved at beskytte dig selv?'
+          'How are your boundaries toward the outside world?',
+          'Do you feel invaded by others\' energy?',
+          'Do you find it difficult to protect yourself?'
         ]
       }
     ]
@@ -2963,99 +2962,99 @@ export const fiveElements = [
     name: 'Metal',
     chineseName: '金 Jīn',
     color: '#C0C0C0',
-    organs: ['Lunger', 'Tyktarm'],
-    season: 'Efterår',
-    emotion: 'Sorg',
+    organs: ['Lungs', 'Large Intestine'],
+    season: 'Autumn',
+    emotion: 'Grief',
     icon: '金',
-    direction: 'Vest',
-    climate: 'Tørhed',
-    taste: 'Skarp',
-    smell: 'Rådden',
-    sound: 'Gråd',
-    tissue: 'Hud & Kropshår',
-    senseOrgan: 'Næse',
-    bodyFluid: 'Næseflåd',
-    generates: 'Vand',
-    generatedBy: 'Jord',
-    controls: 'Træ',
-    controlledBy: 'Ild',
+    direction: 'West',
+    climate: 'Dryness',
+    taste: 'Pungent',
+    smell: 'Rotten',
+    sound: 'Weeping',
+    tissue: 'Skin & Body Hair',
+    senseOrgan: 'Nose',
+    bodyFluid: 'Nasal Mucus',
+    generates: 'Water',
+    generatedBy: 'Earth',
+    controls: 'Wood',
+    controlledBy: 'Fire',
     description: [
-      'Metal-elementet repræsenterer renhed, præcision og evnen til at skelne det væsentlige fra det uvæsentlige. Ligesom et sværd skærer det overflødige bort, hjælper Metal os med at finde klarhed, sætte grænser og værdsætte det essentielle.',
-      'Metal er forbundet med efterårets energi — den naturlige bevægelse indad og nedad. Ligesom træerne slipper deres blade, inviterer Metal os til at give slip på det vi ikke længere har brug for og finde skønhed i enkelhed og essens.',
-      'I kroppen styrer Metal åndedrættet og huden — de to overflader hvor vi møder omverdenen. Lungerne modtager det rene udefra, mens tyktarmen udskiller det urene. Sammen skaber de kroppens evne til at sortere, rense og forny.',
-      'Metal-elementets dybere kvalitet er evnen til at finde værdi og mening i livets naturlige cyklusser af tab og fornyelse. Når Metal er i balance, kan vi sørge sund og slippe taget uden bitterhed — og dermed gøre plads til det nye.'
+      'The Metal element represents purity, precision, and the ability to distinguish the essential from the non-essential. Like a sword cutting away the superfluous, Metal helps us find clarity, set boundaries, and appreciate the essential.',
+      'Metal is connected with autumn\'s energy — the natural movement inward and downward. Just as the trees release their leaves, Metal invites us to let go of what we no longer need and find beauty in simplicity and essence.',
+      'In the body, Metal governs respiration and the skin — the two surfaces where we meet the outside world. The Lungs receive the pure from outside, while the Large Intestine excretes the impure. Together they create the body\'s ability to sort, cleanse, and renew.',
+      'The deeper quality of the Metal element is the ability to find value and meaning in life\'s natural cycles of loss and renewal. When Metal is in balance, we can grieve in a healthy way and let go without bitterness — thereby making room for the new.'
     ],
     correspondences: [
-      { label: 'Sæson', value: 'Efterår — indadvendthed, afslutning og frigørelse' },
-      { label: 'Retning', value: 'Vest — solnedgangens retning, afslutning' },
-      { label: 'Klima', value: 'Tørhed — klarhed, skarphed men også sårbarhed' },
-      { label: 'Smag', value: 'Skarp — spredende, åbnende, bevægende' },
-      { label: 'Væv', value: 'Hud & Kropshår — kroppens grænse mod omverdenen' },
-      { label: 'Sanseorgan', value: 'Næsen — lugtesans og åndedræt' },
-      { label: 'Lyd', value: 'Gråd — sorgens naturlige udtryk og frigørelse' },
-      { label: 'Kropsvæske', value: 'Næseflåd — rensning og beskyttelse af luftvejene' }
+      { label: 'Season', value: 'Autumn — inwardness, closure, and release' },
+      { label: 'Direction', value: 'West — the direction of sunset, closure' },
+      { label: 'Climate', value: 'Dryness — clarity, sharpness, but also vulnerability' },
+      { label: 'Taste', value: 'Pungent — dispersing, opening, moving' },
+      { label: 'Tissue', value: 'Skin & Body Hair — the body\'s boundary with the outside world' },
+      { label: 'Sense Organ', value: 'The Nose — sense of smell and respiration' },
+      { label: 'Sound', value: 'Weeping — grief\'s natural expression and release' },
+      { label: 'Body Fluid', value: 'Nasal Mucus — cleansing and protection of the airways' }
     ],
     cycles: {
-      generating: 'Jord nærer Metal — ligesom jorden over tid danner ædelmetaller. Stabilitet og næring (Jord) skaber grundlag for klarhed, struktur og kvalitet (Metal).',
-      generated: 'Metal nærer Vand — ligesom mineraler beriger vandkilderne. Klarhed, grænser og essens (Metal) understøtter dybde, visdom og livsenergi (Vand).',
-      controlling: 'Metal kontrollerer Træ — ligesom en økse former træet. Grænser, disciplin og evnen til at skære fra (Metal) forhindrer ukontrolleret vækst og kaos (Træ).',
-      controlledBy: 'Ild kontrollerer Metal — ligesom flammen smelter metallet. Varme, glæde og forbindelse (Ild) opbløder stivhed, isolation og overdreven perfektionisme (Metal).'
+      generating: 'Earth nourishes Metal — just as the earth over time forms precious metals. Stability and nourishment (Earth) create the foundation for clarity, structure, and quality (Metal).',
+      generated: 'Metal nourishes Water — just as minerals enrich the water sources. Clarity, boundaries, and essence (Metal) support depth, wisdom, and life energy (Water).',
+      controlling: 'Metal controls Wood — just as an axe shapes the tree. Boundaries, discipline, and the ability to cut away (Metal) prevent uncontrolled growth and chaos (Wood).',
+      controlledBy: 'Fire controls Metal — just as the flame melts the metal. Warmth, joy, and connection (Fire) soften rigidity, isolation, and excessive perfectionism (Metal).'
     },
     seasonalWisdom: [
-      'Efteråret inviterer til at trække sig indad, rydde op og give slip. Gennemgå dit liv og dine vaner — hvad tjener dig stadig, og hvad er det tid at slippe?',
-      'Spis varmende, hvide og skarpe fødevarer — ingefær, hvidløg, porre, ris, pærer. Skarpe smage åbner lungerne og styrker immunforsvaret.',
-      'Beskyt dig mod tørhed og kulde. Fugtig luft, varme drikke og nærende olier til huden støtter Metal-elementet i den tørre sæson.',
-      'Øv dig i bevidst åndedrætspraksis. Dybe, langsomme åndedrag styrker lungerne og hjælper med at bearbejde sorg. Lad tårerne flyde når de kommer — de er Metals naturlige udrensning.'
+      'Autumn invites you to turn inward, declutter and let go. Review your life and habits — what still serves you, and what is it time to release?',
+      'Eat warming, white and pungent foods — ginger, garlic, leeks, rice, pears. Pungent flavors open the Lungs and strengthen the immune system.',
+      'Protect yourself from dryness and cold. Humid air, warm drinks and nourishing oils for the skin support the Metal element during the dry season.',
+      'Practice conscious breathwork. Deep, slow breaths strengthen the Lungs and help process grief. Let the tears flow when they come — they are Metal\'s natural cleansing.'
     ]
   },
   {
     id: 'vand',
-    name: 'Vand',
+    name: 'Water',
     chineseName: '水 Shuǐ',
     color: '#191970',
-    organs: ['Nyrer', 'Blære'],
-    season: 'Vinter',
-    emotion: 'Frygt',
+    organs: ['Kidneys', 'Bladder'],
+    season: 'Winter',
+    emotion: 'Fear',
     icon: '水',
-    direction: 'Nord',
-    climate: 'Kulde',
-    taste: 'Salt',
-    smell: 'Rådden/Fugtig',
-    sound: 'Stønnen',
-    tissue: 'Knogler & Tænder',
-    senseOrgan: 'Ører',
-    bodyFluid: 'Urin',
-    generates: 'Træ',
+    direction: 'North',
+    climate: 'Cold',
+    taste: 'Salty',
+    smell: 'Putrid/Damp',
+    sound: 'Groaning',
+    tissue: 'Bones & Teeth',
+    senseOrgan: 'Ears',
+    bodyFluid: 'Urine',
+    generates: 'Wood',
     generatedBy: 'Metal',
-    controls: 'Ild',
-    controlledBy: 'Jord',
+    controls: 'Fire',
+    controlledBy: 'Earth',
     description: [
-      'Vand-elementet er livets dybeste fundament — den oprindelige kraft hvorfra alt liv udspringer. Ligesom vandet finder sin vej til havet, repræsenterer Vand vores medfødte visdom, vores dybeste reserver og vores forbindelse til livets grundlæggende mysterium.',
-      'Vand styrer nyrerne, som i TCM betragtes som "Livets Rod". Her opbevares den essens (Jing) vi arver fra vores forældre — vores konstitutionelle grundlag, som bestemmer vores livskraft, aldring og reproduktive evne.',
-      'Vand-elementets emotion er frygt — ikke kun den lammende angst, men også den sunde respekt for livets kræfter der holder os på sikker afstand af fare. Sund frygt er visdom; ubalanceret frygt er enten lammende angst eller dumdristig mangel på forsigtighed.',
-      'Vand rummer paradokset af at være både det blødeste og det stærkeste element. Vand slider sten ned over tid. Mennesker med stærk Vand-energi besidder udholdenhed, viljestyrke og evnen til at bevare roen i krise — den stille kraft der overvinder alle forhindringer.'
+      'The Water element is the deepest foundation of life — the primordial force from which all life springs. Just as water finds its way to the sea, Water represents our innate wisdom, our deepest reserves and our connection to the fundamental mystery of life.',
+      'Water governs the Kidneys, which in TCM are regarded as the "Root of Life". Here is stored the essence (Jing) we inherit from our parents — our constitutional foundation, which determines our vitality, aging and reproductive capacity.',
+      'The emotion of the Water element is fear — not just paralyzing anxiety, but also the healthy respect for the forces of life that keeps us at a safe distance from danger. Healthy fear is wisdom; imbalanced fear is either paralyzing anxiety or reckless lack of caution.',
+      'Water holds the paradox of being both the softest and the strongest element. Water wears down stone over time. People with strong Water energy possess endurance, willpower and the ability to remain calm in crisis — the quiet strength that overcomes all obstacles.'
     ],
     correspondences: [
-      { label: 'Sæson', value: 'Vinter — hvile, indadvendthed og opbygning af reserver' },
-      { label: 'Retning', value: 'Nord — mørkets retning, stilhed og dybde' },
-      { label: 'Klima', value: 'Kulde — sammentrækning, bevaring og koncentration' },
-      { label: 'Smag', value: 'Salt — nedadførende, blødgørende, bevarende' },
-      { label: 'Væv', value: 'Knogler & Tænder — kroppens dybeste struktur' },
-      { label: 'Sanseorgan', value: 'Ørerne — hørelse, balance og forbindelse til nyrerne' },
-      { label: 'Lyd', value: 'Stønnen — dyb, resonerende, fra kroppens kerne' },
-      { label: 'Kropsvæske', value: 'Urin — rensning og regulering af væskebalance' }
+      { label: 'Season', value: 'Winter — rest, introspection and building reserves' },
+      { label: 'Direction', value: 'North — the direction of darkness, stillness and depth' },
+      { label: 'Climate', value: 'Cold — contraction, preservation and concentration' },
+      { label: 'Taste', value: 'Salty — descending, softening, preserving' },
+      { label: 'Tissue', value: 'Bones & Teeth — the body\'s deepest structure' },
+      { label: 'Sense Organ', value: 'The Ears — hearing, balance and connection to the Kidneys' },
+      { label: 'Sound', value: 'Groaning — deep, resonant, from the body\'s core' },
+      { label: 'Body Fluid', value: 'Urine — cleansing and regulation of fluid balance' }
     ],
     cycles: {
-      generating: 'Metal nærer Vand — ligesom mineraler beriger vandkilderne. Klarhed og essens (Metal) styrker dybde og livsreserver (Vand).',
-      generated: 'Vand nærer Træ — ligesom regn giver liv til skove. Dybe reserver, visdom og ro (Vand) giver grundlag for vækst, vision og fornyelse (Træ).',
-      controlling: 'Vand kontrollerer Ild — ligesom vand slukker flammen. Ro, dybde og visdom (Vand) forhindrer overaktivitet, uro og udbrændthed (Ild).',
-      controlledBy: 'Jord kontrollerer Vand — ligesom dæmninger styrer flodens løb. Stabilitet, struktur og jordforbindelse (Jord) forhindrer at dybe følelser oversvømmer og lammer (Vand).'
+      generating: 'Metal nourishes Water — just as minerals enrich the water sources. Clarity and essence (Metal) strengthen depth and life reserves (Water).',
+      generated: 'Water nourishes Wood — just as rain gives life to forests. Deep reserves, wisdom and calm (Water) provide the foundation for growth, vision and renewal (Wood).',
+      controlling: 'Water controls Fire — just as water extinguishes the flame. Calm, depth and wisdom (Water) prevent overactivity, restlessness and burnout (Fire).',
+      controlledBy: 'Earth controls Water — just as dams direct the flow of rivers. Stability, structure and groundedness (Earth) prevent deep emotions from flooding and paralyzing (Water).'
     },
     seasonalWisdom: [
-      'Vinteren er tiden for hvile, refleksion og genopladning. Respektér kroppens behov for mere søvn, langsommere tempo og indadvendt energi.',
-      'Spis varme, nærende og salte fødevarer — supper, gryderetter, bønner, tang, sorte bønner og nødder. Undgå rå, kold mad der dræner nyrernes varme.',
-      'Hold dig varm, især i lænden og på fødderne. Kulde svækker nyrerne direkte. Varme fodbade og varm beklædning er simple men kraftfulde værktøjer.',
-      'Undgå overanstrengelse og udmattelse. Vinteren er ikke tiden for at presse kroppen til det yderste. Bevar dine reserver — de er grundlaget for forårets fornyede energi.'
+      'Winter is the time for rest, reflection and recharging. Respect the body\'s need for more sleep, a slower pace and inward-turning energy.',
+      'Eat warm, nourishing and salty foods — soups, stews, beans, seaweed, black beans and nuts. Avoid raw, cold food that drains the Kidneys\' warmth.',
+      'Keep yourself warm, especially in the lower back and the feet. Cold weakens the Kidneys directly. Warm foot baths and warm clothing are simple yet powerful tools.',
+      'Avoid overexertion and exhaustion. Winter is not the time to push the body to its limits. Preserve your reserves — they are the foundation for spring\'s renewed energy.'
     ]
   }
 ];
@@ -3066,51 +3065,51 @@ export const fiveElements = [
 export const tcmFoundation = {
   yinYang: {
     title: 'Yin & Yang',
-    subtitle: 'To kræfter i evig udveksling',
+    subtitle: 'Two forces in eternal exchange',
     description: [
-      'Alt i universet kan forstås som to komplementære kræfter i konstant udveksling. Yin og Yang er ikke modsætninger der bekæmper hinanden — de er partnere der definerer, skaber og transformerer hinanden i en uendelig dans.',
-      'Yin er det modtagende, det stille, det indadvendte, det mørke, det kølige og det næring. Yang er det aktive, det udadvendte, det lyse, det varme og det bevægelige. Ingen af dem kan eksistere uden den anden.',
-      'I kroppen ser vi dette princip overalt: indånding (yin) og udånding (yang), hvile (yin) og aktivitet (yang), blod (yin) og energi (yang), struktur (yin) og funktion (yang). Sundhed er den dynamiske balance mellem disse kræfter.',
-      'Hvert organ har en yin-partner og en yang-partner der arbejder sammen. Yin-organerne (lever, hjerte, milt, lunger, nyrer) lagrer og nærer. Yang-organerne (galdeblære, tyndtarm, mavesæk, tyktarm, blære) transformerer og transporterer.'
+      'Everything in the universe can be understood as two complementary forces in constant exchange. Yin and Yang are not opposites that fight each other — they are partners that define, create and transform each other in an endless dance.',
+      'Yin is the receptive, the still, the inward, the dark, the cool and the nourishing. Yang is the active, the outward, the bright, the warm and the moving. Neither can exist without the other.',
+      'In the body we see this principle everywhere: inhalation (Yin) and exhalation (Yang), rest (Yin) and activity (Yang), blood (Yin) and energy (Yang), structure (Yin) and function (Yang). Health is the dynamic balance between these forces.',
+      'Every organ has a Yin partner and a Yang partner that work together. The Yin organs (Liver, Heart, Spleen, Lungs, Kidneys) store and nourish. The Yang organs (Gallbladder, Small Intestine, Stomach, Large Intestine, Bladder) transform and transport.'
     ],
     pairs: [
-      { yin: 'Indre', yang: 'Ydre' },
-      { yin: 'Kulde', yang: 'Varme' },
-      { yin: 'Hvile', yang: 'Aktivitet' },
-      { yin: 'Struktur', yang: 'Funktion' },
-      { yin: 'Blod', yang: 'Energi (Qi)' },
-      { yin: 'Nat', yang: 'Dag' },
-      { yin: 'Modtagende', yang: 'Givende' },
-      { yin: 'Nedadgående', yang: 'Opadgående' }
+      { yin: 'Interior', yang: 'Exterior' },
+      { yin: 'Cold', yang: 'Heat' },
+      { yin: 'Rest', yang: 'Activity' },
+      { yin: 'Structure', yang: 'Function' },
+      { yin: 'Blood', yang: 'Energy (Qi)' },
+      { yin: 'Night', yang: 'Day' },
+      { yin: 'Receptive', yang: 'Giving' },
+      { yin: 'Descending', yang: 'Ascending' }
     ]
   },
   elementCycles: {
-    title: 'Elementernes Cyklusser',
-    subtitle: 'Skabelse og kontrol i balance',
+    title: 'The Element Cycles',
+    subtitle: 'Creation and control in balance',
     description: [
-      'De fem elementer er forbundet i to fundamentale cyklusser der holder systemet i balance: Skabelses-cyklussen (Sheng) og Kontrol-cyklussen (Ke).',
-      'Skabelses-cyklussen (Sheng): Hvert element nærer og føder det næste — Træ → Ild → Jord → Metal → Vand → Træ. Det er en cyklus af moderlig næring, hvor hvert element er "mor" til det næste og "barn" af det forrige.',
-      'Kontrol-cyklussen (Ke): Hvert element holder et andet i balance — Træ → Jord → Vand → Ild → Metal → Træ. Det er en cyklus af sund begrænsning, hvor hvert element forhindrer et andet i at vokse ud af proportion.',
-      'Når begge cyklusser fungerer harmonisk, er kroppen i balance. Sygdom opstår når en cyklus forstyrres — enten fordi et element er for svagt til at nære det næste (svag Sheng), eller for aggressivt i sin kontrol (overdreven Ke).'
+      'The five elements are connected through two fundamental cycles that keep the system in balance: the Generating Cycle (Sheng) and the Controlling Cycle (Ke).',
+      'The Generating Cycle (Sheng): Each element nourishes and feeds the next — Wood → Fire → Earth → Metal → Water → Wood. It is a cycle of maternal nourishment, where each element is "mother" to the next and "child" of the previous.',
+      'The Controlling Cycle (Ke): Each element keeps another in balance — Wood → Earth → Water → Fire → Metal → Wood. It is a cycle of healthy restraint, where each element prevents another from growing out of proportion.',
+      'When both cycles function harmoniously, the body is in balance. Disease arises when a cycle is disrupted — either because an element is too weak to nourish the next (weak Sheng), or too aggressive in its control (excessive Ke).'
     ],
-    shengCycle: ['Træ', 'Ild', 'Jord', 'Metal', 'Vand'],
-    keCycle: ['Træ', 'Jord', 'Vand', 'Ild', 'Metal']
+    shengCycle: ['Wood', 'Fire', 'Earth', 'Metal', 'Water'],
+    keCycle: ['Wood', 'Earth', 'Water', 'Fire', 'Metal']
   },
   organPartnership: {
-    title: 'Organpartnerskaber',
-    subtitle: 'Yin og Yang i samarbejde',
+    title: 'Organ Partnerships',
+    subtitle: 'Yin and Yang in cooperation',
     description: [
-      'Hvert yin-organ er parret med et yang-organ indenfor det samme element. De deler meridian-forbindelser, emotionelle temaer og påvirker hinanden direkte.',
-      'Yin-organerne er de "solide" organer der lagrer essens, blod og væsker. Yang-organerne er de "hule" organer der modtager, transformerer og transporterer. Sammen skaber hvert par en komplet funktionel enhed.',
-      'Når vi behandler et organ i TCM, overvejer vi altid dets partner. En ubalance i det ene organ påvirker uundgåeligt det andet — ligesom to sider af samme mønt.'
+      'Each Yin organ is paired with a Yang organ within the same element. They share meridian connections, emotional themes and influence each other directly.',
+      'The Yin organs are the "solid" organs that store essence, blood and fluids. The Yang organs are the "hollow" organs that receive, transform and transport. Together each pair creates a complete functional unit.',
+      'When we treat an organ in TCM, we always consider its partner. An imbalance in one organ inevitably affects the other — like two sides of the same coin.'
     ],
     pairs: [
-      { yin: 'Lever', yang: 'Galdeblære', element: 'Træ', theme: 'Planlægning og beslutning' },
-      { yin: 'Hjerte', yang: 'Tyndtarm', element: 'Ild', theme: 'Forbindelse og skelneevne' },
-      { yin: 'Milt', yang: 'Mavesæk', element: 'Jord', theme: 'Næring og transformation' },
-      { yin: 'Lunger', yang: 'Tyktarm', element: 'Metal', theme: 'Modtagelse og frigørelse' },
-      { yin: 'Nyrer', yang: 'Blære', element: 'Vand', theme: 'Bevaring og udrensning' },
-      { yin: 'Pericardium', yang: 'San Jiao', element: 'Ild', theme: 'Beskyttelse og fordeling' }
+      { yin: 'Liver', yang: 'Gallbladder', element: 'Wood', theme: 'Planning and decision-making' },
+      { yin: 'Heart', yang: 'Small Intestine', element: 'Fire', theme: 'Connection and discernment' },
+      { yin: 'Spleen', yang: 'Stomach', element: 'Earth', theme: 'Nourishment and transformation' },
+      { yin: 'Lungs', yang: 'Large Intestine', element: 'Metal', theme: 'Receiving and releasing' },
+      { yin: 'Kidneys', yang: 'Bladder', element: 'Water', theme: 'Preservation and cleansing' },
+      { yin: 'Pericardium', yang: 'San Jiao', element: 'Fire', theme: 'Protection and distribution' }
     ]
   }
 };
