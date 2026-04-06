@@ -1017,19 +1017,19 @@ export const organs = [
         ]
       },
       {
-        title: 'Frygt, Angst & Vilje',
+        title: 'Fear, Anxiety & Willpower',
         questions: [
-          'Oplever du irrationel frygt, angst, eller panikattakker?',
-          'Føler du dig chokeret, rystet, eller i konstant alarmberedskab?',
-          'Hvordan er din vilje og livsmod? Stærk og målrettet, eller svag?'
+          'Do you experience irrational fear, anxiety, or panic attacks?',
+          'Do you feel shocked, shaken, or in constant alert mode?',
+          'How is your willpower and courage? Strong and determined, or weak?'
         ]
       },
       {
-        title: 'Træthed, Hukommelse & Aldring',
+        title: 'Fatigue, Memory & Aging',
         questions: [
-          'Hvordan er dit energiniveau? Normalt, kronisk træt, eller udtømt?',
-          'Hvordan er din hukommelse og koncentration?',
-          'Føler du at du ældes for hurtigt?'
+          'How is your energy level? Normal, chronically tired, or exhausted?',
+          'How is your memory and concentration?',
+          'Do you feel that you are aging too quickly?'
         ]
       }
     ]
