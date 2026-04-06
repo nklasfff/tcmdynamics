@@ -286,10 +286,10 @@ body {
 }
 
 .section-screen-illustration {
-  width: 200px;
-  height: 120px;
+  width: 300px;
+  height: 180px;
   margin: 0 auto 16px;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .section-screen-illustration svg {
@@ -299,13 +299,13 @@ body {
 
 /* Illustration animations */
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.15); }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.2); }
 }
 
 @keyframes float-up {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(-6px); opacity: 1; }
 }
 
 @keyframes rotate-slow {
