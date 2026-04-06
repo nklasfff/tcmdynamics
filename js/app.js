@@ -202,10 +202,10 @@ function updateUILanguage() {
 
   const menuSectionLabels = document.querySelectorAll('.hamburger-section-label');
   menuSectionLabels.forEach(label => {
+    if (label.id === 'menu-label-sections') label.textContent = t('menuSections');
+    if (label.id === 'menu-label-info') label.textContent = t('menuInfo');
     if (label.id === 'menu-label-appearance') label.textContent = t('menuAppearance');
     if (label.id === 'menu-label-language') label.textContent = t('menuLanguage');
-    if (label.textContent.match(/Sections|Sektioner/i)) label.textContent = t('menuSections');
-    if (label.textContent.match(/Information/i)) label.textContent = t('menuInfo');
   });
 
   // Hamburger menu links
@@ -1218,7 +1218,7 @@ function setupSearch() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     input.value = '';
-    resultsEl.innerHTML = '<div class="search-placeholder">${t('searchTyping')}</div>';
+    resultsEl.innerHTML = `<div class="search-placeholder">${t('searchTyping')}</div>`;
   }
 
   btn.addEventListener('click', openSearch);
@@ -1231,7 +1231,7 @@ function setupSearch() {
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
     if (q.length < 2) {
-      resultsEl.innerHTML = '<div class="search-placeholder">${t('searchTyping')}</div>';
+      resultsEl.innerHTML = `<div class="search-placeholder">${t('searchTyping')}</div>`;
       return;
     }
     const results = performSearch(q);
@@ -1622,28 +1622,28 @@ function showOverviewDetail(ov, type) {
 // Init
 // ============================================
 function init() {
-  initTheme();
-  setupThemeToggle();
-  setupLanguageToggle();
-  updateUILanguage();
-  renderSectionIntros();
-  renderPracticeGrid();
-  renderOrganGrid();
-  renderMeridianGrid();
-  renderOrganClock();
-  renderElements();
-  renderFoundation();
-  setupOverviewTabs();
-  renderOverviewOrganGrid();
-  renderOverviewMeridianGrid();
-  renderOverviewSymptoms();
-  renderOverviewConversation();
-  setupTabs();
-  setupBackButtons();
-  setupBottomNav();
-  setupHubCards();
-  setupHamburger();
-  setupSearch();
+  try { initTheme(); } catch(e) { console.error('initTheme:', e); }
+  try { setupThemeToggle(); } catch(e) { console.error('setupThemeToggle:', e); }
+  try { setupLanguageToggle(); } catch(e) { console.error('setupLanguageToggle:', e); }
+  try { updateUILanguage(); } catch(e) { console.error('updateUILanguage:', e); }
+  try { renderSectionIntros(); } catch(e) { console.error('renderSectionIntros:', e); }
+  try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
+  try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
+  try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }
+  try { renderOrganClock(); } catch(e) { console.error('renderOrganClock:', e); }
+  try { renderElements(); } catch(e) { console.error('renderElements:', e); }
+  try { renderFoundation(); } catch(e) { console.error('renderFoundation:', e); }
+  try { setupOverviewTabs(); } catch(e) { console.error('setupOverviewTabs:', e); }
+  try { renderOverviewOrganGrid(); } catch(e) { console.error('renderOverviewOrganGrid:', e); }
+  try { renderOverviewMeridianGrid(); } catch(e) { console.error('renderOverviewMeridianGrid:', e); }
+  try { renderOverviewSymptoms(); } catch(e) { console.error('renderOverviewSymptoms:', e); }
+  try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
+  try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
+  try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
+  try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }
+  try { setupHubCards(); } catch(e) { console.error('setupHubCards:', e); }
+  try { setupHamburger(); } catch(e) { console.error('setupHamburger:', e); }
+  try { setupSearch(); } catch(e) { console.error('setupSearch:', e); }
 
   // Update clock every minute
   setInterval(renderOrganClock, 60000);

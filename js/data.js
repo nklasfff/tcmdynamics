@@ -9,10 +9,3 @@ const datasets = { en, da };
 export function getLangData(lang) {
   return datasets[lang] || datasets.en;
 }
-
-// Re-export everything from English as default (for backwards compatibility during init)
-export const {
-  APP_INFO, practiceGuide, sectionIntros, organs, organOverviews,
-  meridianOverviews, symptomReference, conversationStructure,
-  extraordinaryMeridians, organClock, fiveElements, tcmFoundation
-} = en;
