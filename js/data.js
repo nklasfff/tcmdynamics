@@ -1,42 +1,42 @@
-// Mønstrene Bag - Complete TCM Data
+// The Patterns Behind - Complete TCM Data
 // By Anne Marie Clement
 
 export const APP_INFO = {
-  title: 'Mønstrene Bag',
-  subtitle: 'Traditionel Kinesisk Medicin i Praksis',
+  title: 'The Patterns Behind',
+  subtitle: 'Traditional Chinese Medicine in Practice',
   author: 'Anne Marie Clement'
 };
 
 // ============================================
-// Practice Guide — "I Praksis"
+// Practice Guide — "In Practice"
 // ============================================
 export const practiceGuide = [
   {
     id: 'moede-klienten',
     icon: '○',
-    title: 'At Møde Klienten',
-    subtitle: 'Filosofien bag tilgangen',
+    title: 'Meeting the Client',
+    subtitle: 'The philosophy behind the approach',
     sections: [
       {
-        heading: 'Mønstrene Bag — To Perspektiver',
+        heading: 'The Patterns Behind — Two Perspectives',
         paragraphs: [
-          'Titlen "Mønstrene Bag" indeholder to parallelle perspektiver. Det første er meget direkte og peger på, at vi som behandlere er interesseret i at forstå og kortlægge mønstrene bag klientens tilstand.',
-          'Samtidig peger titlen også på, at der kan ligge mønstre, som ikke er tydelige ved første øjekast. At klientens symptomer tilsyneladende udtrykker ét billede, men at der under dette billede kan ligge nogle mønstre, som i højere grad vil gøre det muligt for os at møde dem på det niveau, hvorfra deres symptomer udspringer.'
+          'The title "The Patterns Behind" contains two parallel perspectives. The first is very direct and points to the fact that, as practitioners, we are interested in understanding and mapping the patterns behind the client\'s condition.',
+          'At the same time, the title also points to the possibility that there may be patterns that are not obvious at first glance. That the client\'s symptoms may appear to express one picture, but beneath this picture there may be patterns that will better enable us to meet them at the level from which their symptoms originate.'
         ]
       },
       {
-        heading: 'At Møde Klienten Hvor De Er',
+        heading: 'Meeting the Client Where They Are',
         paragraphs: [
-          'Når vi møder vores klient første gang, er vi interesserede i dels at møde dem, hvor de er, og dels at forstå, hvad der ligger bag deres nuværende tilstand. At arbejde med mønstrene bag favner begge dele — det giver os mulighed for at lytte til hele deres fortælling og samtidigt i samtalen tilføje nuancer til deres historie.',
-          'Det fundamentale udgangspunkt er respekten for klientens egen fortælling og kroppens egen visdom. TCM-forståelsen giver os et kort, men det er altid klienten og deres system, der viser os vejen.'
+          'When we meet our client for the first time, we are interested both in meeting them where they are and in understanding what lies behind their current condition. Working with the patterns behind encompasses both — it gives us the opportunity to listen to their entire story while simultaneously adding nuance to their narrative through the conversation.',
+          'The fundamental starting point is respect for the client\'s own narrative and the body\'s own wisdom. The TCM understanding gives us a map, but it is always the client and their system that shows us the way.'
         ]
       },
       {
-        heading: 'En Invitation — Ikke en Protokol',
+        heading: 'An Invitation — Not a Protocol',
         paragraphs: [
-          'Dette er ikke en manual, men en inspirationskilde. Intentionen er ikke, at du skal lære det udenad eller følge det som en protokol — men at du lader det væve sig ind i din praksis på den måde, der giver mening for dig.',
-          'Måske begynder du med blot at stille nogle flere spørgsmål i dine indledende samtaler. Måske begynder du at lægge mærke til tidsmønstre i klienters symptomer. Måske åbner forståelsen af emotionelle forbindelser til organer nogle nye samtaler med dine klienter.',
-          'Det væsentlige er, at du tager det i dit eget tempo og lader det vokse naturligt ind i dit arbejde.'
+          'This is not a manual, but a source of inspiration. The intention is not for you to memorize it or follow it as a protocol — but to let it weave itself into your practice in the way that makes sense to you.',
+          'Perhaps you begin by simply asking a few more questions in your initial conversations. Perhaps you start noticing time patterns in your clients\' symptoms. Perhaps the understanding of emotional connections to organs opens up new conversations with your clients.',
+          'The essential thing is that you take it at your own pace and let it grow naturally into your work.'
         ]
       }
     ]
@@ -44,35 +44,35 @@ export const practiceGuide = [
   {
     id: 'foerste-samtale',
     icon: '∿',
-    title: 'Den Første Samtale',
-    subtitle: 'Tre centrale temaer at berøre',
+    title: 'The First Conversation',
+    subtitle: 'Three central themes to address',
     sections: [
       {
-        heading: 'De Grundlæggende Trin',
+        heading: 'The Fundamental Steps',
         paragraphs: [
-          'Den generelle indgang til den første behandling med en ny klient indeholder bestemte trin: en invitation til at fortælle, hvad de gerne vil have hjælp til, og en lytning til deres situation og de ønsker, de har for behandlingen.',
-          'Mens de fortæller, opstår der ofte en dialog — spørgsmål undervejs gør det til en dynamisk samtale, hvor fortællingen får så mange nuancer med som muligt.'
+          'The general approach to the first session with a new client involves specific steps: an invitation to share what they would like help with, and listening to their situation and the wishes they have for the treatment.',
+          'As they share, a dialogue often emerges — questions along the way turn it into a dynamic conversation where the narrative captures as many nuances as possible.'
         ]
       },
       {
-        heading: '1. Medicin',
+        heading: '1. Medication',
         paragraphs: [
-          'Hør om de tager medicin af nogen slags. Bland dig aldrig i deres medicin, men tal med dem om det — særligt i forhold til de symptomer, de ønsker hjælp til.',
-          'Medicin kan udgøre en terapiforhindring: en tilstand, hvor hele klientens system er påvirket på en måde, der kortslutter kroppens naturlige evne til at balancere og regulere sig selv. Det er en tilstand, hvor de trods forskellige tiltag ikke oplever egentlig forandring.'
+          'Ask whether they take any medication of any kind. Never interfere with their medication, but talk to them about it — especially in relation to the symptoms they are seeking help for.',
+          'Medication can constitute a therapy obstacle: a condition where the client\'s entire system is affected in a way that short-circuits the body\'s natural ability to balance and regulate itself. It is a state where, despite various interventions, they experience no real change.'
         ]
       },
       {
-        heading: '2. Generelle Livsomstændigheder',
+        heading: '2. General Life Circumstances',
         paragraphs: [
-          'Spørg altid til deres generelle livsomstændigheder — helbred, familiesituation, arbejdsliv og alt det, som udgør essensen af deres liv. Konteksten for vores liv er altid direkte vævet ind i vores tilstand.',
-          'Denne del af samtalen kan give indsigt i, hvorvidt symptomerne udspringer fra låste tilstande i systemet, eller om de i højere grad er kompenserende processer, som kroppen tvinges til at starte op i forhold til en kontekst, som ikke udgør en støttende ressource.'
+          'Always ask about their general life circumstances — health, family situation, work life, and everything that constitutes the essence of their life. The context of our lives is always directly woven into our condition.',
+          'This part of the conversation can provide insight into whether the symptoms originate from locked states in the system, or whether they are more compensatory processes that the body is forced to initiate in response to a context that does not serve as a supportive resource.'
         ]
       },
       {
-        heading: '3. Historik — Sygdomme, Begivenheder og Arvæv',
+        heading: '3. History — Illnesses, Events, and Scar Tissue',
         paragraphs: [
-          'Spørg specifikt til deres historik i forhold til sygdomme og større begivenheder. Har der været markante skift og overgange, som har udgjort en slags "før og efter" i deres liv? Lyt efter den kronologiske rækkefølge, da den kan give vigtige informationer om sammenhænge med den nuværende tilstand.',
-          'Spørg også specifikt til uheld, ulykker og arvæv. Ligesom medicin kan arvæv udgøre en terapiforhindring — aktivt arvæv, som ikke er blevet normaliseret, kan påvirke hele systemets evne til regulering.'
+          'Ask specifically about their history regarding illnesses and major events. Have there been significant shifts and transitions that have constituted a kind of "before and after" in their life? Listen for the chronological order, as it can provide important information about connections to the current condition.',
+          'Also ask specifically about accidents, injuries, and scar tissue. Like medication, scar tissue can constitute a therapy obstacle — active scar tissue that has not been normalized can affect the entire system\'s ability to regulate.'
         ]
       }
     ]
@@ -80,35 +80,35 @@ export const practiceGuide = [
   {
     id: 'samtale-til-moenster',
     icon: '◇',
-    title: 'Fra Samtale til Mønster',
-    subtitle: 'Samtalens dynamik og mønsterafdækning',
+    title: 'From Conversation to Pattern',
+    subtitle: 'The dynamics of the conversation and pattern discovery',
     sections: [
       {
-        heading: 'Samtalens Dynamik — At Invitere Nuancer Frem',
+        heading: 'The Dynamics of the Conversation — Inviting Nuance Forward',
         paragraphs: [
-          'Start samtalen med at spørge til deres ønske for behandlingen og derefter lade dem fortælle. Undervejs opstår en dialog, hvor din spørgen skaber en naturlig mulighed for, at fortællingen får så mange nuancer med som muligt.',
-          'Under hele samtalen lytter du med afsæt i din forståelse af principperne bag TCM. Efter deres fortælling har du næsten altid en fornemmelse af nogle mønstre.'
+          'Start the conversation by asking about their wish for the treatment and then letting them share. Along the way, a dialogue emerges where your questioning creates a natural opportunity for the narrative to capture as many nuances as possible.',
+          'Throughout the entire conversation, you listen from the foundation of your understanding of the principles behind TCM. After their narrative, you almost always have a sense of certain patterns.'
         ]
       },
       {
-        heading: 'Fra Åben Samtale til Specifik Mønsterafdækning',
+        heading: 'From Open Conversation to Specific Pattern Discovery',
         paragraphs: [
-          'Når de har fortalt alt det, de havde på hjerte, begynder du at stille mere specifikke spørgsmål. Det er her, muligheden opstår for at afdække og gøre eventuelle mønstre endnu tydeligere.',
-          'Du ønsker at verificere din fornemmelse af bestemte mønstre. Du kan stille specifikke spørgsmål om temaer, som de måske ikke naturligt har berørt endnu — spørgsmål der kan kaste lys over, hvorvidt din fornemmelse af deres underliggende mønster er på rette spor.'
+          'When they have shared everything they had on their mind, you begin to ask more specific questions. This is where the opportunity arises to uncover and make any patterns even clearer.',
+          'You want to verify your sense of certain patterns. You can ask specific questions about themes they may not have naturally touched upon yet — questions that can shed light on whether your sense of their underlying pattern is on the right track.'
         ]
       },
       {
-        heading: 'Eksempel: Organspecifikke Spørgsmål',
+        heading: 'Example: Organ-Specific Questions',
         paragraphs: [
-          'Har du f.eks. en fornemmelse af et underliggende mønster i forhold til leveren, kan du stille specifikke spørgsmål om øjne, sener og led, evnen til at tåle alkohol, cyklusmønstre hos kvinder, søvn og følelsesmæssige udtryk.',
-          'På den måde kan du næsten udkrystallisere det mønster, som ligger bag deres tilstand — det dominerende bag deres samlede symptombillede. De 8 kortlæggende temaer under hvert organ i denne app er netop designet til dette formål.'
+          'If, for example, you have a sense of an underlying pattern related to the Liver, you can ask specific questions about the eyes, tendons and joints, the ability to tolerate alcohol, menstrual cycle patterns in women, sleep, and emotional expression.',
+          'In this way, you can almost crystallize the pattern that lies behind their condition — the dominant one behind their overall symptom picture. The 8 mapping themes under each organ in this app are designed precisely for this purpose.'
         ]
       },
       {
-        heading: 'At Blive Hørt — En Terapeutisk Værdi i Sig Selv',
+        heading: 'Being Heard — A Therapeutic Value in Itself',
         paragraphs: [
-          'Den nysgerrige del af samtalen har den vigtige konsekvens, at klienten føler sig mødt og oplever en oprigtig interesse for hele deres tilstand. Mange kommer fra besøg hos specialister, hvor de har oplevet, at der ikke var interesse for hele deres fortælling.',
-          'Vores vedvarende spørgen ind til deres tilstand skaber en oplevelse af, at de endelig bliver hørt — at nogen endelig er interesseret i at lytte til hele deres fortælling. Dette er i sig selv terapeutisk.'
+          'The curious part of the conversation has the important consequence that the client feels met and experiences a genuine interest in their entire condition. Many come from visits to specialists where they have experienced a lack of interest in their full story.',
+          'Our persistent questioning about their condition creates an experience of finally being heard — that someone is finally interested in listening to their entire story. This is therapeutic in itself.'
         ]
       }
     ]
@@ -116,62 +116,62 @@ export const practiceGuide = [
   {
     id: 'otte-grundspoergsmaal',
     icon: '⊞',
-    title: 'De Otte Grundspørgsmål',
-    subtitle: 'En ramme for mønsterafdækning',
+    title: 'The Eight Fundamental Questions',
+    subtitle: 'A framework for pattern discovery',
     sections: [
       {
-        heading: 'En Ramme På Tværs af Organsystemer',
+        heading: 'A Framework Across Organ Systems',
         paragraphs: [
-          'Otte centrale spørgsmålsområder danner en ramme, der gør det muligt at få et overblik over klientens tilstand på tværs af de forskellige organsystemer. Ved at berøre disse otte områder får du en bred forståelse af, hvor eventuelle ubalancer kan ligge, og hvilke organer der kan være involveret.',
-          'Disse otte områder afspejles direkte i de 8 kortlæggende temaer, som du finder under hvert organ i denne app.'
+          'Eight central question areas form a framework that makes it possible to gain an overview of the client\'s condition across the various organ systems. By touching on these eight areas, you gain a broad understanding of where potential imbalances may lie and which organs may be involved.',
+          'These eight areas are directly reflected in the 8 mapping themes that you find under each organ in this app.'
         ]
       },
       {
-        heading: '1. Tidsmæssige Mønstre',
+        heading: '1. Time Patterns',
         paragraphs: [
-          'Hvornår opstår eller forværres symptomerne? Er der et mønster i forhold til tidspunkter på døgnet (organuret) eller årstider (fem-element cyklussen)? Konsistente tidsmønstre peger ofte direkte mod specifikke organer.'
+          'When do the symptoms arise or worsen? Is there a pattern related to times of day (the organ clock) or seasons (the five-element cycle)? Consistent time patterns often point directly to specific organs.'
         ]
       },
       {
-        heading: '2. Energiniveau & Træthed',
+        heading: '2. Energy Level & Fatigue',
         paragraphs: [
-          'Hvordan er deres generelle energiniveau? Hvornår på dagen er energien højest og lavest? Kronisk træthed, pludselige energidyk eller rastløshed kan alle pege mod bestemte organmønstre.'
+          'How is their general energy level? When during the day is energy highest and lowest? Chronic fatigue, sudden energy dips, or restlessness can all point to specific organ patterns.'
         ]
       },
       {
-        heading: '3. Fordøjelse & Appetit',
+        heading: '3. Digestion & Appetite',
         paragraphs: [
-          'Hvordan fungerer fordøjelsen? Appetit, oppustethed, mavesmerter, afføringsmønstre og madpræferencer giver vigtige informationer om særligt Milt, Mavesæk, Lever og Tyktarm.'
+          'How is their digestion functioning? Appetite, bloating, stomach pain, bowel patterns, and food preferences provide important information about the Spleen, Stomach, Liver, and Large Intestine in particular.'
         ]
       },
       {
-        heading: '4. Søvn & Drømme',
+        heading: '4. Sleep & Dreams',
         paragraphs: [
-          'Hvordan er deres søvn? Svært ved at falde i søvn, opvågning på bestemte tidspunkter, drømmeintensitet og søvnkvalitet afspejler ofte specifikke organmønstre — især via organuret.'
+          'How is their sleep? Difficulty falling asleep, waking at specific times, dream intensity, and sleep quality often reflect specific organ patterns — especially via the organ clock.'
         ]
       },
       {
-        heading: '5. Emotionelle Tilstande',
+        heading: '5. Emotional States',
         paragraphs: [
-          'Hvilke følelser dominerer? Vedvarende vrede eller frustration (Lever), bekymring og overtænkning (Milt), sorg (Lunger), frygt (Nyrer) eller uro og angst (Hjerte) peger alle mod bestemte elementer og organer.'
+          'Which emotions dominate? Persistent anger or frustration (Liver), worry and overthinking (Spleen), grief (Lungs), fear (Kidneys), or anxiety and restlessness (Heart) all point to specific elements and organs.'
         ]
       },
       {
-        heading: '6. Temperatur & Klimafølsomhed',
+        heading: '6. Temperature & Climate Sensitivity',
         paragraphs: [
-          'Fryser de let eller har de det for varmt? Reagerer de på kulde, varme, fugt eller vind? Temperaturpræferencer og klimafølsomhed er direkte udtryk for Yin-Yang balancen i kroppen.'
+          'Do they get cold easily or feel too warm? Do they react to cold, heat, dampness, or wind? Temperature preferences and climate sensitivity are direct expressions of the Yin-Yang balance in the body.'
         ]
       },
       {
-        heading: '7. Smerter & Fysiske Symptomer',
+        heading: '7. Pain & Physical Symptoms',
         paragraphs: [
-          'Hvor i kroppen oplever de smerter eller ubehag? Smertekarakter (skarp, dumpende, vandrende, fast), lokation og timing giver værdifulde informationer om hvilke meridianer og organer der er involveret.'
+          'Where in the body do they experience pain or discomfort? Pain character (sharp, dull, wandering, fixed), location, and timing provide valuable information about which meridians and organs are involved.'
         ]
       },
       {
-        heading: '8. Væskebalance & Tørst',
+        heading: '8. Fluid Balance & Thirst',
         paragraphs: [
-          'Hvordan er deres væskebalance? Tørstmønstre, vandladning, tendens til ødemer eller tørhed fortæller om Nyrernes funktion, Miltens transformation af væsker og den generelle Yin-Yang balance.'
+          'How is their fluid balance? Thirst patterns, urination, tendency toward edema or dryness tell us about Kidney function, the Spleen\'s transformation of fluids, and the overall Yin-Yang balance.'
         ]
       }
     ]
@@ -179,28 +179,28 @@ export const practiceGuide = [
   {
     id: 'arbejde-med-moenstre',
     icon: '≋',
-    title: 'At Arbejde med Mønstre',
-    subtitle: 'Mønstret som indgang — ikke som årsag',
+    title: 'Working with Patterns',
+    subtitle: 'The pattern as an entry point — not as a cause',
     sections: [
       {
-        heading: 'Mønstret Er Ikke Det Samme Som Årsagen',
+        heading: 'The Pattern Is Not the Same as the Cause',
         paragraphs: [
-          'En væsentlig del af forståelsen bag TCM er, at et dominerende mønster ikke er det samme som årsagen til klientens tilstand. Inden for det specifikke mønster kan der være tale om forskellige tilstande — f.eks. kan leveren enten være for rebelsk, dens energi stagneret, eller den kan simpelthen mangle livskraft.',
-          'Yderligere kan leveren sagtens være det dominerende mønster, men årsagen kan skyldes et helt andet organ, som er i ubalance og tvinger leveren til en anderledes funktion. Mønstret er aldrig udtømmende i sig selv, men det kan pege på den dominerende tilstand og skabe en indgang til behandlingen.'
+          'An essential part of the understanding behind TCM is that a dominant pattern is not the same as the cause of the client\'s condition. Within the specific pattern, there may be different states — for example, the Liver may be too rebellious, its energy stagnant, or it may simply lack vitality.',
+          'Furthermore, the Liver may well be the dominant pattern, but the cause may be due to an entirely different organ that is in imbalance and forcing the Liver into a different function. The pattern is never exhaustive in itself, but it can point to the dominant condition and create an entry point for treatment.'
         ]
       },
       {
-        heading: 'Når Flere Mønstre Er Aktive Samtidigt',
+        heading: 'When Multiple Patterns Are Active Simultaneously',
         paragraphs: [
-          'Livet er komplekst, og alle organer er altid i indbyrdes udveksling. Det er ikke muligt at se det enkelte organ uden for dets kontekst, og derfor vil der altid i forskellige grader være flere mønstre aktive på samme tid.',
-          'Kunsten er at vurdere, om ét mønster dominerer tilstrækkeligt til at være den oplagte indgang. Hvis flere mønstre er til stede samtidigt uden et tydeligt dominerende, kan det være oplagt at arbejde med en af de ekstraordinære meridianer, der fungerer på et dybere niveau og kan balancere flere mønstre samtidigt.'
+          'Life is complex, and all organs are always in mutual exchange. It is not possible to view the individual organ outside its context, and therefore there will always, to varying degrees, be multiple patterns active at the same time.',
+          'The art is to assess whether one pattern dominates sufficiently to be the obvious entry point. If multiple patterns are present simultaneously without a clearly dominant one, it may be appropriate to work with one of the extraordinary meridians, which function at a deeper level and can balance multiple patterns simultaneously.'
         ]
       },
       {
-        heading: 'Over Flere Behandlinger',
+        heading: 'Over Multiple Treatments',
         paragraphs: [
-          'Mønstre kan bruges som reference over et behandlingsforløb. Hvis det rette mønster er valgt, og der har været en terapeutisk proces, vil klienten ved næste behandling fortælle om ændringer i forhold til det oprindelige mønster.',
-          'Når det oprindelige mønster begynder at bevæge sig og forandres, skabes mulighed for, at dybere liggende tilstande begynder at træde frem. Disse dybere lag indeholder samtidig det største potentiale for fornyet livskraft og en samlet bevægelse mod mere fri og balanceret funktion.'
+          'Patterns can be used as a reference over a course of treatment. If the right pattern has been chosen and there has been a therapeutic process, the client will report changes in relation to the original pattern at the next treatment.',
+          'When the original pattern begins to shift and change, the possibility is created for deeper-lying conditions to begin to emerge. These deeper layers simultaneously contain the greatest potential for renewed vitality and an overall movement toward freer and more balanced function.'
         ]
       }
     ]
@@ -208,28 +208,28 @@ export const practiceGuide = [
   {
     id: 'vores-rolle',
     icon: '△',
-    title: 'Vores Rolle',
-    subtitle: 'Grænser, ansvar og integration',
+    title: 'Our Role',
+    subtitle: 'Boundaries, responsibility, and integration',
     sections: [
       {
-        heading: 'Grænser og Ansvar',
+        heading: 'Boundaries and Responsibility',
         paragraphs: [
-          'Det er vigtigt at understrege, at vores rolle aldrig er at diagnosticere eller behandle sygdomme i vestlig medicinsk forstand. Vi stiller ikke diagnoser som en læge ville gøre, og vi blander os aldrig i klientens medicinske behandling.',
-          'Når vi taler om "mønstre" og benytter TCM som forståelsesramme, er det en måde at organisere vores iagttagelser og guide vores behandling — ikke en medicinsk diagnose. Hvis vi fornemmer, at klienten har brug for medicinsk udredning, opfordrer vi altid til at kontakte deres læge.'
+          'It is important to emphasize that our role is never to diagnose or treat diseases in the Western medical sense. We do not make diagnoses as a doctor would, and we never interfere with the client\'s medical treatment.',
+          'When we speak of "patterns" and use TCM as a framework for understanding, it is a way of organizing our observations and guiding our treatment — not a medical diagnosis. If we sense that the client needs medical evaluation, we always encourage them to contact their doctor.'
         ]
       },
       {
-        heading: 'Integration med Kropsterapi',
+        heading: 'Integration with Body Therapy',
         paragraphs: [
-          'En af de store styrker ved at kombinere TCM-forståelsen med kropsterapi er, at begge systemer deler en dyb respekt for kroppens egen intelligens og evne til selvregulering. Hvor TCM giver os en forståelsesramme og et diagnostisk kort til at identificere mønstre, giver kropsterapien os en behandlingsform, der tillader kroppen selv at prioritere, hvor helingsprocessen skal ske.',
-          'TCM benyttes aldrig som en protokol, men snarere som en inspirationskilde. Meridianforløb, organsystemer og energetiske mønstre bliver indgange til behandlingen — døre vi kan åbne — men det er altid klientens system, der bestemmer, hvilken dør vi går igennem, og hvad der sker på den anden side.'
+          'One of the great strengths of combining TCM understanding with body therapy is that both systems share a deep respect for the body\'s own intelligence and capacity for self-regulation. Where TCM gives us a framework and a diagnostic map for identifying patterns, body therapy gives us a treatment modality that allows the body itself to prioritize where the healing process should occur.',
+          'TCM is never used as a protocol, but rather as a source of inspiration. Meridian pathways, organ systems, and energetic patterns become entry points for treatment — doors we can open — but it is always the client\'s system that determines which door we walk through and what happens on the other side.'
         ]
       },
       {
-        heading: 'De Seks Niveauer af Organforståelse',
+        heading: 'The Six Levels of Organ Understanding',
         paragraphs: [
-          'I TCM repræsenterer hvert organ et komplekst energisystem, der påvirker hele mennesket på seks niveauer: det energetiske (qi-flow og meridianbaner), det fysiske (konkrete funktioner og strukturer), det psykiske (tankemønstre og mental klarhed), det emotionelle (følelsesmæssige forbindelser), det sansemæssige (organet "åbner" til en bestemt sans) og det spirituelle (aspekter af vores dybere essens).',
-          'Denne flerlagede forståelse giver en rigere og mere nuanceret tilgang, hvor fysiske symptomer altid ses i sammenhæng med emotionelle, mentale og energetiske kvaliteter. Det er denne dybde, som hvert organ i denne app præsenteres med.'
+          'In TCM, each organ represents a complex energy system that affects the whole person on six levels: the energetic (qi flow and meridian pathways), the physical (concrete functions and structures), the psychological (thought patterns and mental clarity), the emotional (emotional connections), the sensory (the organ "opens" to a specific sense), and the spiritual (aspects of our deeper essence).',
+          'This multilayered understanding provides a richer and more nuanced approach, where physical symptoms are always seen in connection with emotional, mental, and energetic qualities. It is this depth with which each organ is presented in this app.'
         ]
       }
     ]
@@ -291,187 +291,187 @@ export const sectionIntros = {
 export const organs = [
   {
     id: 'lunger',
-    name: 'Lunger',
-    nickname: 'Den Skrøbelige Organtype',
+    name: 'Lungs',
+    nickname: 'The Delicate Organ',
     element: 'Metal',
     yinYang: 'Yin',
-    partner: 'Tyktarm',
+    partner: 'Large Intestine',
     time: '03-05',
     color: '#C0C0C0',
     icon: '肺',
     description: [
-      'Lungerne kaldes "Den Skrøbelige Organtype" og er det mest udsatte organ for ydre sygdomsfaktorer. Som det øverste organ i kroppen er de først til at møde sygdom fra omverdenen og fungerer som kroppens første forsvarslinje.',
-      'Lungerne distribuerer forsvars-energien til huden og muskelvævet, hvor det fungerer som et "usynligt skjold" mod bakterier, vira og klimatiske påvirkninger som kulde og vind.',
-      'Lungerne indånder ren energi fra luften og kombinerer den med næring fra føde for at danne kroppens samlede energi. De styrer alle former for energi i kroppen gennem deres evne til at sprede og sænke energien.',
-      'Lungernes sundhedstilstand afspejles direkte i næsens funktion og hudens kvalitet. Tør, skællende hud, eksem, eller hyppige næseproblemer indikerer ofte lunge-ubalance.',
-      'Den kropslige sjæl er den del af ånden der er bundet til kroppen. Den forbinder os til vores instinkter, sanseindtryk og kropserindringer. Den giver os evnen til at værdsætte skønhed i nuet og til at acceptere forandring og tab.',
-      'Lungerne modtager det rene (frisk luft, ny energi), mens tyktarmen udskiller det urene (affald, gammelt). Sammen skaber de kroppens evne til at modtage næring og slippe taget på det overflødige.',
-      'Lungerne er forbundet med sorg, tab og evnen til at slippe taget. Langvarig sorg svækker lunge-energien, hvilket kan vise sig som kronisk træthed, hyppige forkølelser eller vejrtrækningsproblemer.'
+      'The Lungs are called "The Delicate Organ" and are the most vulnerable organ to external pathogenic factors. As the uppermost organ in the body, they are the first to encounter disease from the outside world and function as the body\'s first line of defense.',
+      'The Lungs distribute defensive Qi to the skin and muscle tissue, where it functions as an "invisible shield" against bacteria, viruses, and climatic influences such as cold and wind.',
+      'The Lungs inhale pure Qi from the air and combine it with nourishment from food to form the body\'s overall Qi. They govern all forms of Qi in the body through their ability to disseminate and descend Qi.',
+      'The health of the Lungs is directly reflected in the function of the nose and the quality of the skin. Dry, flaky skin, eczema, or frequent nasal problems often indicate Lung imbalance.',
+      'The Corporeal Soul (Po) is the part of the spirit that is bound to the body. It connects us to our instincts, sensory impressions, and body memories. It gives us the ability to appreciate beauty in the present moment and to accept change and loss.',
+      'The Lungs receive the pure (fresh air, new Qi), while the Large Intestine excretes the impure (waste, the old). Together they create the body\'s ability to receive nourishment and let go of the superfluous.',
+      'The Lungs are connected to grief, loss, and the ability to let go. Prolonged grief weakens Lung Qi, which can manifest as chronic fatigue, frequent colds, or breathing problems.'
     ],
     keyPoints: [
-      { title: 'Styrer forsvars-energien', text: 'Distribuerer forsvars-energien til huden som et "usynligt skjold" mod sygdom.' },
-      { title: 'Regulerer vejrtrækningen', text: 'Indånder ren energi og kombinerer den med næring for at danne kroppens samlede energi.' },
-      { title: 'Åbner til næsen', text: 'Sundhedstilstanden afspejles i næsens funktion og hudens kvalitet.' },
-      { title: 'Huser den kropslige sjæl', text: 'Forbinder os til instinkter, sanseindtryk og kropserindringer.' },
-      { title: 'Partner med tyktarmen', text: 'Sammen skaber de evnen til at modtage næring og slippe det overflødige.' },
-      { title: 'Forbundet med sorg', text: 'Langvarig sorg svækker lunge-energien og skaber en ond cirkel af fastholdt sorg.' }
+      { title: 'Governs defensive Qi', text: 'Distributes defensive Qi to the skin as an "invisible shield" against disease.' },
+      { title: 'Regulates respiration', text: 'Inhales pure Qi and combines it with nourishment to form the body\'s overall Qi.' },
+      { title: 'Opens to the nose', text: 'Health is reflected in the function of the nose and the quality of the skin.' },
+      { title: 'Houses the Corporeal Soul (Po)', text: 'Connects us to instincts, sensory impressions, and body memories.' },
+      { title: 'Paired with the Large Intestine', text: 'Together they create the ability to receive nourishment and release the superfluous.' },
+      { title: 'Connected to grief', text: 'Prolonged grief weakens Lung Qi and creates a vicious cycle of retained grief.' }
     ],
     themes: [
       {
-        title: 'Vejrtrækning & Respiratorisk Funktion',
+        title: 'Breathing & Respiratory Function',
         questions: [
-          'Hvordan oplever du din vejrtrækning generelt? Er den let og dyb, eller overfladisk og anstrengt?',
-          'Har du hoste? Hvis ja, er den tør eller med slim? Hvilken farve har slimet? Hvornår er hosten værst?',
-          'Oplever du åndenød, trykken for brystet, eller astmatiske symptomer? Hvad udløser dem?'
+          'How do you experience your breathing in general? Is it easy and deep, or shallow and strained?',
+          'Do you have a cough? If so, is it dry or with phlegm? What color is the phlegm? When is the cough worst?',
+          'Do you experience shortness of breath, chest tightness, or asthmatic symptoms? What triggers them?'
         ]
       },
       {
-        title: 'Hud, Hår & Porer',
+        title: 'Skin, Hair & Pores',
         questions: [
-          'Hvordan er din huds tilstand? Er den tør, skællende, fedtet, eller har du hudproblemer som eksem, psoriasis eller akne?',
-          'Hvordan er dit kropshår? Tyndt, sparsomt, tørt, eller sundt og glansfuldt?',
-          'Sveder du let eller svært? Reagerer din hud hurtigt på temperaturændringer?'
+          'What is the condition of your skin? Is it dry, flaky, oily, or do you have skin problems such as eczema, psoriasis, or acne?',
+          'How is your body hair? Thin, sparse, dry, or healthy and shiny?',
+          'Do you sweat easily or with difficulty? Does your skin react quickly to temperature changes?'
         ]
       },
       {
-        title: 'Immunforsvar & Modstandsdygtighed',
+        title: 'Immune System & Resilience',
         questions: [
-          'Hvor ofte bliver du syg? Fanger du let forkølelser, influenza eller andre infektioner?',
-          'Hvor hurtigt restituerer du efter sygdom? Bliver du hurtigt rask, eller trækker det ud?',
-          'Føler du dig generelt modstandsdygtig, eller føler du dig sårbar overfor ydre påvirkninger?'
+          'How often do you get sick? Do you catch colds, flu, or other infections easily?',
+          'How quickly do you recover after illness? Do you get well quickly, or does it linger?',
+          'Do you generally feel resilient, or do you feel vulnerable to external influences?'
         ]
       },
       {
-        title: 'Næse, Lugtesans & Sinusser',
+        title: 'Nose, Sense of Smell & Sinuses',
         questions: [
-          'Hvordan fungerer din næse? Har du ofte tilstoppet næse, løbende næse, eller bihulebetændelse?',
-          'Hvordan er din lugtesans? Skarp, svækket, eller helt fraværende?',
-          'Har du gentagne næseproblemer, allergier, eller kroniske problemer med sinusserne?'
+          'How does your nose function? Do you often have a blocked nose, runny nose, or sinusitis?',
+          'How is your sense of smell? Sharp, weakened, or completely absent?',
+          'Do you have recurrent nasal problems, allergies, or chronic sinus issues?'
         ]
       },
       {
-        title: 'Stemme & Tale',
+        title: 'Voice & Speech',
         questions: [
-          'Hvordan er din stemme? Klar og kraftig, eller svag, hæs eller anstrengt?',
-          'Mister du ofte stemmen eller bliver hæs? Under hvilke omstændigheder?',
-          'Føles det anstrengende at tale længe? Oplever du træthed i stemmen?'
+          'How is your voice? Clear and strong, or weak, hoarse, or strained?',
+          'Do you often lose your voice or become hoarse? Under what circumstances?',
+          'Does it feel tiring to speak for a long time? Do you experience voice fatigue?'
         ]
       },
       {
-        title: 'Sorg, Tab & Emotionel Frigørelse',
+        title: 'Grief, Loss & Emotional Release',
         questions: [
-          'Har du oplevet betydningsfulde tab eller sorgoplevelser i dit liv? Hvordan har du bearbejdet dem?',
-          'Føler du dig ofte trist, melankolsk, eller savner du nogen/noget dybt?',
-          'Har du svært ved at slippe taget - enten emotionelt eller fysisk?'
+          'Have you experienced significant losses or grief in your life? How have you processed them?',
+          'Do you often feel sad, melancholic, or do you deeply miss someone or something?',
+          'Do you find it difficult to let go — either emotionally or physically?'
         ]
       },
       {
-        title: 'Thorax, Skulder & Lungemeridianen',
+        title: 'Thorax, Shoulder & Lung Meridian',
         questions: [
-          'Har du spændinger, smerter eller ubehag i brystkassen, over skuldrene eller ned langs armenes inderside?',
-          'Føles din brystkasse åben og ekspansiv, eller sammentrukket og stram?',
-          'Har du haft skader, operationer eller arvæv i thorax-området?'
+          'Do you have tension, pain, or discomfort in the chest, across the shoulders, or down the inner side of the arms?',
+          'Does your chest feel open and expansive, or contracted and tight?',
+          'Have you had injuries, surgeries, or scar tissue in the thorax area?'
         ]
       },
       {
-        title: 'Kulde, Tørhed & Klimapåvirkning',
+        title: 'Cold, Dryness & Climate Sensitivity',
         questions: [
-          'Hvordan reagerer du på kulde? Fryser du let, især i overkroppen, hænder eller ansigtet?',
-          'Oplever du tørhed generelt - i huden, slimhinderne, halsen, eller munden?',
-          'Hvordan påvirkes du af tørt klima, vind, eller skarpe temperaturskift?'
+          'How do you react to cold? Do you get cold easily, especially in the upper body, hands, or face?',
+          'Do you experience dryness in general — in the skin, mucous membranes, throat, or mouth?',
+          'How are you affected by dry climate, wind, or sharp temperature changes?'
         ]
       }
     ]
   },
   {
     id: 'tyktarm',
-    name: 'Tyktarm',
-    nickname: 'Transportørens Mester',
+    name: 'Large Intestine',
+    nickname: 'The Master of Transportation',
     element: 'Metal',
     yinYang: 'Yang',
-    partner: 'Lunger',
+    partner: 'Lungs',
     time: '05-07',
     color: '#C0C0C0',
     icon: '腸',
     description: [
-      'Tyktarmen kaldes "Transportørens Mester" og er ansvarlig for at modtage affaldsprodukter fra tyndtarmen, absorbere væskeindhold og danne afføring til elimination.',
-      'Tyktarmen fungerer ikke kun som fysisk rensningsorgan, men fjerner også mentalt og emotionelt "skrald" fra alle kropsfunktioner. Når dette organ fungerer optimalt, opstår der ikke kun en ren krop, men også et klart sind.',
-      'Tyktarmen er tæt forbundet med lungerne og deler deres evne til at "slippe taget". Lungerne modtager det rene, mens tyktarmen udskiller det urene.',
-      'Ligesom lungerne viser tyktarmens sundhed sig i huden. Akne, eksem, psoriasis og andre hudlidelser indikerer ofte ophobning af toksiner i tyktarmen.',
-      'Tyktarmen renser ikke kun fysisk affald men også mentalt og emotionelt "skrald". Personer med tyktarmsubalancer har ofte svært ved at give slip.',
-      'Tyktarmen er forbundet med uforløst, fastholdt sorg der ikke er blevet bearbejdet. Langvarig forstoppelse kan både være årsag til og resultat af emotionel fastholdelse.'
+      'The Large Intestine is called "The Master of Transportation" and is responsible for receiving waste products from the Small Intestine, absorbing fluid content, and forming stool for elimination.',
+      'The Large Intestine functions not only as a physical cleansing organ but also removes mental and emotional "waste" from all bodily functions. When this organ functions optimally, it produces not only a clean body but also a clear mind.',
+      'The Large Intestine is closely connected to the Lungs and shares their ability to "let go." The Lungs receive the pure, while the Large Intestine excretes the impure.',
+      'Like the Lungs, the health of the Large Intestine manifests in the skin. Acne, eczema, psoriasis, and other skin conditions often indicate an accumulation of toxins in the Large Intestine.',
+      'The Large Intestine cleanses not only physical waste but also mental and emotional "rubbish." People with Large Intestine imbalances often have difficulty letting go.',
+      'The Large Intestine is connected to unresolved, retained grief that has not been processed. Chronic constipation can be both a cause and a result of emotional holding.'
     ],
     keyPoints: [
-      { title: 'Styrer elimination', text: 'Modtager fordøjet materiale og udfører den sidste transformation før udskillelse.' },
-      { title: 'Partner med lungerne', text: 'Deler evnen til at "slippe taget" - modtage og eliminere.' },
-      { title: 'Viser sig i huden', text: 'Hudlidelser indikerer ofte ophobning af toksiner i tyktarmen.' },
-      { title: 'Emotionel rensning', text: 'Renser mentalt og emotionelt "skrald" - giver mental fleksibilitet.' },
-      { title: 'Forbundet med fastholdelse', text: 'Kronisk, stagneret sorg der har bundfældet sig i kroppen.' },
-      { title: 'Aktiv tid 05-07', text: 'Regelmæssig morgeneliminering er tegn på en sund tyktarm.' }
+      { title: 'Governs elimination', text: 'Receives digested material and performs the final transformation before excretion.' },
+      { title: 'Paired with the Lungs', text: 'Shares the ability to "let go" — receive and eliminate.' },
+      { title: 'Manifests in the skin', text: 'Skin conditions often indicate an accumulation of toxins in the Large Intestine.' },
+      { title: 'Emotional cleansing', text: 'Cleanses mental and emotional "waste" — provides mental flexibility.' },
+      { title: 'Connected to holding on', text: 'Chronic, stagnant grief that has settled in the body.' },
+      { title: 'Active time 05:00-07:00', text: 'Regular morning elimination is a sign of a healthy Large Intestine.' }
     ],
     themes: [
       {
-        title: 'Afføringsmønster & Elimination',
+        title: 'Bowel Patterns & Elimination',
         questions: [
-          'Hvordan er din afføring generelt? Regelmæssig eller uregelmæssig? Hård, løs, eller skiftende?',
-          'Hvor ofte har du afføring, og hvornår på dagen? Er det let eller anstrengende?',
-          'Oplever du komplet tømning, eller føles det som om der er mere tilbage?'
+          'How is your bowel movement in general? Regular or irregular? Hard, loose, or alternating?',
+          'How often do you have bowel movements, and when during the day? Is it easy or strenuous?',
+          'Do you experience complete evacuation, or does it feel like there is more remaining?'
         ]
       },
       {
-        title: 'Bugregion & Fordøjelse',
+        title: 'Abdominal Region & Digestion',
         questions: [
-          'Hvordan føles din mave? Oppustet, spændt, afslappet, eller sammentrukket?',
-          'Oplever du smerter eller kramper i bugregionen? Hvornår opstår de?',
-          'Har du hyppige tarmlyde (rumlen), eller er din mave generelt stille?'
+          'How does your abdomen feel? Bloated, tense, relaxed, or contracted?',
+          'Do you experience pain or cramps in the abdominal region? When do they occur?',
+          'Do you have frequent bowel sounds (rumbling), or is your abdomen generally quiet?'
         ]
       },
       {
-        title: 'Hud, Hudkvalitet & Hudlidelser',
+        title: 'Skin, Skin Quality & Skin Conditions',
         questions: [
-          'Hvordan er din huds tilstand? Ren, klar, uren, fedtet, tør, eller betændt?',
-          'Har du hudproblemer som akne, eksem, psoriasis eller andre hudlidelser?',
-          'Føles din hud ren indefra, eller føler du der er toksiner under overfladen?'
+          'What is the condition of your skin? Clear, clean, blemished, oily, dry, or inflamed?',
+          'Do you have skin problems such as acne, eczema, psoriasis, or other skin conditions?',
+          'Does your skin feel clean from within, or do you feel there are toxins beneath the surface?'
         ]
       },
       {
-        title: 'Væskebalance & Ødem',
+        title: 'Fluid Balance & Edema',
         questions: [
-          'Hvordan er din væskeindtagelse? Drikker du nok vand, eller føler du dig ofte tørstig?',
-          'Oplever du væskeophobning (ødem) i kroppen - ben, ankler, hænder, ansigt?',
-          'Føles din krop tung eller opsvulmet, eller reagerer den normalt på væskeindtagelse?'
+          'How is your fluid intake? Do you drink enough water, or do you often feel thirsty?',
+          'Do you experience fluid retention (edema) in the body — legs, ankles, hands, face?',
+          'Does your body feel heavy or swollen, or does it respond normally to fluid intake?'
         ]
       },
       {
-        title: 'Sorg, Fastholdelse & Evnen til at Slippe Taget',
+        title: 'Grief, Holding On & the Ability to Let Go',
         questions: [
-          'Har du svært ved at slippe taget - emotionelt, mentalt eller fysisk?',
-          'Holder du fast i gamle følelser, relationer, overbevisninger eller ting?',
-          'Har du uforløst sorg fra fortiden? Føler du dig ofte stiv eller modstandsdygtig overfor forandringer?'
+          'Do you find it difficult to let go — emotionally, mentally, or physically?',
+          'Do you hold on to old feelings, relationships, beliefs, or things?',
+          'Do you have unresolved grief from the past? Do you often feel rigid or resistant to change?'
         ]
       },
       {
-        title: 'Grænser, Kontrol & Struktur',
+        title: 'Boundaries, Control & Structure',
         questions: [
-          'Hvordan er din evne til at sætte grænser? Siger du ja, når du burde sige nej?',
-          'Har du tendens til at være kontrollerende eller perfektionistisk?',
-          'Hvordan reagerer du på forandringer i rutiner eller planer? Fleksibelt eller med modstand?'
+          'How is your ability to set boundaries? Do you say yes when you should say no?',
+          'Do you tend to be controlling or perfectionistic?',
+          'How do you react to changes in routines or plans? Flexibly or with resistance?'
         ]
       },
       {
-        title: 'Arm, Skulder & Tyktarmmeridianen',
+        title: 'Arm, Shoulder & Large Intestine Meridian',
         questions: [
-          'Har du smerter langs ydersiden af armen - fra pegefingeren op over underarmen til skulderen?',
-          'Oplever du stivhed i skulderbevægelsen, eller smerter i nakke-skulder området?',
-          'Har du problemer med albuen, eller smerter omkring ansigtet, kæben eller næsen?'
+          'Do you have pain along the outer side of the arm — from the index finger up over the forearm to the shoulder?',
+          'Do you experience stiffness in shoulder movement, or pain in the neck-shoulder area?',
+          'Do you have problems with the elbow, or pain around the face, jaw, or nose?'
         ]
       },
       {
-        title: 'Morgenmønster, Energi & Klimapåvirkning',
+        title: 'Morning Patterns, Energy & Climate Sensitivity',
         questions: [
-          'Hvordan er din morgen? Vågner du let mellem kl. 05-07, eller har du svært ved at komme op?',
-          'Har du naturlig trang til afføring om morgenen? Føles det som om din krop "starter op" korrekt?',
-          'Hvordan påvirker tørt vejr eller efteråret dig? Forværres dine symptomer i disse perioder?'
+          'How is your morning? Do you wake easily between 05:00-07:00, or do you have difficulty getting up?',
+          'Do you have a natural urge for a bowel movement in the morning? Does it feel like your body "starts up" correctly?',
+          'How does dry weather or autumn affect you? Do your symptoms worsen during these periods?'
         ]
       }
     ]
