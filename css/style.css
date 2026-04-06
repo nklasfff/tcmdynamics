@@ -1,9 +1,10 @@
 /* ============================================
    Mønstrene Bag — TCM i Praksis
-   Exclusive Dark Design — v2 Airy Hub
+   Dark & Light Design — v2 Airy Hub
    ============================================ */
 
 :root {
+  /* Dark theme (default) */
   --bg-primary: #0a0a0f;
   --bg-secondary: #12121a;
   --bg-card: #1a1a25;
@@ -36,6 +37,31 @@
 
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-primary: #f5f2ec;
+  --bg-secondary: #eae6de;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0ece4;
+  --bg-elevated: #e8e4db;
+
+  --text-primary: #1a1815;
+  --text-secondary: #5a554d;
+  --text-muted: #8a857d;
+  --text-accent: #9a7b3c;
+
+  --accent-gold: #9a7b3c;
+  --accent-gold-dim: rgba(154, 123, 60, 0.12);
+  --accent-gold-glow: rgba(154, 123, 60, 0.06);
+
+  --border-subtle: rgba(154, 123, 60, 0.1);
+  --border-light: rgba(154, 123, 60, 0.2);
+  --border-active: rgba(154, 123, 60, 0.35);
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-elevated: 0 8px 32px rgba(0,0,0,0.08);
 }
 
 /* ============================================
@@ -2586,4 +2612,30 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+/* ============================================
+   Light Theme Overrides
+   (for hardcoded dark rgba values)
+   ============================================ */
+
+[data-theme="light"] .bottom-nav {
+  background: rgba(234, 230, 222, 0.94);
+}
+
+[data-theme="light"] .search-overlay {
+  background: rgba(245, 242, 236, 0.98);
+}
+
+[data-theme="light"] .hamburger-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.1));
+}
+
+/* Theme transition */
+html[data-theme-transitioning] * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
