@@ -143,11 +143,20 @@
         </button>
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-practice">
-            <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 50 Q30 10 60 30 Q90 50 110 10" stroke="var(--accent-gold)" stroke-width="1.5" opacity="0.3"/>
-              <circle cx="30" cy="25" r="3" fill="var(--accent-gold)" opacity="0.2"/>
-              <circle cx="60" cy="30" r="4" fill="var(--accent-gold)" opacity="0.15"/>
-              <circle cx="90" cy="20" r="3" fill="var(--accent-gold)" opacity="0.2"/>
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Handflader -->
+              <path d="M50 95 Q45 70 55 55 Q60 48 58 40" stroke="var(--accent-gold)" stroke-width="1" opacity="0.2"/>
+              <path d="M150 95 Q155 70 145 55 Q140 48 142 40" stroke="var(--accent-gold)" stroke-width="1" opacity="0.2"/>
+              <!-- Energistrøm mellem hænder -->
+              <path class="flow-line" d="M62 38 Q80 15 100 25 Q120 35 138 38" stroke="var(--accent-gold)" stroke-width="1.5" opacity="0.4"/>
+              <path class="flow-line" d="M58 45 Q80 22 100 30 Q120 38 142 42" stroke="var(--accent-gold)" stroke-width="1" opacity="0.2" style="animation-delay: 0.5s"/>
+              <!-- Pulserende behandlingspunkter -->
+              <circle class="pulse-dot" cx="72" cy="28" r="4" fill="var(--accent-gold)" opacity="0.3"/>
+              <circle class="pulse-dot" cx="100" cy="24" r="5" fill="var(--accent-gold)" opacity="0.25"/>
+              <circle class="pulse-dot" cx="128" cy="30" r="4" fill="var(--accent-gold)" opacity="0.3"/>
+              <!-- Fingerspidser -->
+              <circle cx="58" cy="38" r="2.5" fill="var(--accent-gold)" opacity="0.3"/>
+              <circle cx="142" cy="38" r="2.5" fill="var(--accent-gold)" opacity="0.3"/>
             </svg>
           </div>
           <h1>I Praksis</h1>
@@ -172,14 +181,22 @@
         </button>
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-organs">
-            <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="60" cy="30" r="25" stroke="var(--accent-gold)" stroke-width="1" opacity="0.2"/>
-              <circle cx="60" cy="30" r="15" stroke="var(--accent-gold)" stroke-width="1" opacity="0.15"/>
-              <path d="M60 5 L60 10" stroke="var(--accent-gold)" stroke-width="1" opacity="0.3"/>
-              <path d="M60 50 L60 55" stroke="var(--accent-gold)" stroke-width="1" opacity="0.3"/>
-              <path d="M35 30 L40 30" stroke="var(--accent-gold)" stroke-width="1" opacity="0.3"/>
-              <path d="M80 30 L85 30" stroke="var(--accent-gold)" stroke-width="1" opacity="0.3"/>
-              <circle cx="60" cy="30" r="3" fill="var(--accent-gold)" opacity="0.25"/>
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Koncentriske ringe (organ-ur) -->
+              <circle class="ring" cx="100" cy="60" r="48" stroke="var(--accent-gold)" stroke-width="0.8" opacity="0.15"/>
+              <circle class="ring" cx="100" cy="60" r="32" stroke="var(--accent-gold)" stroke-width="0.8" opacity="0.2"/>
+              <circle cx="100" cy="60" r="16" stroke="var(--accent-gold)" stroke-width="0.8" opacity="0.25"/>
+              <!-- Tidsmærkninger (12 positioner) -->
+              <circle cx="100" cy="12" r="2" fill="var(--accent-gold)" opacity="0.2"/>
+              <circle cx="148" cy="60" r="2" fill="var(--accent-gold)" opacity="0.2"/>
+              <circle cx="100" cy="108" r="2" fill="var(--accent-gold)" opacity="0.2"/>
+              <circle cx="52" cy="60" r="2" fill="var(--accent-gold)" opacity="0.2"/>
+              <!-- Orbiterende Qi-prikker -->
+              <circle class="orbit-dot" cx="100" cy="60" r="3.5" fill="var(--accent-gold)" opacity="0.5"/>
+              <circle class="orbit-dot" cx="100" cy="60" r="2.5" fill="#c43c3c" opacity="0.45"/>
+              <circle class="orbit-dot" cx="100" cy="60" r="3" fill="#2e7a2e" opacity="0.45"/>
+              <!-- Centrum -->
+              <circle class="center-pulse" cx="100" cy="60" r="5" fill="var(--accent-gold)" opacity="0.3"/>
             </svg>
           </div>
           <h1>De 12 Organer</h1>
@@ -209,13 +226,23 @@
         </button>
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-elements">
-            <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="60,8 82,22 76,48 44,48 38,22" stroke="var(--accent-gold)" stroke-width="1" opacity="0.2"/>
-              <circle cx="60" cy="8" r="4" fill="#2e7a2e" opacity="0.35"/>
-              <circle cx="82" cy="22" r="4" fill="#c43c3c" opacity="0.35"/>
-              <circle cx="76" cy="48" r="4" fill="#b8952e" opacity="0.35"/>
-              <circle cx="44" cy="48" r="4" fill="#9a9a9a" opacity="0.35"/>
-              <circle cx="38" cy="22" r="4" fill="#2e4a8b" opacity="0.35"/>
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Pentagon-forbindelser (sheng-cyklus) -->
+              <polygon class="penta-line" points="100,12 147,42 130,95 70,95 53,42" stroke="var(--accent-gold)" stroke-width="1" opacity="0.2" fill="none"/>
+              <!-- Indre stjerne (ke-cyklus) -->
+              <path class="penta-line" d="M100,12 L70,95 L147,42 L53,42 L130,95 Z" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1" fill="none" style="animation-delay: 1s"/>
+              <!-- Element-prikker med farver -->
+              <circle class="elem-dot" cx="100" cy="12" r="7" fill="#2e7a2e" opacity="0.4"/>
+              <circle class="elem-dot" cx="147" cy="42" r="7" fill="#c43c3c" opacity="0.4"/>
+              <circle class="elem-dot" cx="130" cy="95" r="7" fill="#b8952e" opacity="0.4"/>
+              <circle class="elem-dot" cx="70" cy="95" r="7" fill="#9a9a9a" opacity="0.4"/>
+              <circle class="elem-dot" cx="53" cy="42" r="7" fill="#2e4a8b" opacity="0.4"/>
+              <!-- Element-symboler -->
+              <text x="100" y="16" text-anchor="middle" fill="#2e7a2e" font-size="8" opacity="0.6">木</text>
+              <text x="147" y="46" text-anchor="middle" fill="#c43c3c" font-size="8" opacity="0.6">火</text>
+              <text x="130" y="99" text-anchor="middle" fill="#b8952e" font-size="8" opacity="0.6">土</text>
+              <text x="70" y="99" text-anchor="middle" fill="#9a9a9a" font-size="8" opacity="0.6">金</text>
+              <text x="53" y="46" text-anchor="middle" fill="#2e4a8b" font-size="8" opacity="0.6">水</text>
             </svg>
           </div>
           <h1>Fem Elementer</h1>
@@ -247,13 +274,24 @@
         </button>
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-meridians">
-            <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 50 Q35 10 55 30 Q75 50 95 15" stroke="var(--accent-gold)" stroke-width="1.5" opacity="0.25"/>
-              <path d="M20 45 Q40 15 60 35 Q80 55 100 20" stroke="var(--accent-gold)" stroke-width="1" opacity="0.15"/>
-              <circle cx="35" cy="20" r="2.5" fill="var(--accent-gold)" opacity="0.3"/>
-              <circle cx="55" cy="30" r="3" fill="var(--accent-gold)" opacity="0.2"/>
-              <circle cx="75" cy="25" r="2.5" fill="var(--accent-gold)" opacity="0.3"/>
-              <circle cx="95" cy="15" r="2" fill="var(--accent-gold)" opacity="0.2"/>
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Krop-silhuet (centrallinje) -->
+              <path d="M100 10 Q100 30 100 110" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.15"/>
+              <!-- 8 meridianlinjer (4 par) -->
+              <path class="meridian-path" d="M100 10 Q85 30 75 50 Q65 70 70 110" stroke="var(--accent-gold)" stroke-width="1.2" opacity="0.3"/>
+              <path class="meridian-path" d="M100 10 Q115 30 125 50 Q135 70 130 110" stroke="var(--accent-gold)" stroke-width="1.2" opacity="0.3"/>
+              <path class="meridian-path" d="M100 15 Q78 40 60 60 Q50 80 55 110" stroke="var(--accent-gold)" stroke-width="0.8" opacity="0.2"/>
+              <path class="meridian-path" d="M100 15 Q122 40 140 60 Q150 80 145 110" stroke="var(--accent-gold)" stroke-width="0.8" opacity="0.2"/>
+              <!-- Du Mai (bagside) og Ren Mai (forside) -->
+              <path class="meridian-path" d="M95 10 Q90 35 92 60 Q94 85 95 110" stroke="var(--accent-gold)" stroke-width="1" opacity="0.25" style="animation-delay: 0.3s"/>
+              <path class="meridian-path" d="M105 10 Q110 35 108 60 Q106 85 105 110" stroke="var(--accent-gold)" stroke-width="1" opacity="0.25" style="animation-delay: 0.6s"/>
+              <!-- Knudepunkter -->
+              <circle class="node-pulse" cx="100" cy="15" r="4" fill="var(--accent-gold)" opacity="0.35"/>
+              <circle class="node-pulse" cx="80" cy="45" r="3" fill="var(--accent-gold)" opacity="0.25" style="animation-delay: 0.5s"/>
+              <circle class="node-pulse" cx="120" cy="45" r="3" fill="var(--accent-gold)" opacity="0.25" style="animation-delay: 1s"/>
+              <circle class="node-pulse" cx="100" cy="65" r="3.5" fill="var(--accent-gold)" opacity="0.3" style="animation-delay: 1.5s"/>
+              <circle class="node-pulse" cx="68" cy="80" r="2.5" fill="var(--accent-gold)" opacity="0.2" style="animation-delay: 0.8s"/>
+              <circle class="node-pulse" cx="132" cy="80" r="2.5" fill="var(--accent-gold)" opacity="0.2" style="animation-delay: 1.3s"/>
             </svg>
           </div>
           <h1>De 8 Ekstraordinære</h1>
