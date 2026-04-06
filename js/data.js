@@ -960,60 +960,60 @@ export const organs = [
       'The Kidneys store willpower, determination, and courage. They are connected to fear - excessive fear damages the Kidneys.'
     ],
     keyPoints: [
-      { title: 'Lagrer livets essens', text: 'Medfødt essens (DNA) og erhvervet essens (fra livserfaringer).' },
-      { title: 'Roden til al energi', text: 'Primær yin og yang er fundamentet for alle organer.' },
-      { title: 'Styrer vand', text: 'Regulerer kroppens væskemetabolisme.' },
-      { title: 'Producerer marv', text: 'Nærer knogler, rygmarv og hjerne.' },
-      { title: 'Åbner til ørerne', text: 'Hørelse afhænger af nyre-essensen.' },
-      { title: 'Forbundet med frygt og vilje', text: 'Stærke nyrer giver målrettethed og livsmod.' }
+      { title: 'Stores the essence of life', text: 'Innate essence (DNA) and acquired essence (from life experiences).' },
+      { title: 'Root of all energy', text: 'Primary Yin and Yang are the foundation for all organs.' },
+      { title: 'Governs water', text: 'Regulates the body\'s fluid metabolism.' },
+      { title: 'Produces marrow', text: 'Nourishes bones, spinal cord, and brain.' },
+      { title: 'Opens to the ears', text: 'Hearing depends on Kidney essence.' },
+      { title: 'Connected to fear and willpower', text: 'Strong Kidneys give determination and courage.' }
     ],
     themes: [
       {
-        title: 'Lænd, Knæ & Knogler',
+        title: 'Lower Back, Knees & Bones',
         questions: [
-          'Har du lændesmerter eller svaghed i lænden?',
-          'Hvordan er dine knæ? Svage, smertefulde, eller stabile?',
-          'Har du knogleproblemer, brud, osteoporose, eller knogleskrøbelighed?'
+          'Do you have lower back pain or weakness in the lower back?',
+          'How are your knees? Weak, painful, or stable?',
+          'Do you have bone problems, fractures, osteoporosis, or bone fragility?'
         ]
       },
       {
-        title: 'Ører, Hørelse & Tinnitus',
+        title: 'Ears, Hearing & Tinnitus',
         questions: [
-          'Hvordan er din hørelse? Normal, nedsat, eller svækket?',
-          'Oplever du tinnitus? Konstant eller periodisk?',
-          'Har du øreproblemer, infektioner, eller følelse af blokering?'
+          'How is your hearing? Normal, reduced, or weakened?',
+          'Do you experience tinnitus? Constant or periodic?',
+          'Do you have ear problems, infections, or a feeling of blockage?'
         ]
       },
       {
-        title: 'Hår, Tænder & Aldring',
+        title: 'Hair, Teeth & Aging',
         questions: [
-          'Hvordan er dit hår? Kraftigt og glansfuldt, eller tyndt og uden glans?',
-          'Oplever du hårtab eller for tidligt gråt hår?',
-          'Hvordan er dine tænder? Stærke og sunde, eller svage og løse?'
+          'How is your hair? Thick and lustrous, or thin and dull?',
+          'Do you experience hair loss or premature graying?',
+          'How are your teeth? Strong and healthy, or weak and loose?'
         ]
       },
       {
-        title: 'Reproduktion, Fertilitet & Seksuel Funktion',
+        title: 'Reproduction, Fertility & Sexual Function',
         questions: [
-          'Hvordan er din seksuelle funktion og libido?',
-          'Har du fertilitetsproblemer eller hormonelle ubalancer?',
-          'Oplever du menstruationsproblemer eller reproduktive symptomer?'
+          'How is your sexual function and libido?',
+          'Do you have fertility problems or hormonal imbalances?',
+          'Do you experience menstrual problems or reproductive symptoms?'
         ]
       },
       {
-        title: 'Vandladning & Væskemetabolisme',
+        title: 'Urination & Fluid Metabolism',
         questions: [
-          'Hvordan er din vandladning? Normal frekvens, hyppig, eller sjælden?',
-          'Oplever du væskeophobning - hævede ben, ankler, eller ansigt?',
-          'Føler du tørst ofte, eller har du problemer med væskebalance?'
+          'How is your urination? Normal frequency, frequent, or infrequent?',
+          'Do you experience fluid retention - swollen legs, ankles, or face?',
+          'Do you feel thirsty often, or do you have problems with fluid balance?'
         ]
       },
       {
-        title: 'Vejrtrækning & Qi-modtagelse',
+        title: 'Breathing & Qi Reception',
         questions: [
-          'Hvordan er din vejrtrækning? Dyb og fuld, eller overfladisk?',
-          'Oplever du stakåndethed ved anstrengelse?',
-          'Føles det som om du ikke kan få nok luft ind?'
+          'How is your breathing? Deep and full, or shallow?',
+          'Do you experience shortness of breath with exertion?',
+          'Does it feel like you cannot get enough air in?'
         ]
       },
       {
