@@ -625,8 +625,8 @@ function renderOrganClock() {
   const timeR = outerR - 12;
 
   const elementColors = {
-    'Metal': '#9a9a9a', 'Earth': '#b8952e', 'Fire': '#c43c3c', 'Water': '#2e4a8b', 'Wood': '#2e7a2e',
-    'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Vand': '#2e4a8b'
+    'Metal': '#a8c4d6', 'Earth': '#deb87a', 'Fire': '#e88585', 'Water': '#7ba4da', 'Wood': '#5cc98e',
+    'Træ': '#5cc98e', 'Ild': '#e88585', 'Jord': '#deb87a', 'Vand': '#7ba4da'
   };
 
   const activeIndex = getActiveOrganIndex();
@@ -867,7 +867,7 @@ function showElementDetail(el) {
 
 function renderMiniCycle(currentEl, type) {
   const elNames = [t('elWood'), t('elFire'), t('elEarth'), t('elMetal'), t('elWater')];
-  const colors = ['#2e7a2e', '#c43c3c', '#b8952e', '#9a9a9a', '#2e4a8b'];
+  const colors = ['#5cc98e', '#e88585', '#deb87a', '#a8c4d6', '#7ba4da'];
 
   return `<div class="mini-cycle">${elNames.map((name, i) => {
     const isCurrent = name === currentEl.name;
@@ -909,7 +909,7 @@ function showFoundationDetail(key) {
   }
 
   if (key === 'elementCycles') {
-    const colors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b', 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Vand': '#2e4a8b' };
+    const colors = { 'Wood': '#5cc98e', 'Fire': '#e88585', 'Earth': '#deb87a', 'Metal': '#a8c4d6', 'Water': '#7ba4da', 'Træ': '#5cc98e', 'Ild': '#e88585', 'Jord': '#deb87a', 'Vand': '#7ba4da' };
     bodyHTML += `
       <div class="cycle-visual">
         <h3 class="pairs-title">${t('generatingCycle')}</h3>
@@ -931,7 +931,7 @@ function showFoundationDetail(key) {
   }
 
   if (key === 'organPartnership') {
-    const elementColors = { 'Wood': '#2e7a2e', 'Fire': '#c43c3c', 'Earth': '#b8952e', 'Metal': '#9a9a9a', 'Water': '#2e4a8b', 'Træ': '#2e7a2e', 'Ild': '#c43c3c', 'Jord': '#b8952e', 'Vand': '#2e4a8b' };
+    const elementColors = { 'Wood': '#5cc98e', 'Fire': '#e88585', 'Earth': '#deb87a', 'Metal': '#a8c4d6', 'Water': '#7ba4da', 'Træ': '#5cc98e', 'Ild': '#e88585', 'Jord': '#deb87a', 'Vand': '#7ba4da' };
     bodyHTML += `
       <div class="partnerships">
         ${section.pairs.map(p => `
