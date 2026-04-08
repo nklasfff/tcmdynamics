@@ -1,6 +1,300 @@
 // The Patterns Behind — App Logic v2
 import { getLangData } from './data.js';
-import { t, getLanguage, setLanguage } from './i18n.js';
+
+// ============================================
+// Internationalization (inlined)
+// ============================================
+const translations = {
+  en: {
+    pageTitle: 'The Patterns Behind — TCM in Practice',
+    brandTitle: 'The Patterns Behind',
+    brandSubtitle: 'Traditional Chinese Medicine in Practice',
+    homeIntro: 'Explore organs, meridians and elements — and discover patterns in your practice.',
+    hubPractice: 'In Practice',
+    hubPracticeDesc: 'Guidance for dialogue and pattern discovery',
+    hubOrgans: 'The 12 Organs',
+    hubOrgansDesc: 'Organ systems, meridians and the organ clock',
+    hubElements: 'Five Elements',
+    hubElementsDesc: 'Wood, Fire, Earth, Metal, Water and core principles',
+    hubMeridians: 'The 8 Extraordinary',
+    hubMeridiansDesc: 'Deeper energy systems and meridians',
+    hubOverviews: 'Overviews',
+    hubOverviewsDesc: 'Quick reference for organs, symptoms and dialogue',
+    sectionPracticeTitle: 'In Practice',
+    sectionPracticeSubtitle: 'Guidance · Dialogue · Pattern Discovery',
+    sectionOrgansTitle: 'The 12 Organs',
+    sectionOrgansSubtitle: 'Meridians & Organ Systems',
+    sectionElementsTitle: 'Five Elements',
+    sectionElementsSubtitle: 'Wood · Fire · Earth · Metal · Water',
+    sectionMeridiansTitle: 'The 8 Extraordinary',
+    sectionMeridiansSubtitle: 'Deeper Energy Systems',
+    sectionOverviewsTitle: 'Overviews',
+    sectionOverviewsSubtitle: 'Quick Reference · Organs · Meridians · Dialogue',
+    navHome: 'Home',
+    navPractice: 'Practice',
+    navOrgans: 'Organs',
+    navElements: 'Elements',
+    navMeridians: 'Meridians',
+    backHome: 'Home',
+    btnOrganClock: 'The Organ Clock',
+    btnCorePrinciples: 'Core Principles',
+    tabOrgans: 'Organs',
+    tabMeridians: 'Meridians',
+    tabSymptoms: 'Symptoms',
+    tabDialogue: 'Dialogue',
+    tabOverview: 'Overview',
+    tab8Themes: '8 Themes',
+    tabKeyPoints: 'Key Points',
+    tabElOverview: 'Overview',
+    tabCorrespondences: 'Correspondences',
+    tabCycles: 'Cycles',
+    tabSeasonal: 'Seasonal Wisdom',
+    tabMOverview: 'Overview',
+    tabPathway: 'Pathway',
+    tabMKeyPoints: 'Key Points',
+    tabMThemes: '8 Themes',
+    searchPlaceholder: 'Search organs, elements, meridians...',
+    searchTyping: 'Start typing to search...',
+    searchNoResults: 'No results for',
+    searchOrgans: 'Organs',
+    searchElements: 'Elements',
+    searchMeridians: 'Extraordinary Meridians',
+    searchPractice: 'In Practice',
+    searchFoundation: 'Core Principles',
+    searchOverviews: 'Overviews',
+    menuSections: 'Sections',
+    menuHome: 'Home',
+    menuPractice: 'In Practice',
+    menuOrgans: 'The 12 Organs',
+    menuElements: 'Five Elements & Core Principles',
+    menuMeridians: 'The 8 Extraordinary Meridians',
+    menuOverviews: 'Overviews',
+    menuInfo: 'Information',
+    menuAbout: 'About The Patterns Behind',
+    menuHowTo: 'How to Use the App',
+    menuAppearance: 'Appearance',
+    menuLanguage: 'Language',
+    themeLightMode: 'Switch to light mode',
+    themeDarkMode: 'Switch to dark mode',
+    langEnglish: 'English',
+    langDanish: 'Dansk',
+    readMore: 'Read more',
+    hide: 'Hide',
+    elementOrgansTitle: 'Element Organs',
+    generatingCycle: 'Generating Cycle (Sheng)',
+    controllingCycle: 'Controlling Cycle (Ke)',
+    nourishedBy: 'Nourished by',
+    nourishes: 'Nourishes',
+    controls: 'Controls',
+    controlledBy: 'Controlled by',
+    seasonalGuidance: 'Guidance for the',
+    seasonalGuidanceSuffix: 'season',
+    nourishesArrow: 'nourishes →',
+    controlsArrow: 'controls →',
+    elWood: 'Wood',
+    elFire: 'Fire',
+    elEarth: 'Earth',
+    elMetal: 'Metal',
+    elWater: 'Water',
+    yinYangPairs: 'Yin & Yang Pairs',
+    openingPoint: 'Opening Point:',
+    coupledPoint: 'Coupled Point:',
+    pairedWith: 'Paired with',
+    relatedOrgans: 'Related Organs',
+    ovKnownAs: 'Known as',
+    ovTime: 'Time',
+    ovPartner: 'Partner',
+    ovElement: 'Element',
+    ovOpensTo: 'Opens to',
+    ovShowsIn: 'Shows in',
+    ovEmotion: 'Emotion',
+    ovHouses: 'Houses',
+    ovKeyFunction: 'Key Function',
+    ovClassicSigns: 'Classic Signs',
+    ovQuickSigns: 'Quick Signs',
+    ovDetailedOverview: 'Detailed Overview',
+    ovSymptoms: 'Symptoms',
+    ovPhysical: 'Physical Manifestations',
+    ovFunctionsEmotions: 'Functions & Emotions',
+    ovViewFull: 'View full',
+    ovPageWith8Themes: 'page with 8 mapping themes →',
+    ovPageArrow: 'page →',
+    ovPrimarySymptoms: 'Primary Symptoms',
+    ovFunctionsProperties: 'Functions & Properties',
+    ovManifestations: 'Manifestations',
+    ovEnergetics: 'Energetics & Emotions',
+    symptomIntro: 'Tap a symptom to see the primary organs to investigate',
+    aboutTitle: 'About The Patterns Behind',
+    aboutBody: [
+      'The Patterns Behind is an app built as a companion tool to the material of the same name. It provides practitioners with a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
+      'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.'
+    ],
+    howtoTitle: 'How to Use the App',
+    howtoBody: [
+      'Use the bottom navigation to quickly jump between sections. "In Practice" provides guidance for the conversation with your client and the eight foundational questions.',
+      'Under each organ you will find 8 mapping themes with concrete questions you can ask your client. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
+      'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
+    ],
+    clockActiveNow: 'is active now',
+    ariaMenu: 'Menu',
+    ariaSearch: 'Search',
+    ariaCloseSearch: 'Close search',
+    ariaCloseMenu: 'Close menu'
+  },
+  da: {
+    pageTitle: 'Mønstrene Bag — TCM i Praksis',
+    brandTitle: 'Mønstrene Bag',
+    brandSubtitle: 'Traditionel Kinesisk Medicin i Praksis',
+    homeIntro: 'Udforsk organer, meridianer og elementer — og opdag mønstre i din praksis.',
+    hubPractice: 'I Praksis',
+    hubPracticeDesc: 'Vejledning til dialog og mønsteropdagelse',
+    hubOrgans: 'De 12 Organer',
+    hubOrgansDesc: 'Organsystemer, meridianer og organuret',
+    hubElements: 'Fem Elementer',
+    hubElementsDesc: 'Træ, Ild, Jord, Metal, Vand og grundprincipper',
+    hubMeridians: 'De 8 Ekstraordinære',
+    hubMeridiansDesc: 'Dybere energisystemer og meridianer',
+    hubOverviews: 'Overblik',
+    hubOverviewsDesc: 'Hurtigreference for organer, symptomer og dialog',
+    sectionPracticeTitle: 'I Praksis',
+    sectionPracticeSubtitle: 'Vejledning · Dialog · Mønsteropdagelse',
+    sectionOrgansTitle: 'De 12 Organer',
+    sectionOrgansSubtitle: 'Meridianer & Organsystemer',
+    sectionElementsTitle: 'Fem Elementer',
+    sectionElementsSubtitle: 'Træ · Ild · Jord · Metal · Vand',
+    sectionMeridiansTitle: 'De 8 Ekstraordinære',
+    sectionMeridiansSubtitle: 'Dybere Energisystemer',
+    sectionOverviewsTitle: 'Overblik',
+    sectionOverviewsSubtitle: 'Hurtigreference · Organer · Meridianer · Dialog',
+    navHome: 'Hjem',
+    navPractice: 'Praksis',
+    navOrgans: 'Organer',
+    navElements: 'Elementer',
+    navMeridians: 'Meridianer',
+    backHome: 'Hjem',
+    btnOrganClock: 'Organuret',
+    btnCorePrinciples: 'Grundprincipper',
+    tabOrgans: 'Organer',
+    tabMeridians: 'Meridianer',
+    tabSymptoms: 'Symptomer',
+    tabDialogue: 'Dialog',
+    tabOverview: 'Overblik',
+    tab8Themes: '8 Temaer',
+    tabKeyPoints: 'Nøglepunkter',
+    tabElOverview: 'Overblik',
+    tabCorrespondences: 'Korrespondancer',
+    tabCycles: 'Cyklusser',
+    tabSeasonal: 'Sæsonvisdom',
+    tabMOverview: 'Overblik',
+    tabPathway: 'Forløb',
+    tabMKeyPoints: 'Nøglepunkter',
+    tabMThemes: '8 Temaer',
+    searchPlaceholder: 'Søg organer, elementer, meridianer...',
+    searchTyping: 'Begynd at skrive for at søge...',
+    searchNoResults: 'Ingen resultater for',
+    searchOrgans: 'Organer',
+    searchElements: 'Elementer',
+    searchMeridians: 'Ekstraordinære Meridianer',
+    searchPractice: 'I Praksis',
+    searchFoundation: 'Grundprincipper',
+    searchOverviews: 'Overblik',
+    menuSections: 'Sektioner',
+    menuHome: 'Hjem',
+    menuPractice: 'I Praksis',
+    menuOrgans: 'De 12 Organer',
+    menuElements: 'Fem Elementer & Grundprincipper',
+    menuMeridians: 'De 8 Ekstraordinære Meridianer',
+    menuOverviews: 'Overblik',
+    menuInfo: 'Information',
+    menuAbout: 'Om Mønstrene Bag',
+    menuHowTo: 'Sådan Bruger Du Appen',
+    menuAppearance: 'Udseende',
+    menuLanguage: 'Sprog',
+    themeLightMode: 'Skift til lyst tema',
+    themeDarkMode: 'Skift til mørkt tema',
+    langEnglish: 'English',
+    langDanish: 'Dansk',
+    readMore: 'Læs mere',
+    hide: 'Skjul',
+    elementOrgansTitle: 'Elementets Organer',
+    generatingCycle: 'Skabelsescyklus (Sheng)',
+    controllingCycle: 'Kontrolcyklus (Ke)',
+    nourishedBy: 'Næres af',
+    nourishes: 'Nærer',
+    controls: 'Kontrollerer',
+    controlledBy: 'Kontrolleres af',
+    seasonalGuidance: 'Vejledning til',
+    seasonalGuidanceSuffix: 'sæsonen',
+    nourishesArrow: 'nærer →',
+    controlsArrow: 'kontrollerer →',
+    elWood: 'Træ',
+    elFire: 'Ild',
+    elEarth: 'Jord',
+    elMetal: 'Metal',
+    elWater: 'Vand',
+    yinYangPairs: 'Yin & Yang Par',
+    openingPoint: 'Åbningspunkt:',
+    coupledPoint: 'Makkerpunkt:',
+    pairedWith: 'Parret med',
+    relatedOrgans: 'Relaterede Organer',
+    ovKnownAs: 'Kaldenavn',
+    ovTime: 'Tid',
+    ovPartner: 'Partner',
+    ovElement: 'Element',
+    ovOpensTo: 'Åbner til',
+    ovShowsIn: 'Vises i',
+    ovEmotion: 'Emotion',
+    ovHouses: 'Huser',
+    ovKeyFunction: 'Nøglefunktion',
+    ovClassicSigns: 'Klassiske Tegn',
+    ovQuickSigns: 'Hurtige Tegn',
+    ovDetailedOverview: 'Detaljeret Overblik',
+    ovSymptoms: 'Symptomer',
+    ovPhysical: 'Fysiske Manifestationer',
+    ovFunctionsEmotions: 'Funktioner & Emotioner',
+    ovViewFull: 'Se fuld',
+    ovPageWith8Themes: 'side med 8 kortlægningstemaer →',
+    ovPageArrow: 'side →',
+    ovPrimarySymptoms: 'Primære Symptomer',
+    ovFunctionsProperties: 'Funktioner & Egenskaber',
+    ovManifestations: 'Manifestationer',
+    ovEnergetics: 'Energetik & Emotioner',
+    symptomIntro: 'Tryk på et symptom for at se de primære organer at undersøge',
+    aboutTitle: 'Om Mønstrene Bag',
+    aboutBody: [
+      'Mønstrene Bag er en app bygget som et følgeværktøj til materialet af samme navn. Den giver behandlere en praktisk reference til at forstå og kortlægge mønstre hos deres klienter baseret på Traditionel Kinesisk Medicin.',
+      'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element teori, organuret og de grundlæggende TCM-principper — alt præsenteret med konkrete spørgsmål og temaer til brug i praksis.'
+    ],
+    howtoTitle: 'Sådan Bruger Du Appen',
+    howtoBody: [
+      'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "I Praksis" giver vejledning til samtalen med din klient og de otte grundlæggende spørgsmål.',
+      'Under hvert organ finder du 8 kortlægningstemaer med konkrete spørgsmål du kan stille din klient. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
+      'Tryk på et organ, element eller meridian for at se detaljer. Brug fanenavigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
+    ],
+    clockActiveNow: 'er aktivt nu',
+    ariaMenu: 'Menu',
+    ariaSearch: 'Søg',
+    ariaCloseSearch: 'Luk søgning',
+    ariaCloseMenu: 'Luk menu'
+  }
+};
+
+let currentLanguage = 'en';
+try { currentLanguage = localStorage.getItem('app-language') || 'en'; } catch(e) {}
+
+function t(key) {
+  return translations[currentLanguage]?.[key] ?? translations.en[key] ?? key;
+}
+
+function getLanguage() {
+  return currentLanguage;
+}
+
+function setLanguage(lang) {
+  if (lang !== 'en' && lang !== 'da') return;
+  currentLanguage = lang;
+  try { localStorage.setItem('app-language', lang); } catch(e) {}
+}
 
 // ============================================
 // State
@@ -202,10 +496,10 @@ function updateUILanguage() {
 
   const menuSectionLabels = document.querySelectorAll('.hamburger-section-label');
   menuSectionLabels.forEach(label => {
+    if (label.id === 'menu-label-sections') label.textContent = t('menuSections');
+    if (label.id === 'menu-label-info') label.textContent = t('menuInfo');
     if (label.id === 'menu-label-appearance') label.textContent = t('menuAppearance');
     if (label.id === 'menu-label-language') label.textContent = t('menuLanguage');
-    if (label.textContent.match(/Sections|Sektioner/i)) label.textContent = t('menuSections');
-    if (label.textContent.match(/Information/i)) label.textContent = t('menuInfo');
   });
 
   // Hamburger menu links
@@ -1218,7 +1512,7 @@ function setupSearch() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     input.value = '';
-    resultsEl.innerHTML = '<div class="search-placeholder">${t('searchTyping')}</div>';
+    resultsEl.innerHTML = `<div class="search-placeholder">${t('searchTyping')}</div>`;
   }
 
   btn.addEventListener('click', openSearch);
@@ -1231,7 +1525,7 @@ function setupSearch() {
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
     if (q.length < 2) {
-      resultsEl.innerHTML = '<div class="search-placeholder">${t('searchTyping')}</div>';
+      resultsEl.innerHTML = `<div class="search-placeholder">${t('searchTyping')}</div>`;
       return;
     }
     const results = performSearch(q);
@@ -1622,28 +1916,28 @@ function showOverviewDetail(ov, type) {
 // Init
 // ============================================
 function init() {
-  initTheme();
-  setupThemeToggle();
-  setupLanguageToggle();
-  updateUILanguage();
-  renderSectionIntros();
-  renderPracticeGrid();
-  renderOrganGrid();
-  renderMeridianGrid();
-  renderOrganClock();
-  renderElements();
-  renderFoundation();
-  setupOverviewTabs();
-  renderOverviewOrganGrid();
-  renderOverviewMeridianGrid();
-  renderOverviewSymptoms();
-  renderOverviewConversation();
-  setupTabs();
-  setupBackButtons();
-  setupBottomNav();
-  setupHubCards();
-  setupHamburger();
-  setupSearch();
+  try { initTheme(); } catch(e) { console.error('initTheme:', e); }
+  try { setupThemeToggle(); } catch(e) { console.error('setupThemeToggle:', e); }
+  try { setupLanguageToggle(); } catch(e) { console.error('setupLanguageToggle:', e); }
+  try { updateUILanguage(); } catch(e) { console.error('updateUILanguage:', e); }
+  try { renderSectionIntros(); } catch(e) { console.error('renderSectionIntros:', e); }
+  try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
+  try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
+  try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }
+  try { renderOrganClock(); } catch(e) { console.error('renderOrganClock:', e); }
+  try { renderElements(); } catch(e) { console.error('renderElements:', e); }
+  try { renderFoundation(); } catch(e) { console.error('renderFoundation:', e); }
+  try { setupOverviewTabs(); } catch(e) { console.error('setupOverviewTabs:', e); }
+  try { renderOverviewOrganGrid(); } catch(e) { console.error('renderOverviewOrganGrid:', e); }
+  try { renderOverviewMeridianGrid(); } catch(e) { console.error('renderOverviewMeridianGrid:', e); }
+  try { renderOverviewSymptoms(); } catch(e) { console.error('renderOverviewSymptoms:', e); }
+  try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
+  try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
+  try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
+  try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }
+  try { setupHubCards(); } catch(e) { console.error('setupHubCards:', e); }
+  try { setupHamburger(); } catch(e) { console.error('setupHamburger:', e); }
+  try { setupSearch(); } catch(e) { console.error('setupSearch:', e); }
 
   // Update clock every minute
   setInterval(renderOrganClock, 60000);
