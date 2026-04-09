@@ -2739,6 +2739,151 @@ body {
 }
 
 /* ============================================
+   Portrait Screens (Organ, Element)
+   ============================================ */
+
+.portrait-content {
+  padding: 24px 20px 100px;
+}
+
+.portrait-text {
+  margin-bottom: 40px;
+}
+
+.portrait-text p {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text-primary);
+  margin: 0 0 24px 0;
+}
+
+.portrait-text p:first-child {
+  font-size: 18px;
+}
+
+.portrait-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.portrait-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.portrait-link:hover {
+  border-color: var(--accent-gold);
+}
+
+.portrait-link-text {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.portrait-link-arrow {
+  font-size: 16px;
+  color: var(--accent-gold);
+  opacity: 0.6;
+}
+
+/* Theme Flow (Mærk ind) */
+.themes-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.theme-flow-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.theme-flow-item:first-child {
+  padding-top: 0;
+}
+
+.theme-flow-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 18px 0;
+}
+
+.theme-flow-question {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0 0 14px 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--border-subtle);
+}
+
+.theme-flow-question:last-child {
+  margin-bottom: 0;
+}
+
+.theme-flow-continue {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  margin: 24px 0;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--accent-gold);
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  text-align: center;
+}
+
+.theme-flow-continue:hover {
+  border-color: var(--accent-gold);
+}
+
+/* Organ Clock Wisdom (in themes screen) */
+.theme-flow-clock {
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.theme-flow-clock-time {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.theme-flow-clock-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
    Season Section
    ============================================ */
 

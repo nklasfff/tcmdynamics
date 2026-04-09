@@ -1064,9 +1064,13 @@ function showFoundationDetail(key) {
 }
 
 // ============================================
-// Organ Detail
+// Organ Portrait (redesigned — no tabs)
 // ============================================
+let _currentOrgan = null;
+
 function showOrganDetail(organ) {
+  _currentOrgan = organ;
+
   document.getElementById('organ-detail-icon').textContent = organ.icon;
   document.getElementById('organ-detail-name').textContent = organ.name;
   document.getElementById('organ-detail-nickname').textContent = `"${organ.nickname}"`;
@@ -1074,47 +1078,117 @@ function showOrganDetail(organ) {
   document.getElementById('organ-detail-meta').innerHTML = `
     <span class="meta-tag"><span class="dot" style="background: ${organ.color}"></span> ${organ.element}</span>
     <span class="meta-tag">${organ.yinYang}</span>
-    <span class="meta-tag">Partner: ${organ.partner}</span>
     <span class="meta-tag">${organ.time}</span>
   `;
 
-  // Use organ portrait if available, fallback to original description
+  // Portrait text
   const portrait = organPortraits && organPortraits[organ.id];
-  const descriptionParagraphs = portrait && portrait.length > 0 ? portrait : organ.description;
+  const paragraphs = portrait && portrait.length > 0 ? portrait : organ.description;
   document.getElementById('organ-description').innerHTML =
-    descriptionParagraphs.map(p => `<p>${p}</p>`).join('');
+    paragraphs.map(p => `<p>${p}</p>`).join('');
 
-  document.getElementById('organ-themes').innerHTML =
-    organ.themes.map((theme, i) => `
-      <div class="theme-item">
-        <div class="theme-header">
-          <span class="theme-number">${i + 1}</span>
-          <span class="theme-title">${theme.title}</span>
-          <svg class="theme-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </div>
-        <div class="theme-body">
-          <div class="theme-questions">
-            ${theme.questions.map(q => `<div class="question">${q}</div>`).join('')}
-          </div>
-        </div>
-      </div>
-    `).join('');
+  // Portrait links
+  const partnerOrgan = organs.find(o => o.name === organ.partner);
+  const element = fiveElements.find(e => e.organs && e.organs.some(o => o === organ.name));
 
-  if (organ.keyPoints) {
-    document.getElementById('organ-keypoints').innerHTML =
-      organ.keyPoints.map(kp => `
-        <div class="keypoint">
-          <div class="keypoint-title">${kp.title}</div>
-          <div class="keypoint-text">${kp.text}</div>
-        </div>
-      `).join('');
+  let linksHtml = `
+    <button class="portrait-link" id="organ-link-themes">
+      <span class="portrait-link-text">Mærk ind i ${organ.name}</span>
+      <span class="portrait-link-arrow">→</span>
+    </button>
+  `;
+
+  if (element) {
+    linksHtml += `
+      <button class="portrait-link" data-element-id="${element.id}">
+        <span class="portrait-link-text">${element.name}</span>
+        <span class="portrait-link-arrow">→</span>
+      </button>
+    `;
   }
 
-  resetTabs('screen-organ');
+  if (partnerOrgan) {
+    linksHtml += `
+      <button class="portrait-link" data-partner-id="${partnerOrgan.id}">
+        <span class="portrait-link-text">${partnerOrgan.name}</span>
+        <span class="portrait-link-arrow">→</span>
+      </button>
+    `;
+  }
+
+  document.getElementById('organ-portrait-links').innerHTML = linksHtml;
+
+  // Attach link handlers
+  document.getElementById('organ-link-themes')?.addEventListener('click', () => {
+    showOrganThemes(organ);
+  });
+
+  document.querySelectorAll('#organ-portrait-links [data-element-id]').forEach(link => {
+    link.addEventListener('click', () => {
+      const el = fiveElements.find(e => e.id === link.dataset.elementId);
+      if (el) showElementDetail(el);
+    });
+  });
+
+  document.querySelectorAll('#organ-portrait-links [data-partner-id]').forEach(link => {
+    link.addEventListener('click', () => {
+      const partner = organs.find(o => o.id === link.dataset.partnerId);
+      if (partner) showOrganDetail(partner);
+    });
+  });
+
   showScreen('organ');
-  setupThemeAccordion('organ-themes');
+}
+
+// ============================================
+// Organ Themes (Mærk ind — new screen)
+// ============================================
+function showOrganThemes(organ) {
+  document.getElementById('organ-themes-icon').textContent = organ.icon;
+  document.getElementById('organ-themes-title').textContent = `Mærk ind i ${organ.name}`;
+
+  let themesHtml = '';
+  organ.themes.forEach((theme, i) => {
+    const isInitial = i < 3;
+    themesHtml += `
+      <div class="theme-flow-item${isInitial ? '' : ' theme-flow-hidden'}" ${isInitial ? '' : 'style="display:none"'}>
+        <h3 class="theme-flow-title">${theme.title}</h3>
+        ${theme.questions.map(q => `<p class="theme-flow-question">${q}</p>`).join('')}
+      </div>
+    `;
+    if (i === 2) {
+      themesHtml += `
+        <button class="theme-flow-continue" id="theme-flow-expand">Fortsæt ↓</button>
+      `;
+    }
+  });
+
+  // Organ clock wisdom
+  const clockEntry = organClock.find(c => c.organ === organ.name);
+  if (clockEntry) {
+    themesHtml += `
+      <div class="theme-flow-clock">
+        <div class="theme-flow-clock-time">${organ.name} · ${clockEntry.time}</div>
+        <p class="theme-flow-clock-text">${clockEntry.wisdom}</p>
+      </div>
+    `;
+  }
+
+  document.getElementById('organ-themes-flow').innerHTML = themesHtml;
+
+  // Expand handler
+  const expandBtn = document.getElementById('theme-flow-expand');
+  if (expandBtn) {
+    expandBtn.addEventListener('click', () => {
+      document.querySelectorAll('.theme-flow-hidden').forEach(el => {
+        el.style.display = '';
+        el.classList.remove('theme-flow-hidden');
+      });
+      expandBtn.style.display = 'none';
+    });
+  }
+
+  showScreen('organ-themes');
 }
 
 // ============================================
@@ -1305,7 +1379,7 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
+  const detailScreens = ['organ', 'organ-themes', 'element', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
   const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
@@ -1333,6 +1407,7 @@ function setupBackButtons() {
   document.getElementById('btn-back-season').addEventListener('click', goBack);
   document.getElementById('btn-back-pattern').addEventListener('click', goBack);
   document.getElementById('btn-back-organ').addEventListener('click', goBack);
+  document.getElementById('btn-back-organ-themes').addEventListener('click', goBack);
   document.getElementById('btn-back-meridian').addEventListener('click', goBack);
   document.getElementById('btn-back-element').addEventListener('click', goBack);
   document.getElementById('btn-back-foundation').addEventListener('click', goBack);
