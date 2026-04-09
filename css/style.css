@@ -2583,6 +2583,320 @@ body {
 }
 
 /* ============================================
+   Season Section
+   ============================================ */
+
+.season-current-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.season-main-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--season-color, var(--accent-gold));
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.season-main-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.season-main-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.season-main-card-name {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.season-main-card-element {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--season-color, var(--accent-gold));
+}
+
+.season-main-card-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.season-main-card-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.season-main-card-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+
+.season-others-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.season-others-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.season-other-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--season-color, var(--accent-gold));
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.season-other-card:hover {
+  transform: translateY(-1px);
+}
+
+.season-other-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.season-other-element {
+  font-size: 12px;
+  color: var(--season-color, var(--text-secondary));
+}
+
+/* Season Detail Tabs — scrollable for 8 tabs */
+.season-tabs {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex-wrap: nowrap !important;
+}
+
+.season-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.season-tabs .tab {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Season Exercise Cards */
+.season-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.season-exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.season-exercise-card h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.season-sanskrit {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.season-card-duration {
+  font-size: 12px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.season-exercise-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 10px 0;
+}
+
+.season-card-detail {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.season-card-detail strong {
+  color: var(--text-primary);
+}
+
+/* Season Steps (meditation) */
+.season-steps {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.season-steps li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* Season EFT */
+.season-eft-card {
+  border-left: 3px solid var(--accent-gold);
+}
+
+.season-eft-setup {
+  color: var(--text-primary) !important;
+  font-size: 15px !important;
+}
+
+.season-eft-points {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.season-eft-point {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.season-eft-point strong {
+  color: var(--accent-gold);
+}
+
+/* Season Journal */
+.season-journal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.season-journal-section h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.season-prompts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.season-prompts-list li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  padding-left: 16px;
+}
+
+.season-prompts-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.season-checkin-list li::before {
+  content: '□';
+  font-size: 12px;
+}
+
+/* Season Milestones */
+.season-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.season-milestone-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.season-milestone-marker {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--accent-gold);
+  min-width: 36px;
+  text-align: center;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.season-milestone-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
    Hamburger Overlay & Menu
    ============================================ */
 

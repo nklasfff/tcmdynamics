@@ -135,6 +135,32 @@ const translations = {
       'Under each organ you will find 8 themes with reflective questions to help you notice connections in your own experience. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
       'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
     ],
+    hubSeasons: 'Your Season',
+    hubSeasonsDesc: 'Seasonal wisdom based on where you are now',
+    sectionSeasonsTitle: 'Your Season',
+    sectionSeasonsSubtitle: 'Seasonal Wisdom · Practices · Reflection',
+    menuSeasons: 'Your Season',
+    searchSeasons: 'Your Season',
+    seasonNames: { foraar: 'Spring', sommer: 'Summer', sensommer: 'Late Summer', efteraar: 'Autumn', vinter: 'Winter' },
+    seasonTabPhilosophy: 'Philosophy',
+    seasonTabFood: 'Food',
+    seasonTabYoga: 'Yoga',
+    seasonTabMeditation: 'Meditation',
+    seasonTabBreathwork: 'Breathwork',
+    seasonTabAcupressure: 'Acupressure',
+    seasonTabJournal: 'Journal',
+    seasonTabMilestones: 'Milestones',
+    seasonElement: 'Element',
+    seasonOrganPair: 'Organ Pair',
+    seasonEnergy: 'Energy',
+    seasonExploreOther: 'Explore other seasons',
+    seasonCurrentLabel: 'Your current season',
+    seasonPreparation: 'Preparation',
+    seasonBenefit: 'Benefit',
+    seasonEffect: 'Effect',
+    seasonIntention: 'Intention',
+    seasonWeeklyCheckIn: 'Weekly Check-In',
+    seasonEft: 'EFT Tapping',
     clockActiveNow: 'is active now',
     ariaMenu: 'Menu',
     ariaSearch: 'Search',
@@ -271,6 +297,32 @@ const translations = {
       'Under hvert organ finder du 8 temaer med reflekterende spørgsmål, der hjælper dig med at lægge mærke til sammenhænge i din egen oplevelse. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
       'Tryk på et organ, element eller meridian for at se detaljer. Brug fanenavigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
     ],
+    hubSeasons: 'Din Årstid',
+    hubSeasonsDesc: 'Sæsonvisdom baseret på hvor du er nu',
+    sectionSeasonsTitle: 'Din Årstid',
+    sectionSeasonsSubtitle: 'Sæsonvisdom · Praksis · Refleksion',
+    menuSeasons: 'Din Årstid',
+    searchSeasons: 'Din Årstid',
+    seasonNames: { foraar: 'Forår', sommer: 'Sommer', sensommer: 'Sensommer', efteraar: 'Efterår', vinter: 'Vinter' },
+    seasonTabPhilosophy: 'Filosofi',
+    seasonTabFood: 'Kost',
+    seasonTabYoga: 'Yoga',
+    seasonTabMeditation: 'Meditation',
+    seasonTabBreathwork: 'Vejrtrækning',
+    seasonTabAcupressure: 'Akupressur',
+    seasonTabJournal: 'Journal',
+    seasonTabMilestones: 'Milepæle',
+    seasonElement: 'Element',
+    seasonOrganPair: 'Organpar',
+    seasonEnergy: 'Energi',
+    seasonExploreOther: 'Udforsk andre årstider',
+    seasonCurrentLabel: 'Din nuværende årstid',
+    seasonPreparation: 'Tilberedning',
+    seasonBenefit: 'Fordel',
+    seasonEffect: 'Effekt',
+    seasonIntention: 'Intention',
+    seasonWeeklyCheckIn: 'Ugentligt Check-In',
+    seasonEft: 'EFT Tapping',
     clockActiveNow: 'er aktivt nu',
     ariaMenu: 'Menu',
     ariaSearch: 'Søg',
@@ -374,6 +426,7 @@ function switchLanguage() {
   // Re-render all data-driven content
   renderSectionIntros();
   renderPracticeGrid();
+  renderSeasonSection();
   renderOrganGrid();
   renderMeridianGrid();
   renderOrganClock();
@@ -404,9 +457,9 @@ function updateUILanguage() {
 
   // Hub cards
   const hubCards = document.querySelectorAll('.hub-card');
-  const hubKeys = ['practice', 'organs', 'elements', 'meridians', 'overviews'];
-  const hubTitleKeys = ['hubPractice', 'hubOrgans', 'hubElements', 'hubMeridians', 'hubOverviews'];
-  const hubDescKeys = ['hubPracticeDesc', 'hubOrgansDesc', 'hubElementsDesc', 'hubMeridiansDesc', 'hubOverviewsDesc'];
+  const hubKeys = ['practice', 'seasons', 'organs', 'elements', 'meridians', 'overviews'];
+  const hubTitleKeys = ['hubPractice', 'hubSeasons', 'hubOrgans', 'hubElements', 'hubMeridians', 'hubOverviews'];
+  const hubDescKeys = ['hubPracticeDesc', 'hubSeasonsDesc', 'hubOrgansDesc', 'hubElementsDesc', 'hubMeridiansDesc', 'hubOverviewsDesc'];
   hubCards.forEach(card => {
     const hub = card.dataset.hub;
     const idx = hubKeys.indexOf(hub);
@@ -421,6 +474,7 @@ function updateUILanguage() {
   // Section screen headers
   const sectionMappings = [
     { screen: 'screen-section-practice', title: 'sectionPracticeTitle', subtitle: 'sectionPracticeSubtitle' },
+    { screen: 'screen-section-seasons', title: 'sectionSeasonsTitle', subtitle: 'sectionSeasonsSubtitle' },
     { screen: 'screen-section-organs', title: 'sectionOrgansTitle', subtitle: 'sectionOrgansSubtitle' },
     { screen: 'screen-section-elements', title: 'sectionElementsTitle', subtitle: 'sectionElementsSubtitle' },
     { screen: 'screen-section-meridians', title: 'sectionMeridiansTitle', subtitle: 'sectionMeridiansSubtitle' },
@@ -475,6 +529,18 @@ function updateUILanguage() {
     if (tab.dataset.tab === 'm-themes') tab.textContent = t('tabMThemes');
   });
 
+  // Season detail tabs
+  document.querySelectorAll('#screen-season .tab[data-tab]').forEach(tab => {
+    if (tab.dataset.tab === 'season-philosophy') tab.textContent = t('seasonTabPhilosophy');
+    if (tab.dataset.tab === 'season-food') tab.textContent = t('seasonTabFood');
+    if (tab.dataset.tab === 'season-yoga') tab.textContent = t('seasonTabYoga');
+    if (tab.dataset.tab === 'season-meditation') tab.textContent = t('seasonTabMeditation');
+    if (tab.dataset.tab === 'season-breathwork') tab.textContent = t('seasonTabBreathwork');
+    if (tab.dataset.tab === 'season-acupressure') tab.textContent = t('seasonTabAcupressure');
+    if (tab.dataset.tab === 'season-journal') tab.textContent = t('seasonTabJournal');
+    if (tab.dataset.tab === 'season-milestones') tab.textContent = t('seasonTabMilestones');
+  });
+
   // Bottom navigation
   document.querySelectorAll('.bottom-nav-item').forEach(btn => {
     const nav = btn.dataset.nav;
@@ -507,7 +573,7 @@ function updateUILanguage() {
     const nav = link.dataset.nav;
     const text = link.childNodes[link.childNodes.length - 1];
     if (!text || text.nodeType !== 3) return;
-    const menuMap = { home: 'menuHome', practice: 'menuPractice', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews' };
+    const menuMap = { home: 'menuHome', practice: 'menuPractice', seasons: 'menuSeasons', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews' };
     if (menuMap[nav]) text.textContent = '\n          ' + t(menuMap[nav]) + '\n        ';
   });
 
@@ -551,6 +617,7 @@ function showScreen(screenId) {
 const sectionToNav = {
   'home': 'home',
   'section-practice': 'practice',
+  'section-seasons': 'home',
   'section-organs': 'organs',
   'section-elements': 'elements',
   'section-meridians': 'meridians',
@@ -1192,8 +1259,8 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice'];
-  const sectionScreens = ['section-practice', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
+  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'season'];
+  const sectionScreens = ['section-practice', 'section-seasons', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
     // If we came from a section screen, go back there
@@ -1217,6 +1284,7 @@ function goBack() {
 function setupBackButtons() {
   // Detail screen back buttons
   document.getElementById('btn-back-practice').addEventListener('click', goBack);
+  document.getElementById('btn-back-season').addEventListener('click', goBack);
   document.getElementById('btn-back-organ').addEventListener('click', goBack);
   document.getElementById('btn-back-meridian').addEventListener('click', goBack);
   document.getElementById('btn-back-element').addEventListener('click', goBack);
@@ -1293,6 +1361,240 @@ function showPracticeDetail(item) {
   `).join('');
 
   showScreen('practice');
+}
+
+// ============================================
+// Season Logic
+// ============================================
+function getCurrentSeason() {
+  const now = new Date();
+  const month = now.getMonth() + 1; // 1-12
+  const day = now.getDate();
+  const md = month * 100 + day; // e.g. 415 for April 15
+
+  if (md >= 201 && md <= 430) return 'foraar';
+  if (md >= 501 && md <= 715) return 'sommer';
+  if (md >= 716 && md <= 831) return 'sensommer';
+  if (md >= 901 && md <= 1031) return 'efteraar';
+  return 'vinter'; // Nov 1 - Jan 31
+}
+
+const seasonDisplayNames = {
+  foraar: { da: 'Forår', en: 'Spring' },
+  sommer: { da: 'Sommer', en: 'Summer' },
+  sensommer: { da: 'Sensommer', en: 'Late Summer' },
+  efteraar: { da: 'Efterår', en: 'Autumn' },
+  vinter: { da: 'Vinter', en: 'Winter' }
+};
+
+function getSeasonName(key) {
+  const names = t('seasonNames');
+  return names[key] || seasonDisplayNames[key]?.[getLanguage()] || key;
+}
+
+function renderSeasonSection() {
+  const currentKey = getCurrentSeason();
+  const season = seasonsData[currentKey];
+  if (!season) return;
+
+  // Render intro
+  const introEl = document.getElementById('intro-seasons');
+  if (introEl) {
+    introEl.innerHTML = `
+      <div class="section-intro-preview visible">
+        <p>${season.philosophy[0].split(/[.!?]/)[0]}.</p>
+      </div>
+    `;
+  }
+
+  // Render current season card
+  const currentEl = document.getElementById('season-current');
+  if (currentEl) {
+    currentEl.innerHTML = `
+      <div class="season-current-label">${t('seasonCurrentLabel')}</div>
+      <div class="season-main-card" data-season="${currentKey}" style="--season-color: ${season.farve}">
+        <div class="season-main-card-header">
+          <span class="season-main-card-name">${getSeasonName(currentKey)}</span>
+          <span class="season-main-card-element">${season.element}</span>
+        </div>
+        <div class="season-main-card-meta">
+          <span>${season.organpar}</span>
+          <span>·</span>
+          <span>${season.energi}</span>
+        </div>
+        <p class="season-main-card-text">${season.philosophy[0]}</p>
+        <div class="season-main-card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+    `;
+
+    currentEl.querySelector('.season-main-card').addEventListener('click', () => {
+      showSeasonDetail(currentKey);
+    });
+  }
+
+  // Render other seasons
+  const othersEl = document.getElementById('season-others');
+  if (othersEl) {
+    const otherKeys = Object.keys(seasonsData).filter(k => k !== currentKey);
+    othersEl.innerHTML = `
+      <div class="season-others-label">${t('seasonExploreOther')}</div>
+      <div class="season-others-grid">
+        ${otherKeys.map(key => {
+          const s = seasonsData[key];
+          return `
+            <div class="season-other-card" data-season="${key}" style="--season-color: ${s.farve}">
+              <span class="season-other-name">${getSeasonName(key)}</span>
+              <span class="season-other-element">${s.element}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    othersEl.querySelectorAll('.season-other-card').forEach(card => {
+      card.addEventListener('click', () => {
+        showSeasonDetail(card.dataset.season);
+      });
+    });
+  }
+}
+
+function showSeasonDetail(seasonKey) {
+  const season = seasonsData[seasonKey];
+  if (!season) return;
+
+  // Header
+  document.getElementById('season-detail-name').textContent = getSeasonName(seasonKey);
+  document.getElementById('season-detail-element').textContent = season.element + ' · ' + season.organpar;
+  document.getElementById('season-detail-meta').innerHTML = `
+    <span class="meta-tag" style="background: ${season.farve}22; color: ${season.farve}">${season.element}</span>
+    <span class="meta-tag">${season.organpar}</span>
+    <span class="meta-tag">${season.energi}</span>
+  `;
+
+  // Philosophy tab
+  document.getElementById('tab-season-philosophy').innerHTML = `
+    <div class="description-text">
+      ${season.philosophy.map(p => `<p>${p}</p>`).join('')}
+    </div>
+  `;
+
+  // Food tab
+  document.getElementById('tab-season-food').innerHTML = `
+    <div class="season-cards-list">
+      ${season.foodGuide.map(f => `
+        <div class="season-exercise-card">
+          <h4>${f.name}</h4>
+          <p>${f.why}</p>
+          <div class="season-card-detail"><strong>${t('seasonPreparation')}:</strong> ${f.preparation}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  // Yoga tab
+  document.getElementById('tab-season-yoga').innerHTML = `
+    <div class="season-cards-list">
+      ${season.yogaSequence.map(y => `
+        <div class="season-exercise-card">
+          <h4>${y.name} <span class="season-sanskrit">${y.sanskrit}</span></h4>
+          <div class="season-card-duration">${y.duration}</div>
+          <p>${y.instruction}</p>
+          <div class="season-card-detail"><strong>${t('seasonBenefit')}:</strong> ${y.benefit}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  // Meditation tab
+  document.getElementById('tab-season-meditation').innerHTML = `
+    <div class="season-cards-list">
+      ${season.meditations.map(m => `
+        <div class="season-exercise-card">
+          <h4>${m.title}</h4>
+          <div class="season-card-duration">${m.duration}</div>
+          <ol class="season-steps">${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+          <div class="season-card-detail"><strong>${t('seasonIntention')}:</strong> ${m.intention}</div>
+        </div>
+      `).join('')}
+      <div class="season-exercise-card season-eft-card">
+        <h4>${t('seasonEft')}</h4>
+        <p class="season-eft-setup"><em>${season.eftSequence.setupPhrase}</em></p>
+        <div class="season-eft-points">
+          ${season.eftSequence.points.map(p => `
+            <div class="season-eft-point">
+              <strong>${p.point}:</strong> ${p.affirmation}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Breathwork tab
+  document.getElementById('tab-season-breathwork').innerHTML = `
+    <div class="season-cards-list">
+      ${season.breathingExercises.map(b => `
+        <div class="season-exercise-card">
+          <h4>${b.title}</h4>
+          <div class="season-card-duration">${b.rhythm} · ${b.rounds} runder</div>
+          <p>${b.instruction}</p>
+          <div class="season-card-detail"><strong>${t('seasonEffect')}:</strong> ${b.effect}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  // Acupressure tab
+  document.getElementById('tab-season-acupressure').innerHTML = `
+    <div class="season-cards-list">
+      ${season.acupressure.map(a => `
+        <div class="season-exercise-card">
+          <h4>${a.name}</h4>
+          <div class="season-card-duration">${a.chineseName} · ${a.duration}</div>
+          <div class="season-card-detail"><strong>Lokation:</strong> ${a.location}</div>
+          <p>${a.technique}</p>
+          <div class="season-card-detail"><strong>${t('seasonBenefit')}:</strong> ${a.benefit}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  // Journal tab
+  document.getElementById('tab-season-journal').innerHTML = `
+    <div class="season-journal">
+      <div class="season-journal-section">
+        <h4>${t('seasonTabJournal')}</h4>
+        <ul class="season-prompts-list">
+          ${season.journalPrompts.map(p => `<li>${p}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="season-journal-section">
+        <h4>${t('seasonWeeklyCheckIn')}</h4>
+        <ul class="season-prompts-list season-checkin-list">
+          ${season.weeklyCheckIn.map(q => `<li>${q}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+
+  // Milestones tab
+  document.getElementById('tab-season-milestones').innerHTML = `
+    <div class="season-milestones">
+      ${season.milestones.map((m, i) => `
+        <div class="season-milestone-card">
+          <div class="season-milestone-marker">${[7, 14, 21, 30, 60][i] || ''}</div>
+          <p>${m}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  // Activate first tab
+  resetTabs('screen-season');
+  showScreen('season');
 }
 
 // ============================================
@@ -1374,6 +1676,9 @@ function handleNavigation(navId) {
       break;
     case 'practice':
       showScreen('section-practice');
+      break;
+    case 'seasons':
+      showScreen('section-seasons');
       break;
     case 'organs':
       showScreen('section-organs');
@@ -1922,6 +2227,7 @@ function init() {
   try { updateUILanguage(); } catch(e) { console.error('updateUILanguage:', e); }
   try { renderSectionIntros(); } catch(e) { console.error('renderSectionIntros:', e); }
   try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
+  try { renderSeasonSection(); } catch(e) { console.error('renderSeasonSection:', e); }
   try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
   try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }
   try { renderOrganClock(); } catch(e) { console.error('renderOrganClock:', e); }
