@@ -1422,7 +1422,7 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'organ-themes', 'element', 'element-cycles', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
+  const detailScreens = ['organ', 'organ-themes', 'element', 'element-cycles', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern', 'explore-seasons', 'explore-organs', 'explore-elements'];
   const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews', 'explore'];
 
   if (detailScreens.includes(currentScreen)) {
@@ -1971,42 +1971,43 @@ function findPatterns(query) {
 // Explore Screen (stille typografisk liste)
 // ============================================
 function renderExploreScreen() {
-  // Seasons
-  const seasonsEl = document.getElementById('explore-seasons');
+  const seasonKeys = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
+  const seasonColors = { foraar: '#5cc98e', sommer: '#e88585', sensommer: '#deb87a', efteraar: '#a8c4d6', vinter: '#7ba4da' };
+  const seasonElements = { foraar: 'Træ', sommer: 'Ild', sensommer: 'Jord', efteraar: 'Metal', vinter: 'Vand' };
+  const currentKey = getCurrentSeason();
+
+  // Door click handlers
+  document.querySelectorAll('.explore-door').forEach(door => {
+    door.addEventListener('click', () => {
+      showScreen('explore-' + door.dataset.explore);
+    });
+  });
+
+  // Seasons sub-screen
+  const seasonsEl = document.getElementById('explore-seasons-list');
   if (seasonsEl) {
-    const seasonKeys = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
-    const seasonElements = { foraar: 'Træ', sommer: 'Ild', sensommer: 'Jord', efteraar: 'Metal', vinter: 'Vand' };
-    const seasonColors = { foraar: '#5cc98e', sommer: '#e88585', sensommer: '#deb87a', efteraar: '#a8c4d6', vinter: '#7ba4da' };
-    const currentKey = getCurrentSeason();
-    seasonsEl.innerHTML = `
-      <h2 class="explore-label">Årstider</h2>
-      ${seasonKeys.map(key => `
-        <button class="explore-item" data-season="${key}">
-          <span class="explore-dot" style="background: ${seasonColors[key]}"></span>
-          <span class="explore-name">${getSeasonName(key)}</span>
-          <span class="explore-meta">${seasonElements[key]}</span>
-          ${key === currentKey ? '<span class="explore-current">·</span>' : ''}
-        </button>
-      `).join('')}
-    `;
+    seasonsEl.innerHTML = seasonKeys.map(key => `
+      <button class="explore-item" data-season="${key}">
+        <span class="explore-dot" style="background: ${seasonColors[key]}"></span>
+        <span class="explore-name">${getSeasonName(key)}</span>
+        <span class="explore-meta">${seasonElements[key]}</span>
+      </button>
+    `).join('');
     seasonsEl.querySelectorAll('[data-season]').forEach(btn => {
       btn.addEventListener('click', () => showSeasonDetail(btn.dataset.season));
     });
   }
 
-  // Organs
-  const organsEl = document.getElementById('explore-organs');
+  // Organs sub-screen
+  const organsEl = document.getElementById('explore-organs-list');
   if (organsEl) {
-    organsEl.innerHTML = `
-      <h2 class="explore-label">Organer</h2>
-      ${organs.map(o => `
-        <button class="explore-item" data-organ-id="${o.id}">
-          <span class="explore-icon">${o.icon}</span>
-          <span class="explore-name">${o.name}</span>
-          <span class="explore-meta">${o.time}</span>
-        </button>
-      `).join('')}
-    `;
+    organsEl.innerHTML = organs.map(o => `
+      <button class="explore-item" data-organ-id="${o.id}">
+        <span class="explore-icon">${o.icon}</span>
+        <span class="explore-name">${o.name}</span>
+        <span class="explore-meta">${o.time}</span>
+      </button>
+    `).join('');
     organsEl.querySelectorAll('[data-organ-id]').forEach(btn => {
       btn.addEventListener('click', () => {
         const organ = organs.find(o => o.id === btn.dataset.organId);
@@ -2015,19 +2016,16 @@ function renderExploreScreen() {
     });
   }
 
-  // Elements
-  const elementsEl = document.getElementById('explore-elements');
+  // Elements sub-screen
+  const elementsEl = document.getElementById('explore-elements-list');
   if (elementsEl) {
-    elementsEl.innerHTML = `
-      <h2 class="explore-label">Elementer</h2>
-      ${fiveElements.map(el => `
-        <button class="explore-item" data-element-id="${el.id}">
-          <span class="explore-dot" style="background: ${el.color}"></span>
-          <span class="explore-name">${el.name}</span>
-          <span class="explore-meta">${el.season}</span>
-        </button>
-      `).join('')}
-    `;
+    elementsEl.innerHTML = fiveElements.map(el => `
+      <button class="explore-item" data-element-id="${el.id}">
+        <span class="explore-dot" style="background: ${el.color}"></span>
+        <span class="explore-name">${el.name}</span>
+        <span class="explore-meta">${el.season}</span>
+      </button>
+    `).join('');
     elementsEl.querySelectorAll('[data-element-id]').forEach(btn => {
       btn.addEventListener('click', () => {
         const el = fiveElements.find(e => e.id === btn.dataset.elementId);
@@ -2035,130 +2033,106 @@ function renderExploreScreen() {
       });
     });
   }
+
+  // Back buttons
+  ['explore-seasons', 'explore-organs', 'explore-elements'].forEach(id => {
+    const btn = document.getElementById('btn-back-' + id);
+    if (btn) btn.addEventListener('click', () => showScreen('explore'));
+  });
 }
 
 // ============================================
 // Personal Home Screen
 // ============================================
 function renderPersonalHome() {
-  // Welcome text
+  // Welcome — just 2 sentences
   const welcomeEl = document.getElementById('home-welcome');
   if (welcomeEl && homeWelcome) {
-    welcomeEl.textContent = homeWelcome;
+    // Only first 2 sentences
+    const sentences = homeWelcome.match(/[^.!?]+[.!?]+/g) || [homeWelcome];
+    welcomeEl.textContent = sentences.slice(0, 2).join(' ').trim();
   }
 
-  // Season hero with seasonal welcome
-  const heroEl = document.getElementById('home-season-hero');
-  if (heroEl) {
+  // Season — just the name, element, one line. Quiet.
+  const seasonEl = document.getElementById('home-season-quiet');
+  if (seasonEl) {
     const currentKey = getCurrentSeason();
     const season = seasonsData[currentKey];
     if (season) {
       const name = getSeasonName(currentKey);
-      const welcome = seasonWelcomes && seasonWelcomes[currentKey] ? seasonWelcomes[currentKey] : season.philosophy[0];
-      heroEl.innerHTML = `
-        <div class="home-season-card" data-season="${currentKey}" style="--season-color: ${season.farve}">
-          <div class="home-season-label">${t('seasonCurrentLabel')}</div>
-          <div class="home-season-name">${name}</div>
-          <div class="home-season-meta">${season.element} · ${season.organpar} · ${season.energi}</div>
-          <p class="home-season-welcome">${welcome}</p>
-          <div class="home-season-cta">
-            ${t('patternExploreSeason')} →
-          </div>
-        </div>
+      // First sentence of seasonal welcome only
+      const welcome = seasonWelcomes && seasonWelcomes[currentKey] || '';
+      const firstSentence = welcome.match(/[^.!?]+[.!?]/)?.[0] || '';
+      seasonEl.innerHTML = `
+        <button class="home-season-still" data-season="${currentKey}">
+          <span class="home-season-name-still" style="color: ${season.farve}">${name}</span>
+          <span class="home-season-element-still">${season.element}</span>
+          <p class="home-season-line">${firstSentence}</p>
+        </button>
       `;
-      heroEl.querySelector('.home-season-card').addEventListener('click', () => {
+      seasonEl.querySelector('[data-season]').addEventListener('click', () => {
         showSeasonDetail(currentKey);
       });
     }
   }
 
-  // Organ clock (compact)
-  const clockEl = document.getElementById('home-clock');
-  if (clockEl) {
-    renderPatternClock(clockEl);
-  }
-
-  // Search section
-  const searchLabel = document.getElementById('home-search-label');
-  if (searchLabel) searchLabel.textContent = t('patternSearchPlaceholder');
-
-  const searchInput = document.getElementById('home-pattern-input');
-  if (searchInput) {
-    searchInput.placeholder = t('patternSearchPlaceholder');
-    let debounceTimer;
-    searchInput.addEventListener('input', () => {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        const resultsContainer = document.getElementById('home-pattern-results');
-        if (!searchInput.value.trim()) {
-          resultsContainer.innerHTML = '';
-          return;
-        }
-        executePatternSearch(searchInput.value, 'home-pattern-results');
-      }, 300);
-    });
-  }
-
-  // Quick tags
-  const tagsContainer = document.getElementById('home-quick-tags');
-  if (tagsContainer) {
-    const tags = quickTags[getLanguage()] || quickTags.en;
-    tagsContainer.innerHTML = tags.map(tag =>
-      `<button class="pattern-tag" data-query="${tag.query}">${tag.label}</button>`
-    ).join('');
-    tagsContainer.querySelectorAll('.pattern-tag').forEach(btn => {
-      btn.addEventListener('click', () => {
-        tagsContainer.querySelectorAll('.pattern-tag').forEach(t => t.classList.remove('pattern-tag-active'));
-        btn.classList.add('pattern-tag-active');
-        const input = document.getElementById('home-pattern-input');
-        if (input) input.value = btn.dataset.query;
-        executePatternSearch(btn.dataset.query, 'home-pattern-results');
-      });
-    });
-  }
-
-  // Threads to follow (contextual links)
-  const threadsEl = document.getElementById('home-threads');
-  if (threadsEl) {
-    const activeIndex = getActiveOrganIndex();
-    const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
+  // Question — one question, 4 contextual words
+  const questionEl = document.getElementById('home-question');
+  if (questionEl) {
     const currentKey = getCurrentSeason();
-    const season = seasonsData[currentKey];
+    // 4 words based on current season
+    const seasonWords = {
+      foraar: [
+        { label: 'Vrede', query: 'vrede' },
+        { label: 'Frustration', query: 'frustration' },
+        { label: 'Hovedpine', query: 'hovedpine' },
+        { label: 'Stivhed', query: 'stivhed' }
+      ],
+      sommer: [
+        { label: 'Uro', query: 'angst' },
+        { label: 'Søvn', query: 'søvn' },
+        { label: 'Hjertebanken', query: 'hjertebanken' },
+        { label: 'Glæde', query: 'glæde' }
+      ],
+      sensommer: [
+        { label: 'Bekymring', query: 'bekymring' },
+        { label: 'Træthed', query: 'træthed' },
+        { label: 'Fordøjelse', query: 'fordøjelse' },
+        { label: 'Oppustethed', query: 'oppustethed' }
+      ],
+      efteraar: [
+        { label: 'Sorg', query: 'sorg' },
+        { label: 'Hud', query: 'hud' },
+        { label: 'Vejrtrækning', query: 'vejrtrækning' },
+        { label: 'At slippe', query: 'at slippe' }
+      ],
+      vinter: [
+        { label: 'Frygt', query: 'frygt' },
+        { label: 'Træthed', query: 'træthed' },
+        { label: 'Rygsmerter', query: 'rygsmerter' },
+        { label: 'Kulde', query: 'kuldefølsomhed' }
+      ]
+    };
+    const words = seasonWords[currentKey] || seasonWords.foraar;
 
-    let threads = [];
-
-    // Thread 1: Active organ
-    if (activeOrgan) {
-      const organ = organs.find(o => o.name === activeOrgan.organ);
-      if (organ) {
-        threads.push({
-          text: `${organ.name} er aktiv nu — hvad mærker du?`,
-          action: () => showOrganDetail(organ)
-        });
-      }
-    }
-
-    // Thread 2: Season's element
-    if (season) {
-      threads.push({
-        text: `${getSeasonName(currentKey)} og ${season.element}-elementet`,
-        action: () => {
-          const el = fiveElements.find(e => e.name === season.element || elementToSeason[e.name] === currentKey);
-          if (el) showElementDetail(el);
-        }
-      });
-    }
-
-    threadsEl.innerHTML = threads.length ? `
-      <div class="home-threads-list">
-        ${threads.map((t, i) => `<button class="home-thread" data-idx="${i}">${t.text} →</button>`).join('')}
+    questionEl.innerHTML = `
+      <p class="home-question-text">Hvad mærker du?</p>
+      <div class="home-question-words">
+        ${words.map(w => `<button class="home-word" data-query="${w.query}">${w.label}</button>`).join('<span class="home-word-dot">·</span>')}
       </div>
-    ` : '';
+    `;
 
-    threadsEl.querySelectorAll('.home-thread').forEach(btn => {
+    questionEl.querySelectorAll('.home-word').forEach(btn => {
       btn.addEventListener('click', () => {
-        const idx = parseInt(btn.dataset.idx);
-        if (threads[idx]) threads[idx].action();
+        // Navigate to patterns section and search
+        showScreen('section-patterns');
+        setTimeout(() => {
+          const input = document.getElementById('pattern-search-input');
+          if (input) {
+            input.value = btn.dataset.query;
+            executePatternSearch(btn.dataset.query);
+          }
+        }, 100);
       });
     });
   }

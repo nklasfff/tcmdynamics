@@ -213,9 +213,10 @@ body {
    Personal Home Screen
    ============================================ */
 
-.home-personal {
+.home-personal,
+.home-still {
   flex: 1;
-  padding: 0 24px 100px;
+  padding: 0 32px 140px;
 }
 
 .home-welcome {
@@ -2740,7 +2741,124 @@ body {
 }
 
 /* ============================================
-   Explore Screen
+   Still Home — Season + Question
+   ============================================ */
+
+.home-season-still {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 48px 0;
+}
+
+.home-season-name-still {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 300;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.home-season-element-still {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home-season-line {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 20px auto 0;
+  max-width: 300px;
+}
+
+.home-question {
+  text-align: center;
+  margin: 48px 0 0;
+}
+
+.home-question-text {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0 0 24px 0;
+}
+
+.home-question-words {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.home-word {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: color 0.2s ease;
+}
+
+.home-word:hover {
+  color: var(--accent-gold);
+}
+
+.home-word-dot {
+  color: var(--text-muted);
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+/* ============================================
+   Explore Screen — Doors
+   ============================================ */
+
+.explore-doors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 48px;
+  padding: 0 32px;
+}
+
+.explore-door {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.explore-door:hover {
+  color: var(--accent-gold);
+}
+
+/* ============================================
+   Explore Sub-screens
    ============================================ */
 
 .explore-header {
@@ -2748,7 +2866,7 @@ body {
 }
 
 .explore-content {
-  padding: 20px 28px 100px;
+  padding: 20px 32px 100px;
 }
 
 .explore-section {

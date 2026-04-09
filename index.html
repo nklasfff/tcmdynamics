@@ -24,46 +24,61 @@
         <p class="home-brand-subtitle">Traditional Chinese Medicine as Self-Exploration</p>
       </div>
 
-      <main class="home-personal">
-        <!-- Welcome -->
+      <main class="home-still">
         <p class="home-welcome" id="home-welcome"></p>
 
-        <!-- Season Hero -->
-        <div class="home-season-hero" id="home-season-hero"></div>
+        <div class="home-season-quiet" id="home-season-quiet"></div>
 
-        <!-- Organ Clock -->
-        <div class="home-clock-section">
-          <div class="home-clock" id="home-clock"></div>
-        </div>
-
-        <!-- Pattern Search -->
-        <div class="home-search-section">
-          <h2 class="home-section-label" id="home-search-label">What do you notice?</h2>
-          <input type="text" class="pattern-search-input" id="home-pattern-input" placeholder="What do you notice?" autocomplete="off" />
-          <div class="pattern-quick-tags" id="home-quick-tags"></div>
-          <div class="pattern-results" id="home-pattern-results"></div>
-        </div>
-
-        <!-- Threads to Follow -->
-        <div class="home-threads" id="home-threads"></div>
+        <div class="home-question" id="home-question"></div>
       </main>
 
     </div>
 
     <!-- ============================================
-         Explore Screen — Stille typografisk liste
+         Explore Screen — Tre døre
          ============================================ -->
     <div id="screen-explore" class="screen">
+      <main class="explore-doors">
+        <button class="explore-door" data-explore="seasons">Årstider</button>
+        <button class="explore-door" data-explore="organs">Organer</button>
+        <button class="explore-door" data-explore="elements">Elementer</button>
+      </main>
+    </div>
+
+    <!-- Explore sub-screens -->
+    <div id="screen-explore-seasons" class="screen">
       <header class="explore-header">
-        <button class="back-btn" data-back="home">
+        <button class="back-btn" id="btn-back-explore-seasons">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Hjem</span>
+          <span>Udforsk</span>
         </button>
       </header>
       <main class="explore-content">
-        <div class="explore-section" id="explore-seasons"></div>
-        <div class="explore-section" id="explore-organs"></div>
-        <div class="explore-section" id="explore-elements"></div>
+        <div class="explore-section" id="explore-seasons-list"></div>
+      </main>
+    </div>
+
+    <div id="screen-explore-organs" class="screen">
+      <header class="explore-header">
+        <button class="back-btn" id="btn-back-explore-organs">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Udforsk</span>
+        </button>
+      </header>
+      <main class="explore-content">
+        <div class="explore-section" id="explore-organs-list"></div>
+      </main>
+    </div>
+
+    <div id="screen-explore-elements" class="screen">
+      <header class="explore-header">
+        <button class="back-btn" id="btn-back-explore-elements">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Udforsk</span>
+        </button>
+      </header>
+      <main class="explore-content">
+        <div class="explore-section" id="explore-elements-list"></div>
       </main>
     </div>
 
