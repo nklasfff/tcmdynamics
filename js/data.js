@@ -283,6 +283,14 @@ const sectionIntros = {
       'The symptom table helps you connect specific symptoms to the relevant organ systems, and the exploration guide offers a suggested structure for how to begin mapping your own patterns.'
     ]
   },
+  patterns: {
+    title: 'Explore Your Patterns',
+    paragraphs: [
+      'Everything in your body is connected. An emotion, a symptom, a time of night when you always wake — they are all threads in the same pattern. Here you can pull on one thread and see where it leads.',
+      'The organ clock shows you which organ is most active right now. The search below lets you start with anything you notice — a feeling, a discomfort, a recurring theme — and see how it connects to organs, elements, seasons, and practices.',
+      'There are no wrong starting points. Begin with what feels most alive in you right now, and let the connections reveal themselves.'
+    ]
+  },
   foundation: {
     title: 'TCM Foundational Principles',
     paragraphs: [
@@ -290,6 +298,149 @@ const sectionIntros = {
       'Yin-Yang poses the fundamental question of where the imbalance lies. The Organ Clock provides the temporal dimension — when does the symptom appear? Five Element theory reveals the relational connections between the organs, and the Zang-Fu system provides the functional understanding of organ partnerships.',
       'Together, these perspectives make it possible to see beyond isolated symptoms and instead understand the deeper patterns and connections in your condition. They overlap, complement, and reinforce each other — and form the foundation for everything that follows.'
     ]
+  }
+};
+
+const elementToSeason = {
+  'Wood': 'foraar', 'Fire': 'sommer', 'Earth': 'sensommer', 'Metal': 'efteraar', 'Water': 'vinter'
+};
+
+// Pattern texts — uses Danish content with English keys (full EN translation in Phase 4)
+const patternTexts = {
+  'Headache': {
+    connection: 'Hovedpine er aldrig tilfældig i TCM. Energi der ikke kan bevæge sig frit, søger opad — som varme der stiger — og samler sig i hovedet. Men *hvor* den samler sig, fortæller dig noget vigtigt. Banker det i tindingerne, er det Galdeblæren der råber op. Presser det bag øjnene og op over issen, er det Leveren der kæmper med at holde sin energi flydende. Sidder smerten i baghovedet, følger den Blærens meridian ned langs nakken. Og tyngden over panden? Den hører til Mavesækken — som om din fordøjelse af livet er gået i stå. Læg mærke til stedet. Det er din krops måde at pege på.',
+    reflections: [
+      'Hvornår mærkede du første gang denne hovedpine? Var der noget i dit liv der ændrede sig på det tidspunkt — noget du begyndte at holde fast i, eller holde tilbage?',
+      'Hvis du blev stille og lyttede til presset i dit hoved — hvad ville det fortælle dig om det, du ikke giver plads til at bevæge sig?',
+      'Læg mærke til om din hovedpine har en rytme. Kommer den på bestemte tidspunkter af dagen, i bestemte situationer, eller i bestemte årstider?'
+    ],
+    exercise: { title: 'Lad energien synke', duration: '1-2 minutter', instruction: 'Sæt dig ned og læg begge tommelfingres puder i fordybningen ved tindingens hårlinje — det punkt der er ømt, ved du godt. Pres blidt ind og lav små, langsomme cirkler mens du trækker vejret helt ned i maven. Forestil dig at varmen i dit hoved langsomt synker nedad — som vand der finder vej fra issen, ned gennem kroppen, og ud gennem fodsålerne. Lad tyngdekraften hjælpe.', effect: 'Inviterer stagneret energi til at finde sin naturlige nedadgående retning.' }
+  },
+  'Sleep problems': {
+    connection: 'Søvn kræver at sindet har et sted at hvile — og det sted er Hjertet. I TCM huser Hjertet din Shen, din bevidsthed, og når Shen er urolig, kan du ikke synke ned i søvnens mørke. Men det er sjældent Hjertet alene. Leveren arbejder om natten med at rense og forny blodet, og hvis dens energi er stagneret, vågner du mellem klokken 1 og 3. Galdeblæren — som træffer beslutninger — rumsterer mellem 23 og 1, og holder dig vågen med alt det uafklarede. Søvnløshed er sjældent ét organ. Det er et samspil — og tidspunktet for din uro peger mod det organ der kalder.',
+    reflections: [
+      'Hvornår vågner du, og hvad møder dig i de første sekunder? Er det tanker der vælter ind, en følelse i kroppen, eller bare en uro uden navn?',
+      'Hvad bærer du med ind i natten som du ikke fik sat ned i løbet af dagen — noget uforløst, uafsluttet, eller usagt?',
+      'Hvis din søvnløshed var en besked fra din krop, hvad ville den bede dig om at give slip på, for at du kunne synke?'
+    ],
+    exercise: { title: 'Find dit anker', duration: '2-3 minutter', instruction: 'Læg dig på ryggen og placer én hånd på brystet, én på maven lige under navlen. Luk øjnene. Mærk forskellen mellem de to hænder — hvilken bevæger sig mest? Begynd langsomt at sende åndedrættet ned til den nederste hånd, som om du fylder et bæger fra bunden. For hver udånding, forestil dig at din bevidsthed synker lidt dybere ned — fra hoved til bryst til mave. Du behøver ikke sove. Du skal bare synke.', effect: 'Hjælper din Shen med at finde hvile ved at føre opmærksomheden fra hoved til krop.' }
+  },
+  'Digestive problems': {
+    connection: 'Din Milt og Mavesæk er de to organer der tager imod alt det du indtager — ikke kun mad, men også indtryk, oplevelser, tanker. Milten transformerer og løfter det rene opad, Mavesækken sender det tunge nedad. Men Leveren spiller en afgørende rolle her, for det er Leverens frie flow der holder hele fordøjelsen i bevægelse. Stagnerer Leveren — af stress, frustration, tilbageholdt vrede — så invaderer den Milten. Fordøjelsesproblemer handler sjældent om maven alene. De handler om hele den bevægelse, der bærer næring igennem dig.',
+    reflections: [
+      'Hvornår på dagen er din fordøjelse mest urolig — og hvad sker der lige inden? Er det efter et måltid, eller efter en situation?',
+      'Hvad fordøjer du i dit liv lige nu, som er svært at nedbryde — noget du har taget ind, men som du endnu ikke har kunnet omsætte til mening?',
+      'Mærk efter: bærer din mave en spænding der ikke handler om mad? Hvad holder du fast i din midte, som din krop forsøger at bevæge videre?'
+    ],
+    exercise: { title: 'Varm din midte', duration: '2 minutter', instruction: 'Gnid dine hænder mod hinanden indtil de er varme. Læg dem i en blød cirkel over din mave — den ene hånd over den anden — lige over navlen. Lav langsomme, store cirkler med uret, som om du rørte i noget langsomt og tålmodigt. Mærk varmen synke ind. Lad din mave blødgøre sig under dine hænder.', effect: 'Støtter Miltens og Mavesækkens transformerende arbejde og inviterer stagneret energi til at bevæge sig.' }
+  },
+  'Emotional instability': {
+    connection: 'I TCM bærer hvert organ sin egen følelsesmæssige kvalitet — ikke som noget der skal fjernes, men som noget der hører til. Leveren bærer vreden, Hjertet bærer glæden men også den rastløse uro, Milten bærer bekymringen, og Nyrerne bærer frygten. Når du oplever at dine følelser svinger hurtigt eller vælter dig, er det sjældent fordi der er noget galt med dig. Det er fordi flere organer samtidig er i ubalance — og deres følelser blander sig i hinanden, som stemmer der taler i munden på hinanden.',
+    reflections: [
+      'Hvornår på døgnet er dine følelser mest intense — og kan du mærke om det er vrede, bekymring, frygt eller uro der fylder mest?',
+      'Er der en følelse du ikke giver dig selv lov til at have — noget du skubber væk, eller hurtigt dækker over med en anden følelse?',
+      'Hvad hvis dine svingende følelser ikke er kaos, men en samtale mellem flere dele af dig? Hvad forsøger de tilsammen at fortælle dig?'
+    ],
+    exercise: { title: 'Mærk hvad der fylder mest', duration: '1-2 minutter', instruction: 'Sæt dig stille og luk øjnene. Tag tre dybe vejrtrækninger. Spørg dig selv helt simpelt: hvad føler jeg lige nu? Vent. Lad svaret komme som en fornemmelse i kroppen, ikke som et ord i hovedet. Mærk *hvor* i kroppen følelsen sidder. Bliv der. Du behøver ikke ændre noget. Bare mærk hvad der fylder mest, lige nu.', effect: 'Skaber et øjebliks klarhed ved at give den dominerende følelse din fulde opmærksomhed.' }
+  },
+  'Skin problems': {
+    connection: 'Huden er i TCM Lungernes spejl — det yderste lag af dig, det der møder verden. Når Lungerne er svækkede, mister huden sin evne til at beskytte og regulere. Tyktarmen renser kroppen indefra, og når den renselse stagnerer, søger urenheder udad gennem huden. Leveren renser blodet — stagnerer den, kan varme vise sig som rødme, udslæt eller irritation. Og Milten, der transformerer fugt: for meget fugt kan vise sig som hævelser, væskende eksem eller klam hud. Det du ser på din hud er altid et vindue til noget dybere.',
+    reflections: [
+      'Hvornår blusser din hud op — er der et mønster i årstid, stressniveau, eller bestemte perioder af dit liv?',
+      'Hvad viser du til verden, og hvad holder du inde? Er der noget du bærer under overfladen, som søger et udtryk?',
+      'Hvis din hud kunne tale, hvad ville den bede dig om — mere beskyttelse, mere udluftning, mere blødhed?'
+    ],
+    exercise: { title: 'Åbn din hud', duration: '1-2 minutter', instruction: 'Stå oprejst og stræk armene ud til siden i skulderhøjde med håndfladerne opad. Tag en lang, dyb indånding gennem næsen — forestil dig at du åbner hele din brystkasse, som om din hud kunne ånde. Hold vejret et kort øjeblik. Pust langsomt ud gennem munden med en blød lyd, og lad armene synke tungt ned langs siderne. Gentag tre gange.', effect: 'Støtter Lungernes evne til at sprede Qi til hudens overflade og inviterer til åbenhed.' }
+  },
+  'Back pain': {
+    connection: 'Ryggen er din krops bærende akse. Smerter i lænden peger næsten altid mod Nyrerne — de organer der lagrer din dybeste essens. Langs rygsøjlen løber Blærens meridian, og spændinger her afspejler ofte det du bærer — ansvar, belastning, udmattelse. Siderne tilhører Galdeblæren, og Leveren styrer dine sener og din fleksibilitet. Din ryg bærer dig. Spørgsmålet er, hvad du bærer den med.',
+    reflections: [
+      'Hvornår er din ryg værst — om morgenen, om aftenen, efter bestemte aktiviteter, eller i bestemte perioder af dit liv?',
+      'Hvad bærer du lige nu, som er tungt — ikke kun fysisk, men i dit liv, dine relationer, dit ansvar?',
+      'Mærk efter: er din ryg stiv og fast, eller træt og svag? Stivhed taler om stagnation, svaghed om udtømning. Hvilken fortæller din rygs historie?'
+    ],
+    exercise: { title: 'Varm dine nyrer', duration: '2 minutter', instruction: 'Gnid dine hænder varme. Læg dem på lænden med fingrene pegende nedad — lige over nyrerne, på begge sider af rygsøjlen. Gnid op og ned i et fast, varmt tempo indtil hele området gløder. Stå stille bagefter og mærk varmen brede sig.', effect: 'Styrker Nyrernes Yang-energi og bringer varme og støtte til lænden.' }
+  },
+  'Fatigue/low energy': {
+    connection: 'Energi i TCM opstår i et samspil mellem flere organer. Milten omsætter mad til brugbar energi. Nyrerne lagrer din dybeste reserve. Lungerne tager imod Qi fra luften. Hjertet styrer kredsløbet. Spørg dig selv: er din træthed tung, tom, flad eller tåget? Svaret peger mod det organ der har brug for din opmærksomhed.',
+    reflections: [
+      'Hvornår på dagen er din energi lavest — og hvad gør du typisk lige inden?',
+      'Hvad giver dig energi, og hvad dræner dig — helt konkret i dit liv lige nu?',
+      'Hvis din træthed ikke er en fejl men en besked, hvad forsøger din krop at bede dig om?'
+    ],
+    exercise: { title: 'Væk din midte', duration: '1-2 minutter', instruction: 'Bank let med en løs knytnæve på punktet fire fingersbredder under knæskallen, på ydersiden af skinnebenet — Mavesæk 36. Bank i et roligt tempo, 30 gange på hvert ben. Mærk efter.', effect: 'Aktiverer Miltens og Mavesækkens Qi og hjælper kroppen med at mobilisere energi.' }
+  },
+  'Anxiety and fear': {
+    connection: 'Frygt bor i Nyrerne — den dybe, eksistentielle frygt der siver ind i knoglerne. Angst — uroen der flagrer — hører til Hjertet. Galdeblæren er modet, og Leveren holder det hele i bevægelse. Angst og frygt er ikke det samme, selvom de ofte blander sig. At mærke forskellen i din krop er det første skridt.',
+    reflections: [
+      'Hvornår begyndte frygten eller angsten at fylde mere — og hvad skete der på det tidspunkt?',
+      'Er det du føler en frygt der trækker nedad og ind — eller en uro der stiger opad og ud?',
+      'Hvad ville du gøre, hvis frygten ikke var der?'
+    ],
+    exercise: { title: 'Find din grund', duration: '2 minutter', instruction: 'Stå med fødderne i skulderbredde og luk øjnene. Mærk dine fodsåler mod gulvet. Bøj let i knæene. Læg hænderne under navlen. Træk vejret ind og ned til hænderne. Pust ud og forestil dig at udåndingen fortsætter ned gennem benene og ud gennem fodsålerne. Gentag fem gange.', effect: 'Forankrer din energi i Nyrerne og inviterer din opmærksomhed ned fra hoved til krop.' }
+  },
+  'Eye problems': {
+    connection: 'I TCM åbner Leveren til øjnene — al øjenproblematik involverer Leveren. Tørre øjne, sløret syn, lysfølsomhed — alt kan være Leverens måde at fortælle dig at dens blod er udtømt eller energi stagneret. Galdeblæren bidrager med spændinger bag øjnene. Nyrerne nærer Leveren i dybden. Hjertet giver øjnene deres glans.',
+    reflections: [
+      'Hvornår er dine øjne mest belastede — og hvad har du kigget på, eller kigget væk fra?',
+      'Er der noget i dit liv du ikke vil se, eller har svært ved at holde blikket på?',
+      'Mærk sammenhængen: er dine øjenproblemer ledsaget af irritabilitet eller indre pres?'
+    ],
+    exercise: { title: 'Lad øjnene hvile', duration: '2 minutter', instruction: 'Gnid dine håndflader varme. Luk øjnene og læg de varme håndflader som skåle over øjnene — uden at presse. Lad mørket og varmen synke ind. Bliv der i et helt minut.', effect: 'Nærer Leverens blod til øjnene og giver Shen et øjebliks hvile.' }
+  },
+  'Menstrual problems': {
+    connection: 'Menstruationen er et af de mest præcise spejle af din indre balance. Leveren lagrer blodet og sikrer dets frie bevægelse. Milten holder blodet i karrene. Nyrerne forankrer den hormonelle cyklus. Og Chong Mai samler og styrer rytmen. Din cyklus er ikke noget der bare sker. Den er et sprog.',
+    reflections: [
+      'Hvad fortæller din cyklus dig lige nu — er den regelmæssig, kaotisk, fraværende, smertefuld?',
+      'Hvordan er din relation til din menstruation — ignorerer du den, kæmper med den, eller lytter til den?',
+      'Mærk efter i dagene op til: hvad stiger op i dig? Det der kommer frem, peger mod det organ der søger opmærksomhed.'
+    ],
+    exercise: { title: 'Hold dit bækkens varme', duration: '2-3 minutter', instruction: 'Læg dig på ryggen med bøjede knæ. Læg begge hænder under navlen. Træk vejret dybt ned og forestil dig at hver indånding bringer varme ned i dit bækken. For hver udånding, lad spænding sive ud — som is der langsomt smelter.', effect: 'Inviterer fri bevægelse i Leverens Qi og bringer varme til Chong Mai.' }
+  },
+  'Edema/fluid retention': {
+    connection: 'Tre organer styrer væskebalancen: Lungerne spreder væsken som en fin tåge. Milten transformerer fugt. Nyrerne udskiller det overflødige. San Jiao forbinder alle tre. Ødemer er aldrig bare vand der står stille. Det er bevægelse der er gået i stå.',
+    reflections: [
+      'Hvornår mærker du mest til hævelse eller tyngde?',
+      'Er der noget i dit liv der ikke flyder — noget der samler sig eller ikke finder udgang?',
+      'Er tyngden kold og tung, eller varm og spændt? Forskellen fortæller dig om det er Yang der mangler, eller bevægelse der er blokeret.'
+    ],
+    exercise: { title: 'Åbn passagerne', duration: '2 minutter', instruction: 'Stå oprejst og løft armene langsomt op over hovedet med en dyb indånding. Hold et øjeblik. Bøj dig langsomt forover med udåndingen, lad armene hænge tungt ned. Rul langsomt op igen. Gentag fem gange.', effect: 'Mobiliserer San Jiaos passage og hjælper Lungerne med at sprede og Nyrerne med at udskille.' }
+  },
+  'Heart palpitations': {
+    connection: 'Hjertet huser din Shen — din bevidsthed. Når noget forstyrrer det rum, mærker du pludselig dit eget hjerte. Pericardium absorberer stød. Nyrerne forankrer Hjertet i dybden — Vand og Ild holder hinanden i balance. Milten nærer blodet. Hjertebanken er din krops måde at sige: noget har forstyrret det sted, hvor din bevidsthed bor.',
+    reflections: [
+      'Hvornår mærker du dit hjerte banke — om natten, i stille øjeblikke, eller i følelsesmæssig intensitet?',
+      'Hvad har du ikke givet dig selv lov til at føle helt færdigt?',
+      'Er din hjertebanken hurtig og flagrende, eller hård og bankende? Forskellen peger i forskellige retninger.'
+    ],
+    exercise: { title: 'Berolig dit hjerte', duration: '2 minutter', instruction: 'Læg din højre hånd midt på brystet. Læg venstre hånd ovenpå. Luk øjnene. Træk vejret ind på fire tæl, hold i to, pust ud på seks tæl. Med hver udånding, forestil dig at dine hænder sender tyngde og varme ind til dit hjerte.', effect: 'Inviterer Shen til at vende hjem og støtter Pericardiums beskyttende funktion.' }
+  },
+  'Hearing problems/tinnitus': {
+    connection: 'Nyrerne åbner til ørerne. Din hørelse afspejler Nyrernes vitalitet. Men tinnitus er ikke altid den stille form — en høj, skarp ringen hører til Galdeblæren og Leveren. San Jiao styrer passagerne omkring øret. Lyden i dine ører fortæller dig noget. Om den hvisker eller skriger peger i forskellige retninger.',
+    reflections: [
+      'Hvornår begyndte lyden, eller hvornår blev den værre — og hvad skete der i dit liv?',
+      'Er din tinnitus lav og rislende, eller høj og gennemtrængende? Den ene fortæller om tomhed, den anden om overskud.',
+      'Hvad ville det betyde for dig at lytte indad i stedet for udad?'
+    ],
+    exercise: { title: 'Trommeslag på himmelporten', duration: '1-2 minutter', instruction: 'Læg begge hænder over ørerne med fingrene bagud mod nakken. Lad pegefingrene glide af langfingrene og tromme let ned mod nakken — 20-30 gange. Lyt til lyden. Fjern hænderne langsomt og mærk stilheden bagefter.', effect: 'Stimulerer Nyrernes energi til ørerne og beroliger indre uro.' }
+  },
+  'Pain in extremities': {
+    connection: 'Hvert organ styrer sit eget væv: Leveren nærer senerne, Milten bærer musklerne, Nyrerne forankrer knoglerne. Blærens meridian løber langs hele bagsiden. En sene der er stram taler om Leveren. En muskel der er svag taler om Milten. En knogle der ømmer sig taler om Nyrerne. Din krop er præcis.',
+    reflections: [
+      'Hvor sidder smerten — og er det sener, muskler eller knogler der taler?',
+      'Hvornår forværres det — i kulde, i fugt, i stilstand, eller i overbelastning?',
+      'Hvad kan du ikke bevæge dig hen imod, eller ikke gå væk fra, i dit liv lige nu?'
+    ],
+    exercise: { title: 'Ryst det løs', duration: '1-2 minutter', instruction: 'Stå med bløde knæ og begynd at ryste hele din krop. Lad armene, hænderne, skuldrene, hovedet ryste med. Forestil dig at du ryster stagnation ud af led, sener og muskler. Gør det i et helt minut. Stop. Stå stille. Mærk hvad der har ændret sig.', effect: 'Mobiliserer Qi og Blod i alle fire lemmer og hjælper med at frigive stagnation.' }
+  },
+  'Breathing problems': {
+    connection: 'Lungerne styrer indåndingen, men Nyrerne "griber" Qi\'en og trækker den ned. Når Nyrerne er svage, bliver åndedrættet overfladisk. Milten transformerer fugt — overskydende slim er Miltens signal. Hjertet og Lungerne deler brystkassen. Vejrtrækningsproblemer handler om din krops evne til at tage imod, føre ned og sende videre.',
+    reflections: [
+      'Hvornår mærker du mest til din vejrtrækning — i hvile, ved anstrengelse, i bestemte følelsesmæssige tilstande?',
+      'Hvad giver dig luft i dit liv — og hvad tager det fra dig?',
+      'Er din vejrtrækning overfladisk og hurtig, eller tung og besværet? Forskellen fortæller om det er Qi der mangler, eller bevægelse der er blokeret.'
+    ],
+    exercise: { title: 'Ånd helt ned', duration: '2-3 minutter', instruction: 'Sæt dig med fødderne i gulvet. Træk vejret ind og forestil dig at luften fortsætter ned — gennem maven, helt ned under navlen. Lad maven udvide sig. Hold et øjeblik. Pust langsomt ud. Med hver indånding, send rødder ned. Med hver udånding, lad spænding i brystet løsne.', effect: 'Støtter Nyrernes evne til at gribe Qi og trække åndedrættet ned til dets naturlige dybde.' }
   }
 };
 
@@ -3144,7 +3295,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts };
 })();
 
 const da = (() => {
@@ -3428,6 +3579,14 @@ const sectionIntros = {
       'Symptom-tabellen hjælper dig med at koble specifikke symptomer til de relevante organsystemer, og udforskningsguiden giver et forslag til, hvordan du kan begynde at kortlægge dine egne mønstre.'
     ]
   },
+  patterns: {
+    title: 'Udforsk Dine Mønstre',
+    paragraphs: [
+      'Alt i din krop hænger sammen. En følelse, et symptom, et tidspunkt på natten hvor du altid vågner — de er alle tråde i det samme mønster. Her kan du trække i én tråd og se, hvor den fører hen.',
+      'Organuret viser dig, hvilket organ der er mest aktivt lige nu. Søgningen nedenunder lader dig starte med hvad som helst du lægger mærke til — en følelse, et ubehag, et genkommende tema — og se hvordan det forbinder sig til organer, elementer, årstider og praksis.',
+      'Der er ingen forkerte udgangspunkter. Begynd med det, der føles mest levende i dig lige nu, og lad forbindelserne vise sig.'
+    ]
+  },
   foundation: {
     title: 'TCM Grundprincipper',
     paragraphs: [
@@ -3435,6 +3594,223 @@ const sectionIntros = {
       'Yin-Yang stiller det grundlæggende spørgsmål om, hvor ubalancen ligger. Organuret giver den tidsmæssige dimension — hvornår viser symptomet sig? Fem-element teorien afdækker de relationelle forbindelser mellem organerne, og Zang-Fu systemet giver den funktionelle forståelse af organernes parforhold.',
       'Sammen gør disse perspektiver det muligt at se ud over isolerede symptomer og i stedet forstå de dybere mønstre og sammenhænge i din tilstand. De overlapper, supplerer og forstærker hinanden — og udgør fundamentet for alt det, der følger.'
     ]
+  }
+};
+
+const elementToSeason = {
+  'Træ': 'foraar', 'Ild': 'sommer', 'Jord': 'sensommer', 'Metal': 'efteraar', 'Vand': 'vinter'
+};
+
+const patternTexts = {
+  'Hovedpine': {
+    connection: 'Hovedpine er aldrig tilfældig i TCM. Energi der ikke kan bevæge sig frit, søger opad — som varme der stiger — og samler sig i hovedet. Men *hvor* den samler sig, fortæller dig noget vigtigt. Banker det i tindingerne, er det Galdeblæren der råber op. Presser det bag øjnene og op over issen, er det Leveren der kæmper med at holde sin energi flydende. Sidder smerten i baghovedet, følger den Blærens meridian ned langs nakken. Og tyngden over panden? Den hører til Mavesækken — som om din fordøjelse af livet er gået i stå. Læg mærke til stedet. Det er din krops måde at pege på.',
+    reflections: [
+      'Hvornår mærkede du første gang denne hovedpine? Var der noget i dit liv der ændrede sig på det tidspunkt — noget du begyndte at holde fast i, eller holde tilbage?',
+      'Hvis du blev stille og lyttede til presset i dit hoved — hvad ville det fortælle dig om det, du ikke giver plads til at bevæge sig?',
+      'Læg mærke til om din hovedpine har en rytme. Kommer den på bestemte tidspunkter af dagen, i bestemte situationer, eller i bestemte årstider?'
+    ],
+    exercise: {
+      title: 'Lad energien synke',
+      duration: '1-2 minutter',
+      instruction: 'Sæt dig ned og læg begge tommelfingres puder i fordybningen ved tindingens hårlinje — det punkt der er ømt, ved du godt. Pres blidt ind og lav små, langsomme cirkler mens du trækker vejret helt ned i maven. Forestil dig at varmen i dit hoved langsomt synker nedad — som vand der finder vej fra issen, ned gennem kroppen, og ud gennem fodsålerne. Lad tyngdekraften hjælpe.',
+      effect: 'Inviterer stagneret energi til at finde sin naturlige nedadgående retning.'
+    }
+  },
+  'Søvnproblemer': {
+    connection: 'Søvn kræver at sindet har et sted at hvile — og det sted er Hjertet. I TCM huser Hjertet din Shen, din bevidsthed, og når Shen er urolig, kan du ikke synke ned i søvnens mørke. Men det er sjældent Hjertet alene. Leveren arbejder om natten med at rense og forny blodet, og hvis dens energi er stagneret, vågner du mellem klokken 1 og 3. Galdeblæren — som træffer beslutninger — rumsterer mellem 23 og 1, og holder dig vågen med alt det uafklarede. Pericardium beskytter Hjertets rum, og Nyrerne forankrer hele systemet i dybden. Søvnløshed er sjældent ét organ. Det er et samspil — og tidspunktet for din uro peger mod det organ der kalder.',
+    reflections: [
+      'Hvornår vågner du, og hvad møder dig i de første sekunder? Er det tanker der vælter ind, en følelse i kroppen, eller bare en uro uden navn?',
+      'Hvad bærer du med ind i natten som du ikke fik sat ned i løbet af dagen — noget uforløst, uafsluttet, eller usagt?',
+      'Hvis din søvnløshed var en besked fra din krop, hvad ville den bede dig om at give slip på, for at du kunne synke?'
+    ],
+    exercise: {
+      title: 'Find dit anker',
+      duration: '2-3 minutter',
+      instruction: 'Læg dig på ryggen og placer én hånd på brystet, én på maven lige under navlen. Luk øjnene. Mærk forskellen mellem de to hænder — hvilken bevæger sig mest? Begynd langsomt at sende åndedrættet ned til den nederste hånd, som om du fylder et bæger fra bunden. For hver udånding, forestil dig at din bevidsthed synker lidt dybere ned — fra hoved til bryst til mave. Du behøver ikke sove. Du skal bare synke.',
+      effect: 'Hjælper din Shen med at finde hvile ved at føre opmærksomheden fra hoved til krop.'
+    }
+  },
+  'Fordøjelsesproblemer': {
+    connection: 'Din Milt og Mavesæk er de to organer der tager imod alt det du indtager — ikke kun mad, men også indtryk, oplevelser, tanker. Milten transformerer og løfter det rene opad, Mavesækken sender det tunge nedad. Når dette samspil fungerer, føler du dig næret og klar. Men Leveren spiller en afgørende rolle her, for det er Leverens frie flow der holder hele fordøjelsen i bevægelse. Stagnerer Leveren — af stress, frustration, tilbageholdt vrede — så invaderer den Milten. Du mærker det som oppustethed, kvalme, vekslende afføring, en fornemmelse af at maden bare ligger der. Fordøjelsesproblemer handler sjældent om maven alene. De handler om hele den bevægelse, der bærer næring igennem dig.',
+    reflections: [
+      'Hvornår på dagen er din fordøjelse mest urolig — og hvad sker der lige inden? Er det efter et måltid, eller efter en situation?',
+      'Hvad fordøjer du i dit liv lige nu, som er svært at nedbryde — noget du har taget ind, men som du endnu ikke har kunnet omsætte til mening?',
+      'Mærk efter: bærer din mave en spænding der ikke handler om mad? Hvad holder du fast i din midte, som din krop forsøger at bevæge videre?'
+    ],
+    exercise: {
+      title: 'Varm din midte',
+      duration: '2 minutter',
+      instruction: 'Gnid dine hænder mod hinanden indtil de er varme. Læg dem i en blød cirkel over din mave — den ene hånd over den anden — lige over navlen. Lav langsomme, store cirkler med uret, som om du rørte i noget langsomt og tålmodigt. Mærk varmen synke ind. Lad din mave blødgøre sig under dine hænder.',
+      effect: 'Støtter Miltens og Mavesækkens transformerende arbejde og inviterer stagneret energi til at bevæge sig.'
+    }
+  },
+  'Emotionel ustabilitet': {
+    connection: 'I TCM bærer hvert organ sin egen følelsesmæssige kvalitet — ikke som noget der skal fjernes, men som noget der hører til. Leveren bærer vreden og frustrationen, Hjertet bærer glæden men også den rastløse uro, Milten bærer bekymringen og grubleriet, og Nyrerne bærer frygten og den eksistentielle usikkerhed. Når du oplever at dine følelser svinger hurtigt eller vælter dig, er det sjældent fordi der er noget galt med dig. Det er fordi flere organer samtidig er i ubalance — og deres følelser blander sig i hinanden, som stemmer der taler i munden på hinanden. At lytte til *hvilken* følelse der er stærkest, er begyndelsen på at forstå hvad din krop forsøger at kommunikere.',
+    reflections: [
+      'Hvornår på døgnet er dine følelser mest intense — og kan du mærke om det er vrede, bekymring, frygt eller uro der fylder mest?',
+      'Er der en følelse du ikke giver dig selv lov til at have — noget du skubber væk, eller hurtigt dækker over med en anden følelse?',
+      'Hvad hvis dine svingende følelser ikke er kaos, men en samtale mellem flere dele af dig? Hvad forsøger de tilsammen at fortælle dig?'
+    ],
+    exercise: {
+      title: 'Mærk hvad der fylder mest',
+      duration: '1-2 minutter',
+      instruction: 'Sæt dig stille og luk øjnene. Tag tre dybe vejrtrækninger. Spørg dig selv helt simpelt: hvad føler jeg lige nu? Vent. Lad svaret komme som en fornemmelse i kroppen, ikke som et ord i hovedet. Mærk *hvor* i kroppen følelsen sidder — er den i brystet, i maven, i halsen, i benene? Bliv der. Du behøver ikke ændre noget. Bare mærk hvad der fylder mest, lige nu.',
+      effect: 'Skaber et øjebliks klarhed ved at give den dominerende følelse din fulde opmærksomhed.'
+    }
+  },
+  'Hudproblemer': {
+    connection: 'Huden er i TCM Lungernes spejl — det yderste lag af dig, det der møder verden. Når Lungerne er svækkede, mister huden sin evne til at beskytte og regulere, og du bliver sårbar overfor vind, kulde og tørhed. Men huden er også dybt forbundet med det der sker indeni. Tyktarmen — Lungernes makkerorgan — renser kroppen indefra, og når den renselse stagnerer, søger urenheder udad gennem huden. Leveren renser blodet og sørger for at energien flyder frit — stagnerer den, kan varme samle sig og vise sig som rødme, udslæt eller irritation. Og Milten, der transformerer fugt, spiller med: for meget fugt i systemet kan vise sig som hævelser, væskende eksem eller klam hud. Det du ser på din hud er altid et vindue til noget dybere.',
+    reflections: [
+      'Hvornår blusser din hud op — er der et mønster i årstid, stressniveau, eller bestemte perioder af dit liv?',
+      'Hvad viser du til verden, og hvad holder du inde? Er der noget du bærer under overfladen, som søger et udtryk?',
+      'Hvis din hud kunne tale, hvad ville den bede dig om — mere beskyttelse, mere udluftning, mere blødhed?'
+    ],
+    exercise: {
+      title: 'Åbn din hud',
+      duration: '1-2 minutter',
+      instruction: 'Stå oprejst og stræk armene ud til siden i skulderhøjde med håndfladerne opad. Tag en lang, dyb indånding gennem næsen — forestil dig at du åbner hele din brystkasse, som om din hud kunne ånde. Hold vejret et kort øjeblik i toppen. Pust langsomt ud gennem munden med en blød lyd, og lad armene synke tungt ned langs siderne. Gentag tre gange. Mærk forskellen i din hud bagefter.',
+      effect: 'Støtter Lungernes evne til at sprede Qi til hudens overflade og inviterer til åbenhed.'
+    }
+  },
+  'Rygsmerter': {
+    connection: 'Ryggen er din krops bærende akse, og i TCM er den gennemvævet af meridianer der fortæller dig præcist hvad der er på spil. Smerter i lænden peger næsten altid mod Nyrerne — de organer der lagrer din dybeste essens og bærer hele din konstitutionelle kraft. Langs rygsøjlen løber Blærens meridian i to lange linjer, og spændinger her afspejler ofte det du bærer på ryggen — ansvar, belastning, udmattelse. Siderne af ryggen tilhører Galdeblæren, og smerter der kan hænge sammen med beslutninger du kæmper med eller en følelse af at sidde fast. Leveren styrer dine sener og din fleksibilitet — og en stiv ryg kan være et udtryk for en Lever der ikke flyder. Din ryg bærer dig. Spørgsmålet er, hvad du bærer den med.',
+    reflections: [
+      'Hvornår er din ryg værst — om morgenen, om aftenen, efter bestemte aktiviteter, eller i bestemte perioder af dit liv?',
+      'Hvad bærer du lige nu, som er tungt — ikke kun fysisk, men i dit liv, dine relationer, dit ansvar?',
+      'Mærk efter: er din ryg stiv og fast, eller træt og svag? Der er en forskel — stivhed taler om stagnation, svaghed om udtømning. Hvilken fortæller din rygs historie?'
+    ],
+    exercise: {
+      title: 'Varm dine nyrer',
+      duration: '2 minutter',
+      instruction: 'Gnid dine hænder varme. Læg dem på lænden med fingrene pegende nedad — lige over nyrerne, på begge sider af rygsøjlen. Gnid op og ned i et fast, varmt tempo indtil hele området gløder. Stå stille bagefter og mærk varmen brede sig. Forestil dig at du fylder dine nyrer op med noget varmt og nærende, som vinterlys der trænger ind.',
+      effect: 'Styrker Nyrernes Yang-energi og bringer varme og støtte til lænden.'
+    }
+  },
+  'Træthed/lav energi': {
+    connection: 'Energi i TCM er ikke én ting — den opstår i et samspil mellem flere organer, hvert med sin egen rolle. Milten er den der tager din mad og omsætter den til brugbar energi, dag efter dag. Svækkes Milten, føles det som om maden ikke nærer dig, uanset hvad du spiser. Nyrerne lagrer din dybeste reserve — den medfødte essens du fik med fra dine forældre — og når den er lav, er det en træthed der ikke forsvinder med søvn. Lungerne tager imod Qi fra luften med hvert åndedrag, og en svag Lunge giver en træthed der føles som mangel på luft, på rum, på inspiration. Hjertet styrer kredsløbet og bærer din Shen — og når Hjertet er udmattet, bliver trætheden tåget og fjern. Spørg dig selv: er din træthed tung, tom, flad eller tåget? Svaret peger mod det organ der har brug for din opmærksomhed.',
+    reflections: [
+      'Hvornår på dagen er din energi lavest — og hvad gør du typisk lige inden? Er der et mønster der gentager sig?',
+      'Hvad giver dig energi, og hvad dræner dig — ikke i teorien, men helt konkret i dit liv lige nu?',
+      'Hvis din træthed ikke er en fejl men en besked, hvad forsøger din krop at bede dig om? Mere hvile, mere næring, mere mening — eller mindre af noget?'
+    ],
+    exercise: {
+      title: 'Væk din midte',
+      duration: '1-2 minutter',
+      instruction: 'Bank let med en løs knytnæve på punktet fire fingersbredder under knæskallen, på ydersiden af skinnebenet — Mavesæk 36, et af kroppens mest styrkende punkter. Bank i et roligt tempo, 30 gange på hvert ben. Mærk efter. Det kan føles som en lille bølge af varme eller lethed der stiger op fra benene.',
+      effect: 'Aktiverer Miltens og Mavesækkens Qi og hjælper kroppen med at mobilisere energi fra den mad du allerede har spist.'
+    }
+  },
+  'Angst og frygt': {
+    connection: 'Frygt bor i Nyrerne — det er TCM\'s klare udsagn. Ikke den kortvarige forskrækkelse, men den dybe, eksistentielle frygt der siver ind i knoglerne og gør dig usikker på din egen grund. Angst — den uro der flagrer og ikke kan lande — hører til Hjertet, som om din Shen har mistet sit anker og flakker rundt. Galdeblæren er modet og beslutningskraften, og når den er svag, tøver du, tvivler, og selv små valg bliver overvældende. Leveren holder det hele i bevægelse, og stagnerer den, omdannes frustration ofte til en indre uro der ligner angst men egentlig er energi uden udløb. Angst og frygt er ikke det samme, selvom de ofte blander sig. At mærke forskellen i din krop er det første skridt til at forstå hvad der egentlig er på spil.',
+    reflections: [
+      'Hvornår i dit liv begyndte frygten eller angsten at fylde mere — og hvad skete der på det tidspunkt, som måske stadig lever i dig?',
+      'Mærk efter: er det du føler en frygt der trækker nedad og ind — eller en uro der stiger opad og ud? Der er en forskel. Hvad fortæller den dig?',
+      'Hvad ville du gøre, hvis frygten ikke var der? Hvad holder den dig fra — og er det muligt at den også beskytter dig mod noget?'
+    ],
+    exercise: {
+      title: 'Find din grund',
+      duration: '2 minutter',
+      instruction: 'Stå med fødderne i skulderbredde og luk øjnene. Mærk dine fodsåler mod gulvet — hele fladen. Bøj let i knæene og forestil dig at du synker to centimeter dybere ned i jorden. Læg dine hænder over det nederste af maven, under navlen. Træk vejret ind gennem næsen og ned til dine hænder. Pust langsomt ud og forestil dig at udåndingen fortsætter ned gennem benene og ud gennem fodsålerne. Gentag fem gange. Mærk hvor du er.',
+      effect: 'Forankrer din energi i Nyrerne og inviterer din opmærksomhed ned fra hoved til krop.'
+    }
+  },
+  'Øjenproblemer': {
+    connection: 'I TCM åbner Leveren til øjnene — al øjenproblematik involverer Leveren på den ene eller den anden måde. Tørre øjne, sløret syn, lysfølsomhed, røde øjne, flimren — alt sammen kan være Leverens måde at fortælle dig at dens blod er udtømt, eller at dens energi er stagneret og er begyndt at udvikle varme. Galdeblæren, Leverens makker, bidrager ofte med spændinger i tindingerne og bag øjnene. Nyrerne nærer Leveren i dybden — de to organer deler en fælles rod — og en svækkelse i Nyrerne kan vise sig som gradvist faldende syn eller træthed i øjnene. Hjertet sender blodet til øjnene og giver dem deres glans. Dine øjne afspejler ikke kun hvad du ser — de afspejler hvordan du har det indeni.',
+    reflections: [
+      'Hvornår er dine øjne mest belastede — og hvad har du brugt dem til, eller kigget på, eller kigget væk fra?',
+      'Er der noget i dit liv du ikke vil se, ikke kan overskue, eller har svært ved at holde blikket på? Hvad sker der, når du mærker efter?',
+      'Mærk sammenhængen: er dine øjenproblemer ledsaget af irritabilitet, spændingshovedpine, eller en følelse af indre pres? Hvad fortæller det dig om Leverens tilstand?'
+    ],
+    exercise: {
+      title: 'Lad øjnene hvile',
+      duration: '2 minutter',
+      instruction: 'Gnid dine håndflader varme mod hinanden. Luk øjnene og læg de varme håndflader som skåle over øjnene — uden at presse. Lad mørket og varmen synke ind. Træk vejret roligt og forestil dig at dine øjne trækker sig tilbage, blødgøres, hviler i deres huler som i en varm skål. Bliv der i et helt minut. Når du tager hænderne væk, hold øjnene lukkede lidt endnu.',
+      effect: 'Nærer Leverens blod til øjnene og giver Shen et øjebliks hvile fra den konstante strøm af indtryk.'
+    }
+  },
+  'Menstruationsproblemer': {
+    connection: 'Menstruationen er et af de mest præcise spejle af din indre balance. Leveren lagrer blodet og sikrer dets frie bevægelse — og stagnerer Leverens Qi, mærker du det som PMS, smerter, klumper i blodet, eller en cyklus der er uregelmæssig og uforudsigelig. Milten holder blodet i karrene og sikrer at blødningen har sin rette styrke — svækkes den, kan blødningen blive for kraftig eller trække ud i tid. Nyrerne forankrer hele den hormonelle cyklus i dybden og bærer forbindelsen mellem din menstruation og din grundlæggende vitalitet. Og Chong Mai — en af de ekstraordinære meridianer, kaldet blodets hav — samler og styrer den rytme der gør menstruationen til det den er: en månedlig cyklus af opbygning, frigivelse og fornyelse. Din cyklus er ikke noget der bare sker. Den er et sprog.',
+    reflections: [
+      'Hvad fortæller din cyklus dig lige nu — er den regelmæssig, kaotisk, fraværende, smertefuld? Og har det ændret sig i takt med noget i dit liv?',
+      'Hvordan er din relation til din menstruation — er det noget du ignorerer, kæmper med, eller lytter til? Hvad ville ændre sig, hvis du betragtede den som information?',
+      'Mærk efter i dagene op til din menstruation: hvad stiger op i dig? Irritation, sårbarhed, træthed, kreativitet? Det der kommer frem, peger mod det organ der søger din opmærksomhed.'
+    ],
+    exercise: {
+      title: 'Hold dit bækkens varme',
+      duration: '2-3 minutter',
+      instruction: 'Læg dig på ryggen med bøjede knæ og fodsålerne mod gulvet. Læg begge hænder under navlen, over livmoderen. Luk øjnene. Træk vejret dybt ned til dine hænder og forestil dig at hver indånding bringer varme og blødhed ned i dit bækken. For hver udånding, lad spænding og krampe sive ud — som is der langsomt smelter. Bliv der, blidt og tålmodigt.',
+      effect: 'Inviterer fri bevægelse i Leverens Qi og bringer varme til Chong Mai, blodets hav.'
+    }
+  },
+  'Ødemer/væskeophobning': {
+    connection: 'Vand i kroppen er ikke bare vand — det er bevægelse, transformation og udskillelse, styret af tre organers samspil. Lungerne spreder væsken som en fin tåge udad og nedad, som dug der lægger sig over et landskab. Milten transformerer fugt og løfter det rene opad — svækkes den, samler fugten sig som tyngde i lemmer, mave og tanker. Nyrerne står for den dybe udskillelse, og når deres Yang-ild er lav, kan kroppen ikke fordampe og frigive det overflødige. San Jiao — den tredobbelte varmer — er den passage der forbinder alle tre og sikrer at væsken kan bevæge sig frit mellem kroppens øvre, midterste og nedre del. Ødemer er aldrig bare vand der står stille. Det er bevægelse der er gået i stå.',
+    reflections: [
+      'Hvornår mærker du mest til hævelse eller tyngde — om morgenen, om aftenen, i bestemte årstider, eller i bestemte perioder af dit liv?',
+      'Er der noget i dit liv der ikke flyder — noget der samler sig, hober sig op, eller ikke finder sin naturlige udgang?',
+      'Mærk efter i din krop: er tyngden kold og tung, eller varm og spændt? Forskellen fortæller dig om det er Yang der mangler, eller bevægelse der er blokeret.'
+    ],
+    exercise: {
+      title: 'Åbn passagerne',
+      duration: '2 minutter',
+      instruction: 'Stå oprejst og løft armene langsomt op over hovedet med en dyb indånding — stræk dig som om du rækker op mod loftet. Hold et øjeblik. Bøj dig langsomt forover med udåndingen, lad armene og overkroppen hænge tungt ned mod gulvet. Lad tyngdekraften trække. Rul langsomt op igen med den næste indånding. Gentag fem gange. Mærk hvordan bevægelsen inviterer væske og energi til at finde nye veje.',
+      effect: 'Mobiliserer San Jiaos passage og hjælper Lungerne med at sprede og Nyrerne med at udskille.'
+    }
+  },
+  'Hjertebanken': {
+    connection: 'Hjertet huser din Shen — din bevidsthed, din tilstedeværelse, det i dig der er vågen og ved at du er til. Når Shen er rolig, banker hjertet stabilt og usynligt. Men når noget forstyrrer det rum — uro, chok, udmattelse, en følelse du ikke kan rumme — mærker du pludselig dit eget hjerte. Pericardium, hjertets beskytter, er det organ der absorberer de stød som Hjertet ikke skal rammes af, og når Pericardium er overbelastet, slipper uroen igennem. Nyrerne forankrer Hjertet i dybden — Vand og Ild holder hinanden i balance — og når Nyrernes vand er lavt, stiger Hjertets ild ukontrolleret opad. Milten nærer blodet som Hjertet sender rundt, og er Milten svag, har Hjertet simpelthen ikke nok substans at arbejde med. Hjertebanken er din krops måde at sige: noget har forstyrret det sted, hvor din bevidsthed bor.',
+    reflections: [
+      'Hvornår mærker du dit hjerte banke — er det om natten, i stille øjeblikke, efter kaffe, eller i situationer med følelsesmæssig intensitet?',
+      'Hvad har du ikke givet dig selv lov til at føle helt færdigt? Chok, sorg, begejstring, frygt — er der noget der stadig vibrerer i dig uden at have fundet ro?',
+      'Mærk efter: er din hjertebanken hurtig og flagrende, eller hård og bankende? Forskellen peger i forskellige retninger — den ene mod uro i Shen, den anden mod varme eller substansmangel.'
+    ],
+    exercise: {
+      title: 'Berolig dit hjerte',
+      duration: '2 minutter',
+      instruction: 'Læg din højre hånd midt på brystet, over hjertet. Læg din venstre hånd ovenpå. Luk øjnene. Træk vejret langsomt ind på fire tæl, hold i to, pust ud på seks tæl. Gentag. Med hver udånding, forestil dig at dine hænder sender tyngde og varme ind til dit hjerte — som om du lagde en varm hånd på et uroligt barn. Du siger ikke noget. Du er bare der.',
+      effect: 'Inviterer Shen til at vende hjem til sit naturlige hvilested og støtter Pericardiums beskyttende funktion.'
+    }
+  },
+  'Høreproblemer/tinnitus': {
+    connection: 'Nyrerne åbner til ørerne — det er et af TCM\'s mest direkte udsagn. Din hørelse afspejler dine Nyrers vitalitet, og gradvist høretab eller en konstant susen kan være et tegn på at Nyrernes essens er ved at blive lav. Men tinnitus er ikke altid den stille, dybe form. En høj, skarp ringen hører ofte til Galdeblæren og Leveren — det er varme og stagnation der stiger opad og forstyrrer ørerne med sin intensitet. San Jiao, den tredobbelte varmer, styrer passagerne omkring øret, og blokering her kan skabe en fornemmelse af fyldhed, pres eller nedsat hørelse. Lyden i dine ører fortæller dig noget. Spørgsmålet er om den hvisker eller skriger — for det peger i forskellige retninger.',
+    reflections: [
+      'Hvornår begyndte lyden, eller hvornår blev den værre — og hvad skete der i dit liv omkring det tidspunkt?',
+      'Er din tinnitus lav og rislende, eller høj og gennemtrængende? Mærk forskellen — den ene fortæller om tomhed, den anden om overskud der ikke har noget sted at gå hen.',
+      'Hvad ville det betyde for dig at lytte indad i stedet for udad? Er der noget din krop forsøger at overdøve, eller noget den forsøger at gøre dig opmærksom på?'
+    ],
+    exercise: {
+      title: 'Trommeslag på himmelporten',
+      duration: '1-2 minutter',
+      instruction: 'Læg begge hænder over ørerne med fingrene bagud mod nakken. Dine pegefingre hviler ovenpå langfingrene. Lad pegefingrene glide af langfingrene og tromme let ned mod nakken — det giver en dyb, dæmpet banken inde i dit hoved. Gentag 20-30 gange i et roligt tempo. Lyt til lyden. Fjern hænderne langsomt og mærk stilheden bagefter.',
+      effect: 'En klassisk TCM-teknik der stimulerer Nyrernes energi til ørerne og beroliger indre uro.'
+    }
+  },
+  'Smerter i ekstremiteter': {
+    connection: 'Dine arme og ben er det sted, hvor kroppens indre tilstand møder bevægelse og handling. I TCM styrer hvert organ sit eget væv: Leveren nærer senerne og giver dem smidighed, Milten bærer musklerne og giver dem fylde, Nyrerne forankrer knoglerne og giver dem styrke. Blærens lange meridian løber ned langs hele bagsiden af kroppen og ud i benene, og smerter der afspejler ofte det du bærer og den vej du går. Smerter i leddene kan handle om fugt og vind der har sat sig — men også om stagnation i de organer der nærer det pågældende væv. En sene der er stram taler om Leveren. En muskel der er svag taler om Milten. En knogle der ømmer sig taler om Nyrerne. Din krop er præcis. Det handler om at lære dens sprog.',
+    reflections: [
+      'Hvor i dine arme eller ben sidder smerten — og er det sener, muskler eller knogler der taler? Mærk efter: er det stramt, svagt eller dybt?',
+      'Hvornår forværres det — i kulde, i fugt, i stilstand, eller i overbelastning? Mønsteret fortæller dig noget om hvad der forstyrrer flowet.',
+      'Hvad kan du ikke bevæge dig hen imod, eller hvad kan du ikke gå væk fra, i dit liv lige nu? Mærk om der er en forbindelse mellem din krops stivhed og din livssituations stivhed.'
+    ],
+    exercise: {
+      title: 'Ryst det løs',
+      duration: '1-2 minutter',
+      instruction: 'Stå med bløde knæ og begynd at ryste hele din krop — start fra benene og lad rystelserne brede sig opad. Lad armene, hænderne, skuldrene, hovedet ryste med. Ikke kontrolleret, ikke pænt — bare rysten. Forestil dig at du ryster stagnation, fugt og tyngde ud af dine led, sener og muskler. Gør det i et helt minut. Stop. Stå stille. Mærk hvad der har ændret sig.',
+      effect: 'Mobiliserer Qi og Blod i alle fire lemmer og hjælper Leveren, Milten og Nyrerne med at frigive stagnation.'
+    }
+  },
+  'Vejrtrækningsproblemer': {
+    connection: 'Lungerne styrer indåndingen — det ved de fleste. Men i TCM er vejrtrækning et samspil der rækker langt dybere. Nyrerne har til opgave at "gribe" den Qi som Lungerne tager ind og trække den helt ned i kroppens bund. Når Nyrerne er svage, bliver åndedrættet overfladisk — du kan trække vejret ind, men det når aldrig helt ned. Milten transformerer fugt, og overskydende slim i luftvejene er ofte Miltens signal om at den er overbelastet. Hjertet og Lungerne deler brystkassen og arbejder tæt sammen — Lungerne bevæger Qi, Hjertet bevæger Blod — og når det ene svækkes, mærker det andet det. Vejrtrækningsproblemer handler ikke kun om luft. De handler om din krops evne til at tage imod, føre ned og sende videre.',
+    reflections: [
+      'Hvornår mærker du mest til din vejrtrækning — i hvile, ved anstrengelse, i bestemte følelsesmæssige tilstande, eller i bestemte årstider?',
+      'Hvad giver dig luft i dit liv — og hvad tager det fra dig? Mærk om der er en forbindelse mellem de steder du føler dig begrænset, og din krops evne til at trække vejret frit.',
+      'Mærk efter: er din vejrtrækning overfladisk og hurtig, eller tung og besværet? Forskellen fortæller dig om det er Qi der mangler, eller bevægelse der er blokeret af slim, spænding eller følelser.'
+    ],
+    exercise: {
+      title: 'Ånd helt ned',
+      duration: '2-3 minutter',
+      instruction: 'Sæt dig med fødderne i gulvet og hænderne på låret. Træk vejret ind gennem næsen og forestil dig at luften ikke stopper i brystet men fortsætter ned — gennem mellemgulvet, gennem maven, helt ned til et punkt fire fingersbredder under navlen. Lad maven udvide sig blidt. Hold et øjeblik. Pust langsomt ud og mærk hvordan maven trækker sig ind. Med hver indånding, forestil dig at du sender rødder ned i jorden. Med hver udånding, lad spænding i brystet løsne.',
+      effect: 'Støtter Nyrernes evne til at gribe Qi og trække åndedrættet ned til dets naturlige dybde.'
+    }
   }
 };
 
@@ -6290,7 +6666,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts };
 })();
 
 const datasets = { en, da };

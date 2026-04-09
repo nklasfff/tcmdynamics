@@ -135,6 +135,23 @@ const translations = {
       'Under each organ you will find 8 themes with reflective questions to help you notice connections in your own experience. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
       'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
     ],
+    hubPatterns: 'Explore Your Patterns',
+    hubPatternsDesc: 'Start with what you notice — see all connections',
+    sectionPatternsTitle: 'Explore Your Patterns',
+    sectionPatternsSubtitle: 'Start with what you notice — see all connections',
+    menuPatterns: 'Explore Your Patterns',
+    searchPatterns: 'Patterns',
+    patternSearchPlaceholder: 'What do you notice?',
+    patternOrgans: 'Organs',
+    patternElementSeason: 'Element & Season',
+    patternOrganClock: 'The Organ Clock',
+    patternFromSeason: 'From Your Season',
+    patternGoDeeper: 'Go Deeper',
+    patternSeeThemes: 'See 8 themes',
+    patternExploreElement: 'Explore the element',
+    patternExploreSeason: 'Your Season',
+    patternNoResults: 'No connections found for',
+    patternTryAnother: 'Try another word or tap a tag below',
     hubSeasons: 'Your Season',
     hubSeasonsDesc: 'Seasonal wisdom based on where you are now',
     sectionSeasonsTitle: 'Your Season',
@@ -297,6 +314,23 @@ const translations = {
       'Under hvert organ finder du 8 temaer med reflekterende spørgsmål, der hjælper dig med at lægge mærke til sammenhænge i din egen oplevelse. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
       'Tryk på et organ, element eller meridian for at se detaljer. Brug fanenavigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
     ],
+    hubPatterns: 'Udforsk Dine Mønstre',
+    hubPatternsDesc: 'Start med det du mærker — se alle forbindelser',
+    sectionPatternsTitle: 'Udforsk Dine Mønstre',
+    sectionPatternsSubtitle: 'Start med det du mærker — se alle forbindelser',
+    menuPatterns: 'Udforsk Dine Mønstre',
+    searchPatterns: 'Mønstre',
+    patternSearchPlaceholder: 'Hvad mærker du?',
+    patternOrgans: 'Organer',
+    patternElementSeason: 'Element & Årstid',
+    patternOrganClock: 'Organuret',
+    patternFromSeason: 'Fra Din Årstid',
+    patternGoDeeper: 'Gå Dybere',
+    patternSeeThemes: 'Se 8 temaer',
+    patternExploreElement: 'Udforsk elementet',
+    patternExploreSeason: 'Din Årstid',
+    patternNoResults: 'Ingen forbindelser fundet for',
+    patternTryAnother: 'Prøv et andet ord eller tryk på et tag nedenfor',
     hubSeasons: 'Din Årstid',
     hubSeasonsDesc: 'Sæsonvisdom baseret på hvor du er nu',
     sectionSeasonsTitle: 'Din Årstid',
@@ -356,7 +390,7 @@ let previousScreen = 'home'; // Track where we came from for back navigation
 
 // Language-switchable data references
 let langData = getLangData(getLanguage());
-let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData } = langData;
+let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts } = langData;
 
 // ============================================
 // Theme Toggle
@@ -427,6 +461,7 @@ function switchLanguage() {
   renderSectionIntros();
   renderPracticeGrid();
   renderSeasonSection();
+  renderPatternSection();
   renderOrganGrid();
   renderMeridianGrid();
   renderOrganClock();
@@ -457,9 +492,9 @@ function updateUILanguage() {
 
   // Hub cards
   const hubCards = document.querySelectorAll('.hub-card');
-  const hubKeys = ['practice', 'seasons', 'organs', 'elements', 'meridians', 'overviews'];
-  const hubTitleKeys = ['hubPractice', 'hubSeasons', 'hubOrgans', 'hubElements', 'hubMeridians', 'hubOverviews'];
-  const hubDescKeys = ['hubPracticeDesc', 'hubSeasonsDesc', 'hubOrgansDesc', 'hubElementsDesc', 'hubMeridiansDesc', 'hubOverviewsDesc'];
+  const hubKeys = ['practice', 'seasons', 'patterns', 'organs', 'elements', 'meridians', 'overviews'];
+  const hubTitleKeys = ['hubPractice', 'hubSeasons', 'hubPatterns', 'hubOrgans', 'hubElements', 'hubMeridians', 'hubOverviews'];
+  const hubDescKeys = ['hubPracticeDesc', 'hubSeasonsDesc', 'hubPatternsDesc', 'hubOrgansDesc', 'hubElementsDesc', 'hubMeridiansDesc', 'hubOverviewsDesc'];
   hubCards.forEach(card => {
     const hub = card.dataset.hub;
     const idx = hubKeys.indexOf(hub);
@@ -475,6 +510,7 @@ function updateUILanguage() {
   const sectionMappings = [
     { screen: 'screen-section-practice', title: 'sectionPracticeTitle', subtitle: 'sectionPracticeSubtitle' },
     { screen: 'screen-section-seasons', title: 'sectionSeasonsTitle', subtitle: 'sectionSeasonsSubtitle' },
+    { screen: 'screen-section-patterns', title: 'sectionPatternsTitle', subtitle: 'sectionPatternsSubtitle' },
     { screen: 'screen-section-organs', title: 'sectionOrgansTitle', subtitle: 'sectionOrgansSubtitle' },
     { screen: 'screen-section-elements', title: 'sectionElementsTitle', subtitle: 'sectionElementsSubtitle' },
     { screen: 'screen-section-meridians', title: 'sectionMeridiansTitle', subtitle: 'sectionMeridiansSubtitle' },
@@ -573,7 +609,7 @@ function updateUILanguage() {
     const nav = link.dataset.nav;
     const text = link.childNodes[link.childNodes.length - 1];
     if (!text || text.nodeType !== 3) return;
-    const menuMap = { home: 'menuHome', practice: 'menuPractice', seasons: 'menuSeasons', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews' };
+    const menuMap = { home: 'menuHome', practice: 'menuPractice', seasons: 'menuSeasons', patterns: 'menuPatterns', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews' };
     if (menuMap[nav]) text.textContent = '\n          ' + t(menuMap[nav]) + '\n        ';
   });
 
@@ -618,6 +654,7 @@ const sectionToNav = {
   'home': 'home',
   'section-practice': 'practice',
   'section-seasons': 'home',
+  'section-patterns': 'home',
   'section-organs': 'organs',
   'section-elements': 'elements',
   'section-meridians': 'meridians',
@@ -1259,8 +1296,8 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'season'];
-  const sectionScreens = ['section-practice', 'section-seasons', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
+  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
+  const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
     // If we came from a section screen, go back there
@@ -1285,6 +1322,7 @@ function setupBackButtons() {
   // Detail screen back buttons
   document.getElementById('btn-back-practice').addEventListener('click', goBack);
   document.getElementById('btn-back-season').addEventListener('click', goBack);
+  document.getElementById('btn-back-pattern').addEventListener('click', goBack);
   document.getElementById('btn-back-organ').addEventListener('click', goBack);
   document.getElementById('btn-back-meridian').addEventListener('click', goBack);
   document.getElementById('btn-back-element').addEventListener('click', goBack);
@@ -1596,6 +1634,463 @@ function showSeasonDetail(seasonKey) {
   resetTabs('screen-season');
   showScreen('season');
 }
+// ============================================
+// Pattern Engine
+// ============================================
+
+const quickTags = {
+  en: [
+    { label: 'Headache', query: 'headache' },
+    { label: 'Sleep', query: 'sleep' },
+    { label: 'Fatigue', query: 'fatigue' },
+    { label: 'Anger', query: 'anger' },
+    { label: 'Anxiety', query: 'anxiety' },
+    { label: 'Grief', query: 'grief' },
+    { label: 'Fear', query: 'fear' },
+    { label: 'Worry', query: 'worry' },
+    { label: 'Digestion', query: 'digestion' },
+    { label: 'Back pain', query: 'back pain' },
+    { label: 'Skin', query: 'skin' },
+    { label: 'Eyes', query: 'eyes' },
+    { label: 'Cold sensitivity', query: 'cold sensitivity' },
+    { label: 'Menstruation', query: 'menstruation' }
+  ],
+  da: [
+    { label: 'Hovedpine', query: 'hovedpine' },
+    { label: 'Søvn', query: 'søvn' },
+    { label: 'Træthed', query: 'træthed' },
+    { label: 'Vrede', query: 'vrede' },
+    { label: 'Angst', query: 'angst' },
+    { label: 'Sorg', query: 'sorg' },
+    { label: 'Frygt', query: 'frygt' },
+    { label: 'Bekymring', query: 'bekymring' },
+    { label: 'Fordøjelse', query: 'fordøjelse' },
+    { label: 'Rygsmerter', query: 'rygsmerter' },
+    { label: 'Hud', query: 'hud' },
+    { label: 'Øjne', query: 'øjne' },
+    { label: 'Kuldefølsomhed', query: 'kuldefølsomhed' },
+    { label: 'Menstruation', query: 'menstruation' }
+  ]
+};
+
+function findPatterns(query) {
+  const q = query.toLowerCase().trim();
+  if (!q) return null;
+
+  const results = {
+    query: query,
+    symptomMatches: [],
+    organs: [],
+    elements: [],
+    meridians: [],
+    clockEntries: [],
+    seasonKeys: [],
+    practices: { food: [], yoga: [], acupressure: [] }
+  };
+
+  // 1. Search symptomReference
+  symptomReference.forEach(sr => {
+    if (sr.symptom.toLowerCase().includes(q) || q.includes(sr.symptom.toLowerCase())) {
+      results.symptomMatches.push(sr);
+      sr.organs.forEach(organName => {
+        const organ = organs.find(o => o.name === organName);
+        if (organ && !results.organs.find(o => o.id === organ.id)) {
+          results.organs.push(organ);
+        }
+      });
+    }
+  });
+
+  // 2. Search organ tags
+  organs.forEach(organ => {
+    if (results.organs.find(o => o.id === organ.id)) return;
+    if (organ.tags && organ.tags.some(tag => tag.toLowerCase().includes(q) || q.includes(tag.toLowerCase()))) {
+      results.organs.push(organ);
+    }
+  });
+
+  // 3. Search element tags
+  fiveElements.forEach(el => {
+    if (el.tags && el.tags.some(tag => tag.toLowerCase().includes(q) || q.includes(tag.toLowerCase()))) {
+      results.elements.push(el);
+    }
+  });
+
+  // 4. Search extraordinary meridian tags
+  extraordinaryMeridians.forEach(m => {
+    if (m.tags && m.tags.some(tag => tag.toLowerCase().includes(q) || q.includes(tag.toLowerCase()))) {
+      results.meridians.push(m);
+    }
+  });
+
+  // 5. Enrich: find elements for matched organs (if not already found)
+  results.organs.forEach(organ => {
+    const el = fiveElements.find(e => e.organs && e.organs.some(o => o === organ.name));
+    if (el && !results.elements.find(e => e.id === el.id)) {
+      results.elements.push(el);
+    }
+  });
+
+  // 6. Find organ clock entries
+  results.organs.forEach(organ => {
+    const clockEntry = organClock.find(c => c.organ === organ.name);
+    if (clockEntry && !results.clockEntries.find(c => c.organ === clockEntry.organ)) {
+      results.clockEntries.push(clockEntry);
+    }
+  });
+
+  // 7. Find season keys via elements
+  results.elements.forEach(el => {
+    const seasonKey = elementToSeason[el.name];
+    if (seasonKey && !results.seasonKeys.includes(seasonKey)) {
+      results.seasonKeys.push(seasonKey);
+    }
+  });
+
+  // 8. Gather season practices (food, yoga, acupressure) from matched seasons
+  results.seasonKeys.forEach(key => {
+    const season = seasonsData[key];
+    if (!season) return;
+    if (season.foodGuide) results.practices.food.push(...season.foodGuide.slice(0, 2));
+    if (season.yogaSequence) results.practices.yoga.push(...season.yogaSequence.slice(0, 1));
+    if (season.acupressure) results.practices.acupressure.push(...season.acupressure.slice(0, 1));
+  });
+
+  const hasResults = results.organs.length || results.elements.length || results.meridians.length;
+  return hasResults ? results : null;
+}
+
+function renderPatternSection() {
+  // Render organ clock in patterns screen
+  const clockContainer = document.getElementById('pattern-clock');
+  if (clockContainer) {
+    // Clone the organ clock rendering into this container
+    renderPatternClock(clockContainer);
+  }
+
+  // Render intro
+  const introEl = document.getElementById('intro-patterns');
+  if (introEl && sectionIntros.patterns) {
+    const intro = sectionIntros.patterns;
+    const preview = intro.paragraphs[0].split(/[.!?]/)[0] + '.';
+    introEl.innerHTML = `
+      <div class="section-intro-preview visible">
+        <p>${preview}</p>
+      </div>
+      <div class="section-intro-content collapsed">
+        ${intro.paragraphs.map(p => `<p>${p}</p>`).join('')}
+      </div>
+      <button class="section-intro-toggle" data-expanded="false">
+        <span class="toggle-text">${t('readMore')}</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="transform: rotate(180deg)">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+      </button>
+    `;
+    const toggle = introEl.querySelector('.section-intro-toggle');
+    const content = introEl.querySelector('.section-intro-content');
+    const previewEl = introEl.querySelector('.section-intro-preview');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.dataset.expanded === 'true';
+      toggle.dataset.expanded = expanded ? 'false' : 'true';
+      content.classList.toggle('collapsed', expanded);
+      previewEl.classList.toggle('visible', expanded);
+      toggle.querySelector('.toggle-text').textContent = expanded ? t('readMore') : t('hide');
+      toggle.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  }
+
+  // Render quick tags
+  const tagsContainer = document.getElementById('pattern-quick-tags');
+  if (tagsContainer) {
+    const tags = quickTags[getLanguage()] || quickTags.en;
+    tagsContainer.innerHTML = tags.map(tag =>
+      `<button class="pattern-tag" data-query="${tag.query}">${tag.label}</button>`
+    ).join('');
+
+    tagsContainer.querySelectorAll('.pattern-tag').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = document.getElementById('pattern-search-input');
+        input.value = btn.dataset.query;
+        executePatternSearch(btn.dataset.query);
+      });
+    });
+  }
+
+  // Setup search input
+  const searchInput = document.getElementById('pattern-search-input');
+  if (searchInput) {
+    searchInput.placeholder = t('patternSearchPlaceholder');
+    let debounceTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        executePatternSearch(searchInput.value);
+      }, 300);
+    });
+  }
+
+  // Clear previous results
+  const resultsContainer = document.getElementById('pattern-results');
+  if (resultsContainer) resultsContainer.innerHTML = '';
+}
+
+function renderPatternClock(container) {
+  const size = 300;
+  const cx = size / 2;
+  const cy = size / 2;
+  const outerR = size / 2 - 8;
+  const innerR = outerR * 0.42;
+  const textR = (outerR + innerR) / 2;
+  const timeR = outerR - 12;
+
+  const elementColors = {
+    'Metal': '#a8c4d6', 'Earth': '#deb87a', 'Fire': '#e88585', 'Water': '#7ba4da', 'Wood': '#5cc98e',
+    'Træ': '#5cc98e', 'Ild': '#e88585', 'Jord': '#deb87a', 'Vand': '#7ba4da'
+  };
+
+  const activeIndex = getActiveOrganIndex();
+
+  let segments = '';
+  organClock.forEach((item, i) => {
+    const startAngle = (i * 30 - 90) * Math.PI / 180;
+    const endAngle = ((i + 1) * 30 - 90) * Math.PI / 180;
+    const midAngle = ((i + 0.5) * 30 - 90) * Math.PI / 180;
+
+    const x1 = cx + outerR * Math.cos(startAngle);
+    const y1 = cy + outerR * Math.sin(startAngle);
+    const x2 = cx + outerR * Math.cos(endAngle);
+    const y2 = cy + outerR * Math.sin(endAngle);
+    const x3 = cx + innerR * Math.cos(endAngle);
+    const y3 = cy + innerR * Math.sin(endAngle);
+    const x4 = cx + innerR * Math.cos(startAngle);
+    const y4 = cy + innerR * Math.sin(startAngle);
+
+    const textX = cx + textR * Math.cos(midAngle);
+    const textY = cy + textR * Math.sin(midAngle);
+    const timeX = cx + timeR * Math.cos(midAngle);
+    const timeY = cy + timeR * Math.sin(midAngle);
+
+    const color = elementColors[item.element] || '#666';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const isActive = i === activeIndex;
+    const baseFill = isLight ? 0.15 : 0.2;
+    const fillOpacity = isActive ? '0.55' : String(baseFill);
+    const baseStroke = isLight ? 0.6 : 0.4;
+    const strokeOpacity = isActive ? '0.9' : String(baseStroke);
+    const strokeWidth = isActive ? '2' : '1';
+    const textWeight = isActive ? 'bold' : 'normal';
+
+    segments += `
+      <g class="clock-segment${isActive ? ' clock-segment-active' : ''}" data-organ-name="${item.organ}" style="cursor:pointer">
+        <path d="M${x1},${y1} A${outerR},${outerR} 0 0 1 ${x2},${y2} L${x3},${y3} A${innerR},${innerR} 0 0 0 ${x4},${y4} Z"
+              fill="${color}" fill-opacity="${fillOpacity}" stroke="${color}" stroke-opacity="${strokeOpacity}" stroke-width="${strokeWidth}"/>
+        <text x="${textX}" y="${textY}" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="${textWeight}">${item.organ}</text>
+        <text x="${timeX}" y="${timeY}" text-anchor="middle" dominant-baseline="central" class="clock-time" font-size="7">${item.time}</text>
+      </g>
+    `;
+  });
+
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString(getLanguage() === 'da' ? 'da-DK' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+  const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
+
+  container.innerHTML = `
+    <svg class="clock-svg pattern-clock-svg" viewBox="0 0 ${size} ${size}">
+      ${segments}
+      <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--bg-primary)" stroke="var(--border-light)" stroke-width="0.5"/>
+      <text x="${cx}" y="${cy - 14}" class="clock-center-text" font-size="11">${timeStr}</text>
+      <text x="${cx}" y="${cy + 2}" class="clock-center-text clock-center-active" font-size="11">${activeOrgan ? activeOrgan.organ : ''}</text>
+      <text x="${cx}" y="${cy + 16}" class="clock-center-text" font-size="8" fill="var(--text-muted)">${t('clockActiveNow')}</text>
+    </svg>
+    ${activeOrgan ? `
+      <div class="pattern-clock-wisdom">
+        <div class="clock-wisdom-label">${activeOrgan.organ} · ${activeOrgan.time}</div>
+        <p class="clock-wisdom-text">${activeOrgan.wisdom}</p>
+      </div>
+    ` : ''}
+  `;
+
+  // Click clock segment → search for that organ
+  container.querySelectorAll('.clock-segment').forEach(seg => {
+    seg.addEventListener('click', () => {
+      const name = seg.dataset.organName;
+      const input = document.getElementById('pattern-search-input');
+      if (input) input.value = name.toLowerCase();
+      executePatternSearch(name.toLowerCase());
+    });
+  });
+}
+
+function executePatternSearch(query) {
+  const resultsContainer = document.getElementById('pattern-results');
+  if (!resultsContainer) return;
+
+  if (!query || !query.trim()) {
+    resultsContainer.innerHTML = '';
+    return;
+  }
+
+  const results = findPatterns(query);
+
+  if (!results) {
+    resultsContainer.innerHTML = `
+      <div class="pattern-no-results">
+        <p>${t('patternNoResults')} "${query}"</p>
+        <p class="pattern-no-results-hint">${t('patternTryAnother')}</p>
+      </div>
+    `;
+    return;
+  }
+
+  let html = '';
+
+  // Find unique pattern text for matched symptoms
+  // patternTexts uses Danish keys, symptomReference may use English — try both + mapping
+  const symptomNameMap = {
+    'Headache': 'Hovedpine', 'Sleep problems': 'Søvnproblemer', 'Digestive problems': 'Fordøjelsesproblemer',
+    'Emotional instability': 'Emotionel ustabilitet', 'Skin problems': 'Hudproblemer', 'Back pain': 'Rygsmerter',
+    'Fatigue/low energy': 'Træthed/lav energi', 'Anxiety and fear': 'Angst og frygt', 'Eye problems': 'Øjenproblemer',
+    'Menstrual problems': 'Menstruationsproblemer', 'Edema/fluid retention': 'Ødemer/væskeophobning',
+    'Heart palpitations': 'Hjertebanken', 'Hearing problems/tinnitus': 'Høreproblemer/tinnitus',
+    'Pain in extremities': 'Smerter i ekstremiteter', 'Breathing problems': 'Vejrtrækningsproblemer'
+  };
+  let matchedPatternText = null;
+  if (results.symptomMatches.length > 0 && patternTexts) {
+    const symptomName = results.symptomMatches[0].symptom;
+    matchedPatternText = patternTexts[symptomName] || patternTexts[symptomNameMap[symptomName]] || null;
+  }
+
+  // Connection text (unique) — replaces old symptomReference.note
+  if (matchedPatternText) {
+    html += `<div class="pattern-section pattern-connection">
+      <div class="pattern-connection-text">${matchedPatternText.connection}</div>
+    </div>`;
+  }
+
+  // Organs section
+  if (results.organs.length) {
+    html += `<div class="pattern-section">
+      <h3 class="pattern-section-title">${t('patternOrgans')}</h3>
+      <div class="pattern-organ-chips">
+        ${results.organs.map(o => `
+          <button class="pattern-organ-chip" data-organ-id="${o.id}" style="--chip-color: ${o.color}">
+            <span class="pattern-chip-icon">${o.icon}</span>
+            <span class="pattern-chip-name">${o.name}</span>
+            <span class="pattern-chip-meta">${o.element} · ${o.yinYang}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Reflections (unique)
+  if (matchedPatternText && matchedPatternText.reflections) {
+    html += `<div class="pattern-section">
+      <h3 class="pattern-section-title">Mærk ind i dette</h3>
+      <ul class="pattern-reflections">
+        ${matchedPatternText.reflections.map(r => `<li>${r}</li>`).join('')}
+      </ul>
+    </div>`;
+  }
+
+  // Micro-exercise (unique)
+  if (matchedPatternText && matchedPatternText.exercise) {
+    const ex = matchedPatternText.exercise;
+    html += `<div class="pattern-section">
+      <h3 class="pattern-section-title">Prøv dette nu</h3>
+      <div class="pattern-exercise-card">
+        <h4>${ex.title}</h4>
+        <div class="pattern-exercise-duration">${ex.duration}</div>
+        <p>${ex.instruction}</p>
+        <div class="pattern-exercise-effect">${ex.effect}</div>
+      </div>
+    </div>`;
+  }
+
+  // Elements & Seasons section
+  if (results.elements.length) {
+    html += `<div class="pattern-section">
+      <h3 class="pattern-section-title">${t('patternElementSeason')}</h3>
+      <div class="pattern-element-links">
+        ${results.elements.map(el => {
+          const seasonKey = elementToSeason[el.name];
+          const seasonName = seasonKey ? getSeasonName(seasonKey) : '';
+          return `
+            <button class="pattern-element-link" data-element-id="${el.id}" style="--el-color: ${el.color}">
+              <span class="pattern-el-name">${el.name}</span>
+              ${seasonName ? `<span class="pattern-el-season">· ${seasonName}</span>` : ''}
+            </button>
+          `;
+        }).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Organ clock section
+  if (results.clockEntries.length) {
+    html += `<div class="pattern-section">
+      <h3 class="pattern-section-title">${t('patternOrganClock')}</h3>
+      ${results.clockEntries.map(c => `
+        <div class="pattern-clock-entry">
+          <div class="pattern-clock-time">${c.organ} · ${c.time}</div>
+          <p class="pattern-clock-wisdom-text">${c.wisdom}</p>
+        </div>
+      `).join('')}
+    </div>`;
+  }
+
+  // Go deeper links
+  if (results.organs.length || results.elements.length || results.seasonKeys.length) {
+    html += `<div class="pattern-section pattern-deeper">
+      <h3 class="pattern-section-title">${t('patternGoDeeper')}</h3>
+      <div class="pattern-deeper-links">
+        ${results.organs.slice(0, 3).map(o => `
+          <button class="pattern-deeper-link" data-action="organ" data-id="${o.id}">→ ${o.name} — ${t('patternSeeThemes')}</button>
+        `).join('')}
+        ${results.elements.slice(0, 2).map(el => `
+          <button class="pattern-deeper-link" data-action="element" data-id="${el.id}">→ ${el.name} — ${t('patternExploreElement')}</button>
+        `).join('')}
+        ${results.seasonKeys.slice(0, 1).map(key => `
+          <button class="pattern-deeper-link" data-action="season" data-id="${key}">→ ${getSeasonName(key)} — ${t('patternExploreSeason')}</button>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+
+  resultsContainer.innerHTML = html;
+
+  // Attach click handlers
+  resultsContainer.querySelectorAll('.pattern-organ-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const organ = organs.find(o => o.id === chip.dataset.organId);
+      if (organ) showOrganDetail(organ);
+    });
+  });
+
+  resultsContainer.querySelectorAll('.pattern-element-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const el = fiveElements.find(e => e.id === link.dataset.elementId);
+      if (el) showElementDetail(el);
+    });
+  });
+
+  resultsContainer.querySelectorAll('.pattern-deeper-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const action = link.dataset.action;
+      const id = link.dataset.id;
+      if (action === 'organ') {
+        const organ = organs.find(o => o.id === id);
+        if (organ) showOrganDetail(organ);
+      } else if (action === 'element') {
+        const el = fiveElements.find(e => e.id === id);
+        if (el) showElementDetail(el);
+      } else if (action === 'season') {
+        showSeasonDetail(id);
+      }
+    });
+  });
+}
 
 // ============================================
 // Render Section Introductions
@@ -1679,6 +2174,9 @@ function handleNavigation(navId) {
       break;
     case 'seasons':
       showScreen('section-seasons');
+      break;
+    case 'patterns':
+      showScreen('section-patterns');
       break;
     case 'organs':
       showScreen('section-organs');
@@ -2228,6 +2726,7 @@ function init() {
   try { renderSectionIntros(); } catch(e) { console.error('renderSectionIntros:', e); }
   try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
   try { renderSeasonSection(); } catch(e) { console.error('renderSeasonSection:', e); }
+  try { renderPatternSection(); } catch(e) { console.error('renderPatternSection:', e); }
   try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
   try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }
   try { renderOrganClock(); } catch(e) { console.error('renderOrganClock:', e); }

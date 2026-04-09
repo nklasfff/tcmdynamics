@@ -2897,6 +2897,373 @@ body {
 }
 
 /* ============================================
+   Pattern Engine
+   ============================================ */
+
+.pattern-clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.pattern-clock-svg {
+  max-width: 300px;
+  width: 100%;
+}
+
+.pattern-clock-wisdom {
+  text-align: center;
+  margin-top: 12px;
+  padding: 0 16px;
+}
+
+.pattern-search-area {
+  margin-bottom: 24px;
+}
+
+.pattern-search-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.pattern-search-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.pattern-search-input:focus {
+  border-color: var(--accent-gold);
+}
+
+.pattern-quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.pattern-tag {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pattern-tag:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* Pattern Results */
+.pattern-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pattern-section {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pattern-section:last-child {
+  border-bottom: none;
+}
+
+.pattern-section-title {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin: 0 0 14px 0;
+}
+
+.pattern-organ-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pattern-organ-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--chip-color, var(--accent-gold));
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: left;
+}
+
+.pattern-organ-chip:hover {
+  transform: translateY(-1px);
+}
+
+.pattern-chip-icon {
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.pattern-chip-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.pattern-chip-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.pattern-note {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 8px 0 0 0;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+/* Element & Season Links */
+.pattern-element-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pattern-element-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pattern-element-link:hover {
+  transform: translateY(-1px);
+}
+
+.pattern-el-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.pattern-el-season {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Organ Clock in pattern results */
+.pattern-clock-entry {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.pattern-clock-time {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.pattern-clock-wisdom-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Season Practices */
+.pattern-practices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pattern-practice-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+
+.pattern-practice-type {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.pattern-practice-card strong {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.pattern-practice-card em {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.pattern-practice-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 4px 0 0 0;
+}
+
+/* Go Deeper */
+.pattern-deeper-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pattern-deeper-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pattern-deeper-link:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* No results */
+/* Pattern unique content */
+.pattern-connection-text {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.pattern-reflections {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pattern-reflections li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 8px;
+}
+
+.pattern-exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.pattern-exercise-card h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.pattern-exercise-duration {
+  font-size: 12px;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.pattern-exercise-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 12px 0;
+}
+
+.pattern-exercise-effect {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pattern-no-results {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-secondary);
+}
+
+.pattern-no-results p:first-child {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.pattern-no-results-hint {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ============================================
    Hamburger Overlay & Menu
    ============================================ */
 
