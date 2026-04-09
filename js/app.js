@@ -6,12 +6,12 @@ import { getLangData } from './data.js';
 // ============================================
 const translations = {
   en: {
-    pageTitle: 'The Patterns Behind — TCM in Practice',
+    pageTitle: 'The Patterns Behind — Explore Your Patterns',
     brandTitle: 'The Patterns Behind',
-    brandSubtitle: 'Traditional Chinese Medicine in Practice',
-    homeIntro: 'Explore organs, meridians and elements — and discover patterns in your practice.',
-    hubPractice: 'In Practice',
-    hubPracticeDesc: 'Guidance for dialogue and pattern discovery',
+    brandSubtitle: 'Traditional Chinese Medicine as Self-Exploration',
+    homeIntro: 'Explore organs, meridians and elements — and discover the patterns behind what you feel.',
+    hubPractice: 'Your Exploration',
+    hubPracticeDesc: 'A guide to exploring your own patterns',
     hubOrgans: 'The 12 Organs',
     hubOrgansDesc: 'Organ systems, meridians and the organ clock',
     hubElements: 'Five Elements',
@@ -19,9 +19,9 @@ const translations = {
     hubMeridians: 'The 8 Extraordinary',
     hubMeridiansDesc: 'Deeper energy systems and meridians',
     hubOverviews: 'Overviews',
-    hubOverviewsDesc: 'Quick reference for organs, symptoms and dialogue',
-    sectionPracticeTitle: 'In Practice',
-    sectionPracticeSubtitle: 'Guidance · Dialogue · Pattern Discovery',
+    hubOverviewsDesc: 'Quick reference for organs, symptoms and exploration',
+    sectionPracticeTitle: 'Your Exploration',
+    sectionPracticeSubtitle: 'Listening · Sensing · Pattern Discovery',
     sectionOrgansTitle: 'The 12 Organs',
     sectionOrgansSubtitle: 'Meridians & Organ Systems',
     sectionElementsTitle: 'Five Elements',
@@ -29,9 +29,9 @@ const translations = {
     sectionMeridiansTitle: 'The 8 Extraordinary',
     sectionMeridiansSubtitle: 'Deeper Energy Systems',
     sectionOverviewsTitle: 'Overviews',
-    sectionOverviewsSubtitle: 'Quick Reference · Organs · Meridians · Dialogue',
+    sectionOverviewsSubtitle: 'Quick Reference · Organs · Meridians · Exploration',
     navHome: 'Home',
-    navPractice: 'Practice',
+    navPractice: 'Explore',
     navOrgans: 'Organs',
     navElements: 'Elements',
     navMeridians: 'Meridians',
@@ -59,12 +59,12 @@ const translations = {
     searchOrgans: 'Organs',
     searchElements: 'Elements',
     searchMeridians: 'Extraordinary Meridians',
-    searchPractice: 'In Practice',
+    searchPractice: 'Your Exploration',
     searchFoundation: 'Core Principles',
     searchOverviews: 'Overviews',
     menuSections: 'Sections',
     menuHome: 'Home',
-    menuPractice: 'In Practice',
+    menuPractice: 'Your Exploration',
     menuOrgans: 'The 12 Organs',
     menuElements: 'Five Elements & Core Principles',
     menuMeridians: 'The 8 Extraordinary Meridians',
@@ -126,13 +126,13 @@ const translations = {
     symptomIntro: 'Tap a symptom to see the primary organs to investigate',
     aboutTitle: 'About The Patterns Behind',
     aboutBody: [
-      'The Patterns Behind is an app built as a companion tool to the material of the same name. It provides practitioners with a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
-      'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.'
+      'The Patterns Behind is an app for exploring yourself through the lens of Traditional Chinese Medicine. It invites you to discover the connections between your body, your emotions, your energy, and the rhythms of the natural world.',
+      'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with reflective questions and themes for self-exploration.'
     ],
     howtoTitle: 'How to Use the App',
     howtoBody: [
-      'Use the bottom navigation to quickly jump between sections. "In Practice" provides guidance for the conversation with your client and the eight foundational questions.',
-      'Under each organ you will find 8 mapping themes with concrete questions you can ask your client. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
+      'Use the bottom navigation to quickly jump between sections. "Your Exploration" offers a guide to sensing into your own patterns and eight windows into different aspects of your health.',
+      'Under each organ you will find 8 themes with reflective questions to help you notice connections in your own experience. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
       'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
     ],
     clockActiveNow: 'is active now',
@@ -142,12 +142,12 @@ const translations = {
     ariaCloseMenu: 'Close menu'
   },
   da: {
-    pageTitle: 'Mønstrene Bag — TCM i Praksis',
+    pageTitle: 'Mønstrene Bag — Udforsk Dine Mønstre',
     brandTitle: 'Mønstrene Bag',
-    brandSubtitle: 'Traditionel Kinesisk Medicin i Praksis',
-    homeIntro: 'Udforsk organer, meridianer og elementer — og opdag mønstre i din praksis.',
-    hubPractice: 'I Praksis',
-    hubPracticeDesc: 'Vejledning til dialog og mønsteropdagelse',
+    brandSubtitle: 'Traditionel Kinesisk Medicin som Selvudforskning',
+    homeIntro: 'Udforsk organer, meridianer og elementer — og opdag mønstrene bag det, du mærker.',
+    hubPractice: 'Din Udforskning',
+    hubPracticeDesc: 'En guide til at udforske dine egne mønstre',
     hubOrgans: 'De 12 Organer',
     hubOrgansDesc: 'Organsystemer, meridianer og organuret',
     hubElements: 'Fem Elementer',
@@ -155,9 +155,9 @@ const translations = {
     hubMeridians: 'De 8 Ekstraordinære',
     hubMeridiansDesc: 'Dybere energisystemer og meridianer',
     hubOverviews: 'Overblik',
-    hubOverviewsDesc: 'Hurtigreference for organer, symptomer og dialog',
-    sectionPracticeTitle: 'I Praksis',
-    sectionPracticeSubtitle: 'Vejledning · Dialog · Mønsteropdagelse',
+    hubOverviewsDesc: 'Hurtigreference for organer, symptomer og udforskning',
+    sectionPracticeTitle: 'Din Udforskning',
+    sectionPracticeSubtitle: 'Lytning · Fornemmelse · Mønsteropdagelse',
     sectionOrgansTitle: 'De 12 Organer',
     sectionOrgansSubtitle: 'Meridianer & Organsystemer',
     sectionElementsTitle: 'Fem Elementer',
@@ -165,9 +165,9 @@ const translations = {
     sectionMeridiansTitle: 'De 8 Ekstraordinære',
     sectionMeridiansSubtitle: 'Dybere Energisystemer',
     sectionOverviewsTitle: 'Overblik',
-    sectionOverviewsSubtitle: 'Hurtigreference · Organer · Meridianer · Dialog',
+    sectionOverviewsSubtitle: 'Hurtigreference · Organer · Meridianer · Udforskning',
     navHome: 'Hjem',
-    navPractice: 'Praksis',
+    navPractice: 'Udforsk',
     navOrgans: 'Organer',
     navElements: 'Elementer',
     navMeridians: 'Meridianer',
@@ -195,12 +195,12 @@ const translations = {
     searchOrgans: 'Organer',
     searchElements: 'Elementer',
     searchMeridians: 'Ekstraordinære Meridianer',
-    searchPractice: 'I Praksis',
+    searchPractice: 'Din Udforskning',
     searchFoundation: 'Grundprincipper',
     searchOverviews: 'Overblik',
     menuSections: 'Sektioner',
     menuHome: 'Hjem',
-    menuPractice: 'I Praksis',
+    menuPractice: 'Din Udforskning',
     menuOrgans: 'De 12 Organer',
     menuElements: 'Fem Elementer & Grundprincipper',
     menuMeridians: 'De 8 Ekstraordinære Meridianer',
@@ -262,13 +262,13 @@ const translations = {
     symptomIntro: 'Tryk på et symptom for at se de primære organer at undersøge',
     aboutTitle: 'Om Mønstrene Bag',
     aboutBody: [
-      'Mønstrene Bag er en app bygget som et følgeværktøj til materialet af samme navn. Den giver behandlere en praktisk reference til at forstå og kortlægge mønstre hos deres klienter baseret på Traditionel Kinesisk Medicin.',
-      'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element teori, organuret og de grundlæggende TCM-principper — alt præsenteret med konkrete spørgsmål og temaer til brug i praksis.'
+      'Mønstrene Bag er en app til at udforske dig selv gennem Traditionel Kinesisk Medicin. Den inviterer dig til at opdage forbindelserne mellem din krop, dine følelser, din energi og den naturlige verdens rytmer.',
+      'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element teori, organuret og de grundlæggende TCM-principper — alt præsenteret med reflekterende spørgsmål og temaer til selvudforskning.'
     ],
     howtoTitle: 'Sådan Bruger Du Appen',
     howtoBody: [
-      'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "I Praksis" giver vejledning til samtalen med din klient og de otte grundlæggende spørgsmål.',
-      'Under hvert organ finder du 8 kortlægningstemaer med konkrete spørgsmål du kan stille din klient. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
+      'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "Din Udforskning" tilbyder en guide til at mærke ind i dine egne mønstre og otte vinduer ind i forskellige aspekter af dit helbred.',
+      'Under hvert organ finder du 8 temaer med reflekterende spørgsmål, der hjælper dig med at lægge mærke til sammenhænge i din egen oplevelse. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
       'Tryk på et organ, element eller meridian for at se detaljer. Brug fanenavigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
     ],
     clockActiveNow: 'er aktivt nu',
@@ -304,7 +304,7 @@ let previousScreen = 'home'; // Track where we came from for back navigation
 
 // Language-switchable data references
 let langData = getLangData(getLanguage());
-let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } = langData;
+let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData } = langData;
 
 // ============================================
 // Theme Toggle
@@ -366,7 +366,7 @@ function switchLanguage() {
 
   // Swap data references
   langData = getLangData(newLang);
-  ({ organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure } = langData);
+  ({ organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData } = langData);
 
   // Update all UI text
   updateUILanguage();
