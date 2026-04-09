@@ -316,8 +316,9 @@ const seasonWelcomes = {
   vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
 };
 
-// Organ portraits — uses Danish content (EN translation pending)
+// Organ portraits + element portraits — uses Danish content (EN translation pending)
 const organPortraits = {};
+const elementPortraits = {};
 
 // Pattern texts — uses Danish content with English keys (full EN translation in Phase 4)
 const patternTexts = {
@@ -3309,7 +3310,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits, elementPortraits };
 })();
 
 const da = (() => {
@@ -3623,6 +3624,34 @@ const seasonWelcomes = {
   sensommer: 'Mærk dine fødder mod jorden. Mærk tyngden i din krop, det sted i dig der bare er — uden at skulle noget. Sensommeren tilhører Jord-elementet, den tid hvor alt modnes og frugterne hænger tungt. Mavesækken og Milten bærer denne energi: evnen til at tage imod, fordøje og omsætte — ikke kun mad, men alt det du møder i dit liv. Fugten i luften minder dig om den tyngde der opstår når du bekymrer dig for meget, grublerer for længe, giver for meget uden at fylde dig selv op. Mærk efter: bliver du næret af det du giver din tid til? Eller tærer det?',
   efteraar: 'Mærk din udånding. Mærk det øjeblik hvor du slipper luften — og med den, lidt af det du bærer. Efteråret tilhører Metal-elementet og bringer en klarhed der kan gøre ondt: hvad er væsentligt, og hvad skal du lade gå? Lungerne og Tyktarmen arbejder med netop dette — at tage det rene ind og slippe det overflødige. Tørheden i luften minder dig om sorg, om tab, om det der engang var. Men der er skønhed i at slippe. Mærk efter: hvad bærer du stadig, som ikke længere nærer dig?',
   vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens, den reserve du blev født med og den vitalitet der holder dig i live. Kulden inviterer dig til at hvile, men den kan også vække frygt — frygten for ikke at have nok, ikke at være nok. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
+};
+
+const elementPortraits = {
+  wood: [
+    'Mærk den kraft i dig der vil opad og fremad — den der har en retning, en plan, en længsel efter forandring. Det er Træ-elementet. Det bor i dine sener, i din fleksibilitet, i den energi der gør at du kan rejse dig om morgenen og bevæge dig ud i verden med vilje.',
+    'Træet hører til foråret og bæres af Leveren og Galdeblæren. Dets bevægelse er opad og udad, som en spire der presser sig gennem jord. Dets følelse er vrede — men ikke den blinde vrede. Den der vil noget. Den der siger: dette er ikke godt nok, dette skal ændre sig, dette fortjener bedre. Frustration er Træ-energi der ikke har fundet sin retning. Kreativitet er Træ-energi der har.',
+    'Mærk efter: flyder din energi frit, eller er du stiv, frustreret, fastlåst? Kan du bøje uden at knække? Træet viser dig din evne til at vokse — og din vilje til at gøre det.'
+  ],
+  fire: [
+    'Mærk det der varmer i dig. Den gnist der tænder når du møder et menneske du elsker, griner af noget uventet, eller mærker at du er fuldstændig til stede i et øjeblik. Det er Ild-elementet — det mest levende, det mest sårbare.',
+    'Ilden hører til sommeren og bæres af fire organer: Hjertet, Tyndtarmen, Pericardium og San Jiao. Dens bevægelse er udad og opad, som flammer der rækker mod himlen. Dens følelse er glæde — men også den uro der opstår når glæden ikke har rod. For meget Ild spreder sig, brænder ud, efterlader tomhed. For lidt Ild gør livet gråt og fjernt.',
+    'Mærk efter: brænder din ild klart og varmt, eller er den flakkende og urolig? Kan du mærke forbindelsen — til dig selv, til andre, til noget der er større? Ilden viser dig din evne til at elske og være til stede.'
+  ],
+  earth: [
+    'Mærk det sted i dig der bare er. Uden at præstere, uden at bevæge sig, uden at søge. Bare stille, nærende, bærende tilstedeværelse. Det er Jord-elementet — midten af alt, det sted alting vender hjem til.',
+    'Jorden hører til sensommeren — den korte, rige pause mellem sommerens intensitet og efterårets klarhed — og bæres af Mavesækken og Milten. Dens bevægelse er indad og nedad, som frugt der modnes og falder. Dens følelse er bekymring — den tanke der maler rundt og rundt uden at lande, den omsorg der bliver til uro, den gavmildhed der tømmer dig fordi du glemmer at nære dig selv.',
+    'Mærk efter: er du i kontakt med din egen midte? Bliver du næret af det du giver din tid og energi til? Jorden viser dig din evne til at modtage — og til at omsætte det du modtager til noget der bærer dig.'
+  ],
+  metal: [
+    'Mærk din udånding. Det øjeblik hvor du slipper noget — luft, spænding, en tanke, et håb. Der er en skarphed i det, en klarhed, og måske en smerte. Det er Metal-elementet.',
+    'Metal hører til efteråret og bæres af Lungerne og Tyktarmen. Dets bevægelse er indad og nedad, som blade der falder — en bevægelse mod det essentielle, det rene, det der bliver tilbage når alt det overflødige er skrællet væk. Dets følelse er sorg — ikke som svaghed, men som respekt for det der var, og accept af at det er forbi.',
+    'Mærk efter: hvad holder du fast i, som du burde lade gå? Og hvad er det væsentlige, det ufravigeligt dit, som bliver tilbage? Metal viser dig din evne til at slippe — og til at finde skønhed i det der er rent og simpelt.'
+  ],
+  water: [
+    'Mærk stilheden i dig. Den der findes under tankerne, under følelserne, under al den aktivitet der fylder din dag. Dybt nede, som grundvand, er der noget der bare er — stille, mørkt og fuld af potentiale. Det er Vand-elementet.',
+    'Vand hører til vinteren og bæres af Nyrerne og Blæren. Dets bevægelse er nedad og indad — den mest stille af alle bevægelser, den der trækker sig tilbage, samler kraft og venter. Dets følelse er frygt — den eksistentielle usikkerhed der melder sig når du er alene med dig selv, når præstationen stopper, når der ikke er mere at gøre. Men under frygten ligger visdom. Og under visdommen ligger tillid — en dyb, ordløs tillid til at livet bærer.',
+    'Mærk efter: tør du blive stille? Tør du hvile uden at fylde stilheden med noget? Vand viser dig din dybeste reserve — og din evne til at stole på den.'
+  ]
 };
 
 const organPortraits = {
@@ -6754,7 +6783,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits, elementPortraits };
 })();
 
 const datasets = { en, da };

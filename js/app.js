@@ -126,14 +126,15 @@ const translations = {
     symptomIntro: 'Tap a symptom to see the primary organs to investigate',
     aboutTitle: 'About The Patterns Behind',
     aboutBody: [
-      'The Patterns Behind is an app for exploring yourself through the lens of Traditional Chinese Medicine. It invites you to discover the connections between your body, your emotions, your energy, and the rhythms of the natural world.',
-      'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with reflective questions and themes for self-exploration.'
+      'This app is inspired by Isabelle Evita Søndergaard\'s book The 5 Seasons of Energy and uses Traditional Chinese Medicine as a language for understanding connections in the body. TCM sees the body as a unified system of organs, elements, emotions and seasons that all influence each other — and that all speak to you through what you notice in your daily life.',
+      'This app is not a diagnosis, and it does not replace a practitioner. It is an invitation to listen to your body with curiosity and openness — to notice patterns, connections and rhythms you may always have felt, but never had a language for.',
+      'You are your own best source of knowledge about yourself. This app simply gives you a language to listen with.'
     ],
     howtoTitle: 'How to Use the App',
     howtoBody: [
-      'Use the bottom navigation to quickly jump between sections. "Your Exploration" offers a guide to sensing into your own patterns and eight windows into different aspects of your health.',
-      'Under each organ you will find 8 themes with reflective questions to help you notice connections in your own experience. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
-      'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
+      'Start where you are. When you open the app, you land in your season — the time of year that is shaping your energy, your emotions and your body\'s needs right now. That is your starting point, not a coincidence.',
+      'The organ clock shows you what is active right now. Each organ has its time of day, and the organ that is active now can tell you something about what you feel. Use the search when you notice something specific — start with what you experience and let the app show you the connections.',
+      'Go deeper when you are ready. Behind each symptom, each organ and each element are layers of understanding that open when you are curious. There is no right order. Follow what calls to you.'
     ],
     hubPatterns: 'Explore Your Patterns',
     hubPatternsDesc: 'Start with what you notice — see all connections',
@@ -305,14 +306,15 @@ const translations = {
     symptomIntro: 'Tryk på et symptom for at se de primære organer at undersøge',
     aboutTitle: 'Om Mønstrene Bag',
     aboutBody: [
-      'Mønstrene Bag er en app til at udforske dig selv gennem Traditionel Kinesisk Medicin. Den inviterer dig til at opdage forbindelserne mellem din krop, dine følelser, din energi og den naturlige verdens rytmer.',
-      'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element teori, organuret og de grundlæggende TCM-principper — alt præsenteret med reflekterende spørgsmål og temaer til selvudforskning.'
+      'Denne app er inspireret af Isabelle Evita Søndergaards bog De 5 Årstiders Energi og bygger på Traditionel Kinesisk Medicin som et sprog for at forstå forbindelser i kroppen. TCM ser kroppen som et samlet system af organer, elementer, følelser og årstider, der alle påvirker hinanden — og som alle taler til dig gennem det du mærker i din hverdag.',
+      'Appen er ikke en diagnose, og den erstatter ikke en behandler. Den er en invitation til at lytte til din krop med nysgerrighed og åbenhed — til at lægge mærke til mønstre, forbindelser og rytmer du måske altid har mærket, men ikke har haft et sprog for.',
+      'Du er din egen bedste kilde til viden om dig selv. Denne app giver dig bare et sprog at lytte med.'
     ],
     howtoTitle: 'Sådan Bruger Du Appen',
     howtoBody: [
-      'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "Din Udforskning" tilbyder en guide til at mærke ind i dine egne mønstre og otte vinduer ind i forskellige aspekter af dit helbred.',
-      'Under hvert organ finder du 8 temaer med reflekterende spørgsmål, der hjælper dig med at lægge mærke til sammenhænge i din egen oplevelse. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
-      'Tryk på et organ, element eller meridian for at se detaljer. Brug fanenavigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
+      'Start der hvor du er. Når du åbner appen, lander du i din årstid — den tid af året der lige nu former din energi, dine følelser og din krops behov. Det er dit udgangspunkt, ikke en tilfældighed.',
+      'Organur viser dig hvad der er aktivt lige nu. Hvert organ har sin tid på døgnet, og det organ der er aktivt netop nu, kan fortælle dig noget om det du mærker. Brug søgningen når du mærker noget bestemt — start med det du oplever og lad appen vise dig forbindelserne.',
+      'Gå dybere når du er klar. Bag hvert symptom, hvert organ og hvert element ligger lag af forståelse der åbner sig, når du er nysgerrig. Der er ingen rigtig rækkefølge. Følg det der kalder på dig.'
     ],
     hubPatterns: 'Udforsk Dine Mønstre',
     hubPatternsDesc: 'Start med det du mærker — se alle forbindelser',
@@ -390,7 +392,7 @@ let previousScreen = 'home'; // Track where we came from for back navigation
 
 // Language-switchable data references
 let langData = getLangData(getLanguage());
-let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits } = langData;
+let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits, elementPortraits } = langData;
 
 // ============================================
 // Theme Toggle
