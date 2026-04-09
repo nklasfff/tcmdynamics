@@ -887,8 +887,11 @@ function showElementDetail(el) {
     <span class="meta-tag">${el.climate}</span>
   `;
 
+  // Use element portrait if available, fallback to original description
+  const elPortrait = elementPortraits && elementPortraits[el.id];
+  const elDescParagraphs = elPortrait && elPortrait.length > 0 ? elPortrait : el.description;
   document.getElementById('element-description').innerHTML =
-    el.description.map(p => `<p>${p}</p>`).join('');
+    elDescParagraphs.map(p => `<p>${p}</p>`).join('');
 
   document.getElementById('element-organs-nav').innerHTML = `
     <div class="element-organs-section">
@@ -1075,8 +1078,11 @@ function showOrganDetail(organ) {
     <span class="meta-tag">${organ.time}</span>
   `;
 
+  // Use organ portrait if available, fallback to original description
+  const portrait = organPortraits && organPortraits[organ.id];
+  const descriptionParagraphs = portrait && portrait.length > 0 ? portrait : organ.description;
   document.getElementById('organ-description').innerHTML =
-    organ.description.map(p => `<p>${p}</p>`).join('');
+    descriptionParagraphs.map(p => `<p>${p}</p>`).join('');
 
   document.getElementById('organ-themes').innerHTML =
     organ.themes.map((theme, i) => `
