@@ -1648,10 +1648,14 @@ const quickTags = {
     { label: 'Grief', query: 'grief' },
     { label: 'Fear', query: 'fear' },
     { label: 'Worry', query: 'worry' },
+    { label: 'Frustration', query: 'frustration' },
     { label: 'Digestion', query: 'digestion' },
     { label: 'Back pain', query: 'back pain' },
     { label: 'Skin', query: 'skin' },
     { label: 'Eyes', query: 'eyes' },
+    { label: 'Palpitations', query: 'palpitations' },
+    { label: 'Bloating', query: 'bloating' },
+    { label: 'Stiffness', query: 'stiffness' },
     { label: 'Cold sensitivity', query: 'cold sensitivity' },
     { label: 'Menstruation', query: 'menstruation' }
   ],
@@ -1664,18 +1668,74 @@ const quickTags = {
     { label: 'Sorg', query: 'sorg' },
     { label: 'Frygt', query: 'frygt' },
     { label: 'Bekymring', query: 'bekymring' },
+    { label: 'Frustration', query: 'frustration' },
     { label: 'Fordøjelse', query: 'fordøjelse' },
     { label: 'Rygsmerter', query: 'rygsmerter' },
     { label: 'Hud', query: 'hud' },
     { label: 'Øjne', query: 'øjne' },
+    { label: 'Hjertebanken', query: 'hjertebanken' },
+    { label: 'Oppustethed', query: 'oppustethed' },
+    { label: 'Stivhed', query: 'stivhed' },
     { label: 'Kuldefølsomhed', query: 'kuldefølsomhed' },
     { label: 'Menstruation', query: 'menstruation' }
   ]
 };
 
+// Synonym mapping for everyday language → search terms
+const synonyms = {
+  en: {
+    'tired': 'fatigue', 'exhausted': 'fatigue', 'no energy': 'fatigue',
+    'stomach': 'digestion', 'belly': 'digestion', 'gut': 'digestion', 'nausea': 'digestion',
+    'sad': 'grief', 'depressed': 'grief', 'melancholy': 'grief',
+    'angry': 'anger', 'irritable': 'anger', 'rage': 'anger',
+    'scared': 'fear', 'terrified': 'fear', 'dread': 'fear',
+    'worried': 'worry', 'overthinking': 'worry', 'ruminating': 'worry',
+    'neck': 'back pain', 'shoulder': 'back pain', 'lower back': 'back pain',
+    'rash': 'skin', 'eczema': 'skin', 'acne': 'skin', 'dry skin': 'skin',
+    'vision': 'eyes', 'blurry': 'eyes', 'dry eyes': 'eyes',
+    'tinnitus': 'hearing', 'ringing': 'hearing',
+    'swelling': 'edema', 'swollen': 'edema', 'water retention': 'edema',
+    'heart racing': 'palpitations', 'heart beating': 'palpitations',
+    'breathing': 'breathing problems', 'shortness of breath': 'breathing problems', 'asthma': 'breathing problems',
+    'period': 'menstruation', 'pms': 'menstruation', 'cycle': 'menstruation',
+    'insomnia': 'sleep', 'waking up': 'sleep', 'restless': 'sleep'
+  },
+  da: {
+    'træt': 'træthed', 'udmattet': 'træthed', 'ingen energi': 'træthed', 'drænet': 'træthed',
+    'mave': 'fordøjelse', 'mavepine': 'fordøjelse', 'kvalme': 'fordøjelse', 'oppustet': 'fordøjelse',
+    'trist': 'sorg', 'ked af det': 'sorg', 'melankolsk': 'sorg', 'nedtrykt': 'sorg',
+    'sur': 'vrede', 'irriteret': 'vrede', 'rasende': 'vrede', 'irritabel': 'vrede',
+    'bange': 'frygt', 'skræmt': 'frygt', 'ræd': 'frygt',
+    'ked': 'sorg', 'grubleri': 'bekymring', 'overtænker': 'bekymring',
+    'nakke': 'rygsmerter', 'skulder': 'rygsmerter', 'lænd': 'rygsmerter', 'lændesmerter': 'rygsmerter',
+    'udslæt': 'hud', 'eksem': 'hud', 'akne': 'hud', 'tør hud': 'hud',
+    'syn': 'øjne', 'sløret syn': 'øjne', 'tørre øjne': 'øjne',
+    'tinnitus': 'hørelse', 'ringen': 'hørelse', 'susen': 'hørelse',
+    'hævet': 'ødemer', 'hævelse': 'ødemer', 'opsvulmet': 'ødemer',
+    'hjertet banker': 'hjertebanken', 'hjertet hamrer': 'hjertebanken',
+    'vejrtrækning': 'vejrtrækningsproblemer', 'åndenød': 'vejrtrækningsproblemer', 'astma': 'vejrtrækningsproblemer',
+    'menstruation': 'menstruation', 'mensen': 'menstruation', 'cyklus': 'menstruation', 'pms': 'menstruation',
+    'søvnløs': 'søvn', 'vågner': 'søvn', 'urolig': 'søvn',
+    'ondt i hovedet': 'hovedpine', 'migræne': 'hovedpine',
+    'smerte': 'smerter', 'ondt': 'smerter'
+  }
+};
+
+// Match helper: checks if query words match target (order-independent)
+function wordsMatch(query, target) {
+  const qWords = query.toLowerCase().split(/\s+/);
+  const tLower = target.toLowerCase();
+  return qWords.every(w => tLower.includes(w));
+}
+
 function findPatterns(query) {
-  const q = query.toLowerCase().trim();
+  let q = query.toLowerCase().trim();
   if (!q) return null;
+
+  // Apply synonym mapping
+  const lang = getLanguage();
+  const syns = synonyms[lang] || synonyms.en;
+  if (syns[q]) q = syns[q];
 
   const results = {
     query: query,
@@ -1688,9 +1748,10 @@ function findPatterns(query) {
     practices: { food: [], yoga: [], acupressure: [] }
   };
 
-  // 1. Search symptomReference
+  // 1. Search symptomReference (word-order independent + substring)
   symptomReference.forEach(sr => {
-    if (sr.symptom.toLowerCase().includes(q) || q.includes(sr.symptom.toLowerCase())) {
+    const sLower = sr.symptom.toLowerCase();
+    if (sLower.includes(q) || q.includes(sLower) || wordsMatch(q, sr.symptom)) {
       results.symptomMatches.push(sr);
       sr.organs.forEach(organName => {
         const organ = organs.find(o => o.name === organName);
@@ -1701,29 +1762,38 @@ function findPatterns(query) {
     }
   });
 
-  // 2. Search organ tags
+  // 2. Search organ tags (word-order independent)
   organs.forEach(organ => {
     if (results.organs.find(o => o.id === organ.id)) return;
-    if (organ.tags && organ.tags.some(tag => tag.toLowerCase().includes(q) || q.includes(tag.toLowerCase()))) {
+    if (organ.tags && organ.tags.some(tag => {
+      const tLower = tag.toLowerCase();
+      return tLower.includes(q) || q.includes(tLower) || wordsMatch(q, tag);
+    })) {
       results.organs.push(organ);
     }
   });
 
   // 3. Search element tags
   fiveElements.forEach(el => {
-    if (el.tags && el.tags.some(tag => tag.toLowerCase().includes(q) || q.includes(tag.toLowerCase()))) {
+    if (el.tags && el.tags.some(tag => {
+      const tLower = tag.toLowerCase();
+      return tLower.includes(q) || q.includes(tLower) || wordsMatch(q, tag);
+    })) {
       results.elements.push(el);
     }
   });
 
   // 4. Search extraordinary meridian tags
   extraordinaryMeridians.forEach(m => {
-    if (m.tags && m.tags.some(tag => tag.toLowerCase().includes(q) || q.includes(tag.toLowerCase()))) {
+    if (m.tags && m.tags.some(tag => {
+      const tLower = tag.toLowerCase();
+      return tLower.includes(q) || q.includes(tLower) || wordsMatch(q, tag);
+    })) {
       results.meridians.push(m);
     }
   });
 
-  // 5. Enrich: find elements for matched organs (if not already found)
+  // 5. Enrich: find elements for matched organs
   results.organs.forEach(organ => {
     const el = fiveElements.find(e => e.organs && e.organs.some(o => o === organ.name));
     if (el && !results.elements.find(e => e.id === el.id)) {
@@ -1731,7 +1801,16 @@ function findPatterns(query) {
     }
   });
 
-  // 6. Find organ clock entries
+  // 6. Find organ clock entries — symptomReference matches first (ranking)
+  const symptomOrganIds = new Set(results.symptomMatches.flatMap(sr => {
+    return sr.organs.map(name => organs.find(o => o.name === name)?.id).filter(Boolean);
+  }));
+  results.organs.sort((a, b) => {
+    const aScore = symptomOrganIds.has(a.id) ? 0 : 1;
+    const bScore = symptomOrganIds.has(b.id) ? 0 : 1;
+    return aScore - bScore;
+  });
+
   results.organs.forEach(organ => {
     const clockEntry = organClock.find(c => c.organ === organ.name);
     if (clockEntry && !results.clockEntries.find(c => c.organ === clockEntry.organ)) {
@@ -1747,7 +1826,7 @@ function findPatterns(query) {
     }
   });
 
-  // 8. Gather season practices (food, yoga, acupressure) from matched seasons
+  // 8. Gather season practices
   results.seasonKeys.forEach(key => {
     const season = seasonsData[key];
     if (!season) return;
@@ -1810,6 +1889,9 @@ function renderPatternSection() {
 
     tagsContainer.querySelectorAll('.pattern-tag').forEach(btn => {
       btn.addEventListener('click', () => {
+        // Highlight active tag
+        tagsContainer.querySelectorAll('.pattern-tag').forEach(t => t.classList.remove('pattern-tag-active'));
+        btn.classList.add('pattern-tag-active');
         const input = document.getElementById('pattern-search-input');
         input.value = btn.dataset.query;
         executePatternSearch(btn.dataset.query);

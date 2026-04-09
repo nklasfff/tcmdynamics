@@ -2970,6 +2970,12 @@ body {
   color: var(--accent-gold);
 }
 
+.pattern-tag-active {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: rgba(184, 149, 46, 0.1);
+}
+
 /* Pattern Results */
 .pattern-results {
   display: flex;
