@@ -1,260 +1,154 @@
-# CLAUDE.md — The Patterns Behind (TCM App)
+# Mønstrene Bag — TCM App
 
-## Project Overview
+## Projektoversigt
+En dansk single-page webapp om Traditionel Kinesisk Medicin (TCM). Viser organer, meridianer, fem elementer og grundprincipper i et æstetisk, mobil-first design med mørkt/lyst tema.
 
-**The Patterns Behind** ("Mønstrene Bag" in Danish) is a bilingual (English/Danish) single-page web application for Traditional Chinese Medicine practitioners. It serves as a companion reference tool covering the 12 organs, 8 extraordinary meridians, five element theory, the organ clock, and core TCM principles — with concrete questions and themes for use in clinical practice.
+**Forfatter:** Anne Marie Clement (fagligt TCM-indhold)
+**Sprog:** Kun dansk
+**Status:** Fungerende app, klar til fase 1
 
-**Author:** Anne Marie Clement
+---
+
+## VIGTIGT — Aktuel udviklingsstatus og næste skridt
+
+### Vinkelskift (Fase 1 — NÆSTE OPGAVE)
+Al tekst i appen henvender sig aktuelt til en **behandler/terapeut** ("Når vi møder vores klient...", "spørg din klient...", "som behandlere er vi interesserede i..."). Dette skal omskrives så appen henvender sig direkte til **brugeren selv** — et menneske der udforsker sine egne mønstre.
+
+**Tone:** Poetisk, reflekterende, nysgerrig, åben, inviterende. Isabelle Evita Søndergaard dikterer ikke hvad der er rigtigt, men inviterer til selv at mærke, føle og reflektere.
+
+**Konkrete ændringer:**
+- `practiceGuide` (linje 13-241 i data.js): 6 sektioner skrevet til behandlere → omskriv til selvudforskning
+- `sectionIntros` (linje 242-290): Introtekster refererer til "praksis", "klienter" → omskriv
+- `organs` (linje 291-1413): De 8 temaer under hvert organ har spørgsmål som "spørg din klient..." → "mærk ind i...", "spørg dig selv..."
+- UI-tekster i app.js: Hub-kort beskrivelser, sektionstitler, about-tekst
+- index.html: "I Praksis" → evt. nyt navn, "Vejledning til samtale og mønsterafdækning" → nyt
+
+**Hvad der IKKE skal ændres:**
+- Organuret, fem-element cyklusser, oversigter — primært faktuelt
+- Illustrationer, navigation, søgning, design
+- keyPoints, correspondences, seasonalWisdom — mest fagligt indhold
+
+### Tagging (også Fase 1)
+Tilføj nøgleord/tags til organer, meridianer, elementer (følelser, krop, temaer) som fundament for mønster-motoren i fase 3.
+
+---
+
+## Faseplan
+
+### Fase 1: Vinkelskift + Tagging (NÆSTE)
+- Omskriv al tekst fra "behandler → klient" til "selvudforskning"
+- Tilføj tags til organer, meridianer, elementer
+
+### Fase 2: Årstids-oplevelsen
+- Ny "Din Årstid" sektion baseret på aktuel dato
+- Viser filosofi, kost, yoga, meditation, vejrtrækning, akupressur, symptomer, journal
+- Data ligger allerede i `js/seasons-data.js`
+
+### Fase 3: Mønster-motor + Levende organur
+- Organuret centralt: aktiv organ + lav-energi organ + årstid + meridian
+- Krydsreferencer: følelse/symptom → alle lag
+- "Udforsk dine mønstre"
+
+### Fase 4: Forfinelse
+- Øvelser som valgfrit lag
+- Finjustering af mønster-algoritme
+
+---
+
+## Samarbejdskontext
+- **Isabelle Evita Søndergaard:** Forfatter af bestselleren "De 5 Årstiders Energi". Niklas indleder samarbejde med hende. Appen skal bruges i lyset af hendes årstidsmodel. Hendes data er gemt i `js/seasons-data.js`.
+- **Anne Marie Clement:** Oprindelig forfatter af det faglige TCM-indhold.
+
+---
 
 ## Tech Stack
+- Vanilla HTML/CSS/JS — ingen frameworks, ingen build-step
+- ES Modules (`import`/`export`)
+- Google Fonts: Cormorant Garamond (headings) + Inter (body)
+- LocalStorage til tema-præference
 
-- **Pure HTML/CSS/JS** — no frameworks, no build tools, no package manager
-- **ES Modules** — `<script type="module">` loading
-- **No backend** — static files served directly
-- **Fonts**: Cormorant Garamond (serif headings) + Inter (sans-serif body) via Google Fonts
-- **Hosting**: Static file serving (works with any HTTP server)
+---
 
-## File Structure
+## Filstruktur
 
 ```
 tcmdynamics/
-  index.html              — Main HTML (709 lines). All screens, navigation, SVG illustrations
-  css/style.css           — All styles (2817 lines). Dark/light themes, animations, responsive
-  js/app.js               — App logic (1954 lines). Navigation, rendering, search, i18n
-  js/data.js              — Combined bilingual data (6249 lines). EN + DA datasets in IIFEs
-  js/data-en.js           — English dataset standalone (3115 lines, legacy - not imported)
-  js/data-da.js           — Danish dataset standalone (3116 lines, legacy - not imported)
-  js/i18n.js              — UI translations standalone (368 lines, legacy - inlined into app.js)
-  README.md               — Project readme
-  CLAUDE.md               — This file
-  Billede 08.10.2025 kl. 16.14.png  — Hero image (book cover photo)
-  yinyang_highres.png     — Yin-yang asset (not currently used in app)
+├── index.html              # Alle screens (610 linjer)
+├── css/style.css           # Alt CSS inkl. lys/mørk tema (2589 linjer)
+├── js/
+│   ├── data.js             # Alt TCM-indhold (3116 linjer, 164KB)
+│   ├── app.js              # Al app-logik og rendering (1486 linjer)
+│   └── seasons-data.js     # Isabelles 5 årstiders data (998 linjer) — NY
+├── CLAUDE.md               # Denne fil
+├── README.md               # Projektoversigt
+├── .gitignore
+├── Billede 08.10.2025...   # Hero-billede
+└── yinyang_highres.png     # Ubrugt
 ```
 
-### Important: Active vs Legacy Files
-
-Only these files are actively used by the app:
-- `index.html` → `css/style.css` + `js/app.js` → `js/data.js`
-
-The files `data-en.js`, `data-da.js`, and `i18n.js` are **legacy** — their contents have been consolidated into `data.js` and `app.js` respectively. This was done to eliminate a multi-file ES module import chain that caused silent browser loading failures.
-
-## Architecture
-
-### Module Import Chain
-
+### Import-kæde
 ```
-index.html
-  └── <script type="module" src="js/app.js">
-        └── import { getLangData } from './data.js'
+index.html → css/style.css
+           → js/app.js → js/data.js
 ```
+`seasons-data.js` er IKKE importeret endnu — klar til fase 2.
 
-Only ONE import. The i18n translations are inlined directly in `app.js`.
+---
 
-### data.js Structure
+## Data-exports i data.js
+| Export | Linje | Beskrivelse |
+|--------|-------|-------------|
+| `APP_INFO` | 4 | Titel, undertitel, forfatter |
+| `practiceGuide` | 13 | 6 sektioner: "I Praksis" — SKAL OMSKRIVES i fase 1 |
+| `sectionIntros` | 242 | Introtekster — SKAL OMSKRIVES i fase 1 |
+| `organs` | 291 | 12 organer med temaer — TEMAER SKAL OMSKRIVES i fase 1 |
+| `organOverviews` | 1414 | Kort oversigt per organ |
+| `meridianOverviews` | 1780 | Kort oversigt per meridian |
+| `symptomReference` | 1859 | Symptom-referencedata |
+| `conversationStructure` | 1940 | Samtalestruktur — SKAL OMSKRIVES i fase 1 |
+| `extraordinaryMeridians` | 1987 | 8 ekstraordinære meridianer |
+| `organClock` | 2792 | 12 tidsperioder i organur |
+| `fiveElements` | 2810 | 5 elementer med korrespondencer |
+| `tcmFoundation` | 3066 | Grundprincipper: Qi, Yin/Yang, Jing/Shen |
 
-Contains both language datasets wrapped in IIFEs to avoid name collisions:
+## seasons-data.js struktur
+5 årstider (foraar, sommer, sensommer, efteraar, vinter), hver med 16 sektioner:
+element, organpar, energi, farve, philosophy, yogaSequence, meditations, breathingExercises, eftSequence, foodGuide, acupressure, journalPrompts, symptoms, organClockGuide, weeklyCheckIn, milestones
 
-```javascript
-const en = (() => {
-  // All English data with const declarations
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, ... };
-})();
+---
 
-const da = (() => {
-  // All Danish data with const declarations
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, ... };
-})();
+## Navigation / Screens
 
-export function getLangData(lang) {
-  return datasets[lang] || datasets.en;
-}
-```
+### Hub (startside) → 5 hub-kort:
+1. **I Praksis** → `screen-section-practice` → `screen-practice`
+2. **De 12 Organer** → `screen-section-organs` → `screen-organ` (3 tabs)
+3. **Fem Elementer** → `screen-section-elements` → `screen-element` (4 tabs)
+4. **De 8 Ekstraordinære** → `screen-section-meridians` → `screen-meridian` (4 tabs)
+5. **Oversigter** → `screen-section-overviews` → `screen-overview` (4 tabs)
 
-**Data exports per language:**
-| Export | Type | Description |
-|--------|------|-------------|
-| `APP_INFO` | object | App title, subtitle, author |
-| `practiceGuide` | array[6] | Practice guide sections with questions |
-| `sectionIntros` | object | Intro texts for each section screen |
-| `organs` | array[12] | Full organ data (id, name, element, time, 8 themes, key points) |
-| `organOverviews` | array[12] | Quick-reference organ summaries |
-| `meridianOverviews` | array[8] | Quick-reference meridian summaries |
-| `symptomReference` | array[15] | Symptom-to-organ mapping |
-| `conversationStructure` | object | Dialogue guide structure |
-| `extraordinaryMeridians` | array[8] | 8 extraordinary meridian details |
-| `organClock` | array[12] | Organ clock time slots with wisdom |
-| `fiveElements` | array[5] | Five element data (correspondences, cycles, seasonal) |
-| `tcmFoundation` | object | Core principles (yinYang, elementCycles, organPartnership) |
+### Bundnavigation: Hjem, I Praksis, Organer, Elementer, Meridianer
+### Hamburger-menu: Alle sektioner + info-sider
+### Søgefunktion: Global søgning
 
-### app.js Structure
-
-**Top section (lines 1-300):** Imports, i18n translations object (~150 keys for EN + DA), language state management (`t()`, `getLanguage()`, `setLanguage()`), app state variables.
-
-**Language system (lines 293-537):** Theme toggle, language toggle, `switchLanguage()` swaps all data refs and re-renders, `updateUILanguage()` updates ~40 static HTML elements.
-
-**Core rendering functions:**
-| Function | Lines | Purpose |
-|----------|-------|---------|
-| `renderOrganGrid()` | 563 | 12 organ cards with click handlers |
-| `renderMeridianGrid()` | 585 | 8 meridian cards |
-| `renderOrganClock()` | 617 | SVG clock with 12 segments, active organ highlight |
-| `renderElements()` | 713 | 5 element cards |
-| `renderFoundation()` | 740 | Core principles cards (yin-yang, cycles, partnerships) |
-| `renderPracticeGrid()` | 1256 | Practice guide cards |
-| `renderSectionIntros()` | 1301 | Section intro texts with expand/collapse |
-| `renderOverviewOrganGrid()` | 1659 | Overview tab: organs |
-| `renderOverviewMeridianGrid()` | 1688 | Overview tab: meridians |
-| `renderOverviewSymptoms()` | 1717 | Overview tab: symptoms |
-| `renderOverviewConversation()` | 1762 | Overview tab: dialogue |
-
-**Detail views:**
-| Function | Lines | Purpose |
-|----------|-------|---------|
-| `showOrganDetail(organ)` | 959 | Organ detail with 3 tabs: Overview, 8 Themes, Key Points |
-| `showElementDetail(el)` | 771 | Element detail with 4 tabs: Overview, Correspondences, Cycles, Seasonal |
-| `showMeridianDetail(meridian)` | 1010 | Meridian detail with 4 tabs: Overview, Pathway, Key Points, 8 Themes |
-| `showFoundationDetail(key)` | 887 | Foundation principle detail |
-| `showPracticeDetail(item)` | 1282 | Practice guide detail |
-| `showOverviewDetail(ov, type)` | 1788 | Overview detail view |
-
-**Navigation & UI:**
-| Function | Lines | Purpose |
-|----------|-------|---------|
-| `showScreen(screenId)` | 542 | Screen switching |
-| `setupBottomNav()` | 1352 | Bottom tab bar (Home, Practice, Organs, Elements, Meridians) |
-| `setupHubCards()` | 1396 | Hub card click handlers |
-| `setupHamburger()` | 1411 | Hamburger menu open/close/navigation |
-| `setupSearch()` | 1498 | Global search overlay |
-| `performSearch(query)` | 1536 | Search across all data collections |
-| `setupTabs()` | 1157 | Tab switching within detail views |
-| `init()` | 1918 | Main initialization, all wrapped in try/catch |
-
-### Screen Navigation Map
-
-```
-Home (screen-home)
-  ├── In Practice (screen-section-practice)
-  │     └── Practice Detail (screen-practice)
-  ├── The 12 Organs (screen-section-organs)
-  │     ├── Organ Detail (screen-organ) — 3 tabs
-  │     └── Organ Clock (inline SVG)
-  ├── Five Elements (screen-section-elements)
-  │     ├── Element Detail (screen-element) — 4 tabs
-  │     └── Foundation Detail (screen-foundation)
-  ├── The 8 Extraordinary (screen-section-meridians)
-  │     └── Meridian Detail (screen-meridian) — 4 tabs
-  └── Overviews (screen-section-overviews) — 4 tabs
-        └── Overview Detail (screen-overview)
-```
-
-## Bilingual System
-
-### How it works
-
-1. **Language preference** stored in `localStorage('app-language')`, defaults to `'en'`
-2. **UI strings** via `t('key')` function — ~150 keys covering all static text
-3. **Data content** via `getLangData(lang)` — swaps entire dataset
-4. **Language toggle** in hamburger menu — calls `switchLanguage()` which:
-   - Swaps language in localStorage
-   - Reloads data references via destructuring
-   - Calls `updateUILanguage()` for static HTML
-   - Re-renders all dynamic content
-
-### Adding a new translation key
-
-1. Add key to both `en` and `da` objects in the `translations` constant at top of `app.js`
-2. Use `t('yourKey')` in rendering code
+---
 
 ## Design System
 
-### Color Palette
+### Farver (mørkt tema — standard)
+- Baggrund: `#0a0a0a`, Tekst: `#e8e0d0`, Accent guld: `#b8952e`
+- Træ `#2e7a2e`, Ild `#c43c3c`, Jord `#b8952e`, Metal `#9a9a9a`, Vand `#2e4a8b`
 
-**Theme-adaptive CSS variables** (defined in `:root` and `[data-theme="light"]`):
+### Fonte
+- Headings: Cormorant Garamond (300-600)
+- Body: Inter (300-600)
 
-| Variable | Dark Mode | Light Mode | Usage |
-|----------|-----------|------------|-------|
-| `--bg-primary` | `#0a0a0f` | `#f5f2ec` | Page background |
-| `--bg-card` | `#1a1a25` | `#ffffff` | Card backgrounds |
-| `--text-primary` | `#f0ece4` | `#1a1815` | Main text |
-| `--accent-gold` | `#c8a96e` | `#9a7b3c` | Accent color, borders |
+---
 
-**Illustration palette** (CSS vars, theme-adaptive):
-| Variable | Dark | Light | Usage |
-|----------|------|-------|-------|
-| `--ill-jade` | `#6bcfa0` | `#3a9b6e` | Practice, healing |
-| `--ill-rose` | `#e0908f` | `#c06a6a` | Warmth, heart |
-| `--ill-indigo` | `#8e9fdc` | `#6672b0` | Depth, wisdom |
-| `--ill-amber` | `#deb87a` | `#b8903a` | Light, clarity |
-| `--ill-silver` | `#a0bcc8` | `#6a95a8` | Purity, metal |
-
-**Five Element colors** (CSS vars + JS):
-| Element | CSS Var | Dark | Light |
-|---------|---------|------|-------|
-| Wood | `--el-wood` | `#5cc98e` | `#3a9b6e` |
-| Fire | `--el-fire` | `#e88585` | `#c87070` |
-| Earth | `--el-earth` | `#deb87a` | `#b8903a` |
-| Metal | `--el-metal` | `#a8c4d6` | `#6a95a8` |
-| Water | `--el-water` | `#7ba4da` | `#5580b8` |
-
-These same hex values are used in JS for organ cards, clock segments, cycle diagrams.
-
-### Fonts
-
-- **Headings**: `var(--font-serif)` = Cormorant Garamond
-- **Body**: `var(--font-sans)` = Inter
-- **Chinese characters**: Noto Serif SC / Songti SC / SimSun
-
-### Animations
-
-All defined in `style.css`:
-- `pulse-glow` — soft opacity/scale breathing
-- `float-drift` — gentle vertical float
-- `dash-flow` — flowing dashes along paths
-- `ripple-expand` — expanding circles that fade
-- `shimmer-line` — light sweep along strokes
-- `orbit` / `orbit-wide` / `orbit-mid` — circular orbiting at different radii
-- `rotate-slow` — continuous rotation
-
-### Illustrations
-
-**Hub cards** (5): Abstract SVG icons with animations — practice (two connected points), organs (clock ring), elements (pentagon), meridians (flowing waves), overviews (intersecting circles).
-
-**Section headers** (5): Larger animated SVGs — practice (ripple + threads), organs (orbiting particles), elements (pentagon cycle), meridians (flowing paths + nodes), overviews (glowing cards).
-
-**Breathing characters**: Chinese characters (氣, 道, 聽, 臟, 行, 陰陽, 經) placed as decorative dividers with low opacity.
-
-## Development Notes
-
-### Running locally
-
-Any static HTTP server works. No build step needed.
-
+## Kør lokalt
 ```bash
-# Python
 python3 -m http.server 8000
-
-# Node
-npx serve .
 ```
 
-Open `http://localhost:8000` in browser.
-
-### Common gotchas
-
-1. **ES Modules require HTTP** — opening `index.html` directly via `file://` won't work in Chrome/Safari due to CORS. Must use a local HTTP server.
-2. **Import chain must stay flat** — `app.js` imports only from `data.js`. Adding secondary imports (data.js importing from other files) has caused silent module loading failures in browsers. Keep the single-import structure.
-3. **Template literals** — when using `t('key')` inside HTML strings, always use backticks, not single quotes. Single-quoted strings with `${t('key')}` inside will silently break because the nested single quotes terminate the outer string.
-4. **localStorage** — wrapped in try/catch at module scope because it can throw in private browsing or restrictive environments.
-5. **Element colors in JS** — hardcoded hex values in app.js (organ clock, cycle diagrams, foundation cards) must match the CSS `--el-*` variable values. Update both when changing.
-
-### Key conventions
-
-- All `init()` steps wrapped in individual `try/catch` blocks for resilience
-- Screen switching via `showScreen(screenId)` — sets `.active` class
-- Data references are `let` bindings that get reassigned on language switch
-- Hub card `data-hub`, nav `data-nav`, tab `data-tab` attributes drive navigation
-- Search covers: organs, elements, meridians, practice, foundation, overviews
-
-## Git Branch
-
-Development branch: `claude/commit-and-push-hi8qC`
+## Git
+- Branch: `main`
+- Remote: `origin/main`
