@@ -875,7 +875,11 @@ function renderFoundation() {
 // ============================================
 // Element Detail
 // ============================================
+let _currentElement = null;
+
 function showElementDetail(el) {
+  _currentElement = el;
+
   document.getElementById('element-detail-icon').textContent = el.icon;
   document.getElementById('element-detail-name').textContent = el.name;
   document.getElementById('element-detail-chinese').textContent = el.chineseName;
@@ -884,18 +888,17 @@ function showElementDetail(el) {
     <span class="meta-tag"><span class="dot" style="background: ${el.color}"></span> ${el.season}</span>
     <span class="meta-tag">${el.emotion}</span>
     <span class="meta-tag">${el.direction}</span>
-    <span class="meta-tag">${el.climate}</span>
   `;
 
-  // Use element portrait if available, fallback to original description
+  // Portrait text
   const elPortrait = elementPortraits && elementPortraits[el.id];
-  const elDescParagraphs = elPortrait && elPortrait.length > 0 ? elPortrait : el.description;
+  const paragraphs = elPortrait && elPortrait.length > 0 ? elPortrait : el.description;
   document.getElementById('element-description').innerHTML =
-    elDescParagraphs.map(p => `<p>${p}</p>`).join('');
+    paragraphs.map(p => `<p>${p}</p>`).join('');
 
+  // Organ links
   document.getElementById('element-organs-nav').innerHTML = `
     <div class="element-organs-section">
-      <h3 class="element-organs-title">${el.name} ${t('elementOrgansTitle')}</h3>
       ${el.organs.map(organName => {
         const organ = organs.find(o => o.name === organName);
         if (!organ) return '';
@@ -922,57 +925,96 @@ function showElementDetail(el) {
     });
   });
 
-  document.getElementById('element-correspondences').innerHTML =
-    el.correspondences.map(c => `
-      <div class="correspondence-item">
-        <div class="correspondence-label">${c.label}</div>
-        <div class="correspondence-value">${c.value}</div>
-      </div>
-    `).join('');
+  // Portrait links
+  const seasonKey = elementToSeason[el.name];
+  let linksHtml = '';
 
-  document.getElementById('element-cycles').innerHTML = `
-    <div class="cycle-section">
-      <h3 class="cycle-title">${t('generatingCycle')}</h3>
-      <div class="cycle-diagram">
-        ${renderMiniCycle(el, 'sheng')}
-      </div>
-      <div class="cycle-card">
-        <div class="cycle-card-label">${t('nourishedBy')}</div>
-        <p class="cycle-card-text">${el.cycles.generating}</p>
-      </div>
-      <div class="cycle-card">
-        <div class="cycle-card-label">${t('nourishes')}</div>
-        <p class="cycle-card-text">${el.cycles.generated}</p>
-      </div>
-    </div>
-    <div class="cycle-section">
-      <h3 class="cycle-title">${t('controllingCycle')}</h3>
-      <div class="cycle-card">
-        <div class="cycle-card-label">${t('controls')}</div>
-        <p class="cycle-card-text">${el.cycles.controlling}</p>
-      </div>
-      <div class="cycle-card">
-        <div class="cycle-card-label">${t('controlledBy')}</div>
-        <p class="cycle-card-text">${el.cycles.controlledBy}</p>
-      </div>
-    </div>
-  `;
+  if (seasonKey) {
+    linksHtml += `
+      <button class="portrait-link" data-season-key="${seasonKey}">
+        <span class="portrait-link-text">${getSeasonName(seasonKey)}</span>
+        <span class="portrait-link-arrow">→</span>
+      </button>
+    `;
+  }
 
-  document.getElementById('element-seasonal').innerHTML = `
-    <div class="seasonal-header">
-      <div class="seasonal-season">${el.season}</div>
-      <div class="seasonal-subtitle">${t('seasonalGuidance')} ${el.name} ${t('seasonalGuidanceSuffix')}</div>
-    </div>
-    ${el.seasonalWisdom.map((tip, i) => `
-      <div class="seasonal-tip">
-        <span class="seasonal-tip-number">${i + 1}</span>
-        <p class="seasonal-tip-text">${tip}</p>
-      </div>
-    `).join('')}
-  `;
+  if (el.cycles) {
+    linksHtml += `
+      <button class="portrait-link" id="element-link-cycles">
+        <span class="portrait-link-text">Hvad nærer dit ${el.name}</span>
+        <span class="portrait-link-arrow">→</span>
+      </button>
+    `;
+  }
 
-  resetTabs('screen-element');
+  document.getElementById('element-portrait-links').innerHTML = linksHtml;
+
+  // Attach handlers
+  document.querySelectorAll('#element-portrait-links [data-season-key]').forEach(link => {
+    link.addEventListener('click', () => showSeasonDetail(link.dataset.seasonKey));
+  });
+
+  document.getElementById('element-link-cycles')?.addEventListener('click', () => {
+    showElementCycles(el);
+  });
+
   showScreen('element');
+}
+
+// ============================================
+// Element Cycles (new screen)
+// ============================================
+function showElementCycles(el) {
+  document.getElementById('element-cycles-icon').textContent = el.icon;
+  document.getElementById('element-cycles-title').textContent = el.name;
+
+  const cycles = el.cycles;
+  if (!cycles) return;
+
+  // Find related elements by name
+  const findElByName = (name) => fiveElements.find(e => e.name === name);
+
+  let html = '';
+
+  if (cycles.generating) {
+    const motherName = cycles.generating.split(' ')[0]; // First word is usually the element name
+    html += `
+      <div class="cycle-flow-item">
+        <div class="cycle-flow-label">${t('nourishedBy')}</div>
+        <p class="cycle-flow-text">${cycles.generating}</p>
+      </div>
+    `;
+  }
+
+  if (cycles.generated) {
+    html += `
+      <div class="cycle-flow-item">
+        <div class="cycle-flow-label">${t('nourishes')}</div>
+        <p class="cycle-flow-text">${cycles.generated}</p>
+      </div>
+    `;
+  }
+
+  if (cycles.controlling) {
+    html += `
+      <div class="cycle-flow-item">
+        <div class="cycle-flow-label">${t('controls')}</div>
+        <p class="cycle-flow-text">${cycles.controlling}</p>
+      </div>
+    `;
+  }
+
+  if (cycles.controlledBy) {
+    html += `
+      <div class="cycle-flow-item">
+        <div class="cycle-flow-label">${t('controlledBy')}</div>
+        <p class="cycle-flow-text">${cycles.controlledBy}</p>
+      </div>
+    `;
+  }
+
+  document.getElementById('element-cycles-flow').innerHTML = html;
+  showScreen('element-cycles');
 }
 
 function renderMiniCycle(currentEl, type) {
@@ -1379,7 +1421,7 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'organ-themes', 'element', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
+  const detailScreens = ['organ', 'organ-themes', 'element', 'element-cycles', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
   const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
@@ -1408,6 +1450,7 @@ function setupBackButtons() {
   document.getElementById('btn-back-pattern').addEventListener('click', goBack);
   document.getElementById('btn-back-organ').addEventListener('click', goBack);
   document.getElementById('btn-back-organ-themes').addEventListener('click', goBack);
+  document.getElementById('btn-back-element-cycles').addEventListener('click', goBack);
   document.getElementById('btn-back-meridian').addEventListener('click', goBack);
   document.getElementById('btn-back-element').addEventListener('click', goBack);
   document.getElementById('btn-back-foundation').addEventListener('click', goBack);

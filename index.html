@@ -529,7 +529,7 @@
       </main>
     </div>
 
-    <!-- Element Detail Screen -->
+    <!-- Element Portrait Screen -->
     <div id="screen-element" class="screen">
       <header class="detail-header">
         <button class="back-btn" id="btn-back-element">
@@ -544,30 +544,27 @@
         <div class="detail-meta" id="element-detail-meta"></div>
       </header>
 
-      <main class="detail-content">
-        <nav class="detail-tabs">
-          <button class="tab active" data-tab="el-overview">Overview</button>
-          <button class="tab" data-tab="el-correspondences">Correspondences</button>
-          <button class="tab" data-tab="el-cycles">Cycles</button>
-          <button class="tab" data-tab="el-seasonal">Seasonal Wisdom</button>
-        </nav>
+      <main class="portrait-content">
+        <div class="portrait-text" id="element-description"></div>
+        <div class="element-organs-nav" id="element-organs-nav"></div>
+        <div class="portrait-links" id="element-portrait-links"></div>
+      </main>
+    </div>
 
-        <div class="tab-content active" id="tab-el-overview">
-          <div class="description-text" id="element-description"></div>
-          <div class="element-organs-nav" id="element-organs-nav"></div>
+    <!-- Element Cycles Screen -->
+    <div id="screen-element-cycles" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-element-cycles">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="element-cycles-icon"></span>
+          <h1 id="element-cycles-title"></h1>
         </div>
-
-        <div class="tab-content" id="tab-el-correspondences">
-          <div class="correspondences-list" id="element-correspondences"></div>
-        </div>
-
-        <div class="tab-content" id="tab-el-cycles">
-          <div class="cycles-content" id="element-cycles"></div>
-        </div>
-
-        <div class="tab-content" id="tab-el-seasonal">
-          <div class="seasonal-list" id="element-seasonal"></div>
-        </div>
+      </header>
+      <main class="portrait-content">
+        <div class="cycles-flow" id="element-cycles-flow"></div>
       </main>
     </div>
 

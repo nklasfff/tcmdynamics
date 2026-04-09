@@ -381,17 +381,17 @@ const organPortraits = {
   ]
 };
 const elementPortraits = {
-  wood: [
+  trae: [
     'Mærk den kraft i dig der vil opad og fremad — den der har en retning, en plan, en længsel efter forandring. Det er Træ-elementet. Det bor i dine sener, i din fleksibilitet, i den energi der gør at du kan rejse dig om morgenen og bevæge dig ud i verden med vilje.',
     'Træet hører til foråret og bæres af Leveren og Galdeblæren. Dets bevægelse er opad og udad, som en spire der presser sig gennem jord. Dets følelse er vrede — men ikke den blinde vrede. Den der vil noget. Den der siger: dette er ikke godt nok, dette skal ændre sig, dette fortjener bedre. Frustration er Træ-energi der ikke har fundet sin retning. Kreativitet er Træ-energi der har.',
     'Mærk efter: flyder din energi frit, eller er du stiv, frustreret, fastlåst? Kan du bøje uden at knække? Træet viser dig din evne til at vokse — og din vilje til at gøre det.'
   ],
-  fire: [
+  ild: [
     'Mærk det der varmer i dig. Den gnist der tænder når du møder et menneske du elsker, griner af noget uventet, eller mærker at du er fuldstændig til stede i et øjeblik. Det er Ild-elementet — det mest levende, det mest sårbare.',
     'Ilden hører til sommeren og bæres af fire organer: Hjertet, Tyndtarmen, Pericardium og San Jiao. Dens bevægelse er udad og opad, som flammer der rækker mod himlen. Dens følelse er glæde — men også den uro der opstår når glæden ikke har rod. For meget Ild spreder sig, brænder ud, efterlader tomhed. For lidt Ild gør livet gråt og fjernt.',
     'Mærk efter: brænder din ild klart og varmt, eller er den flakkende og urolig? Kan du mærke forbindelsen — til dig selv, til andre, til noget der er større? Ilden viser dig din evne til at elske og være til stede.'
   ],
-  earth: [
+  jord: [
     'Mærk det sted i dig der bare er. Uden at præstere, uden at bevæge sig, uden at søge. Bare stille, nærende, bærende tilstedeværelse. Det er Jord-elementet — midten af alt, det sted alting vender hjem til.',
     'Jorden hører til sensommeren — den korte, rige pause mellem sommerens intensitet og efterårets klarhed — og bæres af Mavesækken og Milten. Dens bevægelse er indad og nedad, som frugt der modnes og falder. Dens følelse er bekymring — den tanke der maler rundt og rundt uden at lande, den omsorg der bliver til uro, den gavmildhed der tømmer dig fordi du glemmer at nære dig selv.',
     'Mærk efter: er du i kontakt med din egen midte? Bliver du næret af det du giver din tid og energi til? Jorden viser dig din evne til at modtage — og til at omsætte det du modtager til noget der bærer dig.'
@@ -401,7 +401,7 @@ const elementPortraits = {
     'Metal hører til efteråret og bæres af Lungerne og Tyktarmen. Dets bevægelse er indad og nedad, som blade der falder — en bevægelse mod det essentielle, det rene, det der bliver tilbage når alt det overflødige er skrællet væk. Dets følelse er sorg — ikke som svaghed, men som respekt for det der var, og accept af at det er forbi.',
     'Mærk efter: hvad holder du fast i, som du burde lade gå? Og hvad er det væsentlige, det ufravigeligt dit, som bliver tilbage? Metal viser dig din evne til at slippe — og til at finde skønhed i det der er rent og simpelt.'
   ],
-  water: [
+  vand: [
     'Mærk stilheden i dig. Den der findes under tankerne, under følelserne, under al den aktivitet der fylder din dag. Dybt nede, som grundvand, er der noget der bare er — stille, mørkt og fuld af potentiale. Det er Vand-elementet.',
     'Vand hører til vinteren og bæres af Nyrerne og Blæren. Dets bevægelse er nedad og indad — den mest stille af alle bevægelser, den der trækker sig tilbage, samler kraft og venter. Dets følelse er frygt — den eksistentielle usikkerhed der melder sig når du er alene med dig selv, når præstationen stopper, når der ikke er mere at gøre. Men under frygten ligger visdom. Og under visdommen ligger tillid — en dyb, ordløs tillid til at livet bærer.',
     'Mærk efter: tør du blive stille? Tør du hvile uden at fylde stilheden med noget? Vand viser dig din dybeste reserve — og din evne til at stole på den.'
@@ -3715,17 +3715,17 @@ const seasonWelcomes = {
 };
 
 const elementPortraits = {
-  wood: [
+  trae: [
     'Mærk den kraft i dig der vil opad og fremad — den der har en retning, en plan, en længsel efter forandring. Det er Træ-elementet. Det bor i dine sener, i din fleksibilitet, i den energi der gør at du kan rejse dig om morgenen og bevæge dig ud i verden med vilje.',
     'Træet hører til foråret og bæres af Leveren og Galdeblæren. Dets bevægelse er opad og udad, som en spire der presser sig gennem jord. Dets følelse er vrede — men ikke den blinde vrede. Den der vil noget. Den der siger: dette er ikke godt nok, dette skal ændre sig, dette fortjener bedre. Frustration er Træ-energi der ikke har fundet sin retning. Kreativitet er Træ-energi der har.',
     'Mærk efter: flyder din energi frit, eller er du stiv, frustreret, fastlåst? Kan du bøje uden at knække? Træet viser dig din evne til at vokse — og din vilje til at gøre det.'
   ],
-  fire: [
+  ild: [
     'Mærk det der varmer i dig. Den gnist der tænder når du møder et menneske du elsker, griner af noget uventet, eller mærker at du er fuldstændig til stede i et øjeblik. Det er Ild-elementet — det mest levende, det mest sårbare.',
     'Ilden hører til sommeren og bæres af fire organer: Hjertet, Tyndtarmen, Pericardium og San Jiao. Dens bevægelse er udad og opad, som flammer der rækker mod himlen. Dens følelse er glæde — men også den uro der opstår når glæden ikke har rod. For meget Ild spreder sig, brænder ud, efterlader tomhed. For lidt Ild gør livet gråt og fjernt.',
     'Mærk efter: brænder din ild klart og varmt, eller er den flakkende og urolig? Kan du mærke forbindelsen — til dig selv, til andre, til noget der er større? Ilden viser dig din evne til at elske og være til stede.'
   ],
-  earth: [
+  jord: [
     'Mærk det sted i dig der bare er. Uden at præstere, uden at bevæge sig, uden at søge. Bare stille, nærende, bærende tilstedeværelse. Det er Jord-elementet — midten af alt, det sted alting vender hjem til.',
     'Jorden hører til sensommeren — den korte, rige pause mellem sommerens intensitet og efterårets klarhed — og bæres af Mavesækken og Milten. Dens bevægelse er indad og nedad, som frugt der modnes og falder. Dens følelse er bekymring — den tanke der maler rundt og rundt uden at lande, den omsorg der bliver til uro, den gavmildhed der tømmer dig fordi du glemmer at nære dig selv.',
     'Mærk efter: er du i kontakt med din egen midte? Bliver du næret af det du giver din tid og energi til? Jorden viser dig din evne til at modtage — og til at omsætte det du modtager til noget der bærer dig.'
@@ -3735,7 +3735,7 @@ const elementPortraits = {
     'Metal hører til efteråret og bæres af Lungerne og Tyktarmen. Dets bevægelse er indad og nedad, som blade der falder — en bevægelse mod det essentielle, det rene, det der bliver tilbage når alt det overflødige er skrællet væk. Dets følelse er sorg — ikke som svaghed, men som respekt for det der var, og accept af at det er forbi.',
     'Mærk efter: hvad holder du fast i, som du burde lade gå? Og hvad er det væsentlige, det ufravigeligt dit, som bliver tilbage? Metal viser dig din evne til at slippe — og til at finde skønhed i det der er rent og simpelt.'
   ],
-  water: [
+  vand: [
     'Mærk stilheden i dig. Den der findes under tankerne, under følelserne, under al den aktivitet der fylder din dag. Dybt nede, som grundvand, er der noget der bare er — stille, mørkt og fuld af potentiale. Det er Vand-elementet.',
     'Vand hører til vinteren og bæres af Nyrerne og Blæren. Dets bevægelse er nedad og indad — den mest stille af alle bevægelser, den der trækker sig tilbage, samler kraft og venter. Dets følelse er frygt — den eksistentielle usikkerhed der melder sig når du er alene med dig selv, når præstationen stopper, når der ikke er mere at gøre. Men under frygten ligger visdom. Og under visdommen ligger tillid — en dyb, ordløs tillid til at livet bærer.',
     'Mærk efter: tør du blive stille? Tør du hvile uden at fylde stilheden med noget? Vand viser dig din dybeste reserve — og din evne til at stole på den.'

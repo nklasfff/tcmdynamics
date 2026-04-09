@@ -2883,6 +2883,43 @@ body {
   margin: 0;
 }
 
+/* Element Cycles Flow */
+.cycles-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cycle-flow-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cycle-flow-item:first-child {
+  padding-top: 0;
+}
+
+.cycle-flow-item:last-child {
+  border-bottom: none;
+}
+
+.cycle-flow-label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.cycle-flow-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
 /* ============================================
    Season Section
    ============================================ */
