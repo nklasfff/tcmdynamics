@@ -461,6 +461,7 @@ function switchLanguage() {
   renderSectionIntros();
   renderPracticeGrid();
   renderSeasonSection();
+  renderPersonalHome();
   renderPatternSection();
   renderOrganGrid();
   renderMeridianGrid();
@@ -582,7 +583,7 @@ function updateUILanguage() {
     const nav = btn.dataset.nav;
     const span = btn.querySelector('span');
     if (!span) return;
-    const navMap = { home: 'navHome', practice: 'navPractice', organs: 'navOrgans', elements: 'navElements', meridians: 'navMeridians' };
+    const navMap = { home: 'navHome', practice: 'navPractice', seasons: 'navSeasons', organs: 'navOrgans', elements: 'navElements', meridians: 'navMeridians' };
     if (navMap[nav]) span.textContent = t(navMap[nav]);
   });
 
@@ -1839,6 +1840,103 @@ function findPatterns(query) {
   return hasResults ? results : null;
 }
 
+// ============================================
+// Personal Home Screen
+// ============================================
+function renderPersonalHome() {
+  // Season hero
+  const heroEl = document.getElementById('home-season-hero');
+  if (heroEl) {
+    const currentKey = getCurrentSeason();
+    const season = seasonsData[currentKey];
+    if (season) {
+      const name = getSeasonName(currentKey);
+      heroEl.innerHTML = `
+        <div class="home-season-card" data-season="${currentKey}" style="--season-color: ${season.farve}">
+          <div class="home-season-label">${t('seasonCurrentLabel')}</div>
+          <div class="home-season-name">${name}</div>
+          <div class="home-season-meta">${season.element} · ${season.organpar} · ${season.energi}</div>
+          <p class="home-season-text">${season.philosophy[0]}</p>
+          <div class="home-season-cta">
+            ${t('patternExploreSeason')} →
+          </div>
+        </div>
+      `;
+      heroEl.querySelector('.home-season-card').addEventListener('click', () => {
+        showSeasonDetail(currentKey);
+      });
+    }
+  }
+
+  // Organ clock (compact)
+  const clockEl = document.getElementById('home-clock');
+  if (clockEl) {
+    renderPatternClock(clockEl);
+  }
+
+  // Search section
+  const searchLabel = document.getElementById('home-search-label');
+  if (searchLabel) searchLabel.textContent = t('patternSearchPlaceholder');
+
+  const searchInput = document.getElementById('home-pattern-input');
+  if (searchInput) {
+    searchInput.placeholder = t('patternSearchPlaceholder');
+    let debounceTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const resultsContainer = document.getElementById('home-pattern-results');
+        if (!searchInput.value.trim()) {
+          resultsContainer.innerHTML = '';
+          return;
+        }
+        executePatternSearch(searchInput.value, 'home-pattern-results');
+      }, 300);
+    });
+  }
+
+  // Quick tags
+  const tagsContainer = document.getElementById('home-quick-tags');
+  if (tagsContainer) {
+    const tags = quickTags[getLanguage()] || quickTags.en;
+    tagsContainer.innerHTML = tags.map(tag =>
+      `<button class="pattern-tag" data-query="${tag.query}">${tag.label}</button>`
+    ).join('');
+    tagsContainer.querySelectorAll('.pattern-tag').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tagsContainer.querySelectorAll('.pattern-tag').forEach(t => t.classList.remove('pattern-tag-active'));
+        btn.classList.add('pattern-tag-active');
+        const input = document.getElementById('home-pattern-input');
+        if (input) input.value = btn.dataset.query;
+        executePatternSearch(btn.dataset.query, 'home-pattern-results');
+      });
+    });
+  }
+
+  // Go deeper labels
+  const deeperLabel = document.getElementById('home-deeper-label');
+  if (deeperLabel) deeperLabel.textContent = t('patternGoDeeper');
+
+  const deeperMap = {
+    'deeper-practice': 'hubPractice',
+    'deeper-organs': 'hubOrgans',
+    'deeper-elements': 'hubElements',
+    'deeper-meridians': 'hubMeridians',
+    'deeper-overviews': 'hubOverviews'
+  };
+  Object.entries(deeperMap).forEach(([id, key]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = t(key);
+  });
+
+  // Deeper card click handlers
+  document.querySelectorAll('.home-deeper-card[data-hub]').forEach(card => {
+    card.addEventListener('click', () => {
+      handleNavigation(card.dataset.hub);
+    });
+  });
+}
+
 function renderPatternSection() {
   // Render organ clock in patterns screen
   const clockContainer = document.getElementById('pattern-clock');
@@ -2004,8 +2102,8 @@ function renderPatternClock(container) {
   });
 }
 
-function executePatternSearch(query) {
-  const resultsContainer = document.getElementById('pattern-results');
+function executePatternSearch(query, containerId) {
+  const resultsContainer = document.getElementById(containerId || 'pattern-results');
   if (!resultsContainer) return;
 
   if (!query || !query.trim()) {
@@ -2808,6 +2906,7 @@ function init() {
   try { renderSectionIntros(); } catch(e) { console.error('renderSectionIntros:', e); }
   try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
   try { renderSeasonSection(); } catch(e) { console.error('renderSeasonSection:', e); }
+  try { renderPersonalHome(); } catch(e) { console.error('renderPersonalHome:', e); }
   try { renderPatternSection(); } catch(e) { console.error('renderPatternSection:', e); }
   try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
   try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }

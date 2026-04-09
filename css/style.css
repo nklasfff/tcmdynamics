@@ -209,6 +209,143 @@ body {
   gap: 16px;
 }
 
+/* ============================================
+   Personal Home Screen
+   ============================================ */
+
+.home-personal {
+  flex: 1;
+  padding: 0 20px 100px;
+}
+
+.home-section-label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin: 0 0 14px 0;
+}
+
+/* Season Hero Card */
+.home-season-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--season-color, var(--accent-gold));
+  border-radius: 14px;
+  padding: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.home-season-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.home-season-label {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.home-season-name {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.home-season-meta {
+  font-size: 13px;
+  color: var(--season-color, var(--text-secondary));
+  margin-bottom: 14px;
+}
+
+.home-season-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-season-cta {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--accent-gold);
+}
+
+/* Organ Clock on Home */
+.home-clock-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.home-clock {
+  max-width: 280px;
+  width: 100%;
+}
+
+/* Search Section on Home */
+.home-search-section {
+  margin: 24px 0;
+}
+
+/* Go Deeper Grid */
+.home-deeper-section {
+  margin-top: 32px;
+}
+
+.home-deeper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.home-deeper-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  text-align: center;
+}
+
+.home-deeper-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-gold);
+}
+
+.home-deeper-icon {
+  font-size: 22px;
+  opacity: 0.5;
+}
+
+.home-deeper-name {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
 /* Decorative Chinese character breathing elements */
 .hub-breath {
   text-align: center;
