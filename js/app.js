@@ -390,7 +390,7 @@ let previousScreen = 'home'; // Track where we came from for back navigation
 
 // Language-switchable data references
 let langData = getLangData(getLanguage());
-let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes } = langData;
+let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits } = langData;
 
 // ============================================
 // Theme Toggle

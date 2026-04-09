@@ -316,6 +316,9 @@ const seasonWelcomes = {
   vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
 };
 
+// Organ portraits — uses Danish content (EN translation pending)
+const organPortraits = {};
+
 // Pattern texts — uses Danish content with English keys (full EN translation in Phase 4)
 const patternTexts = {
   'Headache': {
@@ -3306,7 +3309,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits };
 })();
 
 const da = (() => {
@@ -3620,6 +3623,70 @@ const seasonWelcomes = {
   sensommer: 'Mærk dine fødder mod jorden. Mærk tyngden i din krop, det sted i dig der bare er — uden at skulle noget. Sensommeren tilhører Jord-elementet, den tid hvor alt modnes og frugterne hænger tungt. Mavesækken og Milten bærer denne energi: evnen til at tage imod, fordøje og omsætte — ikke kun mad, men alt det du møder i dit liv. Fugten i luften minder dig om den tyngde der opstår når du bekymrer dig for meget, grublerer for længe, giver for meget uden at fylde dig selv op. Mærk efter: bliver du næret af det du giver din tid til? Eller tærer det?',
   efteraar: 'Mærk din udånding. Mærk det øjeblik hvor du slipper luften — og med den, lidt af det du bærer. Efteråret tilhører Metal-elementet og bringer en klarhed der kan gøre ondt: hvad er væsentligt, og hvad skal du lade gå? Lungerne og Tyktarmen arbejder med netop dette — at tage det rene ind og slippe det overflødige. Tørheden i luften minder dig om sorg, om tab, om det der engang var. Men der er skønhed i at slippe. Mærk efter: hvad bærer du stadig, som ikke længere nærer dig?',
   vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens, den reserve du blev født med og den vitalitet der holder dig i live. Kulden inviterer dig til at hvile, men den kan også vække frygt — frygten for ikke at have nok, ikke at være nok. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
+};
+
+const organPortraits = {
+  lunger: [
+    'Træk vejret ind. Mærk det øjeblik lige efter indåndingen, hvor din krop er fyldt — og mærk så udåndingen, det øjeblik hvor du slipper. Det er Lungernes rytme: at tage imod og at lade gå, fra dit første åndedrag til dit sidste.',
+    'Lungerne styrer din hud, din stemme og din evne til at sætte grænser — det yderste lag af dig, der hvor du møder verden. Når de er stærke, er du beskyttet uden at være lukket, åben uden at være sårbar. Når de er svækkede, mærker du det som hyppige forkølelser, tør hud, en stemme der mangler klang, eller en fornemmelse af at du ikke helt kan trække vejret frit.',
+    'Lungerne hører til Metal-elementet og efteråret — den tid hvor naturen viser os at der er værdighed i at slippe. Deres tid på døgnet er mellem 3 og 5 om morgenen, og vågner du her med hoste eller tunge tanker, er det værd at lytte. Lungernes følelse er sorg. Ikke den akutte sorg, men den stille — savnet, tabet, det du engang havde.',
+    'Mærk din vejrtrækning lige nu. Er den dyb og rolig, eller kort og overfladisk? Svaret fortæller dig noget om hvordan du har det — ikke kun i dine lunger, men i dit liv.'
+  ],
+  tyktarm: [
+    'Mærk din morgen. Det allerførste din krop gør efter søvnen, er at forberede sig på at slippe det den ikke har brug for. Tyktarmen er den i dig der rydder op, renser ud og skaber plads til nyt — fysisk og mentalt.',
+    'Tyktarmens arbejde handler om at slippe. Ikke bare afføring, men alt det overflødige: tanker du har tygget færdigt på, følelser der har gjort deres arbejde, vaner der ikke længere tjener dig. Når Tyktarmen fungerer godt, er der en lethed om morgenen, en friskhed, en følelse af at dagen begynder rent. Når den stagnerer, føler du dig tung, oppustet, eller som om du trækker noget med dig der burde have været lagt fra dig for længe siden.',
+    'Tyktarmen hører til Metal-elementet og er Lungernes makker — de to deler evnen til at skelne det rene fra det urene. Dens tid er mellem 5 og 7 om morgenen, og det er ikke tilfældigt at kroppen naturligt ønsker at tømme sig her. Mærk efter: slipper du let om morgenen? Eller holder du fast — i kroppen, i tankerne, i det der var i går?'
+  ],
+  mavesaek: [
+    'Mærk det øjeblik hvor du sætter dig og spiser morgenmad — eller det øjeblik hvor du springer det over og allerede er i gang. Mavesækken er den i dig der tager imod. Ikke kun mad, men alt det der kommer ind: indtryk, oplevelser, information, andre menneskers energi.',
+    'Mavesækken nedbryder og forbereder — den er den første station i din fordøjelse, det sted hvor det rå materiale møder din krops intelligens. Når den er stærk, har du appetit, du kan rumme det du møder, og du føler dig næret. Når den er svækket eller overbelastet, mærker du det som kvalme, oppustethed, mangel på appetit, eller en fornemmelse af at du har taget mere ind end du kan håndtere.',
+    'Mavesækken hører til Jord-elementet og sensommeren, den tid hvor høsten modnes. Dens tid på døgnet er mellem 7 og 9 om morgenen — det naturlige tidspunkt for at give din krop det den har brug for. Mærk efter: hvordan tager du imod det din dag bringer dig? Med ro og åbenhed, eller med en mave der allerede er fuld?'
+  ],
+  milt: [
+    'Der er et sted i dig der stille og tålmodigt omsætter alt det du tager ind til noget du kan bruge. Det er Milten. Du mærker den ikke, når den fungerer — du mærker bare at du har energi, at din tanke er klar, at dine muskler bærer dig.',
+    'Milten transformerer. Den tager det bedste fra din mad og løfter det opad som ren energi til resten af din krop. Men hun er sårbar overfor fugt — både den fysiske og den mentale. For mange søde ting, for mange bekymringer, for mange tanker der kører i ring uden at lande nogen steder — det svækker Milten. Du mærker det som træthed efter mad, tunge lemmer, hævede fingre om morgenen, en tanke der ikke kan finde fokus.',
+    'Milten hører til Jord-elementet og sensommeren, og hendes tid er mellem 9 og 11 om formiddagen. Bekymring er hendes følelse — ikke den skarpe angst, men den tunge grublerier der maler og maler. Mærk efter: er dine tanker klare og nærede, eller tunge og klæbrige? Det er Milten der taler.'
+  ],
+  hjerte: [
+    'Læg hånden på dit bryst. Mærk det der banker derinde — ikke kun som en muskel, men som sædet for din bevidsthed, dit nærvær, det i dig der ved at du er til. I TCM huser Hjertet din Shen — din ånd, din klarhed, dit lys.',
+    'Når Hjertet er i balance, er der en varme i dig der er rolig og stabil. Du kan møde andre mennesker åbent, du sover dybt, dine øjne har glans, og du mærker en glæde der ikke afhænger af ydre omstændigheder. Når Hjertet er uroligt, mærker du det som angst, søvnløshed, hjertebanken, en rastløshed der ikke kan lande, eller en glæde der tipper over i mani — for meget, for hurtigt, for spredt.',
+    'Hjertet tilhører Ild-elementet og sommeren, den tid hvor alt blomstrer og åbner sig. Dets tid på døgnet er mellem 11 og 13, midt på dagen, hvor lyset er stærkest. Mærk efter: er dit indre lys klart og varmt, eller flakkende og uroligt? Dit Hjerte fortæller dig hvordan din Shen har det.'
+  ],
+  tyndtarm: [
+    'Der er et sted i dig der sorterer. Hele tiden, uden at du tænker over det — hvad er næring og hvad er affald, hvad er sandt og hvad er støj, hvad hører til dig og hvad hører til en anden. Det er Tyndtarmen.',
+    'Tyndtarmen er Hjertets makker og bærer evnen til at skelne — den klarhed der gør at du kan tage det rene til dig og sende resten videre. Når den fungerer godt, har du en intuitiv fornemmelse af hvad der er rigtigt for dig. Når den er svækket, bliver alt mudret: du kan ikke skelne vigtige beslutninger fra uvæsentlige, du absorberer andres følelser uden filter, eller din krop reagerer med uro i maven efter et måltid den ikke kan sortere.',
+    'Tyndtarmen hører til Ild-elementet og dens tid er mellem 13 og 15, de tidlige eftermiddagstimer. Det er ikke tilfældigt at du kan føle dig tåget efter frokost — din krop sorterer, og det kræver energi. Mærk efter: hvor god er du til at sortere det der kommer ind? Ikke kun mad, men indtryk, krav og forventninger?'
+  ],
+  blaere: [
+    'Mærk det sted i din ryg der bærer mest. Blærens meridian løber i to lange linjer fra hoved til tå, ned langs hele din rygsøjle — den længste meridian i kroppen. Den bærer alt det du lægger på dine skuldre.',
+    'Blæren handler om fleksibilitet. Ikke kun i din krop — selvom stivhed i ryg og nakke ofte er Blærens signal — men i din evne til at tilpasse dig det livet bringer. Blæren lagrer og frigiver, holder og slipper, og hendes samspil med Nyrerne binder hende til din dybeste reserve. Når Blæren er stærk, er du smidig i krop og sind. Når hun er svækket, mærker du det som spændinger i ryggen, hyppig vandladning, eller en følelse af at være konstant på vagt.',
+    'Blæren tilhører Vand-elementet og vinteren, og dens tid er mellem 15 og 17 — den sene eftermiddag, hvor energien naturligt begynder at synke. Mærk efter: er din ryg smidig og bærende, eller stiv og belastet? Det er Blæren der inviterer dig til at mærke forskellen.'
+  ],
+  nyrer: [
+    'Der er et sted i dig der ligger dybere end alt det daglige. Under træthed, under præstation, under det du viser verden — der bor dine Nyrer. De bærer din essens, din medfødte vitalitet, det fundament du bygger hele dit liv på.',
+    'Nyrerne lagrer det i TCM der hedder Jing — den essens du fik med fra dine forældre, og som langsomt bruges over et helt liv. Det er den energi der styrer din vækst, din forplantning, din aldring, dine knogler og din hørelse. Når Nyrerne er stærke, mærker du det som en dyb, stille kraft — en tillid til at du kan bære det livet bringer. Når de er svækkede, mærker du det i lænden, i knæene, i en træthed der ikke forsvinder med søvn, i håret der tynder, eller i en frygt der siver ind fra kanten.',
+    'Nyrerne tilhører Vand-elementet og vinteren, den mørkeste tid, og deres tid på døgnet er mellem 17 og 19. Frygt er Nyrernes følelse — men ikke kun den angstfyldte. Også den stille, eksistentielle: er jeg nok? Har jeg nok? Mærk efter i din krop lige nu — har du kontakt til noget stille og bærende i dig, eller føler du dig tømt?'
+  ],
+  pericardium: [
+    'Du kender det måske — den der åbner sig for hurtigt og bliver såret, eller den der har lukket så meget af at ingenting slipper ind. Pericardium er din hjertebeskytter, det organ der bestemmer hvem og hvad der får adgang til dit inderste.',
+    'I TCM er Pericardium Hjertets ambassadør — den der møder verden på Hjertets vegne, så Hjertet selv kan bevare sin ro. Pericardium styrer din evne til intimitet, til at åbne og lukke med visdom, til at beskytte uden at isolere. Når Pericardium er i balance, kan du være nærværende i tætte relationer uden at miste dig selv. Når det er svækket, mærker du det som følelsesmæssig sårbarhed, svært ved at sætte grænser, eller en mur der holder alt og alle ude.',
+    'Pericardium tilhører Ild-elementet, og dets tid er mellem 19 og 21 om aftenen — det tidspunkt hvor du naturligt søger nærvær, forbindelse, intimitet. Mærk efter: hvordan er din port lige nu? Åben, lukket, eller et sted midt imellem?'
+  ],
+  sanjiao: [
+    'Der er et organ i TCM der ikke har en fysisk form — og alligevel forbinder det alt. San Jiao, den tredobbelte varmer, er den passage der sikrer at energi, varme og væske kan bevæge sig frit mellem din krops tre rum: det øvre (bryst), det midterste (mave) og det nedre (bækken).',
+    'San Jiao er regulatoren. Den sørger for at varmen fra dit Hjerte når ned til dine Nyrer, at væsken fra dine Nyrer fordamper opad, at din krop fungerer som ét sammenhængende system og ikke som tre adskilte etager. Når San Jiao fungerer, mærker du en let, harmonisk fornemmelse — alt flyder. Når den er blokeret, mærker du det som temperaturforskelle i kroppen (varmt hoved, kolde fødder), væskeproblemer, eller en generel følelse af at noget ikke hænger sammen.',
+    'San Jiaos tid er mellem 21 og 23 — den overgang fra dag til nat, fra aktivitet til hvile, hvor kroppen begynder at lukke ned. Mærk efter: kan du mærke en naturlig ro falde over dig om aftenen? Eller kæmper du mod søvnen, stadig tændt, stadig i gang?'
+  ],
+  galdeblaere: [
+    'Kender du den følelse af at stå ved en skillevej og ikke vide hvad du skal vælge? Den tvivl der holder dig vågen? Det er Galdeblæren der arbejder — eller kæmper.',
+    'Galdeblæren er beslutningstageren. Hvor Leveren laver planen, er det Galdeblæren der sætter den i gang — med mod, rettidig handling og den form for beslutsomhed der ikke kræver at du har alle svar, bare at du tør tage det næste skridt. Når Galdeblæren er stærk, er du modig og handlekraftig. Når hun er svækket, mærker du det som ubeslutsomhed, tøven, en tendens til at dreje tingene rundt i hovedet uden at komme nogen vegne — eller som spændinger i tindingerne og siderne af kroppen.',
+    'Galdeblæren tilhører Træ-elementet og foråret, og hendes tid er mellem 23 og 1 om natten. Det er midt i den dybeste søvn — og vågner du her med urolige tanker, er der sandsynligvis en beslutning du ikke har truffet. Mærk efter: er der noget du udskyder lige nu? Noget der venter på dit mod?'
+  ],
+  lever: [
+    'Leveren er den i dig der drømmer, planlægger og sætter retning. Når alt flyder frit, mærker du det som kreativitet, handlekraft og en klar fornemmelse af hvor du er på vej hen. Men når energien stagnerer — af stress, frustration, ting du holder inde — begynder den at presse sig opad. Hovedpine i tindingerne. Spændinger i nakken og skuldrene. En irritabilitet der ikke helt har en adresse.',
+    'Leveren styrer dine sener og din fleksibilitet — både den fysiske og den mentale. En stiv krop og et stift sind hænger ofte sammen, og begge peger mod Leveren. Hun lagrer blodet og renser det om natten, og hun sikrer at din menstruation, din fordøjelse og dine følelser kan bevæge sig frit. Stagnation i Leveren er en af de hyppigste ubalancer i vores tid — fordi vi lever i en verden der konstant kræver at vi holder vores frustration inde.',
+    'Leveren tilhører Træ-elementet og foråret, og hendes tid er mellem 1 og 3 om natten. Vrede er hendes følelse — ikke den destruktive, men den der siger: noget skal ændre sig. Mærk efter: er der noget i dit liv der presser sig på, som du ikke giver plads? Det er Leveren der banker på.'
+  ]
 };
 
 const patternTexts = {
@@ -6687,7 +6754,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits };
 })();
 
 const datasets = { en, da };
