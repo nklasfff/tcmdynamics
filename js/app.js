@@ -464,6 +464,7 @@ function switchLanguage() {
   renderPracticeGrid();
   renderSeasonSection();
   renderPersonalHome();
+  renderExploreScreen();
   renderPatternSection();
   renderOrganGrid();
   renderMeridianGrid();
@@ -1422,7 +1423,7 @@ function setupThemeAccordion(containerId) {
 function goBack() {
   // Determine where to go back to
   const detailScreens = ['organ', 'organ-themes', 'element', 'element-cycles', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern'];
-  const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
+  const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews', 'explore'];
 
   if (detailScreens.includes(currentScreen)) {
     // If we came from a section screen, go back there
@@ -1967,6 +1968,76 @@ function findPatterns(query) {
 }
 
 // ============================================
+// Explore Screen (stille typografisk liste)
+// ============================================
+function renderExploreScreen() {
+  // Seasons
+  const seasonsEl = document.getElementById('explore-seasons');
+  if (seasonsEl) {
+    const seasonKeys = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
+    const seasonElements = { foraar: 'Træ', sommer: 'Ild', sensommer: 'Jord', efteraar: 'Metal', vinter: 'Vand' };
+    const seasonColors = { foraar: '#5cc98e', sommer: '#e88585', sensommer: '#deb87a', efteraar: '#a8c4d6', vinter: '#7ba4da' };
+    const currentKey = getCurrentSeason();
+    seasonsEl.innerHTML = `
+      <h2 class="explore-label">Årstider</h2>
+      ${seasonKeys.map(key => `
+        <button class="explore-item" data-season="${key}">
+          <span class="explore-dot" style="background: ${seasonColors[key]}"></span>
+          <span class="explore-name">${getSeasonName(key)}</span>
+          <span class="explore-meta">${seasonElements[key]}</span>
+          ${key === currentKey ? '<span class="explore-current">·</span>' : ''}
+        </button>
+      `).join('')}
+    `;
+    seasonsEl.querySelectorAll('[data-season]').forEach(btn => {
+      btn.addEventListener('click', () => showSeasonDetail(btn.dataset.season));
+    });
+  }
+
+  // Organs
+  const organsEl = document.getElementById('explore-organs');
+  if (organsEl) {
+    organsEl.innerHTML = `
+      <h2 class="explore-label">Organer</h2>
+      ${organs.map(o => `
+        <button class="explore-item" data-organ-id="${o.id}">
+          <span class="explore-icon">${o.icon}</span>
+          <span class="explore-name">${o.name}</span>
+          <span class="explore-meta">${o.time}</span>
+        </button>
+      `).join('')}
+    `;
+    organsEl.querySelectorAll('[data-organ-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const organ = organs.find(o => o.id === btn.dataset.organId);
+        if (organ) showOrganDetail(organ);
+      });
+    });
+  }
+
+  // Elements
+  const elementsEl = document.getElementById('explore-elements');
+  if (elementsEl) {
+    elementsEl.innerHTML = `
+      <h2 class="explore-label">Elementer</h2>
+      ${fiveElements.map(el => `
+        <button class="explore-item" data-element-id="${el.id}">
+          <span class="explore-dot" style="background: ${el.color}"></span>
+          <span class="explore-name">${el.name}</span>
+          <span class="explore-meta">${el.season}</span>
+        </button>
+      `).join('')}
+    `;
+    elementsEl.querySelectorAll('[data-element-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const el = fiveElements.find(e => e.id === btn.dataset.elementId);
+        if (el) showElementDetail(el);
+      });
+    });
+  }
+}
+
+// ============================================
 // Personal Home Screen
 // ============================================
 function renderPersonalHome() {
@@ -2046,28 +2117,51 @@ function renderPersonalHome() {
     });
   }
 
-  // Go deeper labels
-  const deeperLabel = document.getElementById('home-deeper-label');
-  if (deeperLabel) deeperLabel.textContent = t('patternGoDeeper');
+  // Threads to follow (contextual links)
+  const threadsEl = document.getElementById('home-threads');
+  if (threadsEl) {
+    const activeIndex = getActiveOrganIndex();
+    const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
+    const currentKey = getCurrentSeason();
+    const season = seasonsData[currentKey];
 
-  const deeperMap = {
-    'deeper-practice': 'hubPractice',
-    'deeper-organs': 'hubOrgans',
-    'deeper-elements': 'hubElements',
-    'deeper-meridians': 'hubMeridians',
-    'deeper-overviews': 'hubOverviews'
-  };
-  Object.entries(deeperMap).forEach(([id, key]) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = t(key);
-  });
+    let threads = [];
 
-  // Deeper card click handlers
-  document.querySelectorAll('.home-deeper-card[data-hub]').forEach(card => {
-    card.addEventListener('click', () => {
-      handleNavigation(card.dataset.hub);
+    // Thread 1: Active organ
+    if (activeOrgan) {
+      const organ = organs.find(o => o.name === activeOrgan.organ);
+      if (organ) {
+        threads.push({
+          text: `${organ.name} er aktiv nu — hvad mærker du?`,
+          action: () => showOrganDetail(organ)
+        });
+      }
+    }
+
+    // Thread 2: Season's element
+    if (season) {
+      threads.push({
+        text: `${getSeasonName(currentKey)} og ${season.element}-elementet`,
+        action: () => {
+          const el = fiveElements.find(e => e.name === season.element || elementToSeason[e.name] === currentKey);
+          if (el) showElementDetail(el);
+        }
+      });
+    }
+
+    threadsEl.innerHTML = threads.length ? `
+      <div class="home-threads-list">
+        ${threads.map((t, i) => `<button class="home-thread" data-idx="${i}">${t.text} →</button>`).join('')}
+      </div>
+    ` : '';
+
+    threadsEl.querySelectorAll('.home-thread').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        if (threads[idx]) threads[idx].action();
+      });
     });
-  });
+  }
 }
 
 function renderPatternSection() {
@@ -2502,6 +2596,17 @@ function handleNavigation(navId) {
       break;
     case 'overviews':
       showScreen('section-overviews');
+      break;
+    case 'explore':
+      showScreen('explore');
+      break;
+    case 'search':
+      // Scroll to search on home, or open search overlay
+      showScreen('home');
+      setTimeout(() => {
+        const input = document.getElementById('home-pattern-input');
+        if (input) { input.scrollIntoView({ behavior: 'smooth' }); input.focus(); }
+      }, 100);
       break;
   }
 }
@@ -3040,6 +3145,7 @@ function init() {
   try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
   try { renderSeasonSection(); } catch(e) { console.error('renderSeasonSection:', e); }
   try { renderPersonalHome(); } catch(e) { console.error('renderPersonalHome:', e); }
+  try { renderExploreScreen(); } catch(e) { console.error('renderExploreScreen:', e); }
   try { renderPatternSection(); } catch(e) { console.error('renderPatternSection:', e); }
   try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
   try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }
