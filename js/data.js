@@ -305,6 +305,17 @@ const elementToSeason = {
   'Wood': 'foraar', 'Fire': 'sommer', 'Earth': 'sensommer', 'Metal': 'efteraar', 'Water': 'vinter'
 };
 
+// Welcome texts — uses Danish content (EN translation pending)
+const homeWelcome = 'Din krop taler til dig hele tiden. Ikke med ord, men med fornemmelser, spændinger, rytmer og uro. Denne app hjælper dig med at lytte — ved at give dig et sprog for det du allerede mærker. Start der hvor du er. I din årstid, i din krop, lige nu.';
+
+const seasonWelcomes = {
+  foraar: 'Mærk efter. Er der noget der presser sig på indefra — en uro, en længsel, en irritation der ikke helt har fundet sit udtryk? Det er forårets energi. Træ-elementet vågner i dig som saften stiger i træerne — opad, udad, med en kraft der vil bevægelse og retning. Leveren og Galdeblæren bærer denne energi, og med den følger både din kreativitet og din frustration. Giv det plads. Mærk hvad der vil frem.',
+  sommer: 'Mærk varmen i dig. Ikke kun fra solen, men den varme der bor i dit bryst — den der tænder op når du griner, forbinder dig med et andet menneske, eller mærker at du er helt tilstede. Det er Ildens element. Hjertet og Tyndtarmen arbejder med glæde, passion og din evne til at skelne det ægte fra det overfladiske. Mærk hvad der brænder i dig lige nu.',
+  sensommer: 'Mærk dine fødder mod jorden. Mærk tyngden i din krop, det sted i dig der bare er — uden at skulle noget. Sensommeren tilhører Jord-elementet, den tid hvor alt modnes og frugterne hænger tungt. Mavesækken og Milten bærer denne energi: evnen til at tage imod, fordøje og omsætte. Mærk efter: bliver du næret af det du giver din tid til? Eller tærer det?',
+  efteraar: 'Mærk din udånding. Mærk det øjeblik hvor du slipper luften — og med den, lidt af det du bærer. Efteråret tilhører Metal-elementet og bringer en klarhed der kan gøre ondt: hvad er væsentligt, og hvad skal du lade gå? Lungerne og Tyktarmen arbejder med netop dette — at tage det rene ind og slippe det overflødige. Mærk efter: hvad bærer du stadig, som ikke længere nærer dig?',
+  vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
+};
+
 // Pattern texts — uses Danish content with English keys (full EN translation in Phase 4)
 const patternTexts = {
   'Headache': {
@@ -3295,7 +3306,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes };
 })();
 
 const da = (() => {
@@ -3599,6 +3610,16 @@ const sectionIntros = {
 
 const elementToSeason = {
   'Træ': 'foraar', 'Ild': 'sommer', 'Jord': 'sensommer', 'Metal': 'efteraar', 'Vand': 'vinter'
+};
+
+const homeWelcome = 'Din krop taler til dig hele tiden. Ikke med ord, men med fornemmelser, spændinger, rytmer og uro. Denne app hjælper dig med at lytte — ved at give dig et sprog for det du allerede mærker. Start der hvor du er. I din årstid, i din krop, lige nu.';
+
+const seasonWelcomes = {
+  foraar: 'Mærk efter. Er der noget der presser sig på indefra — en uro, en længsel, en irritation der ikke helt har fundet sit udtryk? Det er forårets energi. Træ-elementet vågner i dig som saften stiger i træerne — opad, udad, med en kraft der vil bevægelse og retning. Leveren og Galdeblæren bærer denne energi, og med den følger både din kreativitet og din frustration. Vinden blæser udefra, men også indeni. Det der irriterer dig lige nu, er måske det samme som det der vil forandring. Giv det plads. Mærk hvad der vil frem.',
+  sommer: 'Mærk varmen i dig. Ikke kun fra solen, men den varme der bor i dit bryst — den der tænder op når du griner, forbinder dig med et andet menneske, eller mærker at du er helt tilstede. Det er Ildens element. Hjertet og Tyndtarmen arbejder med glæde, passion og din evne til at skelne det ægte fra det overfladiske. Sommeren inviterer dig til at åbne dig — men også til at mærke efter om din ild brænder klart eller flakkende. Er du forbundet med det der virkelig betyder noget? Eller spreder du dig i for mange retninger? Mærk hvad der brænder i dig lige nu.',
+  sensommer: 'Mærk dine fødder mod jorden. Mærk tyngden i din krop, det sted i dig der bare er — uden at skulle noget. Sensommeren tilhører Jord-elementet, den tid hvor alt modnes og frugterne hænger tungt. Mavesækken og Milten bærer denne energi: evnen til at tage imod, fordøje og omsætte — ikke kun mad, men alt det du møder i dit liv. Fugten i luften minder dig om den tyngde der opstår når du bekymrer dig for meget, grublerer for længe, giver for meget uden at fylde dig selv op. Mærk efter: bliver du næret af det du giver din tid til? Eller tærer det?',
+  efteraar: 'Mærk din udånding. Mærk det øjeblik hvor du slipper luften — og med den, lidt af det du bærer. Efteråret tilhører Metal-elementet og bringer en klarhed der kan gøre ondt: hvad er væsentligt, og hvad skal du lade gå? Lungerne og Tyktarmen arbejder med netop dette — at tage det rene ind og slippe det overflødige. Tørheden i luften minder dig om sorg, om tab, om det der engang var. Men der er skønhed i at slippe. Mærk efter: hvad bærer du stadig, som ikke længere nærer dig?',
+  vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens, den reserve du blev født med og den vitalitet der holder dig i live. Kulden inviterer dig til at hvile, men den kan også vække frygt — frygten for ikke at have nok, ikke at være nok. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
 };
 
 const patternTexts = {
@@ -6666,7 +6687,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes };
 })();
 
 const datasets = { en, da };

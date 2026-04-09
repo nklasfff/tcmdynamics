@@ -218,6 +218,18 @@ body {
   padding: 0 20px 100px;
 }
 
+.home-welcome {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0 0 28px 0;
+  padding: 0 8px;
+  font-style: italic;
+}
+
 .home-section-label {
   font-family: var(--font-heading);
   font-size: 12px;
@@ -278,6 +290,13 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.home-season-welcome {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
 }
 
 .home-season-cta {

@@ -390,7 +390,7 @@ let previousScreen = 'home'; // Track where we came from for back navigation
 
 // Language-switchable data references
 let langData = getLangData(getLanguage());
-let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts } = langData;
+let { organs, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, sectionIntros, practiceGuide, organOverviews, meridianOverviews, symptomReference, conversationStructure, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes } = langData;
 
 // ============================================
 // Theme Toggle
@@ -1844,19 +1844,26 @@ function findPatterns(query) {
 // Personal Home Screen
 // ============================================
 function renderPersonalHome() {
-  // Season hero
+  // Welcome text
+  const welcomeEl = document.getElementById('home-welcome');
+  if (welcomeEl && homeWelcome) {
+    welcomeEl.textContent = homeWelcome;
+  }
+
+  // Season hero with seasonal welcome
   const heroEl = document.getElementById('home-season-hero');
   if (heroEl) {
     const currentKey = getCurrentSeason();
     const season = seasonsData[currentKey];
     if (season) {
       const name = getSeasonName(currentKey);
+      const welcome = seasonWelcomes && seasonWelcomes[currentKey] ? seasonWelcomes[currentKey] : season.philosophy[0];
       heroEl.innerHTML = `
         <div class="home-season-card" data-season="${currentKey}" style="--season-color: ${season.farve}">
           <div class="home-season-label">${t('seasonCurrentLabel')}</div>
           <div class="home-season-name">${name}</div>
           <div class="home-season-meta">${season.element} · ${season.organpar} · ${season.energi}</div>
-          <p class="home-season-text">${season.philosophy[0]}</p>
+          <p class="home-season-welcome">${welcome}</p>
           <div class="home-season-cta">
             ${t('patternExploreSeason')} →
           </div>
