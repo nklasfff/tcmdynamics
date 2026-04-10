@@ -1979,6 +1979,130 @@ function showSeasonStillness(seasonKey) {
 }
 
 // ============================================
+// Journal — skrive-felt pr. refleksions-prompt
+// ============================================
+
+// Enkel HTML-escape så brugerens egne ord kan vises i textarea uden injection
+function escapeForTextarea(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+// Byg en nøgle der overlever mindre ændringer i prompt-teksten:
+// journal:v1:<seasonKey>:<index>
+function journalKey(seasonKey, index) {
+  return `journal:v1:${seasonKey}:${index}`;
+}
+
+function journalGet(seasonKey, index) {
+  try {
+    return localStorage.getItem(journalKey(seasonKey, index)) || '';
+  } catch (e) { return ''; }
+}
+
+function journalSet(seasonKey, index, value) {
+  try {
+    localStorage.setItem(journalKey(seasonKey, index), value);
+    return true;
+  } catch (e) { return false; }
+}
+
+// Renderer en liste af prompts med skrive-felt per prompt.
+// Bliver brugt inde i "At sidde med"-folden.
+function renderJournalPromptsBody(seasonKey, prompts) {
+  const items = prompts.map((p, i) => {
+    const saved = journalGet(seasonKey, i);
+    const has = saved.trim().length > 0;
+    return `
+      <li class="journal-prompt${has ? ' has-entry' : ''}" data-journal-idx="${i}">
+        <p class="journal-prompt-text">${p}</p>
+        <button class="journal-write-btn" type="button" data-journal-toggle="${i}" aria-expanded="false">
+          <span class="journal-write-label">${has ? 'fortsæt dine ord' : 'skriv'}</span>
+          <span class="journal-write-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="journal-write-wrap" data-journal-wrap="${i}" hidden>
+          <textarea
+            class="journal-textarea"
+            data-journal-index="${i}"
+            placeholder="Lad ordene komme som de kommer..."
+            rows="3">${escapeForTextarea(saved)}</textarea>
+          <p class="journal-meta">
+            <span class="journal-saved" data-journal-saved="${i}">${has ? 'gemt' : ''}</span>
+          </p>
+        </div>
+      </li>
+    `;
+  }).join('');
+
+  return `
+    <p class="journal-hint">Dine ord bliver kun på denne enhed. Skriv så meget eller lidt du har brug for.</p>
+    <ol class="journal-prompts">${items}</ol>
+  `;
+}
+
+// Kobler skrive-felt op bagefter folden er attached
+function attachJournalListeners(container, seasonKey) {
+  if (!container) return;
+
+  // Toggle åben/luk skrive-felt
+  container.querySelectorAll('[data-journal-toggle]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // undgå at fold reagerer
+      const idx = btn.dataset.journalToggle;
+      const wrap = container.querySelector(`[data-journal-wrap="${idx}"]`);
+      if (!wrap) return;
+      const isHidden = wrap.hasAttribute('hidden');
+      if (isHidden) {
+        wrap.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        const ta = wrap.querySelector('textarea');
+        if (ta) {
+          // auto-resize ved åbning
+          ta.style.height = 'auto';
+          ta.style.height = ta.scrollHeight + 'px';
+          setTimeout(() => ta.focus(), 50);
+        }
+      } else {
+        wrap.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Auto-save og auto-grow
+  container.querySelectorAll('.journal-textarea').forEach(ta => {
+    const resize = () => {
+      ta.style.height = 'auto';
+      ta.style.height = Math.max(ta.scrollHeight, 72) + 'px';
+    };
+    resize();
+
+    let saveTimer = null;
+    ta.addEventListener('input', () => {
+      resize();
+      clearTimeout(saveTimer);
+      const idx = parseInt(ta.dataset.journalIndex, 10);
+      const savedEl = container.querySelector(`[data-journal-saved="${idx}"]`);
+      if (savedEl) savedEl.textContent = 'skriver...';
+
+      saveTimer = setTimeout(() => {
+        const ok = journalSet(seasonKey, idx, ta.value);
+        if (savedEl) savedEl.textContent = ok ? 'gemt' : 'kunne ikke gemme';
+
+        // Opdater prompt-label og has-entry-klasse
+        const li = container.querySelector(`[data-journal-idx="${idx}"]`);
+        const toggleLabel = container.querySelector(`[data-journal-toggle="${idx}"] .journal-write-label`);
+        const has = ta.value.trim().length > 0;
+        if (li) li.classList.toggle('has-entry', has);
+        if (toggleLabel) toggleLabel.textContent = has ? 'fortsæt dine ord' : 'skriv';
+      }, 400);
+    });
+  });
+}
+
+// ============================================
 // Reflektér — journal + milepæle
 // ============================================
 function showSeasonReflection(seasonKey) {
@@ -2010,8 +2134,8 @@ function showSeasonReflection(seasonKey) {
 
   if (season.journalPrompts && season.journalPrompts.length) {
     const preview = season.journalPrompts[0] || '';
-    const body = `<ol>${season.journalPrompts.map(p => `<li>${p}</li>`).join('')}</ol>`;
-    html += renderFold('At sidde med', preview, body);
+    const body = renderJournalPromptsBody(seasonKey, season.journalPrompts);
+    html += renderFold('At sidde med · dagbogen', preview, body);
   }
 
   if (season.weeklyCheckIn && season.weeklyCheckIn.length) {
@@ -2058,6 +2182,7 @@ function showSeasonReflection(seasonKey) {
 
   contentEl.innerHTML = html;
   attachFoldListeners(contentEl);
+  attachJournalListeners(contentEl, seasonKey);
 
   // Bind bridge click
   const bridgeBtn = contentEl.querySelector('[data-next-season]');

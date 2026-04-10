@@ -24,6 +24,12 @@ Seneste commit: `claude/review-isabelle-app-alignment-4aDb7` — Isabelle-alignm
   milestone-sprog.
 - **Forsiden** krediterer nu Isabelle Evita Søndergaard direkte under taglinen,
   så hendes navn er synligt fra første sekund, ikke gemt i About-modal.
+- **Journal-skrivefelt** på refleksions-prompts i Reflektér — hver prompt har
+  nu en "skriv"-knap der åbner en textarea. Auto-save til localStorage efter
+  400ms debounce, auto-grow højde, "gemt"-indikator. Nøgle er
+  `journal:v1:<seasonKey>:<index>`. Dette er app-oversættelsen af Isabelles
+  *Mine 5 Årstiders Energi — Årstidsdagbogen*. Se
+  `renderJournalPromptsBody` og `attachJournalListeners` i `js/app.js`.
 
 ### Harmoni-fasen — FÆRDIG
 - Rytme-system: `--rhythm-1..5` og `--read-wide/narrow` bruges overalt
