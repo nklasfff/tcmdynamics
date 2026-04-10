@@ -13,7 +13,17 @@ En dansk/engelsk single-page webapp om Traditionel Kinesisk Medicin (TCM) med fo
 
 ## Aktuel status
 
-Seneste commit: `ac36a30 Navigation + foldbare sektioner + fix af tilbage-pil`
+Seneste commit: `claude/review-isabelle-app-alignment-4aDb7` — Isabelle-alignment
+
+### Isabelle-alignment (April 2026) — FÆRDIG
+- **Bliv stille** viser nu ALLE meditationer (ikke kun [0]), ALLE vejrtrækninger,
+  EFT-tapping (ny) og organurets timer (ny) — alt sammen data der allerede var
+  i `seasons-data.js` men som før lå ubrugt hen.
+- **Reflektér** har nu en "Rejs videre"-bro til næste årstid i cyklus med den
+  nærende linje ("Træ nærer ild", "Ild nærer jord"...) — følger Isabelles
+  milestone-sprog.
+- **Forsiden** krediterer nu Isabelle Evita Søndergaard direkte under taglinen,
+  så hendes navn er synligt fra første sekund, ikke gemt i About-modal.
 
 ### Harmoni-fasen — FÆRDIG
 - Rytme-system: `--rhythm-1..5` og `--read-wide/narrow` bruges overalt

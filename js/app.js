@@ -1914,26 +1914,62 @@ function showSeasonStillness(seasonKey) {
 
   let html = '';
 
-  if (season.meditations && season.meditations[0]) {
-    const m = season.meditations[0];
-    const heading = m.title + (m.duration ? ' · ' + m.duration : '');
-    const preview = (m.intention) || (m.steps && m.steps[0]) || '';
-    const body = `${m.steps ? `<ol>${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>` : ''}${m.intention ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${m.intention}</p>` : ''}`;
+  // Meditationer — alle, ikke kun den første
+  if (season.meditations && season.meditations.length) {
+    html += `<p class="season-sub-section">Meditationer</p>`;
+    season.meditations.forEach(m => {
+      const heading = m.title + (m.duration ? ' · ' + m.duration : '');
+      const preview = (m.intention) || (m.steps && m.steps[0]) || '';
+      const body = `${m.steps ? `<ol>${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>` : ''}${m.intention ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${m.intention}</p>` : ''}`;
+      html += renderFold(heading, preview, body);
+    });
+  }
+
+  // Vejrtrækning — alle, ikke kun den første
+  if (season.breathingExercises && season.breathingExercises.length) {
+    html += `<p class="season-sub-section">Vejrtrækning</p>`;
+    season.breathingExercises.forEach(b => {
+      const heading = b.title + (b.rhythm ? ' · ' + b.rhythm : '') + (b.rounds ? ' · ' + b.rounds + ' runder' : '');
+      const body = `<p>${b.instruction}</p>${b.effect ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${b.effect}</p>` : ''}`;
+      html += renderFold(heading, b.instruction, body);
+    });
+  }
+
+  // EFT-tapping — en af Isabelles kerne-teknikker
+  if (season.eftSequence && season.eftSequence.points && season.eftSequence.points.length) {
+    const eft = season.eftSequence;
+    const heading = 'Tap dig fri · EFT';
+    const preview = eft.setupPhrase || '';
+    const body = `
+      <p style="font-style:italic;color:var(--text-secondary);margin-bottom:16px;">${eft.setupPhrase}</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Tap blidt på hvert punkt mens du gentager sætningen.</p>
+      <ol>${eft.points.map(p => `<li><strong>${p.point}</strong><br><span style="color:var(--text-secondary);">${p.affirmation}</span></li>`).join('')}</ol>
+    `;
+    html += `<p class="season-sub-section">Frigørelse</p>`;
     html += renderFold(heading, preview, body);
   }
 
-  if (season.breathingExercises && season.breathingExercises[0]) {
-    const b = season.breathingExercises[0];
-    const heading = b.title + (b.rhythm ? ' · ' + b.rhythm : '') + (b.rounds ? ' · ' + b.rounds + ' runder' : '');
-    const body = `<p>${b.instruction}</p>${b.effect ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${b.effect}</p>` : ''}`;
-    html += renderFold(heading, b.instruction, body);
-  }
-
+  // Akupressur
   if (season.acupressure && season.acupressure.length) {
+    html += `<p class="season-sub-section">Akupressur</p>`;
     season.acupressure.forEach(a => {
       const heading = `${a.name}${a.chineseName ? ' · ' + a.chineseName : ''}${a.duration ? ' · ' + a.duration : ''}`;
       const body = `<p>${a.location}</p><p style="margin-top:12px;">${a.technique}</p>${a.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${a.benefit}</p>` : ''}`;
       html += renderFold(heading, a.location, body);
+    });
+  }
+
+  // Organuret — denne årstids timer
+  if (season.organClockGuide && season.organClockGuide.length) {
+    html += `<p class="season-sub-section">Organurets timer</p>`;
+    season.organClockGuide.forEach(c => {
+      const heading = `${c.time} · ${c.organ}`;
+      const preview = c.doThis || '';
+      const body = `
+        <p><strong style="color:var(--text-muted);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">Gør dette</strong><br>${c.doThis || ''}</p>
+        ${c.avoidThis ? `<p style="margin-top:12px;"><strong style="color:var(--text-muted);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">Undgå dette</strong><br>${c.avoidThis}</p>` : ''}
+      `;
+      html += renderFold(heading, preview, body);
     });
   }
 
@@ -1991,8 +2027,46 @@ function showSeasonReflection(seasonKey) {
     html += renderFold('Rejsen folder sig ud', preview, body);
   }
 
+  // Bro til næste årstid — følger cyklus, som Isabelles milepæle ender med
+  // ("Træ nærer ild — du er klar til sommeren")
+  const SEASON_ORDER = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
+  const NOURISH_LINE = {
+    foraar: 'Træ nærer ild',
+    sommer: 'Ild nærer jord',
+    sensommer: 'Jord nærer metal',
+    efteraar: 'Metal nærer vand',
+    vinter: 'Vand nærer træ'
+  };
+  const idx = SEASON_ORDER.indexOf(seasonKey);
+  const nextKey = idx >= 0 ? SEASON_ORDER[(idx + 1) % SEASON_ORDER.length] : null;
+  if (nextKey) {
+    const nextS = SEASON_MAP[nextKey];
+    const nextColor = nextS ? nextS.color : 'var(--accent-gold)';
+    const nextName = nextS ? nextS.name : getSeasonName(nextKey);
+    html += `
+      <div class="season-bridge">
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
+        <p class="season-bridge-line">${NOURISH_LINE[seasonKey] || ''}</p>
+        <button class="season-bridge-link" data-next-season="${nextKey}">
+          <span>Rejs videre til</span>
+          <span class="season-bridge-name" style="color:${nextColor}">${nextName}</span>
+          <span class="season-bridge-arrow">→</span>
+        </button>
+      </div>
+    `;
+  }
+
   contentEl.innerHTML = html;
   attachFoldListeners(contentEl);
+
+  // Bind bridge click
+  const bridgeBtn = contentEl.querySelector('[data-next-season]');
+  if (bridgeBtn) {
+    bridgeBtn.addEventListener('click', () => {
+      showSeasonDetail(bridgeBtn.dataset.nextSeason);
+    });
+  }
+
   showScreen('season-reflection');
 }
 // ============================================
