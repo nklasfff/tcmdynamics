@@ -115,76 +115,73 @@
          Detail Screens (unchanged)
          ============================================ -->
 
-    <!-- Season Portrait Screen — stille portal til årstiden -->
+    <!-- Season Portrait Screen — årstid-portal med breathing constellation -->
     <div id="screen-season" class="screen">
       <button class="still-back" id="btn-back-season" aria-label="Tilbage">←</button>
-
-      <main class="season-still">
-        <div class="screen-illustration size-medium" id="season-illustration"></div>
-        <h1 class="season-name-still" id="season-name-still"></h1>
-        <p class="season-meta-still" id="season-meta-still"></p>
-
-        <div class="season-welcome-still" id="season-welcome-still"></div>
-
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-
-        <p class="season-invitation-still">Hvor fører du din opmærksomhed?</p>
-
-        <nav class="season-paths">
-          <button class="season-path" data-path="food"><span class="season-path-icon" data-icon="food"></span><span class="season-path-label">Nær dig selv</span></button>
-          <button class="season-path" data-path="movement"><span class="season-path-icon" data-icon="movement"></span><span class="season-path-label">Bevæg dig</span></button>
-          <button class="season-path" data-path="stillness"><span class="season-path-icon" data-icon="stillness"></span><span class="season-path-label">Bliv stille</span></button>
-          <button class="season-path" data-path="reflection"><span class="season-path-icon" data-icon="reflection"></span><span class="season-path-label">Reflektér</span></button>
-        </nav>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="season-eyebrow"></p>
+        <div class="screen-hero" id="season-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="season-name-still"></h1>
+          <p class="screen-subtitle" id="season-meta-still"></p>
+        </div>
+        <div class="screen-cards" id="season-cards"></div>
       </main>
     </div>
 
-    <!-- Season Sub-screens — Nær dig selv, Bevæg dig, Bliv stille, Reflektér -->
+    <!-- Nær dig selv — Rising warmth -->
     <div id="screen-season-food" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="season-sub">
-        <div class="screen-illustration size-large" id="sub-food-illustration"></div>
-        <p class="season-sub-label" id="sub-food-season"></p>
-        <h1 class="season-sub-title">Nær dig selv</h1>
-        <p class="season-sub-intro" id="sub-food-intro"></p>
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-        <div class="season-sub-content" id="sub-food-content"></div>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="food-eyebrow"></p>
+        <div class="screen-hero" id="food-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Nær dig selv</h1>
+          <p class="screen-subtitle" id="food-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="food-cards"></div>
       </main>
     </div>
 
+    <!-- Bevæg dig — Tai Chi flow -->
     <div id="screen-season-movement" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="season-sub">
-        <div class="screen-illustration size-large" id="sub-movement-illustration"></div>
-        <p class="season-sub-label" id="sub-movement-season"></p>
-        <h1 class="season-sub-title">Bevæg dig</h1>
-        <p class="season-sub-intro" id="sub-movement-intro"></p>
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-        <div class="season-sub-content" id="sub-movement-content"></div>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="movement-eyebrow"></p>
+        <div class="screen-hero" id="movement-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Bevæg dig</h1>
+          <p class="screen-subtitle" id="movement-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="movement-cards"></div>
       </main>
     </div>
 
+    <!-- Bliv stille — Radiating bell -->
     <div id="screen-season-stillness" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="season-sub">
-        <div class="screen-illustration size-large" id="sub-stillness-illustration"></div>
-        <p class="season-sub-label" id="sub-stillness-season"></p>
-        <h1 class="season-sub-title">Bliv stille</h1>
-        <p class="season-sub-intro" id="sub-stillness-intro"></p>
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-        <div class="season-sub-content" id="sub-stillness-content"></div>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="stillness-eyebrow"></p>
+        <div class="screen-hero" id="stillness-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Bliv stille</h1>
+          <p class="screen-subtitle" id="stillness-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="stillness-cards"></div>
       </main>
     </div>
 
+    <!-- Reflektér — Inward spiral -->
     <div id="screen-season-reflection" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="season-sub">
-        <div class="screen-illustration size-large" id="sub-reflection-illustration"></div>
-        <p class="season-sub-label" id="sub-reflection-season"></p>
-        <h1 class="season-sub-title">Reflektér</h1>
-        <p class="season-sub-intro" id="sub-reflection-intro"></p>
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-        <div class="season-sub-content" id="sub-reflection-content"></div>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="reflection-eyebrow"></p>
+        <div class="screen-hero" id="reflection-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Reflektér</h1>
+          <p class="screen-subtitle" id="reflection-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="reflection-cards"></div>
       </main>
     </div>
 
