@@ -829,6 +829,294 @@ function svgElementTimelineOrb(color, size = 28) {
   </svg>`;
 }
 
+// ============================================
+// Unikke illustrationer per skærm (Phase 3.2-3.3)
+//
+// Hver funktion bygger en UNIK glød-illustration der kun bruges ét sted.
+// Alle tager en farve (typisk årstidens element-farve) og er dynamiske.
+// Alle bruger --glow-* tokens så de virker i lys og mørk mode.
+// ============================================
+
+/**
+ * svgBreathingConstellation(color, size)
+ *
+ * BRUGES KUN PÅ: screen-season (årstid-portal)
+ * Et stort centralt orb omgivet af 8 mindre satellitter i en roterende ring.
+ */
+function svgBreathingConstellation(color, size = 260) {
+  const vb = 260;
+  const cx = vb / 2, cy = vb / 2;
+  const centerR = 34;
+  const ringR = 95;
+  const orbR = 11;
+
+  const centerId = nextGradId();
+  const orbIds = Array.from({ length: 8 }, () => nextGradId());
+
+  // 8 orbs i cirkel, hver får sin egen glød
+  const orbs = orbIds.map((id, i) => {
+    const angle = (i / 8) * Math.PI * 2 - Math.PI / 2;
+    const x = cx + ringR * Math.cos(angle);
+    const y = cy + ringR * Math.sin(angle);
+    const delay = (i * 0.6).toFixed(2);
+    return {
+      id,
+      defs: `<radialGradient id="${id}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.75"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.28"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.04"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>`,
+      shape: `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${orbR}" fill="url(#${id})"
+        style="animation: glow-breathe 5.5s ease-in-out ${delay}s infinite; transform-origin: ${x.toFixed(1)}px ${y.toFixed(1)}px;"/>`
+    };
+  });
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill constellation-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${centerId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.85"/>
+        <stop offset="35%" stop-color="${color}" stop-opacity="0.42"/>
+        <stop offset="70%" stop-color="${color}" stop-opacity="0.12"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+      ${orbs.map(o => o.defs).join('\n      ')}
+    </defs>
+    <g class="constellation-ring" style="transform-origin: ${cx}px ${cy}px;">
+      ${orbs.map(o => o.shape).join('\n      ')}
+      <circle cx="${cx}" cy="${cy}" r="2" fill="${color}" opacity="0.6" class="constellation-outer-focal"/>
+    </g>
+    <circle cx="${cx}" cy="${cy}" r="${centerR}" fill="url(#${centerId})"
+      style="animation: glow-breathe 7s ease-in-out infinite; transform-origin: ${cx}px ${cy}px;"/>
+    <circle cx="${cx}" cy="${cy}" r="2.8" fill="${color}" opacity="0.9"/>
+  </svg>`;
+}
+
+/**
+ * svgRisingWarmth(color, size)
+ *
+ * BRUGES KUN PÅ: screen-season-food (Nær dig selv)
+ * En varm skål (ellipse-glød) med 3 opstigende damp-strømme der bølger.
+ */
+function svgRisingWarmth(color, size = 220) {
+  const vb = 240;
+  const bowlId = nextGradId();
+  const wispId = nextGradId();
+
+  return `<svg width="${size}" height="${size * 1.15}" viewBox="0 0 ${vb} ${vb * 1.15}" class="glow-ill warmth-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${bowlId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.75"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.32"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.06"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="${wispId}" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%"   stop-color="${color}" stop-opacity="0.6"/>
+        <stop offset="60%"  stop-color="${color}" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 3 vertikale damp-strømme, hver med egen timing -->
+    <path class="warmth-wisp warmth-wisp-1"
+      d="M92 200 Q88 170 94 145 Q100 115 90 85 Q84 60 94 28"
+      stroke="url(#${wispId})" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <path class="warmth-wisp warmth-wisp-2"
+      d="M120 200 Q124 165 118 135 Q110 100 122 70 Q128 46 120 14"
+      stroke="url(#${wispId})" stroke-width="9" stroke-linecap="round" fill="none" opacity="1"/>
+    <path class="warmth-wisp warmth-wisp-3"
+      d="M148 200 Q144 170 150 145 Q156 118 148 92 Q142 68 150 40"
+      stroke="url(#${wispId})" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.9"/>
+
+    <!-- Skål-glød nederst -->
+    <ellipse cx="120" cy="218" rx="72" ry="22" fill="url(#${bowlId})"
+      style="animation: glow-breathe 6s ease-in-out infinite; transform-origin: 120px 218px;"/>
+    <ellipse cx="120" cy="218" rx="34" ry="6" fill="${color}" opacity="0.2"/>
+    <circle cx="120" cy="218" r="2.2" fill="${color}" opacity="0.85"/>
+  </svg>`;
+}
+
+/**
+ * svgTaiChiFlow(color, partnerColor, size)
+ *
+ * BRUGES KUN PÅ: screen-season-movement (Bevæg dig)
+ * To yin-yang kurver der chaser hinanden i en roterende cirkel.
+ * Hovedfarve = årstidens farve, partner-farve = kontrasterende element.
+ */
+function svgTaiChiFlow(color, partnerColor, size = 220) {
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+  const r = 90;
+
+  const gradYang = nextGradId();
+  const gradYin = nextGradId();
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill taichi-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${gradYang}" cx="50%" cy="35%" r="55%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.55"/>
+        <stop offset="60%" stop-color="${color}" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="${gradYin}" cx="50%" cy="65%" r="55%">
+        <stop offset="0%"  stop-color="${partnerColor}" stop-opacity="0.5"/>
+        <stop offset="60%" stop-color="${partnerColor}" stop-opacity="0.12"/>
+        <stop offset="100%" stop-color="${partnerColor}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <g class="taichi-spin" style="transform-origin: ${cx}px ${cy}px;">
+      <!-- Yang (øvre) kurve fyld -->
+      <path d="M ${cx} ${cy - r}
+               A ${r} ${r} 0 1 1 ${cx} ${cy + r}
+               A ${r/2} ${r/2} 0 0 0 ${cx} ${cy}
+               A ${r/2} ${r/2} 0 0 1 ${cx} ${cy - r} Z"
+            fill="url(#${gradYang})"/>
+      <!-- Yin (nedre) kurve fyld -->
+      <path d="M ${cx} ${cy + r}
+               A ${r} ${r} 0 1 1 ${cx} ${cy - r}
+               A ${r/2} ${r/2} 0 0 0 ${cx} ${cy}
+               A ${r/2} ${r/2} 0 0 1 ${cx} ${cy + r} Z"
+            fill="url(#${gradYin})"/>
+
+      <!-- Tynd omrids af cirkel -->
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none"
+              stroke="${color}" stroke-width="0.8" opacity="0.4"/>
+
+      <!-- Gnister i centrum af hver halvdel -->
+      <circle class="taichi-dot taichi-dot-yang"
+              cx="${cx}" cy="${cy - r/2}" r="5" fill="${partnerColor}" opacity="0.85"/>
+      <circle class="taichi-dot taichi-dot-yin"
+              cx="${cx}" cy="${cy + r/2}" r="5" fill="${color}" opacity="0.85"/>
+    </g>
+  </svg>`;
+}
+
+/**
+ * svgRadiatingBell(color, size)
+ *
+ * BRUGES KUN PÅ: screen-season-stillness (Bliv stille)
+ * Central prik der sender 3 ekspanderende ringe ud som en klokke-tone,
+ * forskudt i tid så de følger hinanden.
+ */
+function svgRadiatingBell(color, size = 220) {
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+
+  const centerGlowId = nextGradId();
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill bell-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${centerGlowId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.8"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.3"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.05"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- 3 ekspanderende ringe -->
+    <circle class="bell-ring bell-ring-1" cx="${cx}" cy="${cy}" r="8"
+            fill="none" stroke="${color}" stroke-width="1.2" opacity="0.8"/>
+    <circle class="bell-ring bell-ring-2" cx="${cx}" cy="${cy}" r="8"
+            fill="none" stroke="${color}" stroke-width="1.2" opacity="0.8"/>
+    <circle class="bell-ring bell-ring-3" cx="${cx}" cy="${cy}" r="8"
+            fill="none" stroke="${color}" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Central glød -->
+    <circle cx="${cx}" cy="${cy}" r="26" fill="url(#${centerGlowId})"
+      style="animation: glow-pulse 5s ease-in-out infinite; transform-origin: ${cx}px ${cy}px;"/>
+    <circle cx="${cx}" cy="${cy}" r="3" fill="${color}" opacity="0.95"/>
+  </svg>`;
+}
+
+/**
+ * svgInwardSpiral(color, size)
+ *
+ * BRUGES KUN PÅ: screen-season-reflection (Reflektér)
+ * En logaritmisk spiral der trækker opmærksomheden indad mod et fokalpunkt.
+ */
+function svgInwardSpiral(color, size = 220) {
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+
+  // Generér logaritmisk spiral: r = a * e^(b * theta)
+  const a = 4;
+  const b = 0.18;
+  const turns = 4;
+  const steps = 200;
+  const total = turns * Math.PI * 2;
+
+  let d = '';
+  for (let i = 0; i <= steps; i++) {
+    const theta = (i / steps) * total;
+    const r = a * Math.exp(b * theta);
+    const x = cx + r * Math.cos(theta);
+    const y = cy + r * Math.sin(theta);
+    if (i === 0) d += `M ${x.toFixed(1)} ${y.toFixed(1)}`;
+    else d += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+
+  const gradId = nextGradId();
+  const glowId = nextGradId();
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill spiral-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${glowId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.6"/>
+        <stop offset="50%" stop-color="${color}" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="1"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.65"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0.1"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Blød glød i baggrunden -->
+    <circle cx="${cx}" cy="${cy}" r="100" fill="url(#${glowId})"
+      style="animation: glow-breathe 9s ease-in-out infinite; transform-origin: ${cx}px ${cy}px;"/>
+
+    <!-- Selve spiralen, roterer langsomt -->
+    <g class="spiral-rotate" style="transform-origin: ${cx}px ${cy}px;">
+      <path d="${d}" fill="none" stroke="url(#${gradId})" stroke-width="1.4"
+            stroke-linecap="round" opacity="0.9"/>
+    </g>
+
+    <!-- Fokalpunkt i centrum -->
+    <circle cx="${cx}" cy="${cy}" r="3" fill="${color}" opacity="1"/>
+  </svg>`;
+}
+
+// Find et "partner-element" til Tai Chi (nærende element = den der nærer den aktuelle)
+function getNourisherColor(seasonKey) {
+  // Nærende cyklus baglæns: hvem nærer mig?
+  // Vand → Træ → Ild → Jord → Metal → Vand
+  const nourisher = {
+    foraar:    'var(--el-water)',
+    sommer:    'var(--el-wood)',
+    sensommer: 'var(--el-fire)',
+    efteraar:  'var(--el-earth)',
+    vinter:    'var(--el-metal)'
+  };
+  return nourisher[seasonKey] || 'var(--accent-gold)';
+}
+
+// Hent årstids-farve som CSS var-reference
+function getSeasonColor(seasonKey) {
+  const map = {
+    foraar:    'var(--el-wood)',
+    sommer:    'var(--el-fire)',
+    sensommer: 'var(--el-earth)',
+    efteraar:  'var(--el-metal)',
+    vinter:    'var(--el-water)'
+  };
+  return map[seasonKey] || 'var(--accent-gold)';
+}
+
 // Navigation-stak — holder styr på hele rejsen tilbage
 let _screenStack = [];
 
@@ -1931,6 +2219,10 @@ function renderSeasonSection() {
 
 let _currentSeasonKey = null;
 
+// ============================================
+// Årstid-portal — screen-season
+// Unik illustration: Breathing constellation
+// ============================================
 function showSeasonDetail(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
@@ -1938,234 +2230,351 @@ function showSeasonDetail(seasonKey) {
 
   const s = SEASON_MAP[seasonKey];
   const name = s ? s.name : getSeasonName(seasonKey);
-  const glyph = s ? s.glyph : '';
   const color = s ? s.color : season.farve;
 
-  // Årstids-motiv (SVG blæk-illustration)
-  const illEl = document.getElementById('season-illustration');
-  if (illEl) {
-    illEl.innerHTML = getSeasonIllustration(seasonKey, color);
-  }
-
-  // Navn
-  const nameEl = document.getElementById('season-name-still');
-  if (nameEl) {
-    nameEl.textContent = name;
-    nameEl.style.color = color;
-  }
-
-  // Meta
-  const metaEl = document.getElementById('season-meta-still');
-  if (metaEl) metaEl.textContent = `${season.organpar} · ${season.energi}`;
-
-  // Den fulde poetiske velkomst fra seasonWelcomes (Isabelles stemme)
-  const welcomeEl = document.getElementById('season-welcome-still');
-  if (welcomeEl) {
-    const welcome = (seasonWelcomes && seasonWelcomes[seasonKey]) || (season.philosophy && season.philosophy[0]) || '';
-    welcomeEl.textContent = welcome;
-  }
-
-  // Sæt --season-color for stylede elementer
+  // Sæt --season-color på skærmen (titel-farve)
   const screen = document.getElementById('screen-season');
   if (screen) screen.style.setProperty('--season-color', color);
 
-  // Path-knap listeners + ikoner
-  document.querySelectorAll('.season-path').forEach(btn => {
-    const fresh = btn.cloneNode(true);
-    btn.parentNode.replaceChild(fresh, btn);
-    const iconEl = fresh.querySelector('.season-path-icon');
-    if (iconEl) {
-      const iconName = iconEl.dataset.icon;
-      iconEl.innerHTML = getPathIcon(iconName, color);
-    }
-    fresh.addEventListener('click', () => {
-      const path = fresh.dataset.path;
-      if (path === 'food') showSeasonFood(seasonKey);
-      else if (path === 'movement') showSeasonMovement(seasonKey);
-      else if (path === 'stillness') showSeasonStillness(seasonKey);
-      else if (path === 'reflection') showSeasonReflection(seasonKey);
+  // Eyebrow: DIN REJSE · FORÅR
+  const eyebrowEl = document.getElementById('season-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `DIN REJSE · ${name.toUpperCase()}`;
+
+  // UNIK illustration: Breathing constellation (kun her)
+  const heroEl = document.getElementById('season-hero');
+  if (heroEl) heroEl.innerHTML = svgBreathingConstellation(color, 260);
+
+  // Titel + undertitel
+  const nameEl = document.getElementById('season-name-still');
+  if (nameEl) nameEl.textContent = name;
+
+  const metaEl = document.getElementById('season-meta-still');
+  if (metaEl) metaEl.textContent = `${season.organpar} · ${season.energi} · ${s ? s.element : ''}`;
+
+  // Kort-stak: velkomst-kort + 4 dør-kort
+  const cardsEl = document.getElementById('season-cards');
+  if (cardsEl) {
+    const welcome = (typeof seasonWelcomes !== 'undefined' && seasonWelcomes && seasonWelcomes[seasonKey])
+      || (season.philosophy && season.philosophy[0])
+      || '';
+    const welcomeSentences = welcome.split('. ');
+    const welcomePreview = welcomeSentences.slice(0, 2).join('. ') + (welcomeSentences.length > 2 ? '.' : '');
+    const welcomeBody = welcomeSentences.slice(2).join('. ').trim();
+
+    const dooorDescs = {
+      foraar: {
+        food:       'Grønt, let bittert og syrligt — det der vækker leveren blidt',
+        movement:   'Stræk der åbner kroppens sider og lever-galde-meridianerne',
+        stillness:  'Meditation, åndedræt og EFT for vrede og utålmodighed',
+        reflection: 'Hvad vil spire? Hvor er du fastlåst? Skriv dine ord.'
+      },
+      sommer: {
+        food:       'Røde bitre fødevarer, frisk og kølende — balance i ilden',
+        movement:   'Hjerteåbnende stræk og bevægelser med armene frit',
+        stillness:  'Hjertemeditation, taknemmelighed og værensmodus',
+        reflection: 'Hvad er ægte glæde? Hvad brænder du for? Skriv.'
+      },
+      sensommer: {
+        food:       'Nærende, sødmefulde og varme retter — jordens stabilitet',
+        movement:   'Groundende stræk der styrker kerne og mave-milt-meridianerne',
+        stillness:  'Groundingsmeditation, bekymrings-tapping og pusterum',
+        reflection: 'Hvad nærer dig? Hvad bærer du uretmæssigt? Skriv.'
+      },
+      efteraar: {
+        food:       'Hvid, varm og fugtig mad — der nærer lunger og tyktarm',
+        movement:   'Bevægelser der åbner lungerne og lader dig slippe',
+        stillness:  'Åndedrætsmeditation, sorg-EFT og lungernes cirkel',
+        reflection: 'Hvad bærer du stadig? Hvad er essentielt? Skriv.'
+      },
+      vinter: {
+        food:       'Mørke, langsomt kogte retter der nærer nyrerne',
+        movement:   'Indadvendte stræk der varmer nyrerne og bevarer kraft',
+        stillness:  'Dyb stilhed, nyremeditation og frygtens EFT',
+        reflection: 'Hvad hviler i dig? Hvor er kilden? Skriv.'
+      }
+    };
+    const d = dooorDescs[seasonKey] || dooorDescs.foraar;
+
+    cardsEl.innerHTML = [
+      renderCard({
+        eyebrow: 'DIN FASE',
+        title: welcomePreview,
+        subtitle: `${season.organpar} · ${s ? s.element : ''}`,
+        body: welcomeBody ? `<p>${welcomeBody}</p>` : '',
+        expandable: !!welcomeBody
+      }),
+      '<p class="screen-cards-section">DINE FIRE DØRE</p>',
+      renderCard({
+        eyebrow: 'NÆR DIG SELV',
+        title: 'Maden der passer',
+        subtitle: d.food,
+        expandable: false
+      }).replace('<article class="card card-static"', '<article class="card card-static card-clickable" data-path="food"'),
+      renderCard({
+        eyebrow: 'BEVÆG DIG',
+        title: 'Kroppen i bevægelse',
+        subtitle: d.movement,
+        expandable: false
+      }).replace('<article class="card card-static"', '<article class="card card-static card-clickable" data-path="movement"'),
+      renderCard({
+        eyebrow: 'BLIV STILLE',
+        title: 'Ro midt i alt',
+        subtitle: d.stillness,
+        expandable: false
+      }).replace('<article class="card card-static"', '<article class="card card-static card-clickable" data-path="stillness"'),
+      renderCard({
+        eyebrow: 'REFLEKTÉR',
+        title: 'Dine ord til dig selv',
+        subtitle: d.reflection,
+        expandable: false
+      }).replace('<article class="card card-static"', '<article class="card card-static card-clickable" data-path="reflection"')
+    ].join('');
+
+    attachCardListeners(cardsEl);
+
+    // Dør-kort-klik
+    cardsEl.querySelectorAll('[data-path]').forEach(card => {
+      card.addEventListener('click', () => {
+        const path = card.dataset.path;
+        if      (path === 'food')       showSeasonFood(seasonKey);
+        else if (path === 'movement')   showSeasonMovement(seasonKey);
+        else if (path === 'stillness')  showSeasonStillness(seasonKey);
+        else if (path === 'reflection') showSeasonReflection(seasonKey);
+      });
     });
-  });
+  }
 
   showScreen('season');
 }
 
-// Helper til at rendere sæson-label på sub-screens
-function renderSeasonSubLabel(id, seasonKey) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const s = SEASON_MAP[seasonKey];
-  el.innerHTML = s
-    ? `<span style="color: ${s.color}">${s.name}</span> · ${s.element}`
-    : getSeasonName(seasonKey);
-}
-
 // ============================================
-// Nær dig selv — kost som flydende artikel
+// Nær dig selv — screen-season-food
+// Unik illustration: Rising warmth (skål + damp-strømme)
 // ============================================
 function showSeasonFood(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
 
-  const sFood = SEASON_MAP[seasonKey];
-  const cFood = sFood ? sFood.color : 'var(--accent-gold)';
-  const illFood = document.getElementById('sub-food-illustration');
-  if (illFood) illFood.innerHTML = getPathIllustration('food', cFood);
+  const s = SEASON_MAP[seasonKey];
+  const color = s ? s.color : 'var(--accent-gold)';
+  const name = s ? s.name : getSeasonName(seasonKey);
 
-  renderSeasonSubLabel('sub-food-season', seasonKey);
+  // Sæt --season-color
+  const screen = document.getElementById('screen-season-food');
+  if (screen) screen.style.setProperty('--season-color', color);
 
+  // Eyebrow
+  const eyebrowEl = document.getElementById('food-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `${name.toUpperCase()} · NÆR DIG SELV`;
+
+  // UNIK illustration: Rising warmth (kun her)
+  const heroEl = document.getElementById('food-hero');
+  if (heroEl) heroEl.innerHTML = svgRisingWarmth(color, 220);
+
+  // Subtitle — årstids-intro
   const intros = {
-    foraar: 'I foråret har din krop brug for at vågne forsigtigt efter vinteren. Det grønne, det let bitre og det friske støtter leverens rensende arbejde.',
-    sommer: 'Sommeren beder dig om at mæste kroppen med det friske og det kølende. Sødt og bittert i balance holder ilden klar uden at brænde ud.',
-    sensommer: 'Sensommeren er høstens tid. Nærende, sødmefulde og varme retter samler jordens kraft i dig og støtter din fordøjelse.',
-    efteraar: 'Efteråret inviterer dig til at vende blikket indad og nære dig med det varme og fugtige. Hvid mad støtter lunger og tyktarm.',
-    vinter: 'Vinteren beder om varme, dybde og tålmodighed. Langsomt kogte retter og mørke farver støtter nyrerne og din grundlæggende vitalitet.'
+    foraar:    'Det grønne, det let bitre og det friske — det der vækker leveren blidt efter vinteren',
+    sommer:    'Røde, bitre, friske og kølende fødevarer — der holder ilden klar uden at brænde ud',
+    sensommer: 'Nærende, sødmefulde og varme retter — der samler jordens kraft i dig',
+    efteraar:  'Hvide, varme og fugtige fødevarer — der nærer lunger og tyktarm',
+    vinter:    'Mørke, langsomt kogte retter — der varmer nyrerne og bevarer din essens'
   };
+  const subEl = document.getElementById('food-subtitle');
+  if (subEl) subEl.textContent = intros[seasonKey] || '';
 
-  const introEl = document.getElementById('sub-food-intro');
-  if (introEl) introEl.textContent = intros[seasonKey] || '';
-
-  const contentEl = document.getElementById('sub-food-content');
-  if (contentEl && season.foodGuide) {
-    contentEl.innerHTML = season.foodGuide.map(f => {
-      const body = `<p>${f.why}</p><p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${f.preparation}</p>`;
-      return renderFold(f.name, f.why, body);
-    }).join('');
-    attachFoldListeners(contentEl);
+  // Kort-stak: ét kort per fødevare
+  const cardsEl = document.getElementById('food-cards');
+  if (cardsEl && season.foodGuide) {
+    cardsEl.innerHTML = season.foodGuide.map((f, i) => renderCard({
+      eyebrow: `FØDEVARE ${String(i + 1).padStart(2, '0')}`,
+      title: f.name,
+      subtitle: f.why.split('.')[0] + '.',
+      body: `
+        <p>${f.why}</p>
+        ${f.preparation ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:14px;"><strong style="color:var(--text-muted);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Tilberedning</strong><br>${f.preparation}</p>` : ''}
+      `,
+      expandable: true
+    })).join('');
+    attachCardListeners(cardsEl);
   }
 
   showScreen('season-food');
 }
 
 // ============================================
-// Bevæg dig — yoga som en sekvens
+// Bevæg dig — screen-season-movement
+// Unik illustration: Tai Chi flow (to yin-yang kurver)
 // ============================================
 function showSeasonMovement(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
 
-  const sMov = SEASON_MAP[seasonKey];
-  const cMov = sMov ? sMov.color : 'var(--accent-gold)';
-  const illMov = document.getElementById('sub-movement-illustration');
-  if (illMov) illMov.innerHTML = getPathIllustration('movement', cMov);
+  const s = SEASON_MAP[seasonKey];
+  const color = s ? s.color : 'var(--accent-gold)';
+  const partnerColor = getNourisherColor(seasonKey);
+  const name = s ? s.name : getSeasonName(seasonKey);
 
-  renderSeasonSubLabel('sub-movement-season', seasonKey);
+  const screen = document.getElementById('screen-season-movement');
+  if (screen) screen.style.setProperty('--season-color', color);
+
+  const eyebrowEl = document.getElementById('movement-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `${name.toUpperCase()} · BEVÆG DIG`;
+
+  // UNIK illustration: Tai Chi flow (kun her)
+  const heroEl = document.getElementById('movement-hero');
+  if (heroEl) heroEl.innerHTML = svgTaiChiFlow(color, partnerColor, 220);
 
   const intros = {
-    foraar: 'Foråret kalder på blid bevægelse — strækker der åbner lever- og galdemeridianerne, bevægelser der løsner det der er blevet holdt tilbage.',
-    sommer: 'Sommeren er tiden for hjerteåbnende bevægelser. Giv dit bryst luft og lad varmen flyde frit.',
-    sensommer: 'Sensommerens bevægelser grounder dig i midten. Rolige positioner der styrker din kerne og lader dig hvile i tyngden.',
-    efteraar: 'Efterårets bevægelser åbner lungerne og lader åndedrættet finde sin fulde dybde. Bevægelser der lader dig slippe.',
-    vinter: 'Vinterens bevægelser er nænsomme og indadvendte. De varmer dine nyrer og bevarer din dybeste kraft.'
+    foraar:    'Blide stræk der åbner lever- og galdemeridianerne — løsn det der er blevet holdt tilbage',
+    sommer:    'Hjerteåbnende bevægelser — giv dit bryst luft og lad varmen flyde frit',
+    sensommer: 'Groundende positioner der styrker din kerne — hvil i tyngden',
+    efteraar:  'Bevægelser der åbner lungerne — lad åndedrættet finde sin fulde dybde',
+    vinter:    'Nænsomme, indadvendte stræk — der varmer nyrerne og bevarer din dybeste kraft'
   };
+  const subEl = document.getElementById('movement-subtitle');
+  if (subEl) subEl.textContent = intros[seasonKey] || '';
 
-  const introEl = document.getElementById('sub-movement-intro');
-  if (introEl) introEl.textContent = intros[seasonKey] || '';
-
-  const contentEl = document.getElementById('sub-movement-content');
-  if (contentEl && season.yogaSequence) {
-    contentEl.innerHTML = season.yogaSequence.map(y => {
-      const heading = `${y.name}${y.sanskrit ? ' · ' + y.sanskrit : ''}${y.duration ? ' · ' + y.duration : ''}`;
-      const body = `<p>${y.instruction}</p>${y.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${y.benefit}</p>` : ''}`;
-      return renderFold(heading, y.instruction, body);
-    }).join('');
-    attachFoldListeners(contentEl);
+  // Kort per yoga-stilling
+  const cardsEl = document.getElementById('movement-cards');
+  if (cardsEl && season.yogaSequence) {
+    cardsEl.innerHTML = season.yogaSequence.map((y, i) => renderCard({
+      eyebrow: `STILLING ${String(i + 1).padStart(2, '0')} · ${y.duration || ''}`.trim(),
+      title: y.name,
+      subtitle: y.sanskrit || '',
+      body: `
+        <p>${y.instruction}</p>
+        ${y.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:14px;"><strong style="color:var(--text-muted);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Virkning</strong><br>${y.benefit}</p>` : ''}
+      `,
+      expandable: true
+    })).join('');
+    attachCardListeners(cardsEl);
   }
 
   showScreen('season-movement');
 }
 
 // ============================================
-// Bliv stille — én meditation + én vejrtrækning + akupressur
+// Bliv stille — screen-season-stillness
+// Unik illustration: Radiating bell (3 ekspanderende ringe)
 // ============================================
 function showSeasonStillness(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
 
-  const sSti = SEASON_MAP[seasonKey];
-  const cSti = sSti ? sSti.color : 'var(--accent-gold)';
-  const illSti = document.getElementById('sub-stillness-illustration');
-  if (illSti) illSti.innerHTML = getPathIllustration('stillness', cSti);
+  const s = SEASON_MAP[seasonKey];
+  const color = s ? s.color : 'var(--accent-gold)';
+  const name = s ? s.name : getSeasonName(seasonKey);
 
-  renderSeasonSubLabel('sub-stillness-season', seasonKey);
+  const screen = document.getElementById('screen-season-stillness');
+  if (screen) screen.style.setProperty('--season-color', color);
+
+  const eyebrowEl = document.getElementById('stillness-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `${name.toUpperCase()} · BLIV STILLE`;
+
+  // UNIK illustration: Radiating bell (kun her)
+  const heroEl = document.getElementById('stillness-hero');
+  if (heroEl) heroEl.innerHTML = svgRadiatingBell(color, 220);
 
   const intros = {
-    foraar: 'Stilheden i foråret er ikke tomhed. Det er rummet hvor vreden kan landes, rummet hvor det nye kan lyttes efter.',
-    sommer: 'Stilheden i sommeren er hvile midt i ilden. Et øjeblik hvor hjertet kan finde sin rolige puls.',
-    sensommer: 'Stilheden i sensommeren er centrering. At vende hjem til midten og mærke hvor du står.',
-    efteraar: 'Stilheden i efteråret er accept. Et åndedrag der tager imod og slipper. Et indre rum hvor sorgen har plads.',
-    vinter: 'Stilheden i vinteren er dyb. Et rum hvor du hviler uden at skulle noget, samler kraft i mørket.'
+    foraar:    'Rummet hvor vreden kan landes — og hvor det nye kan lyttes efter',
+    sommer:    'Hvile midt i ilden — et øjeblik hvor hjertet finder sin rolige puls',
+    sensommer: 'Centrering — at vende hjem til midten og mærke hvor du står',
+    efteraar:  'Accept — et åndedrag der tager imod og slipper',
+    vinter:    'Den dybeste stilhed — et rum hvor du samler kraft i mørket'
   };
+  const subEl = document.getElementById('stillness-subtitle');
+  if (subEl) subEl.textContent = intros[seasonKey] || '';
 
-  const introEl = document.getElementById('sub-stillness-intro');
-  if (introEl) introEl.textContent = intros[seasonKey] || '';
-
-  const contentEl = document.getElementById('sub-stillness-content');
-  if (!contentEl) { showScreen('season-stillness'); return; }
+  const cardsEl = document.getElementById('stillness-cards');
+  if (!cardsEl) { showScreen('season-stillness'); return; }
 
   let html = '';
 
-  // Meditationer — alle, ikke kun den første
+  // Meditationer — alle
   if (season.meditations && season.meditations.length) {
-    html += `<p class="season-sub-section">Meditationer</p>`;
-    season.meditations.forEach(m => {
-      const heading = m.title + (m.duration ? ' · ' + m.duration : '');
-      const preview = (m.intention) || (m.steps && m.steps[0]) || '';
-      const body = `${m.steps ? `<ol>${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>` : ''}${m.intention ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${m.intention}</p>` : ''}`;
-      html += renderFold(heading, preview, body);
+    html += '<p class="screen-cards-section">MEDITATIONER</p>';
+    season.meditations.forEach((m, i) => {
+      html += renderCard({
+        eyebrow: `MEDITATION ${String(i + 1).padStart(2, '0')}${m.duration ? ' · ' + m.duration : ''}`,
+        title: m.title,
+        subtitle: m.intention || '',
+        body: m.steps ? `<ol style="padding-left:18px;margin:0;">${m.steps.map(st => `<li style="margin-bottom:10px;">${st}</li>`).join('')}</ol>` : '',
+        expandable: true
+      });
     });
   }
 
-  // Vejrtrækning — alle, ikke kun den første
+  // Vejrtrækning
   if (season.breathingExercises && season.breathingExercises.length) {
-    html += `<p class="season-sub-section">Vejrtrækning</p>`;
-    season.breathingExercises.forEach(b => {
-      const heading = b.title + (b.rhythm ? ' · ' + b.rhythm : '') + (b.rounds ? ' · ' + b.rounds + ' runder' : '');
-      const body = `<p>${b.instruction}</p>${b.effect ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${b.effect}</p>` : ''}`;
-      html += renderFold(heading, b.instruction, body);
+    html += '<p class="screen-cards-section">VEJRTRÆKNING</p>';
+    season.breathingExercises.forEach((b, i) => {
+      html += renderCard({
+        eyebrow: `ØVELSE ${String(i + 1).padStart(2, '0')}${b.rounds ? ' · ' + b.rounds + ' runder' : ''}`,
+        title: b.title,
+        subtitle: b.rhythm || '',
+        body: `
+          <p>${b.instruction}</p>
+          ${b.effect ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:14px;">${b.effect}</p>` : ''}
+        `,
+        expandable: true
+      });
     });
   }
 
-  // EFT-tapping — en af Isabelles kerne-teknikker
+  // EFT — Isabelles kerne-teknik
   if (season.eftSequence && season.eftSequence.points && season.eftSequence.points.length) {
     const eft = season.eftSequence;
-    const heading = 'Tap dig fri · EFT';
-    const preview = eft.setupPhrase || '';
-    const body = `
-      <p style="font-style:italic;color:var(--text-secondary);margin-bottom:16px;">${eft.setupPhrase}</p>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Tap blidt på hvert punkt mens du gentager sætningen.</p>
-      <ol>${eft.points.map(p => `<li><strong>${p.point}</strong><br><span style="color:var(--text-secondary);">${p.affirmation}</span></li>`).join('')}</ol>
-    `;
-    html += `<p class="season-sub-section">Frigørelse</p>`;
-    html += renderFold(heading, preview, body);
+    html += '<p class="screen-cards-section">FRIGØRELSE · EFT</p>';
+    html += renderCard({
+      eyebrow: 'TAP DIG FRI',
+      title: 'EFT-sekvens',
+      subtitle: 'Tap blidt på hvert punkt mens du gentager sætningen',
+      body: `
+        <p style="font-style:italic;color:var(--text-secondary);margin:0 0 16px;">&ldquo;${eft.setupPhrase}&rdquo;</p>
+        <ol style="padding-left:18px;margin:0;">${eft.points.map(p => `<li style="margin-bottom:10px;"><strong>${p.point}</strong><br><span style="color:var(--text-secondary);">${p.affirmation}</span></li>`).join('')}</ol>
+      `,
+      expandable: true
+    });
   }
 
   // Akupressur
   if (season.acupressure && season.acupressure.length) {
-    html += `<p class="season-sub-section">Akupressur</p>`;
-    season.acupressure.forEach(a => {
-      const heading = `${a.name}${a.chineseName ? ' · ' + a.chineseName : ''}${a.duration ? ' · ' + a.duration : ''}`;
-      const body = `<p>${a.location}</p><p style="margin-top:12px;">${a.technique}</p>${a.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${a.benefit}</p>` : ''}`;
-      html += renderFold(heading, a.location, body);
+    html += '<p class="screen-cards-section">AKUPRESSUR</p>';
+    season.acupressure.forEach((a, i) => {
+      html += renderCard({
+        eyebrow: `PUNKT ${String(i + 1).padStart(2, '0')}${a.chineseName ? ' · ' + a.chineseName : ''}`,
+        title: a.name,
+        subtitle: a.duration || '',
+        body: `
+          <p><strong style="color:var(--text-muted);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Placering</strong><br>${a.location}</p>
+          <p style="margin-top:12px;"><strong style="color:var(--text-muted);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Teknik</strong><br>${a.technique}</p>
+          ${a.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${a.benefit}</p>` : ''}
+        `,
+        expandable: true
+      });
     });
   }
 
   // Organuret — denne årstids timer
   if (season.organClockGuide && season.organClockGuide.length) {
-    html += `<p class="season-sub-section">Organurets timer</p>`;
+    html += '<p class="screen-cards-section">ORGANURETS TIMER</p>';
     season.organClockGuide.forEach(c => {
-      const heading = `${c.time} · ${c.organ}`;
-      const preview = c.doThis || '';
-      const body = `
-        <p><strong style="color:var(--text-muted);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">Gør dette</strong><br>${c.doThis || ''}</p>
-        ${c.avoidThis ? `<p style="margin-top:12px;"><strong style="color:var(--text-muted);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">Undgå dette</strong><br>${c.avoidThis}</p>` : ''}
-      `;
-      html += renderFold(heading, preview, body);
+      html += renderCard({
+        eyebrow: c.time,
+        title: c.organ,
+        subtitle: c.doThis ? c.doThis.split('.')[0] + '.' : '',
+        body: `
+          <p><strong style="color:var(--text-muted);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Gør dette</strong><br>${c.doThis || ''}</p>
+          ${c.avoidThis ? `<p style="margin-top:12px;"><strong style="color:var(--text-muted);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Undgå dette</strong><br>${c.avoidThis}</p>` : ''}
+        `,
+        expandable: true
+      });
     });
   }
 
-  contentEl.innerHTML = html;
-  attachFoldListeners(contentEl);
+  cardsEl.innerHTML = html;
+  attachCardListeners(cardsEl);
+
   showScreen('season-stillness');
 }
 
@@ -2294,63 +2703,89 @@ function attachJournalListeners(container, seasonKey) {
 }
 
 // ============================================
-// Reflektér — journal + milepæle
+// Reflektér — screen-season-reflection
+// Unik illustration: Inward spiral (logaritmisk spiral)
+// Journal-skrivefelterne bevares fuldt ud.
 // ============================================
 function showSeasonReflection(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
 
-  const sRef = SEASON_MAP[seasonKey];
-  const cRef = sRef ? sRef.color : 'var(--accent-gold)';
-  const illRef = document.getElementById('sub-reflection-illustration');
-  if (illRef) illRef.innerHTML = getPathIllustration('reflection', cRef);
+  const s = SEASON_MAP[seasonKey];
+  const color = s ? s.color : 'var(--accent-gold)';
+  const name = s ? s.name : getSeasonName(seasonKey);
 
-  renderSeasonSubLabel('sub-reflection-season', seasonKey);
+  const screen = document.getElementById('screen-season-reflection');
+  if (screen) screen.style.setProperty('--season-color', color);
+
+  const eyebrowEl = document.getElementById('reflection-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `${name.toUpperCase()} · REFLEKTÉR`;
+
+  // UNIK illustration: Inward spiral (kun her)
+  const heroEl = document.getElementById('reflection-hero');
+  if (heroEl) heroEl.innerHTML = svgInwardSpiral(color, 220);
 
   const intros = {
-    foraar: 'Foråret er en god tid at spørge dig selv: hvad vil frem? Hvad holder du tilbage? Hvad venter på din handling?',
-    sommer: 'Sommeren inviterer dig til at mærke efter: hvad giver dig glæde? Hvor brænder du? Hvor flakker din ild?',
-    sensommer: 'Sensommeren spørger: hvad nærer dig? Hvad dræner dig? Hvor giver du for meget og modtager for lidt?',
-    efteraar: 'Efteråret beder dig om at se tilbage: hvad bærer du stadig? Hvad er det essentielle? Hvad kan du slippe?',
-    vinter: 'Vinteren stiller de dybeste spørgsmål: hvad hviler i dig? Hvor er din kilde? Hvad frygter du at miste?'
+    foraar:    'Foråret spørger: hvad vil frem? Hvad holder du tilbage? Hvad venter på din handling?',
+    sommer:    'Sommeren spørger: hvad giver dig glæde? Hvor brænder du? Hvor flakker din ild?',
+    sensommer: 'Sensommeren spørger: hvad nærer dig? Hvad dræner dig? Hvor giver du for meget?',
+    efteraar:  'Efteråret spørger: hvad bærer du stadig? Hvad er essentielt? Hvad kan du slippe?',
+    vinter:    'Vinteren spørger: hvad hviler i dig? Hvor er din kilde? Hvad frygter du at miste?'
   };
+  const subEl = document.getElementById('reflection-subtitle');
+  if (subEl) subEl.textContent = intros[seasonKey] || '';
 
-  const introEl = document.getElementById('sub-reflection-intro');
-  if (introEl) introEl.textContent = intros[seasonKey] || '';
-
-  const contentEl = document.getElementById('sub-reflection-content');
-  if (!contentEl) { showScreen('season-reflection'); return; }
+  const cardsEl = document.getElementById('reflection-cards');
+  if (!cardsEl) { showScreen('season-reflection'); return; }
 
   let html = '';
 
+  // Journal — den vigtigste del: skrivefelt per prompt, bevares fuldt ud
   if (season.journalPrompts && season.journalPrompts.length) {
-    const preview = season.journalPrompts[0] || '';
-    const body = renderJournalPromptsBody(seasonKey, season.journalPrompts);
-    html += renderFold('At sidde med · dagbogen', preview, body);
+    html += '<p class="screen-cards-section">DAGBOGEN · AT SIDDE MED</p>';
+    html += renderCard({
+      eyebrow: 'TI SPØRGSMÅL',
+      title: 'Dine ord',
+      subtitle: 'Klik på et spørgsmål der rører ved dig — og skriv',
+      body: renderJournalPromptsBody(seasonKey, season.journalPrompts),
+      expandable: true,
+      initiallyOpen: true
+    });
   }
 
+  // Ugentlig check-in — ét kort med alle spørgsmål som liste
   if (season.weeklyCheckIn && season.weeklyCheckIn.length) {
-    const preview = season.weeklyCheckIn[0] || '';
-    const body = `<ol>${season.weeklyCheckIn.map(p => `<li>${p}</li>`).join('')}</ol>`;
-    html += renderFold('Ugentligt', preview, body);
+    html += '<p class="screen-cards-section">UGENTLIGT CHECK-IN</p>';
+    html += renderCard({
+      eyebrow: 'EN GANG OM UGEN',
+      title: 'Hvor har du været denne uge?',
+      subtitle: season.weeklyCheckIn[0],
+      body: `<ol style="padding-left:18px;margin:0;">${season.weeklyCheckIn.map(q => `<li style="margin-bottom:12px;">${q}</li>`).join('')}</ol>`,
+      expandable: true
+    });
   }
 
+  // Milepæle — ét kort med hele rejsen
   if (season.milestones && season.milestones.length) {
     const days = [7, 14, 21, 30, 60];
-    const preview = season.milestones[0] || '';
-    const body = `<ol>${season.milestones.map((m, i) => `<li><strong style="color:var(--text-muted);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">${days[i] || ''} dage</strong><br>${m}</li>`).join('')}</ol>`;
-    html += renderFold('Rejsen folder sig ud', preview, body);
+    html += '<p class="screen-cards-section">DIN REJSE</p>';
+    html += renderCard({
+      eyebrow: 'MILEPÆLE',
+      title: 'Rejsen folder sig ud',
+      subtitle: 'Hvor er du i forløbet?',
+      body: `<ol style="padding-left:0;list-style:none;margin:0;">${season.milestones.map((m, i) => `<li style="margin-bottom:16px;padding-left:0;border-bottom:1px solid var(--border-hairline);padding-bottom:14px;"><strong style="color:var(--accent-gold);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;">${days[i] || ''} DAGE</strong><br><span style="display:block;margin-top:6px;">${m}</span></li>`).join('')}</ol>`,
+      expandable: true
+    });
   }
 
-  // Bro til næste årstid — følger cyklus, som Isabelles milepæle ender med
-  // ("Træ nærer ild — du er klar til sommeren")
+  // Bro til næste årstid — følger cyklus
   const SEASON_ORDER = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
   const NOURISH_LINE = {
-    foraar: 'Træ nærer ild',
-    sommer: 'Ild nærer jord',
+    foraar:    'Træ nærer ild',
+    sommer:    'Ild nærer jord',
     sensommer: 'Jord nærer metal',
-    efteraar: 'Metal nærer vand',
-    vinter: 'Vand nærer træ'
+    efteraar:  'Metal nærer vand',
+    vinter:    'Vand nærer træ'
   };
   const idx = SEASON_ORDER.indexOf(seasonKey);
   const nextKey = idx >= 0 ? SEASON_ORDER[(idx + 1) % SEASON_ORDER.length] : null;
@@ -2360,7 +2795,6 @@ function showSeasonReflection(seasonKey) {
     const nextName = nextS ? nextS.name : getSeasonName(nextKey);
     html += `
       <div class="season-bridge">
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
         <p class="season-bridge-line">${NOURISH_LINE[seasonKey] || ''}</p>
         <button class="season-bridge-link" data-next-season="${nextKey}">
           <span>Rejs videre til</span>
@@ -2371,12 +2805,12 @@ function showSeasonReflection(seasonKey) {
     `;
   }
 
-  contentEl.innerHTML = html;
-  attachFoldListeners(contentEl);
-  attachJournalListeners(contentEl, seasonKey);
+  cardsEl.innerHTML = html;
+  attachCardListeners(cardsEl);
+  attachJournalListeners(cardsEl, seasonKey);
 
   // Bind bridge click
-  const bridgeBtn = contentEl.querySelector('[data-next-season]');
+  const bridgeBtn = cardsEl.querySelector('[data-next-season]');
   if (bridgeBtn) {
     bridgeBtn.addEventListener('click', () => {
       showSeasonDetail(bridgeBtn.dataset.nextSeason);
