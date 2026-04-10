@@ -760,71 +760,82 @@ function svgSeasonComposite(seasonKey, size = 220) {
   };
   const cfg = elements[seasonKey] || elements.foraar;
 
-  const vb = 240;
+  // Større viewBox så petals kan sidde tydeligt udenfor centrum
+  const vb = 280;
   const cx = vb / 2, cy = vb / 2;
-  const centerR = vb * 0.22;
-  const petalR = vb * 0.20;
-  const orbit = vb * 0.18;
+  const centerR = 48;    // Centralt orb — dominerende og klart
+  const orbit = 92;      // Petals sidder tydeligt UDENFOR centrum
+  const petalR = 40;     // Distinkte petals, ikke overlappende
 
-  // Positioner for de 4 kronblade (jævnt rundt, let offset så det ikke er firkantet)
-  const angles = [-Math.PI * 0.5, Math.PI * 0.0, Math.PI * 0.5, Math.PI * 1.0];
+  // 4 petals i pentagon-lignende positioner (top, højre, bund, venstre)
+  // Let roteret så det ikke føles aksefast
+  const angles = [
+    -Math.PI * 0.5 + 0.12,
+     Math.PI * 0.0 + 0.12,
+     Math.PI * 0.5 + 0.12,
+     Math.PI * 1.0 + 0.12
+  ];
 
   const petalStops = cfg.petals.map((color, i) => {
     const gradId = nextGradId();
-    const angle = angles[i] - Math.PI * 0.12;
-    const px = cx + orbit * Math.cos(angle);
-    const py = cy + orbit * Math.sin(angle);
-    // Hver petal får sin egen breathe-rytme (let forskellig duration/delay)
-    const delay = (i * 0.4).toFixed(2);
-    const dur = (6 + i * 0.3).toFixed(1);
+    const px = cx + orbit * Math.cos(angles[i]);
+    const py = cy + orbit * Math.sin(angles[i]);
+    // Hver petal har egen breathe-rytme forskudt
+    const delay = (i * 0.45).toFixed(2);
+    const dur = (5.5 + i * 0.4).toFixed(1);
     return {
-      gradId,
       defs: `<radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="${color}" stop-opacity="0.55"/>
-        <stop offset="40%" stop-color="${color}" stop-opacity="0.22"/>
-        <stop offset="80%" stop-color="${color}" stop-opacity="0.04"/>
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.72"/>
+        <stop offset="30%" stop-color="${color}" stop-opacity="0.38"/>
+        <stop offset="65%" stop-color="${color}" stop-opacity="0.12"/>
         <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
       </radialGradient>`,
-      shape: `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${petalR}" fill="url(#${gradId})" style="animation: glow-breathe ${dur}s ease-in-out ${delay}s infinite; transform-origin: ${px.toFixed(1)}px ${py.toFixed(1)}px;"/>`
+      // Wrapper g med inline transform-origin så animationen ALTID virker
+      shape: `<g style="transform-origin: ${px.toFixed(1)}px ${py.toFixed(1)}px; transform-box: view-box; animation: glow-breathe ${dur}s ease-in-out ${delay}s infinite;">
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${petalR}" fill="url(#${gradId})"/>
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="1.8" fill="${color}" opacity="0.65"/>
+      </g>`
     };
   });
 
   const centerGradId = nextGradId();
 
-  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill" aria-hidden="true">
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill composite-ill" aria-hidden="true">
     <defs>
       ${petalStops.map(p => p.defs).join('\n      ')}
       <radialGradient id="${centerGradId}" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="${cfg.center}" stop-opacity="0.75"/>
-        <stop offset="35%" stop-color="${cfg.center}" stop-opacity="0.38"/>
-        <stop offset="70%" stop-color="${cfg.center}" stop-opacity="0.1"/>
+        <stop offset="0%"  stop-color="${cfg.center}" stop-opacity="0.88"/>
+        <stop offset="30%" stop-color="${cfg.center}" stop-opacity="0.48"/>
+        <stop offset="65%" stop-color="${cfg.center}" stop-opacity="0.15"/>
         <stop offset="100%" stop-color="${cfg.center}" stop-opacity="0"/>
       </radialGradient>
     </defs>
     ${petalStops.map(p => p.shape).join('\n    ')}
-    <circle cx="${cx}" cy="${cy}" r="${centerR}" fill="url(#${centerGradId})"
-      style="animation: glow-breathe 7s ease-in-out infinite; transform-origin: ${cx}px ${cy}px;"/>
-    <circle cx="${cx}" cy="${cy}" r="2.6" fill="${cfg.center}" opacity="0.85"/>
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: composite-center-pulse 6.5s ease-in-out infinite;">
+      <circle cx="${cx}" cy="${cy}" r="${centerR}" fill="url(#${centerGradId})"/>
+      <circle cx="${cx}" cy="${cy}" r="3.2" fill="${cfg.center}" opacity="0.95"/>
+    </g>
   </svg>`;
 }
 
 /**
  * svgElementTimelineOrb(color, size) — små orbs til 5-element-timeline
  */
-function svgElementTimelineOrb(color, size = 28) {
+function svgElementTimelineOrb(color, size = 28, delaySeconds = 0) {
   const id = nextGradId();
-  return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" class="glow-ill" aria-hidden="true">
+  // Inline animation med eksplicit transform-origin — sikrer at det altid bevæger sig
+  return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" class="glow-ill timeline-orb-ill" aria-hidden="true">
     <defs>
       <radialGradient id="${id}" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="${color}" stop-opacity="0.85"/>
-        <stop offset="40%" stop-color="${color}" stop-opacity="0.35"/>
-        <stop offset="80%" stop-color="${color}" stop-opacity="0.05"/>
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.95"/>
+        <stop offset="35%" stop-color="${color}" stop-opacity="0.55"/>
+        <stop offset="70%" stop-color="${color}" stop-opacity="0.15"/>
         <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
       </radialGradient>
     </defs>
-    <g class="glow-orb motion-slow">
+    <g style="transform-origin: 20px 20px; transform-box: view-box; animation: timeline-breathe 4.5s ease-in-out ${delaySeconds}s infinite;">
       <circle cx="20" cy="20" r="16" fill="url(#${id})"/>
-      <circle cx="20" cy="20" r="1.6" fill="${color}" opacity="0.9"/>
+      <circle cx="20" cy="20" r="2" fill="${color}" opacity="0.95"/>
     </g>
   </svg>`;
 }
@@ -1041,16 +1052,18 @@ function svgInwardSpiral(color, size = 220) {
   const vb = 240;
   const cx = vb / 2, cy = vb / 2;
 
-  // Generér logaritmisk spiral: r = a * e^(b * theta)
-  const a = 4;
-  const b = 0.18;
+  // Logaritmisk spiral: r = a * e^(b * theta)
+  // Beregn b så r_max = 92 (passer pænt inden for vb/2 = 120)
+  const a = 1.5;
+  const rMax = 92;
   const turns = 4;
-  const steps = 200;
-  const total = turns * Math.PI * 2;
+  const steps = 260;
+  const thetaMax = turns * Math.PI * 2;
+  const b = Math.log(rMax / a) / thetaMax;
 
   let d = '';
   for (let i = 0; i <= steps; i++) {
-    const theta = (i / steps) * total;
+    const theta = (i / steps) * thetaMax;
     const r = a * Math.exp(b * theta);
     const x = cx + r * Math.cos(theta);
     const y = cy + r * Math.sin(theta);
@@ -1064,30 +1077,31 @@ function svgInwardSpiral(color, size = 220) {
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill spiral-ill" aria-hidden="true">
     <defs>
       <radialGradient id="${glowId}" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="${color}" stop-opacity="0.6"/>
-        <stop offset="50%" stop-color="${color}" stop-opacity="0.15"/>
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.55"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.22"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.06"/>
         <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
       </radialGradient>
-      <radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="${color}" stop-opacity="1"/>
-        <stop offset="40%" stop-color="${color}" stop-opacity="0.65"/>
-        <stop offset="80%" stop-color="${color}" stop-opacity="0.3"/>
-        <stop offset="100%" stop-color="${color}" stop-opacity="0.1"/>
-      </radialGradient>
+      <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%"   stop-color="${color}" stop-opacity="0.95"/>
+        <stop offset="50%"  stop-color="${color}" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0.4"/>
+      </linearGradient>
     </defs>
 
-    <!-- Blød glød i baggrunden -->
-    <circle cx="${cx}" cy="${cy}" r="100" fill="url(#${glowId})"
-      style="animation: glow-breathe 9s ease-in-out infinite; transform-origin: ${cx}px ${cy}px;"/>
+    <!-- Blød baggrunds-glød, fylder cirka 75% af viewBox -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: glow-breathe 8s ease-in-out infinite;">
+      <circle cx="${cx}" cy="${cy}" r="95" fill="url(#${glowId})"/>
+    </g>
 
-    <!-- Selve spiralen, roterer langsomt -->
-    <g class="spiral-rotate" style="transform-origin: ${cx}px ${cy}px;">
-      <path d="${d}" fill="none" stroke="url(#${gradId})" stroke-width="1.4"
+    <!-- Selve spiralen, roterer langsomt 60s -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-slow 60s linear infinite;">
+      <path d="${d}" fill="none" stroke="url(#${gradId})" stroke-width="1.6"
             stroke-linecap="round" opacity="0.9"/>
     </g>
 
     <!-- Fokalpunkt i centrum -->
-    <circle cx="${cx}" cy="${cy}" r="3" fill="${color}" opacity="1"/>
+    <circle cx="${cx}" cy="${cy}" r="3.2" fill="${color}" opacity="1"/>
   </svg>`;
 }
 
@@ -1115,6 +1129,355 @@ function getSeasonColor(seasonKey) {
     vinter:    'var(--el-water)'
   };
   return map[seasonKey] || 'var(--accent-gold)';
+}
+
+// ============================================
+// Phase 3.4-3.8 illustrationer — 6 nye unikke motiver
+//
+// Hver optræder KUN ét sted:
+//  - svgOrganSignature   → organ portrait (screen-organ)
+//  - svgThemesMandala    → organ themes (screen-organ-themes)
+//  - svgElementRadiance  → element portrait (screen-element)
+//  - svgPentagramCycle   → element cycles (screen-element-cycles)
+//  - svgExploreColumn    → explore hub (screen-explore)
+//  - svgSearchCompass    → search (screen-search)
+// ============================================
+
+/**
+ * svgOrganSignature(chineseChar, color, size)
+ *
+ * BRUGES KUN PÅ: screen-organ (organ portrait)
+ * En stor central glow-orb med organets kinesiske skrifttegn i midten,
+ * og 3 tynde små ringe udenom der pulserer i wave (som en levende krop).
+ */
+function svgOrganSignature(chineseChar, color, size = 220) {
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+
+  const glowId = nextGradId();
+  const ringGradId = nextGradId();
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill organ-sig-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${glowId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.82"/>
+        <stop offset="35%" stop-color="${color}" stop-opacity="0.42"/>
+        <stop offset="70%" stop-color="${color}" stop-opacity="0.12"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="${ringGradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.1"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- 3 tynde orbital ringe der puls-drift langs hinanden -->
+    <circle class="organ-ring organ-ring-1" cx="${cx}" cy="${cy}" r="72"
+      fill="none" stroke="${color}" stroke-width="0.6" opacity="0.4"/>
+    <circle class="organ-ring organ-ring-2" cx="${cx}" cy="${cy}" r="92"
+      fill="none" stroke="${color}" stroke-width="0.5" opacity="0.3"/>
+    <circle class="organ-ring organ-ring-3" cx="${cx}" cy="${cy}" r="108"
+      fill="none" stroke="${color}" stroke-width="0.4" opacity="0.2"/>
+
+    <!-- Central glow bag tegnet -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: glow-breathe 6.5s ease-in-out infinite;">
+      <circle cx="${cx}" cy="${cy}" r="58" fill="url(#${glowId})"/>
+    </g>
+
+    <!-- Kinesisk tegn over glow'en -->
+    <text x="${cx}" y="${cy + 18}" text-anchor="middle"
+      font-family="'Noto Serif SC', serif"
+      font-size="54"
+      font-weight="300"
+      fill="${color}"
+      opacity="0.88"
+      class="organ-char">${chineseChar}</text>
+  </svg>`;
+}
+
+/**
+ * svgThemesMandala(color, size)
+ *
+ * BRUGES KUN PÅ: screen-organ-themes ("Mærk ind i din [organ]")
+ * 8 små orbs arrangeret i en ring omkring en central prik, hver repræsenterer
+ * et af de 8 temaer. Pulsen vandrer rundt om ringen (wave-sequence) — en
+ * åndedrag der bevæger sig hele vejen rundt.
+ */
+function svgThemesMandala(color, size = 220) {
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+  const orbit = 82;
+  const petalR = 14;
+
+  // 8 orbs i ring
+  const petals = [];
+  for (let i = 0; i < 8; i++) {
+    const angle = (i / 8) * Math.PI * 2 - Math.PI / 2;
+    const px = cx + orbit * Math.cos(angle);
+    const py = cy + orbit * Math.sin(angle);
+    const gradId = nextGradId();
+    // Vandrende delay: hver orb er forskudt med 0.5s så pulsen går rundt
+    const delay = (i * 0.5).toFixed(2);
+    petals.push(`
+      <defs><radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.85"/>
+        <stop offset="45%" stop-color="${color}" stop-opacity="0.38"/>
+        <stop offset="85%" stop-color="${color}" stop-opacity="0.06"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient></defs>
+      <g style="transform-origin: ${px.toFixed(1)}px ${py.toFixed(1)}px; transform-box: view-box; animation: themes-wave 5s ease-in-out ${delay}s infinite;">
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${petalR}" fill="url(#${gradId})"/>
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="1.6" fill="${color}" opacity="0.85"/>
+      </g>
+    `);
+  }
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill themes-mandala-ill" aria-hidden="true">
+    <!-- Tynd ring bagved der antyder cirklen -->
+    <circle cx="${cx}" cy="${cy}" r="${orbit}" fill="none" stroke="${color}" stroke-width="0.5" opacity="0.25"/>
+    ${petals.join('\n    ')}
+    <!-- Central prik -->
+    <circle cx="${cx}" cy="${cy}" r="3" fill="${color}" opacity="0.85"/>
+  </svg>`;
+}
+
+/**
+ * svgElementRadiance(color, glyphChar, size)
+ *
+ * BRUGES KUN PÅ: screen-element (element portrait)
+ * En stor central glow-orb med elementets kinesiske tegn i midten
+ * og 8 tynde stråler der udstråler fra centrum, roterer langsomt.
+ */
+function svgElementRadiance(color, glyphChar, size = 220) {
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+
+  const glowId = nextGradId();
+
+  // 8 stråler med varierende længde
+  const rays = [];
+  for (let i = 0; i < 8; i++) {
+    const angle = (i / 8) * Math.PI * 2;
+    const innerR = 65;
+    const outerR = i % 2 === 0 ? 108 : 92;
+    const x1 = cx + innerR * Math.cos(angle);
+    const y1 = cy + innerR * Math.sin(angle);
+    const x2 = cx + outerR * Math.cos(angle);
+    const y2 = cy + outerR * Math.sin(angle);
+    rays.push(`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${color}" stroke-width="1" stroke-linecap="round" opacity="${(0.35 + (i % 2) * 0.15).toFixed(2)}"/>`);
+  }
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill element-rad-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${glowId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.85"/>
+        <stop offset="30%" stop-color="${color}" stop-opacity="0.45"/>
+        <stop offset="65%" stop-color="${color}" stop-opacity="0.14"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Roterende stråler -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-slow 45s linear infinite;">
+      ${rays.join('\n      ')}
+    </g>
+
+    <!-- Modsat-roterende ring af 5 små prikker -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-reverse 32s linear infinite;">
+      ${[0, 1, 2, 3, 4].map(i => {
+        const a = (i / 5) * Math.PI * 2;
+        const x = cx + 120 * Math.cos(a);
+        const y = cy + 120 * Math.sin(a);
+        return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="${color}" opacity="0.5"/>`;
+      }).join('\n      ')}
+    </g>
+
+    <!-- Central glow -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: glow-breathe 7s ease-in-out infinite;">
+      <circle cx="${cx}" cy="${cy}" r="58" fill="url(#${glowId})"/>
+    </g>
+
+    <!-- Kinesisk glyph over glow'en -->
+    <text x="${cx}" y="${cy + 18}" text-anchor="middle"
+      font-family="'Noto Serif SC', serif"
+      font-size="54"
+      font-weight="300"
+      fill="${color}"
+      opacity="0.9">${glyphChar}</text>
+  </svg>`;
+}
+
+/**
+ * svgPentagramCycle(size)
+ *
+ * BRUGES KUN PÅ: screen-element-cycles
+ * 5 element-orbs arrangeret i pentagon (5 punkter i cirkel), forbundet med
+ * tynde linjer der antyder nærende (pentagon-kant) og kontrollerende (stjerne).
+ * Hele mønstret roterer meget langsomt, hver orb har sin egen breathe.
+ */
+function svgPentagramCycle(size = 260) {
+  const vb = 280;
+  const cx = vb / 2, cy = vb / 2;
+  const radius = 100;
+
+  // 5 elementer i rækkefølge (nærende cyklus): træ → ild → jord → metal → vand → træ
+  const elements = [
+    { name: 'wood',  color: 'var(--el-wood)',  glyph: '木' },
+    { name: 'fire',  color: 'var(--el-fire)',  glyph: '火' },
+    { name: 'earth', color: 'var(--el-earth)', glyph: '土' },
+    { name: 'metal', color: 'var(--el-metal)', glyph: '金' },
+    { name: 'water', color: 'var(--el-water)', glyph: '水' }
+  ];
+
+  // Positioner i pentagon, starting øverst
+  const positions = elements.map((_, i) => {
+    const angle = -Math.PI / 2 + (i / 5) * Math.PI * 2;
+    return {
+      x: cx + radius * Math.cos(angle),
+      y: cy + radius * Math.sin(angle)
+    };
+  });
+
+  // Nærende cyklus: pentagon-kanter mellem nabo-elementer
+  const nourishingLines = positions.map((p, i) => {
+    const next = positions[(i + 1) % 5];
+    return `<line x1="${p.x.toFixed(1)}" y1="${p.y.toFixed(1)}" x2="${next.x.toFixed(1)}" y2="${next.y.toFixed(1)}" stroke="currentColor" stroke-width="0.8" opacity="0.28"/>`;
+  }).join('\n      ');
+
+  // Kontrollerende cyklus: stjerne-diagonaler (hver element → 2 længere væk)
+  const controllingLines = positions.map((p, i) => {
+    const target = positions[(i + 2) % 5];
+    return `<line x1="${p.x.toFixed(1)}" y1="${p.y.toFixed(1)}" x2="${target.x.toFixed(1)}" y2="${target.y.toFixed(1)}" stroke="currentColor" stroke-width="0.5" opacity="0.15" stroke-dasharray="2 4"/>`;
+  }).join('\n      ');
+
+  // Orbs
+  const orbs = elements.map((el, i) => {
+    const p = positions[i];
+    const gradId = nextGradId();
+    const delay = (i * 0.8).toFixed(2);
+    return `
+      <defs><radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${el.color}" stop-opacity="0.82"/>
+        <stop offset="40%" stop-color="${el.color}" stop-opacity="0.4"/>
+        <stop offset="80%" stop-color="${el.color}" stop-opacity="0.08"/>
+        <stop offset="100%" stop-color="${el.color}" stop-opacity="0"/>
+      </radialGradient></defs>
+      <g style="transform-origin: ${p.x.toFixed(1)}px ${p.y.toFixed(1)}px; transform-box: view-box; animation: glow-breathe 6s ease-in-out ${delay}s infinite;">
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="26" fill="url(#${gradId})"/>
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.2" fill="${el.color}" opacity="0.9"/>
+      </g>
+      <text x="${p.x.toFixed(1)}" y="${(p.y + 7).toFixed(1)}" text-anchor="middle"
+        font-family="'Noto Serif SC', serif" font-size="22" font-weight="300"
+        fill="${el.color}" opacity="0.85">${el.glyph}</text>
+    `;
+  }).join('\n    ');
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill pentagram-ill" aria-hidden="true" style="color: var(--text-muted);">
+    <!-- Hele pentagrammet roterer meget langsomt -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-slow 90s linear infinite;">
+      ${controllingLines}
+      ${nourishingLines}
+    </g>
+    ${orbs}
+  </svg>`;
+}
+
+/**
+ * svgExploreColumn(size) — chakra-app inspired vertikal kolonne
+ *
+ * BRUGES KUN PÅ: screen-explore
+ * 5 årstids-orbs arrangeret vertikalt som den lodrette sushumna-kolonne,
+ * hver med sin element-farve, breather ude af takt.
+ */
+function svgExploreColumn(size = 200) {
+  const vb = 220;
+  const cx = vb / 2;
+  const orbs = [
+    { y: 40,  color: 'var(--el-metal)', name: 'metal' },  // efterår (top)
+    { y: 85,  color: 'var(--el-fire)',  name: 'fire' },   // sommer
+    { y: 130, color: 'var(--el-earth)', name: 'earth' },  // sensommer (midten)
+    { y: 175, color: 'var(--el-wood)',  name: 'wood' },   // forår
+    { y: 220, color: 'var(--el-water)', name: 'water' }   // vinter (bund)
+  ];
+
+  const orbHtml = orbs.map((orb, i) => {
+    const gradId = nextGradId();
+    const delay = (i * 0.7).toFixed(2);
+    return `
+      <defs><radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${orb.color}" stop-opacity="0.9"/>
+        <stop offset="40%" stop-color="${orb.color}" stop-opacity="0.45"/>
+        <stop offset="80%" stop-color="${orb.color}" stop-opacity="0.1"/>
+        <stop offset="100%" stop-color="${orb.color}" stop-opacity="0"/>
+      </radialGradient></defs>
+      <g style="transform-origin: ${cx}px ${orb.y}px; transform-box: view-box; animation: glow-breathe 5s ease-in-out ${delay}s infinite;">
+        <ellipse cx="${cx}" cy="${orb.y}" rx="26" ry="12" fill="url(#${gradId})"/>
+        <circle cx="${cx}" cy="${orb.y}" r="2" fill="${orb.color}" opacity="0.9"/>
+      </g>
+    `;
+  }).join('\n    ');
+
+  return `<svg width="${size}" height="${size * 1.18}" viewBox="0 0 ${vb} 260" class="glow-ill explore-column-ill" aria-hidden="true">
+    <!-- Tynd vertikal linje (sushumna-lignende) -->
+    <line x1="${cx}" y1="25" x2="${cx}" y2="235" stroke="currentColor" stroke-width="0.5" opacity="0.2" stroke-dasharray="1 3" style="color: var(--text-muted);"/>
+    ${orbHtml}
+  </svg>`;
+}
+
+/**
+ * svgSearchCompass(color, size)
+ *
+ * BRUGES KUN PÅ: screen-search
+ * Central glow med 4 tynde kompas-linjer der roterer langsomt, og en ydre
+ * ring der kontrakter-ekspanderer som en fokuserende iris.
+ */
+function svgSearchCompass(color = 'var(--accent-gold)', size = 200) {
+  const vb = 220;
+  const cx = vb / 2, cy = vb / 2;
+
+  const glowId = nextGradId();
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill search-compass-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${glowId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.8"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.32"/>
+        <stop offset="75%" stop-color="${color}" stop-opacity="0.08"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Ydre fokuserende ring der kontrakter/ekspanderer -->
+    <g class="search-focus-ring" style="transform-origin: ${cx}px ${cy}px; transform-box: view-box;">
+      <circle cx="${cx}" cy="${cy}" r="85" fill="none" stroke="${color}" stroke-width="0.8" opacity="0.35"/>
+    </g>
+
+    <!-- Kompas-linjer roterer langsomt -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-slow 40s linear infinite;">
+      <line x1="${cx}" y1="${cy - 70}" x2="${cx}" y2="${cy - 30}" stroke="${color}" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
+      <line x1="${cx}" y1="${cy + 30}" x2="${cx}" y2="${cy + 70}" stroke="${color}" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
+      <line x1="${cx - 70}" y1="${cy}" x2="${cx - 30}" y2="${cy}" stroke="${color}" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
+      <line x1="${cx + 30}" y1="${cy}" x2="${cx + 70}" y2="${cy}" stroke="${color}" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
+    </g>
+
+    <!-- Indre kompas-prikker modsat-roterende -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-reverse 28s linear infinite;">
+      ${[0, 1, 2, 3].map(i => {
+        const a = (i / 4) * Math.PI * 2 + Math.PI / 4;
+        const x = cx + 48 * Math.cos(a);
+        const y = cy + 48 * Math.sin(a);
+        return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.8" fill="${color}" opacity="0.65"/>`;
+      }).join('\n      ')}
+    </g>
+
+    <!-- Central lyttende glow -->
+    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: glow-pulse 5.5s ease-in-out infinite;">
+      <circle cx="${cx}" cy="${cy}" r="28" fill="url(#${glowId})"/>
+    </g>
+
+    <!-- Central prik -->
+    <circle cx="${cx}" cy="${cy}" r="2.8" fill="${color}" opacity="0.95"/>
+  </svg>`;
 }
 
 // Navigation-stak — holder styr på hele rejsen tilbage
@@ -1375,31 +1738,37 @@ let _currentElement = null;
 // ============================================
 // Element Portrait — stille
 // ============================================
+// Kinesisk tegn per element
+const ELEMENT_CHINESE_CHAR = {
+  wood:  '木',
+  fire:  '火',
+  earth: '土',
+  metal: '金',
+  water: '水'
+};
+
 function showElementDetail(el) {
   _currentElement = el;
 
   const color = getElementColorVar(el);
-  const glyph = getElementGlyph(el);
+  const glyph = ELEMENT_CHINESE_CHAR[el.id] || getElementGlyph(el);
 
-  // Hero
-  const glyphEl = document.getElementById('element-glyph-still');
-  if (glyphEl) {
-    glyphEl.textContent = glyph;
-    glyphEl.style.color = color;
-  }
+  const screen = document.getElementById('screen-element');
+  if (screen) screen.style.setProperty('--season-color', color);
 
-  // Årstids-motiv (foreground ink)
-  const elementIllEl = document.getElementById('element-illustration');
-  if (elementIllEl) {
-    const seasonKeyForEl = elementToSeason && elementToSeason[el.name];
-    elementIllEl.innerHTML = seasonKeyForEl ? getSeasonIllustration(seasonKeyForEl, color) : '';
-  }
+  // Eyebrow
+  const seasonKey = elementToSeason && elementToSeason[el.name];
+  const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || getSeasonName(seasonKey)) : '';
+  const eyebrowEl = document.getElementById('element-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `ELEMENT · ${seasonName.toUpperCase()}`;
 
+  // UNIK illustration: svgElementRadiance (kun her)
+  const heroEl = document.getElementById('element-hero');
+  if (heroEl) heroEl.innerHTML = svgElementRadiance(color, glyph, 240);
+
+  // Titel + undertitel
   const nameEl = document.getElementById('element-detail-name');
-  if (nameEl) {
-    nameEl.textContent = el.name;
-    nameEl.style.color = color;
-  }
+  if (nameEl) nameEl.textContent = el.name;
 
   const metaEl = document.getElementById('element-detail-chinese');
   if (metaEl) {
@@ -1407,65 +1776,88 @@ function showElementDetail(el) {
     if (el.season) parts.push(el.season);
     if (el.emotion) parts.push(el.emotion);
     if (el.direction) parts.push(el.direction);
-    metaEl.textContent = parts.join(' · ').toUpperCase();
+    metaEl.textContent = parts.join(' · ');
   }
 
-  // Screen color
-  const screen = document.getElementById('screen-element');
-  if (screen) screen.style.setProperty('--season-color', color);
+  // Kort-stak:
+  //  1. ESSENS — portrait tekst
+  //  2. PARTNER-ORGANER — kort med begge organ-links
+  //  3. ÅRSTID — årstid link
+  //  4. DANSEN — cycles link
+  const cardsEl = document.getElementById('element-cards');
+  if (cardsEl) {
+    const elPortrait = elementPortraits && elementPortraits[el.id];
+    const paragraphs = elPortrait && elPortrait.length > 0 ? elPortrait : (el.description || []);
+    const firstPara = paragraphs[0] || '';
+    const firstSentence = firstPara.split('.')[0] + '.';
+    const restParas = [firstPara.slice(firstSentence.length).trim(), ...paragraphs.slice(1)].filter(Boolean);
 
-  // Portrait-tekst (flydende)
-  const elPortrait = elementPortraits && elementPortraits[el.id];
-  const paragraphs = elPortrait && elPortrait.length > 0 ? elPortrait : el.description;
-  document.getElementById('element-description').innerHTML =
-    paragraphs.map(p => `<p>${p}</p>`).join('');
+    let html = '';
 
-  // Organer som to stille linjer
-  const organsEl = document.getElementById('element-organs-nav');
-  if (organsEl && el.organs) {
-    const organNames = el.organs.map(organName => {
-      const organ = organs.find(o => o.name === organName);
-      return organ ? `<button class="element-organ-thread" data-organ-id="${organ.id}"><span class="thread-label">${organ.name}</span></button>` : '';
-    }).join('');
-    organsEl.innerHTML = `
-      <p class="element-organs-lead">Elementet bæres af</p>
-      ${organNames}
-    `;
-    organsEl.querySelectorAll('[data-organ-id]').forEach(btn => {
+    // Essens kort
+    html += renderCard({
+      eyebrow: 'ESSENS',
+      title: firstSentence,
+      subtitle: '',
+      body: restParas.length ? restParas.map(p => `<p>${p}</p>`).join('') : '',
+      expandable: restParas.length > 0,
+      initiallyOpen: true
+    });
+
+    html += '<p class="screen-cards-section">TRÅDE AT FØLGE</p>';
+
+    // Partner-organer som et kort med linjer der klikker individuelt
+    if (el.organs && el.organs.length) {
+      const organLinks = el.organs.map(organName => {
+        const organ = organs.find(o => o.name === organName);
+        return organ ? `<button class="element-organ-inline" data-organ-id="${organ.id}" type="button">
+          <span class="element-organ-name">${organ.name}</span>
+          <span class="element-organ-meta">${organ.time || ''}</span>
+        </button>` : '';
+      }).join('');
+      html += renderCard({
+        eyebrow: 'PARTNER-ORGANER',
+        title: 'Elementet bæres af',
+        subtitle: '',
+        body: `<div class="element-organs-grid">${organLinks}</div>`
+      });
+    }
+
+    // Årstid
+    if (seasonKey) {
+      html += renderCard({
+        eyebrow: 'ÅRSTID',
+        title: `Udforsk ${seasonName.toLowerCase()}`,
+        subtitle: 'elementets tid på året',
+        expandable: false
+      }).replace('<article class="card card-static"', `<article class="card card-static card-clickable" data-thread="season" data-id="${seasonKey}"`);
+    }
+
+    // Cycles
+    if (el.cycles) {
+      html += renderCard({
+        eyebrow: 'DANSEN',
+        title: 'Hvordan elementerne danser sammen',
+        subtitle: 'nærende og kontrollerende cyklus',
+        expandable: false
+      }).replace('<article class="card card-static"', '<article class="card card-static card-clickable" data-thread="cycles"');
+    }
+
+    cardsEl.innerHTML = html;
+    attachCardListeners(cardsEl);
+
+    cardsEl.querySelectorAll('[data-thread]').forEach(card => {
+      card.addEventListener('click', () => {
+        const action = card.dataset.thread;
+        if (action === 'season') showSeasonDetail(card.dataset.id);
+        else if (action === 'cycles') showElementCycles(el);
+      });
+    });
+
+    cardsEl.querySelectorAll('.element-organ-inline').forEach(btn => {
       btn.addEventListener('click', () => {
         const organ = organs.find(o => o.id === btn.dataset.organId);
         if (organ) showOrganDetail(organ);
-      });
-    });
-  }
-
-  // Threads
-  const seasonKey = elementToSeason && elementToSeason[el.name];
-  const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || getSeasonName(seasonKey)) : '';
-  let threadsHtml = '';
-  if (seasonKey) {
-    threadsHtml += `
-      <button class="element-thread" data-action="season" data-id="${seasonKey}">
-        <span class="thread-label">Udforsk ${seasonName.toLowerCase()}et</span>
-      </button>
-    `;
-  }
-  if (el.cycles) {
-    threadsHtml += `
-      <button class="element-thread" data-action="cycles">
-        <span class="thread-label">Hvordan elementerne danser sammen</span>
-      </button>
-    `;
-  }
-
-  const threadsEl = document.getElementById('element-portrait-links');
-  if (threadsEl) {
-    threadsEl.innerHTML = threadsHtml;
-    threadsEl.querySelectorAll('.element-thread').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const action = btn.dataset.action;
-        if (action === 'season') showSeasonDetail(btn.dataset.id);
-        else if (action === 'cycles') showElementCycles(el);
       });
     });
   }
@@ -1474,68 +1866,70 @@ function showElementDetail(el) {
 }
 
 // ============================================
-// Element Cycles — danser sammen
+// Element Cycles — screen-element-cycles
+// Unik illustration: svgPentagramCycle (5-element pentagram)
 // ============================================
 function showElementCycles(el) {
   const color = getElementColorVar(el);
 
-  // Screen color
   const screen = document.getElementById('screen-element-cycles');
   if (screen) screen.style.setProperty('--season-color', color);
 
-  // Cyklus-motiv
-  const cyclesIllEl = document.getElementById('element-cycles-illustration');
-  if (cyclesIllEl) cyclesIllEl.innerHTML = svgCycles(color);
+  // UNIK illustration: pentagram-cyklus (kun her)
+  const heroEl = document.getElementById('element-cycles-hero');
+  if (heroEl) heroEl.innerHTML = svgPentagramCycle(280);
 
-  // Label + titel
-  const labelEl = document.getElementById('element-cycles-icon');
-  if (labelEl) {
-    labelEl.textContent = `${el.name.toUpperCase()} I SAMSPILLET`;
-  }
-
+  // Titel forbliver generel
   const titleEl = document.getElementById('element-cycles-title');
-  if (titleEl) {
-    titleEl.textContent = 'Hvordan elementerne danser sammen';
+  if (titleEl) titleEl.textContent = 'De fem elementers dans';
+
+  // Kort med cycles-indhold
+  const cardsEl = document.getElementById('element-cycles-cards');
+  if (cardsEl) {
+    const cycles = el.cycles || {};
+    let html = '';
+
+    if (cycles.generating) {
+      html += renderCard({
+        eyebrow: 'NÆRES AF',
+        title: `${el.name} næres af sin forgænger`,
+        subtitle: cycles.generating.split('.')[0] + '.',
+        body: `<p>${cycles.generating}</p>`,
+        expandable: cycles.generating.length > 80
+      });
+    }
+    if (cycles.generated) {
+      html += renderCard({
+        eyebrow: 'NÆRER',
+        title: `${el.name} nærer sin efterfølger`,
+        subtitle: cycles.generated.split('.')[0] + '.',
+        body: `<p>${cycles.generated}</p>`,
+        expandable: cycles.generated.length > 80
+      });
+    }
+    if (cycles.controlledBy) {
+      html += renderCard({
+        eyebrow: 'HOLDES I BALANCE AF',
+        title: `${el.name} kontrolleres`,
+        subtitle: cycles.controlledBy.split('.')[0] + '.',
+        body: `<p>${cycles.controlledBy}</p>`,
+        expandable: cycles.controlledBy.length > 80
+      });
+    }
+    if (cycles.controlling) {
+      html += renderCard({
+        eyebrow: 'HOLDER I BALANCE',
+        title: `${el.name} kontrollerer`,
+        subtitle: cycles.controlling.split('.')[0] + '.',
+        body: `<p>${cycles.controlling}</p>`,
+        expandable: cycles.controlling.length > 80
+      });
+    }
+
+    cardsEl.innerHTML = html;
+    attachCardListeners(cardsEl);
   }
 
-  // Byg cyklus-indhold som flydende prosa
-  const cycles = el.cycles || {};
-  let html = '';
-
-  if (cycles.generating) {
-    html += `
-      <section class="cycle-stanza">
-        <p class="cycle-label">Næres af</p>
-        <p class="cycle-prose">${cycles.generating}</p>
-      </section>
-    `;
-  }
-  if (cycles.generated) {
-    html += `
-      <section class="cycle-stanza">
-        <p class="cycle-label">Nærer</p>
-        <p class="cycle-prose">${cycles.generated}</p>
-      </section>
-    `;
-  }
-  if (cycles.controlledBy) {
-    html += `
-      <section class="cycle-stanza">
-        <p class="cycle-label">Holdes i balance af</p>
-        <p class="cycle-prose">${cycles.controlledBy}</p>
-      </section>
-    `;
-  }
-  if (cycles.controlling) {
-    html += `
-      <section class="cycle-stanza">
-        <p class="cycle-label">Holder i balance</p>
-        <p class="cycle-prose">${cycles.controlling}</p>
-      </section>
-    `;
-  }
-
-  document.getElementById('element-cycles-flow').innerHTML = html;
   showScreen('element-cycles');
 }
 
@@ -1663,162 +2057,189 @@ function getElementColorVar(el) {
 // ============================================
 // Organ Portrait — stille
 // ============================================
+// Kinesisk tegn per organ-id (brugt i organ portrait illustrationen)
+const ORGAN_CHINESE_CHAR = {
+  lever:       '肝',
+  galdeblaere: '胆',
+  hjerte:      '心',
+  tyndtarm:    '腸',  // 小腸 — forenklet til det karakteristiske
+  milt:        '脾',
+  mavesaek:    '胃',
+  lunger:      '肺',
+  tyktarm:     '腑',  // 大腸 — forenklet
+  nyrer:       '腎',
+  blaere:      '膀',  // 膀胱 — forenklet
+  pericardium: '包',
+  sanjiao:     '焦'
+};
+
 function showOrganDetail(organ) {
   _currentOrgan = organ;
 
   const element = findElementForOrgan(organ);
   const color = getElementColorVar(element);
-  const glyph = getElementGlyph(element);
 
-  // Hero
-  const glyphEl = document.getElementById('organ-glyph-still');
-  if (glyphEl) {
-    glyphEl.textContent = glyph;
-    glyphEl.style.color = color;
-  }
-
-  // Årstids-motiv (foreground ink)
-  const organIllEl = document.getElementById('organ-illustration');
-  if (organIllEl) {
-    organIllEl.innerHTML = getOrganSeasonIllustration(organ, color);
-  }
-
-  const nameEl = document.getElementById('organ-name-still');
-  if (nameEl) {
-    nameEl.textContent = organ.name;
-    nameEl.style.color = color;
-  }
-
-  const metaEl = document.getElementById('organ-meta-still');
-  if (metaEl) {
-    const elementName = element ? element.name : organ.element;
-    metaEl.textContent = `${elementName} · ${organ.time}`;
-  }
-
-  // Sæt --season-color på skærmen
   const screen = document.getElementById('screen-organ');
   if (screen) screen.style.setProperty('--season-color', color);
 
-  // Portrait-tekst (flydende)
-  const portrait = organPortraits && organPortraits[organ.id];
-  const paragraphs = portrait && portrait.length > 0 ? portrait : organ.description;
-  document.getElementById('organ-description').innerHTML =
-    paragraphs.map(p => `<p>${p}</p>`).join('');
+  // Eyebrow
+  const elementName = element ? element.name : organ.element;
+  const eyebrowEl = document.getElementById('organ-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `ORGAN · ${elementName.toUpperCase()}`;
 
-  // Threads (stille links)
-  const partnerOrgan = organs.find(o => o.name === organ.partner);
-  const seasonKey = findSeasonKeyForElement(element);
-  const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || getSeasonName(seasonKey)) : '';
+  // UNIK illustration: svgOrganSignature med organets kinesiske tegn
+  const char = ORGAN_CHINESE_CHAR[organ.id] || '氣';
+  const heroEl = document.getElementById('organ-hero');
+  if (heroEl) heroEl.innerHTML = svgOrganSignature(char, color, 240);
 
-  let threadsHtml = `
-    <button class="organ-thread organ-thread-primary" data-action="themes">
-      <span class="thread-label">Mærk ind i ${organ.name}</span>
-    </button>
-  `;
+  // Titel + undertitel
+  const nameEl = document.getElementById('organ-name-still');
+  if (nameEl) nameEl.textContent = organ.name;
 
-  if (partnerOrgan) {
-    threadsHtml += `
-      <button class="organ-thread" data-action="partner" data-id="${partnerOrgan.id}">
-        <span class="thread-label">Mød ${partnerOrgan.name}</span>
-      </button>
-    `;
-  }
+  const metaEl = document.getElementById('organ-meta-still');
+  if (metaEl) metaEl.textContent = `${elementName} · ${organ.time}`;
 
-  if (element) {
-    threadsHtml += `
-      <button class="organ-thread" data-action="element" data-id="${element.id}">
-        <span class="thread-label">${element.name}-elementet</span>
-      </button>
-    `;
-  }
+  // Kort-stak:
+  //  1. ESSENS — portrait tekst (expandable)
+  //  2. MÆRK IND I — clickable link til themes
+  //  3. PARTNER — partner-organ link (hvis der er en)
+  //  4. ELEMENT — element link
+  //  5. ÅRSTID — årstid link
+  const cardsEl = document.getElementById('organ-cards');
+  if (cardsEl) {
+    const portrait = organPortraits && organPortraits[organ.id];
+    const paragraphs = portrait && portrait.length > 0 ? portrait : (organ.description || []);
+    const firstPara = paragraphs[0] || '';
+    const firstSentence = firstPara.split('.')[0] + '.';
+    const restParas = paragraphs.length > 1 || firstPara.length > firstSentence.length
+      ? [firstPara.slice(firstSentence.length).trim(), ...paragraphs.slice(1)].filter(Boolean)
+      : [];
 
-  if (seasonKey) {
-    threadsHtml += `
-      <button class="organ-thread" data-action="season" data-id="${seasonKey}">
-        <span class="thread-label">Udforsk ${seasonName.toLowerCase()}et</span>
-      </button>
-    `;
-  }
+    const partnerOrgan = organs.find(o => o.name === organ.partner);
+    const seasonKey = findSeasonKeyForElement(element);
+    const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || getSeasonName(seasonKey)) : '';
 
-  const threadsEl = document.getElementById('organ-portrait-links');
-  threadsEl.innerHTML = threadsHtml;
+    let html = '';
 
-  threadsEl.querySelectorAll('.organ-thread').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const action = btn.dataset.action;
-      if (action === 'themes') {
-        showOrganThemes(organ);
-      } else if (action === 'partner') {
-        const p = organs.find(o => o.id === btn.dataset.id);
-        if (p) showOrganDetail(p);
-      } else if (action === 'element') {
-        const el = fiveElements.find(e => e.id === btn.dataset.id);
-        if (el) showElementDetail(el);
-      } else if (action === 'season') {
-        showSeasonDetail(btn.dataset.id);
-      }
+    // Essens kort (expandable, åbent fra start)
+    html += renderCard({
+      eyebrow: 'ESSENS',
+      title: firstSentence,
+      subtitle: '',
+      body: restParas.length ? restParas.map(p => `<p>${p}</p>`).join('') : '',
+      expandable: restParas.length > 0,
+      initiallyOpen: true
     });
-  });
+
+    // Sektions-label for trådene
+    html += '<p class="screen-cards-section">TRÅDE AT FØLGE</p>';
+
+    // Mærk ind i — primær thread
+    html += renderCard({
+      eyebrow: 'INDFØLING',
+      title: `Mærk ind i din ${organ.name}`,
+      subtitle: '8 temaer at sidde med',
+      expandable: false
+    }).replace('<article class="card card-static"', '<article class="card card-static card-clickable" data-thread="themes"');
+
+    // Partner
+    if (partnerOrgan) {
+      html += renderCard({
+        eyebrow: 'PARTNER',
+        title: `Mød ${partnerOrgan.name}`,
+        subtitle: partnerOrgan.nickname || `${elementName}-parret`,
+        expandable: false
+      }).replace('<article class="card card-static"', `<article class="card card-static card-clickable" data-thread="partner" data-id="${partnerOrgan.id}"`);
+    }
+
+    // Element
+    if (element) {
+      html += renderCard({
+        eyebrow: 'ELEMENT',
+        title: `${element.name}-elementet`,
+        subtitle: element.nickname || '',
+        expandable: false
+      }).replace('<article class="card card-static"', `<article class="card card-static card-clickable" data-thread="element" data-id="${element.id}"`);
+    }
+
+    // Årstid
+    if (seasonKey) {
+      html += renderCard({
+        eyebrow: 'ÅRSTID',
+        title: `Udforsk ${seasonName.toLowerCase()}`,
+        subtitle: 'organets årstid',
+        expandable: false
+      }).replace('<article class="card card-static"', `<article class="card card-static card-clickable" data-thread="season" data-id="${seasonKey}"`);
+    }
+
+    cardsEl.innerHTML = html;
+    attachCardListeners(cardsEl);
+
+    cardsEl.querySelectorAll('[data-thread]').forEach(card => {
+      card.addEventListener('click', () => {
+        const action = card.dataset.thread;
+        if (action === 'themes') {
+          showOrganThemes(organ);
+        } else if (action === 'partner') {
+          const p = organs.find(o => o.id === card.dataset.id);
+          if (p) showOrganDetail(p);
+        } else if (action === 'element') {
+          const el = fiveElements.find(e => e.id === card.dataset.id);
+          if (el) showElementDetail(el);
+        } else if (action === 'season') {
+          showSeasonDetail(card.dataset.id);
+        }
+      });
+    });
+  }
 
   showScreen('organ');
 }
 
 // ============================================
-// Organ Themes — Mærk ind i [organ]
+// Organ Themes — screen-organ-themes
+// Unik illustration: svgThemesMandala (8-petal wave)
 // ============================================
 function showOrganThemes(organ) {
   const element = findElementForOrgan(organ);
   const color = getElementColorVar(element);
 
-  // Sæt screen color
   const screen = document.getElementById('screen-organ-themes');
   if (screen) screen.style.setProperty('--season-color', color);
 
-  // Meditations-motiv (blæk-cirkel)
-  const themesIllEl = document.getElementById('organ-themes-illustration');
-  if (themesIllEl) themesIllEl.innerHTML = svgMeditation(color);
+  const elementName = element ? element.name : organ.element;
+  const eyebrowEl = document.getElementById('organ-themes-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = `${elementName.toUpperCase()} · ${organ.time}`;
 
-  // Label + titel
-  const labelEl = document.getElementById('organ-themes-icon');
-  if (labelEl) {
-    const elementName = element ? element.name : organ.element;
-    labelEl.textContent = `${elementName.toUpperCase()} · ${organ.time}`;
-  }
+  // UNIK illustration: 8-petal mandala med wave-puls (kun her)
+  const heroEl = document.getElementById('organ-themes-hero');
+  if (heroEl) heroEl.innerHTML = svgThemesMandala(color, 220);
 
   const titleEl = document.getElementById('organ-themes-title');
-  if (titleEl) {
-    titleEl.textContent = `Mærk ind i din ${organ.name}`;
-    titleEl.style.color = color;
-  }
+  if (titleEl) titleEl.textContent = `Mærk ind i din ${organ.name}`;
 
-  // 8 temaer som foldbare sektioner
-  let themesHtml = '';
-  if (organ.themes) {
-    organ.themes.forEach(theme => {
-      const questions = theme.questions || [];
-      const preview = questions[0] || '';
-      const body = questions.map(q => `<p style="font-style:italic;margin:0 0 14px 0;">${q}</p>`).join('');
-      themesHtml += renderFold(theme.title, preview, body);
-    });
-  }
-
-  const themesFlow = document.getElementById('organ-themes-flow');
-  themesFlow.innerHTML = themesHtml;
-  attachFoldListeners(themesFlow);
-
-  // Organ clock wisdom som stille outro
-  const clockWrap = document.getElementById('organ-themes-clock');
-  if (clockWrap) {
+  // Subtitle: organ clock wisdom som stille introduktion
+  const subEl = document.getElementById('organ-themes-subtitle');
+  if (subEl) {
     const clockEntry = organClock.find(c => c.organ === organ.name);
-    if (clockEntry) {
-      clockWrap.innerHTML = `
-        <div class="clock-whisper-divider" aria-hidden="true">· · ·</div>
-        <p class="clock-whisper-time">${organ.name} · ${clockEntry.time}</p>
-        <p class="clock-whisper-text">${clockEntry.wisdom}</p>
-      `;
-    } else {
-      clockWrap.innerHTML = '';
-    }
+    subEl.textContent = clockEntry ? clockEntry.wisdom : 'Otte temaer at sidde med';
+  }
+
+  // 8 temaer som expandable cards
+  const flowEl = document.getElementById('organ-themes-flow');
+  if (flowEl && organ.themes) {
+    flowEl.innerHTML = organ.themes.map((theme, i) => {
+      const questions = theme.questions || [];
+      const body = questions.map(q => `<p style="font-style:italic;color:var(--text-secondary);margin:0 0 14px 0;">${q}</p>`).join('');
+      return renderCard({
+        eyebrow: `TEMA ${String(i + 1).padStart(2, '0')}`,
+        title: theme.title,
+        subtitle: questions[0] || '',
+        body: body,
+        expandable: true
+      });
+    }).join('');
+    attachCardListeners(flowEl);
   }
 
   showScreen('organ-themes');
@@ -3025,108 +3446,102 @@ function findPatterns(query) {
 }
 
 // ============================================
-// Explore Screen (stille typografisk liste)
+// Explore Screen — screen-explore
+// Unik illustration: svgExploreColumn (lodret sushumna-kolonne)
 // ============================================
 function renderExploreScreen() {
-  // Motiv-illustrationer
-  const exploreIll = document.getElementById('explore-illustration');
-  if (exploreIll) exploreIll.innerHTML = svgExplore('var(--accent-gold)');
+  // UNIK illustration: lodret kolonne af 5 årstids-orbs (kun her)
+  const heroEl = document.getElementById('explore-hero');
+  if (heroEl) heroEl.innerHTML = svgExploreColumn(200);
 
-  const sSeas = document.getElementById('explore-seasons-illustration');
-  if (sSeas) sSeas.innerHTML = svgSpring('var(--accent-gold)');
+  // Kort-stak: 3 store clickable kort (Årstider, Organer, Elementer)
+  const cardsEl = document.getElementById('explore-cards');
+  if (!cardsEl) return;
 
-  const sOrg = document.getElementById('explore-organs-illustration');
-  if (sOrg) sOrg.innerHTML = svgMeditation('var(--accent-gold)');
+  let html = '';
 
-  const sEl = document.getElementById('explore-elements-illustration');
-  if (sEl) sEl.innerHTML = svgCycles('var(--accent-gold)');
-
-  // Door click handlers
-  document.querySelectorAll('.explore-door').forEach(door => {
-    const fresh = door.cloneNode(true);
-    door.parentNode.replaceChild(fresh, door);
-    fresh.addEventListener('click', () => {
-      showScreen('explore-' + fresh.dataset.explore);
-    });
+  // 5 årstider som ét kort med alle listet indeni
+  html += renderCard({
+    eyebrow: 'ÅRSTIDERNE',
+    title: 'Fem faser af energi',
+    subtitle: 'Hver med sit element og sine organer',
+    body: `<div class="explore-inline-list">${['foraar','sommer','sensommer','efteraar','vinter'].map(key => {
+      const s = SEASON_MAP[key];
+      return `<button class="explore-inline-item" data-explore-season="${key}">
+        <span class="explore-inline-name" style="color: ${s.color}">${s.name}</span>
+        <span class="explore-inline-meta">${s.element} · ${s.organs}</span>
+      </button>`;
+    }).join('')}</div>`,
+    expandable: true,
+    initiallyOpen: true
   });
 
-  // Seasons — stille typografisk liste
-  const seasonsEl = document.getElementById('explore-seasons-list');
-  if (seasonsEl) {
-    const keys = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
-    seasonsEl.innerHTML = keys.map(key => {
-      const s = SEASON_MAP[key];
-      if (!s) return '';
-      return `
-        <button class="explore-list-item" data-season="${key}">
-          <span class="explore-list-name" style="color: ${s.color}">${s.name}</span>
-          <span class="explore-list-meta">${s.element}</span>
-        </button>
-      `;
-    }).join('');
-    seasonsEl.querySelectorAll('[data-season]').forEach(btn => {
-      btn.addEventListener('click', () => showSeasonDetail(btn.dataset.season));
-    });
-  }
-
-  // Organs — stille typografisk liste
-  const organsEl = document.getElementById('explore-organs-list');
-  if (organsEl) {
-    organsEl.innerHTML = organs.map(o => {
+  // 12 organer
+  html += renderCard({
+    eyebrow: 'DE 12 ORGANER',
+    title: 'Kroppens landskab',
+    subtitle: 'Fra Lever til San Jiao — hver med sin tid og sit tema',
+    body: `<div class="explore-inline-list">${organs.map(o => {
       const element = findElementForOrgan(o);
       const color = getElementColorVar(element);
-      return `
-        <button class="explore-list-item" data-organ-id="${o.id}">
-          <span class="explore-list-name" style="color: ${color}">${o.name}</span>
-          <span class="explore-list-meta">${o.time}</span>
-        </button>
-      `;
-    }).join('');
-    organsEl.querySelectorAll('[data-organ-id]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const organ = organs.find(o => o.id === btn.dataset.organId);
-        if (organ) showOrganDetail(organ);
-      });
-    });
-  }
+      return `<button class="explore-inline-item" data-explore-organ="${o.id}">
+        <span class="explore-inline-name" style="color: ${color}">${o.name}</span>
+        <span class="explore-inline-meta">${o.time || ''}</span>
+      </button>`;
+    }).join('')}</div>`,
+    expandable: true
+  });
 
-  // Elements — stille typografisk liste
-  const elementsEl = document.getElementById('explore-elements-list');
-  if (elementsEl) {
-    elementsEl.innerHTML = fiveElements.map(el => {
+  // 5 elementer
+  html += renderCard({
+    eyebrow: 'DE 5 ELEMENTER',
+    title: 'Fem kræfter i samspil',
+    subtitle: 'Træ, Ild, Jord, Metal, Vand — deres dans igennem året',
+    body: `<div class="explore-inline-list">${fiveElements.map(el => {
       const color = getElementColorVar(el);
       const seasonKey = elementToSeason && elementToSeason[el.name];
       const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || '') : '';
-      return `
-        <button class="explore-list-item" data-element-id="${el.id}">
-          <span class="explore-list-name" style="color: ${color}">${el.name}</span>
-          <span class="explore-list-meta">${seasonName}</span>
-        </button>
-      `;
-    }).join('');
-    elementsEl.querySelectorAll('[data-element-id]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const el = fiveElements.find(e => e.id === btn.dataset.elementId);
-        if (el) showElementDetail(el);
-      });
-    });
-  }
+      return `<button class="explore-inline-item" data-explore-element="${el.id}">
+        <span class="explore-inline-name" style="color: ${color}">${el.name}</span>
+        <span class="explore-inline-meta">${seasonName}</span>
+      </button>`;
+    }).join('')}</div>`,
+    expandable: true
+  });
 
-  // Back buttons fra sub-screens tilbage — brug navigations-stakken (goBack)
-  document.querySelectorAll('.still-back[data-back-to-explore]').forEach(btn => {
-    const fresh = btn.cloneNode(true);
-    btn.parentNode.replaceChild(fresh, btn);
-    fresh.addEventListener('click', goBack);
+  cardsEl.innerHTML = html;
+  attachCardListeners(cardsEl);
+
+  cardsEl.querySelectorAll('[data-explore-season]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showSeasonDetail(btn.dataset.exploreSeason);
+    });
+  });
+  cardsEl.querySelectorAll('[data-explore-organ]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const o = organs.find(x => x.id === btn.dataset.exploreOrgan);
+      if (o) showOrganDetail(o);
+    });
+  });
+  cardsEl.querySelectorAll('[data-explore-element]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const el = fiveElements.find(x => x.id === btn.dataset.exploreElement);
+      if (el) showElementDetail(el);
+    });
   });
 }
 
 // ============================================
-// Search — Hvad mærker du?
+// Search — screen-search
+// Unik illustration: svgSearchCompass (kompas + fokus-ring)
 // ============================================
 function renderSearchScreen() {
-  // Motiv
-  const searchIll = document.getElementById('search-illustration');
-  if (searchIll) searchIll.innerHTML = svgSearch('var(--accent-gold)');
+  // UNIK illustration: search compass (kun her)
+  const heroEl = document.getElementById('search-hero');
+  if (heroEl) heroEl.innerHTML = svgSearchCompass('var(--accent-gold)', 200);
 
   // Tilbage-knap — brug navigations-stakken
   document.querySelectorAll('.still-back[data-back-to="home"]').forEach(btn => {
@@ -3906,7 +4321,7 @@ function renderPersonalHome() {
   // Blomster-mandala komposit — det aktuelle element + de 4 andre som kronblade
   const compEl = document.getElementById('home-composite');
   if (compEl) {
-    compEl.innerHTML = svgSeasonComposite(key, 240);
+    compEl.innerHTML = svgSeasonComposite(key, 280);
   }
 
   // Kinesisk glyph under komposit
@@ -3993,10 +4408,11 @@ function renderPersonalHome() {
       efteraar:  'var(--el-metal)',
       vinter:    'var(--el-water)'
     };
-    tlEl.innerHTML = elementOrder.map(k => {
+    tlEl.innerHTML = elementOrder.map((k, i) => {
       const active = k === key ? ' active' : '';
+      // Hver orb får sin egen delay så de breather ude af takt
       return `<button class="element-timeline-orb${active}" data-season-key="${k}" aria-label="${SEASON_MAP[k].name}">
-        ${svgElementTimelineOrb(elementColors[k], 28)}
+        ${svgElementTimelineOrb(elementColors[k], 30, i * 0.9)}
       </button>`;
     }).join('');
     tlEl.querySelectorAll('.element-timeline-orb').forEach(btn => {
