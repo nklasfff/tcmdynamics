@@ -416,7 +416,6 @@ function toggleTheme() {
     localStorage.setItem('tcm-theme', 'light');
   }
   updateThemeIcon();
-  renderOrganClock();
   setTimeout(() => document.documentElement.removeAttribute('data-theme-transitioning'), 350);
 }
 
@@ -460,21 +459,8 @@ function switchLanguage() {
   updateUILanguage();
 
   // Re-render all data-driven content
-  renderSectionIntros();
-  renderPracticeGrid();
-  renderSeasonSection();
   renderPersonalHome();
   renderExploreScreen();
-  renderPatternSection();
-  renderOrganGrid();
-  renderMeridianGrid();
-  renderOrganClock();
-  renderElements();
-  renderFoundation();
-  renderOverviewOrganGrid();
-  renderOverviewMeridianGrid();
-  renderOverviewSymptoms();
-  renderOverviewConversation();
 
   // Update labels
   updateLangLabel();
@@ -494,40 +480,9 @@ function updateUILanguage() {
   if (brandSubtitle) brandSubtitle.textContent = t('brandSubtitle');
   if (homeIntro) homeIntro.textContent = t('homeIntro');
 
-  // Hub cards
-  const hubCards = document.querySelectorAll('.hub-card');
-  const hubKeys = ['practice', 'seasons', 'patterns', 'organs', 'elements', 'meridians', 'overviews'];
-  const hubTitleKeys = ['hubPractice', 'hubSeasons', 'hubPatterns', 'hubOrgans', 'hubElements', 'hubMeridians', 'hubOverviews'];
-  const hubDescKeys = ['hubPracticeDesc', 'hubSeasonsDesc', 'hubPatternsDesc', 'hubOrgansDesc', 'hubElementsDesc', 'hubMeridiansDesc', 'hubOverviewsDesc'];
-  hubCards.forEach(card => {
-    const hub = card.dataset.hub;
-    const idx = hubKeys.indexOf(hub);
-    if (idx >= 0) {
-      const title = card.querySelector('.hub-card-title');
-      const desc = card.querySelector('.hub-card-desc');
-      if (title) title.textContent = t(hubTitleKeys[idx]);
-      if (desc) desc.textContent = t(hubDescKeys[idx]);
-    }
-  });
+  // Hub cards — fjernet i fase 1 (ingen grid p\u00e5 forsiden)
 
-  // Section screen headers
-  const sectionMappings = [
-    { screen: 'screen-section-practice', title: 'sectionPracticeTitle', subtitle: 'sectionPracticeSubtitle' },
-    { screen: 'screen-section-seasons', title: 'sectionSeasonsTitle', subtitle: 'sectionSeasonsSubtitle' },
-    { screen: 'screen-section-patterns', title: 'sectionPatternsTitle', subtitle: 'sectionPatternsSubtitle' },
-    { screen: 'screen-section-organs', title: 'sectionOrgansTitle', subtitle: 'sectionOrgansSubtitle' },
-    { screen: 'screen-section-elements', title: 'sectionElementsTitle', subtitle: 'sectionElementsSubtitle' },
-    { screen: 'screen-section-meridians', title: 'sectionMeridiansTitle', subtitle: 'sectionMeridiansSubtitle' },
-    { screen: 'screen-section-overviews', title: 'sectionOverviewsTitle', subtitle: 'sectionOverviewsSubtitle' }
-  ];
-  sectionMappings.forEach(({ screen, title, subtitle }) => {
-    const el = document.getElementById(screen);
-    if (!el) return;
-    const h1 = el.querySelector('.section-screen-title-area h1');
-    const sub = el.querySelector('.section-screen-subtitle');
-    if (h1) h1.textContent = t(title);
-    if (sub) sub.textContent = t(subtitle);
-  });
+  // Section screen headers — alle section screens er fjernet i fase 1.
 
   // Back buttons (all say "Home" or "Back")
   document.querySelectorAll('.back-btn[data-back="home"] span').forEach(s => s.textContent = t('backHome'));
@@ -653,16 +608,13 @@ function showScreen(screenId) {
   window.scrollTo(0, 0);
 }
 
-// Map section screen IDs to bottom nav IDs
+// Map screen IDs to bottom nav IDs — kun 3 knapper nu
 const sectionToNav = {
   'home': 'home',
-  'section-practice': 'practice',
-  'section-seasons': 'home',
-  'section-patterns': 'home',
-  'section-organs': 'organs',
-  'section-elements': 'elements',
-  'section-meridians': 'meridians',
-  'section-overviews': 'home'
+  'explore': 'explore',
+  'explore-seasons': 'explore',
+  'explore-organs': 'explore',
+  'explore-elements': 'explore'
 };
 
 // ============================================
@@ -1421,41 +1373,37 @@ function setupThemeAccordion(containerId) {
 // Back Navigation
 // ============================================
 function goBack() {
-  // Determine where to go back to
-  const detailScreens = ['organ', 'organ-themes', 'element', 'element-cycles', 'foundation', 'overview', 'meridian', 'practice', 'season', 'pattern', 'explore-seasons', 'explore-organs', 'explore-elements'];
-  const sectionScreens = ['section-practice', 'section-seasons', 'section-patterns', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews', 'explore'];
-
-  if (detailScreens.includes(currentScreen)) {
-    // If we came from a section screen, go back there
-    if (sectionScreens.includes(previousScreen)) {
-      showScreen(previousScreen);
-      const navId = sectionToNav[previousScreen] || 'home';
-      if (window._updateBottomNav) window._updateBottomNav(navId);
-    } else {
-      showScreen('home');
-      if (window._updateBottomNav) window._updateBottomNav('home');
-    }
-  } else if (sectionScreens.includes(currentScreen)) {
-    showScreen('home');
-    if (window._updateBottomNav) window._updateBottomNav('home');
-  } else {
-    showScreen('home');
-    if (window._updateBottomNav) window._updateBottomNav('home');
+  // Simpelt: eksisterende screens
+  const exploreSubScreens = ['explore-seasons', 'explore-organs', 'explore-elements'];
+  if (exploreSubScreens.includes(currentScreen)) {
+    showScreen('explore');
+    if (window._updateBottomNav) window._updateBottomNav('explore');
+    return;
   }
+
+  // Hvis vi kommer fra explore-sub og er nu på et organ/element, gå tilbage dertil
+  if (previousScreen && previousScreen !== currentScreen) {
+    showScreen(previousScreen);
+    if (window._updateBottomNav) window._updateBottomNav(sectionToNav[previousScreen] || 'home');
+    return;
+  }
+
+  showScreen('home');
+  if (window._updateBottomNav) window._updateBottomNav('home');
 }
 
 function setupBackButtons() {
-  // Detail screen back buttons
-  document.getElementById('btn-back-practice').addEventListener('click', goBack);
-  document.getElementById('btn-back-season').addEventListener('click', goBack);
-  document.getElementById('btn-back-pattern').addEventListener('click', goBack);
-  document.getElementById('btn-back-organ').addEventListener('click', goBack);
-  document.getElementById('btn-back-organ-themes').addEventListener('click', goBack);
-  document.getElementById('btn-back-element-cycles').addEventListener('click', goBack);
-  document.getElementById('btn-back-meridian').addEventListener('click', goBack);
-  document.getElementById('btn-back-element').addEventListener('click', goBack);
-  document.getElementById('btn-back-foundation').addEventListener('click', goBack);
-  document.getElementById('btn-back-overview').addEventListener('click', goBack);
+  // Detail screen back buttons — kun for screens der faktisk findes
+  const backBtnIds = [
+    'btn-back-season', 'btn-back-pattern',
+    'btn-back-organ', 'btn-back-organ-themes',
+    'btn-back-element', 'btn-back-element-cycles',
+    'btn-back-meridian'
+  ];
+  backBtnIds.forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener('click', goBack);
+  });
 
   // Section screen back buttons (data-back="home")
   document.querySelectorAll('.back-btn[data-back="home"]').forEach(btn => {
@@ -2550,32 +2498,10 @@ function handleNavigation(navId) {
     case 'home':
       showScreen('home');
       break;
-    case 'practice':
-      showScreen('section-practice');
-      break;
-    case 'seasons':
-      showScreen('section-seasons');
-      break;
-    case 'patterns':
-      showScreen('section-patterns');
-      break;
-    case 'organs':
-      showScreen('section-organs');
-      break;
-    case 'elements':
-      showScreen('section-elements');
-      break;
-    case 'meridians':
-      showScreen('section-meridians');
-      break;
-    case 'overviews':
-      showScreen('section-overviews');
-      break;
     case 'explore':
       showScreen('explore');
       break;
     case 'search':
-      // Scroll to search on home, or open search overlay
       showScreen('home');
       setTimeout(() => {
         const input = document.getElementById('home-pattern-input');
@@ -2822,9 +2748,6 @@ function renderSearchResults(results, query, container, closeCallback) {
           case 'organ': showOrganDetail(item.data); break;
           case 'element': showElementDetail(item.data); break;
           case 'meridian': showMeridianDetail(item.data); break;
-          case 'practice': showPracticeDetail(item.data); break;
-          case 'foundation': showFoundationDetail(item.data); break;
-          case 'overview': showOverviewDetail(item.data, 'organ'); break;
         }
       }, 280);
     });
@@ -3115,31 +3038,12 @@ function init() {
   try { setupThemeToggle(); } catch(e) { console.error('setupThemeToggle:', e); }
   try { setupLanguageToggle(); } catch(e) { console.error('setupLanguageToggle:', e); }
   try { updateUILanguage(); } catch(e) { console.error('updateUILanguage:', e); }
-  try { renderSectionIntros(); } catch(e) { console.error('renderSectionIntros:', e); }
-  try { renderPracticeGrid(); } catch(e) { console.error('renderPracticeGrid:', e); }
-  try { renderSeasonSection(); } catch(e) { console.error('renderSeasonSection:', e); }
   try { renderPersonalHome(); } catch(e) { console.error('renderPersonalHome:', e); }
   try { renderExploreScreen(); } catch(e) { console.error('renderExploreScreen:', e); }
-  try { renderPatternSection(); } catch(e) { console.error('renderPatternSection:', e); }
-  try { renderOrganGrid(); } catch(e) { console.error('renderOrganGrid:', e); }
-  try { renderMeridianGrid(); } catch(e) { console.error('renderMeridianGrid:', e); }
-  try { renderOrganClock(); } catch(e) { console.error('renderOrganClock:', e); }
-  try { renderElements(); } catch(e) { console.error('renderElements:', e); }
-  try { renderFoundation(); } catch(e) { console.error('renderFoundation:', e); }
-  try { setupOverviewTabs(); } catch(e) { console.error('setupOverviewTabs:', e); }
-  try { renderOverviewOrganGrid(); } catch(e) { console.error('renderOverviewOrganGrid:', e); }
-  try { renderOverviewMeridianGrid(); } catch(e) { console.error('renderOverviewMeridianGrid:', e); }
-  try { renderOverviewSymptoms(); } catch(e) { console.error('renderOverviewSymptoms:', e); }
-  try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
-  try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
   try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }
-  try { setupHubCards(); } catch(e) { console.error('setupHubCards:', e); }
   try { setupHamburger(); } catch(e) { console.error('setupHamburger:', e); }
   try { setupSearch(); } catch(e) { console.error('setupSearch:', e); }
-
-  // Update clock every minute
-  setInterval(renderOrganClock, 60000);
 }
 
 try {
