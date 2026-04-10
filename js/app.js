@@ -1979,6 +1979,130 @@ function showSeasonStillness(seasonKey) {
 }
 
 // ============================================
+// Journal — skrive-felt pr. refleksions-prompt
+// ============================================
+
+// Enkel HTML-escape så brugerens egne ord kan vises i textarea uden injection
+function escapeForTextarea(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+// Byg en nøgle der overlever mindre ændringer i prompt-teksten:
+// journal:v1:<seasonKey>:<index>
+function journalKey(seasonKey, index) {
+  return `journal:v1:${seasonKey}:${index}`;
+}
+
+function journalGet(seasonKey, index) {
+  try {
+    return localStorage.getItem(journalKey(seasonKey, index)) || '';
+  } catch (e) { return ''; }
+}
+
+function journalSet(seasonKey, index, value) {
+  try {
+    localStorage.setItem(journalKey(seasonKey, index), value);
+    return true;
+  } catch (e) { return false; }
+}
+
+// Renderer en liste af prompts med skrive-felt per prompt.
+// Bliver brugt inde i "At sidde med"-folden.
+function renderJournalPromptsBody(seasonKey, prompts) {
+  const items = prompts.map((p, i) => {
+    const saved = journalGet(seasonKey, i);
+    const has = saved.trim().length > 0;
+    return `
+      <li class="journal-prompt${has ? ' has-entry' : ''}" data-journal-idx="${i}">
+        <p class="journal-prompt-text">${p}</p>
+        <button class="journal-write-btn" type="button" data-journal-toggle="${i}" aria-expanded="false">
+          <span class="journal-write-label">${has ? 'fortsæt dine ord' : 'skriv'}</span>
+          <span class="journal-write-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="journal-write-wrap" data-journal-wrap="${i}" hidden>
+          <textarea
+            class="journal-textarea"
+            data-journal-index="${i}"
+            placeholder="Lad ordene komme som de kommer..."
+            rows="3">${escapeForTextarea(saved)}</textarea>
+          <p class="journal-meta">
+            <span class="journal-saved" data-journal-saved="${i}">${has ? 'gemt' : ''}</span>
+          </p>
+        </div>
+      </li>
+    `;
+  }).join('');
+
+  return `
+    <p class="journal-hint">Dine ord bliver kun på denne enhed. Skriv så meget eller lidt du har brug for.</p>
+    <ol class="journal-prompts">${items}</ol>
+  `;
+}
+
+// Kobler skrive-felt op bagefter folden er attached
+function attachJournalListeners(container, seasonKey) {
+  if (!container) return;
+
+  // Toggle åben/luk skrive-felt
+  container.querySelectorAll('[data-journal-toggle]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // undgå at fold reagerer
+      const idx = btn.dataset.journalToggle;
+      const wrap = container.querySelector(`[data-journal-wrap="${idx}"]`);
+      if (!wrap) return;
+      const isHidden = wrap.hasAttribute('hidden');
+      if (isHidden) {
+        wrap.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        const ta = wrap.querySelector('textarea');
+        if (ta) {
+          // auto-resize ved åbning
+          ta.style.height = 'auto';
+          ta.style.height = ta.scrollHeight + 'px';
+          setTimeout(() => ta.focus(), 50);
+        }
+      } else {
+        wrap.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Auto-save og auto-grow
+  container.querySelectorAll('.journal-textarea').forEach(ta => {
+    const resize = () => {
+      ta.style.height = 'auto';
+      ta.style.height = Math.max(ta.scrollHeight, 72) + 'px';
+    };
+    resize();
+
+    let saveTimer = null;
+    ta.addEventListener('input', () => {
+      resize();
+      clearTimeout(saveTimer);
+      const idx = parseInt(ta.dataset.journalIndex, 10);
+      const savedEl = container.querySelector(`[data-journal-saved="${idx}"]`);
+      if (savedEl) savedEl.textContent = 'skriver...';
+
+      saveTimer = setTimeout(() => {
+        const ok = journalSet(seasonKey, idx, ta.value);
+        if (savedEl) savedEl.textContent = ok ? 'gemt' : 'kunne ikke gemme';
+
+        // Opdater prompt-label og has-entry-klasse
+        const li = container.querySelector(`[data-journal-idx="${idx}"]`);
+        const toggleLabel = container.querySelector(`[data-journal-toggle="${idx}"] .journal-write-label`);
+        const has = ta.value.trim().length > 0;
+        if (li) li.classList.toggle('has-entry', has);
+        if (toggleLabel) toggleLabel.textContent = has ? 'fortsæt dine ord' : 'skriv';
+      }, 400);
+    });
+  });
+}
+
+// ============================================
 // Reflektér — journal + milepæle
 // ============================================
 function showSeasonReflection(seasonKey) {
@@ -2010,8 +2134,8 @@ function showSeasonReflection(seasonKey) {
 
   if (season.journalPrompts && season.journalPrompts.length) {
     const preview = season.journalPrompts[0] || '';
-    const body = `<ol>${season.journalPrompts.map(p => `<li>${p}</li>`).join('')}</ol>`;
-    html += renderFold('At sidde med', preview, body);
+    const body = renderJournalPromptsBody(seasonKey, season.journalPrompts);
+    html += renderFold('At sidde med · dagbogen', preview, body);
   }
 
   if (season.weeklyCheckIn && season.weeklyCheckIn.length) {
@@ -2058,6 +2182,7 @@ function showSeasonReflection(seasonKey) {
 
   contentEl.innerHTML = html;
   attachFoldListeners(contentEl);
+  attachJournalListeners(contentEl, seasonKey);
 
   // Bind bridge click
   const bridgeBtn = contentEl.querySelector('[data-next-season]');
@@ -2385,20 +2510,36 @@ function renderSearchScreen() {
     fresh.addEventListener('click', goBack);
   });
 
-  // Kontekstuelle ord baseret på aktuel sæson
+  // Alle fornemmelser for den aktuelle årstid, grupperet efter
+  // krop / følelser / liv — dybere browse-oplevelse end forsidens 6.
   const key = getCurrentSeason();
-  const s = SEASON_MAP[key];
-  const words = s ? s.words : [];
+  const groups = SEASON_SENSATIONS[key];
 
   const wordsEl = document.getElementById('search-still-words');
-  if (wordsEl && words.length) {
-    wordsEl.innerHTML = words.map(w => `
-      <button class="search-still-word" data-organ-id="${w.organId}">${w.label}</button>
-    `).join('<span class="search-still-word-sep" aria-hidden="true">·</span>');
+  if (wordsEl && groups) {
+    // Flad liste så vi kan binde klik via indeks
+    const allSensations = getAllSensations(key);
+
+    const groupHtml = ['body', 'felt', 'liv'].map(g => {
+      const items = groups[g] || [];
+      if (!items.length) return '';
+      const rows = items.map(item => {
+        const globalIdx = allSensations.indexOf(item);
+        return `<button class="search-still-word" data-sensation-idx="${globalIdx}">${item.label}</button>`;
+      }).join('');
+      return `
+        <div class="search-sensation-group">
+          <p class="search-sensation-label">${SENSATION_GROUP_LABELS[g]}</p>
+          <div class="search-sensation-row">${rows}</div>
+        </div>
+      `;
+    }).join('');
+
+    wordsEl.innerHTML = groupHtml;
     wordsEl.querySelectorAll('.search-still-word').forEach(btn => {
       btn.addEventListener('click', () => {
-        const organ = organs.find(o => o.id === btn.dataset.organId);
-        if (organ) showOrganDetail(organ);
+        const idx = parseInt(btn.dataset.sensationIdx, 10);
+        dispatchSensation(allSensations[idx]);
       });
     });
   }
@@ -2585,6 +2726,166 @@ const SEASON_MAP = {
 };
 
 const HOME_INTRO = 'Hver årstid har sin egen kraft, sin egen invitation. Denne er din.';
+
+// ============================================
+// Årstidens fornemmelser — grupperet efter krop, følelser, liv
+// Bruges af forsidens "Mærk efter" og af søge-skærmens fallback-ord.
+//
+// Hver post har:
+//   label   — ordet brugeren ser
+//   goto    — 'organ:<id>'  → organ-portræt
+//             'themes:<id>' → Mærk ind i din <organ> (8 refleksionstemaer)
+//             'sub:<name>'  → sæson-sub-screen (reflection|stillness|food|movement)
+//   home    — hvis true, indgår i forsidens kurerede 6-word udvalg
+//
+// Indholdet er trukket fra Isabelles eget sprog i seasons-data.js
+// (philosophy, journal prompts, symptoms).
+// ============================================
+
+const SEASON_SENSATIONS = {
+  foraar: {
+    body: [
+      { label: 'Stivhed',            goto: 'organ:lever',        home: true },
+      { label: 'Hovedpine i siden',  goto: 'organ:galdeblaere',  home: true },
+      { label: 'Spændt kæbe',        goto: 'themes:lever' },
+      { label: 'Søvn 01-03',         goto: 'organ:lever' }
+    ],
+    felt: [
+      { label: 'Vrede',              goto: 'themes:lever',       home: true },
+      { label: 'Frustration',        goto: 'themes:lever' },
+      { label: 'Utålmodighed',       goto: 'themes:galdeblaere' },
+      { label: 'Mod',                goto: 'themes:lever',       home: true }
+    ],
+    liv: [
+      { label: 'Grænser',            goto: 'themes:lever',       home: true },
+      { label: 'Beslutninger',       goto: 'themes:galdeblaere' },
+      { label: 'Det fastlåste',      goto: 'themes:lever' },
+      { label: 'Det der vil frem',   goto: 'sub:reflection',     home: true }
+    ]
+  },
+  sommer: {
+    body: [
+      { label: 'Uro i brystet',      goto: 'themes:hjerte',      home: true },
+      { label: 'Søvnløshed',         goto: 'organ:hjerte' },
+      { label: 'Hjertebanken',       goto: 'organ:hjerte' },
+      { label: 'Udmattelse',         goto: 'themes:hjerte' }
+    ],
+    felt: [
+      { label: 'Glæde',              goto: 'themes:hjerte',      home: true },
+      { label: 'Passion',            goto: 'themes:hjerte' },
+      { label: 'Udbrændthed',        goto: 'themes:hjerte',      home: true },
+      { label: 'Nærvær',             goto: 'themes:hjerte',      home: true }
+    ],
+    liv: [
+      { label: 'Relationer',         goto: 'themes:tyndtarm',    home: true },
+      { label: 'At modtage',         goto: 'themes:tyndtarm' },
+      { label: 'Manifestation',      goto: 'sub:reflection',     home: true },
+      { label: 'Taknemmelighed',     goto: 'themes:hjerte' }
+    ]
+  },
+  sensommer: {
+    body: [
+      { label: 'Træthed efter mad',  goto: 'organ:milt' },
+      { label: 'Tankemylder',        goto: 'themes:milt',        home: true },
+      { label: 'Oppustethed',        goto: 'organ:mavesaek' },
+      { label: 'Tunge ben',          goto: 'organ:milt' }
+    ],
+    felt: [
+      { label: 'Bekymring',          goto: 'themes:milt',        home: true },
+      { label: 'Ro',                 goto: 'themes:milt',        home: true },
+      { label: 'Det jeg bærer',      goto: 'themes:milt' },
+      { label: 'At være nok',        goto: 'themes:milt' }
+    ],
+    liv: [
+      { label: 'Ansvar',             goto: 'themes:milt',        home: true },
+      { label: 'Jordforbindelse',    goto: 'sub:stillness',      home: true },
+      { label: 'Pauser',             goto: 'sub:stillness' },
+      { label: 'Det der nærer',      goto: 'sub:reflection',     home: true }
+    ]
+  },
+  efteraar: {
+    body: [
+      { label: 'Kort åndedræt',      goto: 'organ:lunger',       home: true },
+      { label: 'Tør hud',            goto: 'organ:lunger' },
+      { label: 'Morgen-hoste',       goto: 'organ:lunger' },
+      { label: 'Forstoppelse',       goto: 'organ:tyktarm' }
+    ],
+    felt: [
+      { label: 'Sorg',               goto: 'themes:lunger',      home: true },
+      { label: 'Savn',               goto: 'themes:lunger' },
+      { label: 'Klarhed',            goto: 'themes:lunger',      home: true },
+      { label: 'Værdighed',          goto: 'themes:lunger',      home: true }
+    ],
+    liv: [
+      { label: 'At slippe',          goto: 'themes:tyktarm',     home: true },
+      { label: 'Det væsentlige',     goto: 'themes:tyktarm',     home: true },
+      { label: 'Afsked',             goto: 'sub:reflection' },
+      { label: 'Det du bærer for længe', goto: 'sub:reflection' }
+    ]
+  },
+  vinter: {
+    body: [
+      { label: 'Kulde indefra',      goto: 'organ:nyrer',        home: true },
+      { label: 'Træthed i knoglerne', goto: 'organ:nyrer' },
+      { label: 'Rygsmerter',         goto: 'organ:blaere' },
+      { label: 'Susen i ørerne',     goto: 'organ:nyrer' }
+    ],
+    felt: [
+      { label: 'Frygt',              goto: 'themes:nyrer',       home: true },
+      { label: 'Dyb ro',             goto: 'themes:nyrer',       home: true },
+      { label: 'Tillid',             goto: 'themes:nyrer',       home: true },
+      { label: 'Det der ikke lader sig sige', goto: 'themes:nyrer' }
+    ],
+    liv: [
+      { label: 'At hvile',           goto: 'sub:stillness',      home: true },
+      { label: 'Kilden i dig',       goto: 'themes:nyrer',       home: true },
+      { label: 'Det du ikke kan præstere dig til', goto: 'themes:nyrer' },
+      { label: 'Det usete',          goto: 'sub:reflection' }
+    ]
+  }
+};
+
+const SENSATION_GROUP_LABELS = {
+  body: 'i kroppen',
+  felt: 'i følelserne',
+  liv:  'i livet'
+};
+
+// Saml alle fornemmelser for en årstid som flad liste
+function getAllSensations(seasonKey) {
+  const g = SEASON_SENSATIONS[seasonKey];
+  if (!g) return [];
+  return [...(g.body || []), ...(g.felt || []), ...(g.liv || [])];
+}
+
+// Hjemmesidens kurerede 6 — dem der har home:true
+function getHomeSensations(seasonKey) {
+  return getAllSensations(seasonKey).filter(s => s.home);
+}
+
+// Håndter klik på et fornemmelses-ord — sender brugeren videre
+// til organ, organ-themes eller sæson-sub-screen efter goto-spec.
+function dispatchSensation(sensation) {
+  if (!sensation || !sensation.goto) return;
+  const idx = sensation.goto.indexOf(':');
+  if (idx < 0) return;
+  const type = sensation.goto.slice(0, idx);
+  const id   = sensation.goto.slice(idx + 1);
+
+  if (type === 'organ') {
+    const o = organs.find(o => o.id === id);
+    if (o) showOrganDetail(o);
+  } else if (type === 'themes') {
+    const o = organs.find(o => o.id === id);
+    if (o) showOrganThemes(o);
+  } else if (type === 'sub') {
+    const key = getCurrentSeason();
+    if (id === 'reflection')  showSeasonReflection(key);
+    else if (id === 'stillness') showSeasonStillness(key);
+    else if (id === 'food')      showSeasonFood(key);
+    else if (id === 'movement')  showSeasonMovement(key);
+  }
+}
 
 // ============================================
 // Ink illustrations — SVG blæk-kalligrafi
@@ -2983,19 +3284,21 @@ function renderPersonalHome() {
   const ctxEl = document.getElementById('home-season-context');
   if (ctxEl) ctxEl.textContent = s.context;
 
-  // Spørgsmål + 4 ord
+  // "Mærk efter" — 6 kurerede fornemmelser, blanding af skygge og lys,
+  // krop og følelser og liv. Hvert ord leder til et meningsfuldt sted
+  // (organ, organ-themes eller en sæson-sub-screen), ikke bare organet.
   const questionEl = document.getElementById('home-question');
   if (questionEl) {
+    const sensations = getHomeSensations(key);
     questionEl.innerHTML = `
       <p class="home-question-text">Mærk efter</p>
       <div class="home-question-words">
-        ${s.words.map(w => `<button class="home-word" data-organ-id="${w.organId}">${w.label}</button>`).join('<span class="home-word-sep" aria-hidden="true">·</span>')}
+        ${sensations.map((w, i) => `<button class="home-word" data-sensation-idx="${i}">${w.label}</button>`).join('')}
       </div>
     `;
-    questionEl.querySelectorAll('.home-word').forEach(btn => {
+    questionEl.querySelectorAll('.home-word').forEach((btn, i) => {
       btn.addEventListener('click', () => {
-        const organ = organs.find(o => o.id === btn.dataset.organId);
-        if (organ) showOrganDetail(organ);
+        dispatchSensation(sensations[i]);
       });
     });
   }

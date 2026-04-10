@@ -24,6 +24,23 @@ Seneste commit: `claude/review-isabelle-app-alignment-4aDb7` — Isabelle-alignm
   milestone-sprog.
 - **Forsiden** krediterer nu Isabelle Evita Søndergaard direkte under taglinen,
   så hendes navn er synligt fra første sekund, ikke gemt i About-modal.
+- **Journal-skrivefelt** på refleksions-prompts i Reflektér — hver prompt har
+  nu en "skriv"-knap der åbner en textarea. Auto-save til localStorage efter
+  400ms debounce, auto-grow højde, "gemt"-indikator. Nøgle er
+  `journal:v1:<seasonKey>:<index>`. Dette er app-oversættelsen af Isabelles
+  *Mine 5 Årstiders Energi — Årstidsdagbogen*. Se
+  `renderJournalPromptsBody` og `attachJournalListeners` i `js/app.js`.
+- **"Mærk efter" — rigere ord-bank** (`SEASON_SENSATIONS` i `app.js`):
+  12 fornemmelser per årstid grupperet i *i kroppen · i følelserne · i livet*.
+  Blanding af skygge OG lys (Vrede + Mod, Bekymring + Ro, Sorg + Klarhed osv.)
+  — ikke længere kun symptomer. Hvert ord har et `goto`-mål:
+  `organ:<id>` · `themes:<id>` · `sub:<screen>`, så klik leder til det
+  rigtige sted (ofte organ-themes i stedet for bare organ-portræt).
+  - **Forsiden** viser 6 kurerede ord (markeret `home:true`) — en åndedrag
+    af årstiden, ikke en symptom-liste.
+  - **Søgeskærmen** viser alle 12 ord grupperet med små labels, så det
+    føles som en reel browse-oplevelse og ikke en kopi af forsiden.
+  - `dispatchSensation()` håndterer alle tre goto-typer.
 
 ### Harmoni-fasen — FÆRDIG
 - Rytme-system: `--rhythm-1..5` og `--read-wide/narrow` bruges overalt

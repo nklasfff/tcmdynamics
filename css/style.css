@@ -382,6 +382,11 @@ body {
   padding-bottom: var(--rhythm-2);
 }
 
+/* Journal-folden kan vokse meget når bruger skriver — lad den vokse */
+.fold.open:has(.journal-prompts) .fold-body {
+  max-height: 12000px;
+}
+
 .fold-body-inner {
   padding-top: var(--rhythm-1);
   font-family: var(--font-serif);
@@ -697,22 +702,24 @@ body {
 .home-question-words {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 14px;
+  align-items: baseline;
+  column-gap: 26px;
+  row-gap: 14px;
   flex-wrap: wrap;
-  max-width: var(--read-narrow);
+  max-width: var(--read-wide);
   margin: 0 auto;
+  line-height: 1.5;
 }
 
 .home-word {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 300;
   color: var(--text-primary);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px 2px;
+  padding: 4px 2px;
   letter-spacing: 0.01em;
   transition: color 0.4s ease;
 }
@@ -722,9 +729,7 @@ body {
 }
 
 .home-word-sep {
-  color: var(--text-muted);
-  opacity: 0.3;
-  font-size: 10px;
+  display: none;
 }
 
 /* ============================================
@@ -1251,6 +1256,153 @@ body {
 
 .season-sub-section:first-child {
   margin-top: 0;
+}
+
+/* ============================================
+   Journal — skrive-felt pr. refleksions-prompt
+   Er indlejret i "At sidde med"-folden i Reflektér
+   ============================================ */
+
+.journal-hint {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin: 0 0 var(--rhythm-2);
+  opacity: 0.75;
+}
+
+.journal-prompts {
+  list-style: none;
+  counter-reset: journal-step;
+  padding: 0;
+  margin: 0;
+}
+
+/* Overskriv standard fold-body-inner li padding/border så vi styler selv */
+.fold-body-inner .journal-prompts li {
+  padding: 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.fold-body-inner .journal-prompts li:last-child {
+  border-bottom: none;
+}
+
+.journal-prompt {
+  padding: var(--rhythm-1) 0 !important;
+}
+
+.journal-prompt-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0 0 10px;
+  letter-spacing: 0.01em;
+}
+
+.journal-write-btn {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.journal-write-btn:hover {
+  color: var(--text-secondary);
+}
+
+.journal-prompt.has-entry .journal-write-btn {
+  color: var(--accent-gold);
+  opacity: 0.85;
+}
+
+.journal-write-arrow {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.journal-write-btn[aria-expanded="true"] .journal-write-arrow {
+  transform: rotate(90deg);
+}
+
+.journal-write-wrap {
+  margin-top: var(--rhythm-1);
+}
+
+.journal-write-wrap[hidden] {
+  display: none;
+}
+
+.journal-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-card, rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border-hairline);
+  border-radius: 2px;
+  padding: 14px 16px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+  resize: none;
+  overflow: hidden;
+  min-height: 72px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.journal-textarea:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background: var(--bg-card, rgba(255, 255, 255, 0.04));
+}
+
+.journal-textarea::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.journal-meta {
+  margin: 6px 0 0;
+  text-align: right;
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  min-height: 14px;
+  opacity: 0.7;
+}
+
+.journal-saved:empty::before {
+  content: '';
+}
+
+/* Lyst tema fallback */
+body:not(.theme-dark) .journal-textarea {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body:not(.theme-dark) .journal-textarea:focus {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 /* Bro til næste årstid i Reflektér */
@@ -4178,12 +4330,40 @@ body {
 
 .search-still-words {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  max-width: var(--read-narrow);
+  gap: var(--rhythm-2);
+  max-width: var(--read-wide);
+  width: 100%;
   margin: 0 auto var(--rhythm-3);
+}
+
+.search-sensation-group {
+  width: 100%;
+  text-align: center;
+}
+
+.search-sensation-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--rhythm-1);
+  opacity: 0.75;
+}
+
+.search-sensation-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  column-gap: 22px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  max-width: var(--read-wide);
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 .search-still-word {
@@ -4194,7 +4374,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px 2px;
+  padding: 4px 2px;
   letter-spacing: 0.01em;
   transition: color 0.4s ease;
 }
@@ -4204,9 +4384,7 @@ body {
 }
 
 .search-still-word-sep {
-  color: var(--text-muted);
-  opacity: 0.3;
-  font-size: 10px;
+  display: none;
 }
 
 .search-still-results {
