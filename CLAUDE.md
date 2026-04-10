@@ -5,38 +5,42 @@ En dansk/engelsk single-page webapp om Traditionel Kinesisk Medicin (TCM) med fo
 
 **Forfattere:** Anne Marie Clement (fagligt TCM-indhold), Isabelle Evita Søndergaard (5 årstiders model)
 **Sprog:** Dansk + Engelsk (sprogswitcher)
-**Status:** Fase 1-4 færdige
+**Status:** Harmoni-fasen, unikke organ-motiver, navigation-stak og foldbare sektioner færdige
+
+> **Nyt i session:** Læs `NEXT_SESSION.md` for fuld kontekst før arbejde genoptages.
 
 ---
 
 ## Aktuel status
 
-### Fase 1: Vinkelskift + Tagging — FÆRDIG
-- Al tekst omskrevet fra behandler-vinkel til selvudforskning (EN + DA)
-- practiceGuide, sectionIntros, conversationStructure, UI-tekster
-- Tags tilføjet til alle 12 organer, 8 meridianer, 5 elementer (EN + DA)
-- seasonsData integreret i data-pipeline
+Seneste commit: `ac36a30 Navigation + foldbare sektioner + fix af tilbage-pil`
 
-### Fase 2: Din Årstid — FÆRDIG
-- Hub-kort #2 med automatisk årstidsdetektering
-- Section-screen med aktuel årstid + 4 andre årstider
-- Detail-screen med 8 tabs: Filosofi, Kost, Yoga, Meditation, Vejrtrækning, Akupressur, Journal, Milepæle
+### Harmoni-fasen — FÆRDIG
+- Rytme-system: `--rhythm-1..5` og `--read-wide/narrow` bruges overalt
+- SVG blæk-kalligrafi motiver per årstid, dør, organ, element, meditation, cyklus, søg, udforsk
+- Forside, årstid-portal, sub-screens, organ/element portraits, themes, cycles,
+  explore og search har alle fået harmonisk rytme og unikke illustrationer
 
-### Fase 3: Mønster-motor — FÆRDIG
-- Hub-kort #3 "Udforsk Dine Mønstre"
-- Levende organur centralt i section-screen
-- Søgefelt + 18 quick-tags
-- Mønster-motor: symptomReference + tags → organer, elementer, årstider, organur
-- 15 unikke forbindelsestekster, 45 refleksionsspørgsmål, 15 mikro-øvelser
-- Synonym-mapping for dagligdagssprog
-- Alt klikkbart → organ-detail, element-detail, season-detail
+### 12 unikke organ-motiver — FÆRDIG
+Hvert organ har sit eget blæk-symbol (Lever forgrenet træ, Galdeblære pil-spire,
+Hjerte flamme, Tyndtarm vandløb, Milt kerneaks, Mavesæk gryde, Lunger sky,
+Tyktarm faldende blad, Nyrer brønd, Blære bølger+måne, Pericardium beskyttet
+hjerte, San Jiao tre brændere).
 
-### Fase 4: Finjustering — FÆRDIG
-- Forbedret søgelogik (ord-uafhængig matching)
-- Synonym-mapping (EN + DA) for dagligdags ord
-- Flere quick-tags (18 total)
-- Bedre ranking (symptomReference-matches først)
-- Aktiv tag-highlight
+### Navigation-stak — FÆRDIG
+- Rigtig `_screenStack` i `app.js` — popper naturligt tilbage
+- Alle `←` back-knapper kalder `goBack()`
+- Bund-nav nulstiller stakken (`{reset: true}`)
+- Tilbage-pil er `position: absolute` så den sidder inde i app-rammen
+
+### Foldbare sektioner — FÆRDIG
+`renderFold(heading, preview, body)` bruges i Reflektér, Nær dig selv,
+Bevæg dig, Bliv stille og Mærk ind i organ. Lange lister er kollapsede
+med heading + citat + `+` indikator.
+
+### Fase 1-6 (oprindelige) — FÆRDIG
+Vinkelskift, Din Årstid hub, Mønster-motor, Finjustering, Explore
+sub-screens, Stille søg.
 
 ---
 
@@ -102,20 +106,41 @@ Begge sprog (EN + DA) eksporterer via `getLangData(lang)`:
 
 ---
 
-## Navigation / Screens
+## Navigation / Screens (nuværende stille flow)
 
-### Hub (startside) → 7 hub-kort:
-1. **Din Udforskning** → `screen-section-practice` → `screen-practice`
-2. **Din Årstid** → `screen-section-seasons` → `screen-season` (8 tabs)
-3. **Udforsk Dine Mønstre** → `screen-section-patterns` → inline resultater
-4. **De 12 Organer** → `screen-section-organs` → `screen-organ` (3 tabs)
-5. **Fem Elementer** → `screen-section-elements` → `screen-element` (4 tabs)
-6. **De 8 Ekstraordinære** → `screen-section-meridians` → `screen-meridian` (4 tabs)
-7. **Oversigter** → `screen-section-overviews` → `screen-overview` (4 tabs)
+### Forside (`screen-home`)
+Hero-billede → brand → aktuel årstids blæk-motiv → årstid-navn →
+kontekst-tekst → ornament → "Mærk efter" → 4 ord (Vrede, Frustration,
+Hovedpine, Stivhed) → organ-portrait.
 
-### Bundnavigation: Hjem, Udforsk, Organer, Elementer, Meridianer
+### Årstid portal (`screen-season`)
+Klik på årstid-navnet på forsiden. Viser årstids-motiv, velkomst
+og 4 døre: Nær dig selv, Bevæg dig, Bliv stille, Reflektér.
+
+### Sub-screens
+`screen-season-food/movement/stillness/reflection` — store dør-motiver
+og foldbare sektioner med indhold.
+
+### Organ portrait (`screen-organ`)
+Unikt organ-motiv foran kinesisk tegn-vandmærke, portræt-tekst og
+"tråde" til: Mærk ind i organ, Mød partner, Element, Udforsk årstid.
+
+### Organ themes (`screen-organ-themes`)
+8 foldbare temaer — "Mærk ind i din [organ]" med meditations-motiv.
+
+### Element portrait + cycles
+Samme struktur som organ. Cycles har pentagram-motiv.
+
+### Explore (`screen-explore`)
+Tre-streger motiv + 3 døre: Årstider, Organer, Elementer.
+Sub-lister er stille typografiske lister med navn + meta.
+
+### Søg (`screen-search`)
+Lytter-cirkel + "Hvad mærker du?" + input + 4 årstids-ord + resultater.
+
+### Bundnavigation: Hjem, Udforsk, Søg (tre knapper)
 ### Hamburger-menu: Alle sektioner + info-sider
-### Søgefunktion: Global søgning
+### Back-navigation: Alle ← knapper bruger `goBack()` med navigations-stak
 
 ---
 
@@ -130,6 +155,21 @@ Begge sprog (EN + DA) eksporterer via `getLangData(lang)`:
 
 ## Design System
 
+### Rytme (brug disse — IKKE --space-*)
+```
+--rhythm-1: 24px    intim, mellem linjer i samme blok
+--rhythm-2: 40px    tæt, mellem relaterede blokke
+--rhythm-3: 72px    rum, mellem sektioner
+--rhythm-4: 112px   åndedrag, store faser
+--rhythm-5: 56px    side-top padding
+```
+
+### Læsebredder
+```
+--read-wide:   420px   brødtekst, portrætter, velkomst
+--read-narrow: 320px   labels, små citater, navne
+```
+
 ### Farver (mørkt tema — standard)
 - Baggrund: `#0a0a0a`, Tekst: `#e8e0d0`, Accent guld: `#b8952e`
 - Træ `#5cc98e`, Ild `#e88585`, Jord `#deb87a`, Metal `#a8c4d6`, Vand `#7ba4da`
@@ -137,6 +177,27 @@ Begge sprog (EN + DA) eksporterer via `getLangData(lang)`:
 ### Fonte
 - Headings: Cormorant Garamond (300-600)
 - Body: Inter (300-600)
+
+### SVG-illustrationer
+Alle motiver ligger som inline-helpers i `js/app.js` (linje ~2500-2900):
+- Årstider: `svgSpring/Summer/LateSummer/Autumn/Winter(color)`
+- Døre: `svgFood/Movement/Stillness/Reflection(color)`
+- Organer: `svgOrganLever/Galdeblaere/Hjerte/Tyndtarm/Milt/Mavesaek/Lunger/Tyktarm/Nyrer/Blaere/Pericardium/Sanjiao(color)`
+- Andre: `svgMeditation/Cycles/Search/Explore(color)`
+- Helpers: `getSeasonIllustration`, `getPathIllustration`, `getPathIcon`,
+  `getOrganIllustration`
+
+CSS-størrelser: `.screen-illustration.size-large/medium/small/tiny`
+(200/160/100/80px).
+
+### Foldbare sektioner
+`renderFold(heading, preview, bodyHtml)` + `attachFoldListeners(container)`.
+Brugt i Reflektér, Nær dig selv, Bevæg dig, Bliv stille, Organ themes.
+
+### Navigation-stak
+`showScreen(id, opts)` skubber på `_screenStack`. `goBack()` popper.
+Bund-nav bruger `{reset: true}`. Alle ← knapper kalder `goBack()`.
+Tilbage-pilen er `position: absolute` ift. `#app`.
 
 ---
 
