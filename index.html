@@ -57,14 +57,18 @@
     </div>
 
     <!-- ============================================
-         Explore Screen — Tre døre
+         Explore Screen — svgExploreColumn (lodret årstids-søjle)
          ============================================ -->
     <div id="screen-explore" class="screen">
-      <main class="explore-doors">
-        <div class="screen-illustration size-small" id="explore-illustration"></div>
-        <button class="explore-door" data-explore="seasons">Årstider</button>
-        <button class="explore-door" data-explore="organs">Organer</button>
-        <button class="explore-door" data-explore="elements">Elementer</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow">UDFORSK</p>
+        <div class="screen-hero screen-hero-tall" id="explore-hero"></div>
+        <p class="screen-caption"><em>sushumna — kanalen energien rejser gennem</em></p>
+        <div class="screen-header">
+          <h1 class="screen-title">De fem</h1>
+          <p class="screen-subtitle">Tre veje ind: årstider, organer, elementer</p>
+        </div>
+        <div class="screen-cards" id="explore-cards"></div>
       </main>
     </div>
 
@@ -96,18 +100,23 @@
       </main>
     </div>
 
-    <!-- Search Screen — Hvad mærker du? -->
+    <!-- Search Screen — svgSearchCompass -->
     <div id="screen-search" class="screen">
       <button class="still-back" data-back-to="home" aria-label="Tilbage">←</button>
-      <main class="search-still">
-        <div class="screen-illustration size-small" id="search-illustration"></div>
-        <h1 class="search-still-title">Hvad mærker du?</h1>
-        <div class="search-still-input-wrap">
-          <input type="text" class="search-still-input" id="search-still-input" placeholder="skriv et ord" autocomplete="off" />
+      <main class="screen-glow">
+        <p class="screen-eyebrow">LYT INDAD</p>
+        <div class="screen-hero" id="search-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Hvad mærker du?</h1>
+          <p class="screen-subtitle">Skriv et ord — eller vælg en fornemmelse nedenfor</p>
         </div>
-        <p class="search-still-or">eller</p>
-        <div class="search-still-words" id="search-still-words"></div>
-        <div class="search-still-results" id="search-still-results"></div>
+        <div class="screen-cards" id="search-cards">
+          <div class="card card-static">
+            <input type="text" class="search-still-input" id="search-still-input" placeholder="Skriv et ord..." autocomplete="off" />
+          </div>
+          <div id="search-still-words"></div>
+          <div class="search-still-results" id="search-still-results"></div>
+        </div>
       </main>
     </div>
 
@@ -203,64 +212,73 @@
       </main>
     </div>
 
-    <!-- Organ Portrait — stille flyder -->
+    <!-- Organ Portrait — svgOrganSignature -->
     <div id="screen-organ" class="screen">
       <button class="still-back" id="btn-back-organ" aria-label="Tilbage">←</button>
-      <main class="organ-still">
-        <div class="organ-hero-still">
-          <span class="organ-glyph-still" id="organ-glyph-still" aria-hidden="true"></span>
-          <div class="screen-illustration size-small" id="organ-illustration"></div>
-          <h1 class="organ-name-still" id="organ-name-still"></h1>
-          <p class="organ-meta-still" id="organ-meta-still"></p>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="organ-eyebrow"></p>
+        <div class="screen-hero" id="organ-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="organ-name-still"></h1>
+          <p class="screen-subtitle" id="organ-meta-still"></p>
         </div>
-        <div class="organ-portrait-text" id="organ-description"></div>
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-        <div class="organ-threads" id="organ-portrait-links"></div>
+        <div class="screen-cards" id="organ-cards"></div>
       </main>
+      <div id="organ-description" style="display:none"></div>
+      <div id="organ-glyph-still" style="display:none"></div>
+      <div id="organ-portrait-links" style="display:none"></div>
     </div>
 
-    <!-- Organ Themes — Mærk ind i din [organ] -->
+    <!-- Organ Themes — svgThemesMandala -->
     <div id="screen-organ-themes" class="screen">
       <button class="still-back" id="btn-back-organ-themes" aria-label="Tilbage">←</button>
-      <main class="organ-themes-still">
-        <div class="screen-illustration size-small" id="organ-themes-illustration"></div>
-        <p class="organ-themes-label" id="organ-themes-icon"></p>
-        <h1 class="organ-themes-title" id="organ-themes-title"></h1>
-        <div class="themes-flow" id="organ-themes-flow"></div>
-        <div class="organ-clock-whisper" id="organ-themes-clock"></div>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="organ-themes-eyebrow"></p>
+        <div class="screen-hero" id="organ-themes-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="organ-themes-title"></h1>
+          <p class="screen-subtitle" id="organ-themes-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="organ-themes-flow"></div>
       </main>
+      <div id="organ-themes-icon" style="display:none"></div>
+      <div id="organ-themes-clock" style="display:none"></div>
     </div>
 
-    <!-- Element Portrait — stille flyder -->
+    <!-- Element Portrait — svgElementRadiance -->
     <div id="screen-element" class="screen">
       <button class="still-back" id="btn-back-element" aria-label="Tilbage">←</button>
-      <main class="element-still">
-        <div class="element-hero-still">
-          <span class="element-glyph-still" id="element-glyph-still" aria-hidden="true"></span>
-          <div class="screen-illustration size-small" id="element-illustration"></div>
-          <h1 class="element-name-still" id="element-detail-name"></h1>
-          <p class="element-meta-still" id="element-detail-chinese"></p>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="element-eyebrow"></p>
+        <div class="screen-hero" id="element-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="element-detail-name"></h1>
+          <p class="screen-subtitle" id="element-detail-chinese"></p>
         </div>
-        <div class="element-portrait-text" id="element-description"></div>
-        <div class="home-ornament" aria-hidden="true">· · ·</div>
-        <div class="element-organs-inline" id="element-organs-nav"></div>
-        <div class="element-threads" id="element-portrait-links"></div>
+        <div class="screen-cards" id="element-cards"></div>
       </main>
-      <!-- Hidden legacy meta container (for compatibility) -->
+      <div id="element-description" style="display:none"></div>
+      <div id="element-organs-nav" style="display:none"></div>
+      <div id="element-portrait-links" style="display:none"></div>
       <div id="element-detail-meta" style="display:none"></div>
       <span id="element-detail-icon" style="display:none"></span>
+      <div id="element-glyph-still" style="display:none"></div>
     </div>
 
-    <!-- Element Cycles — hvordan elementerne danser sammen -->
+    <!-- Element Cycles — svgPentagramCycle -->
     <div id="screen-element-cycles" class="screen">
       <button class="still-back" id="btn-back-element-cycles" aria-label="Tilbage">←</button>
-      <main class="element-cycles-still">
-        <div class="screen-illustration size-medium" id="element-cycles-illustration"></div>
-        <p class="cycles-label" id="element-cycles-icon"></p>
-        <h1 class="cycles-title" id="element-cycles-title"></h1>
-        <p class="cycles-intro">Hvert element næres af et andet, og holder et andet i balance. Sådan danser de sammen.</p>
-        <div class="cycles-flow" id="element-cycles-flow"></div>
+      <main class="screen-glow">
+        <p class="screen-eyebrow">FEM FASER</p>
+        <div class="screen-hero screen-hero-wide" id="element-cycles-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="element-cycles-title">De fem elementers dans</h1>
+          <p class="screen-subtitle">Hvert element næres af et andet, og holder et andet i balance</p>
+        </div>
+        <div class="screen-cards" id="element-cycles-cards"></div>
       </main>
+      <div id="element-cycles-icon" style="display:none"></div>
+      <div id="element-cycles-flow" style="display:none"></div>
     </div>
 
     <!-- Meridian Detail Screen -->

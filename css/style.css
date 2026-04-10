@@ -617,6 +617,120 @@ body {
   padding-right: 24px;
 }
 
+/* Inline lister inde i explore-kort (årstider, organer, elementer) */
+.explore-inline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-inline-item {
+  background: none;
+  border: none;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: padding-left 0.3s ease;
+  font-family: var(--font-serif);
+  width: 100%;
+  text-align: left;
+}
+
+.explore-inline-item:last-child {
+  border-bottom: none;
+}
+
+.explore-inline-item:hover {
+  padding-left: 6px;
+}
+
+.explore-inline-name {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.explore-inline-meta {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Inline organ-grid inde i element portrait */
+.element-organs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.element-organ-inline {
+  background: none;
+  border: none;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: padding-left 0.3s ease;
+  font-family: var(--font-serif);
+  width: 100%;
+  text-align: left;
+}
+
+.element-organ-inline:last-child {
+  border-bottom: none;
+}
+
+.element-organ-inline:hover {
+  padding-left: 6px;
+}
+
+.element-organ-name {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-primary);
+}
+
+.element-organ-meta {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Søgefelt styling inde i search-kort */
+#search-cards .card:first-child {
+  padding: 14px 18px;
+}
+
+#search-cards .search-still-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+  padding: 6px 0;
+  text-align: center;
+}
+
+#search-cards .search-still-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+#search-cards #search-still-words {
+  margin-top: var(--rhythm-1);
+}
+
 /* ============================================
    Glød-orb illustrationer — chakra-app inspireret
    Bløde radial-gradient orbs med subtil breathing motion
@@ -630,6 +744,7 @@ body {
 
 .glow-orb {
   transform-origin: center;
+  transform-box: fill-box;
   animation: glow-breathe var(--glow-motion-duration) ease-in-out infinite;
 }
 
@@ -677,6 +792,57 @@ body {
   0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
   33%      { transform: translate(2px, -3px) scale(1.04); opacity: 0.95; }
   66%      { transform: translate(-2px, 2px) scale(1.06); opacity: 1; }
+}
+
+/* Stærkere breathe til centrum af home-kompositen */
+@keyframes composite-center-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.92; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+
+/* Kraftigere breathe til timeline-orbs (mere synlig bevægelse) */
+@keyframes timeline-breathe {
+  0%, 100% { transform: scale(0.92); opacity: 0.75; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+
+/* Themes mandala wave — 8 orbs der pulserer i sekvens rundt om ringen */
+@keyframes themes-wave {
+  0%, 70%, 100% { transform: scale(1); opacity: 0.85; }
+  15%           { transform: scale(1.25); opacity: 1; }
+}
+
+/* Organ-portrait orbital ringe — subtil puls-drift */
+.organ-ring {
+  transform-origin: center;
+  transform-box: view-box;
+}
+.organ-ring-1 {
+  animation: organ-ring-pulse 7s ease-in-out infinite;
+}
+.organ-ring-2 {
+  animation: organ-ring-pulse 9s ease-in-out -2s infinite;
+}
+.organ-ring-3 {
+  animation: organ-ring-pulse 11s ease-in-out -4s infinite;
+}
+@keyframes organ-ring-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.18; transform: scale(1.06); }
+}
+
+/* Modsat-rotation til element-radiance og search-compass */
+@keyframes spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+/* Search-compass ydre fokus-ring — kontrakterer/ekspanderer */
+.search-focus-ring {
+  animation: search-focus 6s ease-in-out infinite;
+}
+@keyframes search-focus {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50%      { transform: scale(0.78); opacity: 0.55; }
 }
 
 /* ============================================
@@ -781,9 +947,31 @@ body {
   .taichi-dot-yang,
   .taichi-dot-yin,
   .bell-ring,
-  .spiral-rotate {
+  .spiral-rotate,
+  .composite-ill g,
+  .timeline-orb-ill g,
+  .spiral-ill g,
+  .organ-sig-ill g,
+  .organ-ring,
+  .themes-mandala-ill g,
+  .element-rad-ill g,
+  .pentagram-ill g,
+  .explore-column-ill g,
+  .search-compass-ill g,
+  .search-focus-ring {
     animation: none !important;
   }
+}
+
+/* Home-composite: sørg for at svg ikke clipper petalerne */
+.composite-ill,
+.home-composite svg {
+  overflow: visible;
+}
+
+/* Spiral-illustration: behold indenfor sin egen grænse */
+.spiral-ill {
+  overflow: hidden;
 }
 
 /* Fokalpunkt i orb — en lille mørk prik */
@@ -828,8 +1016,8 @@ body {
 
 .element-timeline-orb {
   position: relative;
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   background: none;
   border: none;
   padding: 0;
@@ -839,7 +1027,7 @@ body {
 }
 
 .element-timeline-orb:hover {
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
 .element-timeline-orb.active {
@@ -849,6 +1037,10 @@ body {
 .element-timeline-orb svg {
   width: 100%;
   height: 100%;
+  overflow: visible;
+}
+
+.element-timeline-orb .timeline-orb-ill {
   overflow: visible;
 }
 
@@ -1053,17 +1245,19 @@ body {
 }
 
 .home-composite {
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   margin: 0 auto var(--rhythm-1);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .home-composite svg {
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
 
 .home-glyph {
@@ -1137,6 +1331,32 @@ body {
   width: 100%;
   height: 100%;
   overflow: visible;
+}
+
+/* Bredere hero til pentagram-cyklus */
+.screen-hero.screen-hero-wide {
+  width: 300px;
+  height: 300px;
+}
+
+/* Højere hero til lodret explore-kolonne */
+.screen-hero.screen-hero-tall {
+  width: 200px;
+  height: 260px;
+}
+
+/* Screen caption — lille italic tekst mellem hero og header */
+.screen-caption {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin: 0 auto var(--rhythm-2);
+  text-align: center;
+  max-width: var(--read-wide);
+  opacity: 0.8;
 }
 
 .screen-header {
