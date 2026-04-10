@@ -760,15 +760,13 @@ function svgSeasonComposite(seasonKey, size = 220) {
   };
   const cfg = elements[seasonKey] || elements.foraar;
 
-  // Større viewBox så petals kan sidde tydeligt udenfor centrum
   const vb = 280;
   const cx = vb / 2, cy = vb / 2;
-  const centerR = 48;    // Centralt orb — dominerende og klart
-  const orbit = 92;      // Petals sidder tydeligt UDENFOR centrum
-  const petalR = 40;     // Distinkte petals, ikke overlappende
+  const centerR = 48;
+  const orbit = 92;
+  const petalR = 40;
 
   // 4 petals i pentagon-lignende positioner (top, højre, bund, venstre)
-  // Let roteret så det ikke føles aksefast
   const angles = [
     -Math.PI * 0.5 + 0.12,
      Math.PI * 0.0 + 0.12,
@@ -776,45 +774,53 @@ function svgSeasonComposite(seasonKey, size = 220) {
      Math.PI * 1.0 + 0.12
   ];
 
+  // SMIL animate på r-attributten — garanteret synlig bevægelse i alle browsers
   const petalStops = cfg.petals.map((color, i) => {
     const gradId = nextGradId();
     const px = cx + orbit * Math.cos(angles[i]);
     const py = cy + orbit * Math.sin(angles[i]);
-    // Hver petal har egen breathe-rytme forskudt
-    const delay = (i * 0.45).toFixed(2);
+    // Hver petal har egen dur og forskudt begin så de breather ude af takt
     const dur = (5.5 + i * 0.4).toFixed(1);
+    const begin = (i * 0.7).toFixed(2);
+    const rMin = petalR - 4;
+    const rMax = petalR + 7;
     return {
       defs: `<radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
         <stop offset="0%"  stop-color="${color}" stop-opacity="0.72"/>
-        <stop offset="30%" stop-color="${color}" stop-opacity="0.38"/>
-        <stop offset="65%" stop-color="${color}" stop-opacity="0.12"/>
+        <stop offset="30%" stop-color="${color}" stop-opacity="0.4"/>
+        <stop offset="65%" stop-color="${color}" stop-opacity="0.13"/>
         <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
       </radialGradient>`,
-      // Wrapper g med inline transform-origin så animationen ALTID virker
-      shape: `<g style="transform-origin: ${px.toFixed(1)}px ${py.toFixed(1)}px; transform-box: view-box; animation: glow-breathe ${dur}s ease-in-out ${delay}s infinite;">
-        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${petalR}" fill="url(#${gradId})"/>
-        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="1.8" fill="${color}" opacity="0.65"/>
-      </g>`
+      shape: `
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${petalR}" fill="url(#${gradId})">
+          <animate attributeName="r" values="${rMin};${rMax};${rMin}" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.8;1;0.8" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="1.8" fill="${color}" opacity="0.7"/>
+      `
     };
   });
 
   const centerGradId = nextGradId();
+  const centerRMin = centerR - 5;
+  const centerRMax = centerR + 9;
 
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill composite-ill" aria-hidden="true">
     <defs>
       ${petalStops.map(p => p.defs).join('\n      ')}
       <radialGradient id="${centerGradId}" cx="50%" cy="50%" r="50%">
         <stop offset="0%"  stop-color="${cfg.center}" stop-opacity="0.88"/>
-        <stop offset="30%" stop-color="${cfg.center}" stop-opacity="0.48"/>
-        <stop offset="65%" stop-color="${cfg.center}" stop-opacity="0.15"/>
+        <stop offset="30%" stop-color="${cfg.center}" stop-opacity="0.5"/>
+        <stop offset="65%" stop-color="${cfg.center}" stop-opacity="0.16"/>
         <stop offset="100%" stop-color="${cfg.center}" stop-opacity="0"/>
       </radialGradient>
     </defs>
     ${petalStops.map(p => p.shape).join('\n    ')}
-    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: composite-center-pulse 6.5s ease-in-out infinite;">
-      <circle cx="${cx}" cy="${cy}" r="${centerR}" fill="url(#${centerGradId})"/>
-      <circle cx="${cx}" cy="${cy}" r="3.2" fill="${cfg.center}" opacity="0.95"/>
-    </g>
+    <circle cx="${cx}" cy="${cy}" r="${centerR}" fill="url(#${centerGradId})">
+      <animate attributeName="r" values="${centerRMin};${centerRMax};${centerRMin}" dur="6.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.92;1;0.92" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="${cx}" cy="${cy}" r="3.4" fill="${cfg.center}" opacity="0.95"/>
   </svg>`;
 }
 
@@ -823,7 +829,10 @@ function svgSeasonComposite(seasonKey, size = 220) {
  */
 function svgElementTimelineOrb(color, size = 28, delaySeconds = 0) {
   const id = nextGradId();
-  // Inline animation med eksplicit transform-origin — sikrer at det altid bevæger sig
+  // SMIL animate på r-attributten — garanteret bølge-effekt
+  // Total cycle 5s, begin forskudt så bølgen vandrer fra venstre til højre
+  const baseR = 14;
+  const peakR = 19;
   return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" class="glow-ill timeline-orb-ill" aria-hidden="true">
     <defs>
       <radialGradient id="${id}" cx="50%" cy="50%" r="50%">
@@ -833,10 +842,11 @@ function svgElementTimelineOrb(color, size = 28, delaySeconds = 0) {
         <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
       </radialGradient>
     </defs>
-    <g style="transform-origin: 20px 20px; transform-box: view-box; animation: timeline-breathe 4.5s ease-in-out ${delaySeconds}s infinite;">
-      <circle cx="20" cy="20" r="16" fill="url(#${id})"/>
-      <circle cx="20" cy="20" r="2" fill="${color}" opacity="0.95"/>
-    </g>
+    <circle cx="20" cy="20" r="${baseR}" fill="url(#${id})">
+      <animate attributeName="r" values="${baseR};${peakR};${baseR}" dur="5s" begin="${delaySeconds}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="5s" begin="${delaySeconds}s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="20" cy="20" r="2" fill="${color}" opacity="0.95"/>
   </svg>`;
 }
 
@@ -1077,31 +1087,35 @@ function svgInwardSpiral(color, size = 220) {
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill spiral-ill" aria-hidden="true">
     <defs>
       <radialGradient id="${glowId}" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="${color}" stop-opacity="0.55"/>
-        <stop offset="40%" stop-color="${color}" stop-opacity="0.22"/>
-        <stop offset="80%" stop-color="${color}" stop-opacity="0.06"/>
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.58"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.24"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.07"/>
         <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
       </radialGradient>
       <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%"   stop-color="${color}" stop-opacity="0.95"/>
-        <stop offset="50%"  stop-color="${color}" stop-opacity="0.7"/>
-        <stop offset="100%" stop-color="${color}" stop-opacity="0.4"/>
+        <stop offset="0%"   stop-color="${color}" stop-opacity="0.98"/>
+        <stop offset="50%"  stop-color="${color}" stop-opacity="0.72"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0.42"/>
       </linearGradient>
     </defs>
 
-    <!-- Blød baggrunds-glød, fylder cirka 75% af viewBox -->
-    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: glow-breathe 8s ease-in-out infinite;">
-      <circle cx="${cx}" cy="${cy}" r="95" fill="url(#${glowId})"/>
-    </g>
+    <!-- Blød baggrunds-glød med SMIL breathe -->
+    <circle cx="${cx}" cy="${cy}" r="92" fill="url(#${glowId})">
+      <animate attributeName="r" values="86;102;86" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.82;1;0.82" dur="8s" repeatCount="indefinite"/>
+    </circle>
 
-    <!-- Selve spiralen, roterer langsomt 60s -->
-    <g style="transform-origin: ${cx}px ${cy}px; transform-box: view-box; animation: spin-slow 60s linear infinite;">
+    <!-- Selve spiralen, roterer via SMIL animateTransform (garanteret) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        from="0 ${cx} ${cy}" to="360 ${cx} ${cy}"
+        dur="60s" repeatCount="indefinite"/>
       <path d="${d}" fill="none" stroke="url(#${gradId})" stroke-width="1.6"
-            stroke-linecap="round" opacity="0.9"/>
+            stroke-linecap="round" opacity="0.92"/>
     </g>
 
     <!-- Fokalpunkt i centrum -->
-    <circle cx="${cx}" cy="${cy}" r="3.2" fill="${color}" opacity="1"/>
+    <circle cx="${cx}" cy="${cy}" r="3.4" fill="${color}" opacity="1"/>
   </svg>`;
 }
 
