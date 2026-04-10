@@ -1411,6 +1411,210 @@ body {
   margin-top: 0;
 }
 
+/* ============================================
+   Organur-kort på forsiden (interaktivt)
+   ============================================ */
+
+.organclock-card {
+  padding: var(--card-pad-y) 20px calc(var(--card-pad-y) - 2px);
+}
+
+.organclock-card .card-eyebrow {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.organclock-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.organclock-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.clock-segment {
+  cursor: pointer;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+  transform-box: view-box;
+}
+
+.clock-segment:hover {
+  filter: brightness(1.3);
+}
+
+.clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+[data-theme="light"] .clock-segment-active path {
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.08));
+}
+
+.clock-segment-selected path {
+  stroke-dasharray: none;
+}
+
+.clock-organ-label,
+.clock-time-label {
+  font-family: var(--font-sans);
+  fill: var(--text-primary);
+  pointer-events: none;
+  user-select: none;
+}
+
+.clock-time-label {
+  fill: var(--text-muted);
+}
+
+/* Info-boks under uret */
+.organclock-info {
+  margin-top: var(--rhythm-1);
+  padding-top: var(--rhythm-1);
+  border-top: 1px solid var(--border-hairline);
+  text-align: center;
+}
+
+.organclock-info-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.organclock-info-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+
+.organclock-info-nickname {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--rhythm-1);
+}
+
+.organclock-info-wisdom {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 auto var(--rhythm-1);
+  max-width: 340px;
+  text-align: left;
+}
+
+.organclock-info-emotion {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 auto var(--rhythm-1);
+  max-width: 340px;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.organclock-info-emotion strong {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.organclock-info-practical {
+  margin: var(--rhythm-1) auto;
+  max-width: 340px;
+  text-align: left;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+
+[data-theme="light"] .organclock-info-practical {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.organclock-info-do,
+.organclock-info-avoid {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.organclock-info-avoid {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.organclock-info-do strong,
+.organclock-info-avoid strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.organclock-back-now,
+.organclock-open-organ {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 10px 4px;
+  margin: 6px 10px 0;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: color 0.3s ease;
+}
+
+.organclock-back-now:hover {
+  color: var(--text-secondary);
+}
+
+.organclock-open-organ {
+  font-style: normal;
+  color: var(--accent-gold);
+  opacity: 0.85;
+}
+
+.organclock-open-organ:hover {
+  opacity: 1;
+}
+
 /* Byline foot — nederst på forsiden, stille og lille */
 .home-byline-foot {
   margin: var(--rhythm-4) auto 0;

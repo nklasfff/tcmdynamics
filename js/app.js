@@ -4390,7 +4390,7 @@ function renderPersonalHome() {
 
   // Kort-stak 1 (før timeline):
   //  1. "DIN FASE" — expandable kort med Isabelles fulde velkomst
-  //  2. "MÆRK EFTER" — expandable kort med de 6 kurerede fornemmelser
+  //  2. "ORGANURET" — interaktivt organur der viser "nu" + klikbart til andre tider
   const cardsEl = document.getElementById('home-cards');
   if (cardsEl) {
     const welcome = (typeof seasonWelcomes !== 'undefined' && seasonWelcomes && seasonWelcomes[key])
@@ -4403,13 +4403,6 @@ function renderPersonalHome() {
       .join('.')
       .trim();
 
-    const sensations = getHomeSensations(key);
-    const sensationsBody = `
-      <div class="home-sensations-grid">
-        ${sensations.map((w, i) => `<button class="home-sensation" data-sensation-idx="${i}">${w.label}</button>`).join('')}
-      </div>
-    `;
-
     cardsEl.innerHTML = [
       renderCard({
         eyebrow: 'DIN FASE',
@@ -4418,25 +4411,18 @@ function renderPersonalHome() {
         subtitle: `${s.organs} · ${s.climate}`,
         expandable: !!welcomeBody
       }),
-      renderCard({
-        eyebrow: 'MÆRK EFTER',
-        title: 'Hvad er levende i dig?',
-        subtitle: 'Seks ord fra årstiden — klik det der rører ved dig',
-        body: sensationsBody,
-        expandable: true,
-        initiallyOpen: true
-      })
+      // Organur-kort placeholder — bliver fyldt af renderHomeOrganClock()
+      `<article class="card card-static organclock-card" id="home-organclock-card">
+        <p class="card-eyebrow" id="organclock-eyebrow">LIGE NU</p>
+        <div class="organclock-wrap" id="home-organclock-wrap"></div>
+        <div class="organclock-info" id="home-organclock-info"></div>
+      </article>`
     ].join('');
 
     attachCardListeners(cardsEl);
 
-    // Bind sensation clicks
-    cardsEl.querySelectorAll('.home-sensation').forEach((btn, i) => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dispatchSensation(sensations[i]);
-      });
-    });
+    // Render organ-uret i kortet
+    renderHomeOrganClock();
   }
 
   // 5-element timeline (horisontal stribe af orbs med bølge-puls)
@@ -4498,6 +4484,272 @@ function renderPersonalHome() {
       });
     });
   }
+}
+
+// ============================================
+// Home Organ Clock — interaktivt organur på forsiden
+//
+// Bygger et 12-segment SVG-ur hvor hvert segment repræsenterer
+// en 2-timers periode. Aktive (nu) segment fremhæves. Brugeren
+// kan klikke et andet segment for at se hvad der dominerer på
+// det tidspunkt.
+//
+// Uret opdateres automatisk hvert minut så "NU" altid passer.
+// ============================================
+
+// Hvilket segment brugeren har valgt (null = følg aktuelle tid)
+let _clockSelectedIdx = null;
+
+// Kort organ-farve-map (bruger element-farver)
+function _clockElementColor(elementName) {
+  const map = {
+    'Metal': 'var(--el-metal)',
+    'Earth': 'var(--el-earth)',
+    'Fire':  'var(--el-fire)',
+    'Water': 'var(--el-water)',
+    'Wood':  'var(--el-wood)',
+    'Træ':   'var(--el-wood)',
+    'Ild':   'var(--el-fire)',
+    'Jord':  'var(--el-earth)',
+    'Vand':  'var(--el-water)'
+  };
+  return map[elementName] || 'var(--accent-gold)';
+}
+
+// Find den nuværende årstid der matcher et organ (for at slå relevante
+// tekster op i seasonsData — philosophy, journal, organClockGuide)
+function _seasonKeyForOrgan(organName) {
+  // Organ → sæson mapping via element
+  const organToElement = {
+    'Lever': 'Træ', 'Galdeblære': 'Træ',
+    'Hjerte': 'Ild', 'Tyndtarm': 'Ild', 'Pericardium': 'Ild', 'San Jiao': 'Ild',
+    'Milt': 'Jord', 'Mavesæk': 'Jord',
+    'Lunger': 'Metal', 'Tyktarm': 'Metal',
+    'Nyrer': 'Vand', 'Blære': 'Vand'
+  };
+  const el = organToElement[organName];
+  const m = {
+    'Træ':   'foraar',
+    'Ild':   'sommer',
+    'Jord':  'sensommer',
+    'Metal': 'efteraar',
+    'Vand':  'vinter'
+  };
+  return m[el] || null;
+}
+
+// Byg SVG for organuret (12 segmenter)
+function buildOrganClockSvg(activeIdx, selectedIdx) {
+  const size = 320;
+  const cx = size / 2;
+  const cy = size / 2;
+  const outerR = size / 2 - 10;
+  const innerR = outerR * 0.42;
+  const textR = (outerR + innerR) / 2;
+  const timeR = outerR - 14;
+
+  let segments = '';
+  organClock.forEach((item, i) => {
+    const startAngle = (i * 30 - 90) * Math.PI / 180;
+    const endAngle = ((i + 1) * 30 - 90) * Math.PI / 180;
+    const midAngle = ((i + 0.5) * 30 - 90) * Math.PI / 180;
+
+    const x1 = cx + outerR * Math.cos(startAngle);
+    const y1 = cy + outerR * Math.sin(startAngle);
+    const x2 = cx + outerR * Math.cos(endAngle);
+    const y2 = cy + outerR * Math.sin(endAngle);
+    const x3 = cx + innerR * Math.cos(endAngle);
+    const y3 = cy + innerR * Math.sin(endAngle);
+    const x4 = cx + innerR * Math.cos(startAngle);
+    const y4 = cy + innerR * Math.sin(startAngle);
+
+    const textX = cx + textR * Math.cos(midAngle);
+    const textY = cy + textR * Math.sin(midAngle);
+    const timeX = cx + timeR * Math.cos(midAngle);
+    const timeY = cy + timeR * Math.sin(midAngle);
+
+    const color = _clockElementColor(item.element);
+    const isActive = i === activeIdx;
+    const isSelected = i === selectedIdx;
+
+    // Fyld og stroke baseret på active/selected
+    let fillOpacity = '0.12';
+    let strokeOpacity = '0.3';
+    let strokeWidth = '0.8';
+    if (isActive) {
+      fillOpacity = '0.55';
+      strokeOpacity = '0.95';
+      strokeWidth = '1.6';
+    } else if (isSelected) {
+      fillOpacity = '0.28';
+      strokeOpacity = '0.7';
+      strokeWidth = '1.2';
+    }
+
+    const textWeight = isActive ? '600' : (isSelected ? '500' : '400');
+    const textOpacity = isActive ? '1' : (isSelected ? '0.9' : '0.65');
+
+    segments += `
+      <g class="clock-segment${isActive ? ' clock-segment-active' : ''}${isSelected ? ' clock-segment-selected' : ''}" data-idx="${i}">
+        <path d="M${x1.toFixed(1)},${y1.toFixed(1)} A${outerR},${outerR} 0 0 1 ${x2.toFixed(1)},${y2.toFixed(1)} L${x3.toFixed(1)},${y3.toFixed(1)} A${innerR},${innerR} 0 0 0 ${x4.toFixed(1)},${y4.toFixed(1)} Z"
+          fill="${color}" fill-opacity="${fillOpacity}"
+          stroke="${color}" stroke-opacity="${strokeOpacity}" stroke-width="${strokeWidth}"/>
+        <text x="${textX.toFixed(1)}" y="${textY.toFixed(1)}" text-anchor="middle" dominant-baseline="central"
+          class="clock-organ-label" font-size="10" font-weight="${textWeight}" opacity="${textOpacity}">${item.organ}</text>
+        <text x="${timeX.toFixed(1)}" y="${timeY.toFixed(1)}" text-anchor="middle" dominant-baseline="central"
+          class="clock-time-label" font-size="8" opacity="${parseFloat(textOpacity) * 0.75}">${item.time}</text>
+      </g>
+    `;
+  });
+
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
+  const activeOrgan = activeIdx >= 0 ? organClock[activeIdx] : null;
+
+  // Subtil glow bag centrum-cirklen, passer til glød-æstetikken
+  const centerGlow = nextGradId();
+  const centerColor = activeOrgan ? _clockElementColor(activeOrgan.element) : 'var(--accent-gold)';
+
+  return `
+    <svg class="clock-svg" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="${centerGlow}" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="${centerColor}" stop-opacity="0.4"/>
+          <stop offset="60%" stop-color="${centerColor}" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="${centerColor}" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      ${segments}
+      <circle cx="${cx}" cy="${cy}" r="${innerR - 2}" fill="url(#${centerGlow})">
+        <animate attributeName="r" values="${innerR - 4};${innerR + 2};${innerR - 4}" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="${cx}" cy="${cy}" r="${innerR - 8}" fill="var(--bg-primary)" fill-opacity="0.85" stroke="${centerColor}" stroke-opacity="0.45" stroke-width="0.8"/>
+      <text x="${cx}" y="${cy - 12}" text-anchor="middle" dominant-baseline="central"
+        font-family="var(--font-sans)" font-size="9" font-weight="500" fill="var(--text-muted)" letter-spacing="0.12em">NU ${timeStr}</text>
+      <text x="${cx}" y="${cy + 4}" text-anchor="middle" dominant-baseline="central"
+        font-family="var(--font-serif)" font-size="16" font-weight="400" fill="${centerColor}">${activeOrgan ? activeOrgan.organ : ''}</text>
+      <text x="${cx}" y="${cy + 20}" text-anchor="middle" dominant-baseline="central"
+        font-family="var(--font-sans)" font-size="8" font-weight="400" fill="var(--text-muted)" letter-spacing="0.1em">${activeOrgan ? activeOrgan.time : ''}</text>
+    </svg>
+  `;
+}
+
+// Byg info-boksen under uret for det valgte (eller aktive) segment
+function buildClockInfoBox(selectedIdx, activeIdx) {
+  if (selectedIdx < 0 || selectedIdx >= organClock.length) return '';
+  const item = organClock[selectedIdx];
+  const isActive = selectedIdx === activeIdx;
+
+  // Find det tilsvarende organ-objekt for at få emotion og en tekst
+  const organ = organs.find(o => o.name === item.organ);
+  const emotion = organ && organ.emotion ? organ.emotion : '';
+  const nickname = organ && organ.nickname ? organ.nickname : '';
+
+  // Farve
+  const color = _clockElementColor(item.element);
+
+  // Slå eventuelle årstids-specifikke råd op i seasonsData (organClockGuide)
+  const seasonKey = _seasonKeyForOrgan(item.organ);
+  let doThis = '';
+  let avoidThis = '';
+  if (seasonKey && seasonsData[seasonKey] && seasonsData[seasonKey].organClockGuide) {
+    const match = seasonsData[seasonKey].organClockGuide.find(g => g.organ === item.organ);
+    if (match) {
+      doThis = match.doThis || '';
+      avoidThis = match.avoidThis || '';
+    }
+  }
+
+  // Etiket over info-boksen
+  const statusLabel = isActive
+    ? 'LIGE NU I DIG'
+    : `KL ${item.time}`;
+
+  return `
+    <p class="organclock-info-label" style="color:${color}">${statusLabel}</p>
+    <h3 class="organclock-info-title" style="color:${color}">${item.organ}</h3>
+    ${nickname ? `<p class="organclock-info-nickname">${nickname}</p>` : ''}
+    <p class="organclock-info-wisdom">${item.wisdom}</p>
+    ${emotion ? `<p class="organclock-info-emotion"><strong>Følelse:</strong> ${emotion}</p>` : ''}
+    ${doThis ? `<div class="organclock-info-practical">
+      <p class="organclock-info-do"><strong>GØR DETTE</strong><br>${doThis}</p>
+      ${avoidThis ? `<p class="organclock-info-avoid"><strong>UNDGÅ</strong><br>${avoidThis}</p>` : ''}
+    </div>` : ''}
+    ${!isActive ? '<button class="organclock-back-now" type="button" data-clock-back-now>← tilbage til nu</button>' : ''}
+    <button class="organclock-open-organ" type="button" data-organ-name="${item.organ}">
+      Udforsk ${item.organ} →
+    </button>
+  `;
+}
+
+function renderHomeOrganClock() {
+  const wrap = document.getElementById('home-organclock-wrap');
+  const infoEl = document.getElementById('home-organclock-info');
+  const eyebrowEl = document.getElementById('organclock-eyebrow');
+  if (!wrap || !infoEl) return;
+
+  const activeIdx = getActiveOrganIndex();
+  const selectedIdx = _clockSelectedIdx != null ? _clockSelectedIdx : activeIdx;
+
+  // Eyebrow fortæller om brugeren kigger på "nu" eller en anden tid
+  if (eyebrowEl) {
+    eyebrowEl.textContent = selectedIdx === activeIdx ? 'LIGE NU · ORGANURET' : 'FORESTIL DIG · ORGANURET';
+  }
+
+  // SVG (brug injectSvg så SMIL-animationen aktiveres)
+  injectSvg(wrap, buildOrganClockSvg(activeIdx, selectedIdx));
+
+  // Info-boks
+  infoEl.innerHTML = buildClockInfoBox(selectedIdx, activeIdx);
+
+  // Segment-klik: vælg segment
+  wrap.querySelectorAll('.clock-segment').forEach(seg => {
+    seg.addEventListener('click', () => {
+      const idx = parseInt(seg.dataset.idx, 10);
+      const activeNow = getActiveOrganIndex();
+      // Hvis brugeren klikker på det aktive segment, nulstil selected (følg nu)
+      if (idx === activeNow) {
+        _clockSelectedIdx = null;
+      } else {
+        _clockSelectedIdx = idx;
+      }
+      renderHomeOrganClock();
+    });
+  });
+
+  // "← tilbage til nu" knap
+  const backBtn = infoEl.querySelector('[data-clock-back-now]');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      _clockSelectedIdx = null;
+      renderHomeOrganClock();
+    });
+  }
+
+  // "Udforsk organ" knap
+  const exploreBtn = infoEl.querySelector('[data-organ-name]');
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', () => {
+      const name = exploreBtn.dataset.organName;
+      const organ = organs.find(o => o.name === name);
+      if (organ) showOrganDetail(organ);
+    });
+  }
+}
+
+// Auto-opdater organuret hvert minut så "NU" følger med
+let _clockTickInterval = null;
+function startOrganClockAutoUpdate() {
+  if (_clockTickInterval) return;
+  _clockTickInterval = setInterval(() => {
+    if (document.getElementById('home-organclock-wrap')) {
+      // Kun re-render hvis brugeren ikke har et andet segment valgt
+      // (så vi ikke afbryder deres udforskning)
+      if (_clockSelectedIdx == null) {
+        renderHomeOrganClock();
+      }
+    }
+  }, 60000);
 }
 
 function renderPatternSection() {
@@ -5469,6 +5721,7 @@ function init() {
   try { setupLanguageToggle(); } catch(e) { console.error('setupLanguageToggle:', e); }
   try { updateUILanguage(); } catch(e) { console.error('updateUILanguage:', e); }
   try { renderPersonalHome(); } catch(e) { console.error('renderPersonalHome:', e); }
+  try { startOrganClockAutoUpdate(); } catch(e) { console.error('startOrganClockAutoUpdate:', e); }
   try { renderExploreScreen(); } catch(e) { console.error('renderExploreScreen:', e); }
   try { renderSearchScreen(); } catch(e) { console.error('renderSearchScreen:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
