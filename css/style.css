@@ -599,7 +599,7 @@ body {
 
 .organ-still,
 .element-still {
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -614,7 +614,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--rhythm-3);
+}
+
+.organ-hero-still .screen-illustration,
+.element-hero-still .screen-illustration {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--rhythm-1);
 }
 
 .organ-glyph-still,
@@ -644,8 +651,8 @@ body {
   line-height: 1;
   letter-spacing: 0.02em;
   color: var(--season-color, var(--text-primary));
-  padding: 60px 0 14px;
-  margin: 0;
+  padding: 0;
+  margin: 0 0 8px;
 }
 
 .organ-meta-still,
@@ -668,8 +675,8 @@ body {
   font-weight: 300;
   line-height: var(--leading-body);
   color: var(--text-primary);
-  max-width: 420px;
-  margin: 0 auto var(--space-xl);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
   text-align: left;
   letter-spacing: 0.01em;
 }
@@ -684,14 +691,19 @@ body {
   margin-bottom: 0;
 }
 
+.organ-still .home-ornament,
+.element-still .home-ornament {
+  margin-bottom: var(--rhythm-2);
+}
+
 /* Threads (stille links) */
 .organ-threads,
 .element-threads {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
+  gap: var(--rhythm-1);
+  margin-top: 0;
 }
 
 .organ-thread,
@@ -744,7 +756,7 @@ body {
    ============================================ */
 
 .organ-themes-still {
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -758,7 +770,7 @@ body {
   color: var(--text-muted);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  margin: 0 0 var(--space-sm);
+  margin: 0 0 8px;
 }
 
 .organ-themes-title {
@@ -769,8 +781,8 @@ body {
   line-height: 1.2;
   letter-spacing: 0.01em;
   color: var(--season-color, var(--text-primary));
-  margin: 0 0 var(--space-xl);
-  max-width: 380px;
+  margin: 0 0 var(--rhythm-3);
+  max-width: var(--read-wide);
 }
 
 .themes-flow {
@@ -858,7 +870,7 @@ body {
    ============================================ */
 
 .element-cycles-still {
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -872,7 +884,7 @@ body {
   color: var(--text-muted);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  margin: 0 0 var(--space-sm);
+  margin: 0 0 8px;
 }
 
 .cycles-title {
@@ -882,8 +894,8 @@ body {
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: var(--text-primary);
-  margin: 0 0 var(--space-md);
-  max-width: 380px;
+  margin: 0 0 var(--rhythm-2);
+  max-width: var(--read-wide);
 }
 
 .cycles-intro {
@@ -893,8 +905,8 @@ body {
   font-style: italic;
   line-height: var(--leading-body);
   color: var(--text-secondary);
-  max-width: 340px;
-  margin: 0 0 var(--space-xl);
+  max-width: var(--read-narrow);
+  margin: 0 0 var(--rhythm-3);
 }
 
 .cycles-flow {
@@ -937,62 +949,31 @@ body {
    ============================================ */
 
 .season-still {
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.season-hero-still {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-xl);
-}
-
-.season-glyph-still {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -55%);
-  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-  font-size: 260px;
-  font-weight: 300;
-  line-height: 1;
-  color: var(--season-color, var(--accent-gold));
-  opacity: 0.07;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-
 .season-name-still {
-  position: relative;
-  z-index: 1;
   font-family: var(--font-serif);
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0.02em;
   color: var(--season-color, var(--text-primary));
-  padding: 60px 0 16px;
-  margin: 0;
+  margin: 0 0 8px;
 }
 
 .season-meta-still {
-  position: relative;
-  z-index: 1;
   font-family: var(--font-serif);
   font-size: var(--size-label);
   font-weight: 400;
   color: var(--text-muted);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  margin: 0;
+  margin: 0 0 var(--rhythm-2);
 }
 
 .season-welcome-still {
@@ -1001,10 +982,14 @@ body {
   font-weight: 300;
   line-height: var(--leading-body);
   color: var(--text-primary);
-  max-width: 400px;
-  margin: 0 auto var(--space-xl);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
   letter-spacing: 0.01em;
   text-align: left;
+}
+
+.season-still .home-ornament {
+  margin-bottom: var(--rhythm-2);
 }
 
 .season-invitation-still {
@@ -1013,19 +998,24 @@ body {
   font-weight: 300;
   font-style: italic;
   color: var(--text-secondary);
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--rhythm-2);
   letter-spacing: 0.02em;
 }
 
 .season-paths {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
+  align-items: stretch;
+  gap: var(--rhythm-1);
+  margin-top: 0;
+  width: 100%;
+  max-width: var(--read-narrow);
 }
 
 .season-path {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   font-family: var(--font-serif);
   font-size: 22px;
   font-weight: 300;
@@ -1036,6 +1026,22 @@ body {
   padding: 8px 4px;
   letter-spacing: 0.03em;
   transition: color 0.4s ease;
+  text-align: left;
+}
+
+.season-path-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.season-path-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .season-path:hover {
@@ -1047,7 +1053,7 @@ body {
    ============================================ */
 
 .season-sub {
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1061,7 +1067,7 @@ body {
   color: var(--text-muted);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  margin: 0 0 var(--space-sm);
+  margin: 0 0 8px;
 }
 
 .season-sub-title {
@@ -1070,7 +1076,7 @@ body {
   font-weight: 300;
   color: var(--text-primary);
   letter-spacing: 0.02em;
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--rhythm-2);
   text-align: center;
 }
 
@@ -1081,14 +1087,18 @@ body {
   font-style: italic;
   line-height: var(--leading-body);
   color: var(--text-secondary);
-  max-width: 380px;
-  margin: 0 auto var(--space-xl);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
   text-align: center;
+}
+
+.season-sub .home-ornament {
+  margin-bottom: var(--rhythm-2);
 }
 
 .season-sub-content {
   width: 100%;
-  max-width: 440px;
+  max-width: var(--read-wide);
   margin: 0 auto;
   text-align: left;
 }
@@ -3738,8 +3748,12 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 80vh;
-  gap: 64px;
-  padding: 0 32px;
+  gap: var(--rhythm-3);
+  padding: 0 var(--side-pad);
+}
+
+.explore-doors .screen-illustration {
+  margin-bottom: 0;
 }
 
 .explore-door {
@@ -3846,7 +3860,7 @@ body {
    ============================================ */
 
 .explore-list-still {
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3859,13 +3873,13 @@ body {
   color: var(--text-muted);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  margin: 0 0 var(--space-xl);
+  margin: 0 0 var(--rhythm-2);
   text-align: center;
 }
 
 .explore-list-items {
   width: 100%;
-  max-width: 340px;
+  max-width: var(--read-narrow);
   display: flex;
   flex-direction: column;
 }
@@ -3914,7 +3928,7 @@ body {
    ============================================ */
 
 .search-still {
-  padding: var(--space-xxl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3928,14 +3942,14 @@ body {
   font-style: italic;
   line-height: 1.2;
   color: var(--text-primary);
-  margin: 0 0 var(--space-xl);
+  margin: 0 0 var(--rhythm-2);
   letter-spacing: 0.02em;
 }
 
 .search-still-input-wrap {
   width: 100%;
-  max-width: 320px;
-  margin: 0 auto var(--space-lg);
+  max-width: var(--read-narrow);
+  margin: 0 auto var(--rhythm-2);
   border-bottom: 1px solid var(--border-whisper);
   padding: 0 0 var(--space-xs);
 }
@@ -3971,7 +3985,7 @@ body {
   font-weight: 300;
   font-style: italic;
   color: var(--text-muted);
-  margin: 0 0 var(--space-md);
+  margin: 0 0 var(--rhythm-1);
   letter-spacing: 0.05em;
 }
 
@@ -3981,8 +3995,8 @@ body {
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
-  max-width: 320px;
-  margin: 0 auto var(--space-xl);
+  max-width: var(--read-narrow);
+  margin: 0 auto var(--rhythm-3);
 }
 
 .search-still-word {

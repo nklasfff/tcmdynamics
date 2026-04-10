@@ -52,6 +52,7 @@
          ============================================ -->
     <div id="screen-explore" class="screen">
       <main class="explore-doors">
+        <div class="screen-illustration size-small" id="explore-illustration"></div>
         <button class="explore-door" data-explore="seasons">Årstider</button>
         <button class="explore-door" data-explore="organs">Organer</button>
         <button class="explore-door" data-explore="elements">Elementer</button>
@@ -62,6 +63,7 @@
     <div id="screen-explore-seasons" class="screen">
       <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
       <main class="explore-list-still">
+        <div class="screen-illustration size-tiny" id="explore-seasons-illustration"></div>
         <p class="explore-list-label">Årstider</p>
         <div class="explore-list-items" id="explore-seasons-list"></div>
       </main>
@@ -70,6 +72,7 @@
     <div id="screen-explore-organs" class="screen">
       <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
       <main class="explore-list-still">
+        <div class="screen-illustration size-tiny" id="explore-organs-illustration"></div>
         <p class="explore-list-label">Organer</p>
         <div class="explore-list-items" id="explore-organs-list"></div>
       </main>
@@ -78,6 +81,7 @@
     <div id="screen-explore-elements" class="screen">
       <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
       <main class="explore-list-still">
+        <div class="screen-illustration size-tiny" id="explore-elements-illustration"></div>
         <p class="explore-list-label">Elementer</p>
         <div class="explore-list-items" id="explore-elements-list"></div>
       </main>
@@ -87,6 +91,7 @@
     <div id="screen-search" class="screen">
       <button class="still-back" data-back-to="home" aria-label="Tilbage">←</button>
       <main class="search-still">
+        <div class="screen-illustration size-small" id="search-illustration"></div>
         <h1 class="search-still-title">Hvad mærker du?</h1>
         <div class="search-still-input-wrap">
           <input type="text" class="search-still-input" id="search-still-input" placeholder="skriv et ord" autocomplete="off" />
@@ -106,11 +111,9 @@
       <button class="still-back" id="btn-back-season" aria-label="Tilbage">←</button>
 
       <main class="season-still">
-        <div class="season-hero-still">
-          <span class="season-glyph-still" id="season-glyph-still" aria-hidden="true"></span>
-          <h1 class="season-name-still" id="season-name-still"></h1>
-          <p class="season-meta-still" id="season-meta-still"></p>
-        </div>
+        <div class="screen-illustration size-medium" id="season-illustration"></div>
+        <h1 class="season-name-still" id="season-name-still"></h1>
+        <p class="season-meta-still" id="season-meta-still"></p>
 
         <div class="season-welcome-still" id="season-welcome-still"></div>
 
@@ -119,10 +122,10 @@
         <p class="season-invitation-still">Hvor fører du din opmærksomhed?</p>
 
         <nav class="season-paths">
-          <button class="season-path" data-path="food">Nær dig selv</button>
-          <button class="season-path" data-path="movement">Bevæg dig</button>
-          <button class="season-path" data-path="stillness">Bliv stille</button>
-          <button class="season-path" data-path="reflection">Reflektér</button>
+          <button class="season-path" data-path="food"><span class="season-path-icon" data-icon="food"></span><span class="season-path-label">Nær dig selv</span></button>
+          <button class="season-path" data-path="movement"><span class="season-path-icon" data-icon="movement"></span><span class="season-path-label">Bevæg dig</span></button>
+          <button class="season-path" data-path="stillness"><span class="season-path-icon" data-icon="stillness"></span><span class="season-path-label">Bliv stille</span></button>
+          <button class="season-path" data-path="reflection"><span class="season-path-icon" data-icon="reflection"></span><span class="season-path-label">Reflektér</span></button>
         </nav>
       </main>
     </div>
@@ -131,9 +134,11 @@
     <div id="screen-season-food" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
       <main class="season-sub">
+        <div class="screen-illustration size-large" id="sub-food-illustration"></div>
         <p class="season-sub-label" id="sub-food-season"></p>
         <h1 class="season-sub-title">Nær dig selv</h1>
         <p class="season-sub-intro" id="sub-food-intro"></p>
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
         <div class="season-sub-content" id="sub-food-content"></div>
       </main>
     </div>
@@ -141,9 +146,11 @@
     <div id="screen-season-movement" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
       <main class="season-sub">
+        <div class="screen-illustration size-large" id="sub-movement-illustration"></div>
         <p class="season-sub-label" id="sub-movement-season"></p>
         <h1 class="season-sub-title">Bevæg dig</h1>
         <p class="season-sub-intro" id="sub-movement-intro"></p>
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
         <div class="season-sub-content" id="sub-movement-content"></div>
       </main>
     </div>
@@ -151,9 +158,11 @@
     <div id="screen-season-stillness" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
       <main class="season-sub">
+        <div class="screen-illustration size-large" id="sub-stillness-illustration"></div>
         <p class="season-sub-label" id="sub-stillness-season"></p>
         <h1 class="season-sub-title">Bliv stille</h1>
         <p class="season-sub-intro" id="sub-stillness-intro"></p>
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
         <div class="season-sub-content" id="sub-stillness-content"></div>
       </main>
     </div>
@@ -161,9 +170,11 @@
     <div id="screen-season-reflection" class="screen">
       <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
       <main class="season-sub">
+        <div class="screen-illustration size-large" id="sub-reflection-illustration"></div>
         <p class="season-sub-label" id="sub-reflection-season"></p>
         <h1 class="season-sub-title">Reflektér</h1>
         <p class="season-sub-intro" id="sub-reflection-intro"></p>
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
         <div class="season-sub-content" id="sub-reflection-content"></div>
       </main>
     </div>
@@ -192,6 +203,7 @@
       <main class="organ-still">
         <div class="organ-hero-still">
           <span class="organ-glyph-still" id="organ-glyph-still" aria-hidden="true"></span>
+          <div class="screen-illustration size-small" id="organ-illustration"></div>
           <h1 class="organ-name-still" id="organ-name-still"></h1>
           <p class="organ-meta-still" id="organ-meta-still"></p>
         </div>
@@ -205,6 +217,7 @@
     <div id="screen-organ-themes" class="screen">
       <button class="still-back" id="btn-back-organ-themes" aria-label="Tilbage">←</button>
       <main class="organ-themes-still">
+        <div class="screen-illustration size-small" id="organ-themes-illustration"></div>
         <p class="organ-themes-label" id="organ-themes-icon"></p>
         <h1 class="organ-themes-title" id="organ-themes-title"></h1>
         <div class="themes-flow" id="organ-themes-flow"></div>
@@ -218,6 +231,7 @@
       <main class="element-still">
         <div class="element-hero-still">
           <span class="element-glyph-still" id="element-glyph-still" aria-hidden="true"></span>
+          <div class="screen-illustration size-small" id="element-illustration"></div>
           <h1 class="element-name-still" id="element-detail-name"></h1>
           <p class="element-meta-still" id="element-detail-chinese"></p>
         </div>
@@ -235,6 +249,7 @@
     <div id="screen-element-cycles" class="screen">
       <button class="still-back" id="btn-back-element-cycles" aria-label="Tilbage">←</button>
       <main class="element-cycles-still">
+        <div class="screen-illustration size-medium" id="element-cycles-illustration"></div>
         <p class="cycles-label" id="element-cycles-icon"></p>
         <h1 class="cycles-title" id="element-cycles-title"></h1>
         <p class="cycles-intro">Hvert element næres af et andet, og holder et andet i balance. Sådan danser de sammen.</p>

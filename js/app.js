@@ -852,6 +852,13 @@ function showElementDetail(el) {
     glyphEl.style.color = color;
   }
 
+  // Årstids-motiv (foreground ink)
+  const elementIllEl = document.getElementById('element-illustration');
+  if (elementIllEl) {
+    const seasonKeyForEl = elementToSeason && elementToSeason[el.name];
+    elementIllEl.innerHTML = seasonKeyForEl ? getSeasonIllustration(seasonKeyForEl, color) : '';
+  }
+
   const nameEl = document.getElementById('element-detail-name');
   if (nameEl) {
     nameEl.textContent = el.name;
@@ -939,6 +946,10 @@ function showElementCycles(el) {
   // Screen color
   const screen = document.getElementById('screen-element-cycles');
   if (screen) screen.style.setProperty('--season-color', color);
+
+  // Cyklus-motiv
+  const cyclesIllEl = document.getElementById('element-cycles-illustration');
+  if (cyclesIllEl) cyclesIllEl.innerHTML = svgCycles(color);
 
   // Label + titel
   const labelEl = document.getElementById('element-cycles-icon');
@@ -1130,6 +1141,12 @@ function showOrganDetail(organ) {
     glyphEl.style.color = color;
   }
 
+  // Årstids-motiv (foreground ink)
+  const organIllEl = document.getElementById('organ-illustration');
+  if (organIllEl) {
+    organIllEl.innerHTML = getOrganSeasonIllustration(organ, color);
+  }
+
   const nameEl = document.getElementById('organ-name-still');
   if (nameEl) {
     nameEl.textContent = organ.name;
@@ -1220,6 +1237,10 @@ function showOrganThemes(organ) {
   // Sæt screen color
   const screen = document.getElementById('screen-organ-themes');
   if (screen) screen.style.setProperty('--season-color', color);
+
+  // Meditations-motiv (blæk-cirkel)
+  const themesIllEl = document.getElementById('organ-themes-illustration');
+  if (themesIllEl) themesIllEl.innerHTML = svgMeditation(color);
 
   // Label + titel
   const labelEl = document.getElementById('organ-themes-icon');
@@ -1683,11 +1704,10 @@ function showSeasonDetail(seasonKey) {
   const glyph = s ? s.glyph : '';
   const color = s ? s.color : season.farve;
 
-  // Glyph (kinesisk tegn som atmosphere)
-  const glyphEl = document.getElementById('season-glyph-still');
-  if (glyphEl) {
-    glyphEl.textContent = glyph;
-    glyphEl.style.color = color;
+  // Årstids-motiv (SVG blæk-illustration)
+  const illEl = document.getElementById('season-illustration');
+  if (illEl) {
+    illEl.innerHTML = getSeasonIllustration(seasonKey, color);
   }
 
   // Navn
@@ -1712,10 +1732,15 @@ function showSeasonDetail(seasonKey) {
   const screen = document.getElementById('screen-season');
   if (screen) screen.style.setProperty('--season-color', color);
 
-  // Path-knap listeners
+  // Path-knap listeners + ikoner
   document.querySelectorAll('.season-path').forEach(btn => {
     const fresh = btn.cloneNode(true);
     btn.parentNode.replaceChild(fresh, btn);
+    const iconEl = fresh.querySelector('.season-path-icon');
+    if (iconEl) {
+      const iconName = iconEl.dataset.icon;
+      iconEl.innerHTML = getPathIcon(iconName, color);
+    }
     fresh.addEventListener('click', () => {
       const path = fresh.dataset.path;
       if (path === 'food') showSeasonFood(seasonKey);
@@ -1744,6 +1769,11 @@ function renderSeasonSubLabel(id, seasonKey) {
 function showSeasonFood(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
+
+  const sFood = SEASON_MAP[seasonKey];
+  const cFood = sFood ? sFood.color : 'var(--accent-gold)';
+  const illFood = document.getElementById('sub-food-illustration');
+  if (illFood) illFood.innerHTML = getPathIllustration('food', cFood);
 
   renderSeasonSubLabel('sub-food-season', seasonKey);
 
@@ -1779,6 +1809,11 @@ function showSeasonMovement(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
 
+  const sMov = SEASON_MAP[seasonKey];
+  const cMov = sMov ? sMov.color : 'var(--accent-gold)';
+  const illMov = document.getElementById('sub-movement-illustration');
+  if (illMov) illMov.innerHTML = getPathIllustration('movement', cMov);
+
   renderSeasonSubLabel('sub-movement-season', seasonKey);
 
   const intros = {
@@ -1813,6 +1848,11 @@ function showSeasonMovement(seasonKey) {
 function showSeasonStillness(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
+
+  const sSti = SEASON_MAP[seasonKey];
+  const cSti = sSti ? sSti.color : 'var(--accent-gold)';
+  const illSti = document.getElementById('sub-stillness-illustration');
+  if (illSti) illSti.innerHTML = getPathIllustration('stillness', cSti);
 
   renderSeasonSubLabel('sub-stillness-season', seasonKey);
 
@@ -1883,6 +1923,11 @@ function showSeasonStillness(seasonKey) {
 function showSeasonReflection(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
+
+  const sRef = SEASON_MAP[seasonKey];
+  const cRef = sRef ? sRef.color : 'var(--accent-gold)';
+  const illRef = document.getElementById('sub-reflection-illustration');
+  if (illRef) illRef.innerHTML = getPathIllustration('reflection', cRef);
 
   renderSeasonSubLabel('sub-reflection-season', seasonKey);
 
@@ -2140,6 +2185,19 @@ function findPatterns(query) {
 // Explore Screen (stille typografisk liste)
 // ============================================
 function renderExploreScreen() {
+  // Motiv-illustrationer
+  const exploreIll = document.getElementById('explore-illustration');
+  if (exploreIll) exploreIll.innerHTML = svgExplore('var(--accent-gold)');
+
+  const sSeas = document.getElementById('explore-seasons-illustration');
+  if (sSeas) sSeas.innerHTML = svgSpring('var(--accent-gold)');
+
+  const sOrg = document.getElementById('explore-organs-illustration');
+  if (sOrg) sOrg.innerHTML = svgMeditation('var(--accent-gold)');
+
+  const sEl = document.getElementById('explore-elements-illustration');
+  if (sEl) sEl.innerHTML = svgCycles('var(--accent-gold)');
+
   // Door click handlers
   document.querySelectorAll('.explore-door').forEach(door => {
     const fresh = door.cloneNode(true);
@@ -2223,6 +2281,10 @@ function renderExploreScreen() {
 // Search — Hvad mærker du?
 // ============================================
 function renderSearchScreen() {
+  // Motiv
+  const searchIll = document.getElementById('search-illustration');
+  if (searchIll) searchIll.innerHTML = svgSearch('var(--accent-gold)');
+
   // Tilbage-knap
   document.querySelectorAll('.still-back[data-back-to="home"]').forEach(btn => {
     const fresh = btn.cloneNode(true);
