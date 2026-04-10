@@ -949,6 +949,30 @@ body {
   margin: 0;
 }
 
+/* Byline foot — nederst på forsiden, stille og lille */
+.home-byline-foot {
+  margin: var(--rhythm-4) auto 0;
+  text-align: center;
+  max-width: var(--read-wide);
+  opacity: 0.7;
+}
+
+.home-byline-text {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.7;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.home-byline-text em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 /* Fornemmelses-grid inde i kort */
 .home-sensations-grid {
   display: grid;
@@ -1029,21 +1053,7 @@ body {
   margin: 0;
 }
 
-.home-brand-byline {
-  font-family: var(--font-serif);
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.6;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-  margin: 14px 0 0;
-  opacity: 0.75;
-}
-
-.home-brand-byline em {
-  font-style: italic;
-  color: var(--text-secondary);
-}
+/* Gammel byline fjernet — bylinen ligger nu i .home-byline-foot nederst */
 
 /* Sæson-hero: navn + meta */
 .home-season-hero {
@@ -3695,7 +3705,7 @@ body:not(.theme-dark) .journal-textarea:focus {
   justify-content: space-around;
   align-items: stretch;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 8px 0 calc(8px + var(--safe-bottom));
+  padding: 10px 0 calc(10px + var(--safe-bottom));
   z-index: 100;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -3706,31 +3716,34 @@ body:not(.theme-dark) .journal-textarea:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 6px 4px;
+  gap: 6px;
+  padding: 4px 2px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text-muted);
-  font-family: var(--font-heading);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  transition: color 0.3s;
+  transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   opacity: 0.6;
   flex: 1;
+  min-width: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
 .bottom-nav-item svg {
-  display: none;
+  display: block;
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
 }
 
 .bottom-nav-item span {
-  font-family: var(--font-serif);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .bottom-nav-item.active {
@@ -3738,8 +3751,24 @@ body:not(.theme-dark) .journal-textarea:focus {
   opacity: 1;
 }
 
+.bottom-nav-item.active svg {
+  transform: scale(1.05);
+}
+
 .bottom-nav-item:not(.active):hover {
   color: var(--text-secondary);
+  opacity: 0.85;
+}
+
+@media (max-width: 360px) {
+  .bottom-nav-item span {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .bottom-nav-item svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* ============================================
