@@ -638,6 +638,197 @@ function plainText(html) {
   return (html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+// ============================================
+// Kort-system (Card) — chakra-app inspireret
+// renderCard returnerer HTML; attachCardListeners binder expand/collapse.
+// ============================================
+let _cardIdCounter = 0;
+function nextCardId() { return 'card-' + (++_cardIdCounter); }
+
+/**
+ * renderCard({ eyebrow, title, subtitle, body, expandable, accent, initiallyOpen })
+ *
+ * - eyebrow       — lille uppercase label over titel
+ * - title         — serif titel
+ * - subtitle      — italic serif undertitel (valgfri)
+ * - body          — HTML der vises under titel (valgfri)
+ * - expandable    — hvis true, body er skjult bag et "+" der folder ud
+ * - accent        — hvis true, titlen får guld-accent
+ * - initiallyOpen — hvis expandable, starter den åben
+ */
+function renderCard(opts = {}) {
+  const {
+    eyebrow = '',
+    title = '',
+    subtitle = '',
+    body = '',
+    expandable = false,
+    accent = false,
+    initiallyOpen = false
+  } = opts;
+
+  const id = nextCardId();
+  const expandableClass = expandable ? '' : ' card-static';
+  const openClass = (expandable && initiallyOpen) ? ' open' : '';
+  const titleClass = accent ? 'card-title card-title-accent' : 'card-title';
+
+  return `
+    <article class="card${expandableClass}${openClass}" id="${id}">
+      ${eyebrow ? `<p class="card-eyebrow">${eyebrow}</p>` : ''}
+      ${title ? `<h3 class="${titleClass}">${title}</h3>` : ''}
+      ${subtitle ? `<p class="card-subtitle">${subtitle}</p>` : ''}
+      ${expandable ? `<button class="card-expand" type="button" aria-expanded="${initiallyOpen ? 'true' : 'false'}" aria-label="Udfold">+</button>` : ''}
+      ${body ? `<div class="card-body"><div class="card-body-inner">${body}</div></div>` : ''}
+    </article>
+  `;
+}
+
+// Binder klik-handlers til alle ekspanderbare kort inden for et container-element
+function attachCardListeners(container) {
+  if (!container) return;
+  container.querySelectorAll('.card:not(.card-static)').forEach(card => {
+    const btn = card.querySelector('.card-expand');
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+}
+
+// ============================================
+// Glød-orb illustrationer (Phase 2)
+// Bløde radial-gradient orbs der pulserer let
+// ============================================
+
+let _gradIdCounter = 0;
+function nextGradId() { return 'og' + (++_gradIdCounter); }
+
+/**
+ * svgGlowOrb({ color, size, motion, focal })
+ *
+ * - color  — element/organ-farve (hex eller var)
+ * - size   — bredde/højde i pixels (default 120)
+ * - motion — 'breathe' | 'pulse' | 'drift' | 'none' (default 'breathe')
+ * - focal  — vis lille mørk prik i centrum (default true)
+ */
+function svgGlowOrb(opts = {}) {
+  const {
+    color = 'var(--accent-gold)',
+    size = 120,
+    motion = 'breathe',
+    focal = true
+  } = opts;
+
+  const id = nextGradId();
+  const vb = 120;
+  const cx = vb / 2, cy = vb / 2;
+  const r = vb * 0.38;
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${id}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="var(--glow-outer-opacity)"/>
+        <stop offset="30%" stop-color="${color}" stop-opacity="var(--glow-mid-opacity)"/>
+        <stop offset="70%" stop-color="${color}" stop-opacity="0.06"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g class="glow-orb motion-${motion}">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#${id})"/>
+      ${focal ? `<circle class="glow-focal" cx="${cx}" cy="${cy}" r="2.2" fill="${color}"/>` : ''}
+    </g>
+  </svg>`;
+}
+
+/**
+ * svgSeasonComposite(seasonKey, size)
+ *
+ * Blomster-mandala: det aktuelle elements orb i centrum,
+ * omgivet af 4 satellit-orbs i de andre elementers farver,
+ * blødt overlappende som kronblade.
+ */
+function svgSeasonComposite(seasonKey, size = 220) {
+  // Element-farver i rækkefølge: træ, ild, jord, metal, vand
+  const elements = {
+    foraar:    { center: 'var(--el-wood)',  petals: ['var(--el-water)', 'var(--el-fire)',  'var(--el-earth)', 'var(--el-metal)'] },
+    sommer:    { center: 'var(--el-fire)',  petals: ['var(--el-wood)',  'var(--el-earth)', 'var(--el-metal)', 'var(--el-water)'] },
+    sensommer: { center: 'var(--el-earth)', petals: ['var(--el-fire)',  'var(--el-metal)', 'var(--el-water)', 'var(--el-wood)'] },
+    efteraar:  { center: 'var(--el-metal)', petals: ['var(--el-earth)', 'var(--el-water)', 'var(--el-wood)',  'var(--el-fire)'] },
+    vinter:    { center: 'var(--el-water)', petals: ['var(--el-metal)', 'var(--el-wood)',  'var(--el-fire)',  'var(--el-earth)'] }
+  };
+  const cfg = elements[seasonKey] || elements.foraar;
+
+  const vb = 240;
+  const cx = vb / 2, cy = vb / 2;
+  const centerR = vb * 0.22;
+  const petalR = vb * 0.20;
+  const orbit = vb * 0.18;
+
+  // Positioner for de 4 kronblade (jævnt rundt, let offset så det ikke er firkantet)
+  const angles = [-Math.PI * 0.5, Math.PI * 0.0, Math.PI * 0.5, Math.PI * 1.0];
+
+  const petalStops = cfg.petals.map((color, i) => {
+    const gradId = nextGradId();
+    const angle = angles[i] - Math.PI * 0.12;
+    const px = cx + orbit * Math.cos(angle);
+    const py = cy + orbit * Math.sin(angle);
+    // Hver petal får sin egen breathe-rytme (let forskellig duration/delay)
+    const delay = (i * 0.4).toFixed(2);
+    const dur = (6 + i * 0.3).toFixed(1);
+    return {
+      gradId,
+      defs: `<radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.55"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.22"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.04"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>`,
+      shape: `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${petalR}" fill="url(#${gradId})" style="animation: glow-breathe ${dur}s ease-in-out ${delay}s infinite; transform-origin: ${px.toFixed(1)}px ${py.toFixed(1)}px;"/>`
+    };
+  });
+
+  const centerGradId = nextGradId();
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill" aria-hidden="true">
+    <defs>
+      ${petalStops.map(p => p.defs).join('\n      ')}
+      <radialGradient id="${centerGradId}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${cfg.center}" stop-opacity="0.75"/>
+        <stop offset="35%" stop-color="${cfg.center}" stop-opacity="0.38"/>
+        <stop offset="70%" stop-color="${cfg.center}" stop-opacity="0.1"/>
+        <stop offset="100%" stop-color="${cfg.center}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    ${petalStops.map(p => p.shape).join('\n    ')}
+    <circle cx="${cx}" cy="${cy}" r="${centerR}" fill="url(#${centerGradId})"
+      style="animation: glow-breathe 7s ease-in-out infinite; transform-origin: ${cx}px ${cy}px;"/>
+    <circle cx="${cx}" cy="${cy}" r="2.6" fill="${cfg.center}" opacity="0.85"/>
+  </svg>`;
+}
+
+/**
+ * svgElementTimelineOrb(color, size) — små orbs til 5-element-timeline
+ */
+function svgElementTimelineOrb(color, size = 28) {
+  const id = nextGradId();
+  return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" class="glow-ill" aria-hidden="true">
+    <defs>
+      <radialGradient id="${id}" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="${color}" stop-opacity="0.85"/>
+        <stop offset="40%" stop-color="${color}" stop-opacity="0.35"/>
+        <stop offset="80%" stop-color="${color}" stop-opacity="0.05"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g class="glow-orb motion-slow">
+      <circle cx="20" cy="20" r="16" fill="url(#${id})"/>
+      <circle cx="20" cy="20" r="1.6" fill="${color}" opacity="0.9"/>
+    </g>
+  </svg>`;
+}
+
 // Navigation-stak — holder styr på hele rejsen tilbage
 let _screenStack = [];
 
@@ -3257,20 +3448,46 @@ function renderPersonalHome() {
   const s = SEASON_MAP[key];
   if (!s) return;
 
-  // Blæk-illustration per årstid
-  const illEl = document.getElementById('home-season-illustration');
-  if (illEl) {
-    illEl.innerHTML = getSeasonIllustration(key, s.color);
+  // Kort korte undertitler per årstid — som Isabelles første sætning
+  const subtitles = {
+    foraar:    'Træ — kraften der presser opad mod lyset',
+    sommer:    'Ild — varmen der åbner og forbinder',
+    sensommer: 'Jord — tyngden der nærer og bærer',
+    efteraar:  'Metal — klarheden der slipper og skaber plads',
+    vinter:    'Vand — dybden der samler og bevarer'
+  };
+
+  // Tid-baseret eyebrow (morgen/aften/etc.)
+  const hour = new Date().getHours();
+  let eyebrow = 'DIN ÅRSTID';
+  if      (hour >= 5  && hour < 10) eyebrow = 'GOD MORGEN';
+  else if (hour >= 10 && hour < 14) eyebrow = 'MIDT PÅ DAGEN';
+  else if (hour >= 14 && hour < 18) eyebrow = 'EFTERMIDDAG';
+  else if (hour >= 18 && hour < 22) eyebrow = 'GOD AFTEN';
+  else                              eyebrow = 'STILLE TIMER';
+
+  const eyebrowEl = document.getElementById('home-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = eyebrow;
+
+  // Blomster-mandala komposit — det aktuelle element + de 4 andre som kronblade
+  const compEl = document.getElementById('home-composite');
+  if (compEl) {
+    compEl.innerHTML = svgSeasonComposite(key, 240);
   }
 
-  // Årstid — navn + meta
+  // Kinesisk glyph under komposit
+  const glyphEl = document.getElementById('home-glyph');
+  if (glyphEl) glyphEl.textContent = s.glyph;
+
+  // Årstid — navn + italic undertitel (som Isabelles voice)
   const nameEl = document.getElementById('home-season-name');
-  const metaEl = document.getElementById('home-season-meta');
   if (nameEl) {
     nameEl.textContent = s.name;
     nameEl.style.color = s.color;
   }
-  if (metaEl) metaEl.textContent = `${s.organs} · ${s.climate}`;
+
+  const subEl = document.getElementById('home-season-subtitle');
+  if (subEl) subEl.textContent = subtitles[key] || '';
 
   const heroEl = document.getElementById('home-season-hero');
   if (heroEl) {
@@ -3280,25 +3497,109 @@ function renderPersonalHome() {
     fresh.addEventListener('click', () => showSeasonDetail(key));
   }
 
-  // Sæson-kontekst (kort prosa om denne årstid)
-  const ctxEl = document.getElementById('home-season-context');
-  if (ctxEl) ctxEl.textContent = s.context;
+  // Kort-stak 1 (før timeline):
+  //  1. "DIN FASE" — expandable kort med Isabelles fulde velkomst
+  //  2. "MÆRK EFTER" — expandable kort med de 6 kurerede fornemmelser
+  const cardsEl = document.getElementById('home-cards');
+  if (cardsEl) {
+    const welcome = (typeof seasonWelcomes !== 'undefined' && seasonWelcomes && seasonWelcomes[key])
+      || (seasonsData[key] && seasonsData[key].philosophy && seasonsData[key].philosophy[0])
+      || s.context;
+    const welcomePreview = welcome.split('.').slice(0, 1).join('.') + '.';
+    const welcomeBody = welcome
+      .split('.')
+      .slice(1)
+      .join('.')
+      .trim();
 
-  // "Mærk efter" — 6 kurerede fornemmelser, blanding af skygge og lys,
-  // krop og følelser og liv. Hvert ord leder til et meningsfuldt sted
-  // (organ, organ-themes eller en sæson-sub-screen), ikke bare organet.
-  const questionEl = document.getElementById('home-question');
-  if (questionEl) {
     const sensations = getHomeSensations(key);
-    questionEl.innerHTML = `
-      <p class="home-question-text">Mærk efter</p>
-      <div class="home-question-words">
-        ${sensations.map((w, i) => `<button class="home-word" data-sensation-idx="${i}">${w.label}</button>`).join('')}
+    const sensationsBody = `
+      <div class="home-sensations-grid">
+        ${sensations.map((w, i) => `<button class="home-sensation" data-sensation-idx="${i}">${w.label}</button>`).join('')}
       </div>
     `;
-    questionEl.querySelectorAll('.home-word').forEach((btn, i) => {
-      btn.addEventListener('click', () => {
+
+    cardsEl.innerHTML = [
+      renderCard({
+        eyebrow: 'DIN FASE',
+        title: welcomePreview,
+        body: welcomeBody ? `<p>${welcomeBody}</p>` : '',
+        subtitle: `${s.organs} · ${s.climate}`,
+        expandable: !!welcomeBody
+      }),
+      renderCard({
+        eyebrow: 'MÆRK EFTER',
+        title: 'Hvad er levende i dig?',
+        subtitle: 'Seks ord fra årstiden — klik det der rører ved dig',
+        body: sensationsBody,
+        expandable: true,
+        initiallyOpen: true
+      })
+    ].join('');
+
+    attachCardListeners(cardsEl);
+
+    // Bind sensation clicks
+    cardsEl.querySelectorAll('.home-sensation').forEach((btn, i) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         dispatchSensation(sensations[i]);
+      });
+    });
+  }
+
+  // 5-element timeline (horisontal stribe af orbs, aktuel fremhævet)
+  const tlEl = document.getElementById('home-element-timeline');
+  if (tlEl) {
+    const elementOrder = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
+    const elementColors = {
+      foraar:    'var(--el-wood)',
+      sommer:    'var(--el-fire)',
+      sensommer: 'var(--el-earth)',
+      efteraar:  'var(--el-metal)',
+      vinter:    'var(--el-water)'
+    };
+    tlEl.innerHTML = elementOrder.map(k => {
+      const active = k === key ? ' active' : '';
+      return `<button class="element-timeline-orb${active}" data-season-key="${k}" aria-label="${SEASON_MAP[k].name}">
+        ${svgElementTimelineOrb(elementColors[k], 28)}
+      </button>`;
+    }).join('');
+    tlEl.querySelectorAll('.element-timeline-orb').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showSeasonDetail(btn.dataset.seasonKey);
+      });
+    });
+  }
+
+  // Kort-stak 2 (efter timeline):
+  //  3. "DIN VEJ" — 4 døre (Nær dig selv, Bevæg dig, Bliv stille, Reflektér)
+  const cardsAfterEl = document.getElementById('home-cards-after');
+  if (cardsAfterEl) {
+    const pathsBody = `
+      <div class="home-paths-grid">
+        <button class="home-path" data-path="food">Nær dig selv</button>
+        <button class="home-path" data-path="movement">Bevæg dig</button>
+        <button class="home-path" data-path="stillness">Bliv stille</button>
+        <button class="home-path" data-path="reflection">Reflektér</button>
+      </div>
+    `;
+
+    cardsAfterEl.innerHTML = renderCard({
+      eyebrow: 'DIN VEJ',
+      title: 'Fire døre ind i årstiden',
+      subtitle: 'Vælg den der kalder på dig',
+      body: pathsBody
+    });
+
+    // Dør-klik
+    cardsAfterEl.querySelectorAll('.home-path').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const path = btn.dataset.path;
+        if      (path === 'food')       showSeasonFood(key);
+        else if (path === 'movement')   showSeasonMovement(key);
+        else if (path === 'stillness')  showSeasonStillness(key);
+        else if (path === 'reflection') showSeasonReflection(key);
       });
     });
   }

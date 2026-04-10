@@ -102,6 +102,36 @@
   --ill-indigo: #8e9fdc;
   --ill-amber: #deb87a;
   --ill-silver: #a0bcc8;
+
+  /* ============================================
+     Glød-kort system — inspireret af chakra-app æstetik
+     Bløde orbs, afrundede kort, subtile skygger.
+     Dark mode default.
+     ============================================ */
+
+  /* Kort-baggrund og skygge */
+  --card-bg: rgba(255, 255, 255, 0.028);
+  --card-border: rgba(255, 255, 255, 0.055);
+  --card-shadow: 0 2px 28px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --card-radius: 18px;
+  --card-pad-x: 26px;
+  --card-pad-y: 24px;
+  --card-max-width: 440px;
+
+  /* Eyebrow-label (uppercase tracking over titel) */
+  --eyebrow-size: 11px;
+  --eyebrow-track: 0.18em;
+  --eyebrow-color: var(--text-muted);
+
+  /* Kort-titel og subtitle */
+  --card-title-size: 22px;
+  --card-subtitle-size: 14px;
+
+  /* Glød-orb */
+  --glow-outer-opacity: 0.55;
+  --glow-mid-opacity: 0.22;
+  --glow-focal-opacity: 0.9;
+  --glow-motion-duration: 7s;
 }
 
 /* Light theme */
@@ -138,6 +168,14 @@
   --ill-indigo: #6672b0;
   --ill-amber: #b8903a;
   --ill-silver: #6a95a8;
+
+  /* Glød-kort i lys mode — varmere, blødere */
+  --card-bg: rgba(255, 255, 255, 0.5);
+  --card-border: rgba(42, 38, 32, 0.055);
+  --card-shadow: 0 2px 28px rgba(42, 38, 32, 0.06), 0 1px 2px rgba(42, 38, 32, 0.03);
+  --glow-outer-opacity: 0.45;
+  --glow-mid-opacity: 0.18;
+  --glow-focal-opacity: 0.8;
 }
 
 /* ============================================
@@ -416,6 +454,265 @@ body {
 }
 
 /* ============================================
+   Card-system — chakra-app inspireret
+   Kort med eyebrow + titel + subtitle + evt. expand
+   ============================================ */
+
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-pad-y) var(--card-pad-x);
+  margin: 0 auto var(--rhythm-2);
+  max-width: var(--card-max-width);
+  width: 100%;
+  box-shadow: var(--card-shadow);
+  text-align: left;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-sizing: border-box;
+}
+
+.card-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  color: var(--eyebrow-color);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: var(--card-title-size);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.005em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.card-title.card-title-accent {
+  color: var(--accent-gold);
+}
+
+.card-subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--card-subtitle-size);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin: 8px 0 0;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.card-expand {
+  position: absolute;
+  top: calc(var(--card-pad-y) - 2px);
+  right: calc(var(--card-pad-x) - 6px);
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: transform 0.5s cubic-bezier(.2, .8, .3, 1), color 0.3s ease;
+}
+
+.card-expand:hover {
+  color: var(--text-secondary);
+}
+
+.card.open .card-expand {
+  transform: rotate(45deg);
+  color: var(--accent-gold);
+}
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(.2, .8, .3, 1);
+}
+
+.card-body-inner {
+  padding-top: var(--rhythm-1);
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.card-body-inner > p:first-child {
+  margin-top: 0;
+}
+
+.card-body-inner > p:last-child {
+  margin-bottom: 0;
+}
+
+.card.open .card-body {
+  max-height: 3000px;
+}
+
+/* Kort uden expand — kroppen er altid synlig */
+.card.card-static .card-body {
+  max-height: none;
+  overflow: visible;
+}
+
+.card.card-static .card-body-inner {
+  padding-top: var(--rhythm-1);
+}
+
+/* ============================================
+   Glød-orb illustrationer — chakra-app inspireret
+   Bløde radial-gradient orbs med subtil breathing motion
+   ============================================ */
+
+.glow-ill {
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.glow-orb {
+  transform-origin: center;
+  animation: glow-breathe var(--glow-motion-duration) ease-in-out infinite;
+}
+
+.glow-orb.motion-slow {
+  animation-duration: 10s;
+}
+
+.glow-orb.motion-pulse {
+  animation-name: glow-pulse;
+  animation-duration: 4s;
+}
+
+.glow-orb.motion-drift {
+  animation-name: glow-drift;
+  animation-duration: 11s;
+}
+
+.glow-orb.motion-none {
+  animation: none;
+}
+
+@keyframes glow-breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.88;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  33%      { transform: translate(2px, -3px) scale(1.04); opacity: 0.95; }
+  66%      { transform: translate(-2px, 2px) scale(1.06); opacity: 1; }
+}
+
+/* Fokalpunkt i orb — en lille mørk prik */
+.glow-focal {
+  opacity: var(--glow-focal-opacity);
+}
+
+/* Container til komposit-illustrationer (flere orbs) */
+.glow-composite {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 5-element timeline (horisontal stribe af orbs) */
+.element-timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin: 0 auto var(--rhythm-2);
+  max-width: 360px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.element-timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--border-whisper) 20%,
+    var(--border-whisper) 80%,
+    transparent);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.element-timeline-orb {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.4s ease;
+}
+
+.element-timeline-orb:hover {
+  transform: scale(1.15);
+}
+
+.element-timeline-orb.active {
+  transform: scale(1.35);
+}
+
+.element-timeline-orb svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb,
+  .glow-orb.motion-slow,
+  .glow-orb.motion-pulse,
+  .glow-orb.motion-drift {
+    animation: none !important;
+  }
+}
+
+/* ============================================
    Ink illustrations — SVG blæk-kalligrafi
    ============================================ */
 
@@ -583,6 +880,128 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+/* Ny glød-forside — chakra-app stil */
+.home-glow {
+  flex: 1;
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  margin: var(--rhythm-3) 0 var(--rhythm-1);
+}
+
+.home-composite {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto var(--rhythm-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-composite svg {
+  width: 100%;
+  height: 100%;
+}
+
+.home-glyph {
+  font-family: 'Noto Serif SC', var(--font-serif);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+.home-season-subtitle {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.home-cards {
+  width: 100%;
+  max-width: var(--card-max-width);
+  margin: var(--rhythm-2) auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-cards:empty {
+  margin: 0;
+}
+
+/* Fornemmelses-grid inde i kort */
+.home-sensations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  margin-top: 4px;
+}
+
+.home-sensation {
+  background: none;
+  border: none;
+  padding: 8px 2px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.005em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.home-sensation:hover {
+  color: var(--accent-gold);
+  transform: translateX(3px);
+}
+
+/* Dør-grid inde i "DIN VEJ"-kortet */
+.home-paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin-top: 4px;
+}
+
+.home-path {
+  background: none;
+  border: none;
+  padding: 12px 2px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.home-path:hover {
+  color: var(--accent-gold);
+  border-bottom-color: var(--border-whisper);
 }
 
 /* Brand */
