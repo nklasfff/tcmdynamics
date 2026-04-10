@@ -4018,6 +4018,21 @@ function handleNavigation(navId) {
     case 'home':
       showScreen('home', { reset: true });
       break;
+    case 'season': {
+      const key = getCurrentSeason();
+      // Nulstil stakken før vi viser sæson-portalen
+      showScreen('home', { reset: true, skipHistory: true });
+      showSeasonDetail(key);
+      break;
+    }
+    case 'journal': {
+      // Spring direkte til aktuelle årstids Reflektér-skærm,
+      // hvor journal-skrivefeltet ligger
+      const key = getCurrentSeason();
+      showScreen('home', { reset: true, skipHistory: true });
+      showSeasonReflection(key);
+      break;
+    }
     case 'explore':
       showScreen('explore', { reset: true });
       break;
