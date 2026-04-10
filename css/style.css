@@ -605,6 +605,22 @@ body {
   margin: 0;
 }
 
+.home-brand-byline {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin: 14px 0 0;
+  opacity: 0.75;
+}
+
+.home-brand-byline em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 /* Sæson-hero: navn + meta */
 .home-season-hero {
   position: relative;
@@ -1219,6 +1235,80 @@ body {
   max-width: var(--read-wide);
   margin: 0 auto;
   text-align: left;
+}
+
+/* Sektionsoverskrifter inde i Bliv stille (Meditationer, Vejrtrækning, EFT...) */
+.season-sub-section {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: var(--rhythm-3) 0 var(--rhythm-1);
+  text-align: center;
+}
+
+.season-sub-section:first-child {
+  margin-top: 0;
+}
+
+/* Bro til næste årstid i Reflektér */
+.season-bridge {
+  margin-top: var(--rhythm-3);
+  text-align: center;
+}
+
+.season-bridge .home-ornament {
+  margin-bottom: var(--rhythm-2);
+}
+
+.season-bridge-line {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--rhythm-1);
+}
+
+.season-bridge-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-serif);
+  color: var(--text-secondary);
+  transition: opacity 0.3s ease;
+}
+
+.season-bridge-link:hover {
+  opacity: 0.75;
+}
+
+.season-bridge-link > span:first-child {
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.season-bridge-name {
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.season-bridge-arrow {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-top: 2px;
 }
 
 /* ============================================
