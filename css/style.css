@@ -255,8 +255,8 @@ body {
 
 .still-back {
   position: fixed;
-  top: calc(var(--safe-top) + 16px);
-  left: 20px;
+  top: calc(var(--safe-top) + 62px);
+  left: 16px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -267,8 +267,9 @@ body {
   color: var(--text-muted);
   cursor: pointer;
   font-size: 20px;
-  z-index: 10;
+  z-index: 80;
   transition: color 0.3s ease;
+  padding: 0;
 }
 
 .still-back:hover {
@@ -552,6 +553,328 @@ body {
   color: var(--text-muted);
   opacity: 0.3;
   font-size: 10px;
+}
+
+/* ============================================
+   Stille Årstid-portræt
+   ============================================ */
+
+.season-still {
+  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.season-hero-still {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.season-glyph-still {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 260px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--season-color, var(--accent-gold));
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.season-name-still {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--season-color, var(--text-primary));
+  padding: 60px 0 16px;
+  margin: 0;
+}
+
+.season-meta-still {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.season-welcome-still {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  max-width: 400px;
+  margin: 0 auto var(--space-xl);
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.season-invitation-still {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-lg);
+  letter-spacing: 0.02em;
+}
+
+.season-paths {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.season-path {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  letter-spacing: 0.03em;
+  transition: color 0.4s ease;
+}
+
+.season-path:hover {
+  color: var(--season-color, var(--accent-gold));
+}
+
+/* ============================================
+   Season Sub-screens (Nær dig selv, etc.)
+   ============================================ */
+
+.season-sub {
+  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.season-sub-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.season-sub-title {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-lg);
+  text-align: center;
+}
+
+.season-sub-intro {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: 380px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.season-sub-content {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ============================================
+   Prose-items — flydende artikel-stil
+   ============================================ */
+
+.prose-item {
+  margin-bottom: var(--space-xl);
+}
+
+.prose-item:last-child {
+  margin-bottom: 0;
+}
+
+.prose-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-sm);
+  line-height: 1.3;
+}
+
+.prose-meta {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.prose-body {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-sm);
+  letter-spacing: 0.01em;
+}
+
+.prose-aside {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: var(--space-sm) 0 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.prose-steps {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step;
+  margin: 0 0 var(--space-sm);
+}
+
+.prose-steps li {
+  counter-increment: step;
+  margin-bottom: var(--space-sm);
+  padding-left: 32px;
+  position: relative;
+}
+
+.prose-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Reflection sections
+   ============================================ */
+
+.reflection-section {
+  margin-bottom: var(--space-xl);
+}
+
+.reflection-heading {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-md);
+  text-align: center;
+}
+
+.reflection-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: reflection;
+}
+
+.reflection-list li {
+  counter-increment: reflection;
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.reflection-list li:last-child {
+  border-bottom: none;
+}
+
+.reflection-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.reflection-milestone {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.reflection-milestone:last-child {
+  border-bottom: none;
+}
+
+.milestone-day {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.milestone-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0;
 }
 
 /* Decorative Chinese character breathing elements */

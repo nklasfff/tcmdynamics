@@ -100,41 +100,70 @@
          Detail Screens (unchanged)
          ============================================ -->
 
-    <!-- Season Detail Screen -->
+    <!-- Season Portrait Screen — stille portal til årstiden -->
     <div id="screen-season" class="screen">
-      <header class="detail-header">
-        <button class="back-btn" id="btn-back-season">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Back</span>
-        </button>
-        <div class="detail-title-area">
-          <span class="detail-icon" id="season-detail-icon">季</span>
-          <h1 id="season-detail-name"></h1>
-          <p class="detail-nickname" id="season-detail-element"></p>
+      <button class="still-back" id="btn-back-season" aria-label="Tilbage">←</button>
+
+      <main class="season-still">
+        <div class="season-hero-still">
+          <span class="season-glyph-still" id="season-glyph-still" aria-hidden="true"></span>
+          <h1 class="season-name-still" id="season-name-still"></h1>
+          <p class="season-meta-still" id="season-meta-still"></p>
         </div>
-        <div class="detail-meta" id="season-detail-meta"></div>
-      </header>
 
-      <main class="detail-content">
-        <nav class="detail-tabs season-tabs">
-          <button class="tab active" data-tab="season-philosophy">Philosophy</button>
-          <button class="tab" data-tab="season-food">Food</button>
-          <button class="tab" data-tab="season-yoga">Yoga</button>
-          <button class="tab" data-tab="season-meditation">Meditation</button>
-          <button class="tab" data-tab="season-breathwork">Breathwork</button>
-          <button class="tab" data-tab="season-acupressure">Acupressure</button>
-          <button class="tab" data-tab="season-journal">Journal</button>
-          <button class="tab" data-tab="season-milestones">Milestones</button>
+        <div class="season-welcome-still" id="season-welcome-still"></div>
+
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
+
+        <p class="season-invitation-still">Hvor fører du din opmærksomhed?</p>
+
+        <nav class="season-paths">
+          <button class="season-path" data-path="food">Nær dig selv</button>
+          <button class="season-path" data-path="movement">Bevæg dig</button>
+          <button class="season-path" data-path="stillness">Bliv stille</button>
+          <button class="season-path" data-path="reflection">Reflektér</button>
         </nav>
+      </main>
+    </div>
 
-        <div class="tab-content active" id="tab-season-philosophy"></div>
-        <div class="tab-content" id="tab-season-food"></div>
-        <div class="tab-content" id="tab-season-yoga"></div>
-        <div class="tab-content" id="tab-season-meditation"></div>
-        <div class="tab-content" id="tab-season-breathwork"></div>
-        <div class="tab-content" id="tab-season-acupressure"></div>
-        <div class="tab-content" id="tab-season-journal"></div>
-        <div class="tab-content" id="tab-season-milestones"></div>
+    <!-- Season Sub-screens — Nær dig selv, Bevæg dig, Bliv stille, Reflektér -->
+    <div id="screen-season-food" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="season-sub">
+        <p class="season-sub-label" id="sub-food-season"></p>
+        <h1 class="season-sub-title">Nær dig selv</h1>
+        <p class="season-sub-intro" id="sub-food-intro"></p>
+        <div class="season-sub-content" id="sub-food-content"></div>
+      </main>
+    </div>
+
+    <div id="screen-season-movement" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="season-sub">
+        <p class="season-sub-label" id="sub-movement-season"></p>
+        <h1 class="season-sub-title">Bevæg dig</h1>
+        <p class="season-sub-intro" id="sub-movement-intro"></p>
+        <div class="season-sub-content" id="sub-movement-content"></div>
+      </main>
+    </div>
+
+    <div id="screen-season-stillness" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="season-sub">
+        <p class="season-sub-label" id="sub-stillness-season"></p>
+        <h1 class="season-sub-title">Bliv stille</h1>
+        <p class="season-sub-intro" id="sub-stillness-intro"></p>
+        <div class="season-sub-content" id="sub-stillness-content"></div>
+      </main>
+    </div>
+
+    <div id="screen-season-reflection" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="season-sub">
+        <p class="season-sub-label" id="sub-reflection-season"></p>
+        <h1 class="season-sub-title">Reflektér</h1>
+        <p class="season-sub-intro" id="sub-reflection-intro"></p>
+        <div class="season-sub-content" id="sub-reflection-content"></div>
       </main>
     </div>
 

@@ -614,7 +614,12 @@ const sectionToNav = {
   'explore': 'explore',
   'explore-seasons': 'explore',
   'explore-organs': 'explore',
-  'explore-elements': 'explore'
+  'explore-elements': 'explore',
+  'season': 'home',
+  'season-food': 'home',
+  'season-movement': 'home',
+  'season-stillness': 'home',
+  'season-reflection': 'home'
 };
 
 // ============================================
@@ -1405,6 +1410,17 @@ function setupBackButtons() {
     if (btn) btn.addEventListener('click', goBack);
   });
 
+  // Stille back-knapper på season sub-screens (← ikon uden id)
+  document.querySelectorAll('.still-back[data-back-to="season"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (_currentSeasonKey) {
+        showSeasonDetail(_currentSeasonKey);
+      } else {
+        showScreen('home');
+      }
+    });
+  });
+
   // Section screen back buttons (data-back="home")
   document.querySelectorAll('.back-btn[data-back="home"]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1575,140 +1591,269 @@ function renderSeasonSection() {
   }
 }
 
+// ============================================
+// Season Portrait (stille portal)
+// ============================================
+
+let _currentSeasonKey = null;
+
 function showSeasonDetail(seasonKey) {
   const season = seasonsData[seasonKey];
   if (!season) return;
+  _currentSeasonKey = seasonKey;
 
-  // Header
-  document.getElementById('season-detail-name').textContent = getSeasonName(seasonKey);
-  document.getElementById('season-detail-element').textContent = season.element + ' · ' + season.organpar;
-  document.getElementById('season-detail-meta').innerHTML = `
-    <span class="meta-tag" style="background: ${season.farve}22; color: ${season.farve}">${season.element}</span>
-    <span class="meta-tag">${season.organpar}</span>
-    <span class="meta-tag">${season.energi}</span>
-  `;
+  const s = SEASON_MAP[seasonKey];
+  const name = s ? s.name : getSeasonName(seasonKey);
+  const glyph = s ? s.glyph : '';
+  const color = s ? s.color : season.farve;
 
-  // Philosophy tab
-  document.getElementById('tab-season-philosophy').innerHTML = `
-    <div class="description-text">
-      ${season.philosophy.map(p => `<p>${p}</p>`).join('')}
-    </div>
-  `;
+  // Glyph (kinesisk tegn som atmosphere)
+  const glyphEl = document.getElementById('season-glyph-still');
+  if (glyphEl) {
+    glyphEl.textContent = glyph;
+    glyphEl.style.color = color;
+  }
 
-  // Food tab
-  document.getElementById('tab-season-food').innerHTML = `
-    <div class="season-cards-list">
-      ${season.foodGuide.map(f => `
-        <div class="season-exercise-card">
-          <h4>${f.name}</h4>
-          <p>${f.why}</p>
-          <div class="season-card-detail"><strong>${t('seasonPreparation')}:</strong> ${f.preparation}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
+  // Navn
+  const nameEl = document.getElementById('season-name-still');
+  if (nameEl) {
+    nameEl.textContent = name;
+    nameEl.style.color = color;
+  }
 
-  // Yoga tab
-  document.getElementById('tab-season-yoga').innerHTML = `
-    <div class="season-cards-list">
-      ${season.yogaSequence.map(y => `
-        <div class="season-exercise-card">
-          <h4>${y.name} <span class="season-sanskrit">${y.sanskrit}</span></h4>
-          <div class="season-card-duration">${y.duration}</div>
-          <p>${y.instruction}</p>
-          <div class="season-card-detail"><strong>${t('seasonBenefit')}:</strong> ${y.benefit}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
+  // Meta
+  const metaEl = document.getElementById('season-meta-still');
+  if (metaEl) metaEl.textContent = `${season.organpar} · ${season.energi}`;
 
-  // Meditation tab
-  document.getElementById('tab-season-meditation').innerHTML = `
-    <div class="season-cards-list">
-      ${season.meditations.map(m => `
-        <div class="season-exercise-card">
-          <h4>${m.title}</h4>
-          <div class="season-card-duration">${m.duration}</div>
-          <ol class="season-steps">${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>
-          <div class="season-card-detail"><strong>${t('seasonIntention')}:</strong> ${m.intention}</div>
-        </div>
-      `).join('')}
-      <div class="season-exercise-card season-eft-card">
-        <h4>${t('seasonEft')}</h4>
-        <p class="season-eft-setup"><em>${season.eftSequence.setupPhrase}</em></p>
-        <div class="season-eft-points">
-          ${season.eftSequence.points.map(p => `
-            <div class="season-eft-point">
-              <strong>${p.point}:</strong> ${p.affirmation}
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </div>
-  `;
+  // Den fulde poetiske velkomst fra seasonWelcomes (Isabelles stemme)
+  const welcomeEl = document.getElementById('season-welcome-still');
+  if (welcomeEl) {
+    const welcome = (seasonWelcomes && seasonWelcomes[seasonKey]) || (season.philosophy && season.philosophy[0]) || '';
+    welcomeEl.textContent = welcome;
+  }
 
-  // Breathwork tab
-  document.getElementById('tab-season-breathwork').innerHTML = `
-    <div class="season-cards-list">
-      ${season.breathingExercises.map(b => `
-        <div class="season-exercise-card">
-          <h4>${b.title}</h4>
-          <div class="season-card-duration">${b.rhythm} · ${b.rounds} runder</div>
-          <p>${b.instruction}</p>
-          <div class="season-card-detail"><strong>${t('seasonEffect')}:</strong> ${b.effect}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
+  // Sæt --season-color for stylede elementer
+  const screen = document.getElementById('screen-season');
+  if (screen) screen.style.setProperty('--season-color', color);
 
-  // Acupressure tab
-  document.getElementById('tab-season-acupressure').innerHTML = `
-    <div class="season-cards-list">
-      ${season.acupressure.map(a => `
-        <div class="season-exercise-card">
-          <h4>${a.name}</h4>
-          <div class="season-card-duration">${a.chineseName} · ${a.duration}</div>
-          <div class="season-card-detail"><strong>Lokation:</strong> ${a.location}</div>
-          <p>${a.technique}</p>
-          <div class="season-card-detail"><strong>${t('seasonBenefit')}:</strong> ${a.benefit}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
+  // Path-knap listeners
+  document.querySelectorAll('.season-path').forEach(btn => {
+    const fresh = btn.cloneNode(true);
+    btn.parentNode.replaceChild(fresh, btn);
+    fresh.addEventListener('click', () => {
+      const path = fresh.dataset.path;
+      if (path === 'food') showSeasonFood(seasonKey);
+      else if (path === 'movement') showSeasonMovement(seasonKey);
+      else if (path === 'stillness') showSeasonStillness(seasonKey);
+      else if (path === 'reflection') showSeasonReflection(seasonKey);
+    });
+  });
 
-  // Journal tab
-  document.getElementById('tab-season-journal').innerHTML = `
-    <div class="season-journal">
-      <div class="season-journal-section">
-        <h4>${t('seasonTabJournal')}</h4>
-        <ul class="season-prompts-list">
-          ${season.journalPrompts.map(p => `<li>${p}</li>`).join('')}
-        </ul>
-      </div>
-      <div class="season-journal-section">
-        <h4>${t('seasonWeeklyCheckIn')}</h4>
-        <ul class="season-prompts-list season-checkin-list">
-          ${season.weeklyCheckIn.map(q => `<li>${q}</li>`).join('')}
-        </ul>
-      </div>
-    </div>
-  `;
-
-  // Milestones tab
-  document.getElementById('tab-season-milestones').innerHTML = `
-    <div class="season-milestones">
-      ${season.milestones.map((m, i) => `
-        <div class="season-milestone-card">
-          <div class="season-milestone-marker">${[7, 14, 21, 30, 60][i] || ''}</div>
-          <p>${m}</p>
-        </div>
-      `).join('')}
-    </div>
-  `;
-
-  // Activate first tab
-  resetTabs('screen-season');
   showScreen('season');
+}
+
+// Helper til at rendere sæson-label på sub-screens
+function renderSeasonSubLabel(id, seasonKey) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const s = SEASON_MAP[seasonKey];
+  el.innerHTML = s
+    ? `<span style="color: ${s.color}">${s.name}</span> · ${s.element}`
+    : getSeasonName(seasonKey);
+}
+
+// ============================================
+// Nær dig selv — kost som flydende artikel
+// ============================================
+function showSeasonFood(seasonKey) {
+  const season = seasonsData[seasonKey];
+  if (!season) return;
+
+  renderSeasonSubLabel('sub-food-season', seasonKey);
+
+  const intros = {
+    foraar: 'I foråret har din krop brug for at vågne forsigtigt efter vinteren. Det grønne, det let bitre og det friske støtter leverens rensende arbejde.',
+    sommer: 'Sommeren beder dig om at mæste kroppen med det friske og det kølende. Sødt og bittert i balance holder ilden klar uden at brænde ud.',
+    sensommer: 'Sensommeren er høstens tid. Nærende, sødmefulde og varme retter samler jordens kraft i dig og støtter din fordøjelse.',
+    efteraar: 'Efteråret inviterer dig til at vende blikket indad og nære dig med det varme og fugtige. Hvid mad støtter lunger og tyktarm.',
+    vinter: 'Vinteren beder om varme, dybde og tålmodighed. Langsomt kogte retter og mørke farver støtter nyrerne og din grundlæggende vitalitet.'
+  };
+
+  const introEl = document.getElementById('sub-food-intro');
+  if (introEl) introEl.textContent = intros[seasonKey] || '';
+
+  const contentEl = document.getElementById('sub-food-content');
+  if (contentEl && season.foodGuide) {
+    contentEl.innerHTML = season.foodGuide.map(f => `
+      <article class="prose-item">
+        <h2 class="prose-title">${f.name}</h2>
+        <p class="prose-body">${f.why}</p>
+        <p class="prose-aside">${f.preparation}</p>
+      </article>
+    `).join('');
+  }
+
+  showScreen('season-food');
+}
+
+// ============================================
+// Bevæg dig — yoga som en sekvens
+// ============================================
+function showSeasonMovement(seasonKey) {
+  const season = seasonsData[seasonKey];
+  if (!season) return;
+
+  renderSeasonSubLabel('sub-movement-season', seasonKey);
+
+  const intros = {
+    foraar: 'Foråret kalder på blid bevægelse — strækker der åbner lever- og galdemeridianerne, bevægelser der løsner det der er blevet holdt tilbage.',
+    sommer: 'Sommeren er tiden for hjerteåbnende bevægelser. Giv dit bryst luft og lad varmen flyde frit.',
+    sensommer: 'Sensommerens bevægelser grounder dig i midten. Rolige positioner der styrker din kerne og lader dig hvile i tyngden.',
+    efteraar: 'Efterårets bevægelser åbner lungerne og lader åndedrættet finde sin fulde dybde. Bevægelser der lader dig slippe.',
+    vinter: 'Vinterens bevægelser er nænsomme og indadvendte. De varmer dine nyrer og bevarer din dybeste kraft.'
+  };
+
+  const introEl = document.getElementById('sub-movement-intro');
+  if (introEl) introEl.textContent = intros[seasonKey] || '';
+
+  const contentEl = document.getElementById('sub-movement-content');
+  if (contentEl && season.yogaSequence) {
+    contentEl.innerHTML = season.yogaSequence.map(y => `
+      <article class="prose-item">
+        <h2 class="prose-title">${y.name}</h2>
+        <p class="prose-meta">${y.sanskrit || ''} ${y.duration ? '· ' + y.duration : ''}</p>
+        <p class="prose-body">${y.instruction}</p>
+        <p class="prose-aside">${y.benefit || ''}</p>
+      </article>
+    `).join('');
+  }
+
+  showScreen('season-movement');
+}
+
+// ============================================
+// Bliv stille — én meditation + én vejrtrækning + akupressur
+// ============================================
+function showSeasonStillness(seasonKey) {
+  const season = seasonsData[seasonKey];
+  if (!season) return;
+
+  renderSeasonSubLabel('sub-stillness-season', seasonKey);
+
+  const intros = {
+    foraar: 'Stilheden i foråret er ikke tomhed. Det er rummet hvor vreden kan landes, rummet hvor det nye kan lyttes efter.',
+    sommer: 'Stilheden i sommeren er hvile midt i ilden. Et øjeblik hvor hjertet kan finde sin rolige puls.',
+    sensommer: 'Stilheden i sensommeren er centrering. At vende hjem til midten og mærke hvor du står.',
+    efteraar: 'Stilheden i efteråret er accept. Et åndedrag der tager imod og slipper. Et indre rum hvor sorgen har plads.',
+    vinter: 'Stilheden i vinteren er dyb. Et rum hvor du hviler uden at skulle noget, samler kraft i mørket.'
+  };
+
+  const introEl = document.getElementById('sub-stillness-intro');
+  if (introEl) introEl.textContent = intros[seasonKey] || '';
+
+  const contentEl = document.getElementById('sub-stillness-content');
+  if (!contentEl) { showScreen('season-stillness'); return; }
+
+  let html = '';
+
+  // Én meditation
+  if (season.meditations && season.meditations[0]) {
+    const m = season.meditations[0];
+    html += `
+      <article class="prose-item">
+        <h2 class="prose-title">${m.title}</h2>
+        ${m.duration ? `<p class="prose-meta">${m.duration}</p>` : ''}
+        ${m.steps ? `<ol class="prose-steps">${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>` : ''}
+        ${m.intention ? `<p class="prose-aside">${m.intention}</p>` : ''}
+      </article>
+    `;
+  }
+
+  // Én vejrtrækning
+  if (season.breathingExercises && season.breathingExercises[0]) {
+    const b = season.breathingExercises[0];
+    html += `
+      <article class="prose-item">
+        <h2 class="prose-title">${b.title}</h2>
+        <p class="prose-meta">${b.rhythm || ''} ${b.rounds ? '· ' + b.rounds + ' runder' : ''}</p>
+        <p class="prose-body">${b.instruction}</p>
+        ${b.effect ? `<p class="prose-aside">${b.effect}</p>` : ''}
+      </article>
+    `;
+  }
+
+  // Akupressur (alle)
+  if (season.acupressure && season.acupressure.length) {
+    season.acupressure.forEach(a => {
+      html += `
+        <article class="prose-item">
+          <h2 class="prose-title">${a.name}</h2>
+          <p class="prose-meta">${a.chineseName || ''} ${a.duration ? '· ' + a.duration : ''}</p>
+          <p class="prose-body">${a.location}</p>
+          <p class="prose-body">${a.technique}</p>
+          ${a.benefit ? `<p class="prose-aside">${a.benefit}</p>` : ''}
+        </article>
+      `;
+    });
+  }
+
+  contentEl.innerHTML = html;
+  showScreen('season-stillness');
+}
+
+// ============================================
+// Reflektér — journal + milepæle
+// ============================================
+function showSeasonReflection(seasonKey) {
+  const season = seasonsData[seasonKey];
+  if (!season) return;
+
+  renderSeasonSubLabel('sub-reflection-season', seasonKey);
+
+  const intros = {
+    foraar: 'Foråret er en god tid at spørge dig selv: hvad vil frem? Hvad holder du tilbage? Hvad venter på din handling?',
+    sommer: 'Sommeren inviterer dig til at mærke efter: hvad giver dig glæde? Hvor brænder du? Hvor flakker din ild?',
+    sensommer: 'Sensommeren spørger: hvad nærer dig? Hvad dræner dig? Hvor giver du for meget og modtager for lidt?',
+    efteraar: 'Efteråret beder dig om at se tilbage: hvad bærer du stadig? Hvad er det essentielle? Hvad kan du slippe?',
+    vinter: 'Vinteren stiller de dybeste spørgsmål: hvad hviler i dig? Hvor er din kilde? Hvad frygter du at miste?'
+  };
+
+  const introEl = document.getElementById('sub-reflection-intro');
+  if (introEl) introEl.textContent = intros[seasonKey] || '';
+
+  const contentEl = document.getElementById('sub-reflection-content');
+  if (!contentEl) { showScreen('season-reflection'); return; }
+
+  let html = '';
+
+  if (season.journalPrompts && season.journalPrompts.length) {
+    html += `<section class="reflection-section"><h3 class="reflection-heading">At sidde med</h3><ol class="reflection-list">`;
+    html += season.journalPrompts.map(p => `<li>${p}</li>`).join('');
+    html += `</ol></section>`;
+  }
+
+  if (season.weeklyCheckIn && season.weeklyCheckIn.length) {
+    html += `<section class="reflection-section"><h3 class="reflection-heading">Ugentligt</h3><ol class="reflection-list">`;
+    html += season.weeklyCheckIn.map(p => `<li>${p}</li>`).join('');
+    html += `</ol></section>`;
+  }
+
+  if (season.milestones && season.milestones.length) {
+    html += `<section class="reflection-section"><h3 class="reflection-heading">Rejsen folder sig ud</h3><div class="reflection-timeline">`;
+    const days = [7, 14, 21, 30, 60];
+    season.milestones.forEach((m, i) => {
+      html += `
+        <div class="reflection-milestone">
+          <span class="milestone-day">${days[i] || ''} dage</span>
+          <p class="milestone-text">${m}</p>
+        </div>
+      `;
+    });
+    html += `</div></section>`;
+  }
+
+  contentEl.innerHTML = html;
+  showScreen('season-reflection');
 }
 // ============================================
 // Pattern Engine
