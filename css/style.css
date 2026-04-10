@@ -262,7 +262,7 @@ body {
 }
 
 .still-back {
-  position: fixed;
+  position: absolute;
   top: calc(var(--safe-top) + 62px);
   left: 16px;
   width: 40px;
@@ -290,6 +290,124 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100dvh;
+}
+
+/* ============================================
+   Foldbare sektioner — stille udfoldning
+   ============================================ */
+
+.fold {
+  width: 100%;
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-2);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.fold:last-child {
+  border-bottom: none;
+}
+
+.fold-toggle {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: var(--rhythm-1) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.fold-toggle:hover {
+  color: var(--accent-gold);
+}
+
+.fold-heading {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.fold-preview {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  letter-spacing: 0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fold-indicator {
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.fold.open .fold-indicator {
+  transform: rotate(45deg);
+  color: var(--accent-gold);
+}
+
+.fold.open .fold-preview {
+  display: none;
+}
+
+.fold-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.fold.open .fold-body {
+  max-height: 3000px;
+  padding-bottom: var(--rhythm-2);
+}
+
+.fold-body-inner {
+  padding-top: var(--rhythm-1);
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+}
+
+.fold-body-inner ol,
+.fold-body-inner ul {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: fold-step;
+  margin: 0;
+}
+
+.fold-body-inner ol li,
+.fold-body-inner ul li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.fold-body-inner ol li:last-child,
+.fold-body-inner ul li:last-child {
+  border-bottom: none;
 }
 
 /* ============================================

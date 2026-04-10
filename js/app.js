@@ -600,9 +600,66 @@ function setupLanguageToggle() {
 // ============================================
 // Navigation
 // ============================================
-function showScreen(screenId) {
+// ============================================
+// Foldbare sektioner — stille udfoldning
+// ============================================
+
+// Lav HTML for en foldbart element
+function renderFold(heading, preview, bodyHtml) {
+  return `
+    <div class="fold">
+      <button class="fold-toggle" type="button" aria-expanded="false">
+        <div>
+          <p class="fold-heading">${heading}</p>
+          <p class="fold-preview">${preview}</p>
+        </div>
+        <span class="fold-indicator" aria-hidden="true">+</span>
+      </button>
+      <div class="fold-body"><div class="fold-body-inner">${bodyHtml}</div></div>
+    </div>
+  `;
+}
+
+// Tilkobl klik-handlers til alle .fold inden for et container-element
+function attachFoldListeners(container) {
+  if (!container) return;
+  container.querySelectorAll('.fold').forEach(fold => {
+    const btn = fold.querySelector('.fold-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = fold.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+}
+
+// Fjern HTML-tags til preview-tekst
+function plainText(html) {
+  return (html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// Navigation-stak — holder styr på hele rejsen tilbage
+let _screenStack = [];
+
+function showScreen(screenId, opts = {}) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(`screen-${screenId}`).classList.add('active');
+  const target = document.getElementById(`screen-${screenId}`);
+  if (!target) return;
+  target.classList.add('active');
+
+  if (opts.reset) {
+    // Nulstil stakken (bruges når man går til home via bund-nav)
+    _screenStack = [];
+  } else if (!opts.skipHistory) {
+    // Skub aktuel skærm på stakken (undtagen ved goBack)
+    if (currentScreen && currentScreen !== screenId) {
+      // Undgå duplikater hvis samme skærm ligger øverst
+      if (_screenStack[_screenStack.length - 1] !== currentScreen) {
+        _screenStack.push(currentScreen);
+      }
+    }
+  }
+
   previousScreen = currentScreen;
   currentScreen = screenId;
   window.scrollTo(0, 0);
@@ -1255,20 +1312,20 @@ function showOrganThemes(organ) {
     titleEl.style.color = color;
   }
 
-  // Alle 8 temaer som flydende sekvens (ingen progressive disclosure)
+  // 8 temaer som foldbare sektioner
   let themesHtml = '';
   if (organ.themes) {
     organ.themes.forEach(theme => {
-      themesHtml += `
-        <section class="theme-flow-item">
-          <h3 class="theme-flow-title">${theme.title}</h3>
-          ${(theme.questions || []).map(q => `<p class="theme-flow-question">${q}</p>`).join('')}
-        </section>
-      `;
+      const questions = theme.questions || [];
+      const preview = questions[0] || '';
+      const body = questions.map(q => `<p style="font-style:italic;margin:0 0 14px 0;">${q}</p>`).join('');
+      themesHtml += renderFold(theme.title, preview, body);
     });
   }
 
-  document.getElementById('organ-themes-flow').innerHTML = themesHtml;
+  const themesFlow = document.getElementById('organ-themes-flow');
+  themesFlow.innerHTML = themesHtml;
+  attachFoldListeners(themesFlow);
 
   // Organ clock wisdom som stille outro
   const clockWrap = document.getElementById('organ-themes-clock');
@@ -1475,22 +1532,18 @@ function setupThemeAccordion(containerId) {
 // Back Navigation
 // ============================================
 function goBack() {
-  // Simpelt: eksisterende screens
-  const exploreSubScreens = ['explore-seasons', 'explore-organs', 'explore-elements'];
-  if (exploreSubScreens.includes(currentScreen)) {
-    showScreen('explore');
-    if (window._updateBottomNav) window._updateBottomNav('explore');
-    return;
+  // Pop navigation-stakken — den holder styr på hele rejsen
+  while (_screenStack.length > 0) {
+    const target = _screenStack.pop();
+    if (target && target !== currentScreen) {
+      showScreen(target, { skipHistory: true });
+      if (window._updateBottomNav) window._updateBottomNav(sectionToNav[target] || 'home');
+      return;
+    }
   }
 
-  // Hvis vi kommer fra explore-sub og er nu på et organ/element, gå tilbage dertil
-  if (previousScreen && previousScreen !== currentScreen) {
-    showScreen(previousScreen);
-    if (window._updateBottomNav) window._updateBottomNav(sectionToNav[previousScreen] || 'home');
-    return;
-  }
-
-  showScreen('home');
+  // Fallback: gå til home
+  showScreen('home', { reset: true });
   if (window._updateBottomNav) window._updateBottomNav('home');
 }
 
@@ -1507,15 +1560,19 @@ function setupBackButtons() {
     if (btn) btn.addEventListener('click', goBack);
   });
 
-  // Stille back-knapper på season sub-screens (← ikon uden id)
+  // Stille back-knapper på season sub-screens — brug navigations-stakken
   document.querySelectorAll('.still-back[data-back-to="season"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (_currentSeasonKey) {
-        showSeasonDetail(_currentSeasonKey);
-      } else {
-        showScreen('home');
-      }
-    });
+    btn.addEventListener('click', goBack);
+  });
+
+  // Back-knapper på explore sub-screens (data-back-to-explore)
+  document.querySelectorAll('.still-back[data-back-to-explore]').forEach(btn => {
+    btn.addEventListener('click', goBack);
+  });
+
+  // Search screen tilbage (data-back-to="home")
+  document.querySelectorAll('.still-back[data-back-to="home"]').forEach(btn => {
+    btn.addEventListener('click', goBack);
   });
 
   // Section screen back buttons (data-back="home")
@@ -1526,24 +1583,13 @@ function setupBackButtons() {
     });
   });
 
-  // Browser back button
+  // Browser back button — bruger vores interne stak
   window.addEventListener('popstate', () => {
     if (currentScreen !== 'home') {
       goBack();
     }
   });
 }
-
-// Push state when navigating away from home
-const originalShowScreen = showScreen;
-showScreen = function(screenId) {
-  if (screenId !== 'home' && currentScreen === 'home') {
-    history.pushState({ screen: screenId }, '');
-  } else if (screenId !== currentScreen && currentScreen !== 'home') {
-    history.pushState({ screen: screenId }, '');
-  }
-  originalShowScreen(screenId);
-};
 
 // ============================================
 // Render Practice Guide Grid
@@ -1790,13 +1836,11 @@ function showSeasonFood(seasonKey) {
 
   const contentEl = document.getElementById('sub-food-content');
   if (contentEl && season.foodGuide) {
-    contentEl.innerHTML = season.foodGuide.map(f => `
-      <article class="prose-item">
-        <h2 class="prose-title">${f.name}</h2>
-        <p class="prose-body">${f.why}</p>
-        <p class="prose-aside">${f.preparation}</p>
-      </article>
-    `).join('');
+    contentEl.innerHTML = season.foodGuide.map(f => {
+      const body = `<p>${f.why}</p><p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${f.preparation}</p>`;
+      return renderFold(f.name, f.why, body);
+    }).join('');
+    attachFoldListeners(contentEl);
   }
 
   showScreen('season-food');
@@ -1829,14 +1873,12 @@ function showSeasonMovement(seasonKey) {
 
   const contentEl = document.getElementById('sub-movement-content');
   if (contentEl && season.yogaSequence) {
-    contentEl.innerHTML = season.yogaSequence.map(y => `
-      <article class="prose-item">
-        <h2 class="prose-title">${y.name}</h2>
-        <p class="prose-meta">${y.sanskrit || ''} ${y.duration ? '· ' + y.duration : ''}</p>
-        <p class="prose-body">${y.instruction}</p>
-        <p class="prose-aside">${y.benefit || ''}</p>
-      </article>
-    `).join('');
+    contentEl.innerHTML = season.yogaSequence.map(y => {
+      const heading = `${y.name}${y.sanskrit ? ' · ' + y.sanskrit : ''}${y.duration ? ' · ' + y.duration : ''}`;
+      const body = `<p>${y.instruction}</p>${y.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${y.benefit}</p>` : ''}`;
+      return renderFold(heading, y.instruction, body);
+    }).join('');
+    attachFoldListeners(contentEl);
   }
 
   showScreen('season-movement');
@@ -1872,48 +1914,31 @@ function showSeasonStillness(seasonKey) {
 
   let html = '';
 
-  // Én meditation
   if (season.meditations && season.meditations[0]) {
     const m = season.meditations[0];
-    html += `
-      <article class="prose-item">
-        <h2 class="prose-title">${m.title}</h2>
-        ${m.duration ? `<p class="prose-meta">${m.duration}</p>` : ''}
-        ${m.steps ? `<ol class="prose-steps">${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>` : ''}
-        ${m.intention ? `<p class="prose-aside">${m.intention}</p>` : ''}
-      </article>
-    `;
+    const heading = m.title + (m.duration ? ' · ' + m.duration : '');
+    const preview = (m.intention) || (m.steps && m.steps[0]) || '';
+    const body = `${m.steps ? `<ol>${m.steps.map(s => `<li>${s}</li>`).join('')}</ol>` : ''}${m.intention ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${m.intention}</p>` : ''}`;
+    html += renderFold(heading, preview, body);
   }
 
-  // Én vejrtrækning
   if (season.breathingExercises && season.breathingExercises[0]) {
     const b = season.breathingExercises[0];
-    html += `
-      <article class="prose-item">
-        <h2 class="prose-title">${b.title}</h2>
-        <p class="prose-meta">${b.rhythm || ''} ${b.rounds ? '· ' + b.rounds + ' runder' : ''}</p>
-        <p class="prose-body">${b.instruction}</p>
-        ${b.effect ? `<p class="prose-aside">${b.effect}</p>` : ''}
-      </article>
-    `;
+    const heading = b.title + (b.rhythm ? ' · ' + b.rhythm : '') + (b.rounds ? ' · ' + b.rounds + ' runder' : '');
+    const body = `<p>${b.instruction}</p>${b.effect ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${b.effect}</p>` : ''}`;
+    html += renderFold(heading, b.instruction, body);
   }
 
-  // Akupressur (alle)
   if (season.acupressure && season.acupressure.length) {
     season.acupressure.forEach(a => {
-      html += `
-        <article class="prose-item">
-          <h2 class="prose-title">${a.name}</h2>
-          <p class="prose-meta">${a.chineseName || ''} ${a.duration ? '· ' + a.duration : ''}</p>
-          <p class="prose-body">${a.location}</p>
-          <p class="prose-body">${a.technique}</p>
-          ${a.benefit ? `<p class="prose-aside">${a.benefit}</p>` : ''}
-        </article>
-      `;
+      const heading = `${a.name}${a.chineseName ? ' · ' + a.chineseName : ''}${a.duration ? ' · ' + a.duration : ''}`;
+      const body = `<p>${a.location}</p><p style="margin-top:12px;">${a.technique}</p>${a.benefit ? `<p style="font-style:italic;color:var(--text-secondary);margin-top:12px;">${a.benefit}</p>` : ''}`;
+      html += renderFold(heading, a.location, body);
     });
   }
 
   contentEl.innerHTML = html;
+  attachFoldListeners(contentEl);
   showScreen('season-stillness');
 }
 
@@ -1948,32 +1973,26 @@ function showSeasonReflection(seasonKey) {
   let html = '';
 
   if (season.journalPrompts && season.journalPrompts.length) {
-    html += `<section class="reflection-section"><h3 class="reflection-heading">At sidde med</h3><ol class="reflection-list">`;
-    html += season.journalPrompts.map(p => `<li>${p}</li>`).join('');
-    html += `</ol></section>`;
+    const preview = season.journalPrompts[0] || '';
+    const body = `<ol>${season.journalPrompts.map(p => `<li>${p}</li>`).join('')}</ol>`;
+    html += renderFold('At sidde med', preview, body);
   }
 
   if (season.weeklyCheckIn && season.weeklyCheckIn.length) {
-    html += `<section class="reflection-section"><h3 class="reflection-heading">Ugentligt</h3><ol class="reflection-list">`;
-    html += season.weeklyCheckIn.map(p => `<li>${p}</li>`).join('');
-    html += `</ol></section>`;
+    const preview = season.weeklyCheckIn[0] || '';
+    const body = `<ol>${season.weeklyCheckIn.map(p => `<li>${p}</li>`).join('')}</ol>`;
+    html += renderFold('Ugentligt', preview, body);
   }
 
   if (season.milestones && season.milestones.length) {
-    html += `<section class="reflection-section"><h3 class="reflection-heading">Rejsen folder sig ud</h3><div class="reflection-timeline">`;
     const days = [7, 14, 21, 30, 60];
-    season.milestones.forEach((m, i) => {
-      html += `
-        <div class="reflection-milestone">
-          <span class="milestone-day">${days[i] || ''} dage</span>
-          <p class="milestone-text">${m}</p>
-        </div>
-      `;
-    });
-    html += `</div></section>`;
+    const preview = season.milestones[0] || '';
+    const body = `<ol>${season.milestones.map((m, i) => `<li><strong style="color:var(--text-muted);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">${days[i] || ''} dage</strong><br>${m}</li>`).join('')}</ol>`;
+    html += renderFold('Rejsen folder sig ud', preview, body);
   }
 
   contentEl.innerHTML = html;
+  attachFoldListeners(contentEl);
   showScreen('season-reflection');
 }
 // ============================================
@@ -2269,11 +2288,11 @@ function renderExploreScreen() {
     });
   }
 
-  // Back buttons (fra sub-screens tilbage til explore)
+  // Back buttons fra sub-screens tilbage — brug navigations-stakken (goBack)
   document.querySelectorAll('.still-back[data-back-to-explore]').forEach(btn => {
     const fresh = btn.cloneNode(true);
     btn.parentNode.replaceChild(fresh, btn);
-    fresh.addEventListener('click', () => showScreen('explore'));
+    fresh.addEventListener('click', goBack);
   });
 }
 
@@ -2285,11 +2304,11 @@ function renderSearchScreen() {
   const searchIll = document.getElementById('search-illustration');
   if (searchIll) searchIll.innerHTML = svgSearch('var(--accent-gold)');
 
-  // Tilbage-knap
+  // Tilbage-knap — brug navigations-stakken
   document.querySelectorAll('.still-back[data-back-to="home"]').forEach(btn => {
     const fresh = btn.cloneNode(true);
     btn.parentNode.replaceChild(fresh, btn);
-    fresh.addEventListener('click', () => showScreen('home'));
+    fresh.addEventListener('click', goBack);
   });
 
   // Kontekstuelle ord baseret på aktuel sæson
@@ -3316,15 +3335,16 @@ function setupBottomNav() {
 }
 
 function handleNavigation(navId) {
+  // Bund-nav er altid et nyt toppunkt — nulstil stakken
   switch (navId) {
     case 'home':
-      showScreen('home');
+      showScreen('home', { reset: true });
       break;
     case 'explore':
-      showScreen('explore');
+      showScreen('explore', { reset: true });
       break;
     case 'search':
-      showScreen('search');
+      showScreen('search', { reset: true });
       setTimeout(() => {
         const input = document.getElementById('search-still-input');
         if (input) input.focus();
