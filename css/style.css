@@ -2895,11 +2895,20 @@ body {
 }
 
 .bottom-nav-item svg {
-  transition: color 0.2s, transform 0.2s;
+  display: none;
+}
+
+.bottom-nav-item span {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .bottom-nav-item.active {
   color: var(--accent-gold);
+  opacity: 1;
 }
 
 .bottom-nav-item:not(.active):hover {
@@ -3792,6 +3801,225 @@ body {
 .explore-current {
   color: var(--accent-gold);
   font-size: 20px;
+}
+
+/* ============================================
+   Explore Sub-screens — stille typografisk liste
+   ============================================ */
+
+.explore-list-still {
+  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.explore-list-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-xl);
+  text-align: center;
+}
+
+.explore-list-items {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-list-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md) 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.explore-list-item:last-child {
+  border-bottom: none;
+}
+
+.explore-list-item:hover {
+  opacity: 0.6;
+}
+
+.explore-list-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.explore-list-meta {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   Search Screen — Hvad mærker du?
+   ============================================ */
+
+.search-still {
+  padding: var(--space-xxl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.search-still-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-xl);
+  letter-spacing: 0.02em;
+}
+
+.search-still-input-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto var(--space-lg);
+  border-bottom: 1px solid var(--border-whisper);
+  padding: 0 0 var(--space-xs);
+}
+
+.search-still-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: var(--space-sm) 0;
+}
+
+.search-still-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.search-still-input:focus {
+  outline: none;
+}
+
+.search-still-or {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-md);
+  letter-spacing: 0.05em;
+}
+
+.search-still-words {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  max-width: 320px;
+  margin: 0 auto var(--space-xl);
+}
+
+.search-still-word {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 2px;
+  letter-spacing: 0.01em;
+  transition: color 0.4s ease;
+}
+
+.search-still-word:hover {
+  color: var(--accent-gold);
+}
+
+.search-still-word-sep {
+  color: var(--text-muted);
+  opacity: 0.3;
+  font-size: 10px;
+}
+
+.search-still-results {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-md);
+}
+
+.search-result-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md) 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.search-result-item:hover {
+  opacity: 0.6;
+}
+
+.search-result-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.search-result-meta {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.search-empty {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--space-lg) 0;
 }
 
 /* ============================================

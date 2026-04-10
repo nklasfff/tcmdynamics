@@ -59,40 +59,42 @@
       </main>
     </div>
 
-    <!-- Explore sub-screens -->
+    <!-- Explore sub-screens — stille typografiske lister -->
     <div id="screen-explore-seasons" class="screen">
-      <header class="explore-header">
-        <button class="back-btn" id="btn-back-explore-seasons">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Udforsk</span>
-        </button>
-      </header>
-      <main class="explore-content">
-        <div class="explore-section" id="explore-seasons-list"></div>
+      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
+      <main class="explore-list-still">
+        <p class="explore-list-label">Årstider</p>
+        <div class="explore-list-items" id="explore-seasons-list"></div>
       </main>
     </div>
 
     <div id="screen-explore-organs" class="screen">
-      <header class="explore-header">
-        <button class="back-btn" id="btn-back-explore-organs">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Udforsk</span>
-        </button>
-      </header>
-      <main class="explore-content">
-        <div class="explore-section" id="explore-organs-list"></div>
+      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
+      <main class="explore-list-still">
+        <p class="explore-list-label">Organer</p>
+        <div class="explore-list-items" id="explore-organs-list"></div>
       </main>
     </div>
 
     <div id="screen-explore-elements" class="screen">
-      <header class="explore-header">
-        <button class="back-btn" id="btn-back-explore-elements">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Udforsk</span>
-        </button>
-      </header>
-      <main class="explore-content">
-        <div class="explore-section" id="explore-elements-list"></div>
+      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
+      <main class="explore-list-still">
+        <p class="explore-list-label">Elementer</p>
+        <div class="explore-list-items" id="explore-elements-list"></div>
+      </main>
+    </div>
+
+    <!-- Search Screen — Hvad mærker du? -->
+    <div id="screen-search" class="screen">
+      <button class="still-back" data-back-to="home" aria-label="Tilbage">←</button>
+      <main class="search-still">
+        <h1 class="search-still-title">Hvad mærker du?</h1>
+        <div class="search-still-input-wrap">
+          <input type="text" class="search-still-input" id="search-still-input" placeholder="skriv et ord" autocomplete="off" />
+        </div>
+        <p class="search-still-or">eller</p>
+        <div class="search-still-words" id="search-still-words"></div>
+        <div class="search-still-results" id="search-still-results"></div>
       </main>
     </div>
 

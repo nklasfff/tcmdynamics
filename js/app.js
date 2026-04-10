@@ -615,6 +615,7 @@ const sectionToNav = {
   'explore-seasons': 'explore',
   'explore-organs': 'explore',
   'explore-elements': 'explore',
+  'search': 'search',
   'season': 'home',
   'season-food': 'home',
   'season-movement': 'home',
@@ -2139,43 +2140,47 @@ function findPatterns(query) {
 // Explore Screen (stille typografisk liste)
 // ============================================
 function renderExploreScreen() {
-  const seasonKeys = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
-  const seasonColors = { foraar: '#5cc98e', sommer: '#e88585', sensommer: '#deb87a', efteraar: '#a8c4d6', vinter: '#7ba4da' };
-  const seasonElements = { foraar: 'Træ', sommer: 'Ild', sensommer: 'Jord', efteraar: 'Metal', vinter: 'Vand' };
-  const currentKey = getCurrentSeason();
-
   // Door click handlers
   document.querySelectorAll('.explore-door').forEach(door => {
-    door.addEventListener('click', () => {
-      showScreen('explore-' + door.dataset.explore);
+    const fresh = door.cloneNode(true);
+    door.parentNode.replaceChild(fresh, door);
+    fresh.addEventListener('click', () => {
+      showScreen('explore-' + fresh.dataset.explore);
     });
   });
 
-  // Seasons sub-screen
+  // Seasons — stille typografisk liste
   const seasonsEl = document.getElementById('explore-seasons-list');
   if (seasonsEl) {
-    seasonsEl.innerHTML = seasonKeys.map(key => `
-      <button class="explore-item" data-season="${key}">
-        <span class="explore-dot" style="background: ${seasonColors[key]}"></span>
-        <span class="explore-name">${getSeasonName(key)}</span>
-        <span class="explore-meta">${seasonElements[key]}</span>
-      </button>
-    `).join('');
+    const keys = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
+    seasonsEl.innerHTML = keys.map(key => {
+      const s = SEASON_MAP[key];
+      if (!s) return '';
+      return `
+        <button class="explore-list-item" data-season="${key}">
+          <span class="explore-list-name" style="color: ${s.color}">${s.name}</span>
+          <span class="explore-list-meta">${s.element}</span>
+        </button>
+      `;
+    }).join('');
     seasonsEl.querySelectorAll('[data-season]').forEach(btn => {
       btn.addEventListener('click', () => showSeasonDetail(btn.dataset.season));
     });
   }
 
-  // Organs sub-screen
+  // Organs — stille typografisk liste
   const organsEl = document.getElementById('explore-organs-list');
   if (organsEl) {
-    organsEl.innerHTML = organs.map(o => `
-      <button class="explore-item" data-organ-id="${o.id}">
-        <span class="explore-icon">${o.icon}</span>
-        <span class="explore-name">${o.name}</span>
-        <span class="explore-meta">${o.time}</span>
-      </button>
-    `).join('');
+    organsEl.innerHTML = organs.map(o => {
+      const element = findElementForOrgan(o);
+      const color = getElementColorVar(element);
+      return `
+        <button class="explore-list-item" data-organ-id="${o.id}">
+          <span class="explore-list-name" style="color: ${color}">${o.name}</span>
+          <span class="explore-list-meta">${o.time}</span>
+        </button>
+      `;
+    }).join('');
     organsEl.querySelectorAll('[data-organ-id]').forEach(btn => {
       btn.addEventListener('click', () => {
         const organ = organs.find(o => o.id === btn.dataset.organId);
@@ -2184,16 +2189,20 @@ function renderExploreScreen() {
     });
   }
 
-  // Elements sub-screen
+  // Elements — stille typografisk liste
   const elementsEl = document.getElementById('explore-elements-list');
   if (elementsEl) {
-    elementsEl.innerHTML = fiveElements.map(el => `
-      <button class="explore-item" data-element-id="${el.id}">
-        <span class="explore-dot" style="background: ${el.color}"></span>
-        <span class="explore-name">${el.name}</span>
-        <span class="explore-meta">${el.season}</span>
-      </button>
-    `).join('');
+    elementsEl.innerHTML = fiveElements.map(el => {
+      const color = getElementColorVar(el);
+      const seasonKey = elementToSeason && elementToSeason[el.name];
+      const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || '') : '';
+      return `
+        <button class="explore-list-item" data-element-id="${el.id}">
+          <span class="explore-list-name" style="color: ${color}">${el.name}</span>
+          <span class="explore-list-meta">${seasonName}</span>
+        </button>
+      `;
+    }).join('');
     elementsEl.querySelectorAll('[data-element-id]').forEach(btn => {
       btn.addEventListener('click', () => {
         const el = fiveElements.find(e => e.id === btn.dataset.elementId);
@@ -2202,10 +2211,131 @@ function renderExploreScreen() {
     });
   }
 
-  // Back buttons
-  ['explore-seasons', 'explore-organs', 'explore-elements'].forEach(id => {
-    const btn = document.getElementById('btn-back-' + id);
-    if (btn) btn.addEventListener('click', () => showScreen('explore'));
+  // Back buttons (fra sub-screens tilbage til explore)
+  document.querySelectorAll('.still-back[data-back-to-explore]').forEach(btn => {
+    const fresh = btn.cloneNode(true);
+    btn.parentNode.replaceChild(fresh, btn);
+    fresh.addEventListener('click', () => showScreen('explore'));
+  });
+}
+
+// ============================================
+// Search — Hvad mærker du?
+// ============================================
+function renderSearchScreen() {
+  // Tilbage-knap
+  document.querySelectorAll('.still-back[data-back-to="home"]').forEach(btn => {
+    const fresh = btn.cloneNode(true);
+    btn.parentNode.replaceChild(fresh, btn);
+    fresh.addEventListener('click', () => showScreen('home'));
+  });
+
+  // Kontekstuelle ord baseret på aktuel sæson
+  const key = getCurrentSeason();
+  const s = SEASON_MAP[key];
+  const words = s ? s.words : [];
+
+  const wordsEl = document.getElementById('search-still-words');
+  if (wordsEl && words.length) {
+    wordsEl.innerHTML = words.map(w => `
+      <button class="search-still-word" data-organ-id="${w.organId}">${w.label}</button>
+    `).join('<span class="search-still-word-sep" aria-hidden="true">·</span>');
+    wordsEl.querySelectorAll('.search-still-word').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const organ = organs.find(o => o.id === btn.dataset.organId);
+        if (organ) showOrganDetail(organ);
+      });
+    });
+  }
+
+  // Søgefelt — søg i tags/symptomReference og vis resultater som links
+  const input = document.getElementById('search-still-input');
+  const resultsEl = document.getElementById('search-still-results');
+  if (input && resultsEl) {
+    let debounce;
+    const fresh = input.cloneNode(true);
+    input.parentNode.replaceChild(fresh, input);
+    fresh.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        const query = fresh.value.trim();
+        if (!query || query.length < 2) {
+          resultsEl.innerHTML = '';
+          return;
+        }
+        const results = findSearchResults(query);
+        renderStillSearchResults(results, resultsEl);
+      }, 250);
+    });
+  }
+}
+
+function findSearchResults(query) {
+  const q = query.toLowerCase();
+  const results = { organs: [], elements: [] };
+
+  // Søg i organ tags og navne
+  organs.forEach(o => {
+    const nameMatch = o.name.toLowerCase().includes(q);
+    const tagMatch = (o.tags || []).some(t => t.toLowerCase().includes(q));
+    if (nameMatch || tagMatch) results.organs.push(o);
+  });
+
+  // Søg i elementer
+  fiveElements.forEach(el => {
+    const nameMatch = el.name.toLowerCase().includes(q);
+    const tagMatch = (el.tags || []).some(t => t.toLowerCase().includes(q));
+    if (nameMatch || tagMatch) results.elements.push(el);
+  });
+
+  return results;
+}
+
+function renderStillSearchResults(results, container) {
+  let html = '';
+
+  if (results.organs.length) {
+    results.organs.slice(0, 6).forEach(o => {
+      const element = findElementForOrgan(o);
+      const color = getElementColorVar(element);
+      html += `
+        <button class="search-result-item" data-organ-id="${o.id}">
+          <span class="search-result-name" style="color: ${color}">${o.name}</span>
+          <span class="search-result-meta">${o.time}</span>
+        </button>
+      `;
+    });
+  }
+
+  if (results.elements.length) {
+    results.elements.slice(0, 3).forEach(el => {
+      const color = getElementColorVar(el);
+      html += `
+        <button class="search-result-item" data-element-id="${el.id}">
+          <span class="search-result-name" style="color: ${color}">${el.name}</span>
+          <span class="search-result-meta">element</span>
+        </button>
+      `;
+    });
+  }
+
+  if (!html) {
+    html = '<p class="search-empty">Intet fundet. Prøv et andet ord.</p>';
+  }
+
+  container.innerHTML = html;
+
+  container.querySelectorAll('[data-organ-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const organ = organs.find(o => o.id === btn.dataset.organId);
+      if (organ) showOrganDetail(organ);
+    });
+  });
+  container.querySelectorAll('[data-element-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = fiveElements.find(e => e.id === btn.dataset.elementId);
+      if (el) showElementDetail(el);
+    });
   });
 }
 
@@ -2767,11 +2897,11 @@ function handleNavigation(navId) {
       showScreen('explore');
       break;
     case 'search':
-      showScreen('home');
+      showScreen('search');
       setTimeout(() => {
-        const input = document.getElementById('home-pattern-input');
-        if (input) { input.scrollIntoView({ behavior: 'smooth' }); input.focus(); }
-      }, 100);
+        const input = document.getElementById('search-still-input');
+        if (input) input.focus();
+      }, 300);
       break;
   }
 }
@@ -3305,6 +3435,7 @@ function init() {
   try { updateUILanguage(); } catch(e) { console.error('updateUILanguage:', e); }
   try { renderPersonalHome(); } catch(e) { console.error('renderPersonalHome:', e); }
   try { renderExploreScreen(); } catch(e) { console.error('renderExploreScreen:', e); }
+  try { renderSearchScreen(); } catch(e) { console.error('renderSearchScreen:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
   try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }
   try { setupHamburger(); } catch(e) { console.error('setupHamburger:', e); }
