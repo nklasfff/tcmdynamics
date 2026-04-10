@@ -706,6 +706,32 @@ let _gradIdCounter = 0;
 function nextGradId() { return 'og' + (++_gradIdCounter); }
 
 /**
+ * injectSvg(el, svgString)
+ *
+ * Indsætter en SVG-streng i et element ved at parse den som RIGTIG
+ * SVG-namespace via DOMParser og derefter importere noden. Dette er
+ * nødvendigt for at SMIL <animate> rent faktisk aktiveres — hvis man
+ * bare bruger innerHTML, parser browseren i HTML-namespace og SMIL
+ * bliver ignoreret.
+ */
+function injectSvg(el, svgString) {
+  if (!el) return;
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgString, 'image/svg+xml');
+    const root = doc.documentElement;
+    // Tjek for parser-fejl
+    if (root && root.nodeName !== 'parsererror') {
+      while (el.firstChild) el.removeChild(el.firstChild);
+      el.appendChild(document.importNode(root, true));
+      return;
+    }
+  } catch (e) { /* fallback */ }
+  // Fallback: innerHTML (virker for simple ikke-SMIL tilfælde)
+  el.innerHTML = svgString;
+}
+
+/**
  * svgGlowOrb({ color, size, motion, focal })
  *
  * - color  — element/organ-farve (hex eller var)
@@ -774,16 +800,17 @@ function svgSeasonComposite(seasonKey, size = 220) {
      Math.PI * 1.0 + 0.12
   ];
 
-  // SMIL animate på r-attributten — garanteret synlig bevægelse i alle browsers
+  // SMIL animate på r-attributten — garanteret synlig bevægelse
   const petalStops = cfg.petals.map((color, i) => {
     const gradId = nextGradId();
     const px = cx + orbit * Math.cos(angles[i]);
     const py = cy + orbit * Math.sin(angles[i]);
     // Hver petal har egen dur og forskudt begin så de breather ude af takt
-    const dur = (5.5 + i * 0.4).toFixed(1);
-    const begin = (i * 0.7).toFixed(2);
-    const rMin = petalR - 4;
-    const rMax = petalR + 7;
+    const dur = (5 + i * 0.4).toFixed(1);
+    const begin = (i * 0.6).toFixed(2);
+    // Stor amplitude: petal går fra 28 til 52 (næsten fordobling)
+    const rMin = petalR - 12;
+    const rMax = petalR + 12;
     return {
       defs: `<radialGradient id="${gradId}" cx="50%" cy="50%" r="50%">
         <stop offset="0%"  stop-color="${color}" stop-opacity="0.72"/>
@@ -802,8 +829,9 @@ function svgSeasonComposite(seasonKey, size = 220) {
   });
 
   const centerGradId = nextGradId();
-  const centerRMin = centerR - 5;
-  const centerRMax = centerR + 9;
+  // Stor amplitude på centerorb: 36 til 62
+  const centerRMin = centerR - 12;
+  const centerRMax = centerR + 14;
 
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" class="glow-ill composite-ill" aria-hidden="true">
     <defs>
@@ -829,10 +857,10 @@ function svgSeasonComposite(seasonKey, size = 220) {
  */
 function svgElementTimelineOrb(color, size = 28, delaySeconds = 0) {
   const id = nextGradId();
-  // SMIL animate på r-attributten — garanteret bølge-effekt
-  // Total cycle 5s, begin forskudt så bølgen vandrer fra venstre til højre
-  const baseR = 14;
-  const peakR = 19;
+  // SMIL animate på r — bølge der vandrer fra venstre mod højre gennem 5 orbs
+  // Total cycle 4.5s, dramatisk amplitude 11→20
+  const baseR = 11;
+  const peakR = 20;
   return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" class="glow-ill timeline-orb-ill" aria-hidden="true">
     <defs>
       <radialGradient id="${id}" cx="50%" cy="50%" r="50%">
@@ -843,8 +871,8 @@ function svgElementTimelineOrb(color, size = 28, delaySeconds = 0) {
       </radialGradient>
     </defs>
     <circle cx="20" cy="20" r="${baseR}" fill="url(#${id})">
-      <animate attributeName="r" values="${baseR};${peakR};${baseR}" dur="5s" begin="${delaySeconds}s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.7;1;0.7" dur="5s" begin="${delaySeconds}s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="${baseR};${peakR};${baseR}" dur="4.5s" begin="${delaySeconds}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="4.5s" begin="${delaySeconds}s" repeatCount="indefinite"/>
     </circle>
     <circle cx="20" cy="20" r="2" fill="${color}" opacity="0.95"/>
   </svg>`;
@@ -1778,7 +1806,7 @@ function showElementDetail(el) {
 
   // UNIK illustration: svgElementRadiance (kun her)
   const heroEl = document.getElementById('element-hero');
-  if (heroEl) heroEl.innerHTML = svgElementRadiance(color, glyph, 240);
+  if (heroEl) injectSvg(heroEl, svgElementRadiance(color, glyph, 240));
 
   // Titel + undertitel
   const nameEl = document.getElementById('element-detail-name');
@@ -1891,7 +1919,7 @@ function showElementCycles(el) {
 
   // UNIK illustration: pentagram-cyklus (kun her)
   const heroEl = document.getElementById('element-cycles-hero');
-  if (heroEl) heroEl.innerHTML = svgPentagramCycle(280);
+  if (heroEl) injectSvg(heroEl, svgPentagramCycle(280));
 
   // Titel forbliver generel
   const titleEl = document.getElementById('element-cycles-title');
@@ -2104,7 +2132,7 @@ function showOrganDetail(organ) {
   // UNIK illustration: svgOrganSignature med organets kinesiske tegn
   const char = ORGAN_CHINESE_CHAR[organ.id] || '氣';
   const heroEl = document.getElementById('organ-hero');
-  if (heroEl) heroEl.innerHTML = svgOrganSignature(char, color, 240);
+  if (heroEl) injectSvg(heroEl, svgOrganSignature(char, color, 240));
 
   // Titel + undertitel
   const nameEl = document.getElementById('organ-name-still');
@@ -2227,7 +2255,7 @@ function showOrganThemes(organ) {
 
   // UNIK illustration: 8-petal mandala med wave-puls (kun her)
   const heroEl = document.getElementById('organ-themes-hero');
-  if (heroEl) heroEl.innerHTML = svgThemesMandala(color, 220);
+  if (heroEl) injectSvg(heroEl, svgThemesMandala(color, 220));
 
   const titleEl = document.getElementById('organ-themes-title');
   if (titleEl) titleEl.textContent = `Mærk ind i din ${organ.name}`;
@@ -2677,7 +2705,7 @@ function showSeasonDetail(seasonKey) {
 
   // UNIK illustration: Breathing constellation (kun her)
   const heroEl = document.getElementById('season-hero');
-  if (heroEl) heroEl.innerHTML = svgBreathingConstellation(color, 260);
+  if (heroEl) injectSvg(heroEl, svgBreathingConstellation(color, 260));
 
   // Titel + undertitel
   const nameEl = document.getElementById('season-name-still');
@@ -2804,7 +2832,7 @@ function showSeasonFood(seasonKey) {
 
   // UNIK illustration: Rising warmth (kun her)
   const heroEl = document.getElementById('food-hero');
-  if (heroEl) heroEl.innerHTML = svgRisingWarmth(color, 220);
+  if (heroEl) injectSvg(heroEl, svgRisingWarmth(color, 220));
 
   // Subtitle — årstids-intro
   const intros = {
@@ -2857,7 +2885,7 @@ function showSeasonMovement(seasonKey) {
 
   // UNIK illustration: Tai Chi flow (kun her)
   const heroEl = document.getElementById('movement-hero');
-  if (heroEl) heroEl.innerHTML = svgTaiChiFlow(color, partnerColor, 220);
+  if (heroEl) injectSvg(heroEl, svgTaiChiFlow(color, partnerColor, 220));
 
   const intros = {
     foraar:    'Blide stræk der åbner lever- og galdemeridianerne — løsn det der er blevet holdt tilbage',
@@ -2908,7 +2936,7 @@ function showSeasonStillness(seasonKey) {
 
   // UNIK illustration: Radiating bell (kun her)
   const heroEl = document.getElementById('stillness-hero');
-  if (heroEl) heroEl.innerHTML = svgRadiatingBell(color, 220);
+  if (heroEl) injectSvg(heroEl, svgRadiatingBell(color, 220));
 
   const intros = {
     foraar:    'Rummet hvor vreden kan landes — og hvor det nye kan lyttes efter',
@@ -3158,7 +3186,7 @@ function showSeasonReflection(seasonKey) {
 
   // UNIK illustration: Inward spiral (kun her)
   const heroEl = document.getElementById('reflection-hero');
-  if (heroEl) heroEl.innerHTML = svgInwardSpiral(color, 220);
+  if (heroEl) injectSvg(heroEl, svgInwardSpiral(color, 220));
 
   const intros = {
     foraar:    'Foråret spørger: hvad vil frem? Hvad holder du tilbage? Hvad venter på din handling?',
@@ -3466,7 +3494,7 @@ function findPatterns(query) {
 function renderExploreScreen() {
   // UNIK illustration: lodret kolonne af 5 årstids-orbs (kun her)
   const heroEl = document.getElementById('explore-hero');
-  if (heroEl) heroEl.innerHTML = svgExploreColumn(200);
+  if (heroEl) injectSvg(heroEl, svgExploreColumn(200));
 
   // Kort-stak: 3 store clickable kort (Årstider, Organer, Elementer)
   const cardsEl = document.getElementById('explore-cards');
@@ -3555,7 +3583,7 @@ function renderExploreScreen() {
 function renderSearchScreen() {
   // UNIK illustration: search compass (kun her)
   const heroEl = document.getElementById('search-hero');
-  if (heroEl) heroEl.innerHTML = svgSearchCompass('var(--accent-gold)', 200);
+  if (heroEl) injectSvg(heroEl, svgSearchCompass('var(--accent-gold)', 200));
 
   // Tilbage-knap — brug navigations-stakken
   document.querySelectorAll('.still-back[data-back-to="home"]').forEach(btn => {
@@ -4335,7 +4363,7 @@ function renderPersonalHome() {
   // Blomster-mandala komposit — det aktuelle element + de 4 andre som kronblade
   const compEl = document.getElementById('home-composite');
   if (compEl) {
-    compEl.innerHTML = svgSeasonComposite(key, 280);
+    injectSvg(compEl, svgSeasonComposite(key, 280));
   }
 
   // Kinesisk glyph under komposit
@@ -4411,7 +4439,7 @@ function renderPersonalHome() {
     });
   }
 
-  // 5-element timeline (horisontal stribe af orbs, aktuel fremhævet)
+  // 5-element timeline (horisontal stribe af orbs med bølge-puls)
   const tlEl = document.getElementById('home-element-timeline');
   if (tlEl) {
     const elementOrder = ['foraar', 'sommer', 'sensommer', 'efteraar', 'vinter'];
@@ -4422,17 +4450,20 @@ function renderPersonalHome() {
       efteraar:  'var(--el-metal)',
       vinter:    'var(--el-water)'
     };
-    tlEl.innerHTML = elementOrder.map((k, i) => {
-      const active = k === key ? ' active' : '';
-      // Hver orb får sin egen delay så de breather ude af takt
-      return `<button class="element-timeline-orb${active}" data-season-key="${k}" aria-label="${SEASON_MAP[k].name}">
-        ${svgElementTimelineOrb(elementColors[k], 30, i * 0.9)}
-      </button>`;
-    }).join('');
-    tlEl.querySelectorAll('.element-timeline-orb').forEach(btn => {
+    // Ryd og opret hver orb som button med SVG indsat via DOMParser
+    // så SMIL <animate> rent faktisk aktiveres
+    while (tlEl.firstChild) tlEl.removeChild(tlEl.firstChild);
+    elementOrder.forEach((k, i) => {
+      const active = k === key ? 'active' : '';
+      const btn = document.createElement('button');
+      btn.className = `element-timeline-orb${active ? ' ' + active : ''}`;
+      btn.dataset.seasonKey = k;
+      btn.setAttribute('aria-label', SEASON_MAP[k].name);
+      injectSvg(btn, svgElementTimelineOrb(elementColors[k], 34, i * 0.9));
       btn.addEventListener('click', () => {
-        showSeasonDetail(btn.dataset.seasonKey);
+        showSeasonDetail(k);
       });
+      tlEl.appendChild(btn);
     });
   }
 
