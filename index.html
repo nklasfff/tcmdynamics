@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>The Patterns Behind — Explore Your Patterns</title>
+  <title>Mønstrene Bag — En rejse gennem de fem årstider</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="app">
@@ -19,16 +19,30 @@
         <img src="Billede 08.10.2025 kl. 16.14.png" alt="Mønstrene Bag" class="hero-img" />
       </div>
 
-      <div class="home-brand">
-        <h1 class="home-brand-title">The Patterns Behind</h1>
-        <p class="home-brand-subtitle">Traditional Chinese Medicine as Self-Exploration</p>
-      </div>
-
       <main class="home-still">
-        <p class="home-welcome" id="home-welcome"></p>
+        <!-- Brand -->
+        <header class="home-brand-still">
+          <h1 class="home-brand-name">mønstrene bag</h1>
+          <p class="home-brand-tagline">en rejse gennem de fem årstider</p>
+        </header>
 
-        <div class="home-season-quiet" id="home-season-quiet"></div>
+        <!-- Intro — hvad er dette -->
+        <p class="home-intro-poem" id="home-intro-poem"></p>
 
+        <!-- Årstid med kinesisk tegn som baggrund -->
+        <button class="home-season-hero" id="home-season-hero" type="button">
+          <span class="home-season-glyph" id="home-season-glyph" aria-hidden="true"></span>
+          <span class="home-season-name" id="home-season-name"></span>
+          <span class="home-season-meta" id="home-season-meta"></span>
+        </button>
+
+        <!-- Kort kontekst om denne årstid -->
+        <p class="home-season-context" id="home-season-context"></p>
+
+        <!-- Decorative divider -->
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
+
+        <!-- Invitation -->
         <div class="home-question" id="home-question"></div>
       </main>
 

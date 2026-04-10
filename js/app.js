@@ -186,7 +186,7 @@ const translations = {
     ariaCloseMenu: 'Close menu'
   },
   da: {
-    pageTitle: 'Mønstrene Bag — Udforsk Dine Mønstre',
+    pageTitle: 'Mønstrene Bag — En rejse gennem de fem årstider',
     brandTitle: 'Mønstrene Bag',
     brandSubtitle: 'Traditionel Kinesisk Medicin som Selvudforskning',
     homeIntro: 'Udforsk organer, meridianer og elementer — og opdag mønstrene bag det, du mærker.',
@@ -367,8 +367,8 @@ const translations = {
   }
 };
 
-let currentLanguage = 'en';
-try { currentLanguage = localStorage.getItem('app-language') || 'en'; } catch(e) {}
+let currentLanguage = 'da';
+try { currentLanguage = localStorage.getItem('app-language') || 'da'; } catch(e) {}
 
 function t(key) {
   return translations[currentLanguage]?.[key] ?? translations.en[key] ?? key;
@@ -1992,95 +1992,140 @@ function renderExploreScreen() {
 // ============================================
 // Personal Home Screen
 // ============================================
+// ============================================
+// Forside — statiske danske tekster og kontekst per årstid
+// ============================================
+
+const SEASON_MAP = {
+  foraar: {
+    name: 'Forår',
+    element: 'Træ',
+    organs: 'Galde-Lever',
+    climate: 'Vind',
+    glyph: '木',
+    color: 'var(--el-wood)',
+    primaryOrganId: 'lever',
+    context: 'Foråret bærer træets energi — kraften der presser opad mod lyset. Mærk hvad der vil frem i dig.',
+    words: [
+      { label: 'Vrede',       organId: 'lever' },
+      { label: 'Frustration', organId: 'lever' },
+      { label: 'Hovedpine',   organId: 'galdeblaere' },
+      { label: 'Stivhed',     organId: 'lever' }
+    ]
+  },
+  sommer: {
+    name: 'Sommer',
+    element: 'Ild',
+    organs: 'Hjerte-Tyndtarm',
+    climate: 'Varme',
+    glyph: '火',
+    color: 'var(--el-fire)',
+    primaryOrganId: 'hjerte',
+    context: 'Sommeren bærer ildens energi — varmen der åbner og forbinder. Mærk hvad der lyser i dig.',
+    words: [
+      { label: 'Uro',          organId: 'hjerte' },
+      { label: 'Søvnløshed',   organId: 'hjerte' },
+      { label: 'Hjertebanken', organId: 'hjerte' },
+      { label: 'Glæde',        organId: 'hjerte' }
+    ]
+  },
+  sensommer: {
+    name: 'Sensommer',
+    element: 'Jord',
+    organs: 'Mave-Milt',
+    climate: 'Fugt',
+    glyph: '土',
+    color: 'var(--el-earth)',
+    primaryOrganId: 'milt',
+    context: 'Sensommeren bærer jordens energi — tyngden der nærer og bærer. Mærk hvor du står grundet.',
+    words: [
+      { label: 'Bekymring',   organId: 'milt' },
+      { label: 'Træthed',     organId: 'milt' },
+      { label: 'Fordøjelse',  organId: 'mavesaek' },
+      { label: 'Oppustethed', organId: 'milt' }
+    ]
+  },
+  efteraar: {
+    name: 'Efterår',
+    element: 'Metal',
+    organs: 'Lunge-Tyktarm',
+    climate: 'Tørhed',
+    glyph: '金',
+    color: 'var(--el-metal)',
+    primaryOrganId: 'lunger',
+    context: 'Efteråret bærer metallets energi — klarheden der slipper og giver plads. Mærk hvad du bærer for længe.',
+    words: [
+      { label: 'Sorg',       organId: 'lunger' },
+      { label: 'Hud',        organId: 'lunger' },
+      { label: 'Åndedræt',   organId: 'lunger' },
+      { label: 'At slippe',  organId: 'tyktarm' }
+    ]
+  },
+  vinter: {
+    name: 'Vinter',
+    element: 'Vand',
+    organs: 'Blære-Nyrer',
+    climate: 'Kulde',
+    glyph: '水',
+    color: 'var(--el-water)',
+    primaryOrganId: 'nyrer',
+    context: 'Vinteren bærer vandets energi — dybden der samler og bevarer. Mærk hvad der hviler i dig.',
+    words: [
+      { label: 'Frygt',      organId: 'nyrer' },
+      { label: 'Træthed',    organId: 'nyrer' },
+      { label: 'Rygsmerter', organId: 'nyrer' },
+      { label: 'Kulde',      organId: 'nyrer' }
+    ]
+  }
+};
+
+const HOME_INTRO = 'Hver årstid har sin egen kraft, sin egen invitation. Denne er din.';
+
 function renderPersonalHome() {
-  // Welcome — just 2 sentences
-  const welcomeEl = document.getElementById('home-welcome');
-  if (welcomeEl && homeWelcome) {
-    // Only first 2 sentences
-    const sentences = homeWelcome.match(/[^.!?]+[.!?]+/g) || [homeWelcome];
-    welcomeEl.textContent = sentences.slice(0, 2).join(' ').trim();
+  const key = getCurrentSeason();
+  const s = SEASON_MAP[key];
+  if (!s) return;
+
+  // Intro — statisk poetisk linje
+  const introEl = document.getElementById('home-intro-poem');
+  if (introEl) introEl.textContent = HOME_INTRO;
+
+  // Årstid — kinesisk tegn + navn + meta
+  const heroEl = document.getElementById('home-season-hero');
+  const glyphEl = document.getElementById('home-season-glyph');
+  const nameEl = document.getElementById('home-season-name');
+  const metaEl = document.getElementById('home-season-meta');
+  if (glyphEl) glyphEl.textContent = s.glyph;
+  if (nameEl) {
+    nameEl.textContent = s.name;
+    nameEl.style.color = s.color;
+  }
+  if (metaEl) metaEl.textContent = `${s.organs} · ${s.climate}`;
+  if (heroEl) {
+    heroEl.style.setProperty('--season-color', s.color);
+    // Fjern tidligere listeners ved at replace node
+    const fresh = heroEl.cloneNode(true);
+    heroEl.parentNode.replaceChild(fresh, heroEl);
+    fresh.addEventListener('click', () => showSeasonDetail(key));
   }
 
-  // Season — just the name, element, one line. Quiet.
-  const seasonEl = document.getElementById('home-season-quiet');
-  if (seasonEl) {
-    const currentKey = getCurrentSeason();
-    const season = seasonsData[currentKey];
-    if (season) {
-      const name = getSeasonName(currentKey);
-      // First sentence of seasonal welcome only
-      const welcome = seasonWelcomes && seasonWelcomes[currentKey] || '';
-      const firstSentence = welcome.match(/[^.!?]+[.!?]/)?.[0] || '';
-      seasonEl.innerHTML = `
-        <button class="home-season-still" data-season="${currentKey}">
-          <span class="home-season-name-still" style="color: ${season.farve}">${name}</span>
-          <span class="home-season-element-still">${season.element}</span>
-          <p class="home-season-line">${firstSentence}</p>
-        </button>
-      `;
-      seasonEl.querySelector('[data-season]').addEventListener('click', () => {
-        showSeasonDetail(currentKey);
-      });
-    }
-  }
+  // Sæson-kontekst (kort prosa om denne årstid)
+  const ctxEl = document.getElementById('home-season-context');
+  if (ctxEl) ctxEl.textContent = s.context;
 
-  // Question — one question, 4 contextual words
+  // Spørgsmål + 4 ord
   const questionEl = document.getElementById('home-question');
   if (questionEl) {
-    const currentKey = getCurrentSeason();
-    // 4 words based on current season
-    const seasonWords = {
-      foraar: [
-        { label: 'Vrede', query: 'vrede' },
-        { label: 'Frustration', query: 'frustration' },
-        { label: 'Hovedpine', query: 'hovedpine' },
-        { label: 'Stivhed', query: 'stivhed' }
-      ],
-      sommer: [
-        { label: 'Uro', query: 'angst' },
-        { label: 'Søvn', query: 'søvn' },
-        { label: 'Hjertebanken', query: 'hjertebanken' },
-        { label: 'Glæde', query: 'glæde' }
-      ],
-      sensommer: [
-        { label: 'Bekymring', query: 'bekymring' },
-        { label: 'Træthed', query: 'træthed' },
-        { label: 'Fordøjelse', query: 'fordøjelse' },
-        { label: 'Oppustethed', query: 'oppustethed' }
-      ],
-      efteraar: [
-        { label: 'Sorg', query: 'sorg' },
-        { label: 'Hud', query: 'hud' },
-        { label: 'Vejrtrækning', query: 'vejrtrækning' },
-        { label: 'At slippe', query: 'at slippe' }
-      ],
-      vinter: [
-        { label: 'Frygt', query: 'frygt' },
-        { label: 'Træthed', query: 'træthed' },
-        { label: 'Rygsmerter', query: 'rygsmerter' },
-        { label: 'Kulde', query: 'kuldefølsomhed' }
-      ]
-    };
-    const words = seasonWords[currentKey] || seasonWords.foraar;
-
     questionEl.innerHTML = `
-      <p class="home-question-text">Hvad mærker du?</p>
+      <p class="home-question-text">Mærk efter</p>
       <div class="home-question-words">
-        ${words.map(w => `<button class="home-word" data-query="${w.query}">${w.label}</button>`).join('<span class="home-word-dot">·</span>')}
+        ${s.words.map(w => `<button class="home-word" data-organ-id="${w.organId}">${w.label}</button>`).join('<span class="home-word-sep" aria-hidden="true">·</span>')}
       </div>
     `;
-
     questionEl.querySelectorAll('.home-word').forEach(btn => {
       btn.addEventListener('click', () => {
-        // Navigate to patterns section and search
-        showScreen('section-patterns');
-        setTimeout(() => {
-          const input = document.getElementById('pattern-search-input');
-          if (input) {
-            input.value = btn.dataset.query;
-            executePatternSearch(btn.dataset.query);
-          }
-        }, 100);
+        const organ = organs.find(o => o.id === btn.dataset.organId);
+        if (organ) showOrganDetail(organ);
       });
     });
   }
