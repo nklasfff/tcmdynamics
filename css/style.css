@@ -464,7 +464,7 @@ body {
 
 /* Brand */
 .home-brand-still {
-  margin: 0 0 var(--rhythm-3);
+  margin: 0 0 var(--rhythm-2);
 }
 
 .home-brand-name {
@@ -3692,28 +3692,7 @@ body {
   opacity: 0.7;
 }
 
-.home-question {
-  text-align: center;
-  margin: 80px 0 0;
-}
-
-.home-question-text {
-  font-family: var(--font-heading);
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--text-secondary);
-  font-style: italic;
-  margin: 0 0 32px 0;
-  letter-spacing: 0.03em;
-  opacity: 0.6;
-}
-
-.home-question-words {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
+/* legacy home-question rules removed — now defined near line 549 */
 
 .home-word {
   font-family: var(--font-heading);

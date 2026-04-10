@@ -2499,7 +2499,7 @@ const HOME_INTRO = 'Hver årstid har sin egen kraft, sin egen invitation. Denne 
 
 // Forår: spirende gren med knopper
 function svgSpring(color) {
-  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+  return `<svg viewBox="30 20 100 140" class="ink-illustration" aria-hidden="true">
     <path d="M80 150 Q82 110 80 70 Q78 50 82 30" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
     <path d="M80 85 Q62 80 50 72" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
     <path d="M80 62 Q98 58 108 50" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
@@ -2513,7 +2513,7 @@ function svgSpring(color) {
 
 // Sommer: tre flamme-stroke der bevæger sig opad
 function svgSummer(color) {
-  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+  return `<svg viewBox="40 20 80 130" class="ink-illustration" aria-hidden="true">
     <path d="M80 140 Q70 110 74 80 Q78 60 80 30" stroke="${color}" stroke-width="1.8" fill="none" opacity="0.8"/>
     <path d="M60 130 Q54 104 58 80 Q62 62 58 44" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
     <path d="M100 132 Q108 108 102 82 Q96 64 104 46" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
@@ -2525,7 +2525,7 @@ function svgSummer(color) {
 
 // Sensommer: bjerg-silhuet med moden frugt i midten
 function svgLateSummer(color) {
-  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+  return `<svg viewBox="15 55 130 75" class="ink-illustration" aria-hidden="true">
     <path d="M20 120 Q45 72 62 92 Q78 60 96 90 Q118 62 140 120" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.75"/>
     <path d="M20 120 L140 120" stroke="${color}" stroke-width="1" fill="none" opacity="0.4"/>
     <circle cx="80" cy="102" r="7" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.85"/>
@@ -2536,7 +2536,7 @@ function svgLateSummer(color) {
 
 // Efterår: enkelt faldende blad
 function svgAutumn(color) {
-  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+  return `<svg viewBox="55 20 65 130" class="ink-illustration" aria-hidden="true">
     <path d="M78 30 Q68 48 64 72 Q62 92 74 108 Q86 118 98 108 Q108 94 102 74 Q94 52 78 30 Z" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
     <path d="M78 30 Q84 68 90 108" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
     <path d="M90 108 Q100 124 108 140" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
@@ -2546,7 +2546,7 @@ function svgAutumn(color) {
 
 // Vinter: tre bølger + måne
 function svgWinter(color) {
-  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+  return `<svg viewBox="15 20 130 130" class="ink-illustration" aria-hidden="true">
     <circle cx="110" cy="40" r="18" fill="none" stroke="${color}" stroke-width="1.3" opacity="0.75"/>
     <path d="M20 110 Q40 96 60 110 Q80 124 100 110 Q120 96 140 110" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
     <path d="M20 124 Q42 114 62 124 Q82 134 102 124 Q122 114 140 124" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
@@ -2680,13 +2680,182 @@ function getPathIcon(pathName, color) {
   return svg.replace('class="ink-illustration"', 'class="ink-icon"');
 }
 
-// Helper — årstids-motiv til et organ (via element-lookup)
+// ============================================
+// Unikke organ-motiver (ét blæk-symbol per organ)
+// ============================================
+
+// Lever — forgrenet træ der planlægger
+function svgOrganLever(color) {
+  return `<svg viewBox="30 15 100 140" class="ink-illustration" aria-hidden="true">
+    <path d="M80 150 Q82 120 80 90 Q78 60 80 25" stroke="${color}" stroke-width="1.8" fill="none" opacity="0.85"/>
+    <path d="M80 90 Q60 80 42 66 Q34 58 30 46" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <path d="M80 80 Q100 72 116 58 Q126 48 128 34" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <path d="M80 60 Q68 50 58 36" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <path d="M80 55 Q94 44 106 30" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <circle cx="30" cy="46" r="2" fill="${color}" opacity="0.7"/>
+    <circle cx="128" cy="34" r="2" fill="${color}" opacity="0.7"/>
+    <circle cx="58" cy="36" r="1.8" fill="${color}" opacity="0.6"/>
+    <circle cx="106" cy="30" r="1.8" fill="${color}" opacity="0.6"/>
+    <circle cx="80" cy="25" r="3" fill="${color}" opacity="0.9"/>
+  </svg>`;
+}
+
+// Galdeblære — beslutningens sværd: en opadgående skudt spire
+function svgOrganGaldeblaere(color) {
+  return `<svg viewBox="40 15 80 140" class="ink-illustration" aria-hidden="true">
+    <path d="M80 150 Q80 100 80 50 L80 22" stroke="${color}" stroke-width="1.8" fill="none" opacity="0.85"/>
+    <path d="M80 70 L66 54" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M80 58 L94 42" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M80 22 L72 30" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.75"/>
+    <path d="M80 22 L88 30" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.75"/>
+    <circle cx="66" cy="54" r="2" fill="${color}" opacity="0.7"/>
+    <circle cx="94" cy="42" r="2" fill="${color}" opacity="0.7"/>
+    <circle cx="80" cy="22" r="2.5" fill="${color}" opacity="0.9"/>
+  </svg>`;
+}
+
+// Hjerte — enkelt flamme med en gnist
+function svgOrganHjerte(color) {
+  return `<svg viewBox="40 20 80 130" class="ink-illustration" aria-hidden="true">
+    <path d="M80 140 Q60 110 66 80 Q72 55 80 30 Q88 55 94 80 Q100 110 80 140 Z" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M80 140 Q76 110 80 85 Q84 62 80 40" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <circle cx="80" cy="78" r="3" fill="${color}" opacity="0.9"/>
+    <circle cx="80" cy="30" r="2" fill="${color}" opacity="0.75"/>
+  </svg>`;
+}
+
+// Tyndtarm — et vindende vandløb (adskiller klart fra uklart)
+function svgOrganTyndtarm(color) {
+  return `<svg viewBox="20 30 120 100" class="ink-illustration" aria-hidden="true">
+    <path d="M28 50 Q50 44 62 62 Q74 82 58 98 Q40 112 60 126 Q80 136 100 126 Q118 114 108 98 Q96 80 112 64 Q124 50 134 56" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <circle cx="28" cy="50" r="2" fill="${color}" opacity="0.7"/>
+    <circle cx="134" cy="56" r="2" fill="${color}" opacity="0.7"/>
+    <circle cx="68" cy="72" r="1.4" fill="${color}" opacity="0.5"/>
+    <circle cx="100" cy="108" r="1.4" fill="${color}" opacity="0.5"/>
+  </svg>`;
+}
+
+// Milt — et kerneaks (hvedestrå der nærer)
+function svgOrganMilt(color) {
+  return `<svg viewBox="40 15 80 140" class="ink-illustration" aria-hidden="true">
+    <path d="M80 150 Q80 100 80 45 L80 22" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M80 55 Q68 48 62 38" stroke="${color}" stroke-width="1" fill="none" opacity="0.65"/>
+    <path d="M80 55 Q92 48 98 38" stroke="${color}" stroke-width="1" fill="none" opacity="0.65"/>
+    <path d="M80 72 Q64 66 58 54" stroke="${color}" stroke-width="1" fill="none" opacity="0.6"/>
+    <path d="M80 72 Q96 66 102 54" stroke="${color}" stroke-width="1" fill="none" opacity="0.6"/>
+    <path d="M80 90 Q62 84 54 70" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <path d="M80 90 Q98 84 106 70" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <circle cx="62" cy="38" r="1.8" fill="${color}" opacity="0.75"/>
+    <circle cx="98" cy="38" r="1.8" fill="${color}" opacity="0.75"/>
+    <circle cx="80" cy="22" r="2.5" fill="${color}" opacity="0.9"/>
+  </svg>`;
+}
+
+// Mavesæk — en rund gryde der modtager
+function svgOrganMavesaek(color) {
+  return `<svg viewBox="20 30 120 100" class="ink-illustration" aria-hidden="true">
+    <path d="M40 60 Q80 56 120 60" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M36 62 Q36 110 60 126 Q80 134 100 126 Q124 110 124 62" stroke="${color}" stroke-width="1.7" fill="none" opacity="0.85"/>
+    <path d="M40 60 Q80 70 120 60" stroke="${color}" stroke-width="1" fill="none" opacity="0.5"/>
+    <path d="M60 42 Q56 34 62 26" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <path d="M80 40 Q78 30 84 22" stroke="${color}" stroke-width="1.1" fill="none" opacity="0.6"/>
+    <path d="M100 42 Q104 34 98 26" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+  </svg>`;
+}
+
+// Lunger — en åndedrag-sky der stiger
+function svgOrganLunger(color) {
+  return `<svg viewBox="30 20 100 130" class="ink-illustration" aria-hidden="true">
+    <path d="M80 145 Q80 120 80 95" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M80 95 Q58 88 46 70" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M80 95 Q102 88 114 70" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M46 70 Q40 54 50 40 Q62 28 74 34" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <path d="M114 70 Q120 54 110 40 Q98 28 86 34" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <path d="M74 34 Q80 28 86 34" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <circle cx="80" cy="95" r="2.2" fill="${color}" opacity="0.8"/>
+  </svg>`;
+}
+
+// Tyktarm — et faldende blad med blæk-hale (at slippe)
+function svgOrganTyktarm(color) {
+  return `<svg viewBox="40 20 80 140" class="ink-illustration" aria-hidden="true">
+    <path d="M78 30 Q60 50 56 72 Q54 90 66 100 Q78 108 90 100 Q104 88 100 68 Q94 48 78 30 Z" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M78 30 Q80 60 82 100" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <path d="M82 100 Q90 120 96 140" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <circle cx="96" cy="140" r="2" fill="${color}" opacity="0.7"/>
+  </svg>`;
+}
+
+// Nyrer — en dyb brønd med et frø
+function svgOrganNyrer(color) {
+  return `<svg viewBox="30 15 100 140" class="ink-illustration" aria-hidden="true">
+    <ellipse cx="80" cy="50" rx="32" ry="8" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.75"/>
+    <path d="M48 50 Q48 110 58 140" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M112 50 Q112 110 102 140" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M58 140 Q80 148 102 140" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M58 80 Q80 86 102 80" stroke="${color}" stroke-width="0.9" fill="none" opacity="0.45"/>
+    <circle cx="80" cy="100" r="4" fill="${color}" opacity="0.85"/>
+    <path d="M80 100 Q80 92 82 86" stroke="${color}" stroke-width="1" fill="none" opacity="0.6"/>
+  </svg>`;
+}
+
+// Blære — tre bølger med måne-refleksion
+function svgOrganBlaere(color) {
+  return `<svg viewBox="15 30 130 100" class="ink-illustration" aria-hidden="true">
+    <circle cx="110" cy="50" r="14" fill="none" stroke="${color}" stroke-width="1.3" opacity="0.75"/>
+    <path d="M20 90 Q40 78 60 90 Q80 102 100 90 Q120 78 140 90" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M20 104 Q42 94 62 104 Q82 114 102 104 Q122 94 140 104" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
+    <path d="M20 118 Q44 110 64 118 Q84 126 104 118 Q124 110 140 118" stroke="${color}" stroke-width="1" fill="none" opacity="0.45"/>
+    <circle cx="105" cy="90" r="1.4" fill="${color}" opacity="0.5"/>
+  </svg>`;
+}
+
+// Pericardium — hjerte inden i beskyttende cirkel
+function svgOrganPericardium(color) {
+  return `<svg viewBox="30 25 100 110" class="ink-illustration" aria-hidden="true">
+    <circle cx="80" cy="80" r="48" fill="none" stroke="${color}" stroke-width="1.2" opacity="0.6"/>
+    <path d="M80 110 Q62 92 60 74 Q58 58 72 56 Q80 58 80 68 Q80 58 88 56 Q102 58 100 74 Q98 92 80 110 Z" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.85"/>
+    <circle cx="80" cy="78" r="2" fill="${color}" opacity="0.8"/>
+  </svg>`;
+}
+
+// San Jiao — tre brændere som tre horisontale linjer
+function svgOrganSanjiao(color) {
+  return `<svg viewBox="25 30 110 100" class="ink-illustration" aria-hidden="true">
+    <path d="M34 50 Q80 44 126 50" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M34 80 Q80 74 126 80" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.75"/>
+    <path d="M34 110 Q80 104 126 110" stroke="${color}" stroke-width="1.4" fill="none" opacity="0.7"/>
+    <circle cx="80" cy="48" r="2" fill="${color}" opacity="0.75"/>
+    <circle cx="80" cy="78" r="2" fill="${color}" opacity="0.75"/>
+    <circle cx="80" cy="108" r="2" fill="${color}" opacity="0.75"/>
+    <path d="M80 52 L80 76" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.45"/>
+    <path d="M80 82 L80 106" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.45"/>
+  </svg>`;
+}
+
+// Helper — unikt motiv per organ
+function getOrganIllustration(organ, color) {
+  const map = {
+    lever: svgOrganLever,
+    galdeblaere: svgOrganGaldeblaere,
+    hjerte: svgOrganHjerte,
+    tyndtarm: svgOrganTyndtarm,
+    milt: svgOrganMilt,
+    mavesaek: svgOrganMavesaek,
+    lunger: svgOrganLunger,
+    tyktarm: svgOrganTyktarm,
+    nyrer: svgOrganNyrer,
+    blaere: svgOrganBlaere,
+    pericardium: svgOrganPericardium,
+    sanjiao: svgOrganSanjiao
+  };
+  const fn = organ && organ.id ? map[organ.id] : null;
+  return fn ? fn(color) : '';
+}
+
+// Bagud-kompatibilitet — gamle kald bruger nu unikke organ-motiver
 function getOrganSeasonIllustration(organ, color) {
-  const element = findElementForOrgan(organ);
-  if (!element) return '';
-  const seasonKey = findSeasonKeyForElement(element);
-  if (!seasonKey) return '';
-  return getSeasonIllustration(seasonKey, color);
+  return getOrganIllustration(organ, color);
 }
 
 function renderPersonalHome() {
