@@ -2431,29 +2431,225 @@ const SEASON_MAP = {
 
 const HOME_INTRO = 'Hver årstid har sin egen kraft, sin egen invitation. Denne er din.';
 
+// ============================================
+// Ink illustrations — SVG blæk-kalligrafi
+// ============================================
+
+// Forår: spirende gren med knopper
+function svgSpring(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M80 150 Q82 110 80 70 Q78 50 82 30" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M80 85 Q62 80 50 72" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <path d="M80 62 Q98 58 108 50" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <path d="M82 40 Q72 34 64 28" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <circle cx="50" cy="72" r="3" fill="${color}" opacity="0.85"/>
+    <circle cx="108" cy="50" r="3" fill="${color}" opacity="0.85"/>
+    <circle cx="64" cy="28" r="2.5" fill="${color}" opacity="0.75"/>
+    <circle cx="82" cy="30" r="3.5" fill="${color}" opacity="0.9"/>
+  </svg>`;
+}
+
+// Sommer: tre flamme-stroke der bevæger sig opad
+function svgSummer(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M80 140 Q70 110 74 80 Q78 60 80 30" stroke="${color}" stroke-width="1.8" fill="none" opacity="0.8"/>
+    <path d="M60 130 Q54 104 58 80 Q62 62 58 44" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
+    <path d="M100 132 Q108 108 102 82 Q96 64 104 46" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
+    <circle cx="80" cy="30" r="3" fill="${color}" opacity="0.9"/>
+    <circle cx="58" cy="44" r="2.2" fill="${color}" opacity="0.7"/>
+    <circle cx="104" cy="46" r="2.2" fill="${color}" opacity="0.7"/>
+  </svg>`;
+}
+
+// Sensommer: bjerg-silhuet med moden frugt i midten
+function svgLateSummer(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M20 120 Q45 72 62 92 Q78 60 96 90 Q118 62 140 120" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.75"/>
+    <path d="M20 120 L140 120" stroke="${color}" stroke-width="1" fill="none" opacity="0.4"/>
+    <circle cx="80" cy="102" r="7" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.85"/>
+    <circle cx="80" cy="102" r="2" fill="${color}" opacity="0.9"/>
+    <path d="M80 95 Q84 88 88 86" stroke="${color}" stroke-width="1" fill="none" opacity="0.6"/>
+  </svg>`;
+}
+
+// Efterår: enkelt faldende blad
+function svgAutumn(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M78 30 Q68 48 64 72 Q62 92 74 108 Q86 118 98 108 Q108 94 102 74 Q94 52 78 30 Z" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M78 30 Q84 68 90 108" stroke="${color}" stroke-width="1" fill="none" opacity="0.55"/>
+    <path d="M90 108 Q100 124 108 140" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.65"/>
+    <circle cx="108" cy="140" r="2" fill="${color}" opacity="0.7"/>
+  </svg>`;
+}
+
+// Vinter: tre bølger + måne
+function svgWinter(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <circle cx="110" cy="40" r="18" fill="none" stroke="${color}" stroke-width="1.3" opacity="0.75"/>
+    <path d="M20 110 Q40 96 60 110 Q80 124 100 110 Q120 96 140 110" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M20 124 Q42 114 62 124 Q82 134 102 124 Q122 114 140 124" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.6"/>
+    <path d="M20 138 Q44 130 64 138 Q84 146 104 138 Q124 130 140 138" stroke="${color}" stroke-width="1" fill="none" opacity="0.45"/>
+  </svg>`;
+}
+
+// Dør-motiv: risskål/tekop med damp (Nær dig selv)
+function svgFood(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M44 82 Q80 100 116 82 L110 118 Q80 130 50 118 Z" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M44 82 Q80 88 116 82" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.6"/>
+    <path d="M62 56 Q58 44 64 32" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.6"/>
+    <path d="M80 54 Q82 40 78 26" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M98 56 Q100 44 96 30" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.55"/>
+  </svg>`;
+}
+
+// Dør-motiv: bøjet kropsform (Bevæg dig)
+function svgMovement(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <circle cx="80" cy="36" r="7" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.8"/>
+    <path d="M80 43 Q80 60 74 76" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M74 76 Q64 90 62 108" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.75"/>
+    <path d="M74 76 Q94 78 104 92" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.7"/>
+    <path d="M62 108 Q68 124 60 138" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.65"/>
+    <path d="M104 92 Q108 108 100 120" stroke="${color}" stroke-width="1.3" fill="none" opacity="0.65"/>
+  </svg>`;
+}
+
+// Dør-motiv: cirkel med centrum-punkt (Bliv stille)
+function svgStillness(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <circle cx="80" cy="80" r="50" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.75"/>
+    <circle cx="80" cy="80" r="34" fill="none" stroke="${color}" stroke-width="1" opacity="0.5"/>
+    <circle cx="80" cy="80" r="3.5" fill="${color}" opacity="0.9"/>
+  </svg>`;
+}
+
+// Dør-motiv: halvmåne/pennespids (Reflektér)
+function svgReflection(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M48 80 Q48 38 90 38 Q70 60 70 80 Q70 100 90 122 Q48 122 48 80 Z" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <circle cx="100" cy="80" r="2.5" fill="${color}" opacity="0.75"/>
+    <circle cx="112" cy="74" r="1.8" fill="${color}" opacity="0.6"/>
+    <circle cx="120" cy="86" r="1.5" fill="${color}" opacity="0.5"/>
+  </svg>`;
+}
+
+// Meditations-motiv: ét blæk-cirkel (organ themes)
+function svgMeditation(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M80 30 Q134 30 130 84 Q126 134 76 130 Q26 126 30 76 Q34 26 82 30" stroke="${color}" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <circle cx="80" cy="80" r="2.5" fill="${color}" opacity="0.85"/>
+  </svg>`;
+}
+
+// Cyklus-motiv: fem punkter forbundet (element cycles)
+function svgCycles(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <circle cx="80" cy="30" r="4" fill="${color}" opacity="0.9"/>
+    <circle cx="130" cy="66" r="4" fill="${color}" opacity="0.9"/>
+    <circle cx="110" cy="124" r="4" fill="${color}" opacity="0.9"/>
+    <circle cx="50" cy="124" r="4" fill="${color}" opacity="0.9"/>
+    <circle cx="30" cy="66" r="4" fill="${color}" opacity="0.9"/>
+    <path d="M80 30 Q120 40 130 66" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M130 66 Q128 106 110 124" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M110 124 Q80 134 50 124" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M50 124 Q32 106 30 66" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M30 66 Q40 40 80 30" stroke="${color}" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M80 30 L110 124" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M110 124 L30 66" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M30 66 L130 66" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M130 66 L50 124" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M50 124 L80 30" stroke="${color}" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </svg>`;
+}
+
+// Søg-motiv: cirkel der lytter indad
+function svgSearch(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <circle cx="80" cy="80" r="42" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.75"/>
+    <path d="M80 80 Q92 76 104 82" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <circle cx="80" cy="80" r="2.5" fill="${color}" opacity="0.9"/>
+    <circle cx="104" cy="82" r="2" fill="${color}" opacity="0.7"/>
+  </svg>`;
+}
+
+// Udforsk-motiv: tre stablede streger (tre døre)
+function svgExplore(color) {
+  return `<svg viewBox="0 0 160 160" class="ink-illustration" aria-hidden="true">
+    <path d="M40 52 Q80 42 120 52" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M40 80 Q80 70 120 80" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <path d="M40 108 Q80 98 120 108" stroke="${color}" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <circle cx="120" cy="52" r="2" fill="${color}" opacity="0.85"/>
+    <circle cx="120" cy="80" r="2" fill="${color}" opacity="0.75"/>
+    <circle cx="120" cy="108" r="2" fill="${color}" opacity="0.65"/>
+  </svg>`;
+}
+
+// Helper — vælg SVG per årstidsnøgle
+function getSeasonIllustration(seasonKey, color) {
+  const map = {
+    foraar: svgSpring,
+    sommer: svgSummer,
+    sensommer: svgLateSummer,
+    efteraar: svgAutumn,
+    vinter: svgWinter
+  };
+  const fn = map[seasonKey];
+  return fn ? fn(color) : '';
+}
+
+// Helper — vælg dør-motiv per path-navn
+function getPathIllustration(pathName, color) {
+  const map = {
+    food: svgFood,
+    movement: svgMovement,
+    stillness: svgStillness,
+    reflection: svgReflection
+  };
+  const fn = map[pathName];
+  return fn ? fn(color) : '';
+}
+
+// Helper — lille ikon til dørknapper (samme SVG, mindre størrelse)
+function getPathIcon(pathName, color) {
+  const svg = getPathIllustration(pathName, color);
+  if (!svg) return '';
+  // Replace class to make it small inline icon
+  return svg.replace('class="ink-illustration"', 'class="ink-icon"');
+}
+
+// Helper — årstids-motiv til et organ (via element-lookup)
+function getOrganSeasonIllustration(organ, color) {
+  const element = findElementForOrgan(organ);
+  if (!element) return '';
+  const seasonKey = findSeasonKeyForElement(element);
+  if (!seasonKey) return '';
+  return getSeasonIllustration(seasonKey, color);
+}
+
 function renderPersonalHome() {
   const key = getCurrentSeason();
   const s = SEASON_MAP[key];
   if (!s) return;
 
-  // Intro — statisk poetisk linje
-  const introEl = document.getElementById('home-intro-poem');
-  if (introEl) introEl.textContent = HOME_INTRO;
+  // Blæk-illustration per årstid
+  const illEl = document.getElementById('home-season-illustration');
+  if (illEl) {
+    illEl.innerHTML = getSeasonIllustration(key, s.color);
+  }
 
-  // Årstid — kinesisk tegn + navn + meta
-  const heroEl = document.getElementById('home-season-hero');
-  const glyphEl = document.getElementById('home-season-glyph');
+  // Årstid — navn + meta
   const nameEl = document.getElementById('home-season-name');
   const metaEl = document.getElementById('home-season-meta');
-  if (glyphEl) glyphEl.textContent = s.glyph;
   if (nameEl) {
     nameEl.textContent = s.name;
     nameEl.style.color = s.color;
   }
   if (metaEl) metaEl.textContent = `${s.organs} · ${s.climate}`;
+
+  const heroEl = document.getElementById('home-season-hero');
   if (heroEl) {
     heroEl.style.setProperty('--season-color', s.color);
-    // Fjern tidligere listeners ved at replace node
     const fresh = heroEl.cloneNode(true);
     heroEl.parentNode.replaceChild(fresh, heroEl);
     fresh.addEventListener('click', () => showSeasonDetail(key));

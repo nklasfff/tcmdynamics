@@ -43,23 +43,31 @@
   --track-label: 0.25em;
   --track-micro: 0.15em;
 
-  /* Afstande — 8px grid */
+  /* Harmonisk rytme — kun 5 niveauer */
+  --rhythm-1: 24px;   /* intim: mellem linjer i samme blok */
+  --rhythm-2: 40px;   /* tæt: mellem relaterede blokke */
+  --rhythm-3: 72px;   /* rum: mellem sektioner */
+  --rhythm-4: 112px;  /* åndedrag: mellem store faser */
+  --rhythm-5: 56px;   /* side-top: padding under hero/nav */
+
+  /* Læsebredder — kun to */
+  --read-wide: 420px;
+  --read-narrow: 320px;
+
+  /* Side-padding */
+  --side-pad: 32px;
+  --bottom-pad: 140px;
+  --top-pad: 56px;
+
+  /* Legacy spacing (for gammel CSS der endnu ikke er opdateret) */
   --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 32px;
   --space-lg: 48px;
   --space-xl: 80px;
   --space-xxl: 120px;
-
-  /* Max-widths for læsbarhed */
-  --read-width: 400px;
-  --read-narrow: 360px;
+  --read-width: var(--read-wide);
   --read-tight: 300px;
-
-  /* Side-padding */
-  --side-pad: 32px;
-  --bottom-pad: 140px;
-  --top-pad: 80px;
 
   /* Safe areas */
   --safe-top: env(safe-area-inset-top, 0px);
@@ -284,6 +292,69 @@ body {
   min-height: 100dvh;
 }
 
+/* ============================================
+   Ink illustrations — SVG blæk-kalligrafi
+   ============================================ */
+
+.screen-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--rhythm-1);
+  width: 100%;
+  max-width: 220px;
+}
+
+.screen-illustration.size-large {
+  max-width: 200px;
+  height: 200px;
+}
+
+.screen-illustration.size-medium {
+  max-width: 160px;
+  height: 160px;
+}
+
+.screen-illustration.size-small {
+  max-width: 100px;
+  height: 100px;
+}
+
+.screen-illustration.size-tiny {
+  max-width: 80px;
+  height: 80px;
+}
+
+.ink-illustration {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.ink-illustration path,
+.ink-illustration circle,
+.ink-illustration line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Small inline icons (for door buttons) */
+.ink-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ink-icon path,
+.ink-icon circle,
+.ink-icon line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 #app {
   max-width: 700px;
   margin: 0 auto;
@@ -384,7 +455,7 @@ body {
 
 .home-still {
   flex: 1;
-  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -393,7 +464,7 @@ body {
 
 /* Brand */
 .home-brand-still {
-  margin-bottom: var(--space-lg);
+  margin: 0 0 var(--rhythm-3);
 }
 
 .home-brand-name {
@@ -416,20 +487,7 @@ body {
   margin: 0;
 }
 
-/* Poetisk intro */
-.home-intro-poem {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  font-weight: 300;
-  font-style: italic;
-  line-height: var(--leading-body);
-  color: var(--text-secondary);
-  max-width: 300px;
-  margin: 0 auto var(--space-xxl);
-  letter-spacing: 0.02em;
-}
-
-/* Sæson-hero: kinesisk tegn som baggrund, navn foran */
+/* Sæson-hero: navn + meta */
 .home-season-hero {
   position: relative;
   display: flex;
@@ -438,44 +496,24 @@ body {
   justify-content: center;
   width: 100%;
   padding: 0;
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--rhythm-2);
   background: none;
   border: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
-.home-season-glyph {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -55%);
-  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-  font-size: 280px;
-  font-weight: 300;
-  line-height: 1;
-  color: var(--season-color, var(--accent-gold));
-  opacity: 0.07;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-
 .home-season-name {
-  position: relative;
-  z-index: 1;
   font-family: var(--font-serif);
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0.02em;
   color: var(--season-color, var(--text-primary));
-  padding: 60px 0 16px;
+  margin: 0 0 8px;
 }
 
 .home-season-meta {
-  position: relative;
-  z-index: 1;
   font-family: var(--font-serif);
   font-size: var(--size-label);
   font-weight: 400;
@@ -491,8 +529,8 @@ body {
   font-weight: 300;
   line-height: var(--leading-body);
   color: var(--text-primary);
-  max-width: 360px;
-  margin: 0 auto var(--space-xl);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
   letter-spacing: 0.01em;
 }
 
@@ -503,7 +541,7 @@ body {
   color: var(--text-muted);
   opacity: 0.5;
   letter-spacing: 0.5em;
-  margin: 0 0 var(--space-xl);
+  margin: 0 0 var(--rhythm-2);
   padding-left: 0.5em;
 }
 
@@ -518,7 +556,7 @@ body {
   font-weight: 300;
   font-style: italic;
   color: var(--text-secondary);
-  margin: 0 0 var(--space-md);
+  margin: 0 0 var(--rhythm-1);
   letter-spacing: 0.02em;
 }
 
@@ -528,7 +566,7 @@ body {
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
-  max-width: 320px;
+  max-width: var(--read-narrow);
   margin: 0 auto;
 }
 
