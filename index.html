@@ -185,80 +185,58 @@
       </main>
     </div>
 
-    <!-- Organ Portrait Screen -->
+    <!-- Organ Portrait — stille flyder -->
     <div id="screen-organ" class="screen">
-      <header class="detail-header">
-        <button class="back-btn" id="btn-back-organ">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Back</span>
-        </button>
-        <div class="detail-title-area">
-          <span class="detail-icon" id="organ-detail-icon"></span>
-          <h1 id="organ-detail-name"></h1>
-          <p class="detail-nickname" id="organ-detail-nickname"></p>
+      <button class="still-back" id="btn-back-organ" aria-label="Tilbage">←</button>
+      <main class="organ-still">
+        <div class="organ-hero-still">
+          <span class="organ-glyph-still" id="organ-glyph-still" aria-hidden="true"></span>
+          <h1 class="organ-name-still" id="organ-name-still"></h1>
+          <p class="organ-meta-still" id="organ-meta-still"></p>
         </div>
-        <div class="detail-meta" id="organ-detail-meta"></div>
-      </header>
-
-      <main class="portrait-content">
-        <div class="portrait-text" id="organ-description"></div>
-        <div class="portrait-links" id="organ-portrait-links"></div>
+        <div class="organ-portrait-text" id="organ-description"></div>
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
+        <div class="organ-threads" id="organ-portrait-links"></div>
       </main>
     </div>
 
-    <!-- Organ Themes Screen (Mærk ind) -->
+    <!-- Organ Themes — Mærk ind i din [organ] -->
     <div id="screen-organ-themes" class="screen">
-      <header class="detail-header">
-        <button class="back-btn" id="btn-back-organ-themes">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Back</span>
-        </button>
-        <div class="detail-title-area">
-          <span class="detail-icon" id="organ-themes-icon"></span>
-          <h1 id="organ-themes-title"></h1>
-        </div>
-      </header>
-      <main class="portrait-content">
+      <button class="still-back" id="btn-back-organ-themes" aria-label="Tilbage">←</button>
+      <main class="organ-themes-still">
+        <p class="organ-themes-label" id="organ-themes-icon"></p>
+        <h1 class="organ-themes-title" id="organ-themes-title"></h1>
         <div class="themes-flow" id="organ-themes-flow"></div>
-        <div class="organ-clock-wisdom" id="organ-themes-clock"></div>
+        <div class="organ-clock-whisper" id="organ-themes-clock"></div>
       </main>
     </div>
 
-    <!-- Element Portrait Screen -->
+    <!-- Element Portrait — stille flyder -->
     <div id="screen-element" class="screen">
-      <header class="detail-header">
-        <button class="back-btn" id="btn-back-element">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Back</span>
-        </button>
-        <div class="detail-title-area">
-          <span class="detail-icon" id="element-detail-icon"></span>
-          <h1 id="element-detail-name"></h1>
-          <p class="detail-nickname" id="element-detail-chinese"></p>
+      <button class="still-back" id="btn-back-element" aria-label="Tilbage">←</button>
+      <main class="element-still">
+        <div class="element-hero-still">
+          <span class="element-glyph-still" id="element-glyph-still" aria-hidden="true"></span>
+          <h1 class="element-name-still" id="element-detail-name"></h1>
+          <p class="element-meta-still" id="element-detail-chinese"></p>
         </div>
-        <div class="detail-meta" id="element-detail-meta"></div>
-      </header>
-
-      <main class="portrait-content">
-        <div class="portrait-text" id="element-description"></div>
-        <div class="element-organs-nav" id="element-organs-nav"></div>
-        <div class="portrait-links" id="element-portrait-links"></div>
+        <div class="element-portrait-text" id="element-description"></div>
+        <div class="home-ornament" aria-hidden="true">· · ·</div>
+        <div class="element-organs-inline" id="element-organs-nav"></div>
+        <div class="element-threads" id="element-portrait-links"></div>
       </main>
+      <!-- Hidden legacy meta container (for compatibility) -->
+      <div id="element-detail-meta" style="display:none"></div>
+      <span id="element-detail-icon" style="display:none"></span>
     </div>
 
-    <!-- Element Cycles Screen -->
+    <!-- Element Cycles — hvordan elementerne danser sammen -->
     <div id="screen-element-cycles" class="screen">
-      <header class="detail-header">
-        <button class="back-btn" id="btn-back-element-cycles">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Back</span>
-        </button>
-        <div class="detail-title-area">
-          <span class="detail-icon" id="element-cycles-icon"></span>
-          <h1 id="element-cycles-title"></h1>
-        </div>
-      </header>
-      <main class="portrait-content">
+      <button class="still-back" id="btn-back-element-cycles" aria-label="Tilbage">←</button>
+      <main class="element-cycles-still">
+        <p class="cycles-label" id="element-cycles-icon"></p>
+        <h1 class="cycles-title" id="element-cycles-title"></h1>
+        <p class="cycles-intro">Hvert element næres af et andet, og holder et andet i balance. Sådan danser de sammen.</p>
         <div class="cycles-flow" id="element-cycles-flow"></div>
       </main>
     </div>

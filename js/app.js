@@ -835,139 +835,155 @@ function renderFoundation() {
 // ============================================
 let _currentElement = null;
 
+// ============================================
+// Element Portrait — stille
+// ============================================
 function showElementDetail(el) {
   _currentElement = el;
 
-  document.getElementById('element-detail-icon').textContent = el.icon;
-  document.getElementById('element-detail-name').textContent = el.name;
-  document.getElementById('element-detail-chinese').textContent = el.chineseName;
+  const color = getElementColorVar(el);
+  const glyph = getElementGlyph(el);
 
-  document.getElementById('element-detail-meta').innerHTML = `
-    <span class="meta-tag"><span class="dot" style="background: ${el.color}"></span> ${el.season}</span>
-    <span class="meta-tag">${el.emotion}</span>
-    <span class="meta-tag">${el.direction}</span>
-  `;
+  // Hero
+  const glyphEl = document.getElementById('element-glyph-still');
+  if (glyphEl) {
+    glyphEl.textContent = glyph;
+    glyphEl.style.color = color;
+  }
 
-  // Portrait text
+  const nameEl = document.getElementById('element-detail-name');
+  if (nameEl) {
+    nameEl.textContent = el.name;
+    nameEl.style.color = color;
+  }
+
+  const metaEl = document.getElementById('element-detail-chinese');
+  if (metaEl) {
+    const parts = [];
+    if (el.season) parts.push(el.season);
+    if (el.emotion) parts.push(el.emotion);
+    if (el.direction) parts.push(el.direction);
+    metaEl.textContent = parts.join(' · ').toUpperCase();
+  }
+
+  // Screen color
+  const screen = document.getElementById('screen-element');
+  if (screen) screen.style.setProperty('--season-color', color);
+
+  // Portrait-tekst (flydende)
   const elPortrait = elementPortraits && elementPortraits[el.id];
   const paragraphs = elPortrait && elPortrait.length > 0 ? elPortrait : el.description;
   document.getElementById('element-description').innerHTML =
     paragraphs.map(p => `<p>${p}</p>`).join('');
 
-  // Organ links
-  document.getElementById('element-organs-nav').innerHTML = `
-    <div class="element-organs-section">
-      ${el.organs.map(organName => {
-        const organ = organs.find(o => o.name === organName);
-        if (!organ) return '';
-        return `
-          <div class="element-organ-link" data-organ-id="${organ.id}">
-            <span class="element-organ-icon">${organ.icon}</span>
-            <div class="element-organ-info">
-              <div class="element-organ-name">${organ.name}</div>
-              <div class="element-organ-nickname">"${organ.nickname}" · ${organ.yinYang}</div>
-            </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </div>
-        `;
-      }).join('')}
-    </div>
-  `;
-
-  document.querySelectorAll('#element-organs-nav .element-organ-link').forEach(link => {
-    link.addEventListener('click', () => {
-      const organ = organs.find(o => o.id === link.dataset.organId);
-      if (organ) showOrganDetail(organ);
+  // Organer som to stille linjer
+  const organsEl = document.getElementById('element-organs-nav');
+  if (organsEl && el.organs) {
+    const organNames = el.organs.map(organName => {
+      const organ = organs.find(o => o.name === organName);
+      return organ ? `<button class="element-organ-thread" data-organ-id="${organ.id}"><span class="thread-label">${organ.name}</span></button>` : '';
+    }).join('');
+    organsEl.innerHTML = `
+      <p class="element-organs-lead">Elementet bæres af</p>
+      ${organNames}
+    `;
+    organsEl.querySelectorAll('[data-organ-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const organ = organs.find(o => o.id === btn.dataset.organId);
+        if (organ) showOrganDetail(organ);
+      });
     });
-  });
+  }
 
-  // Portrait links
-  const seasonKey = elementToSeason[el.name];
-  let linksHtml = '';
-
+  // Threads
+  const seasonKey = elementToSeason && elementToSeason[el.name];
+  const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || getSeasonName(seasonKey)) : '';
+  let threadsHtml = '';
   if (seasonKey) {
-    linksHtml += `
-      <button class="portrait-link" data-season-key="${seasonKey}">
-        <span class="portrait-link-text">${getSeasonName(seasonKey)}</span>
-        <span class="portrait-link-arrow">→</span>
+    threadsHtml += `
+      <button class="element-thread" data-action="season" data-id="${seasonKey}">
+        <span class="thread-label">Udforsk ${seasonName.toLowerCase()}et</span>
       </button>
     `;
   }
-
   if (el.cycles) {
-    linksHtml += `
-      <button class="portrait-link" id="element-link-cycles">
-        <span class="portrait-link-text">Hvad nærer dit ${el.name}</span>
-        <span class="portrait-link-arrow">→</span>
+    threadsHtml += `
+      <button class="element-thread" data-action="cycles">
+        <span class="thread-label">Hvordan elementerne danser sammen</span>
       </button>
     `;
   }
 
-  document.getElementById('element-portrait-links').innerHTML = linksHtml;
-
-  // Attach handlers
-  document.querySelectorAll('#element-portrait-links [data-season-key]').forEach(link => {
-    link.addEventListener('click', () => showSeasonDetail(link.dataset.seasonKey));
-  });
-
-  document.getElementById('element-link-cycles')?.addEventListener('click', () => {
-    showElementCycles(el);
-  });
+  const threadsEl = document.getElementById('element-portrait-links');
+  if (threadsEl) {
+    threadsEl.innerHTML = threadsHtml;
+    threadsEl.querySelectorAll('.element-thread').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.action;
+        if (action === 'season') showSeasonDetail(btn.dataset.id);
+        else if (action === 'cycles') showElementCycles(el);
+      });
+    });
+  }
 
   showScreen('element');
 }
 
 // ============================================
-// Element Cycles (new screen)
+// Element Cycles — danser sammen
 // ============================================
 function showElementCycles(el) {
-  document.getElementById('element-cycles-icon').textContent = el.icon;
-  document.getElementById('element-cycles-title').textContent = el.name;
+  const color = getElementColorVar(el);
 
-  const cycles = el.cycles;
-  if (!cycles) return;
+  // Screen color
+  const screen = document.getElementById('screen-element-cycles');
+  if (screen) screen.style.setProperty('--season-color', color);
 
-  // Find related elements by name
-  const findElByName = (name) => fiveElements.find(e => e.name === name);
+  // Label + titel
+  const labelEl = document.getElementById('element-cycles-icon');
+  if (labelEl) {
+    labelEl.textContent = `${el.name.toUpperCase()} I SAMSPILLET`;
+  }
 
+  const titleEl = document.getElementById('element-cycles-title');
+  if (titleEl) {
+    titleEl.textContent = 'Hvordan elementerne danser sammen';
+  }
+
+  // Byg cyklus-indhold som flydende prosa
+  const cycles = el.cycles || {};
   let html = '';
 
   if (cycles.generating) {
-    const motherName = cycles.generating.split(' ')[0]; // First word is usually the element name
     html += `
-      <div class="cycle-flow-item">
-        <div class="cycle-flow-label">${t('nourishedBy')}</div>
-        <p class="cycle-flow-text">${cycles.generating}</p>
-      </div>
+      <section class="cycle-stanza">
+        <p class="cycle-label">Næres af</p>
+        <p class="cycle-prose">${cycles.generating}</p>
+      </section>
     `;
   }
-
   if (cycles.generated) {
     html += `
-      <div class="cycle-flow-item">
-        <div class="cycle-flow-label">${t('nourishes')}</div>
-        <p class="cycle-flow-text">${cycles.generated}</p>
-      </div>
+      <section class="cycle-stanza">
+        <p class="cycle-label">Nærer</p>
+        <p class="cycle-prose">${cycles.generated}</p>
+      </section>
     `;
   }
-
-  if (cycles.controlling) {
-    html += `
-      <div class="cycle-flow-item">
-        <div class="cycle-flow-label">${t('controls')}</div>
-        <p class="cycle-flow-text">${cycles.controlling}</p>
-      </div>
-    `;
-  }
-
   if (cycles.controlledBy) {
     html += `
-      <div class="cycle-flow-item">
-        <div class="cycle-flow-label">${t('controlledBy')}</div>
-        <p class="cycle-flow-text">${cycles.controlledBy}</p>
-      </div>
+      <section class="cycle-stanza">
+        <p class="cycle-label">Holdes i balance af</p>
+        <p class="cycle-prose">${cycles.controlledBy}</p>
+      </section>
+    `;
+  }
+  if (cycles.controlling) {
+    html += `
+      <section class="cycle-stanza">
+        <p class="cycle-label">Holder i balance</p>
+        <p class="cycle-prose">${cycles.controlling}</p>
+      </section>
     `;
   }
 
@@ -1068,72 +1084,125 @@ function showFoundationDetail(key) {
 // ============================================
 let _currentOrgan = null;
 
+// ============================================
+// Hjælpere til organ ↔ element ↔ sæson
+// ============================================
+function findElementForOrgan(organ) {
+  return fiveElements.find(e => e.organs && e.organs.some(o => o === organ.name));
+}
+
+function findSeasonKeyForElement(el) {
+  if (!el) return null;
+  return elementToSeason && elementToSeason[el.name];
+}
+
+function getElementGlyph(el) {
+  if (!el) return '';
+  const map = { 'Træ': '木', 'Ild': '火', 'Jord': '土', 'Metal': '金', 'Vand': '水',
+                'Wood': '木', 'Fire': '火', 'Earth': '土', 'Water': '水' };
+  return map[el.name] || '';
+}
+
+function getElementColorVar(el) {
+  if (!el) return 'var(--accent-gold)';
+  const map = { 'Træ': 'var(--el-wood)', 'Ild': 'var(--el-fire)', 'Jord': 'var(--el-earth)',
+                'Metal': 'var(--el-metal)', 'Vand': 'var(--el-water)',
+                'Wood': 'var(--el-wood)', 'Fire': 'var(--el-fire)', 'Earth': 'var(--el-earth)',
+                'Water': 'var(--el-water)' };
+  return map[el.name] || 'var(--accent-gold)';
+}
+
+// ============================================
+// Organ Portrait — stille
+// ============================================
 function showOrganDetail(organ) {
   _currentOrgan = organ;
 
-  document.getElementById('organ-detail-icon').textContent = organ.icon;
-  document.getElementById('organ-detail-name').textContent = organ.name;
-  document.getElementById('organ-detail-nickname').textContent = `"${organ.nickname}"`;
+  const element = findElementForOrgan(organ);
+  const color = getElementColorVar(element);
+  const glyph = getElementGlyph(element);
 
-  document.getElementById('organ-detail-meta').innerHTML = `
-    <span class="meta-tag"><span class="dot" style="background: ${organ.color}"></span> ${organ.element}</span>
-    <span class="meta-tag">${organ.yinYang}</span>
-    <span class="meta-tag">${organ.time}</span>
-  `;
+  // Hero
+  const glyphEl = document.getElementById('organ-glyph-still');
+  if (glyphEl) {
+    glyphEl.textContent = glyph;
+    glyphEl.style.color = color;
+  }
 
-  // Portrait text
+  const nameEl = document.getElementById('organ-name-still');
+  if (nameEl) {
+    nameEl.textContent = organ.name;
+    nameEl.style.color = color;
+  }
+
+  const metaEl = document.getElementById('organ-meta-still');
+  if (metaEl) {
+    const elementName = element ? element.name : organ.element;
+    metaEl.textContent = `${elementName} · ${organ.time}`;
+  }
+
+  // Sæt --season-color på skærmen
+  const screen = document.getElementById('screen-organ');
+  if (screen) screen.style.setProperty('--season-color', color);
+
+  // Portrait-tekst (flydende)
   const portrait = organPortraits && organPortraits[organ.id];
   const paragraphs = portrait && portrait.length > 0 ? portrait : organ.description;
   document.getElementById('organ-description').innerHTML =
     paragraphs.map(p => `<p>${p}</p>`).join('');
 
-  // Portrait links
+  // Threads (stille links)
   const partnerOrgan = organs.find(o => o.name === organ.partner);
-  const element = fiveElements.find(e => e.organs && e.organs.some(o => o === organ.name));
+  const seasonKey = findSeasonKeyForElement(element);
+  const seasonName = seasonKey ? (SEASON_MAP[seasonKey]?.name || getSeasonName(seasonKey)) : '';
 
-  let linksHtml = `
-    <button class="portrait-link" id="organ-link-themes">
-      <span class="portrait-link-text">Mærk ind i ${organ.name}</span>
-      <span class="portrait-link-arrow">→</span>
+  let threadsHtml = `
+    <button class="organ-thread organ-thread-primary" data-action="themes">
+      <span class="thread-label">Mærk ind i ${organ.name}</span>
     </button>
   `;
 
-  if (element) {
-    linksHtml += `
-      <button class="portrait-link" data-element-id="${element.id}">
-        <span class="portrait-link-text">${element.name}</span>
-        <span class="portrait-link-arrow">→</span>
-      </button>
-    `;
-  }
-
   if (partnerOrgan) {
-    linksHtml += `
-      <button class="portrait-link" data-partner-id="${partnerOrgan.id}">
-        <span class="portrait-link-text">${partnerOrgan.name}</span>
-        <span class="portrait-link-arrow">→</span>
+    threadsHtml += `
+      <button class="organ-thread" data-action="partner" data-id="${partnerOrgan.id}">
+        <span class="thread-label">Mød ${partnerOrgan.name}</span>
       </button>
     `;
   }
 
-  document.getElementById('organ-portrait-links').innerHTML = linksHtml;
+  if (element) {
+    threadsHtml += `
+      <button class="organ-thread" data-action="element" data-id="${element.id}">
+        <span class="thread-label">${element.name}-elementet</span>
+      </button>
+    `;
+  }
 
-  // Attach link handlers
-  document.getElementById('organ-link-themes')?.addEventListener('click', () => {
-    showOrganThemes(organ);
-  });
+  if (seasonKey) {
+    threadsHtml += `
+      <button class="organ-thread" data-action="season" data-id="${seasonKey}">
+        <span class="thread-label">Udforsk ${seasonName.toLowerCase()}et</span>
+      </button>
+    `;
+  }
 
-  document.querySelectorAll('#organ-portrait-links [data-element-id]').forEach(link => {
-    link.addEventListener('click', () => {
-      const el = fiveElements.find(e => e.id === link.dataset.elementId);
-      if (el) showElementDetail(el);
-    });
-  });
+  const threadsEl = document.getElementById('organ-portrait-links');
+  threadsEl.innerHTML = threadsHtml;
 
-  document.querySelectorAll('#organ-portrait-links [data-partner-id]').forEach(link => {
-    link.addEventListener('click', () => {
-      const partner = organs.find(o => o.id === link.dataset.partnerId);
-      if (partner) showOrganDetail(partner);
+  threadsEl.querySelectorAll('.organ-thread').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action;
+      if (action === 'themes') {
+        showOrganThemes(organ);
+      } else if (action === 'partner') {
+        const p = organs.find(o => o.id === btn.dataset.id);
+        if (p) showOrganDetail(p);
+      } else if (action === 'element') {
+        const el = fiveElements.find(e => e.id === btn.dataset.id);
+        if (el) showElementDetail(el);
+      } else if (action === 'season') {
+        showSeasonDetail(btn.dataset.id);
+      }
     });
   });
 
@@ -1141,51 +1210,57 @@ function showOrganDetail(organ) {
 }
 
 // ============================================
-// Organ Themes (Mærk ind — new screen)
+// Organ Themes — Mærk ind i [organ]
 // ============================================
 function showOrganThemes(organ) {
-  document.getElementById('organ-themes-icon').textContent = organ.icon;
-  document.getElementById('organ-themes-title').textContent = `Mærk ind i ${organ.name}`;
+  const element = findElementForOrgan(organ);
+  const color = getElementColorVar(element);
 
+  // Sæt screen color
+  const screen = document.getElementById('screen-organ-themes');
+  if (screen) screen.style.setProperty('--season-color', color);
+
+  // Label + titel
+  const labelEl = document.getElementById('organ-themes-icon');
+  if (labelEl) {
+    const elementName = element ? element.name : organ.element;
+    labelEl.textContent = `${elementName.toUpperCase()} · ${organ.time}`;
+  }
+
+  const titleEl = document.getElementById('organ-themes-title');
+  if (titleEl) {
+    titleEl.textContent = `Mærk ind i din ${organ.name}`;
+    titleEl.style.color = color;
+  }
+
+  // Alle 8 temaer som flydende sekvens (ingen progressive disclosure)
   let themesHtml = '';
-  organ.themes.forEach((theme, i) => {
-    const isInitial = i < 3;
-    themesHtml += `
-      <div class="theme-flow-item${isInitial ? '' : ' theme-flow-hidden'}" ${isInitial ? '' : 'style="display:none"'}>
-        <h3 class="theme-flow-title">${theme.title}</h3>
-        ${theme.questions.map(q => `<p class="theme-flow-question">${q}</p>`).join('')}
-      </div>
-    `;
-    if (i === 2) {
+  if (organ.themes) {
+    organ.themes.forEach(theme => {
       themesHtml += `
-        <button class="theme-flow-continue" id="theme-flow-expand">Fortsæt ↓</button>
+        <section class="theme-flow-item">
+          <h3 class="theme-flow-title">${theme.title}</h3>
+          ${(theme.questions || []).map(q => `<p class="theme-flow-question">${q}</p>`).join('')}
+        </section>
       `;
-    }
-  });
-
-  // Organ clock wisdom
-  const clockEntry = organClock.find(c => c.organ === organ.name);
-  if (clockEntry) {
-    themesHtml += `
-      <div class="theme-flow-clock">
-        <div class="theme-flow-clock-time">${organ.name} · ${clockEntry.time}</div>
-        <p class="theme-flow-clock-text">${clockEntry.wisdom}</p>
-      </div>
-    `;
+    });
   }
 
   document.getElementById('organ-themes-flow').innerHTML = themesHtml;
 
-  // Expand handler
-  const expandBtn = document.getElementById('theme-flow-expand');
-  if (expandBtn) {
-    expandBtn.addEventListener('click', () => {
-      document.querySelectorAll('.theme-flow-hidden').forEach(el => {
-        el.style.display = '';
-        el.classList.remove('theme-flow-hidden');
-      });
-      expandBtn.style.display = 'none';
-    });
+  // Organ clock wisdom som stille outro
+  const clockWrap = document.getElementById('organ-themes-clock');
+  if (clockWrap) {
+    const clockEntry = organClock.find(c => c.organ === organ.name);
+    if (clockEntry) {
+      clockWrap.innerHTML = `
+        <div class="clock-whisper-divider" aria-hidden="true">· · ·</div>
+        <p class="clock-whisper-time">${organ.name} · ${clockEntry.time}</p>
+        <p class="clock-whisper-text">${clockEntry.wisdom}</p>
+      `;
+    } else {
+      clockWrap.innerHTML = '';
+    }
   }
 
   showScreen('organ-themes');

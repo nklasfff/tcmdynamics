@@ -556,6 +556,345 @@ body {
 }
 
 /* ============================================
+   Organ Portrait — stille
+   ============================================ */
+
+.organ-still,
+.element-still {
+  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.organ-hero-still,
+.element-hero-still {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.organ-glyph-still,
+.element-glyph-still {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 240px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--season-color, var(--accent-gold));
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.organ-name-still,
+.element-name-still {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--season-color, var(--text-primary));
+  padding: 60px 0 14px;
+  margin: 0;
+}
+
+.organ-meta-still,
+.element-meta-still {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.organ-portrait-text,
+.element-portrait-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  max-width: 420px;
+  margin: 0 auto var(--space-xl);
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.organ-portrait-text p,
+.element-portrait-text p {
+  margin: 0 0 var(--space-md);
+}
+
+.organ-portrait-text p:last-child,
+.element-portrait-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Threads (stille links) */
+.organ-threads,
+.element-threads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.organ-thread,
+.element-thread,
+.element-organ-thread {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  letter-spacing: 0.02em;
+  transition: color 0.4s ease;
+}
+
+.organ-thread:hover,
+.element-thread:hover,
+.element-organ-thread:hover {
+  color: var(--season-color, var(--accent-gold));
+}
+
+.organ-thread-primary .thread-label,
+.element-organ-thread .thread-label {
+  color: var(--text-primary);
+}
+
+/* Element organs inline */
+.element-organs-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.element-organs-lead {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+/* ============================================
+   Organ Themes — Mærk ind i [organ]
+   ============================================ */
+
+.organ-themes-still {
+  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.organ-themes-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.organ-themes-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--season-color, var(--text-primary));
+  margin: 0 0 var(--space-xl);
+  max-width: 380px;
+}
+
+.themes-flow {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.theme-flow-item {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.theme-flow-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.theme-flow-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-md);
+}
+
+.theme-flow-question {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md);
+  letter-spacing: 0.01em;
+}
+
+.theme-flow-question:last-child {
+  margin-bottom: 0;
+}
+
+/* Organ clock whisper som outro */
+.organ-clock-whisper {
+  margin-top: var(--space-xl);
+  max-width: 420px;
+  text-align: center;
+}
+
+.clock-whisper-divider {
+  font-family: var(--font-serif);
+  color: var(--text-muted);
+  opacity: 0.4;
+  letter-spacing: 0.5em;
+  margin: 0 0 var(--space-lg);
+  padding-left: 0.5em;
+}
+
+.clock-whisper-time {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.clock-whisper-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Element Cycles — danser sammen
+   ============================================ */
+
+.element-cycles-still {
+  padding: var(--space-xl) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cycles-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.cycles-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md);
+  max-width: 380px;
+}
+
+.cycles-intro {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: 340px;
+  margin: 0 0 var(--space-xl);
+}
+
+.cycles-flow {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.cycle-stanza {
+  margin-bottom: var(--space-xl);
+}
+
+.cycle-stanza:last-child {
+  margin-bottom: 0;
+}
+
+.cycle-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--season-color, var(--text-muted));
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.cycle-prose {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================
    Stille Årstid-portræt
    ============================================ */
 
