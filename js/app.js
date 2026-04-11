@@ -708,27 +708,29 @@ function nextGradId() { return 'og' + (++_gradIdCounter); }
 /**
  * injectSvg(el, svgString)
  *
- * Indsætter en SVG-streng i et element ved at parse den som RIGTIG
- * SVG-namespace via DOMParser og derefter importere noden. Dette er
- * nødvendigt for at SMIL <animate> rent faktisk aktiveres — hvis man
- * bare bruger innerHTML, parser browseren i HTML-namespace og SMIL
- * bliver ignoreret.
+ * Indsætter en SVG-streng i et element på en måde der sikrer at SMIL
+ * <animate>-elementer rent faktisk aktiveres.
+ *
+ * Strategi:
+ *   1. Brug innerHTML først — HTML5-parseren håndterer SVG i rigtigt
+ *      namespace automatisk, så simple SVG og gradienter virker.
+ *   2. Find <svg>-elementet og klon/erstat det. Denne clone-replace
+ *      trick tvinger browseren til at genparse SVG'en så SMIL-timer
+ *      bliver aktiveret korrekt (velkendt workaround for det problem
+ *      at innerHTML-indsat SMIL ikke altid starter).
+ *
+ * Dette virker i alle moderne browsere (Chrome, Safari, Firefox, Edge).
  */
 function injectSvg(el, svgString) {
   if (!el) return;
-  try {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(svgString, 'image/svg+xml');
-    const root = doc.documentElement;
-    // Tjek for parser-fejl
-    if (root && root.nodeName !== 'parsererror') {
-      while (el.firstChild) el.removeChild(el.firstChild);
-      el.appendChild(document.importNode(root, true));
-      return;
-    }
-  } catch (e) { /* fallback */ }
-  // Fallback: innerHTML (virker for simple ikke-SMIL tilfælde)
+  // HTML5-parser håndterer SVG korrekt via innerHTML
   el.innerHTML = svgString;
+  // Find alle indsatte svg'er og clone+replace for at re-aktivere SMIL
+  const svgs = el.querySelectorAll('svg');
+  svgs.forEach(svg => {
+    const clone = svg.cloneNode(true);
+    svg.parentNode.replaceChild(clone, svg);
+  });
 }
 
 /**
