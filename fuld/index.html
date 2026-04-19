@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mønstrene Bag — En rejse gennem de fem årstider</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- ============================================
+         Home Screen — Hub
+         ============================================ -->
+    <div id="screen-home" class="screen active">
+      <main class="home-glow">
+        <!-- Brand -->
+        <header class="home-brand-still">
+          <h1 class="home-brand-name">mønstrene bag</h1>
+          <p class="home-brand-tagline">en rejse gennem de fem årstider</p>
+        </header>
+
+        <!-- Eyebrow: DIN ÅRSTID -->
+        <p class="home-eyebrow" id="home-eyebrow">DIN ÅRSTID</p>
+
+        <!-- Årstids-komposit glød-illustration -->
+        <div class="home-composite" id="home-composite"></div>
+
+        <!-- Kinesisk glyph -->
+        <div class="home-glyph" id="home-glyph"></div>
+
+        <!-- Årstid navn + italic undertitel -->
+        <button class="home-season-hero" id="home-season-hero" type="button">
+          <span class="home-season-name" id="home-season-name"></span>
+          <span class="home-season-subtitle" id="home-season-subtitle"></span>
+        </button>
+
+        <!-- Kort-stak -->
+        <div class="home-cards" id="home-cards"></div>
+
+        <!-- Horisontal 5-element timeline -->
+        <div class="element-timeline" id="home-element-timeline"></div>
+
+        <!-- Mere kort-stak under timeline -->
+        <div class="home-cards" id="home-cards-after"></div>
+
+        <!-- Byline / credit nederst -->
+        <footer class="home-byline-foot">
+          <p class="home-byline-text">
+            inspireret af <em>Isabelle Evita Søndergaards</em><br>
+            De 5 Årstiders Energi &amp; Mine 5 Årstiders Energi
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- ============================================
+         Explore Screen — svgExploreColumn (lodret årstids-søjle)
+         ============================================ -->
+    <div id="screen-explore" class="screen">
+      <main class="screen-glow">
+        <p class="screen-eyebrow">UDFORSK</p>
+        <div class="screen-hero screen-hero-tall" id="explore-hero"></div>
+        <p class="screen-caption"><em>sushumna — kanalen energien rejser gennem</em></p>
+        <div class="screen-header">
+          <h1 class="screen-title">De fem</h1>
+          <p class="screen-subtitle">Tre veje ind: årstider, organer, elementer</p>
+        </div>
+        <div class="screen-cards" id="explore-cards"></div>
+      </main>
+    </div>
+
+    <!-- Explore sub-screens — stille typografiske lister -->
+    <div id="screen-explore-seasons" class="screen">
+      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
+      <main class="explore-list-still">
+        <div class="screen-illustration size-tiny" id="explore-seasons-illustration"></div>
+        <p class="explore-list-label">Årstider</p>
+        <div class="explore-list-items" id="explore-seasons-list"></div>
+      </main>
+    </div>
+
+    <div id="screen-explore-organs" class="screen">
+      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
+      <main class="explore-list-still">
+        <div class="screen-illustration size-tiny" id="explore-organs-illustration"></div>
+        <p class="explore-list-label">Organer</p>
+        <div class="explore-list-items" id="explore-organs-list"></div>
+      </main>
+    </div>
+
+    <div id="screen-explore-elements" class="screen">
+      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
+      <main class="explore-list-still">
+        <div class="screen-illustration size-tiny" id="explore-elements-illustration"></div>
+        <p class="explore-list-label">Elementer</p>
+        <div class="explore-list-items" id="explore-elements-list"></div>
+      </main>
+    </div>
+
+    <!-- Search Screen — svgSearchCompass -->
+    <div id="screen-search" class="screen">
+      <button class="still-back" data-back-to="home" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow">LYT INDAD</p>
+        <div class="screen-hero" id="search-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Hvad mærker du?</h1>
+          <p class="screen-subtitle">Skriv et ord — eller vælg en fornemmelse nedenfor</p>
+        </div>
+        <div class="screen-cards" id="search-cards">
+          <div class="card card-static">
+            <input type="text" class="search-still-input" id="search-still-input" placeholder="Skriv et ord..." autocomplete="off" />
+          </div>
+          <div id="search-still-words"></div>
+          <div class="search-still-results" id="search-still-results"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ============================================
+         Detail Screens (unchanged)
+         ============================================ -->
+
+    <!-- Season Portrait Screen — årstid-portal med breathing constellation -->
+    <div id="screen-season" class="screen">
+      <button class="still-back" id="btn-back-season" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="season-eyebrow"></p>
+        <div class="screen-hero" id="season-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="season-name-still"></h1>
+          <p class="screen-subtitle" id="season-meta-still"></p>
+        </div>
+        <div class="screen-cards" id="season-cards"></div>
+      </main>
+    </div>
+
+    <!-- Nær dig selv — Rising warmth -->
+    <div id="screen-season-food" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="food-eyebrow"></p>
+        <div class="screen-hero" id="food-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Nær dig selv</h1>
+          <p class="screen-subtitle" id="food-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="food-cards"></div>
+      </main>
+    </div>
+
+    <!-- Bevæg dig — Tai Chi flow -->
+    <div id="screen-season-movement" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="movement-eyebrow"></p>
+        <div class="screen-hero" id="movement-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Bevæg dig</h1>
+          <p class="screen-subtitle" id="movement-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="movement-cards"></div>
+      </main>
+    </div>
+
+    <!-- Bliv stille — Radiating bell -->
+    <div id="screen-season-stillness" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="stillness-eyebrow"></p>
+        <div class="screen-hero" id="stillness-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Bliv stille</h1>
+          <p class="screen-subtitle" id="stillness-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="stillness-cards"></div>
+      </main>
+    </div>
+
+    <!-- Reflektér — Inward spiral -->
+    <div id="screen-season-reflection" class="screen">
+      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="reflection-eyebrow"></p>
+        <div class="screen-hero" id="reflection-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title">Reflektér</h1>
+          <p class="screen-subtitle" id="reflection-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="reflection-cards"></div>
+      </main>
+    </div>
+
+    <!-- Pattern Result Screen -->
+    <div id="screen-pattern" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-pattern">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="pattern-detail-icon">紋</span>
+          <h1 id="pattern-detail-title"></h1>
+          <p class="detail-nickname" id="pattern-detail-subtitle"></p>
+        </div>
+      </header>
+      <main class="detail-content">
+        <div class="pattern-detail-body" id="pattern-detail-body"></div>
+      </main>
+    </div>
+
+    <!-- Organ Portrait — svgOrganSignature -->
+    <div id="screen-organ" class="screen">
+      <button class="still-back" id="btn-back-organ" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="organ-eyebrow"></p>
+        <div class="screen-hero" id="organ-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="organ-name-still"></h1>
+          <p class="screen-subtitle" id="organ-meta-still"></p>
+        </div>
+        <div class="screen-cards" id="organ-cards"></div>
+      </main>
+      <div id="organ-description" style="display:none"></div>
+      <div id="organ-glyph-still" style="display:none"></div>
+      <div id="organ-portrait-links" style="display:none"></div>
+    </div>
+
+    <!-- Organ Themes — svgThemesMandala -->
+    <div id="screen-organ-themes" class="screen">
+      <button class="still-back" id="btn-back-organ-themes" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="organ-themes-eyebrow"></p>
+        <div class="screen-hero" id="organ-themes-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="organ-themes-title"></h1>
+          <p class="screen-subtitle" id="organ-themes-subtitle"></p>
+        </div>
+        <div class="screen-cards" id="organ-themes-flow"></div>
+      </main>
+      <div id="organ-themes-icon" style="display:none"></div>
+      <div id="organ-themes-clock" style="display:none"></div>
+    </div>
+
+    <!-- Element Portrait — svgElementRadiance -->
+    <div id="screen-element" class="screen">
+      <button class="still-back" id="btn-back-element" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow" id="element-eyebrow"></p>
+        <div class="screen-hero" id="element-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="element-detail-name"></h1>
+          <p class="screen-subtitle" id="element-detail-chinese"></p>
+        </div>
+        <div class="screen-cards" id="element-cards"></div>
+      </main>
+      <div id="element-description" style="display:none"></div>
+      <div id="element-organs-nav" style="display:none"></div>
+      <div id="element-portrait-links" style="display:none"></div>
+      <div id="element-detail-meta" style="display:none"></div>
+      <span id="element-detail-icon" style="display:none"></span>
+      <div id="element-glyph-still" style="display:none"></div>
+    </div>
+
+    <!-- Element Cycles — svgPentagramCycle -->
+    <div id="screen-element-cycles" class="screen">
+      <button class="still-back" id="btn-back-element-cycles" aria-label="Tilbage">←</button>
+      <main class="screen-glow">
+        <p class="screen-eyebrow">FEM FASER</p>
+        <div class="screen-hero screen-hero-wide" id="element-cycles-hero"></div>
+        <div class="screen-header">
+          <h1 class="screen-title" id="element-cycles-title">De fem elementers dans</h1>
+          <p class="screen-subtitle">Hvert element næres af et andet, og holder et andet i balance</p>
+        </div>
+        <div class="screen-cards" id="element-cycles-cards"></div>
+      </main>
+      <div id="element-cycles-icon" style="display:none"></div>
+      <div id="element-cycles-flow" style="display:none"></div>
+    </div>
+
+    <!-- Meridian Detail Screen -->
+    <div id="screen-meridian" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-meridian">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="meridian-detail-icon"></span>
+          <h1 id="meridian-detail-name"></h1>
+          <p class="detail-nickname" id="meridian-detail-nickname"></p>
+        </div>
+        <div class="detail-meta" id="meridian-detail-meta"></div>
+      </header>
+
+      <main class="detail-content">
+        <nav class="detail-tabs">
+          <button class="tab active" data-tab="m-overview">Overview</button>
+          <button class="tab" data-tab="m-pathway">Pathway</button>
+          <button class="tab" data-tab="m-keypoints">Key Points</button>
+          <button class="tab" data-tab="m-themes">8 Themes</button>
+        </nav>
+
+        <div class="tab-content active" id="tab-m-overview">
+          <div class="description-text" id="meridian-description"></div>
+          <div id="meridian-connections"></div>
+        </div>
+
+        <div class="tab-content" id="tab-m-pathway">
+          <div id="meridian-pathway"></div>
+        </div>
+
+        <div class="tab-content" id="tab-m-keypoints">
+          <div class="keypoints-list" id="meridian-keypoints"></div>
+        </div>
+
+        <div class="tab-content" id="tab-m-themes">
+          <div class="themes-list" id="meridian-themes"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation — 5 items -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="bottom-nav-item active" data-nav="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>Hjem</span>
+    </button>
+    <button class="bottom-nav-item" data-nav="season">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
+        <path d="M12 3 Q16 8 16 12 Q16 16 12 21 Q8 16 8 12 Q8 8 12 3 Z"/>
+        <line x1="12" y1="3" x2="12" y2="21" stroke-width="1"/>
+      </svg>
+      <span>Årstid</span>
+    </button>
+    <button class="bottom-nav-item" data-nav="journal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
+        <path d="M5 4 H17 A2 2 0 0 1 19 6 V20 L17 19 L15 20 L13 19 L11 20 L9 19 L7 20 L5 19 Z"/>
+        <line x1="8" y1="9"  x2="16" y2="9"/>
+        <line x1="8" y1="13" x2="14" y2="13"/>
+      </svg>
+      <span>Journal</span>
+    </button>
+    <button class="bottom-nav-item" data-nav="explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 3 Q14 12 12 21 M3 12 Q12 14 21 12"/>
+      </svg>
+      <span>Udforsk</span>
+    </button>
+    <button class="bottom-nav-item" data-nav="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <line x1="20" y1="20" x2="16" y2="16"/>
+      </svg>
+      <span>Søg</span>
+    </button>
+  </nav>
+
+  <!-- Top Floating Buttons -->
+  <button class="top-float-btn top-float-left" id="hamburger-btn" aria-label="Menu">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  <button class="top-float-btn top-float-right" id="search-btn" aria-label="Search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-container">
+      <div class="search-input-row">
+        <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search organs, elements, meridians..." autocomplete="off" />
+        <button class="search-close" id="search-close" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="search-results">
+        <div class="search-placeholder"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hamburger Menu Overlay -->
+  <div class="hamburger-overlay" id="hamburger-overlay">
+    <div class="hamburger-menu" id="hamburger-menu">
+      <div class="hamburger-header">
+        <div class="hamburger-brand">The Patterns Behind</div>
+        <button class="hamburger-close" id="hamburger-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="hamburger-section">
+        <div class="hamburger-section-label" id="menu-label-sections">Sections</div>
+        <button class="hamburger-link" data-nav="home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Home
+        </button>
+        <button class="hamburger-link" data-nav="practice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          Your Exploration
+        </button>
+        <button class="hamburger-link" data-nav="seasons">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20"/><circle cx="12" cy="12" r="3"/></svg>
+          Your Season
+        </button>
+        <button class="hamburger-link" data-nav="patterns">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><circle cx="16" cy="8" r="3"/><line x1="10.5" y1="9.5" x2="13.5" y2="14.5"/><line x1="13" y1="8" x2="11" y2="8"/></svg>
+          Explore Your Patterns
+        </button>
+        <button class="hamburger-link" data-nav="organs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          The 12 Organs
+        </button>
+        <button class="hamburger-link" data-nav="elements">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Five Elements & Core Principles
+        </button>
+        <button class="hamburger-link" data-nav="meridians">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          The 8 Extraordinary Meridians
+        </button>
+        <button class="hamburger-link" data-nav="overviews">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Overviews
+        </button>
+      </div>
+
+      <div class="hamburger-section">
+        <div class="hamburger-section-label" id="menu-label-info">Information</div>
+        <button class="hamburger-link" data-info="about">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          About The Patterns Behind
+        </button>
+        <button class="hamburger-link" data-info="howto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          How to Use the App
+        </button>
+      </div>
+
+      <div class="hamburger-section">
+        <div class="hamburger-section-label" id="menu-label-appearance">Appearance</div>
+        <button class="hamburger-link" id="theme-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span id="theme-label">Switch to light mode</span>
+        </button>
+      </div>
+
+      <div class="hamburger-section">
+        <div class="hamburger-section-label" id="menu-label-language">Language</div>
+        <button class="hamburger-link" id="lang-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span id="lang-label">Dansk</span>
+        </button>
+      </div>
+
+      <div class="hamburger-section">
+        <div class="hamburger-section-label">Version</div>
+        <a class="hamburger-link" href="faglig/index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          <span>Fagligt opslagsværk</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

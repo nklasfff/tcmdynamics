@@ -1,0 +1,6701 @@
+/* ============================================
+   Mønstrene Bag — TCM i Praksis
+   Dark & Light Design — v2 Airy Hub
+   ============================================ */
+
+:root {
+  /* ============================================
+     Mønstrene Bag — Stille Design System
+     Kun 5 farver. 5 typografiske niveauer. 8px grid.
+     ============================================ */
+
+  /* Farver — kun 5 */
+  --bg-primary: #0a0a0f;
+  --text-primary: #d8d2c4;
+  --text-secondary: #8a8478;
+  --text-muted: #56524a;
+  --accent-gold: #b8952e;
+
+  /* Subtile borders — næsten usynlige */
+  --border-hairline: rgba(255, 255, 255, 0.04);
+  --border-whisper: rgba(255, 255, 255, 0.08);
+
+  /* Typografi */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+
+  /* 5 størrelser — intet andet */
+  --size-title: 48px;
+  --size-heading: 24px;
+  --size-body: 16px;
+  --size-label: 11px;
+  --size-micro: 10px;
+
+  /* Linjehøjder */
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 2.0;
+
+  /* Letter-spacing */
+  --track-title: 0.02em;
+  --track-heading: 0.05em;
+  --track-body: 0.01em;
+  --track-label: 0.25em;
+  --track-micro: 0.15em;
+
+  /* Harmonisk rytme — kun 5 niveauer */
+  --rhythm-1: 24px;   /* intim: mellem linjer i samme blok */
+  --rhythm-2: 40px;   /* tæt: mellem relaterede blokke */
+  --rhythm-3: 72px;   /* rum: mellem sektioner */
+  --rhythm-4: 112px;  /* åndedrag: mellem store faser */
+  --rhythm-5: 56px;   /* side-top: padding under hero/nav */
+
+  /* Læsebredder — kun to */
+  --read-wide: 420px;
+  --read-narrow: 320px;
+
+  /* Side-padding */
+  --side-pad: 32px;
+  --bottom-pad: 140px;
+  --top-pad: 56px;
+
+  /* Legacy spacing (for gammel CSS der endnu ikke er opdateret) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+  --space-xxl: 120px;
+  --read-width: var(--read-wide);
+  --read-tight: 300px;
+
+  /* Safe areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Element-farver — KUN til navne og prikker, aldrig baggrunde */
+  --el-wood: #5cc98e;
+  --el-fire: #e88585;
+  --el-earth: #deb87a;
+  --el-metal: #a8c4d6;
+  --el-water: #7ba4da;
+
+  /* Legacy — holdes midlertidigt for ikke at bryde gammel CSS i overgangen */
+  --bg-secondary: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-card-hover: #1a1a25;
+  --bg-elevated: #1a1a25;
+  --text-accent: var(--accent-gold);
+  --accent-gold-dim: rgba(184, 149, 46, 0.12);
+  --accent-gold-glow: rgba(184, 149, 46, 0.05);
+  --border-subtle: var(--border-hairline);
+  --border-light: var(--border-whisper);
+  --border-active: rgba(184, 149, 46, 0.25);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --shadow-card: none;
+  --shadow-elevated: none;
+  --ill-jade: #6bcfa0;
+  --ill-rose: #e0908f;
+  --ill-indigo: #8e9fdc;
+  --ill-amber: #deb87a;
+  --ill-silver: #a0bcc8;
+
+  /* ============================================
+     Glød-kort system — inspireret af chakra-app æstetik
+     Bløde orbs, afrundede kort, subtile skygger.
+     Dark mode default.
+     ============================================ */
+
+  /* Kort-baggrund og skygge */
+  --card-bg: rgba(255, 255, 255, 0.028);
+  --card-border: rgba(255, 255, 255, 0.055);
+  --card-shadow: 0 2px 28px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --card-radius: 18px;
+  --card-pad-x: 26px;
+  --card-pad-y: 24px;
+  --card-max-width: 440px;
+
+  /* Eyebrow-label (uppercase tracking over titel) */
+  --eyebrow-size: 11px;
+  --eyebrow-track: 0.18em;
+  --eyebrow-color: var(--text-muted);
+
+  /* Kort-titel og subtitle */
+  --card-title-size: 22px;
+  --card-subtitle-size: 14px;
+
+  /* Glød-orb */
+  --glow-outer-opacity: 0.55;
+  --glow-mid-opacity: 0.22;
+  --glow-focal-opacity: 0.9;
+  --glow-motion-duration: 7s;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-primary: #f5f2ec;
+  --text-primary: #2a2620;
+  --text-secondary: #6a6358;
+  --text-muted: #a8a298;
+  --accent-gold: #9a7b3c;
+
+  --border-hairline: rgba(0, 0, 0, 0.05);
+  --border-whisper: rgba(0, 0, 0, 0.1);
+
+  /* Legacy light theme */
+  --bg-secondary: #f5f2ec;
+  --bg-card: #faf7f0;
+  --bg-card-hover: #f0ece4;
+  --bg-elevated: #faf7f0;
+  --text-accent: var(--accent-gold);
+  --accent-gold-dim: rgba(154, 123, 60, 0.1);
+  --accent-gold-glow: rgba(154, 123, 60, 0.05);
+  --border-subtle: var(--border-hairline);
+  --border-light: var(--border-whisper);
+  --border-active: rgba(154, 123, 60, 0.25);
+
+  --el-wood: #3a9b6e;
+  --el-fire: #c87070;
+  --el-earth: #b8903a;
+  --el-metal: #6a95a8;
+  --el-water: #5580b8;
+
+  --ill-jade: #3a9b6e;
+  --ill-rose: #c06a6a;
+  --ill-indigo: #6672b0;
+  --ill-amber: #b8903a;
+  --ill-silver: #6a95a8;
+
+  /* Glød-kort i lys mode — varmere, blødere */
+  --card-bg: rgba(255, 255, 255, 0.5);
+  --card-border: rgba(42, 38, 32, 0.055);
+  --card-shadow: 0 2px 28px rgba(42, 38, 32, 0.06), 0 1px 2px rgba(42, 38, 32, 0.03);
+  --glow-outer-opacity: 0.45;
+  --glow-mid-opacity: 0.18;
+  --glow-focal-opacity: 0.8;
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  line-height: var(--leading-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   Stille Design System — typography primitives
+   ============================================ */
+
+.still-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-title);
+  font-weight: 300;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--track-title);
+  color: var(--text-primary);
+}
+
+.still-heading {
+  font-family: var(--font-serif);
+  font-size: var(--size-heading);
+  font-weight: 300;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--track-heading);
+  color: var(--text-primary);
+}
+
+.still-body {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  letter-spacing: var(--track-body);
+  color: var(--text-primary);
+  max-width: var(--read-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.still-body p + p {
+  margin-top: var(--space-md);
+}
+
+.still-body-muted {
+  color: var(--text-secondary);
+}
+
+.still-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--track-label);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.still-invitation {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  letter-spacing: var(--track-body);
+}
+
+.still-link {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: var(--track-body);
+  transition: color 0.4s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.still-link:hover {
+  color: var(--accent-gold);
+}
+
+.still-link-large {
+  font-size: var(--size-heading);
+}
+
+.still-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--border-whisper);
+  margin: var(--space-xl) auto;
+  border: none;
+}
+
+.still-back {
+  position: absolute;
+  top: calc(var(--safe-top) + 62px);
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 80;
+  transition: color 0.3s ease;
+  padding: 0;
+}
+
+.still-back:hover {
+  color: var(--accent-gold);
+}
+
+.still-screen {
+  padding: var(--top-pad) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+/* ============================================
+   Foldbare sektioner — stille udfoldning
+   ============================================ */
+
+.fold {
+  width: 100%;
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-2);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.fold:last-child {
+  border-bottom: none;
+}
+
+.fold-toggle {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: var(--rhythm-1) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.fold-toggle:hover {
+  color: var(--accent-gold);
+}
+
+.fold-heading {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.fold-preview {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  letter-spacing: 0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fold-indicator {
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.fold.open .fold-indicator {
+  transform: rotate(45deg);
+  color: var(--accent-gold);
+}
+
+.fold.open .fold-preview {
+  display: none;
+}
+
+.fold-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.fold.open .fold-body {
+  max-height: 3000px;
+  padding-bottom: var(--rhythm-2);
+}
+
+/* Journal-folden kan vokse meget når bruger skriver — lad den vokse */
+.fold.open:has(.journal-prompts) .fold-body {
+  max-height: 12000px;
+}
+
+/* Journal inde i card (i stedet for fold) */
+.card.open:has(.journal-prompts) .card-body {
+  max-height: 12000px;
+}
+
+.fold-body-inner {
+  padding-top: var(--rhythm-1);
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+}
+
+.fold-body-inner ol,
+.fold-body-inner ul {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: fold-step;
+  margin: 0;
+}
+
+.fold-body-inner ol li,
+.fold-body-inner ul li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.fold-body-inner ol li:last-child,
+.fold-body-inner ul li:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   Card-system — chakra-app inspireret
+   Kort med eyebrow + titel + subtitle + evt. expand
+   ============================================ */
+
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-pad-y) var(--card-pad-x);
+  margin: 0 auto var(--rhythm-2);
+  max-width: var(--card-max-width);
+  width: 100%;
+  box-shadow: var(--card-shadow);
+  text-align: left;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-sizing: border-box;
+}
+
+.card-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  color: var(--eyebrow-color);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: var(--card-title-size);
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.005em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.card-title.card-title-accent {
+  color: var(--accent-gold);
+}
+
+.card-subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--card-subtitle-size);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin: 8px 0 0;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.card-expand {
+  position: absolute;
+  top: calc(var(--card-pad-y) - 2px);
+  right: calc(var(--card-pad-x) - 6px);
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: transform 0.5s cubic-bezier(.2, .8, .3, 1), color 0.3s ease;
+}
+
+.card-expand:hover {
+  color: var(--text-secondary);
+}
+
+.card.open .card-expand {
+  transform: rotate(45deg);
+  color: var(--accent-gold);
+}
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(.2, .8, .3, 1);
+}
+
+.card-body-inner {
+  padding-top: var(--rhythm-1);
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.card-body-inner > p:first-child {
+  margin-top: 0;
+}
+
+.card-body-inner > p:last-child {
+  margin-bottom: 0;
+}
+
+.card.open .card-body {
+  max-height: 3000px;
+}
+
+/* Kort uden expand — kroppen er altid synlig */
+.card.card-static .card-body {
+  max-height: none;
+  overflow: visible;
+}
+
+.card.card-static .card-body-inner {
+  padding-top: var(--rhythm-1);
+}
+
+/* Clickable cards (dør-kort i årstid-portal) */
+.card.card-clickable {
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.card.card-clickable:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-whisper);
+}
+
+.card.card-clickable::after {
+  content: '→';
+  position: absolute;
+  top: 50%;
+  right: var(--card-pad-x);
+  transform: translateY(-50%);
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.card.card-clickable:hover::after {
+  transform: translateY(-50%) translateX(4px);
+  color: var(--accent-gold);
+  opacity: 1;
+}
+
+.card.card-clickable .card-title {
+  padding-right: 24px;
+}
+
+.card.card-clickable .card-subtitle {
+  padding-right: 24px;
+}
+
+/* Inline lister inde i explore-kort (årstider, organer, elementer) */
+.explore-inline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-inline-item {
+  background: none;
+  border: none;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: padding-left 0.3s ease;
+  font-family: var(--font-serif);
+  width: 100%;
+  text-align: left;
+}
+
+.explore-inline-item:last-child {
+  border-bottom: none;
+}
+
+.explore-inline-item:hover {
+  padding-left: 6px;
+}
+
+.explore-inline-name {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.explore-inline-meta {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Inline organ-grid inde i element portrait */
+.element-organs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.element-organ-inline {
+  background: none;
+  border: none;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: padding-left 0.3s ease;
+  font-family: var(--font-serif);
+  width: 100%;
+  text-align: left;
+}
+
+.element-organ-inline:last-child {
+  border-bottom: none;
+}
+
+.element-organ-inline:hover {
+  padding-left: 6px;
+}
+
+.element-organ-name {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-primary);
+}
+
+.element-organ-meta {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Søgefelt styling inde i search-kort */
+#search-cards .card:first-child {
+  padding: 14px 18px;
+}
+
+#search-cards .search-still-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+  padding: 6px 0;
+  text-align: center;
+}
+
+#search-cards .search-still-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+#search-cards #search-still-words {
+  margin-top: var(--rhythm-1);
+}
+
+/* ============================================
+   Glød-orb illustrationer — chakra-app inspireret
+   Bløde radial-gradient orbs med subtil breathing motion
+   ============================================ */
+
+.glow-ill {
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.glow-orb {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: glow-breathe var(--glow-motion-duration) ease-in-out infinite;
+}
+
+.glow-orb.motion-slow {
+  animation-duration: 10s;
+}
+
+.glow-orb.motion-pulse {
+  animation-name: glow-pulse;
+  animation-duration: 4s;
+}
+
+.glow-orb.motion-drift {
+  animation-name: glow-drift;
+  animation-duration: 11s;
+}
+
+.glow-orb.motion-none {
+  animation: none;
+}
+
+@keyframes glow-breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.88;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  33%      { transform: translate(2px, -3px) scale(1.04); opacity: 0.95; }
+  66%      { transform: translate(-2px, 2px) scale(1.06); opacity: 1; }
+}
+
+/* Stærkere breathe til centrum af home-kompositen */
+@keyframes composite-center-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.92; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+
+/* Kraftigere breathe til timeline-orbs (mere synlig bevægelse) */
+@keyframes timeline-breathe {
+  0%, 100% { transform: scale(0.92); opacity: 0.75; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+
+/* Themes mandala wave — 8 orbs der pulserer i sekvens rundt om ringen */
+@keyframes themes-wave {
+  0%, 70%, 100% { transform: scale(1); opacity: 0.85; }
+  15%           { transform: scale(1.25); opacity: 1; }
+}
+
+/* Organ-portrait orbital ringe — subtil puls-drift */
+.organ-ring {
+  transform-origin: center;
+  transform-box: view-box;
+}
+.organ-ring-1 {
+  animation: organ-ring-pulse 7s ease-in-out infinite;
+}
+.organ-ring-2 {
+  animation: organ-ring-pulse 9s ease-in-out -2s infinite;
+}
+.organ-ring-3 {
+  animation: organ-ring-pulse 11s ease-in-out -4s infinite;
+}
+@keyframes organ-ring-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.18; transform: scale(1.06); }
+}
+
+/* Modsat-rotation til element-radiance og search-compass */
+@keyframes spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+/* Search-compass ydre fokus-ring — kontrakterer/ekspanderer */
+.search-focus-ring {
+  animation: search-focus 6s ease-in-out infinite;
+}
+@keyframes search-focus {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50%      { transform: scale(0.78); opacity: 0.55; }
+}
+
+/* ============================================
+   Unikke illustrations-animationer
+   Hver illustration har sin egen bevægelsesidentitet
+   ============================================ */
+
+/* Breathing constellation (årstid-portal) — ringen roterer langsomt */
+.constellation-ring {
+  animation: spin-slow 48s linear infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* Rising warmth (Nær dig selv) — damp-strømme stiger op og fader */
+.warmth-wisp {
+  transform-origin: center bottom;
+}
+
+.warmth-wisp-1 {
+  animation: wisp-drift 6s ease-in-out infinite;
+}
+
+.warmth-wisp-2 {
+  animation: wisp-drift 7s ease-in-out -1.2s infinite;
+}
+
+.warmth-wisp-3 {
+  animation: wisp-drift 5.5s ease-in-out -2.4s infinite;
+}
+
+@keyframes wisp-drift {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scaleY(1);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateY(-4px) translateX(2px) scaleY(1.03);
+    opacity: 0.95;
+  }
+  70% {
+    transform: translateY(-6px) translateX(-1px) scaleY(1.02);
+    opacity: 0.8;
+  }
+}
+
+/* Tai Chi flow (Bevæg dig) — hele mønstret roterer */
+.taichi-spin {
+  animation: spin-slow 30s linear infinite;
+}
+
+.taichi-dot-yang {
+  animation: glow-pulse 4.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.taichi-dot-yin {
+  animation: glow-pulse 4.5s ease-in-out -2.25s infinite;
+  transform-origin: center;
+}
+
+/* Radiating bell (Bliv stille) — 3 ringe ekspanderer forskudt */
+.bell-ring {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: bell-ripple 6s ease-out infinite;
+}
+
+.bell-ring-1 { animation-delay: 0s; }
+.bell-ring-2 { animation-delay: 2s; }
+.bell-ring-3 { animation-delay: 4s; }
+
+@keyframes bell-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(12);
+    opacity: 0;
+  }
+}
+
+/* Inward spiral (Reflektér) — spiralen roterer meget langsomt */
+.spiral-rotate {
+  animation: spin-slow 60s linear infinite;
+}
+
+/* Respect reduced motion — stop alle illustrations-animationer */
+@media (prefers-reduced-motion: reduce) {
+  .constellation-ring,
+  .warmth-wisp,
+  .warmth-wisp-1,
+  .warmth-wisp-2,
+  .warmth-wisp-3,
+  .taichi-spin,
+  .taichi-dot-yang,
+  .taichi-dot-yin,
+  .bell-ring,
+  .spiral-rotate,
+  .composite-ill g,
+  .timeline-orb-ill g,
+  .spiral-ill g,
+  .organ-sig-ill g,
+  .organ-ring,
+  .themes-mandala-ill g,
+  .element-rad-ill g,
+  .pentagram-ill g,
+  .explore-column-ill g,
+  .search-compass-ill g,
+  .search-focus-ring {
+    animation: none !important;
+  }
+}
+
+/* Home-composite: sørg for at svg ikke clipper petalerne */
+.composite-ill,
+.home-composite svg {
+  overflow: visible;
+}
+
+/* Spiral-illustration: behold indenfor sin egen grænse */
+.spiral-ill {
+  overflow: hidden;
+}
+
+/* Fokalpunkt i orb — en lille mørk prik */
+.glow-focal {
+  opacity: var(--glow-focal-opacity);
+}
+
+/* Container til komposit-illustrationer (flere orbs) */
+.glow-composite {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 5-element timeline (horisontal stribe af orbs) */
+.element-timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin: 0 auto var(--rhythm-2);
+  max-width: 360px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.element-timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--border-whisper) 20%,
+    var(--border-whisper) 80%,
+    transparent);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.element-timeline-orb {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.4s ease;
+}
+
+.element-timeline-orb:hover {
+  transform: scale(1.12);
+}
+
+.element-timeline-orb.active {
+  transform: scale(1.35);
+}
+
+.element-timeline-orb svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.element-timeline-orb .timeline-orb-ill {
+  overflow: visible;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb,
+  .glow-orb.motion-slow,
+  .glow-orb.motion-pulse,
+  .glow-orb.motion-drift {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   Ink illustrations — SVG blæk-kalligrafi
+   ============================================ */
+
+.screen-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--rhythm-1);
+  width: 100%;
+  max-width: 220px;
+}
+
+.screen-illustration.size-large {
+  max-width: 200px;
+  height: 200px;
+}
+
+.screen-illustration.size-medium {
+  max-width: 160px;
+  height: 160px;
+}
+
+.screen-illustration.size-small {
+  max-width: 100px;
+  height: 100px;
+}
+
+.screen-illustration.size-tiny {
+  max-width: 80px;
+  height: 80px;
+}
+
+.ink-illustration {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.ink-illustration path,
+.ink-illustration circle,
+.ink-illustration line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Small inline icons (for door buttons) */
+.ink-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ink-icon path,
+.ink-icon circle,
+.ink-icon line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#app {
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* ============================================
+   Screens
+   ============================================ */
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Hero — Home Screen
+   ============================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-brand {
+  text-align: center;
+  padding: 28px 24px 8px;
+}
+
+.home-brand-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.home-brand-subtitle {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Home Hub — Navigation Grid
+   ============================================ */
+
+.home-hub {
+  flex: 1;
+  padding: 32px 20px 100px;
+}
+
+.home-intro {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 0 8px;
+}
+
+.hub-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================
+   Stille Forside
+   ============================================ */
+
+.home-still {
+  flex: 1;
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Ny glød-forside — chakra-app stil */
+.home-glow {
+  flex: 1;
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  margin: var(--rhythm-3) 0 var(--rhythm-1);
+}
+
+.home-composite {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto var(--rhythm-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.home-composite svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.home-glyph {
+  font-family: 'Noto Serif SC', var(--font-serif);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+.home-season-subtitle {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.home-cards {
+  width: 100%;
+  max-width: var(--card-max-width);
+  margin: var(--rhythm-2) auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-cards:empty {
+  margin: 0;
+}
+
+/* ============================================
+   Screen-glow shell — bruges af alle sub-skærme i glød-æstetikken
+   (Årstid-portal + Nær dig selv + Bevæg dig + Bliv stille + Reflektér)
+   ============================================ */
+
+.screen-glow {
+  flex: 1;
+  padding: calc(var(--rhythm-5) + 24px) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.screen-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  margin: 0 0 var(--rhythm-2);
+}
+
+.screen-hero {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto var(--rhythm-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.screen-hero svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Bredere hero til pentagram-cyklus */
+.screen-hero.screen-hero-wide {
+  width: 300px;
+  height: 300px;
+}
+
+/* Højere hero til lodret explore-kolonne */
+.screen-hero.screen-hero-tall {
+  width: 200px;
+  height: 260px;
+}
+
+/* Screen caption — lille italic tekst mellem hero og header */
+.screen-caption {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin: 0 auto var(--rhythm-2);
+  text-align: center;
+  max-width: var(--read-wide);
+  opacity: 0.8;
+}
+
+.screen-header {
+  margin: 0 auto var(--rhythm-3);
+  text-align: center;
+  max-width: var(--read-wide);
+}
+
+.screen-title {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--season-color, var(--text-primary));
+  margin: 0 0 10px;
+}
+
+.screen-subtitle {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.015em;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.screen-cards {
+  width: 100%;
+  max-width: var(--card-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sektions-label inde i kort-stakken (f.eks. "MEDITATIONER" i Bliv stille) */
+.screen-cards-section {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  text-align: center;
+  margin: var(--rhythm-2) 0 var(--rhythm-1);
+  opacity: 0.7;
+}
+
+.screen-cards-section:first-child {
+  margin-top: 0;
+}
+
+/* ============================================
+   Organur-kort på forsiden (interaktivt)
+   ============================================ */
+
+.organclock-card {
+  padding: var(--card-pad-y) 20px calc(var(--card-pad-y) - 2px);
+}
+
+.organclock-card .card-eyebrow {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.organclock-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.organclock-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.clock-segment {
+  cursor: pointer;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+  transform-box: view-box;
+}
+
+.clock-segment:hover {
+  filter: brightness(1.3);
+}
+
+.clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+[data-theme="light"] .clock-segment-active path {
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.08));
+}
+
+.clock-segment-selected path {
+  stroke-dasharray: none;
+}
+
+.clock-organ-label,
+.clock-time-label {
+  font-family: var(--font-sans);
+  fill: var(--text-primary);
+  pointer-events: none;
+  user-select: none;
+}
+
+.clock-time-label {
+  fill: var(--text-muted);
+}
+
+/* Info-boks under uret */
+.organclock-info {
+  margin-top: var(--rhythm-1);
+  padding-top: var(--rhythm-1);
+  border-top: 1px solid var(--border-hairline);
+  text-align: center;
+}
+
+.organclock-info-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.organclock-info-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+
+.organclock-info-nickname {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--rhythm-1);
+}
+
+.organclock-info-wisdom {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 auto var(--rhythm-1);
+  max-width: 340px;
+  text-align: left;
+}
+
+.organclock-info-emotion {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 auto var(--rhythm-1);
+  max-width: 340px;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.organclock-info-emotion strong {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.organclock-info-practical {
+  margin: var(--rhythm-1) auto;
+  max-width: 340px;
+  text-align: left;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+
+[data-theme="light"] .organclock-info-practical {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.organclock-info-do,
+.organclock-info-avoid {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.organclock-info-avoid {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.organclock-info-do strong,
+.organclock-info-avoid strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.organclock-back-now,
+.organclock-open-organ {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 10px 4px;
+  margin: 6px 10px 0;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: color 0.3s ease;
+}
+
+.organclock-back-now:hover {
+  color: var(--text-secondary);
+}
+
+.organclock-open-organ {
+  font-style: normal;
+  color: var(--accent-gold);
+  opacity: 0.85;
+}
+
+.organclock-open-organ:hover {
+  opacity: 1;
+}
+
+/* Byline foot — nederst på forsiden, stille og lille */
+.home-byline-foot {
+  margin: var(--rhythm-4) auto 0;
+  text-align: center;
+  max-width: var(--read-wide);
+  opacity: 0.7;
+}
+
+.home-byline-text {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.7;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.home-byline-text em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Fornemmelses-grid inde i kort */
+.home-sensations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  margin-top: 4px;
+}
+
+.home-sensation {
+  background: none;
+  border: none;
+  padding: 8px 2px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.005em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.home-sensation:hover {
+  color: var(--accent-gold);
+  transform: translateX(3px);
+}
+
+/* Dør-grid inde i "DIN VEJ"-kortet */
+.home-paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin-top: 4px;
+}
+
+.home-path {
+  background: none;
+  border: none;
+  padding: 12px 2px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.home-path:hover {
+  color: var(--accent-gold);
+  border-bottom-color: var(--border-whisper);
+}
+
+/* Brand */
+.home-brand-still {
+  margin: 0 0 var(--rhythm-2);
+}
+
+.home-brand-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  margin: 0 0 10px 0;
+  text-transform: lowercase;
+}
+
+.home-brand-tagline {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Gammel byline fjernet — bylinen ligger nu i .home-byline-foot nederst */
+
+/* Sæson-hero: navn + meta */
+.home-season-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 var(--rhythm-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-season-name {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--season-color, var(--text-primary));
+  margin: 0 0 8px;
+}
+
+.home-season-meta {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+}
+
+/* Kontekst-prosa om aktuel årstid */
+.home-season-context {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
+  letter-spacing: 0.01em;
+}
+
+/* Decorative divider */
+.home-ornament {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  letter-spacing: 0.5em;
+  margin: 0 0 var(--rhythm-2);
+  padding-left: 0.5em;
+}
+
+/* Spørgsmål + 4 ord */
+.home-question {
+  text-align: center;
+}
+
+.home-question-text {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 var(--rhythm-1);
+  letter-spacing: 0.02em;
+}
+
+.home-question-words {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  column-gap: 26px;
+  row-gap: 14px;
+  flex-wrap: wrap;
+  max-width: var(--read-wide);
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.home-word {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  letter-spacing: 0.01em;
+  transition: color 0.4s ease;
+}
+
+.home-word:hover {
+  color: var(--accent-gold);
+}
+
+.home-word-sep {
+  display: none;
+}
+
+/* ============================================
+   Organ Portrait — stille
+   ============================================ */
+
+.organ-still,
+.element-still {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.organ-hero-still,
+.element-hero-still {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--rhythm-3);
+}
+
+.organ-hero-still .screen-illustration,
+.element-hero-still .screen-illustration {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--rhythm-1);
+}
+
+.organ-glyph-still,
+.element-glyph-still {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 240px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--season-color, var(--accent-gold));
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.organ-name-still,
+.element-name-still {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--season-color, var(--text-primary));
+  padding: 0;
+  margin: 0 0 8px;
+}
+
+.organ-meta-still,
+.element-meta-still {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.organ-portrait-text,
+.element-portrait-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.organ-portrait-text p,
+.element-portrait-text p {
+  margin: 0 0 var(--space-md);
+}
+
+.organ-portrait-text p:last-child,
+.element-portrait-text p:last-child {
+  margin-bottom: 0;
+}
+
+.organ-still .home-ornament,
+.element-still .home-ornament {
+  margin-bottom: var(--rhythm-2);
+}
+
+/* Threads (stille links) */
+.organ-threads,
+.element-threads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--rhythm-1);
+  margin-top: 0;
+}
+
+.organ-thread,
+.element-thread,
+.element-organ-thread {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  letter-spacing: 0.02em;
+  transition: color 0.4s ease;
+}
+
+.organ-thread:hover,
+.element-thread:hover,
+.element-organ-thread:hover {
+  color: var(--season-color, var(--accent-gold));
+}
+
+.organ-thread-primary .thread-label,
+.element-organ-thread .thread-label {
+  color: var(--text-primary);
+}
+
+/* Element organs inline */
+.element-organs-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.element-organs-lead {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+/* ============================================
+   Organ Themes — Mærk ind i [organ]
+   ============================================ */
+
+.organ-themes-still {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.organ-themes-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.organ-themes-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--season-color, var(--text-primary));
+  margin: 0 0 var(--rhythm-3);
+  max-width: var(--read-wide);
+}
+
+.themes-flow {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.theme-flow-item {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.theme-flow-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.theme-flow-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-md);
+}
+
+.theme-flow-question {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md);
+  letter-spacing: 0.01em;
+}
+
+.theme-flow-question:last-child {
+  margin-bottom: 0;
+}
+
+/* Organ clock whisper som outro */
+.organ-clock-whisper {
+  margin-top: var(--space-xl);
+  max-width: 420px;
+  text-align: center;
+}
+
+.clock-whisper-divider {
+  font-family: var(--font-serif);
+  color: var(--text-muted);
+  opacity: 0.4;
+  letter-spacing: 0.5em;
+  margin: 0 0 var(--space-lg);
+  padding-left: 0.5em;
+}
+
+.clock-whisper-time {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.clock-whisper-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Element Cycles — danser sammen
+   ============================================ */
+
+.element-cycles-still {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cycles-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.cycles-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin: 0 0 var(--rhythm-2);
+  max-width: var(--read-wide);
+}
+
+.cycles-intro {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: var(--read-narrow);
+  margin: 0 0 var(--rhythm-3);
+}
+
+.cycles-flow {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.cycle-stanza {
+  margin-bottom: var(--space-xl);
+}
+
+.cycle-stanza:last-child {
+  margin-bottom: 0;
+}
+
+.cycle-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--season-color, var(--text-muted));
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.cycle-prose {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================
+   Stille Årstid-portræt
+   ============================================ */
+
+.season-still {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.season-name-still {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--season-color, var(--text-primary));
+  margin: 0 0 8px;
+}
+
+.season-meta-still {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--rhythm-2);
+}
+
+.season-welcome-still {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.season-still .home-ornament {
+  margin-bottom: var(--rhythm-2);
+}
+
+.season-invitation-still {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 var(--rhythm-2);
+  letter-spacing: 0.02em;
+}
+
+.season-paths {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--rhythm-1);
+  margin-top: 0;
+  width: 100%;
+  max-width: var(--read-narrow);
+}
+
+.season-path {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  letter-spacing: 0.03em;
+  transition: color 0.4s ease;
+  text-align: left;
+}
+
+.season-path-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.season-path-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.season-path:hover {
+  color: var(--season-color, var(--accent-gold));
+}
+
+/* ============================================
+   Season Sub-screens (Nær dig selv, etc.)
+   ============================================ */
+
+.season-sub {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.season-sub-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.season-sub-title {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--rhythm-2);
+  text-align: center;
+}
+
+.season-sub-intro {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: var(--read-wide);
+  margin: 0 auto var(--rhythm-3);
+  text-align: center;
+}
+
+.season-sub .home-ornament {
+  margin-bottom: var(--rhythm-2);
+}
+
+.season-sub-content {
+  width: 100%;
+  max-width: var(--read-wide);
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Sektionsoverskrifter inde i Bliv stille (Meditationer, Vejrtrækning, EFT...) */
+.season-sub-section {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: var(--rhythm-3) 0 var(--rhythm-1);
+  text-align: center;
+}
+
+.season-sub-section:first-child {
+  margin-top: 0;
+}
+
+/* ============================================
+   Journal — skrive-felt pr. refleksions-prompt
+   Er indlejret i "At sidde med"-folden i Reflektér
+   ============================================ */
+
+.journal-hint {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin: 0 0 var(--rhythm-2);
+  opacity: 0.75;
+}
+
+.journal-prompts {
+  list-style: none;
+  counter-reset: journal-step;
+  padding: 0;
+  margin: 0;
+}
+
+/* Overskriv standard fold-body-inner li padding/border så vi styler selv */
+.fold-body-inner .journal-prompts li,
+.card-body-inner .journal-prompts li {
+  padding: 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.fold-body-inner .journal-prompts li:last-child,
+.card-body-inner .journal-prompts li:last-child {
+  border-bottom: none;
+}
+
+.journal-prompt {
+  padding: var(--rhythm-1) 0 !important;
+}
+
+.journal-prompt-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0 0 10px;
+  letter-spacing: 0.01em;
+}
+
+.journal-write-btn {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.journal-write-btn:hover {
+  color: var(--text-secondary);
+}
+
+.journal-prompt.has-entry .journal-write-btn {
+  color: var(--accent-gold);
+  opacity: 0.85;
+}
+
+.journal-write-arrow {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.journal-write-btn[aria-expanded="true"] .journal-write-arrow {
+  transform: rotate(90deg);
+}
+
+.journal-write-wrap {
+  margin-top: var(--rhythm-1);
+}
+
+.journal-write-wrap[hidden] {
+  display: none;
+}
+
+.journal-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-card, rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border-hairline);
+  border-radius: 2px;
+  padding: 14px 16px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+  resize: none;
+  overflow: hidden;
+  min-height: 72px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.journal-textarea:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background: var(--bg-card, rgba(255, 255, 255, 0.04));
+}
+
+.journal-textarea::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.journal-meta {
+  margin: 6px 0 0;
+  text-align: right;
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  min-height: 14px;
+  opacity: 0.7;
+}
+
+.journal-saved:empty::before {
+  content: '';
+}
+
+/* Lyst tema fallback */
+body:not(.theme-dark) .journal-textarea {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body:not(.theme-dark) .journal-textarea:focus {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Bro til næste årstid i Reflektér */
+.season-bridge {
+  margin-top: var(--rhythm-3);
+  text-align: center;
+}
+
+.season-bridge .home-ornament {
+  margin-bottom: var(--rhythm-2);
+}
+
+.season-bridge-line {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--rhythm-1);
+}
+
+.season-bridge-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-serif);
+  color: var(--text-secondary);
+  transition: opacity 0.3s ease;
+}
+
+.season-bridge-link:hover {
+  opacity: 0.75;
+}
+
+.season-bridge-link > span:first-child {
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.season-bridge-name {
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.season-bridge-arrow {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ============================================
+   Prose-items — flydende artikel-stil
+   ============================================ */
+
+.prose-item {
+  margin-bottom: var(--space-xl);
+}
+
+.prose-item:last-child {
+  margin-bottom: 0;
+}
+
+.prose-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-sm);
+  line-height: 1.3;
+}
+
+.prose-meta {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.prose-body {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-sm);
+  letter-spacing: 0.01em;
+}
+
+.prose-aside {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: var(--space-sm) 0 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.prose-steps {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step;
+  margin: 0 0 var(--space-sm);
+}
+
+.prose-steps li {
+  counter-increment: step;
+  margin-bottom: var(--space-sm);
+  padding-left: 32px;
+  position: relative;
+}
+
+.prose-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Reflection sections
+   ============================================ */
+
+.reflection-section {
+  margin-bottom: var(--space-xl);
+}
+
+.reflection-heading {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-md);
+  text-align: center;
+}
+
+.reflection-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: reflection;
+}
+
+.reflection-list li {
+  counter-increment: reflection;
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  font-style: italic;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.reflection-list li:last-child {
+  border-bottom: none;
+}
+
+.reflection-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.reflection-milestone {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.reflection-milestone:last-child {
+  border-bottom: none;
+}
+
+.milestone-day {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.milestone-text {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Decorative Chinese character breathing elements */
+.hub-breath {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.breath-char {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--accent-gold);
+  opacity: 0.15;
+  letter-spacing: 8px;
+}
+
+.hub-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hub-card:hover,
+.hub-card:active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.hub-card-illustration {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  color: var(--accent-gold);
+}
+
+.hub-card-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hub-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hub-card-title {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.hub-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.hub-card-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.hub-card:hover .hub-card-arrow {
+  opacity: 1;
+  color: var(--accent-gold);
+}
+
+/* ============================================
+   Section Screen Headers
+   ============================================ */
+
+.section-screen-header {
+  padding: calc(64px + var(--safe-top)) 20px 24px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.section-screen-header .back-btn {
+  margin-bottom: 8px;
+}
+
+.section-screen-title-area {
+  text-align: center;
+}
+
+.section-screen-illustration {
+  width: 300px;
+  height: 180px;
+  margin: 0 auto 16px;
+  opacity: 1;
+}
+
+.section-screen-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Illustration animations */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+
+@keyframes float-drift {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-5px); opacity: 0.9; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -40; }
+}
+
+@keyframes ripple-expand {
+  0% { r: 2; opacity: 0.6; }
+  100% { r: 18; opacity: 0; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(22px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+}
+
+@keyframes orbit-wide {
+  from { transform: rotate(0deg) translateX(38px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(38px) rotate(-360deg); }
+}
+
+@keyframes orbit-mid {
+  from { transform: rotate(0deg) translateX(28px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(28px) rotate(-360deg); }
+}
+
+@keyframes shimmer-line {
+  0% { stroke-dashoffset: 60; opacity: 0.15; }
+  50% { opacity: 0.5; }
+  100% { stroke-dashoffset: -60; opacity: 0.15; }
+}
+
+@keyframes wave-drift {
+  0%, 100% { d: path("M0 30 Q25 20 50 30 Q75 40 100 30"); }
+  50% { d: path("M0 30 Q25 38 50 30 Q75 22 100 30"); }
+}
+
+/* Practice — ripple & thread animations */
+.section-ill-practice .ripple {
+  animation: ripple-expand 3s ease-out infinite;
+}
+.section-ill-practice .ripple:nth-child(2) { animation-delay: 1s; }
+.section-ill-practice .ripple:nth-child(3) { animation-delay: 2s; }
+.section-ill-practice .ripple:nth-child(4) { animation-delay: 0.5s; }
+.section-ill-practice .ripple:nth-child(5) { animation-delay: 1.5s; }
+.section-ill-practice .ripple:nth-child(6) { animation-delay: 2.5s; }
+
+.section-ill-practice .thread {
+  stroke-dasharray: 12 8;
+  animation: shimmer-line 4s ease-in-out infinite;
+}
+.section-ill-practice .thread:nth-child(8) { animation-delay: 0.8s; }
+.section-ill-practice .thread:nth-child(9) { animation-delay: 1.6s; }
+
+.section-ill-practice .glow {
+  animation: pulse-glow 3.5s ease-in-out infinite;
+}
+.section-ill-practice .glow:nth-child(11) { animation-delay: 1.2s; }
+
+/* Organs — orbiting particles */
+.section-ill-organs .orbit-particle {
+  transform-origin: 100px 60px;
+  animation: orbit-wide 12s linear infinite;
+}
+.section-ill-organs .orbit-particle:nth-of-type(2) { animation: orbit-mid 9s linear infinite reverse; transform-origin: 100px 60px; }
+.section-ill-organs .orbit-particle:nth-of-type(3) { animation: orbit 7s linear infinite; transform-origin: 100px 60px; }
+
+.section-ill-organs .ring-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+.section-ill-organs .ring-glow:nth-of-type(2) { animation-delay: 1.8s; }
+.section-ill-organs .ring-glow:nth-of-type(3) { animation-delay: 3.2s; }
+
+.section-ill-organs .center-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Elements — floating nodes with flowing connections */
+.section-ill-elements .el-node {
+  animation: float-drift 4s ease-in-out infinite;
+}
+.section-ill-elements .el-node:nth-of-type(2) { animation-delay: 0.8s; }
+.section-ill-elements .el-node:nth-of-type(3) { animation-delay: 1.6s; }
+.section-ill-elements .el-node:nth-of-type(4) { animation-delay: 2.4s; }
+.section-ill-elements .el-node:nth-of-type(5) { animation-delay: 3.2s; }
+
+.section-ill-elements .cycle-line {
+  stroke-dasharray: 8 6;
+  animation: dash-flow 3.5s linear infinite;
+}
+.section-ill-elements .cycle-line:nth-of-type(2) { animation-delay: 0.7s; }
+.section-ill-elements .cycle-line:nth-of-type(3) { animation-delay: 1.4s; }
+.section-ill-elements .cycle-line:nth-of-type(4) { animation-delay: 2.1s; }
+.section-ill-elements .cycle-line:nth-of-type(5) { animation-delay: 2.8s; }
+
+/* Meridians — flowing paths with pulsing nodes */
+.section-ill-meridians .flow-path {
+  stroke-dasharray: 6 5;
+  animation: shimmer-line 3.5s ease-in-out infinite;
+}
+.section-ill-meridians .flow-path:nth-of-type(2) { animation-delay: 0.5s; animation-duration: 4s; }
+.section-ill-meridians .flow-path:nth-of-type(3) { animation-delay: 1s; animation-duration: 3s; }
+.section-ill-meridians .flow-path:nth-of-type(4) { animation-delay: 1.5s; animation-duration: 4.5s; }
+.section-ill-meridians .flow-path:nth-of-type(5) { animation-delay: 0.3s; animation-duration: 3.2s; }
+.section-ill-meridians .flow-path:nth-of-type(6) { animation-delay: 0.8s; animation-duration: 3.8s; }
+
+.section-ill-meridians .node-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+.section-ill-meridians .node-glow:nth-of-type(2) { animation-delay: 0.6s; }
+.section-ill-meridians .node-glow:nth-of-type(3) { animation-delay: 1.2s; }
+.section-ill-meridians .node-glow:nth-of-type(4) { animation-delay: 1.8s; }
+.section-ill-meridians .node-glow:nth-of-type(5) { animation-delay: 2.4s; }
+
+/* Overviews — gentle shimmer */
+.section-ill-overviews .ov-card {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+.section-ill-overviews .ov-card:nth-of-type(2) { animation-delay: 1s; }
+.section-ill-overviews .ov-card:nth-of-type(3) { animation-delay: 2s; }
+.section-ill-overviews .ov-card:nth-of-type(4) { animation-delay: 3s; }
+
+/* Hub card illustration animations */
+.hub-card-illustration .hub-anim {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+.hub-card-illustration .hub-orbit {
+  animation: orbit 10s linear infinite;
+}
+.hub-card-illustration .hub-drift {
+  animation: float-drift 3.5s ease-in-out infinite;
+}
+.hub-card-illustration .hub-flow {
+  stroke-dasharray: 6 4;
+  animation: dash-flow 2.5s linear infinite;
+}
+
+.section-screen-title-area h1 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.section-screen-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   Section Screen Content
+   ============================================ */
+
+.section-screen-content {
+  flex: 1;
+  padding: 28px 20px 100px;
+}
+
+/* Decorative character dividers on section screens */
+.section-breath {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.section-breath-char {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--accent-gold);
+  opacity: 0.12;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 24px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+
+.section-divider span {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   Section Introductions
+   ============================================ */
+
+.section-intro {
+  margin-bottom: 28px;
+}
+
+.section-intro-content {
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease;
+  max-height: 600px;
+  opacity: 1;
+}
+
+.section-intro-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.section-intro-content p {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+}
+
+.section-intro-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Short preview shown when collapsed */
+.section-intro-preview {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  display: none;
+}
+
+.section-intro-preview.visible {
+  display: block;
+}
+
+.section-intro-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 6px 14px;
+  background: var(--accent-gold-dim);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.3px;
+  transition: all 0.2s;
+}
+
+.section-intro-toggle:hover {
+  background: rgba(200, 169, 110, 0.25);
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+/* ============================================
+   Organ Grid
+   ============================================ */
+
+.organ-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.organ-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.organ-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--card-accent, var(--accent-gold));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.organ-card:hover, .organ-card:active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.organ-card:hover::before, .organ-card:active::before {
+  opacity: 1;
+}
+
+.organ-card-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+  display: block;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.organ-card-name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.organ-card-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.organ-card-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Meridian Grid
+   ============================================ */
+
+.meridian-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.meridian-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.meridian-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent-gold);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.meridian-card:hover, .meridian-card:active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.meridian-card:hover::before, .meridian-card:active::before {
+  opacity: 1;
+}
+
+.meridian-card-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: block;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.meridian-card-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.meridian-card-aka {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ============================================
+   Organ Clock
+   ============================================ */
+
+.clock-container {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+
+.clock-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.clock-segment {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.clock-segment:hover {
+  opacity: 0.85;
+}
+
+.clock-segment text {
+  font-family: var(--font-sans);
+  fill: var(--text-primary);
+  font-size: 10px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.clock-segment .clock-time {
+  font-size: 8px;
+  fill: var(--text-muted);
+}
+
+.clock-center-text {
+  font-family: var(--font-serif);
+  fill: var(--text-secondary);
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.15));
+}
+
+.clock-center-active {
+  fill: var(--accent-gold) !important;
+  font-weight: 600;
+}
+
+.clock-wisdom {
+  margin-top: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.clock-wisdom-label {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.clock-wisdom-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   Five Elements
+   ============================================ */
+
+.elements-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.element-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.element-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.element-card-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.element-card-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.element-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.element-card-name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.element-card-chinese {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-left: 6px;
+}
+
+.element-card-organs {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.element-card-season {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+.element-card-bar {
+  height: 3px;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.element-card:hover .element-card-bar {
+  opacity: 0.8;
+}
+
+/* Foundation Cards */
+.foundation-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.foundation-card {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.foundation-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+}
+
+.foundation-card-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.foundation-card-info {
+  flex: 1;
+}
+
+.foundation-card-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.foundation-card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.foundation-card-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Practice Guide Cards */
+.practice-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.practice-card {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.practice-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+}
+
+.practice-card-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  font-weight: 300;
+  opacity: 0.85;
+  letter-spacing: 1px;
+}
+
+.practice-card-info {
+  flex: 1;
+}
+
+.practice-card-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.practice-card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.practice-card-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Practice Detail Body */
+.practice-detail-body {
+  padding: 20px;
+}
+
+.practice-section {
+  margin-bottom: 28px;
+}
+
+.practice-section:last-child {
+  margin-bottom: 0;
+}
+
+.practice-section-heading {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-accent);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.practice-section-text {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0 0 12px 0;
+}
+
+.practice-section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Detail Header
+   ============================================ */
+
+.detail-header {
+  padding: calc(64px + var(--safe-top)) 20px 20px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--accent-gold);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-bottom: 16px;
+  transition: opacity 0.2s;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.detail-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.detail-icon {
+  font-size: 30px;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.detail-title-area h1 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.detail-nickname {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.detail-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.meta-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================
+   Detail Tabs
+   ============================================ */
+
+.detail-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 20px;
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  letter-spacing: 0.3px;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gold);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tab.active {
+  color: var(--accent-gold);
+}
+
+.tab.active::after {
+  opacity: 1;
+}
+
+.tab:hover:not(.active) {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Tab Content
+   ============================================ */
+
+.detail-content {
+  flex: 1;
+  padding-bottom: 80px;
+}
+
+.tab-content {
+  display: none;
+  padding: 24px 20px calc(40px + var(--safe-bottom));
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+/* Description */
+.description-text p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.description-text p:first-child {
+  font-size: 16px;
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.description-text p:first-child::first-line {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Themes (Accordion)
+   ============================================ */
+
+.themes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.theme-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.theme-item.open {
+  border-color: var(--border-light);
+}
+
+.theme-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+  gap: 12px;
+}
+
+.theme-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.theme-number {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--accent-gold);
+  min-width: 24px;
+  font-weight: 500;
+}
+
+.theme-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.theme-chevron {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.theme-item.open .theme-chevron {
+  transform: rotate(180deg);
+}
+
+.theme-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.theme-item.open .theme-body {
+  max-height: 500px;
+}
+
+.theme-questions {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.question {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+}
+
+.question::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  opacity: 0.6;
+}
+
+/* ============================================
+   Key Points
+   ============================================ */
+
+.keypoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.keypoint {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.keypoint-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.keypoint-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Meridian Detail Meta
+   ============================================ */
+
+.meta-points {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-point {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.meta-point strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+/* Desktop frame applied via body::after below */
+
+@media (max-width: 360px) {
+  .organ-grid {
+    grid-template-columns: 1fr;
+  }
+  .meridian-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   Element Detail
+   ============================================ */
+
+.element-organs-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.element-organs-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+.element-organ-link {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 14px;
+}
+
+.element-organ-link:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+}
+
+.element-organ-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.element-organ-info {
+  flex: 1;
+}
+
+.element-organ-name {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.element-organ-nickname {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.element-organ-link svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Correspondences */
+.correspondences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.correspondence-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+
+.correspondence-label {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--accent-gold);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.correspondence-value {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Cycles */
+.cycle-section {
+  margin-bottom: 28px;
+}
+
+.cycle-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+}
+
+.cycle-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.cycle-card-label {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--accent-gold);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.cycle-card-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mini-cycle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 12px 8px;
+}
+
+.mini-cycle-node {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.mini-cycle-active {
+  color: var(--text-primary);
+  border-color: var(--node-color);
+  background: color-mix(in srgb, var(--node-color) 15%, var(--bg-card));
+  font-weight: 600;
+}
+
+.mini-cycle-arrow {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Seasonal Wisdom */
+.seasonal-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.seasonal-season {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.seasonal-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.seasonal-tip {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.seasonal-tip-number {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.seasonal-tip-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   Foundation Detail
+   ============================================ */
+
+.yin-yang-pairs {
+  margin-top: 24px;
+}
+
+.pairs-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+}
+
+.pairs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pair-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+}
+
+.pair-yin {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: right;
+  flex: 1;
+}
+
+.pair-divider {
+  font-size: 14px;
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.pair-yang {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: left;
+  flex: 1;
+}
+
+/* Cycle Visualization */
+.cycle-visual {
+  margin-top: 24px;
+}
+
+.cycle-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0;
+}
+
+.cycle-node {
+  font-size: 12px;
+  color: var(--text-primary);
+  padding: 5px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--node-color);
+  background: color-mix(in srgb, var(--node-color) 12%, var(--bg-card));
+}
+
+.cycle-arrow {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* Partnerships */
+.partnerships {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.partnership-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--pair-color);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+
+.partnership-element {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.partnership-organs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.partnership-yin,
+.partnership-yang {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.partnership-divider {
+  color: var(--accent-gold);
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.partnership-theme {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ============================================
+   Meridian Detail — Enhanced
+   ============================================ */
+
+.meridian-level {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.meridian-connections-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.connection-block {
+  margin-bottom: 20px;
+}
+
+.connection-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+/* Pathway Visualization */
+.pathway-section {
+  padding: 0;
+}
+
+.pathway-subtitle {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pathway-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pathway-step {
+  display: flex;
+  gap: 16px;
+  min-height: 56px;
+}
+
+.pathway-step-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.pathway-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  opacity: 0.7;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.pathway-line {
+  width: 1px;
+  flex: 1;
+  background: var(--border-light);
+  margin: 4px 0;
+}
+
+.pathway-step-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+.pathway-step:last-child .pathway-step-text {
+  padding-bottom: 0;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-gold-dim);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Bottom Navigation
+   ============================================ */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 0 calc(10px + var(--safe-bottom));
+  z-index: 100;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(10, 10, 10, 0.85);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.6;
+  flex: 1;
+  min-width: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+.bottom-nav-item span {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.bottom-nav-item.active {
+  color: var(--accent-gold);
+  opacity: 1;
+}
+
+.bottom-nav-item.active svg {
+  transform: scale(1.05);
+}
+
+.bottom-nav-item:not(.active):hover {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+
+@media (max-width: 360px) {
+  .bottom-nav-item span {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .bottom-nav-item svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ============================================
+   Top Floating Buttons (Hamburger + Search)
+   ============================================ */
+
+.top-float-btn {
+  position: fixed;
+  top: calc(14px + var(--safe-top));
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 90;
+  padding: 0;
+  transition: opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.top-float-btn:hover {
+  opacity: 0.7;
+}
+
+.top-float-left {
+  left: 16px;
+}
+
+.top-float-right {
+  right: 16px;
+}
+
+.top-float-right svg {
+  color: var(--text-secondary);
+}
+
+.hamburger-line {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+#hamburger-btn.open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(4.5px, 4.5px);
+}
+
+#hamburger-btn.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+#hamburger-btn.open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(4.5px, -4.5px);
+}
+
+/* ============================================
+   Search Overlay
+   ============================================ */
+
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 15, 0.97);
+  z-index: 250;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: calc(var(--safe-top) + 12px);
+}
+
+.search-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.search-input-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--text-primary);
+  caret-color: var(--accent-gold);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-close:hover {
+  color: var(--text-primary);
+}
+
+.search-results {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 16px calc(16px + var(--safe-bottom));
+}
+
+.search-placeholder {
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  padding-top: 60px;
+}
+
+.search-result-group {
+  margin-bottom: 20px;
+}
+
+.search-result-group-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-result-item:hover,
+.search-result-item:active {
+  background: var(--accent-gold-dim);
+}
+
+.search-result-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.search-result-name mark {
+  background: none;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.search-result-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-no-results {
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  padding-top: 60px;
+}
+
+/* ============================================
+   Overview Section
+   ============================================ */
+
+.overview-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.overview-tabs::-webkit-scrollbar { display: none; }
+
+.overview-tab {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.overview-tab.active {
+  background: var(--accent-gold-dim);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.overview-tab-content {
+  display: none;
+}
+
+.overview-tab-content.active {
+  display: block;
+}
+
+.overview-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overview-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.overview-card:hover,
+.overview-card:active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+}
+
+.overview-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.overview-card-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.overview-card-title-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.overview-card-name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.overview-card-chinese {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+.overview-card-meta {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.overview-card-signs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.overview-sign {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.overview-sign-more {
+  background: var(--accent-gold-dim);
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+/* Overview Detail */
+
+.ov-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.ov-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ov-info-row:last-child {
+  border-bottom: none;
+}
+
+.ov-info-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.ov-info-value {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--text-primary);
+  text-align: right;
+  margin-left: 16px;
+}
+
+.ov-section {
+  margin-bottom: 24px;
+}
+
+.ov-section-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ov-section-text {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.ov-signs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ov-sign-pill {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.ov-table {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+@media (min-width: 600px) {
+  .ov-table {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.ov-table-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.ov-table-col-header {
+  background: var(--accent-gold-dim);
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ov-table-cell {
+  padding: 8px 14px;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  line-height: 1.5;
+}
+
+.ov-table-cell:last-child {
+  border-bottom: none;
+}
+
+.ov-link-full {
+  display: block;
+  width: 100%;
+  background: var(--accent-gold-dim);
+  border: 1px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ov-link-full:hover,
+.ov-link-full:active {
+  background: rgba(200, 169, 110, 0.25);
+}
+
+/* Symptom Reference Table */
+
+.symptom-ref-intro {
+  padding: 0 0 12px;
+}
+
+.symptom-ref-intro p {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.symptom-ref-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  margin: 0 0 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.symptom-ref-item.open {
+  border-color: var(--border-light);
+}
+
+.symptom-ref-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.symptom-ref-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.symptom-ref-chevron {
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.symptom-ref-item.open .symptom-ref-chevron {
+  transform: rotate(180deg);
+}
+
+.symptom-ref-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.symptom-ref-item.open .symptom-ref-body {
+  max-height: 300px;
+}
+
+.symptom-ref-organs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 10px;
+}
+
+.symptom-ref-organ-tag {
+  background: var(--accent-gold-dim);
+  border: 1px solid rgba(200, 169, 110, 0.25);
+  border-radius: 14px;
+  padding: 5px 12px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.symptom-ref-organ-tag:hover,
+.symptom-ref-organ-tag:active {
+  background: rgba(200, 169, 110, 0.3);
+}
+
+.symptom-ref-note {
+  padding: 0 16px 14px;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Conversation Structure */
+
+.conversation-structure {
+  padding: 0;
+}
+
+.conversation-header-info {
+  margin-bottom: 20px;
+}
+
+.conversation-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.conversation-subtitle {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.conversation-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.conversation-section-number {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-gold-dim);
+  border: 1px solid rgba(200, 169, 110, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.conversation-section-heading {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 14px;
+  padding-right: 40px;
+}
+
+.conversation-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.conversation-item {
+  padding-left: 12px;
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.conversation-item-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 3px;
+}
+
+.conversation-item-text {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Still Home — Season + Question
+   ============================================ */
+
+.home-season-still {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 72px 0;
+}
+
+.home-season-name-still {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 300;
+  display: block;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.home-season-element-still {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.home-season-line {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 2.0;
+  color: var(--text-secondary);
+  margin: 28px auto 0;
+  max-width: 260px;
+  opacity: 0.7;
+}
+
+/* legacy home-question rules removed — now defined near line 549 */
+
+.home-word {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  transition: color 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.home-word:hover {
+  color: var(--accent-gold);
+}
+
+.home-word-dot {
+  color: var(--text-muted);
+  font-size: 10px;
+  opacity: 0.25;
+}
+
+/* ============================================
+   Explore Screen — Doors
+   ============================================ */
+
+.explore-doors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  gap: var(--rhythm-3);
+  padding: 0 var(--side-pad);
+}
+
+.explore-doors .screen-illustration {
+  margin-bottom: 0;
+}
+
+.explore-door {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+  letter-spacing: 0.08em;
+}
+
+.explore-door:hover {
+  color: var(--accent-gold);
+}
+
+/* ============================================
+   Explore Sub-screens
+   ============================================ */
+
+.explore-header {
+  padding: 16px 20px 0;
+}
+
+.explore-content {
+  padding: 24px 32px 100px;
+}
+
+.explore-section {
+  margin-bottom: 40px;
+}
+
+.explore-label {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  margin: 0 0 20px 0;
+  opacity: 0.7;
+}
+
+.explore-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.explore-item:last-child {
+  border-bottom: none;
+}
+
+.explore-item:hover {
+  opacity: 0.7;
+}
+
+.explore-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.explore-icon {
+  font-size: 18px;
+  opacity: 0.5;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.explore-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.explore-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.explore-current {
+  color: var(--accent-gold);
+  font-size: 20px;
+}
+
+/* ============================================
+   Explore Sub-screens — stille typografisk liste
+   ============================================ */
+
+.explore-list-still {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.explore-list-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin: 0 0 var(--rhythm-2);
+  text-align: center;
+}
+
+.explore-list-items {
+  width: 100%;
+  max-width: var(--read-narrow);
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-list-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md) 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.explore-list-item:last-child {
+  border-bottom: none;
+}
+
+.explore-list-item:hover {
+  opacity: 0.6;
+}
+
+.explore-list-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.explore-list-meta {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   Search Screen — Hvad mærker du?
+   ============================================ */
+
+.search-still {
+  padding: var(--rhythm-5) var(--side-pad) var(--bottom-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.search-still-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 var(--rhythm-2);
+  letter-spacing: 0.02em;
+}
+
+.search-still-input-wrap {
+  width: 100%;
+  max-width: var(--read-narrow);
+  margin: 0 auto var(--rhythm-2);
+  border-bottom: 1px solid var(--border-whisper);
+  padding: 0 0 var(--space-xs);
+}
+
+.search-still-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: var(--space-sm) 0;
+}
+
+.search-still-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.search-still-input:focus {
+  outline: none;
+}
+
+.search-still-or {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0 0 var(--rhythm-1);
+  letter-spacing: 0.05em;
+}
+
+.search-still-words {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--rhythm-2);
+  max-width: var(--read-wide);
+  width: 100%;
+  margin: 0 auto var(--rhythm-3);
+}
+
+.search-sensation-group {
+  width: 100%;
+  text-align: center;
+}
+
+.search-sensation-label {
+  font-family: var(--font-serif);
+  font-size: var(--size-label);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--rhythm-1);
+  opacity: 0.75;
+}
+
+.search-sensation-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  column-gap: 22px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  max-width: var(--read-wide);
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.search-still-word {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  letter-spacing: 0.01em;
+  transition: color 0.4s ease;
+}
+
+.search-still-word:hover {
+  color: var(--accent-gold);
+}
+
+.search-still-word-sep {
+  display: none;
+}
+
+.search-still-results {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-md);
+}
+
+.search-result-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md) 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.search-result-item:hover {
+  opacity: 0.6;
+}
+
+.search-result-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.search-result-meta {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.search-empty {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+/* ============================================
+   Home Threads
+   ============================================ */
+
+.home-threads {
+  margin: 32px 0 16px;
+}
+
+.home-threads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-thread {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease;
+}
+
+.home-thread:hover {
+  border-color: var(--accent-gold);
+}
+
+/* ============================================
+   Portrait Screens (Organ, Element)
+   ============================================ */
+
+.portrait-content {
+  padding: 24px 20px 100px;
+}
+
+.portrait-text {
+  margin-bottom: 40px;
+}
+
+.portrait-text p {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 2.0;
+  color: var(--text-primary);
+  margin: 0 0 32px 0;
+  letter-spacing: 0.01em;
+}
+
+.portrait-text p:first-child {
+  font-size: 17px;
+}
+
+.portrait-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.portrait-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.portrait-link:last-child {
+  border-bottom: none;
+}
+
+.portrait-link:hover .portrait-link-text {
+  color: var(--accent-gold);
+}
+
+.portrait-link-text {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.portrait-link-arrow {
+  font-size: 14px;
+  color: var(--text-muted);
+  opacity: 0.3;
+}
+
+/* Theme Flow (Mærk ind) */
+.themes-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.theme-flow-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.theme-flow-item:first-child {
+  padding-top: 0;
+}
+
+.theme-flow-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 18px 0;
+}
+
+.theme-flow-question {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0 0 14px 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--border-subtle);
+}
+
+.theme-flow-question:last-child {
+  margin-bottom: 0;
+}
+
+.theme-flow-continue {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  margin: 24px 0;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--accent-gold);
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  text-align: center;
+}
+
+.theme-flow-continue:hover {
+  border-color: var(--accent-gold);
+}
+
+/* Organ Clock Wisdom (in themes screen) */
+.theme-flow-clock {
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.theme-flow-clock-time {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.theme-flow-clock-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Element Cycles Flow */
+.cycles-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cycle-flow-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cycle-flow-item:first-child {
+  padding-top: 0;
+}
+
+.cycle-flow-item:last-child {
+  border-bottom: none;
+}
+
+.cycle-flow-label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.cycle-flow-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Season Section
+   ============================================ */
+
+.season-current-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.season-main-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--season-color, var(--accent-gold));
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.season-main-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.season-main-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.season-main-card-name {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.season-main-card-element {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--season-color, var(--accent-gold));
+}
+
+.season-main-card-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.season-main-card-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.season-main-card-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+
+.season-others-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.season-others-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.season-other-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--season-color, var(--accent-gold));
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.season-other-card:hover {
+  transform: translateY(-1px);
+}
+
+.season-other-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.season-other-element {
+  font-size: 12px;
+  color: var(--season-color, var(--text-secondary));
+}
+
+/* Season Detail Tabs — scrollable for 8 tabs */
+.season-tabs {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex-wrap: nowrap !important;
+}
+
+.season-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.season-tabs .tab {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Season Exercise Cards */
+.season-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.season-exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.season-exercise-card h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.season-sanskrit {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.season-card-duration {
+  font-size: 12px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.season-exercise-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 10px 0;
+}
+
+.season-card-detail {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.season-card-detail strong {
+  color: var(--text-primary);
+}
+
+/* Season Steps (meditation) */
+.season-steps {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.season-steps li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* Season EFT */
+.season-eft-card {
+  border-left: 3px solid var(--accent-gold);
+}
+
+.season-eft-setup {
+  color: var(--text-primary) !important;
+  font-size: 15px !important;
+}
+
+.season-eft-points {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.season-eft-point {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.season-eft-point strong {
+  color: var(--accent-gold);
+}
+
+/* Season Journal */
+.season-journal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.season-journal-section h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.season-prompts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.season-prompts-list li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  padding-left: 16px;
+}
+
+.season-prompts-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.season-checkin-list li::before {
+  content: '□';
+  font-size: 12px;
+}
+
+/* Season Milestones */
+.season-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.season-milestone-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.season-milestone-marker {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--accent-gold);
+  min-width: 36px;
+  text-align: center;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.season-milestone-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Pattern Engine
+   ============================================ */
+
+.pattern-clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.pattern-clock-svg {
+  max-width: 300px;
+  width: 100%;
+}
+
+.pattern-clock-wisdom {
+  text-align: center;
+  margin-top: 12px;
+  padding: 0 16px;
+}
+
+.pattern-search-area {
+  margin-bottom: 24px;
+}
+
+.pattern-search-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.pattern-search-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.pattern-search-input:focus {
+  border-color: var(--accent-gold);
+}
+
+.pattern-quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.pattern-tag {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pattern-tag:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.pattern-tag-active {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: rgba(184, 149, 46, 0.1);
+}
+
+/* Pattern Results */
+.pattern-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pattern-section {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pattern-section:last-child {
+  border-bottom: none;
+}
+
+.pattern-section-title {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin: 0 0 14px 0;
+}
+
+.pattern-organ-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pattern-organ-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--chip-color, var(--accent-gold));
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: left;
+}
+
+.pattern-organ-chip:hover {
+  transform: translateY(-1px);
+}
+
+.pattern-chip-icon {
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.pattern-chip-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.pattern-chip-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.pattern-note {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 8px 0 0 0;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+/* Element & Season Links */
+.pattern-element-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pattern-element-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pattern-element-link:hover {
+  transform: translateY(-1px);
+}
+
+.pattern-el-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.pattern-el-season {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Organ Clock in pattern results */
+.pattern-clock-entry {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.pattern-clock-time {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.pattern-clock-wisdom-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Season Practices */
+.pattern-practices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pattern-practice-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+
+.pattern-practice-type {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.pattern-practice-card strong {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.pattern-practice-card em {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.pattern-practice-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 4px 0 0 0;
+}
+
+/* Go Deeper */
+.pattern-deeper-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pattern-deeper-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pattern-deeper-link:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* No results */
+/* Pattern unique content */
+.pattern-connection-text {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.pattern-reflections {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pattern-reflections li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 8px;
+}
+
+.pattern-exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.pattern-exercise-card h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.pattern-exercise-duration {
+  font-size: 12px;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.pattern-exercise-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 12px 0;
+}
+
+.pattern-exercise-effect {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pattern-no-results {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-secondary);
+}
+
+.pattern-no-results p:first-child {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.pattern-no-results-hint {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ============================================
+   Hamburger Overlay & Menu
+   ============================================ */
+
+.hamburger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hamburger-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(320px, 85vw);
+  height: 100%;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-subtle);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hamburger-overlay.open .hamburger-menu {
+  transform: translateX(0);
+}
+
+.hamburger-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(16px + var(--safe-top)) 20px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hamburger-brand {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.hamburger-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-close:hover {
+  color: var(--text-primary);
+}
+
+.hamburger-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hamburger-section-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.hamburger-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 8px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-link:hover {
+  background: var(--accent-gold-dim);
+  color: var(--text-primary);
+}
+
+.hamburger-link svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.hamburger-link:hover svg {
+  color: var(--accent-gold);
+}
+
+.hamburger-footer {
+  margin-top: auto;
+  padding: 24px 20px calc(24px + var(--safe-bottom));
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.hamburger-footer p {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.hamburger-version {
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  color: var(--text-muted);
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+/* ============================================
+   Desktop App Frame (768px+)
+   ============================================ */
+
+@media (min-width: 768px) {
+  /* Centrer alle skærme */
+  .screen {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centrer bundnavigation */
+  .bottom-nav {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centrer floating buttons inden for rammen */
+  .top-float-left {
+    left: calc(50% - 350px + 16px);
+  }
+
+  .top-float-right {
+    right: calc(50% - 350px + 16px);
+  }
+
+  /* Tynd vertikal ramme langs begge sider */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 700px;
+    margin: 0 auto;
+    border-left: 1.5px solid var(--accent-gold);
+    border-right: 1.5px solid var(--accent-gold);
+    pointer-events: none;
+    z-index: 150;
+    opacity: 0.15;
+  }
+
+  /* Flyt hamburger-menu ind i rammen */
+  .hamburger-menu {
+    left: calc(50% - 350px);
+  }
+
+  .hamburger-overlay {
+    max-width: 700px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centrer søge-overlay */
+  .search-overlay .search-container {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ============================================
+   Light Theme Overrides
+   (for hardcoded dark rgba values)
+   ============================================ */
+
+[data-theme="light"] .bottom-nav {
+  background: rgba(234, 230, 222, 0.94);
+}
+
+[data-theme="light"] .search-overlay {
+  background: rgba(245, 242, 236, 0.98);
+}
+
+[data-theme="light"] .hamburger-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .clock-segment-active path {
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.1));
+}
+
+/* Theme transition */
+html[data-theme-transitioning] * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}

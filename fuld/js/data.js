@@ -1,5 +1,6 @@
 // The Patterns Behind - Combined Bilingual Data Module
 // Contains both English and Danish datasets
+import { seasonsData } from './seasons-data.js';
 
 const en = (() => {
 // The Patterns Behind - Complete TCM Data
@@ -16,224 +17,224 @@ const APP_INFO = {
 // ============================================
 const practiceGuide = [
   {
-    id: 'moede-klienten',
+    id: 'moede-dig-selv',
     icon: '○',
-    title: 'Meeting the Client',
-    subtitle: 'The philosophy behind the approach',
+    title: 'Meeting Yourself',
+    subtitle: 'An invitation to explore your own patterns',
     sections: [
       {
         heading: 'The Patterns Behind — Two Perspectives',
         paragraphs: [
-          'The title "The Patterns Behind" contains two parallel perspectives. The first is very direct and points to the fact that, as practitioners, we are interested in understanding and mapping the patterns behind the client\'s condition.',
-          'At the same time, the title also points to the possibility that there may be patterns that are not obvious at first glance. That the client\'s symptoms may appear to express one picture, but beneath this picture there may be patterns that will better enable us to meet them at the level from which their symptoms originate.'
+          'The title "The Patterns Behind" contains two parallel perspectives. The first is very direct: there are patterns behind your condition — connections between body, emotions, and energy that you may not have noticed yet.',
+          'The second perspective is more subtle. Your symptoms may appear to express one picture, but beneath this picture there may be deeper patterns. When you begin to sense these hidden layers, you gain the possibility of meeting yourself at the level from which your symptoms truly originate.'
         ]
       },
       {
-        heading: 'Meeting the Client Where They Are',
+        heading: 'Meeting Yourself Where You Are',
         paragraphs: [
-          'When we meet our client for the first time, we are interested both in meeting them where they are and in understanding what lies behind their current condition. Working with the patterns behind encompasses both — it gives us the opportunity to listen to their entire story while simultaneously adding nuance to their narrative through the conversation.',
-          'The fundamental starting point is respect for the client\'s own narrative and the body\'s own wisdom. The TCM understanding gives us a map, but it is always the client and their system that shows us the way.'
+          'When you begin this exploration, the starting point is exactly where you are right now. Working with the patterns behind is about listening to your own story with fresh ears — noticing the connections you may have overlooked and allowing new nuances to emerge.',
+          'The fundamental starting point is respect for your own experience and your body\'s own wisdom. The TCM understanding offers a map, but it is always your body and your felt sense that shows you the way.'
         ]
       },
       {
         heading: 'An Invitation — Not a Protocol',
         paragraphs: [
-          'This is not a manual, but a source of inspiration. The intention is not for you to memorize it or follow it as a protocol — but to let it weave itself into your practice in the way that makes sense to you.',
-          'Perhaps you begin by simply asking a few more questions in your initial conversations. Perhaps you start noticing time patterns in your clients\' symptoms. Perhaps the understanding of emotional connections to organs opens up new conversations with your clients.',
-          'The essential thing is that you take it at your own pace and let it grow naturally into your work.'
+          'This is not a manual, but a source of wonder. The intention is not for you to learn it by heart or follow it as a recipe — but to let it gently open doors in you, at whatever pace feels right.',
+          'Perhaps you begin by simply noticing when during the day you feel most alive or most drained. Perhaps you start sensing connections between your emotions and your body. Perhaps a single question here opens something you have long carried without words.',
+          'The essential thing is that you take it at your own pace and allow curiosity to lead you.'
         ]
       }
     ]
   },
   {
-    id: 'foerste-samtale',
+    id: 'foerste-udforskning',
     icon: '∿',
-    title: 'The First Conversation',
-    subtitle: 'Three central themes to address',
+    title: 'The First Exploration',
+    subtitle: 'Three themes to sense into',
     sections: [
       {
-        heading: 'The Fundamental Steps',
+        heading: 'A Starting Point',
         paragraphs: [
-          'The general approach to the first session with a new client involves specific steps: an invitation to share what they would like help with, and listening to their situation and the wishes they have for the treatment.',
-          'As they share, a dialogue often emerges — questions along the way turn it into a dynamic conversation where the narrative captures as many nuances as possible.'
+          'Begin by simply noticing what brought you here. What is it you wish to understand better about yourself? What does your body want you to pay attention to right now?',
+          'There is no right or wrong way to begin. Let your attention rest on whatever feels most alive or most pressing. The nuances will reveal themselves as you go.'
         ]
       },
       {
-        heading: '1. Medication',
+        heading: '1. Medication & the Body\'s Balance',
         paragraphs: [
-          'Ask whether they take any medication of any kind. Never interfere with their medication, but talk to them about it — especially in relation to the symptoms they are seeking help for.',
-          'Medication can constitute a therapy obstacle: a condition where the client\'s entire system is affected in a way that short-circuits the body\'s natural ability to balance and regulate itself. It is a state where, despite various interventions, they experience no real change.'
+          'If you take medication of any kind, it is worth noticing how it affects you — not to judge it, but to understand its role in your overall picture.',
+          'Sometimes medication can become a kind of buffer that makes it harder for the body to find its own balance. This is not about stopping anything, but about being aware of how your system responds and where its natural capacity for self-regulation may be muted.'
         ]
       },
       {
-        heading: '2. General Life Circumstances',
+        heading: '2. Your Life Right Now',
         paragraphs: [
-          'Always ask about their general life circumstances — health, family situation, work life, and everything that constitutes the essence of their life. The context of our lives is always directly woven into our condition.',
-          'This part of the conversation can provide insight into whether the symptoms originate from locked states in the system, or whether they are more compensatory processes that the body is forced to initiate in response to a context that does not serve as a supportive resource.'
+          'Take a moment to sense into the whole of your life — your health, your relationships, your work, and everything that constitutes the fabric of your daily existence. The context of our lives is always directly woven into our condition.',
+          'Notice whether your symptoms seem to emerge from something locked or stuck inside you, or whether they feel more like your body\'s response to a life situation that drains rather than nourishes you. Both are valuable information.'
         ]
       },
       {
-        heading: '3. History — Illnesses, Events, and Scar Tissue',
+        heading: '3. Your History — Illnesses, Turning Points, and Scar Tissue',
         paragraphs: [
-          'Ask specifically about their history regarding illnesses and major events. Have there been significant shifts and transitions that have constituted a kind of "before and after" in their life? Listen for the chronological order, as it can provide important information about connections to the current condition.',
-          'Also ask specifically about accidents, injuries, and scar tissue. Like medication, scar tissue can constitute a therapy obstacle — active scar tissue that has not been normalized can affect the entire system\'s ability to regulate.'
+          'Look back over your life. Have there been significant illnesses, events, or transitions that created a kind of "before and after"? Notice the chronological order — it can reveal surprising connections to what you experience now.',
+          'Also notice any accidents, injuries, or scar tissue. Scar tissue that has never fully healed can affect the body\'s entire ability to regulate itself — like a knot in a thread that changes the pattern of the whole weave.'
         ]
       }
     ]
   },
   {
-    id: 'samtale-til-moenster',
+    id: 'opmaerksomhed-til-moenster',
     icon: '◇',
-    title: 'From Conversation to Pattern',
-    subtitle: 'The dynamics of the conversation and pattern discovery',
+    title: 'From Attention to Pattern',
+    subtitle: 'How patterns reveal themselves when you listen',
     sections: [
       {
-        heading: 'The Dynamics of the Conversation — Inviting Nuance Forward',
+        heading: 'Listening Inward — Inviting Nuance Forward',
         paragraphs: [
-          'Start the conversation by asking about their wish for the treatment and then letting them share. Along the way, a dialogue emerges where your questioning creates a natural opportunity for the narrative to capture as many nuances as possible.',
-          'Throughout the entire conversation, you listen from the foundation of your understanding of the principles behind TCM. After their narrative, you almost always have a sense of certain patterns.'
+          'Begin by letting your attention rest on what you already know about yourself — your symptoms, your energy, the things that feel off. Simply notice, without trying to fix or explain.',
+          'As you sit with your own story, new details often surface. Connections you hadn\'t noticed. A feeling that always accompanies a certain symptom. A time of day when something shifts. These nuances are the beginning of a pattern.'
         ]
       },
       {
-        heading: 'From Open Conversation to Specific Pattern Discovery',
+        heading: 'From Open Sensing to Specific Discovery',
         paragraphs: [
-          'When they have shared everything they had on their mind, you begin to ask more specific questions. This is where the opportunity arises to uncover and make any patterns even clearer.',
-          'You want to verify your sense of certain patterns. You can ask specific questions about themes they may not have naturally touched upon yet — questions that can shed light on whether your sense of their underlying pattern is on the right track.'
+          'When you have taken in the broad picture of how you feel, you can begin to look more specifically. This is where the eight themes under each organ become your guide — they offer questions you might not have thought to ask yourself.',
+          'Perhaps you already have a sense of something. A hunch that a particular organ or element resonates with your experience. Follow that thread. The specific questions can help you see whether your intuition is pointing in a meaningful direction.'
         ]
       },
       {
-        heading: 'Example: Organ-Specific Questions',
+        heading: 'Example: Following a Thread',
         paragraphs: [
-          'If, for example, you have a sense of an underlying pattern related to the Liver, you can ask specific questions about the eyes, tendons and joints, the ability to tolerate alcohol, menstrual cycle patterns in women, sleep, and emotional expression.',
-          'In this way, you can almost crystallize the pattern that lies behind their condition — the dominant one behind their overall symptom picture. The 8 mapping themes under each organ in this app are designed precisely for this purpose.'
+          'Say you have a sense that something relates to the Liver. You can explore further by noticing your eyes, your tendons and joints, your relationship with anger, your sleep patterns, and — for women — your menstrual cycle. Do several of these resonate?',
+          'In this way, a pattern can begin to crystallize — not as a diagnosis, but as a felt sense of what is most alive in your system right now. The 8 themes under each organ in this app are designed precisely for this kind of self-exploration.'
         ]
       },
       {
-        heading: 'Being Heard — A Therapeutic Value in Itself',
+        heading: 'The Gift of Listening to Yourself',
         paragraphs: [
-          'The curious part of the conversation has the important consequence that the client feels met and experiences a genuine interest in their entire condition. Many come from visits to specialists where they have experienced a lack of interest in their full story.',
-          'Our persistent questioning about their condition creates an experience of finally being heard — that someone is finally interested in listening to their entire story. This is therapeutic in itself.'
+          'There is something profoundly healing about truly listening to your own body and your own story. So many of us have learned to override signals, push through discomfort, or dismiss what we feel.',
+          'When you give yourself the time and space to really listen — with curiosity rather than judgment — something shifts. You begin to feel met by your own attention. This is, in itself, a form of care.'
         ]
       }
     ]
   },
   {
-    id: 'otte-grundspoergsmaal',
+    id: 'otte-vinduer',
     icon: '⊞',
-    title: 'The Eight Fundamental Questions',
-    subtitle: 'A framework for pattern discovery',
+    title: 'Eight Windows In',
+    subtitle: 'Eight ways to sense into your own patterns',
     sections: [
       {
-        heading: 'A Framework Across Organ Systems',
+        heading: 'A Map for Self-Exploration',
         paragraphs: [
-          'Eight central question areas form a framework that makes it possible to gain an overview of the client\'s condition across the various organ systems. By touching on these eight areas, you gain a broad understanding of where potential imbalances may lie and which organs may be involved.',
-          'These eight areas are directly reflected in the 8 mapping themes that you find under each organ in this app.'
+          'Eight areas of attention form a kind of map that can help you sense where your body may be out of balance. By gently exploring each area, you gain a broader understanding of which organs and patterns might be involved in what you experience.',
+          'These eight areas are directly reflected in the 8 themes you find under each organ in this app. They are not a checklist — they are windows you can look through, one at a time.'
         ]
       },
       {
         heading: '1. Time Patterns',
         paragraphs: [
-          'When do the symptoms arise or worsen? Is there a pattern related to times of day (the organ clock) or seasons (the five-element cycle)? Consistent time patterns often point directly to specific organs.'
+          'When do your symptoms arise or worsen? Is there a pattern related to times of day or seasons? Notice if the same discomfort returns at the same hour — consistent time patterns often point directly to specific organs through the organ clock.'
         ]
       },
       {
         heading: '2. Energy Level & Fatigue',
         paragraphs: [
-          'How is their general energy level? When during the day is energy highest and lowest? Chronic fatigue, sudden energy dips, or restlessness can all point to specific organ patterns.'
+          'How is your general energy level? When during the day do you feel most alive, and when do you crash? Chronic fatigue, sudden energy dips, or a restlessness that won\'t settle can all point to specific organ patterns.'
         ]
       },
       {
         heading: '3. Digestion & Appetite',
         paragraphs: [
-          'How is their digestion functioning? Appetite, bloating, stomach pain, bowel patterns, and food preferences provide important information about the Spleen, Stomach, Liver, and Large Intestine in particular.'
+          'How does your digestion feel? Notice your appetite, any bloating, stomach pain, bowel patterns, and which foods you crave or avoid. These signals provide important information about the Spleen, Stomach, Liver, and Large Intestine in particular.'
         ]
       },
       {
         heading: '4. Sleep & Dreams',
         paragraphs: [
-          'How is their sleep? Difficulty falling asleep, waking at specific times, dream intensity, and sleep quality often reflect specific organ patterns — especially via the organ clock.'
+          'How is your sleep? Do you have difficulty falling asleep, or do you wake at specific times during the night? Notice your dream intensity and overall sleep quality — these often reflect specific organ patterns, especially through the organ clock.'
         ]
       },
       {
-        heading: '5. Emotional States',
+        heading: '5. Emotional Landscape',
         paragraphs: [
-          'Which emotions dominate? Persistent anger or frustration (Liver), worry and overthinking (Spleen), grief (Lungs), fear (Kidneys), or anxiety and restlessness (Heart) all point to specific elements and organs.'
+          'Which emotions visit you most often? Persistent anger or frustration (Liver), worry and overthinking (Spleen), grief (Lungs), fear (Kidneys), or anxiety and restlessness (Heart) — each points to specific elements and organs. Notice without judging.'
         ]
       },
       {
         heading: '6. Temperature & Climate Sensitivity',
         paragraphs: [
-          'Do they get cold easily or feel too warm? Do they react to cold, heat, dampness, or wind? Temperature preferences and climate sensitivity are direct expressions of the Yin-Yang balance in the body.'
+          'Do you get cold easily, or do you tend to feel too warm? How do you respond to cold, heat, dampness, or wind? Your temperature preferences and climate sensitivity are direct expressions of the Yin-Yang balance in your body.'
         ]
       },
       {
         heading: '7. Pain & Physical Symptoms',
         paragraphs: [
-          'Where in the body do they experience pain or discomfort? Pain character (sharp, dull, wandering, fixed), location, and timing provide valuable information about which meridians and organs are involved.'
+          'Where in your body do you experience pain or discomfort? Notice the character of the pain — is it sharp, dull, wandering, or fixed? Its location and timing provide valuable clues about which meridians and organs may be involved.'
         ]
       },
       {
         heading: '8. Fluid Balance & Thirst',
         paragraphs: [
-          'How is their fluid balance? Thirst patterns, urination, tendency toward edema or dryness tell us about Kidney function, the Spleen\'s transformation of fluids, and the overall Yin-Yang balance.'
+          'How is your fluid balance? Notice your thirst patterns, urination, and any tendency toward swelling or dryness. These signals speak of Kidney function, the Spleen\'s transformation of fluids, and the overall Yin-Yang balance in your body.'
         ]
       }
     ]
   },
   {
-    id: 'arbejde-med-moenstre',
+    id: 'leve-med-moenstre',
     icon: '≋',
-    title: 'Working with Patterns',
-    subtitle: 'The pattern as an entry point — not as a cause',
+    title: 'Living with Patterns',
+    subtitle: 'The pattern as a doorway — not a diagnosis',
     sections: [
       {
-        heading: 'The Pattern Is Not the Same as the Cause',
+        heading: 'A Pattern Is Not the Same as a Cause',
         paragraphs: [
-          'An essential part of the understanding behind TCM is that a dominant pattern is not the same as the cause of the client\'s condition. Within the specific pattern, there may be different states — for example, the Liver may be too rebellious, its energy stagnant, or it may simply lack vitality.',
-          'Furthermore, the Liver may well be the dominant pattern, but the cause may be due to an entirely different organ that is in imbalance and forcing the Liver into a different function. The pattern is never exhaustive in itself, but it can point to the dominant condition and create an entry point for treatment.'
+          'When you begin to recognize a pattern in yourself, it is important to hold it lightly. A dominant pattern is not the same as the cause of your condition. Within a single pattern, there may be different states — for example, the Liver may be too restless, its energy stagnant, or it may simply lack vitality.',
+          'Furthermore, the pattern you notice most clearly may actually be driven by an entirely different organ that is out of balance. The pattern is never the whole picture, but it can point you toward what is most active in your system right now — a doorway into deeper understanding.'
         ]
       },
       {
-        heading: 'When Multiple Patterns Are Active Simultaneously',
+        heading: 'When Several Patterns Are Present at Once',
         paragraphs: [
-          'Life is complex, and all organs are always in mutual exchange. It is not possible to view the individual organ outside its context, and therefore there will always, to varying degrees, be multiple patterns active at the same time.',
-          'The art is to assess whether one pattern dominates sufficiently to be the obvious entry point. If multiple patterns are present simultaneously without a clearly dominant one, it may be appropriate to work with one of the extraordinary meridians, which function at a deeper level and can balance multiple patterns simultaneously.'
+          'Life is complex, and all organs are always in mutual exchange. You cannot view a single organ outside its context, and therefore there will always be several patterns present at the same time, to varying degrees.',
+          'If you sense that one pattern clearly dominates, let that be your starting point. If several patterns seem equally present without one standing out, it may be worth exploring the extraordinary meridians — they work at a deeper level and can illuminate connections across multiple patterns simultaneously.'
         ]
       },
       {
-        heading: 'Over Multiple Treatments',
+        heading: 'Patterns Shift Over Time',
         paragraphs: [
-          'Patterns can be used as a reference over a course of treatment. If the right pattern has been chosen and there has been a therapeutic process, the client will report changes in relation to the original pattern at the next treatment.',
-          'When the original pattern begins to shift and change, the possibility is created for deeper-lying conditions to begin to emerge. These deeper layers simultaneously contain the greatest potential for renewed vitality and an overall movement toward freer and more balanced function.'
+          'Your patterns are not fixed. As you bring awareness to what is present, things naturally begin to move. You may notice that what once felt dominant starts to soften, and something new begins to surface underneath.',
+          'These deeper layers often hold the greatest potential for renewed vitality. When one pattern begins to shift, it creates space for what was hidden to emerge — and with it, the possibility of freer and more balanced function in your whole system.'
         ]
       }
     ]
   },
   {
-    id: 'vores-rolle',
+    id: 'en-ramme-for-forstaaelse',
     icon: '△',
-    title: 'Our Role',
-    subtitle: 'Boundaries, responsibility, and integration',
+    title: 'A Framework for Understanding',
+    subtitle: 'What this is — and what it is not',
     sections: [
       {
-        heading: 'Boundaries and Responsibility',
+        heading: 'A Language — Not a Diagnosis',
         paragraphs: [
-          'It is important to emphasize that our role is never to diagnose or treat diseases in the Western medical sense. We do not make diagnoses as a doctor would, and we never interfere with the client\'s medical treatment.',
-          'When we speak of "patterns" and use TCM as a framework for understanding, it is a way of organizing our observations and guiding our treatment — not a medical diagnosis. If we sense that the client needs medical evaluation, we always encourage them to contact their doctor.'
+          'It is important to understand that TCM, as it is presented here, is not a medical system for diagnosing or treating diseases. When we speak of "patterns," we are using a language for understanding connections in the body — not making a medical diagnosis.',
+          'This framework can help you notice things you might otherwise overlook and give words to experiences that are difficult to articulate. But if you sense that something requires medical attention, always consult your doctor. This is a complement to, never a replacement for, professional healthcare.'
         ]
       },
       {
-        heading: 'Integration with Body Therapy',
+        heading: 'The Body\'s Own Intelligence',
         paragraphs: [
-          'One of the great strengths of combining TCM understanding with body therapy is that both systems share a deep respect for the body\'s own intelligence and capacity for self-regulation. Where TCM gives us a framework and a diagnostic map for identifying patterns, body therapy gives us a treatment modality that allows the body itself to prioritize where the healing process should occur.',
-          'TCM is never used as a protocol, but rather as a source of inspiration. Meridian pathways, organ systems, and energetic patterns become entry points for treatment — doors we can open — but it is always the client\'s system that determines which door we walk through and what happens on the other side.'
+          'At the heart of TCM lies a deep trust in the body\'s own intelligence and its capacity for self-regulation. Your body is constantly working to find balance — even when it feels like everything is out of order.',
+          'The patterns you discover here are not problems to be fixed, but invitations to understand. When you begin to see the connections — between an emotion and an organ, between a time of day and a symptom, between a season and a state of mind — you are not diagnosing yourself. You are listening to a language your body has always spoken.'
         ]
       },
       {
-        heading: 'The Six Levels of Organ Understanding',
+        heading: 'Six Layers of Understanding',
         paragraphs: [
-          'In TCM, each organ represents a complex energy system that affects the whole person on six levels: the energetic (qi flow and meridian pathways), the physical (concrete functions and structures), the psychological (thought patterns and mental clarity), the emotional (emotional connections), the sensory (the organ "opens" to a specific sense), and the spiritual (aspects of our deeper essence).',
-          'This multilayered understanding provides a richer and more nuanced approach, where physical symptoms are always seen in connection with emotional, mental, and energetic qualities. It is this depth with which each organ is presented in this app.'
+          'In TCM, each organ represents a complex energy system that touches the whole person on six levels: the energetic (qi flow and meridian pathways), the physical (concrete functions and structures), the psychological (thought patterns and mental clarity), the emotional (feelings and their expression), the sensory (each organ "opens" to a specific sense), and the spiritual (aspects of our deeper essence).',
+          'This multilayered understanding is what makes TCM so rich as a framework for self-exploration. A physical symptom is never just physical — it always carries emotional, mental, and energetic dimensions. It is this depth with which each organ is presented in this app.'
         ]
       }
     ]
@@ -245,50 +246,304 @@ const practiceGuide = [
 // ============================================
 const sectionIntros = {
   practice: {
-    title: 'In Practice',
+    title: 'Your Exploration',
     paragraphs: [
-      'This section is your guide to using the patterns in practice. Here you will find a concrete approach to the first conversation with the client, the eight foundational questions that form the framework for pattern discovery, and an understanding of how patterns can be used as an entry point for treatment.',
-      'The material is not a protocol, but a source of inspiration — intended to weave itself into your practice in the way that makes sense to you. Take it at your own pace and let it grow naturally into your work.'
+      'This section is your guide to exploring your own patterns. Here you will find a starting point for listening to your body, eight windows into different aspects of your health, and an understanding of how patterns can serve as doorways to deeper self-knowledge.',
+      'The material is not a protocol, but a source of wonder — intended to open gently at your own pace. Let curiosity lead you, and trust that what you need to notice will make itself known.'
     ]
   },
   organs: {
     title: 'The 12 Organs & Meridians',
     paragraphs: [
-      'In Traditional Chinese Medicine, organs are regarded as far more than mere physical structures with specific physiological functions. Each organ represents a complex energy system that influences and permeates the entire person on numerous levels — energetic, physical, psychological, emotional, sensory, and spiritual.',
-      'When we speak of "liver" or "heart" in TCM, we are therefore not referring only to the physical organ, but to this entire complex system of relationships and functions. This provides a richer and more nuanced understanding of human health, where physical symptoms are always seen in connection with emotional, mental, and energetic qualities.',
-      'Each organ is presented here with its functions, characteristics, and concrete questions distributed across eight mapping themes, which can help clarify patterns in a condition. It is about listening to the body\'s narrative and understanding the deeper connections behind the symptoms.'
+      'In Traditional Chinese Medicine, organs are regarded as far more than mere physical structures with specific physiological functions. Each organ represents a complex energy system that influences and permeates you on numerous levels — energetic, physical, psychological, emotional, sensory, and spiritual.',
+      'When we speak of "liver" or "heart" in TCM, we are therefore not referring only to the physical organ, but to an entire complex system of relationships and functions. This provides a richer and more nuanced understanding of your health, where physical symptoms are always seen in connection with emotional, mental, and energetic qualities.',
+      'Each organ is presented here with its functions, characteristics, and reflective questions distributed across eight themes. These are invitations to sense into your own experience — to listen to your body\'s narrative and understand the deeper connections behind what you feel.'
     ]
   },
   extraordinary: {
     title: 'The 8 Extraordinary Meridians',
     paragraphs: [
-      'The extraordinary meridians constitute the body\'s deeper energy reservoirs and constitutional foundations. Where the 12 main meridians handle the daily flow of energy, the extraordinary meridians work at a deeper level — they store and regulate the essence we are born with and connect us to our most fundamental life force.',
-      'These eight meridians become particularly relevant in chronic, complex, or constitutional imbalances. When multiple patterns are active simultaneously and no clear, unambiguous pattern emerges, the extraordinary meridians can offer an entry point that operates at a different and deeper level with the capacity to balance multiple patterns simultaneously.',
-      'From Chong Mai — the very first vessel formed in the fetus — to Yin and Yang Wei Mai, which weave past and present together, these meridians represent the deepest layers of our energetic constitution and the potential for deep, lasting change.'
+      'The extraordinary meridians constitute the body\'s deeper energy reservoirs and constitutional foundations. Where the 12 main meridians handle the daily flow of energy, the extraordinary meridians work at a deeper level — they store and regulate the essence you were born with and connect you to your most fundamental life force.',
+      'These eight meridians become particularly relevant when you sense chronic, complex, or deeply rooted imbalances. When several patterns seem active at once and no single one stands out clearly, the extraordinary meridians can offer a deeper perspective — one that illuminates connections across multiple patterns simultaneously.',
+      'From Chong Mai — the very first vessel formed in the fetus — to Yin and Yang Wei Mai, which weave past and present together, these meridians represent the deepest layers of your energetic constitution and the potential for deep, lasting change.'
     ]
   },
   elements: {
     title: 'The Five Elements',
     paragraphs: [
-      'Five Element theory (Wu Xing) describes how nature\'s five elements — Wood, Fire, Earth, Metal, and Water — are reflected in the body\'s organ systems. This is not merely symbolism, but a practical system for understanding how organs influence each other in health and disease.',
-      'The elements are connected in two fundamental cycles: the Generating Cycle, where each element nourishes the next as a mother nourishes her child, and the Controlling Cycle, where each element keeps another in balance to prevent overgrowth. When both cycles function harmoniously, the body is in balance.',
-      'The theory gives us the ability to see patterns that extend beyond the individual organ. A symptom in one organ may have its root in another element, and emotional patterns follow the cycles of the elements. By understanding these relational connections, we gain a powerful tool for working with the whole person.'
+      'Five Element theory (Wu Xing) describes how nature\'s five elements — Wood, Fire, Earth, Metal, and Water — are reflected in the body\'s organ systems. This is not merely symbolism, but a practical framework for understanding how your organs influence each other in health and imbalance.',
+      'The elements are connected in two fundamental cycles: the Generating Cycle, where each element nourishes the next as a mother nourishes her child, and the Controlling Cycle, where each element keeps another in balance to prevent overgrowth. When both cycles function harmoniously, you are in balance.',
+      'The theory gives you the ability to see patterns that extend beyond a single organ. A symptom in one organ may have its root in another element, and emotional patterns follow the cycles of the elements. By understanding these connections, you gain a rich map for exploring the whole of yourself.'
     ]
   },
   overviews: {
     title: 'Overviews',
     paragraphs: [
-      'This section provides you with quick overviews for daily use in the clinic. Here you will find compact reference cards for all 12 organs and the 8 extraordinary meridians — designed to give an overview at a glance.',
-      'The symptom table helps you link specific symptoms to the relevant organ systems, and the conversation structure offers a suggestion for how to structure the initial conversation with a new client.'
+      'This section gives you quick overviews for easy reference. Here you will find compact cards for all 12 organs and the 8 extraordinary meridians — designed to give you an overview at a glance.',
+      'The symptom table helps you connect specific symptoms to the relevant organ systems, and the exploration guide offers a suggested structure for how to begin mapping your own patterns.'
+    ]
+  },
+  patterns: {
+    title: 'Explore Your Patterns',
+    paragraphs: [
+      'Everything in your body is connected. An emotion, a symptom, a time of night when you always wake — they are all threads in the same pattern. Here you can pull on one thread and see where it leads.',
+      'The organ clock shows you which organ is most active right now. The search below lets you start with anything you notice — a feeling, a discomfort, a recurring theme — and see how it connects to organs, elements, seasons, and practices.',
+      'There are no wrong starting points. Begin with what feels most alive in you right now, and let the connections reveal themselves.'
     ]
   },
   foundation: {
     title: 'TCM Foundational Principles',
     paragraphs: [
-      'Before we delve into the individual organs and meridians, it is essential to understand the overarching principles upon which TCM builds its approach. Four central perspectives function as a cohesive compass: the Yin-Yang principle, the Organ Clock, Five Element theory, and the Zang-Fu system.',
-      'Yin-Yang gives us the fundamental question of where the imbalance lies. The Organ Clock provides the temporal dimension — when does the symptom appear? Five Element theory reveals the relational connections between the organs, and the Zang-Fu system provides the functional understanding of organ partnerships.',
-      'Together, these perspectives provide a powerful diagnostic tool that makes it possible to see beyond isolated symptoms and instead understand the deeper patterns and connections in a condition. They overlap, complement, and reinforce each other — and form the foundation for everything that follows.'
+      'Before you explore the individual organs and meridians, it is worth understanding the overarching principles upon which TCM builds its approach. Four central perspectives function as a cohesive compass: the Yin-Yang principle, the Organ Clock, Five Element theory, and the Zang-Fu system.',
+      'Yin-Yang poses the fundamental question of where the imbalance lies. The Organ Clock provides the temporal dimension — when does the symptom appear? Five Element theory reveals the relational connections between the organs, and the Zang-Fu system provides the functional understanding of organ partnerships.',
+      'Together, these perspectives make it possible to see beyond isolated symptoms and instead understand the deeper patterns and connections in your condition. They overlap, complement, and reinforce each other — and form the foundation for everything that follows.'
     ]
+  }
+};
+
+const elementToSeason = {
+  'Wood': 'foraar', 'Fire': 'sommer', 'Earth': 'sensommer', 'Metal': 'efteraar', 'Water': 'vinter'
+};
+
+// Welcome texts — uses Danish content (EN translation pending)
+const homeWelcome = 'Din krop taler til dig hele tiden. Ikke med ord, men med fornemmelser, spændinger, rytmer og uro. Denne app hjælper dig med at lytte — ved at give dig et sprog for det du allerede mærker. Start der hvor du er. I din årstid, i din krop, lige nu.';
+
+const seasonWelcomes = {
+  foraar: 'Mærk efter. Er der noget der presser sig på indefra — en uro, en længsel, en irritation der ikke helt har fundet sit udtryk? Det er forårets energi. Træ-elementet vågner i dig som saften stiger i træerne — opad, udad, med en kraft der vil bevægelse og retning. Leveren og Galdeblæren bærer denne energi, og med den følger både din kreativitet og din frustration. Giv det plads. Mærk hvad der vil frem.',
+  sommer: 'Mærk varmen i dig. Ikke kun fra solen, men den varme der bor i dit bryst — den der tænder op når du griner, forbinder dig med et andet menneske, eller mærker at du er helt tilstede. Det er Ildens element. Hjertet og Tyndtarmen arbejder med glæde, passion og din evne til at skelne det ægte fra det overfladiske. Mærk hvad der brænder i dig lige nu.',
+  sensommer: 'Mærk dine fødder mod jorden. Mærk tyngden i din krop, det sted i dig der bare er — uden at skulle noget. Sensommeren tilhører Jord-elementet, den tid hvor alt modnes og frugterne hænger tungt. Mavesækken og Milten bærer denne energi: evnen til at tage imod, fordøje og omsætte. Mærk efter: bliver du næret af det du giver din tid til? Eller tærer det?',
+  efteraar: 'Mærk din udånding. Mærk det øjeblik hvor du slipper luften — og med den, lidt af det du bærer. Efteråret tilhører Metal-elementet og bringer en klarhed der kan gøre ondt: hvad er væsentligt, og hvad skal du lade gå? Lungerne og Tyktarmen arbejder med netop dette — at tage det rene ind og slippe det overflødige. Mærk efter: hvad bærer du stadig, som ikke længere nærer dig?',
+  vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
+};
+
+// Organ portraits + element portraits — uses Danish content (EN translation pending)
+const organPortraits = {
+  lunger: [
+    'Træk vejret ind. Mærk det øjeblik lige efter indåndingen, hvor din krop er fyldt — og mærk så udåndingen, det øjeblik hvor du slipper. Det er Lungernes rytme: at tage imod og at lade gå, fra dit første åndedrag til dit sidste.',
+    'Lungerne styrer din hud, din stemme og din evne til at sætte grænser — det yderste lag af dig, der hvor du møder verden. Når de er stærke, er du beskyttet uden at være lukket, åben uden at være sårbar. Når de er svækkede, mærker du det som hyppige forkølelser, tør hud, en stemme der mangler klang, eller en fornemmelse af at du ikke helt kan trække vejret frit.',
+    'Lungerne hører til Metal-elementet og efteråret — den tid hvor naturen viser os at der er værdighed i at slippe. Deres tid på døgnet er mellem 3 og 5 om morgenen, og vågner du her med hoste eller tunge tanker, er det værd at lytte. Lungernes følelse er sorg. Ikke den akutte sorg, men den stille — savnet, tabet, det du engang havde.',
+    'Mærk din vejrtrækning lige nu. Er den dyb og rolig, eller kort og overfladisk? Svaret fortæller dig noget om hvordan du har det — ikke kun i dine lunger, men i dit liv.'
+  ],
+  tyktarm: [
+    'Mærk din morgen. Det allerførste din krop gør efter søvnen, er at forberede sig på at slippe det den ikke har brug for. Tyktarmen er den i dig der rydder op, renser ud og skaber plads til nyt — fysisk og mentalt.',
+    'Tyktarmens arbejde handler om at slippe. Ikke bare afføring, men alt det overflødige: tanker du har tygget færdigt på, følelser der har gjort deres arbejde, vaner der ikke længere tjener dig. Når Tyktarmen fungerer godt, er der en lethed om morgenen, en friskhed, en følelse af at dagen begynder rent. Når den stagnerer, føler du dig tung, oppustet, eller som om du trækker noget med dig der burde have været lagt fra dig for længe siden.',
+    'Tyktarmen hører til Metal-elementet og er Lungernes makker — de to deler evnen til at skelne det rene fra det urene. Dens tid er mellem 5 og 7 om morgenen, og det er ikke tilfældigt at kroppen naturligt ønsker at tømme sig her. Mærk efter: slipper du let om morgenen? Eller holder du fast — i kroppen, i tankerne, i det der var i går?'
+  ],
+  mavesaek: [
+    'Mærk det øjeblik hvor du sætter dig og spiser morgenmad — eller det øjeblik hvor du springer det over og allerede er i gang. Mavesækken er den i dig der tager imod. Ikke kun mad, men alt det der kommer ind: indtryk, oplevelser, information, andre menneskers energi.',
+    'Mavesækken nedbryder og forbereder — den er den første station i din fordøjelse, det sted hvor det rå materiale møder din krops intelligens. Når den er stærk, har du appetit, du kan rumme det du møder, og du føler dig næret. Når den er svækket eller overbelastet, mærker du det som kvalme, oppustethed, mangel på appetit, eller en fornemmelse af at du har taget mere ind end du kan håndtere.',
+    'Mavesækken hører til Jord-elementet og sensommeren, den tid hvor høsten modnes. Dens tid på døgnet er mellem 7 og 9 om morgenen — det naturlige tidspunkt for at give din krop det den har brug for. Mærk efter: hvordan tager du imod det din dag bringer dig? Med ro og åbenhed, eller med en mave der allerede er fuld?'
+  ],
+  milt: [
+    'Der er et sted i dig der stille og tålmodigt omsætter alt det du tager ind til noget du kan bruge. Det er Milten. Du mærker den ikke, når den fungerer — du mærker bare at du har energi, at din tanke er klar, at dine muskler bærer dig.',
+    'Milten transformerer. Den tager det bedste fra din mad og løfter det opad som ren energi til resten af din krop. Men hun er sårbar overfor fugt — både den fysiske og den mentale. For mange søde ting, for mange bekymringer, for mange tanker der kører i ring uden at lande nogen steder — det svækker Milten. Du mærker det som træthed efter mad, tunge lemmer, hævede fingre om morgenen, en tanke der ikke kan finde fokus.',
+    'Milten hører til Jord-elementet og sensommeren, og hendes tid er mellem 9 og 11 om formiddagen. Bekymring er hendes følelse — ikke den skarpe angst, men den tunge grublerier der maler og maler. Mærk efter: er dine tanker klare og nærede, eller tunge og klæbrige? Det er Milten der taler.'
+  ],
+  hjerte: [
+    'Læg hånden på dit bryst. Mærk det der banker derinde — ikke kun som en muskel, men som sædet for din bevidsthed, dit nærvær, det i dig der ved at du er til. I TCM huser Hjertet din Shen — din ånd, din klarhed, dit lys.',
+    'Når Hjertet er i balance, er der en varme i dig der er rolig og stabil. Du kan møde andre mennesker åbent, du sover dybt, dine øjne har glans, og du mærker en glæde der ikke afhænger af ydre omstændigheder. Når Hjertet er uroligt, mærker du det som angst, søvnløshed, hjertebanken, en rastløshed der ikke kan lande, eller en glæde der tipper over i mani — for meget, for hurtigt, for spredt.',
+    'Hjertet tilhører Ild-elementet og sommeren, den tid hvor alt blomstrer og åbner sig. Dets tid på døgnet er mellem 11 og 13, midt på dagen, hvor lyset er stærkest. Mærk efter: er dit indre lys klart og varmt, eller flakkende og uroligt? Dit Hjerte fortæller dig hvordan din Shen har det.'
+  ],
+  tyndtarm: [
+    'Der er et sted i dig der sorterer. Hele tiden, uden at du tænker over det — hvad er næring og hvad er affald, hvad er sandt og hvad er støj, hvad hører til dig og hvad hører til en anden. Det er Tyndtarmen.',
+    'Tyndtarmen er Hjertets makker og bærer evnen til at skelne — den klarhed der gør at du kan tage det rene til dig og sende resten videre. Når den fungerer godt, har du en intuitiv fornemmelse af hvad der er rigtigt for dig. Når den er svækket, bliver alt mudret: du kan ikke skelne vigtige beslutninger fra uvæsentlige, du absorberer andres følelser uden filter, eller din krop reagerer med uro i maven efter et måltid den ikke kan sortere.',
+    'Tyndtarmen hører til Ild-elementet og dens tid er mellem 13 og 15, de tidlige eftermiddagstimer. Det er ikke tilfældigt at du kan føle dig tåget efter frokost — din krop sorterer, og det kræver energi. Mærk efter: hvor god er du til at sortere det der kommer ind? Ikke kun mad, men indtryk, krav og forventninger?'
+  ],
+  blaere: [
+    'Mærk det sted i din ryg der bærer mest. Blærens meridian løber i to lange linjer fra hoved til tå, ned langs hele din rygsøjle — den længste meridian i kroppen. Den bærer alt det du lægger på dine skuldre.',
+    'Blæren handler om fleksibilitet. Ikke kun i din krop — selvom stivhed i ryg og nakke ofte er Blærens signal — men i din evne til at tilpasse dig det livet bringer. Blæren lagrer og frigiver, holder og slipper, og hendes samspil med Nyrerne binder hende til din dybeste reserve. Når Blæren er stærk, er du smidig i krop og sind. Når hun er svækket, mærker du det som spændinger i ryggen, hyppig vandladning, eller en følelse af at være konstant på vagt.',
+    'Blæren tilhører Vand-elementet og vinteren, og dens tid er mellem 15 og 17 — den sene eftermiddag, hvor energien naturligt begynder at synke. Mærk efter: er din ryg smidig og bærende, eller stiv og belastet? Det er Blæren der inviterer dig til at mærke forskellen.'
+  ],
+  nyrer: [
+    'Der er et sted i dig der ligger dybere end alt det daglige. Under træthed, under præstation, under det du viser verden — der bor dine Nyrer. De bærer din essens, din medfødte vitalitet, det fundament du bygger hele dit liv på.',
+    'Nyrerne lagrer det i TCM der hedder Jing — den essens du fik med fra dine forældre, og som langsomt bruges over et helt liv. Det er den energi der styrer din vækst, din forplantning, din aldring, dine knogler og din hørelse. Når Nyrerne er stærke, mærker du det som en dyb, stille kraft — en tillid til at du kan bære det livet bringer. Når de er svækkede, mærker du det i lænden, i knæene, i en træthed der ikke forsvinder med søvn, i håret der tynder, eller i en frygt der siver ind fra kanten.',
+    'Nyrerne tilhører Vand-elementet og vinteren, den mørkeste tid, og deres tid på døgnet er mellem 17 og 19. Frygt er Nyrernes følelse — men ikke kun den angstfyldte. Også den stille, eksistentielle: er jeg nok? Har jeg nok? Mærk efter i din krop lige nu — har du kontakt til noget stille og bærende i dig, eller føler du dig tømt?'
+  ],
+  pericardium: [
+    'Du kender det måske — den der åbner sig for hurtigt og bliver såret, eller den der har lukket så meget af at ingenting slipper ind. Pericardium er din hjertebeskytter, det organ der bestemmer hvem og hvad der får adgang til dit inderste.',
+    'I TCM er Pericardium Hjertets ambassadør — den der møder verden på Hjertets vegne, så Hjertet selv kan bevare sin ro. Pericardium styrer din evne til intimitet, til at åbne og lukke med visdom, til at beskytte uden at isolere. Når Pericardium er i balance, kan du være nærværende i tætte relationer uden at miste dig selv. Når det er svækket, mærker du det som følelsesmæssig sårbarhed, svært ved at sætte grænser, eller en mur der holder alt og alle ude.',
+    'Pericardium tilhører Ild-elementet, og dets tid er mellem 19 og 21 om aftenen — det tidspunkt hvor du naturligt søger nærvær, forbindelse, intimitet. Mærk efter: hvordan er din port lige nu? Åben, lukket, eller et sted midt imellem?'
+  ],
+  sanjiao: [
+    'Der er et organ i TCM der ikke har en fysisk form — og alligevel forbinder det alt. San Jiao, den tredobbelte varmer, er den passage der sikrer at energi, varme og væske kan bevæge sig frit mellem din krops tre rum: det øvre (bryst), det midterste (mave) og det nedre (bækken).',
+    'San Jiao er regulatoren. Den sørger for at varmen fra dit Hjerte når ned til dine Nyrer, at væsken fra dine Nyrer fordamper opad, at din krop fungerer som ét sammenhængende system og ikke som tre adskilte etager. Når San Jiao fungerer, mærker du en let, harmonisk fornemmelse — alt flyder. Når den er blokeret, mærker du det som temperaturforskelle i kroppen (varmt hoved, kolde fødder), væskeproblemer, eller en generel følelse af at noget ikke hænger sammen.',
+    'San Jiaos tid er mellem 21 og 23 — den overgang fra dag til nat, fra aktivitet til hvile, hvor kroppen begynder at lukke ned. Mærk efter: kan du mærke en naturlig ro falde over dig om aftenen? Eller kæmper du mod søvnen, stadig tændt, stadig i gang?'
+  ],
+  galdeblaere: [
+    'Kender du den følelse af at stå ved en skillevej og ikke vide hvad du skal vælge? Den tvivl der holder dig vågen? Det er Galdeblæren der arbejder — eller kæmper.',
+    'Galdeblæren er beslutningstageren. Hvor Leveren laver planen, er det Galdeblæren der sætter den i gang — med mod, rettidig handling og den form for beslutsomhed der ikke kræver at du har alle svar, bare at du tør tage det næste skridt. Når Galdeblæren er stærk, er du modig og handlekraftig. Når hun er svækket, mærker du det som ubeslutsomhed, tøven, en tendens til at dreje tingene rundt i hovedet uden at komme nogen vegne — eller som spændinger i tindingerne og siderne af kroppen.',
+    'Galdeblæren tilhører Træ-elementet og foråret, og hendes tid er mellem 23 og 1 om natten. Det er midt i den dybeste søvn — og vågner du her med urolige tanker, er der sandsynligvis en beslutning du ikke har truffet. Mærk efter: er der noget du udskyder lige nu? Noget der venter på dit mod?'
+  ],
+  lever: [
+    'Leveren er den i dig der drømmer, planlægger og sætter retning. Når alt flyder frit, mærker du det som kreativitet, handlekraft og en klar fornemmelse af hvor du er på vej hen. Men når energien stagnerer — af stress, frustration, ting du holder inde — begynder den at presse sig opad. Hovedpine i tindingerne. Spændinger i nakken og skuldrene. En irritabilitet der ikke helt har en adresse.',
+    'Leveren styrer dine sener og din fleksibilitet — både den fysiske og den mentale. En stiv krop og et stift sind hænger ofte sammen, og begge peger mod Leveren. Hun lagrer blodet og renser det om natten, og hun sikrer at din menstruation, din fordøjelse og dine følelser kan bevæge sig frit. Stagnation i Leveren er en af de hyppigste ubalancer i vores tid — fordi vi lever i en verden der konstant kræver at vi holder vores frustration inde.',
+    'Leveren tilhører Træ-elementet og foråret, og hendes tid er mellem 1 og 3 om natten. Vrede er hendes følelse — ikke den destruktive, men den der siger: noget skal ændre sig. Mærk efter: er der noget i dit liv der presser sig på, som du ikke giver plads? Det er Leveren der banker på.'
+  ]
+};
+const elementPortraits = {
+  trae: [
+    'Mærk den kraft i dig der vil opad og fremad — den der har en retning, en plan, en længsel efter forandring. Det er Træ-elementet. Det bor i dine sener, i din fleksibilitet, i den energi der gør at du kan rejse dig om morgenen og bevæge dig ud i verden med vilje.',
+    'Træet hører til foråret og bæres af Leveren og Galdeblæren. Dets bevægelse er opad og udad, som en spire der presser sig gennem jord. Dets følelse er vrede — men ikke den blinde vrede. Den der vil noget. Den der siger: dette er ikke godt nok, dette skal ændre sig, dette fortjener bedre. Frustration er Træ-energi der ikke har fundet sin retning. Kreativitet er Træ-energi der har.',
+    'Mærk efter: flyder din energi frit, eller er du stiv, frustreret, fastlåst? Kan du bøje uden at knække? Træet viser dig din evne til at vokse — og din vilje til at gøre det.'
+  ],
+  ild: [
+    'Mærk det der varmer i dig. Den gnist der tænder når du møder et menneske du elsker, griner af noget uventet, eller mærker at du er fuldstændig til stede i et øjeblik. Det er Ild-elementet — det mest levende, det mest sårbare.',
+    'Ilden hører til sommeren og bæres af fire organer: Hjertet, Tyndtarmen, Pericardium og San Jiao. Dens bevægelse er udad og opad, som flammer der rækker mod himlen. Dens følelse er glæde — men også den uro der opstår når glæden ikke har rod. For meget Ild spreder sig, brænder ud, efterlader tomhed. For lidt Ild gør livet gråt og fjernt.',
+    'Mærk efter: brænder din ild klart og varmt, eller er den flakkende og urolig? Kan du mærke forbindelsen — til dig selv, til andre, til noget der er større? Ilden viser dig din evne til at elske og være til stede.'
+  ],
+  jord: [
+    'Mærk det sted i dig der bare er. Uden at præstere, uden at bevæge sig, uden at søge. Bare stille, nærende, bærende tilstedeværelse. Det er Jord-elementet — midten af alt, det sted alting vender hjem til.',
+    'Jorden hører til sensommeren — den korte, rige pause mellem sommerens intensitet og efterårets klarhed — og bæres af Mavesækken og Milten. Dens bevægelse er indad og nedad, som frugt der modnes og falder. Dens følelse er bekymring — den tanke der maler rundt og rundt uden at lande, den omsorg der bliver til uro, den gavmildhed der tømmer dig fordi du glemmer at nære dig selv.',
+    'Mærk efter: er du i kontakt med din egen midte? Bliver du næret af det du giver din tid og energi til? Jorden viser dig din evne til at modtage — og til at omsætte det du modtager til noget der bærer dig.'
+  ],
+  metal: [
+    'Mærk din udånding. Det øjeblik hvor du slipper noget — luft, spænding, en tanke, et håb. Der er en skarphed i det, en klarhed, og måske en smerte. Det er Metal-elementet.',
+    'Metal hører til efteråret og bæres af Lungerne og Tyktarmen. Dets bevægelse er indad og nedad, som blade der falder — en bevægelse mod det essentielle, det rene, det der bliver tilbage når alt det overflødige er skrællet væk. Dets følelse er sorg — ikke som svaghed, men som respekt for det der var, og accept af at det er forbi.',
+    'Mærk efter: hvad holder du fast i, som du burde lade gå? Og hvad er det væsentlige, det ufravigeligt dit, som bliver tilbage? Metal viser dig din evne til at slippe — og til at finde skønhed i det der er rent og simpelt.'
+  ],
+  vand: [
+    'Mærk stilheden i dig. Den der findes under tankerne, under følelserne, under al den aktivitet der fylder din dag. Dybt nede, som grundvand, er der noget der bare er — stille, mørkt og fuld af potentiale. Det er Vand-elementet.',
+    'Vand hører til vinteren og bæres af Nyrerne og Blæren. Dets bevægelse er nedad og indad — den mest stille af alle bevægelser, den der trækker sig tilbage, samler kraft og venter. Dets følelse er frygt — den eksistentielle usikkerhed der melder sig når du er alene med dig selv, når præstationen stopper, når der ikke er mere at gøre. Men under frygten ligger visdom. Og under visdommen ligger tillid — en dyb, ordløs tillid til at livet bærer.',
+    'Mærk efter: tør du blive stille? Tør du hvile uden at fylde stilheden med noget? Vand viser dig din dybeste reserve — og din evne til at stole på den.'
+  ]
+};
+
+// Pattern texts — uses Danish content with English keys (full EN translation in Phase 4)
+const patternTexts = {
+  'Headache': {
+    connection: 'Hovedpine er aldrig tilfældig i TCM. Energi der ikke kan bevæge sig frit, søger opad — som varme der stiger — og samler sig i hovedet. Men *hvor* den samler sig, fortæller dig noget vigtigt. Banker det i tindingerne, er det Galdeblæren der råber op. Presser det bag øjnene og op over issen, er det Leveren der kæmper med at holde sin energi flydende. Sidder smerten i baghovedet, følger den Blærens meridian ned langs nakken. Og tyngden over panden? Den hører til Mavesækken — som om din fordøjelse af livet er gået i stå. Læg mærke til stedet. Det er din krops måde at pege på.',
+    reflections: [
+      'Hvornår mærkede du første gang denne hovedpine? Var der noget i dit liv der ændrede sig på det tidspunkt — noget du begyndte at holde fast i, eller holde tilbage?',
+      'Hvis du blev stille og lyttede til presset i dit hoved — hvad ville det fortælle dig om det, du ikke giver plads til at bevæge sig?',
+      'Læg mærke til om din hovedpine har en rytme. Kommer den på bestemte tidspunkter af dagen, i bestemte situationer, eller i bestemte årstider?'
+    ],
+    exercise: { title: 'Lad energien synke', duration: '1-2 minutter', instruction: 'Sæt dig ned og læg begge tommelfingres puder i fordybningen ved tindingens hårlinje — det punkt der er ømt, ved du godt. Pres blidt ind og lav små, langsomme cirkler mens du trækker vejret helt ned i maven. Forestil dig at varmen i dit hoved langsomt synker nedad — som vand der finder vej fra issen, ned gennem kroppen, og ud gennem fodsålerne. Lad tyngdekraften hjælpe.', effect: 'Inviterer stagneret energi til at finde sin naturlige nedadgående retning.' }
+  },
+  'Sleep problems': {
+    connection: 'Søvn kræver at sindet har et sted at hvile — og det sted er Hjertet. I TCM huser Hjertet din Shen, din bevidsthed, og når Shen er urolig, kan du ikke synke ned i søvnens mørke. Men det er sjældent Hjertet alene. Leveren arbejder om natten med at rense og forny blodet, og hvis dens energi er stagneret, vågner du mellem klokken 1 og 3. Galdeblæren — som træffer beslutninger — rumsterer mellem 23 og 1, og holder dig vågen med alt det uafklarede. Søvnløshed er sjældent ét organ. Det er et samspil — og tidspunktet for din uro peger mod det organ der kalder.',
+    reflections: [
+      'Hvornår vågner du, og hvad møder dig i de første sekunder? Er det tanker der vælter ind, en følelse i kroppen, eller bare en uro uden navn?',
+      'Hvad bærer du med ind i natten som du ikke fik sat ned i løbet af dagen — noget uforløst, uafsluttet, eller usagt?',
+      'Hvis din søvnløshed var en besked fra din krop, hvad ville den bede dig om at give slip på, for at du kunne synke?'
+    ],
+    exercise: { title: 'Find dit anker', duration: '2-3 minutter', instruction: 'Læg dig på ryggen og placer én hånd på brystet, én på maven lige under navlen. Luk øjnene. Mærk forskellen mellem de to hænder — hvilken bevæger sig mest? Begynd langsomt at sende åndedrættet ned til den nederste hånd, som om du fylder et bæger fra bunden. For hver udånding, forestil dig at din bevidsthed synker lidt dybere ned — fra hoved til bryst til mave. Du behøver ikke sove. Du skal bare synke.', effect: 'Hjælper din Shen med at finde hvile ved at føre opmærksomheden fra hoved til krop.' }
+  },
+  'Digestive problems': {
+    connection: 'Din Milt og Mavesæk er de to organer der tager imod alt det du indtager — ikke kun mad, men også indtryk, oplevelser, tanker. Milten transformerer og løfter det rene opad, Mavesækken sender det tunge nedad. Men Leveren spiller en afgørende rolle her, for det er Leverens frie flow der holder hele fordøjelsen i bevægelse. Stagnerer Leveren — af stress, frustration, tilbageholdt vrede — så invaderer den Milten. Fordøjelsesproblemer handler sjældent om maven alene. De handler om hele den bevægelse, der bærer næring igennem dig.',
+    reflections: [
+      'Hvornår på dagen er din fordøjelse mest urolig — og hvad sker der lige inden? Er det efter et måltid, eller efter en situation?',
+      'Hvad fordøjer du i dit liv lige nu, som er svært at nedbryde — noget du har taget ind, men som du endnu ikke har kunnet omsætte til mening?',
+      'Mærk efter: bærer din mave en spænding der ikke handler om mad? Hvad holder du fast i din midte, som din krop forsøger at bevæge videre?'
+    ],
+    exercise: { title: 'Varm din midte', duration: '2 minutter', instruction: 'Gnid dine hænder mod hinanden indtil de er varme. Læg dem i en blød cirkel over din mave — den ene hånd over den anden — lige over navlen. Lav langsomme, store cirkler med uret, som om du rørte i noget langsomt og tålmodigt. Mærk varmen synke ind. Lad din mave blødgøre sig under dine hænder.', effect: 'Støtter Miltens og Mavesækkens transformerende arbejde og inviterer stagneret energi til at bevæge sig.' }
+  },
+  'Emotional instability': {
+    connection: 'I TCM bærer hvert organ sin egen følelsesmæssige kvalitet — ikke som noget der skal fjernes, men som noget der hører til. Leveren bærer vreden, Hjertet bærer glæden men også den rastløse uro, Milten bærer bekymringen, og Nyrerne bærer frygten. Når du oplever at dine følelser svinger hurtigt eller vælter dig, er det sjældent fordi der er noget galt med dig. Det er fordi flere organer samtidig er i ubalance — og deres følelser blander sig i hinanden, som stemmer der taler i munden på hinanden.',
+    reflections: [
+      'Hvornår på døgnet er dine følelser mest intense — og kan du mærke om det er vrede, bekymring, frygt eller uro der fylder mest?',
+      'Er der en følelse du ikke giver dig selv lov til at have — noget du skubber væk, eller hurtigt dækker over med en anden følelse?',
+      'Hvad hvis dine svingende følelser ikke er kaos, men en samtale mellem flere dele af dig? Hvad forsøger de tilsammen at fortælle dig?'
+    ],
+    exercise: { title: 'Mærk hvad der fylder mest', duration: '1-2 minutter', instruction: 'Sæt dig stille og luk øjnene. Tag tre dybe vejrtrækninger. Spørg dig selv helt simpelt: hvad føler jeg lige nu? Vent. Lad svaret komme som en fornemmelse i kroppen, ikke som et ord i hovedet. Mærk *hvor* i kroppen følelsen sidder. Bliv der. Du behøver ikke ændre noget. Bare mærk hvad der fylder mest, lige nu.', effect: 'Skaber et øjebliks klarhed ved at give den dominerende følelse din fulde opmærksomhed.' }
+  },
+  'Skin problems': {
+    connection: 'Huden er i TCM Lungernes spejl — det yderste lag af dig, det der møder verden. Når Lungerne er svækkede, mister huden sin evne til at beskytte og regulere. Tyktarmen renser kroppen indefra, og når den renselse stagnerer, søger urenheder udad gennem huden. Leveren renser blodet — stagnerer den, kan varme vise sig som rødme, udslæt eller irritation. Og Milten, der transformerer fugt: for meget fugt kan vise sig som hævelser, væskende eksem eller klam hud. Det du ser på din hud er altid et vindue til noget dybere.',
+    reflections: [
+      'Hvornår blusser din hud op — er der et mønster i årstid, stressniveau, eller bestemte perioder af dit liv?',
+      'Hvad viser du til verden, og hvad holder du inde? Er der noget du bærer under overfladen, som søger et udtryk?',
+      'Hvis din hud kunne tale, hvad ville den bede dig om — mere beskyttelse, mere udluftning, mere blødhed?'
+    ],
+    exercise: { title: 'Åbn din hud', duration: '1-2 minutter', instruction: 'Stå oprejst og stræk armene ud til siden i skulderhøjde med håndfladerne opad. Tag en lang, dyb indånding gennem næsen — forestil dig at du åbner hele din brystkasse, som om din hud kunne ånde. Hold vejret et kort øjeblik. Pust langsomt ud gennem munden med en blød lyd, og lad armene synke tungt ned langs siderne. Gentag tre gange.', effect: 'Støtter Lungernes evne til at sprede Qi til hudens overflade og inviterer til åbenhed.' }
+  },
+  'Back pain': {
+    connection: 'Ryggen er din krops bærende akse. Smerter i lænden peger næsten altid mod Nyrerne — de organer der lagrer din dybeste essens. Langs rygsøjlen løber Blærens meridian, og spændinger her afspejler ofte det du bærer — ansvar, belastning, udmattelse. Siderne tilhører Galdeblæren, og Leveren styrer dine sener og din fleksibilitet. Din ryg bærer dig. Spørgsmålet er, hvad du bærer den med.',
+    reflections: [
+      'Hvornår er din ryg værst — om morgenen, om aftenen, efter bestemte aktiviteter, eller i bestemte perioder af dit liv?',
+      'Hvad bærer du lige nu, som er tungt — ikke kun fysisk, men i dit liv, dine relationer, dit ansvar?',
+      'Mærk efter: er din ryg stiv og fast, eller træt og svag? Stivhed taler om stagnation, svaghed om udtømning. Hvilken fortæller din rygs historie?'
+    ],
+    exercise: { title: 'Varm dine nyrer', duration: '2 minutter', instruction: 'Gnid dine hænder varme. Læg dem på lænden med fingrene pegende nedad — lige over nyrerne, på begge sider af rygsøjlen. Gnid op og ned i et fast, varmt tempo indtil hele området gløder. Stå stille bagefter og mærk varmen brede sig.', effect: 'Styrker Nyrernes Yang-energi og bringer varme og støtte til lænden.' }
+  },
+  'Fatigue/low energy': {
+    connection: 'Energi i TCM opstår i et samspil mellem flere organer. Milten omsætter mad til brugbar energi. Nyrerne lagrer din dybeste reserve. Lungerne tager imod Qi fra luften. Hjertet styrer kredsløbet. Spørg dig selv: er din træthed tung, tom, flad eller tåget? Svaret peger mod det organ der har brug for din opmærksomhed.',
+    reflections: [
+      'Hvornår på dagen er din energi lavest — og hvad gør du typisk lige inden?',
+      'Hvad giver dig energi, og hvad dræner dig — helt konkret i dit liv lige nu?',
+      'Hvis din træthed ikke er en fejl men en besked, hvad forsøger din krop at bede dig om?'
+    ],
+    exercise: { title: 'Væk din midte', duration: '1-2 minutter', instruction: 'Bank let med en løs knytnæve på punktet fire fingersbredder under knæskallen, på ydersiden af skinnebenet — Mavesæk 36. Bank i et roligt tempo, 30 gange på hvert ben. Mærk efter.', effect: 'Aktiverer Miltens og Mavesækkens Qi og hjælper kroppen med at mobilisere energi.' }
+  },
+  'Anxiety and fear': {
+    connection: 'Frygt bor i Nyrerne — den dybe, eksistentielle frygt der siver ind i knoglerne. Angst — uroen der flagrer — hører til Hjertet. Galdeblæren er modet, og Leveren holder det hele i bevægelse. Angst og frygt er ikke det samme, selvom de ofte blander sig. At mærke forskellen i din krop er det første skridt.',
+    reflections: [
+      'Hvornår begyndte frygten eller angsten at fylde mere — og hvad skete der på det tidspunkt?',
+      'Er det du føler en frygt der trækker nedad og ind — eller en uro der stiger opad og ud?',
+      'Hvad ville du gøre, hvis frygten ikke var der?'
+    ],
+    exercise: { title: 'Find din grund', duration: '2 minutter', instruction: 'Stå med fødderne i skulderbredde og luk øjnene. Mærk dine fodsåler mod gulvet. Bøj let i knæene. Læg hænderne under navlen. Træk vejret ind og ned til hænderne. Pust ud og forestil dig at udåndingen fortsætter ned gennem benene og ud gennem fodsålerne. Gentag fem gange.', effect: 'Forankrer din energi i Nyrerne og inviterer din opmærksomhed ned fra hoved til krop.' }
+  },
+  'Eye problems': {
+    connection: 'I TCM åbner Leveren til øjnene — al øjenproblematik involverer Leveren. Tørre øjne, sløret syn, lysfølsomhed — alt kan være Leverens måde at fortælle dig at dens blod er udtømt eller energi stagneret. Galdeblæren bidrager med spændinger bag øjnene. Nyrerne nærer Leveren i dybden. Hjertet giver øjnene deres glans.',
+    reflections: [
+      'Hvornår er dine øjne mest belastede — og hvad har du kigget på, eller kigget væk fra?',
+      'Er der noget i dit liv du ikke vil se, eller har svært ved at holde blikket på?',
+      'Mærk sammenhængen: er dine øjenproblemer ledsaget af irritabilitet eller indre pres?'
+    ],
+    exercise: { title: 'Lad øjnene hvile', duration: '2 minutter', instruction: 'Gnid dine håndflader varme. Luk øjnene og læg de varme håndflader som skåle over øjnene — uden at presse. Lad mørket og varmen synke ind. Bliv der i et helt minut.', effect: 'Nærer Leverens blod til øjnene og giver Shen et øjebliks hvile.' }
+  },
+  'Menstrual problems': {
+    connection: 'Menstruationen er et af de mest præcise spejle af din indre balance. Leveren lagrer blodet og sikrer dets frie bevægelse. Milten holder blodet i karrene. Nyrerne forankrer den hormonelle cyklus. Og Chong Mai samler og styrer rytmen. Din cyklus er ikke noget der bare sker. Den er et sprog.',
+    reflections: [
+      'Hvad fortæller din cyklus dig lige nu — er den regelmæssig, kaotisk, fraværende, smertefuld?',
+      'Hvordan er din relation til din menstruation — ignorerer du den, kæmper med den, eller lytter til den?',
+      'Mærk efter i dagene op til: hvad stiger op i dig? Det der kommer frem, peger mod det organ der søger opmærksomhed.'
+    ],
+    exercise: { title: 'Hold dit bækkens varme', duration: '2-3 minutter', instruction: 'Læg dig på ryggen med bøjede knæ. Læg begge hænder under navlen. Træk vejret dybt ned og forestil dig at hver indånding bringer varme ned i dit bækken. For hver udånding, lad spænding sive ud — som is der langsomt smelter.', effect: 'Inviterer fri bevægelse i Leverens Qi og bringer varme til Chong Mai.' }
+  },
+  'Edema/fluid retention': {
+    connection: 'Tre organer styrer væskebalancen: Lungerne spreder væsken som en fin tåge. Milten transformerer fugt. Nyrerne udskiller det overflødige. San Jiao forbinder alle tre. Ødemer er aldrig bare vand der står stille. Det er bevægelse der er gået i stå.',
+    reflections: [
+      'Hvornår mærker du mest til hævelse eller tyngde?',
+      'Er der noget i dit liv der ikke flyder — noget der samler sig eller ikke finder udgang?',
+      'Er tyngden kold og tung, eller varm og spændt? Forskellen fortæller dig om det er Yang der mangler, eller bevægelse der er blokeret.'
+    ],
+    exercise: { title: 'Åbn passagerne', duration: '2 minutter', instruction: 'Stå oprejst og løft armene langsomt op over hovedet med en dyb indånding. Hold et øjeblik. Bøj dig langsomt forover med udåndingen, lad armene hænge tungt ned. Rul langsomt op igen. Gentag fem gange.', effect: 'Mobiliserer San Jiaos passage og hjælper Lungerne med at sprede og Nyrerne med at udskille.' }
+  },
+  'Heart palpitations': {
+    connection: 'Hjertet huser din Shen — din bevidsthed. Når noget forstyrrer det rum, mærker du pludselig dit eget hjerte. Pericardium absorberer stød. Nyrerne forankrer Hjertet i dybden — Vand og Ild holder hinanden i balance. Milten nærer blodet. Hjertebanken er din krops måde at sige: noget har forstyrret det sted, hvor din bevidsthed bor.',
+    reflections: [
+      'Hvornår mærker du dit hjerte banke — om natten, i stille øjeblikke, eller i følelsesmæssig intensitet?',
+      'Hvad har du ikke givet dig selv lov til at føle helt færdigt?',
+      'Er din hjertebanken hurtig og flagrende, eller hård og bankende? Forskellen peger i forskellige retninger.'
+    ],
+    exercise: { title: 'Berolig dit hjerte', duration: '2 minutter', instruction: 'Læg din højre hånd midt på brystet. Læg venstre hånd ovenpå. Luk øjnene. Træk vejret ind på fire tæl, hold i to, pust ud på seks tæl. Med hver udånding, forestil dig at dine hænder sender tyngde og varme ind til dit hjerte.', effect: 'Inviterer Shen til at vende hjem og støtter Pericardiums beskyttende funktion.' }
+  },
+  'Hearing problems/tinnitus': {
+    connection: 'Nyrerne åbner til ørerne. Din hørelse afspejler Nyrernes vitalitet. Men tinnitus er ikke altid den stille form — en høj, skarp ringen hører til Galdeblæren og Leveren. San Jiao styrer passagerne omkring øret. Lyden i dine ører fortæller dig noget. Om den hvisker eller skriger peger i forskellige retninger.',
+    reflections: [
+      'Hvornår begyndte lyden, eller hvornår blev den værre — og hvad skete der i dit liv?',
+      'Er din tinnitus lav og rislende, eller høj og gennemtrængende? Den ene fortæller om tomhed, den anden om overskud.',
+      'Hvad ville det betyde for dig at lytte indad i stedet for udad?'
+    ],
+    exercise: { title: 'Trommeslag på himmelporten', duration: '1-2 minutter', instruction: 'Læg begge hænder over ørerne med fingrene bagud mod nakken. Lad pegefingrene glide af langfingrene og tromme let ned mod nakken — 20-30 gange. Lyt til lyden. Fjern hænderne langsomt og mærk stilheden bagefter.', effect: 'Stimulerer Nyrernes energi til ørerne og beroliger indre uro.' }
+  },
+  'Pain in extremities': {
+    connection: 'Hvert organ styrer sit eget væv: Leveren nærer senerne, Milten bærer musklerne, Nyrerne forankrer knoglerne. Blærens meridian løber langs hele bagsiden. En sene der er stram taler om Leveren. En muskel der er svag taler om Milten. En knogle der ømmer sig taler om Nyrerne. Din krop er præcis.',
+    reflections: [
+      'Hvor sidder smerten — og er det sener, muskler eller knogler der taler?',
+      'Hvornår forværres det — i kulde, i fugt, i stilstand, eller i overbelastning?',
+      'Hvad kan du ikke bevæge dig hen imod, eller ikke gå væk fra, i dit liv lige nu?'
+    ],
+    exercise: { title: 'Ryst det løs', duration: '1-2 minutter', instruction: 'Stå med bløde knæ og begynd at ryste hele din krop. Lad armene, hænderne, skuldrene, hovedet ryste med. Forestil dig at du ryster stagnation ud af led, sener og muskler. Gør det i et helt minut. Stop. Stå stille. Mærk hvad der har ændret sig.', effect: 'Mobiliserer Qi og Blod i alle fire lemmer og hjælper med at frigive stagnation.' }
+  },
+  'Breathing problems': {
+    connection: 'Lungerne styrer indåndingen, men Nyrerne "griber" Qi\'en og trækker den ned. Når Nyrerne er svage, bliver åndedrættet overfladisk. Milten transformerer fugt — overskydende slim er Miltens signal. Hjertet og Lungerne deler brystkassen. Vejrtrækningsproblemer handler om din krops evne til at tage imod, føre ned og sende videre.',
+    reflections: [
+      'Hvornår mærker du mest til din vejrtrækning — i hvile, ved anstrengelse, i bestemte følelsesmæssige tilstande?',
+      'Hvad giver dig luft i dit liv — og hvad tager det fra dig?',
+      'Er din vejrtrækning overfladisk og hurtig, eller tung og besværet? Forskellen fortæller om det er Qi der mangler, eller bevægelse der er blokeret.'
+    ],
+    exercise: { title: 'Ånd helt ned', duration: '2-3 minutter', instruction: 'Sæt dig med fødderne i gulvet. Træk vejret ind og forestil dig at luften fortsætter ned — gennem maven, helt ned under navlen. Lad maven udvide sig. Hold et øjeblik. Pust langsomt ud. Med hver indånding, send rødder ned. Med hver udånding, lad spænding i brystet løsne.', effect: 'Støtter Nyrernes evne til at gribe Qi og trække åndedrættet ned til dets naturlige dybde.' }
   }
 };
 
@@ -303,6 +558,7 @@ const organs = [
     time: '03-05',
     color: '#a8c4d6',
     icon: '肺',
+    tags: ['grief', 'loss', 'letting go', 'skin', 'breathing', 'nose', 'immunity', 'cold sensitivity', 'dryness', 'autumn', 'boundaries', 'voice', 'chest', 'shoulders'],
     description: [
       'The Lungs are called "The Delicate Organ" and are the most vulnerable organ to external pathogenic factors. As the uppermost organ in the body, they are the first to encounter disease from the outside world and function as the body\'s first line of defense.',
       'The Lungs distribute defensive Qi to the skin and muscle tissue, where it functions as an "invisible shield" against bacteria, viruses, and climatic influences such as cold and wind.',
@@ -397,6 +653,7 @@ const organs = [
     time: '05-07',
     color: '#a8c4d6',
     icon: '腸',
+    tags: ['letting go', 'holding on', 'grief', 'constipation', 'bowel', 'skin', 'boundaries', 'control', 'morning', 'elimination', 'rigidity', 'autumn', 'abdomen'],
     description: [
       'The Large Intestine is called "The Master of Transportation" and is responsible for receiving waste products from the Small Intestine, absorbing fluid content, and forming stool for elimination.',
       'The Large Intestine functions not only as a physical cleansing organ but also removes mental and emotional "waste" from all bodily functions. When this organ functions optimally, it produces not only a clean body but also a clear mind.',
@@ -490,6 +747,7 @@ const organs = [
     time: '07-09',
     color: '#deb87a',
     icon: '胃',
+    tags: ['digestion', 'appetite', 'nausea', 'worry', 'overthinking', 'mouth', 'lips', 'bloating', 'acid reflux', 'morning', 'late summer', 'grounding', 'nourishment'],
     description: [
       'The Stomach, together with the Spleen, is called "The Root of Postnatal Qi" and is the foundation for digestion and the production of Qi after birth.',
       'The Stomach receives food and "ripens and rots" it through a fermentation process that breaks down food to a state where nutrients can be extracted.',
@@ -583,6 +841,7 @@ const organs = [
     time: '09-11',
     color: '#deb87a',
     icon: '脾',
+    tags: ['worry', 'overthinking', 'fatigue', 'digestion', 'bloating', 'muscles', 'prolapse', 'sweetness', 'dampness', 'late summer', 'nourishment', 'concentration', 'bruising', 'heaviness'],
     description: [
       'The Spleen is called "The Root of Postnatal Qi" and is the foundation for Qi and Blood production after birth. A weak Spleen can affect all other organs, as it is the body\'s central energy source.',
       'The Spleen transforms food into nourishment and transports it to the entire body. Weak Spleen function results in poor absorption of nutrients, fatigue, and weakness.',
@@ -676,6 +935,7 @@ const organs = [
     time: '11-13',
     color: '#e88585',
     icon: '心',
+    tags: ['joy', 'anxiety', 'insomnia', 'restlessness', 'speech', 'tongue', 'complexion', 'blood circulation', 'sweat', 'summer', 'consciousness', 'spirit', 'palpitations', 'dream-disturbed sleep'],
     description: [
       'The Heart is called "The Emperor" of all organs and is the most important organ. It governs blood and blood vessels while housing the mind - consciousness and spirit.',
       'The Heart controls mental activity, memory, thought processes and all emotions. It opens to the tongue and manifests in the complexion.',
@@ -769,6 +1029,7 @@ const organs = [
     time: '13-15',
     color: '#e88585',
     icon: '小',
+    tags: ['discernment', 'sorting', 'clarity', 'confusion', 'shoulder pain', 'neck', 'jaw', 'ear', 'urination', 'summer', 'decision making', 'mental clarity', 'abdomen'],
     description: [
       'The Small Intestine is called "The Separator of the Pure from the Impure" and has both physical and mental functions.',
       'Physically it receives food from the Stomach and separates usable nutrients from waste products. Mentally it separates clear thoughts from unclear ones.',
@@ -862,6 +1123,7 @@ const organs = [
     time: '15-17',
     color: '#7ba4da',
     icon: '膀',
+    tags: ['fear', 'courage', 'back pain', 'spine', 'urination', 'headache', 'stiffness', 'cold sensitivity', 'winter', 'flexibility', 'willpower', 'autonomic nervous system', 'legs'],
     description: [
       'The Bladder is called "Minister of the Reservoir" and is responsible for storing and excreting fluid waste as well as regulating fluid metabolism.',
       'As the longest energy channel in the body, it runs from the inner eye corner over the head down along the spine to the little toe, central for back, neck, and leg problems.',
@@ -955,6 +1217,7 @@ const organs = [
     time: '17-19',
     color: '#7ba4da',
     icon: '腎',
+    tags: ['fear', 'willpower', 'bones', 'teeth', 'hearing', 'ears', 'lower back', 'knees', 'vitality', 'aging', 'winter', 'sexuality', 'hair', 'essence', 'cold sensitivity', 'fatigue'],
     description: [
       'The Kidneys are called "Root of Life" and are the most important organ, as they store the life essence and are the root of all energy in the body.',
       'The Kidneys control growth, development, reproduction, and aging through life cycles of 7 years for women and 8 years for men.',
@@ -1048,6 +1311,7 @@ const organs = [
     time: '19-21',
     color: '#d98e8e',
     icon: '包',
+    tags: ['emotional protection', 'joy', 'relationships', 'intimacy', 'vulnerability', 'chest tightness', 'palpitations', 'anxiety', 'summer', 'circulation', 'warmth', 'openness'],
     description: [
       'The Pericardium is called "The Heart Protector" and is the first line of defense against external disease and emotional damage.',
       'It functions as a physical and psychological shield for the Heart. In acute febrile diseases, the Pericardium is affected first - not the Heart.',
@@ -1141,6 +1405,7 @@ const organs = [
     time: '21-23',
     color: '#d98e8e',
     icon: '焦',
+    tags: ['water metabolism', 'temperature regulation', 'fluid balance', 'coordination', 'ear', 'side of body', 'edema', 'hormones', 'summer', 'communication', 'distribution', 'metabolism'],
     description: [
       'San Jiao is the most mysterious concept in the body - "the organ that has a name but no form". It is a functional unit that coordinates three "burners".',
       'Upper Burner: Heart and Lungs. Middle Burner: Spleen and Stomach. Lower Burner: Liver, Kidneys, and Intestines.',
@@ -1234,6 +1499,7 @@ const organs = [
     time: '23-01',
     color: '#5cc98e',
     icon: '膽',
+    tags: ['decision making', 'courage', 'indecision', 'anger', 'frustration', 'headache', 'migraine', 'sides of body', 'hips', 'eyes', 'spring', 'bitterness', 'daring', 'judgment'],
     description: [
       'The Gallbladder is called "The Decision Maker" and works closely with the Liver. It has the body\'s longest energy pathway.',
       'The Gallbladder\'s main task is to store bile and send it to the intestines to break down fat.',
@@ -1327,6 +1593,7 @@ const organs = [
     time: '01-03',
     color: '#5cc98e',
     icon: '肝',
+    tags: ['anger', 'frustration', 'planning', 'creativity', 'eyes', 'tendons', 'menstruation', 'spring', 'stagnation', 'depression', 'headache', 'flexibility', 'blood storage', 'dreams', 'nails'],
     description: [
       'The Liver is called "The General" and is the body\'s most important organ for keeping energy flowing freely. Blocked Liver energy is one of the most common problems today.',
       'The Liver\'s most important task is to ensure that energy flows smoothly and freely. Stress, frustrations, and unfulfilled desires directly affect the Liver\'s ability.',
@@ -1938,50 +2205,50 @@ const symptomReference = [
 ];
 
 // ============================================
-// Conversation Structure Proposal
+// Exploration Guide
 // ============================================
 const conversationStructure = {
-  title: 'Conversation Structure Proposal',
-  subtitle: 'A proposal for structuring the initial conversation with the client',
+  title: 'Exploration Guide',
+  subtitle: 'A suggested path for exploring your own patterns',
   sections: [
     {
-      heading: 'The Meeting',
+      heading: 'Arriving',
       items: [
-        { label: 'Open listening', text: 'Invite the client to share freely. Let them tell their story at their own pace.' },
-        { label: 'Let the client speak first', text: 'Ask open questions, listen for what matters most.' },
-        { label: 'First Meeting — The client shares', text: 'What do they want help with? What is their situation?' }
+        { label: 'Pause and arrive', text: 'Take a moment to land in yourself. What brought you here? What is asking for your attention?' },
+        { label: 'Listen to your body first', text: 'Before thinking, notice what you feel. Where in your body is there tension, ease, or sensation?' },
+        { label: 'Name what matters', text: 'What do you most wish to understand about yourself right now?' }
       ]
     },
     {
-      heading: 'Open Listening: The Client Speaks',
+      heading: 'Open Listening: Your Story',
       items: [
-        { label: 'Active listening', text: 'How does the client feel? Where in the body do they notice it?' },
-        { label: 'The 3 opening themes', text: 'Medication, general life circumstances, history (illnesses, events, scar tissue).' },
-        { label: 'Context understanding', text: 'What is the context of their life — work, family, relationships?' }
+        { label: 'How do you feel?', text: 'Broadly, how are you right now? Where in your body do you notice it most?' },
+        { label: 'The 3 starting themes', text: 'Any medication, your general life circumstances, and your history (illnesses, turning points, scar tissue).' },
+        { label: 'Life context', text: 'What is the context of your life right now — work, relationships, daily rhythms?' }
       ]
     },
     {
-      heading: 'Theme Listening: The Clinician\'s Intuition',
+      heading: 'Sensing Deeper: Following Your Intuition',
       items: [
-        { label: 'Look for patterns', text: 'Which organ systems does the client\'s story point towards?' },
-        { label: 'Time patterns', text: 'Are there times when symptoms worsen? Use the organ clock.' },
-        { label: 'Emotional themes', text: 'Which emotions are prominent? Connect to the relevant organs.' }
+        { label: 'Notice what resonates', text: 'As you read about the organs and elements, which ones seem to speak to your experience?' },
+        { label: 'Time patterns', text: 'Are there times when your symptoms worsen? Explore the organ clock.' },
+        { label: 'Emotional themes', text: 'Which emotions visit you most often? See which organs they connect to.' }
       ]
     },
     {
-      heading: 'Pattern Expectations',
+      heading: 'Discovering Patterns',
       items: [
-        { label: 'Pattern hypothesis', text: 'Which patterns are emerging? Ask specific questions to verify.' },
-        { label: 'The 8 mapping themes', text: 'Use the 8 themes for the relevant organ to go deeper.' },
-        { label: 'Verify or adjust', text: 'Does the pattern match? Or does it point in a different direction?' }
+        { label: 'Follow a thread', text: 'Which patterns are beginning to emerge? Explore the 8 themes for that organ.' },
+        { label: 'Go deeper', text: 'Use the themes to sense into areas you might not have considered.' },
+        { label: 'Stay open', text: 'Does the pattern feel right? Or does your body point you somewhere unexpected?' }
       ]
     },
     {
-      heading: 'Integration in Your Practice',
+      heading: 'Living with What You Find',
       items: [
-        { label: 'Hold this as a map', text: 'TCM is a map — not a destination. The client and their system show the way.' },
-        { label: 'Take it at your own pace', text: 'Start with one organ, one element. Let it grow naturally.' },
-        { label: 'Combine with your practice', text: 'Use TCM understanding as inspiration, not as protocol.' }
+        { label: 'Hold it lightly', text: 'TCM is a map — not a destination. Your body and your felt sense show the way.' },
+        { label: 'Take it at your own pace', text: 'Start with one organ, one element. Let understanding grow naturally.' },
+        { label: 'Trust the process', text: 'Use this as a source of wonder, not a set of answers. The patterns will reveal themselves over time.' }
       ]
     }
   ]
@@ -1997,6 +2264,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Pericardium point 6',
     partnerMeridian: 'Yin Wei Mai',
     icon: '衝',
+    tags: ['blood', 'fertility', 'menstruation', 'chest', 'abdomen', 'anxiety', 'rebellion', 'nausea', 'constitutional', 'essence', 'vitality'],
     level: 'The deepest constitutional channel — the foundation of all energy and blood in the body',
     relatedOrgans: ['Spleen', 'Kidneys', 'Liver', 'Heart'],
     pathway: [
@@ -2097,6 +2365,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Kidney-6',
     partnerMeridian: 'Yin Qiao Mai',
     icon: '任',
+    tags: ['fertility', 'yin', 'nurturing', 'abdomen', 'urogenital', 'bonding', 'self-care', 'cold', 'constitutional', 'reproduction'],
     level: 'The body\'s primary Yin channel — nourishes, cools, and receives',
     relatedOrgans: ['Kidneys', 'Lungs', 'Heart', 'Liver'],
     pathway: [
@@ -2197,6 +2466,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Bladder-62',
     partnerMeridian: 'Yang Qiao Mai',
     icon: '督',
+    tags: ['spine', 'yang', 'strength', 'willpower', 'brain', 'posture', 'back pain', 'vitality', 'constitutional', 'leadership'],
     level: 'The body\'s primary Yang channel — governs, lifts, and protects',
     relatedOrgans: ['Kidneys', 'Heart', 'Brain'],
     pathway: [
@@ -2298,6 +2568,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'San Jiao-5',
     partnerMeridian: 'Yang Wei Mai',
     icon: '帶',
+    tags: ['belt', 'hips', 'waist', 'dampness', 'vaginal discharge', 'urinary issues', 'containment', 'holding', 'stagnation', 'gallbladder', 'liver'],
     level: 'The body\'s horizontal integrator — binds all vertical channels together',
     relatedOrgans: ['Gallbladder', 'Liver', 'Kidneys', 'Spleen'],
     pathway: [
@@ -2398,6 +2669,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Lung point 7',
     partnerMeridian: 'Ren Mai',
     icon: '蹻',
+    tags: ['sleep', 'insomnia', 'inner legs', 'eyes', 'introversion', 'self-absorption', 'yin excess', 'withdrawal'],
     level: 'The Yin side of movement — introversion, sleep, and self-awareness',
     relatedOrgans: ['Kidneys', 'Lungs', 'Bladder'],
     pathway: [
@@ -2498,6 +2770,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Small Intestine point 3',
     partnerMeridian: 'Du Mai',
     icon: '陽',
+    tags: ['sleep', 'insomnia', 'outer legs', 'eyes', 'extroversion', 'hyperactivity', 'yang excess', 'hips', 'projection'],
     level: 'The Yang side of movement — alertness, action, and engagement',
     relatedOrgans: ['Bladder', 'Small Intestine', 'Gallbladder'],
     pathway: [
@@ -2598,6 +2871,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Spleen-4',
     partnerMeridian: 'Chong Mai',
     icon: '維',
+    tags: ['heart', 'chest pain', 'emotional protection', 'anxiety', 'inner connection', 'past', 'emotional holding', 'vulnerability'],
     level: 'The inner link — coherence, meaning, and emotional depth',
     relatedOrgans: ['Pericardium', 'Spleen', 'Heart', 'Liver'],
     pathway: [
@@ -2698,6 +2972,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Gallbladder-41',
     partnerMeridian: 'Dai Mai',
     icon: '衛',
+    tags: ['outer connection', 'sides of body', 'temporal headache', 'fever', 'chills', 'protection', 'external defense', 'present moment'],
     level: 'The outer link — protection, transformation, and outer strength',
     relatedOrgans: ['San Jiao', 'Gallbladder', 'Small Intestine', 'Bladder'],
     pathway: [
@@ -2816,6 +3091,7 @@ const fiveElements = [
     name: 'Wood',
     chineseName: '木 Mù',
     color: '#5cc98e',
+    tags: ['anger', 'frustration', 'spring', 'growth', 'planning', 'vision', 'creativity', 'flexibility', 'liver', 'gallbladder', 'eyes', 'tendons', 'wind', 'green'],
     organs: ['Liver', 'Gallbladder'],
     season: 'Spring',
     emotion: 'Anger',
@@ -2866,6 +3142,7 @@ const fiveElements = [
     name: 'Fire',
     chineseName: '火 Huǒ',
     color: '#e88585',
+    tags: ['joy', 'anxiety', 'summer', 'connection', 'warmth', 'communication', 'love', 'consciousness', 'heart', 'small intestine', 'tongue', 'blood vessels', 'heat', 'red'],
     organs: ['Heart', 'Small Intestine', 'Pericardium', 'San Jiao'],
     season: 'Summer',
     emotion: 'Joy',
@@ -2916,6 +3193,7 @@ const fiveElements = [
     name: 'Earth',
     chineseName: '土 Tǔ',
     color: '#deb87a',
+    tags: ['worry', 'overthinking', 'late summer', 'nourishment', 'stability', 'grounding', 'digestion', 'caring', 'spleen', 'stomach', 'mouth', 'muscles', 'dampness', 'yellow'],
     organs: ['Spleen', 'Stomach'],
     season: 'Late Summer',
     emotion: 'Worry',
@@ -2966,6 +3244,7 @@ const fiveElements = [
     name: 'Metal',
     chineseName: '金 Jīn',
     color: '#a8c4d6',
+    tags: ['grief', 'letting go', 'autumn', 'purity', 'boundaries', 'precision', 'structure', 'breath', 'lungs', 'large intestine', 'nose', 'skin', 'dryness', 'white'],
     organs: ['Lungs', 'Large Intestine'],
     season: 'Autumn',
     emotion: 'Grief',
@@ -3016,6 +3295,7 @@ const fiveElements = [
     name: 'Water',
     chineseName: '水 Shuǐ',
     color: '#7ba4da',
+    tags: ['fear', 'wisdom', 'winter', 'stillness', 'willpower', 'depth', 'rest', 'essence', 'kidneys', 'bladder', 'ears', 'bones', 'cold', 'blue-black'],
     organs: ['Kidneys', 'Bladder'],
     season: 'Winter',
     emotion: 'Fear',
@@ -3105,7 +3385,7 @@ const tcmFoundation = {
     description: [
       'Each Yin organ is paired with a Yang organ within the same element. They share meridian connections, emotional themes and influence each other directly.',
       'The Yin organs are the "solid" organs that store essence, blood and fluids. The Yang organs are the "hollow" organs that receive, transform and transport. Together each pair creates a complete functional unit.',
-      'When we treat an organ in TCM, we always consider its partner. An imbalance in one organ inevitably affects the other — like two sides of the same coin.'
+      'In TCM, an organ is always seen in connection with its partner. An imbalance in one organ inevitably affects the other — like two sides of the same coin.'
     ],
     pairs: [
       { yin: 'Liver', yang: 'Gallbladder', element: 'Wood', theme: 'Planning and decision-making' },
@@ -3118,7 +3398,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits, elementPortraits };
 })();
 
 const da = (() => {
@@ -3136,224 +3416,224 @@ const APP_INFO = {
 // ============================================
 const practiceGuide = [
   {
-    id: 'moede-klienten',
+    id: 'moede-dig-selv',
     icon: '○',
-    title: 'At Møde Klienten',
-    subtitle: 'Filosofien bag tilgangen',
+    title: 'At Møde Dig Selv',
+    subtitle: 'En invitation til at udforske dine egne mønstre',
     sections: [
       {
         heading: 'Mønstrene Bag — To Perspektiver',
         paragraphs: [
-          'Titlen "Mønstrene Bag" indeholder to parallelle perspektiver. Det første er meget direkte og peger på, at vi som behandlere er interesseret i at forstå og kortlægge mønstrene bag klientens tilstand.',
-          'Samtidig peger titlen også på, at der kan ligge mønstre, som ikke er tydelige ved første øjekast. At klientens symptomer tilsyneladende udtrykker ét billede, men at der under dette billede kan ligge nogle mønstre, som i højere grad vil gøre det muligt for os at møde dem på det niveau, hvorfra deres symptomer udspringer.'
+          'Titlen "Mønstrene Bag" indeholder to parallelle perspektiver. Det første er meget direkte: der er mønstre bag din tilstand — forbindelser mellem krop, følelser og energi, som du måske endnu ikke har lagt mærke til.',
+          'Det andet perspektiv er mere subtilt. Dine symptomer kan tilsyneladende udtrykke ét billede, men under dette billede kan der ligge dybere mønstre. Når du begynder at fornemme disse skjulte lag, opstår muligheden for at møde dig selv på det niveau, hvorfra dine symptomer virkelig udspringer.'
         ]
       },
       {
-        heading: 'At Møde Klienten Hvor De Er',
+        heading: 'At Møde Dig Selv Hvor Du Er',
         paragraphs: [
-          'Når vi møder vores klient første gang, er vi interesserede i dels at møde dem, hvor de er, og dels at forstå, hvad der ligger bag deres nuværende tilstand. At arbejde med mønstrene bag favner begge dele — det giver os mulighed for at lytte til hele deres fortælling og samtidigt i samtalen tilføje nuancer til deres historie.',
-          'Det fundamentale udgangspunkt er respekten for klientens egen fortælling og kroppens egen visdom. TCM-forståelsen giver os et kort, men det er altid klienten og deres system, der viser os vejen.'
+          'Når du begynder denne udforskning, er udgangspunktet præcis dér, hvor du er lige nu. At arbejde med mønstrene bag handler om at lytte til din egen fortælling med friske ører — at lægge mærke til de sammenhænge, du måske har overset, og lade nye nuancer træde frem.',
+          'Det fundamentale udgangspunkt er respekten for din egen oplevelse og din krops egen visdom. TCM-forståelsen tilbyder et kort, men det er altid din krop og din egen fornemmelse, der viser vejen.'
         ]
       },
       {
         heading: 'En Invitation — Ikke en Protokol',
         paragraphs: [
-          'Dette er ikke en manual, men en inspirationskilde. Intentionen er ikke, at du skal lære det udenad eller følge det som en protokol — men at du lader det væve sig ind i din praksis på den måde, der giver mening for dig.',
-          'Måske begynder du med blot at stille nogle flere spørgsmål i dine indledende samtaler. Måske begynder du at lægge mærke til tidsmønstre i klienters symptomer. Måske åbner forståelsen af emotionelle forbindelser til organer nogle nye samtaler med dine klienter.',
-          'Det væsentlige er, at du tager det i dit eget tempo og lader det vokse naturligt ind i dit arbejde.'
+          'Dette er ikke en manual, men en kilde til undren. Intentionen er ikke, at du skal lære det udenad eller følge det som en opskrift — men at du lader det blidt åbne døre i dig, i det tempo der føles rigtigt.',
+          'Måske begynder du med blot at lægge mærke til, hvornår på dagen du føler dig mest levende eller mest drænet. Måske begynder du at fornemme forbindelser mellem dine følelser og din krop. Måske åbner et enkelt spørgsmål her noget, du længe har båret uden ord.',
+          'Det væsentlige er, at du tager det i dit eget tempo og lader nysgerrigheden lede dig.'
         ]
       }
     ]
   },
   {
-    id: 'foerste-samtale',
+    id: 'foerste-udforskning',
     icon: '∿',
-    title: 'Den Første Samtale',
-    subtitle: 'Tre centrale temaer at berøre',
+    title: 'Den Første Udforskning',
+    subtitle: 'Tre temaer at mærke ind i',
     sections: [
       {
-        heading: 'De Grundlæggende Trin',
+        heading: 'Et Udgangspunkt',
         paragraphs: [
-          'Den generelle indgang til den første behandling med en ny klient indeholder bestemte trin: en invitation til at fortælle, hvad de gerne vil have hjælp til, og en lytning til deres situation og de ønsker, de har for behandlingen.',
-          'Mens de fortæller, opstår der ofte en dialog — spørgsmål undervejs gør det til en dynamisk samtale, hvor fortællingen får så mange nuancer med som muligt.'
+          'Begynd med blot at lægge mærke til, hvad der bragte dig hertil. Hvad er det, du ønsker at forstå bedre ved dig selv? Hvad vil din krop have dig til at være opmærksom på lige nu?',
+          'Der er ingen rigtig eller forkert måde at begynde på. Lad din opmærksomhed hvile på det, der føles mest levende eller mest påtrængende. Nuancerne vil vise sig undervejs.'
         ]
       },
       {
-        heading: '1. Medicin',
+        heading: '1. Medicin & Kroppens Balance',
         paragraphs: [
-          'Hør om de tager medicin af nogen slags. Bland dig aldrig i deres medicin, men tal med dem om det — særligt i forhold til de symptomer, de ønsker hjælp til.',
-          'Medicin kan udgøre en terapiforhindring: en tilstand, hvor hele klientens system er påvirket på en måde, der kortslutter kroppens naturlige evne til at balancere og regulere sig selv. Det er en tilstand, hvor de trods forskellige tiltag ikke oplever egentlig forandring.'
+          'Hvis du tager medicin af nogen slags, er det værd at lægge mærke til, hvordan den påvirker dig — ikke for at dømme, men for at forstå dens rolle i dit samlede billede.',
+          'Nogle gange kan medicin blive en slags buffer, der gør det sværere for kroppen at finde sin egen balance. Det handler ikke om at stoppe noget, men om at være opmærksom på, hvordan dit system responderer, og hvor dets naturlige evne til selvregulering måske er dæmpet.'
         ]
       },
       {
-        heading: '2. Generelle Livsomstændigheder',
+        heading: '2. Dit Liv Lige Nu',
         paragraphs: [
-          'Spørg altid til deres generelle livsomstændigheder — helbred, familiesituation, arbejdsliv og alt det, som udgør essensen af deres liv. Konteksten for vores liv er altid direkte vævet ind i vores tilstand.',
-          'Denne del af samtalen kan give indsigt i, hvorvidt symptomerne udspringer fra låste tilstande i systemet, eller om de i højere grad er kompenserende processer, som kroppen tvinges til at starte op i forhold til en kontekst, som ikke udgør en støttende ressource.'
+          'Mærk et øjeblik ind i helheden af dit liv — dit helbred, dine relationer, dit arbejde og alt det, der udgør stoffet i din daglige tilværelse. Konteksten for vores liv er altid direkte vævet ind i vores tilstand.',
+          'Læg mærke til, om dine symptomer synes at udspringe fra noget låst eller fastholdt inde i dig, eller om de føles mere som din krops respons på en livssituation, der dræner snarere end nærer dig. Begge dele er værdifuld information.'
         ]
       },
       {
-        heading: '3. Historik — Sygdomme, Begivenheder og Arvæv',
+        heading: '3. Din Historik — Sygdomme, Vendepunkter og Arvæv',
         paragraphs: [
-          'Spørg specifikt til deres historik i forhold til sygdomme og større begivenheder. Har der været markante skift og overgange, som har udgjort en slags "før og efter" i deres liv? Lyt efter den kronologiske rækkefølge, da den kan give vigtige informationer om sammenhænge med den nuværende tilstand.',
-          'Spørg også specifikt til uheld, ulykker og arvæv. Ligesom medicin kan arvæv udgøre en terapiforhindring — aktivt arvæv, som ikke er blevet normaliseret, kan påvirke hele systemets evne til regulering.'
+          'Se tilbage over dit liv. Har der været markante sygdomme, begivenheder eller overgange, der skabte en slags "før og efter"? Læg mærke til den kronologiske rækkefølge — den kan afsløre overraskende forbindelser til det, du oplever nu.',
+          'Læg også mærke til uheld, skader og arvæv. Arvæv, der aldrig er helet helt, kan påvirke kroppens samlede evne til at regulere sig selv — som en knude på en tråd, der ændrer mønstret i hele vævningen.'
         ]
       }
     ]
   },
   {
-    id: 'samtale-til-moenster',
+    id: 'opmaerksomhed-til-moenster',
     icon: '◇',
-    title: 'Fra Samtale til Mønster',
-    subtitle: 'Samtalens dynamik og mønsterafdækning',
+    title: 'Fra Opmærksomhed til Mønster',
+    subtitle: 'Hvordan mønstre viser sig, når du lytter',
     sections: [
       {
-        heading: 'Samtalens Dynamik — At Invitere Nuancer Frem',
+        heading: 'At Lytte Indad — At Invitere Nuancer Frem',
         paragraphs: [
-          'Start samtalen med at spørge til deres ønske for behandlingen og derefter lade dem fortælle. Undervejs opstår en dialog, hvor din spørgen skaber en naturlig mulighed for, at fortællingen får så mange nuancer med som muligt.',
-          'Under hele samtalen lytter du med afsæt i din forståelse af principperne bag TCM. Efter deres fortælling har du næsten altid en fornemmelse af nogle mønstre.'
+          'Begynd med at lade din opmærksomhed hvile på det, du allerede ved om dig selv — dine symptomer, din energi, det der føles skævt. Læg blot mærke til, uden at forsøge at fikse eller forklare.',
+          'Når du sidder med din egen fortælling, dukker nye detaljer ofte op. Sammenhænge du ikke havde bemærket. En følelse der altid ledsager et bestemt symptom. Et tidspunkt på dagen hvor noget skifter. Disse nuancer er begyndelsen på et mønster.'
         ]
       },
       {
-        heading: 'Fra Åben Samtale til Specifik Mønsterafdækning',
+        heading: 'Fra Åben Fornemmelse til Specifik Opdagelse',
         paragraphs: [
-          'Når de har fortalt alt det, de havde på hjerte, begynder du at stille mere specifikke spørgsmål. Det er her, muligheden opstår for at afdække og gøre eventuelle mønstre endnu tydeligere.',
-          'Du ønsker at verificere din fornemmelse af bestemte mønstre. Du kan stille specifikke spørgsmål om temaer, som de måske ikke naturligt har berørt endnu — spørgsmål der kan kaste lys over, hvorvidt din fornemmelse af deres underliggende mønster er på rette spor.'
+          'Når du har taget det brede billede ind af, hvordan du har det, kan du begynde at se mere specifikt. Det er her, de otte temaer under hvert organ bliver din guide — de tilbyder spørgsmål, du måske ikke havde tænkt at stille dig selv.',
+          'Måske har du allerede en fornemmelse af noget. En anelse om, at et bestemt organ eller element resonerer med din oplevelse. Følg den tråd. De specifikke spørgsmål kan hjælpe dig med at se, om din intuition peger i en meningsfuld retning.'
         ]
       },
       {
-        heading: 'Eksempel: Organspecifikke Spørgsmål',
+        heading: 'Eksempel: At Følge en Tråd',
         paragraphs: [
-          'Har du f.eks. en fornemmelse af et underliggende mønster i forhold til leveren, kan du stille specifikke spørgsmål om øjne, sener og led, evnen til at tåle alkohol, cyklusmønstre hos kvinder, søvn og følelsesmæssige udtryk.',
-          'På den måde kan du næsten udkrystallisere det mønster, som ligger bag deres tilstand — det dominerende bag deres samlede symptombillede. De 8 kortlæggende temaer under hvert organ i denne app er netop designet til dette formål.'
+          'Siger din fornemmelse dig noget om leveren, kan du udforske videre ved at lægge mærke til dine øjne, dine sener og led, din relation til vrede, dine søvnmønstre og — for kvinder — din cyklus. Resonerer flere af disse?',
+          'På den måde kan et mønster begynde at krystallisere sig — ikke som en diagnose, men som en følt fornemmelse af, hvad der er mest levende i dit system lige nu. De 8 temaer under hvert organ i denne app er netop designet til denne form for selvudforskning.'
         ]
       },
       {
-        heading: 'At Blive Hørt — En Terapeutisk Værdi i Sig Selv',
+        heading: 'Gaven i at Lytte til Dig Selv',
         paragraphs: [
-          'Den nysgerrige del af samtalen har den vigtige konsekvens, at klienten føler sig mødt og oplever en oprigtig interesse for hele deres tilstand. Mange kommer fra besøg hos specialister, hvor de har oplevet, at der ikke var interesse for hele deres fortælling.',
-          'Vores vedvarende spørgen ind til deres tilstand skaber en oplevelse af, at de endelig bliver hørt — at nogen endelig er interesseret i at lytte til hele deres fortælling. Dette er i sig selv terapeutisk.'
+          'Der er noget dybt helende i virkelig at lytte til sin egen krop og sin egen fortælling. Så mange af os har lært at overhøre signaler, presse os igennem ubehag eller afvise det, vi mærker.',
+          'Når du giver dig selv tid og rum til virkelig at lytte — med nysgerrighed snarere end dom — sker der et skift. Du begynder at føle dig mødt af din egen opmærksomhed. Det er i sig selv en form for omsorg.'
         ]
       }
     ]
   },
   {
-    id: 'otte-grundspoergsmaal',
+    id: 'otte-vinduer',
     icon: '⊞',
-    title: 'De Otte Grundspørgsmål',
-    subtitle: 'En ramme for mønsterafdækning',
+    title: 'Otte Vinduer Ind',
+    subtitle: 'Otte måder at mærke ind i dine egne mønstre',
     sections: [
       {
-        heading: 'En Ramme På Tværs af Organsystemer',
+        heading: 'Et Kort til Selvudforskning',
         paragraphs: [
-          'Otte centrale spørgsmålsområder danner en ramme, der gør det muligt at få et overblik over klientens tilstand på tværs af de forskellige organsystemer. Ved at berøre disse otte områder får du en bred forståelse af, hvor eventuelle ubalancer kan ligge, og hvilke organer der kan være involveret.',
-          'Disse otte områder afspejles direkte i de 8 kortlæggende temaer, som du finder under hvert organ i denne app.'
+          'Otte opmærksomhedsområder danner en slags kort, der kan hjælpe dig med at fornemme, hvor din krop måske er ude af balance. Ved blidt at udforske hvert område får du en bredere forståelse af, hvilke organer og mønstre der kan være involveret i det, du oplever.',
+          'Disse otte områder afspejles direkte i de 8 temaer, du finder under hvert organ i denne app. De er ikke en tjekliste — de er vinduer, du kan kigge igennem, ét ad gangen.'
         ]
       },
       {
         heading: '1. Tidsmæssige Mønstre',
         paragraphs: [
-          'Hvornår opstår eller forværres symptomerne? Er der et mønster i forhold til tidspunkter på døgnet (organuret) eller årstider (fem-element cyklussen)? Konsistente tidsmønstre peger ofte direkte mod specifikke organer.'
+          'Hvornår opstår eller forværres dine symptomer? Er der et mønster i forhold til tidspunkter på døgnet eller årstider? Læg mærke til, om det samme ubehag vender tilbage på samme tidspunkt — konsistente tidsmønstre peger ofte direkte mod specifikke organer gennem organuret.'
         ]
       },
       {
         heading: '2. Energiniveau & Træthed',
         paragraphs: [
-          'Hvordan er deres generelle energiniveau? Hvornår på dagen er energien højest og lavest? Kronisk træthed, pludselige energidyk eller rastløshed kan alle pege mod bestemte organmønstre.'
+          'Hvordan er dit generelle energiniveau? Hvornår på dagen føler du dig mest levende, og hvornår crasher du? Kronisk træthed, pludselige energidyk eller en rastløshed der ikke vil lægge sig kan alle pege mod bestemte organmønstre.'
         ]
       },
       {
         heading: '3. Fordøjelse & Appetit',
         paragraphs: [
-          'Hvordan fungerer fordøjelsen? Appetit, oppustethed, mavesmerter, afføringsmønstre og madpræferencer giver vigtige informationer om særligt Milt, Mavesæk, Lever og Tyktarm.'
+          'Hvordan føles din fordøjelse? Læg mærke til din appetit, eventuel oppustethed, mavesmerter, afføringsmønstre, og hvilken mad du higer efter eller undgår. Disse signaler giver vigtige informationer om særligt Milt, Mavesæk, Lever og Tyktarm.'
         ]
       },
       {
         heading: '4. Søvn & Drømme',
         paragraphs: [
-          'Hvordan er deres søvn? Svært ved at falde i søvn, opvågning på bestemte tidspunkter, drømmeintensitet og søvnkvalitet afspejler ofte specifikke organmønstre — især via organuret.'
+          'Hvordan er din søvn? Har du svært ved at falde i søvn, eller vågner du på bestemte tidspunkter om natten? Læg mærke til din drømmeintensitet og samlede søvnkvalitet — disse afspejler ofte specifikke organmønstre, især via organuret.'
         ]
       },
       {
-        heading: '5. Emotionelle Tilstande',
+        heading: '5. Følelsesmæssigt Landskab',
         paragraphs: [
-          'Hvilke følelser dominerer? Vedvarende vrede eller frustration (Lever), bekymring og overtænkning (Milt), sorg (Lunger), frygt (Nyrer) eller uro og angst (Hjerte) peger alle mod bestemte elementer og organer.'
+          'Hvilke følelser besøger dig oftest? Vedvarende vrede eller frustration (Lever), bekymring og overtænkning (Milt), sorg (Lunger), frygt (Nyrer) eller uro og angst (Hjerte) — hver peger mod bestemte elementer og organer. Læg mærke til uden at dømme.'
         ]
       },
       {
         heading: '6. Temperatur & Klimafølsomhed',
         paragraphs: [
-          'Fryser de let eller har de det for varmt? Reagerer de på kulde, varme, fugt eller vind? Temperaturpræferencer og klimafølsomhed er direkte udtryk for Yin-Yang balancen i kroppen.'
+          'Fryser du let, eller har du tendens til at have det for varmt? Hvordan reagerer du på kulde, varme, fugt eller vind? Dine temperaturpræferencer og klimafølsomhed er direkte udtryk for Yin-Yang balancen i din krop.'
         ]
       },
       {
         heading: '7. Smerter & Fysiske Symptomer',
         paragraphs: [
-          'Hvor i kroppen oplever de smerter eller ubehag? Smertekarakter (skarp, dumpende, vandrende, fast), lokation og timing giver værdifulde informationer om hvilke meridianer og organer der er involveret.'
+          'Hvor i din krop oplever du smerter eller ubehag? Læg mærke til smertens karakter — er den skarp, dumpende, vandrende eller fast? Dens lokation og timing giver værdifulde spor om, hvilke meridianer og organer der kan være involveret.'
         ]
       },
       {
         heading: '8. Væskebalance & Tørst',
         paragraphs: [
-          'Hvordan er deres væskebalance? Tørstmønstre, vandladning, tendens til ødemer eller tørhed fortæller om Nyrernes funktion, Miltens transformation af væsker og den generelle Yin-Yang balance.'
+          'Hvordan er din væskebalance? Læg mærke til dine tørstmønstre, din vandladning og eventuel tendens til hævelse eller tørhed. Disse signaler fortæller om Nyrernes funktion, Miltens transformation af væsker og den generelle Yin-Yang balance i din krop.'
         ]
       }
     ]
   },
   {
-    id: 'arbejde-med-moenstre',
+    id: 'leve-med-moenstre',
     icon: '≋',
-    title: 'At Arbejde med Mønstre',
-    subtitle: 'Mønstret som indgang — ikke som årsag',
+    title: 'At Leve med Mønstre',
+    subtitle: 'Mønstret som en dør — ikke en diagnose',
     sections: [
       {
-        heading: 'Mønstret Er Ikke Det Samme Som Årsagen',
+        heading: 'Et Mønster Er Ikke Det Samme Som en Årsag',
         paragraphs: [
-          'En væsentlig del af forståelsen bag TCM er, at et dominerende mønster ikke er det samme som årsagen til klientens tilstand. Inden for det specifikke mønster kan der være tale om forskellige tilstande — f.eks. kan leveren enten være for rebelsk, dens energi stagneret, eller den kan simpelthen mangle livskraft.',
-          'Yderligere kan leveren sagtens være det dominerende mønster, men årsagen kan skyldes et helt andet organ, som er i ubalance og tvinger leveren til en anderledes funktion. Mønstret er aldrig udtømmende i sig selv, men det kan pege på den dominerende tilstand og skabe en indgang til behandlingen.'
+          'Når du begynder at genkende et mønster i dig selv, er det vigtigt at holde det let. Et dominerende mønster er ikke det samme som årsagen til din tilstand. Inden for ét mønster kan der være forskellige tilstande — f.eks. kan leveren enten være for urolig, dens energi stagneret, eller den kan simpelthen mangle livskraft.',
+          'Ydermere kan det mønster, du tydeligst lægger mærke til, faktisk være drevet af et helt andet organ, der er ude af balance. Mønstret er aldrig det fulde billede, men det kan pege dig mod det, der er mest aktivt i dit system lige nu — en dør ind til dybere forståelse.'
         ]
       },
       {
-        heading: 'Når Flere Mønstre Er Aktive Samtidigt',
+        heading: 'Når Flere Mønstre Er Til Stede på Én Gang',
         paragraphs: [
-          'Livet er komplekst, og alle organer er altid i indbyrdes udveksling. Det er ikke muligt at se det enkelte organ uden for dets kontekst, og derfor vil der altid i forskellige grader være flere mønstre aktive på samme tid.',
-          'Kunsten er at vurdere, om ét mønster dominerer tilstrækkeligt til at være den oplagte indgang. Hvis flere mønstre er til stede samtidigt uden et tydeligt dominerende, kan det være oplagt at arbejde med en af de ekstraordinære meridianer, der fungerer på et dybere niveau og kan balancere flere mønstre samtidigt.'
+          'Livet er komplekst, og alle organer er altid i indbyrdes udveksling. Du kan ikke se et enkelt organ uden for dets kontekst, og derfor vil der altid være flere mønstre til stede på samme tid, i varierende grad.',
+          'Hvis du fornemmer, at ét mønster tydeligt dominerer, så lad det være dit udgangspunkt. Hvis flere mønstre synes lige til stede uden at ét skiller sig ud, kan det være værd at udforske de ekstraordinære meridianer — de arbejder på et dybere niveau og kan belyse sammenhænge på tværs af flere mønstre samtidigt.'
         ]
       },
       {
-        heading: 'Over Flere Behandlinger',
+        heading: 'Mønstre Skifter Over Tid',
         paragraphs: [
-          'Mønstre kan bruges som reference over et behandlingsforløb. Hvis det rette mønster er valgt, og der har været en terapeutisk proces, vil klienten ved næste behandling fortælle om ændringer i forhold til det oprindelige mønster.',
-          'Når det oprindelige mønster begynder at bevæge sig og forandres, skabes mulighed for, at dybere liggende tilstande begynder at træde frem. Disse dybere lag indeholder samtidig det største potentiale for fornyet livskraft og en samlet bevægelse mod mere fri og balanceret funktion.'
+          'Dine mønstre er ikke faste. Når du bringer opmærksomhed til det, der er til stede, begynder tingene naturligt at bevæge sig. Du kan lægge mærke til, at det der engang føltes dominerende, begynder at bløde op, og noget nyt begynder at vise sig nedenunder.',
+          'Disse dybere lag rummer ofte det største potentiale for fornyet livskraft. Når ét mønster begynder at skifte, skaber det plads til, at det skjulte kan træde frem — og med det, muligheden for mere fri og balanceret funktion i hele dit system.'
         ]
       }
     ]
   },
   {
-    id: 'vores-rolle',
+    id: 'en-ramme-for-forstaaelse',
     icon: '△',
-    title: 'Vores Rolle',
-    subtitle: 'Grænser, ansvar og integration',
+    title: 'En Ramme for Forståelse',
+    subtitle: 'Hvad dette er — og hvad det ikke er',
     sections: [
       {
-        heading: 'Grænser og Ansvar',
+        heading: 'Et Sprog — Ikke en Diagnose',
         paragraphs: [
-          'Det er vigtigt at understrege, at vores rolle aldrig er at diagnosticere eller behandle sygdomme i vestlig medicinsk forstand. Vi stiller ikke diagnoser som en læge ville gøre, og vi blander os aldrig i klientens medicinske behandling.',
-          'Når vi taler om "mønstre" og benytter TCM som forståelsesramme, er det en måde at organisere vores iagttagelser og guide vores behandling — ikke en medicinsk diagnose. Hvis vi fornemmer, at klienten har brug for medicinsk udredning, opfordrer vi altid til at kontakte deres læge.'
+          'Det er vigtigt at forstå, at TCM, som den præsenteres her, ikke er et medicinsk system til at diagnosticere eller behandle sygdomme. Når vi taler om "mønstre", bruger vi et sprog til at forstå sammenhænge i kroppen — ikke til at stille en medicinsk diagnose.',
+          'Denne forståelsesramme kan hjælpe dig med at lægge mærke til ting, du ellers ville overse, og give ord til oplevelser, der er svære at formulere. Men hvis du fornemmer, at noget kræver lægelig opmærksomhed, skal du altid kontakte din læge. Dette er et supplement til, aldrig en erstatning for, professionel sundhedspleje.'
         ]
       },
       {
-        heading: 'Integration med Kropsterapi',
+        heading: 'Kroppens Egen Intelligens',
         paragraphs: [
-          'En af de store styrker ved at kombinere TCM-forståelsen med kropsterapi er, at begge systemer deler en dyb respekt for kroppens egen intelligens og evne til selvregulering. Hvor TCM giver os en forståelsesramme og et diagnostisk kort til at identificere mønstre, giver kropsterapien os en behandlingsform, der tillader kroppen selv at prioritere, hvor helingsprocessen skal ske.',
-          'TCM benyttes aldrig som en protokol, men snarere som en inspirationskilde. Meridianforløb, organsystemer og energetiske mønstre bliver indgange til behandlingen — døre vi kan åbne — men det er altid klientens system, der bestemmer, hvilken dør vi går igennem, og hvad der sker på den anden side.'
+          'I hjertet af TCM ligger en dyb tillid til kroppens egen intelligens og dens evne til selvregulering. Din krop arbejder konstant på at finde balance — selv når det føles som om alt er i uorden.',
+          'De mønstre, du opdager her, er ikke problemer der skal fikses, men invitationer til at forstå. Når du begynder at se sammenhængene — mellem en følelse og et organ, mellem et tidspunkt på døgnet og et symptom, mellem en årstid og en sindstilstand — diagnosticerer du ikke dig selv. Du lytter til et sprog, din krop altid har talt.'
         ]
       },
       {
-        heading: 'De Seks Niveauer af Organforståelse',
+        heading: 'Seks Lag af Forståelse',
         paragraphs: [
-          'I TCM repræsenterer hvert organ et komplekst energisystem, der påvirker hele mennesket på seks niveauer: det energetiske (qi-flow og meridianbaner), det fysiske (konkrete funktioner og strukturer), det psykiske (tankemønstre og mental klarhed), det emotionelle (følelsesmæssige forbindelser), det sansemæssige (organet "åbner" til en bestemt sans) og det spirituelle (aspekter af vores dybere essens).',
-          'Denne flerlagede forståelse giver en rigere og mere nuanceret tilgang, hvor fysiske symptomer altid ses i sammenhæng med emotionelle, mentale og energetiske kvaliteter. Det er denne dybde, som hvert organ i denne app præsenteres med.'
+          'I TCM repræsenterer hvert organ et komplekst energisystem, der berører hele mennesket på seks niveauer: det energetiske (qi-flow og meridianbaner), det fysiske (konkrete funktioner og strukturer), det psykiske (tankemønstre og mental klarhed), det emotionelle (følelser og deres udtryk), det sansemæssige (hvert organ "åbner" til en bestemt sans) og det spirituelle (aspekter af vores dybere essens).',
+          'Denne flerlagede forståelse er det, der gør TCM så rig som ramme for selvudforskning. Et fysisk symptom er aldrig kun fysisk — det bærer altid emotionelle, mentale og energetiske dimensioner med sig. Det er denne dybde, som hvert organ i denne app præsenteres med.'
         ]
       }
     ]
@@ -3365,50 +3645,377 @@ const practiceGuide = [
 // ============================================
 const sectionIntros = {
   practice: {
-    title: 'I Praksis',
+    title: 'Din Udforskning',
     paragraphs: [
-      'Denne sektion er din vejledning til at bruge mønstrene i praksis. Her finder du en konkret tilgang til den første samtale med klienten, de otte grundspørgsmål der danner rammen for mønsterafdækning, og en forståelse af, hvordan mønstre kan bruges som indgang til behandling.',
-      'Materialet er ikke en protokol, men en inspirationskilde — tænkt til at væve sig ind i din praksis på den måde, der giver mening for dig. Tag det i dit eget tempo og lad det vokse naturligt ind i dit arbejde.'
+      'Denne sektion er din guide til at udforske dine egne mønstre. Her finder du et udgangspunkt for at lytte til din krop, otte vinduer ind i forskellige aspekter af dit helbred, og en forståelse af, hvordan mønstre kan tjene som døre til dybere selvkendskab.',
+      'Materialet er ikke en protokol, men en kilde til undren — tænkt til at åbne sig blidt i dit eget tempo. Lad nysgerrigheden lede dig, og stol på at det, du har brug for at lægge mærke til, vil gøre sig bemærket.'
     ]
   },
   organs: {
     title: 'De 12 Organer & Meridianer',
     paragraphs: [
-      'I Traditionel Kinesisk Medicin betragtes organer som langt mere end blot fysiske strukturer med specifikke fysiologiske funktioner. Hvert organ repræsenterer et komplekst energisystem, der påvirker og gennemtrænger hele mennesket på adskillige niveauer — energetisk, fysisk, psykisk, emotionelt, sansemæssigt og spirituelt.',
-      'Når vi taler om "lever" eller "hjerte" i TCM, refererer vi derfor ikke kun til det fysiske organ, men til hele dette komplekse system af relationer og funktioner. Det giver en rigere og mere nuanceret forståelse af menneskets sundhed, hvor fysiske symptomer altid ses i sammenhæng med emotionelle, mentale og energetiske kvaliteter.',
-      'Hvert organ præsenteres her med dets funktioner, karakteristika og konkrete spørgsmål fordelt på otte kortlæggende temaer, som kan hjælpe med at tydeliggøre mønstre i en tilstand. Det handler om at lytte til kroppens fortælling og forstå de dybere sammenhænge bag symptomerne.'
+      'I Traditionel Kinesisk Medicin betragtes organer som langt mere end blot fysiske strukturer med specifikke fysiologiske funktioner. Hvert organ repræsenterer et komplekst energisystem, der påvirker og gennemtrænger dig på adskillige niveauer — energetisk, fysisk, psykisk, emotionelt, sansemæssigt og spirituelt.',
+      'Når vi taler om "lever" eller "hjerte" i TCM, refererer vi derfor ikke kun til det fysiske organ, men til et helt komplekst system af relationer og funktioner. Det giver en rigere og mere nuanceret forståelse af dit helbred, hvor fysiske symptomer altid ses i sammenhæng med emotionelle, mentale og energetiske kvaliteter.',
+      'Hvert organ præsenteres her med dets funktioner, karakteristika og reflekterende spørgsmål fordelt på otte temaer. De er invitationer til at mærke ind i din egen oplevelse — at lytte til din krops fortælling og forstå de dybere sammenhænge bag det, du mærker.'
     ]
   },
   extraordinary: {
     title: 'De 8 Ekstraordinære Meridianer',
     paragraphs: [
-      'De ekstraordinære meridianer udgør kroppens dybere energireservoirer og konstitutionelle fundamenter. Hvor de 12 hovedmeridianer håndterer dagligdagens energistrøm, arbejder de ekstraordinære meridianer på et dybere niveau — de lagrer og regulerer den essens, vi er født med, og forbinder os til vores mest fundamentale livskraft.',
-      'Disse otte meridianer bliver særligt relevante ved kroniske, komplekse eller konstitutionelle ubalancer. Når flere mønstre er aktive samtidigt, og der ikke fremstår et tydeligt og entydigt mønster, kan de ekstraordinære meridianer tilbyde en indgang, der fungerer på et anderledes og dybere niveau med egenskaber til at balancere flere mønstre samtidigt.',
-      'Fra Chong Mai — det allerførste kar der dannes i fosteret — til Yin og Yang Wei Mai, der væver fortid og nutid sammen, repræsenterer disse meridianer de dybeste lag af vores energetiske konstitution og potentialet for dyb, varig forandring.'
+      'De ekstraordinære meridianer udgør kroppens dybere energireservoirer og konstitutionelle fundamenter. Hvor de 12 hovedmeridianer håndterer dagligdagens energistrøm, arbejder de ekstraordinære meridianer på et dybere niveau — de lagrer og regulerer den essens, du er født med, og forbinder dig til din mest fundamentale livskraft.',
+      'Disse otte meridianer bliver særligt relevante, når du fornemmer kroniske, komplekse eller dybt forankrede ubalancer. Når flere mønstre synes aktive på én gang, og intet enkelt mønster tydeligt skiller sig ud, kan de ekstraordinære meridianer tilbyde et dybere perspektiv — ét der belyser sammenhænge på tværs af flere mønstre samtidigt.',
+      'Fra Chong Mai — det allerførste kar der dannes i fosteret — til Yin og Yang Wei Mai, der væver fortid og nutid sammen, repræsenterer disse meridianer de dybeste lag af din energetiske konstitution og potentialet for dyb, varig forandring.'
     ]
   },
   elements: {
     title: 'De Fem Elementer',
     paragraphs: [
-      'Fem-element teorien (Wu Xing) beskriver, hvordan naturens fem elementer — Træ, Ild, Jord, Metal og Vand — afspejles i kroppens organsystemer. Dette er ikke bare symbolik, men et praktisk system til at forstå, hvordan organer påvirker hinanden i sundhed og sygdom.',
-      'Elementerne er forbundet i to fundamentale cyklusser: Skabelses-cyklussen, hvor hvert element nærer det næste som en mor nærer sit barn, og Kontrol-cyklussen, hvor hvert element holder et andet i balance for at forhindre overvækst. Når begge cyklusser fungerer harmonisk, er kroppen i balance.',
-      'Teorien giver os mulighed for at se mønstre, der rækker ud over det enkelte organ. Et symptom i ét organ kan have sin rod i et andet element, og følelsesmæssige mønstre følger elementernes cyklusser. Ved at forstå disse relationelle forbindelser får vi et kraftfuldt redskab til at arbejde med hele mennesket.'
+      'Fem-element teorien (Wu Xing) beskriver, hvordan naturens fem elementer — Træ, Ild, Jord, Metal og Vand — afspejles i kroppens organsystemer. Dette er ikke bare symbolik, men en praktisk forståelsesramme for, hvordan dine organer påvirker hinanden i sundhed og ubalance.',
+      'Elementerne er forbundet i to fundamentale cyklusser: Skabelses-cyklussen, hvor hvert element nærer det næste som en mor nærer sit barn, og Kontrol-cyklussen, hvor hvert element holder et andet i balance for at forhindre overvækst. Når begge cyklusser fungerer harmonisk, er du i balance.',
+      'Teorien giver dig mulighed for at se mønstre, der rækker ud over det enkelte organ. Et symptom i ét organ kan have sin rod i et andet element, og følelsesmæssige mønstre følger elementernes cyklusser. Ved at forstå disse sammenhænge får du et rigt kort til at udforske helheden af dig selv.'
     ]
   },
   overviews: {
     title: 'Oversigter',
     paragraphs: [
-      'Denne sektion giver dig hurtige oversigter til daglig brug i klinikken. Her finder du kompakte referencekort for alle 12 organer og de 8 ekstraordinære meridianer — designet til at give overblik med ét blik.',
-      'Symptom-tabellen hjælper dig med at koble specifikke symptomer til de relevante organsystemer, og samtalestrukturen giver et forslag til, hvordan du kan strukturere den indledende samtale med en ny klient.'
+      'Denne sektion giver dig hurtige oversigter til nem reference. Her finder du kompakte kort for alle 12 organer og de 8 ekstraordinære meridianer — designet til at give dig overblik med ét blik.',
+      'Symptom-tabellen hjælper dig med at koble specifikke symptomer til de relevante organsystemer, og udforskningsguiden giver et forslag til, hvordan du kan begynde at kortlægge dine egne mønstre.'
+    ]
+  },
+  patterns: {
+    title: 'Udforsk Dine Mønstre',
+    paragraphs: [
+      'Alt i din krop hænger sammen. En følelse, et symptom, et tidspunkt på natten hvor du altid vågner — de er alle tråde i det samme mønster. Her kan du trække i én tråd og se, hvor den fører hen.',
+      'Organuret viser dig, hvilket organ der er mest aktivt lige nu. Søgningen nedenunder lader dig starte med hvad som helst du lægger mærke til — en følelse, et ubehag, et genkommende tema — og se hvordan det forbinder sig til organer, elementer, årstider og praksis.',
+      'Der er ingen forkerte udgangspunkter. Begynd med det, der føles mest levende i dig lige nu, og lad forbindelserne vise sig.'
     ]
   },
   foundation: {
     title: 'TCM Grundprincipper',
     paragraphs: [
-      'Før vi dykker ned i de enkelte organer og meridianer, er det væsentligt at forstå de overordnede principper, som TCM bygger sin tilgang på. Fire centrale perspektiver fungerer som et sammenhængende kompas: Yin-Yang princippet, Organuret, Fem-element teorien og Zang-Fu systemet.',
-      'Yin-Yang giver os det grundlæggende spørgsmål om, hvor ubalancen ligger. Organuret giver den tidsmæssige dimension — hvornår viser symptomet sig? Fem-element teorien viser de relationelle forbindelser mellem organerne, og Zang-Fu systemet giver den funktionelle forståelse af organernes parforhold.',
-      'Sammen giver disse perspektiver et kraftfuldt diagnostisk værktøj, der gør det muligt at se ud over isolerede symptomer og i stedet forstå de dybere mønstre og sammenhænge i en tilstand. De overlapper, supplerer og forstærker hinanden — og udgør fundamentet for alt det, der følger.'
+      'Før du udforsker de enkelte organer og meridianer, er det værd at forstå de overordnede principper, som TCM bygger sin tilgang på. Fire centrale perspektiver fungerer som et sammenhængende kompas: Yin-Yang princippet, Organuret, Fem-element teorien og Zang-Fu systemet.',
+      'Yin-Yang stiller det grundlæggende spørgsmål om, hvor ubalancen ligger. Organuret giver den tidsmæssige dimension — hvornår viser symptomet sig? Fem-element teorien afdækker de relationelle forbindelser mellem organerne, og Zang-Fu systemet giver den funktionelle forståelse af organernes parforhold.',
+      'Sammen gør disse perspektiver det muligt at se ud over isolerede symptomer og i stedet forstå de dybere mønstre og sammenhænge i din tilstand. De overlapper, supplerer og forstærker hinanden — og udgør fundamentet for alt det, der følger.'
     ]
+  }
+};
+
+const elementToSeason = {
+  'Træ': 'foraar', 'Ild': 'sommer', 'Jord': 'sensommer', 'Metal': 'efteraar', 'Vand': 'vinter'
+};
+
+const homeWelcome = 'Din krop taler til dig hele tiden. Ikke med ord, men med fornemmelser, spændinger, rytmer og uro. Denne app hjælper dig med at lytte — ved at give dig et sprog for det du allerede mærker. Start der hvor du er. I din årstid, i din krop, lige nu.';
+
+const seasonWelcomes = {
+  foraar: 'Mærk efter. Er der noget der presser sig på indefra — en uro, en længsel, en irritation der ikke helt har fundet sit udtryk? Det er forårets energi. Træ-elementet vågner i dig som saften stiger i træerne — opad, udad, med en kraft der vil bevægelse og retning. Leveren og Galdeblæren bærer denne energi, og med den følger både din kreativitet og din frustration. Vinden blæser udefra, men også indeni. Det der irriterer dig lige nu, er måske det samme som det der vil forandring. Giv det plads. Mærk hvad der vil frem.',
+  sommer: 'Mærk varmen i dig. Ikke kun fra solen, men den varme der bor i dit bryst — den der tænder op når du griner, forbinder dig med et andet menneske, eller mærker at du er helt tilstede. Det er Ildens element. Hjertet og Tyndtarmen arbejder med glæde, passion og din evne til at skelne det ægte fra det overfladiske. Sommeren inviterer dig til at åbne dig — men også til at mærke efter om din ild brænder klart eller flakkende. Er du forbundet med det der virkelig betyder noget? Eller spreder du dig i for mange retninger? Mærk hvad der brænder i dig lige nu.',
+  sensommer: 'Mærk dine fødder mod jorden. Mærk tyngden i din krop, det sted i dig der bare er — uden at skulle noget. Sensommeren tilhører Jord-elementet, den tid hvor alt modnes og frugterne hænger tungt. Mavesækken og Milten bærer denne energi: evnen til at tage imod, fordøje og omsætte — ikke kun mad, men alt det du møder i dit liv. Fugten i luften minder dig om den tyngde der opstår når du bekymrer dig for meget, grublerer for længe, giver for meget uden at fylde dig selv op. Mærk efter: bliver du næret af det du giver din tid til? Eller tærer det?',
+  efteraar: 'Mærk din udånding. Mærk det øjeblik hvor du slipper luften — og med den, lidt af det du bærer. Efteråret tilhører Metal-elementet og bringer en klarhed der kan gøre ondt: hvad er væsentligt, og hvad skal du lade gå? Lungerne og Tyktarmen arbejder med netop dette — at tage det rene ind og slippe det overflødige. Tørheden i luften minder dig om sorg, om tab, om det der engang var. Men der er skønhed i at slippe. Mærk efter: hvad bærer du stadig, som ikke længere nærer dig?',
+  vinter: 'Mærk stilheden. Den der kommer når alt trækker sig indad og nedad, som rødder der søger dybere ned i mørk jord. Vinteren tilhører Vand-elementet — det mest stille og det mest kraftfulde. Nyrerne og Blæren bærer din dybeste essens, den reserve du blev født med og den vitalitet der holder dig i live. Kulden inviterer dig til at hvile, men den kan også vække frygt — frygten for ikke at have nok, ikke at være nok. Mærk efter: hvad hviler i dig, under alt det du gør og præsterer? Hvad finder du, når du bliver stille?'
+};
+
+const elementPortraits = {
+  trae: [
+    'Mærk den kraft i dig der vil opad og fremad — den der har en retning, en plan, en længsel efter forandring. Det er Træ-elementet. Det bor i dine sener, i din fleksibilitet, i den energi der gør at du kan rejse dig om morgenen og bevæge dig ud i verden med vilje.',
+    'Træet hører til foråret og bæres af Leveren og Galdeblæren. Dets bevægelse er opad og udad, som en spire der presser sig gennem jord. Dets følelse er vrede — men ikke den blinde vrede. Den der vil noget. Den der siger: dette er ikke godt nok, dette skal ændre sig, dette fortjener bedre. Frustration er Træ-energi der ikke har fundet sin retning. Kreativitet er Træ-energi der har.',
+    'Mærk efter: flyder din energi frit, eller er du stiv, frustreret, fastlåst? Kan du bøje uden at knække? Træet viser dig din evne til at vokse — og din vilje til at gøre det.'
+  ],
+  ild: [
+    'Mærk det der varmer i dig. Den gnist der tænder når du møder et menneske du elsker, griner af noget uventet, eller mærker at du er fuldstændig til stede i et øjeblik. Det er Ild-elementet — det mest levende, det mest sårbare.',
+    'Ilden hører til sommeren og bæres af fire organer: Hjertet, Tyndtarmen, Pericardium og San Jiao. Dens bevægelse er udad og opad, som flammer der rækker mod himlen. Dens følelse er glæde — men også den uro der opstår når glæden ikke har rod. For meget Ild spreder sig, brænder ud, efterlader tomhed. For lidt Ild gør livet gråt og fjernt.',
+    'Mærk efter: brænder din ild klart og varmt, eller er den flakkende og urolig? Kan du mærke forbindelsen — til dig selv, til andre, til noget der er større? Ilden viser dig din evne til at elske og være til stede.'
+  ],
+  jord: [
+    'Mærk det sted i dig der bare er. Uden at præstere, uden at bevæge sig, uden at søge. Bare stille, nærende, bærende tilstedeværelse. Det er Jord-elementet — midten af alt, det sted alting vender hjem til.',
+    'Jorden hører til sensommeren — den korte, rige pause mellem sommerens intensitet og efterårets klarhed — og bæres af Mavesækken og Milten. Dens bevægelse er indad og nedad, som frugt der modnes og falder. Dens følelse er bekymring — den tanke der maler rundt og rundt uden at lande, den omsorg der bliver til uro, den gavmildhed der tømmer dig fordi du glemmer at nære dig selv.',
+    'Mærk efter: er du i kontakt med din egen midte? Bliver du næret af det du giver din tid og energi til? Jorden viser dig din evne til at modtage — og til at omsætte det du modtager til noget der bærer dig.'
+  ],
+  metal: [
+    'Mærk din udånding. Det øjeblik hvor du slipper noget — luft, spænding, en tanke, et håb. Der er en skarphed i det, en klarhed, og måske en smerte. Det er Metal-elementet.',
+    'Metal hører til efteråret og bæres af Lungerne og Tyktarmen. Dets bevægelse er indad og nedad, som blade der falder — en bevægelse mod det essentielle, det rene, det der bliver tilbage når alt det overflødige er skrællet væk. Dets følelse er sorg — ikke som svaghed, men som respekt for det der var, og accept af at det er forbi.',
+    'Mærk efter: hvad holder du fast i, som du burde lade gå? Og hvad er det væsentlige, det ufravigeligt dit, som bliver tilbage? Metal viser dig din evne til at slippe — og til at finde skønhed i det der er rent og simpelt.'
+  ],
+  vand: [
+    'Mærk stilheden i dig. Den der findes under tankerne, under følelserne, under al den aktivitet der fylder din dag. Dybt nede, som grundvand, er der noget der bare er — stille, mørkt og fuld af potentiale. Det er Vand-elementet.',
+    'Vand hører til vinteren og bæres af Nyrerne og Blæren. Dets bevægelse er nedad og indad — den mest stille af alle bevægelser, den der trækker sig tilbage, samler kraft og venter. Dets følelse er frygt — den eksistentielle usikkerhed der melder sig når du er alene med dig selv, når præstationen stopper, når der ikke er mere at gøre. Men under frygten ligger visdom. Og under visdommen ligger tillid — en dyb, ordløs tillid til at livet bærer.',
+    'Mærk efter: tør du blive stille? Tør du hvile uden at fylde stilheden med noget? Vand viser dig din dybeste reserve — og din evne til at stole på den.'
+  ]
+};
+
+const organPortraits = {
+  lunger: [
+    'Træk vejret ind. Mærk det øjeblik lige efter indåndingen, hvor din krop er fyldt — og mærk så udåndingen, det øjeblik hvor du slipper. Det er Lungernes rytme: at tage imod og at lade gå, fra dit første åndedrag til dit sidste.',
+    'Lungerne styrer din hud, din stemme og din evne til at sætte grænser — det yderste lag af dig, der hvor du møder verden. Når de er stærke, er du beskyttet uden at være lukket, åben uden at være sårbar. Når de er svækkede, mærker du det som hyppige forkølelser, tør hud, en stemme der mangler klang, eller en fornemmelse af at du ikke helt kan trække vejret frit.',
+    'Lungerne hører til Metal-elementet og efteråret — den tid hvor naturen viser os at der er værdighed i at slippe. Deres tid på døgnet er mellem 3 og 5 om morgenen, og vågner du her med hoste eller tunge tanker, er det værd at lytte. Lungernes følelse er sorg. Ikke den akutte sorg, men den stille — savnet, tabet, det du engang havde.',
+    'Mærk din vejrtrækning lige nu. Er den dyb og rolig, eller kort og overfladisk? Svaret fortæller dig noget om hvordan du har det — ikke kun i dine lunger, men i dit liv.'
+  ],
+  tyktarm: [
+    'Mærk din morgen. Det allerførste din krop gør efter søvnen, er at forberede sig på at slippe det den ikke har brug for. Tyktarmen er den i dig der rydder op, renser ud og skaber plads til nyt — fysisk og mentalt.',
+    'Tyktarmens arbejde handler om at slippe. Ikke bare afføring, men alt det overflødige: tanker du har tygget færdigt på, følelser der har gjort deres arbejde, vaner der ikke længere tjener dig. Når Tyktarmen fungerer godt, er der en lethed om morgenen, en friskhed, en følelse af at dagen begynder rent. Når den stagnerer, føler du dig tung, oppustet, eller som om du trækker noget med dig der burde have været lagt fra dig for længe siden.',
+    'Tyktarmen hører til Metal-elementet og er Lungernes makker — de to deler evnen til at skelne det rene fra det urene. Dens tid er mellem 5 og 7 om morgenen, og det er ikke tilfældigt at kroppen naturligt ønsker at tømme sig her. Mærk efter: slipper du let om morgenen? Eller holder du fast — i kroppen, i tankerne, i det der var i går?'
+  ],
+  mavesaek: [
+    'Mærk det øjeblik hvor du sætter dig og spiser morgenmad — eller det øjeblik hvor du springer det over og allerede er i gang. Mavesækken er den i dig der tager imod. Ikke kun mad, men alt det der kommer ind: indtryk, oplevelser, information, andre menneskers energi.',
+    'Mavesækken nedbryder og forbereder — den er den første station i din fordøjelse, det sted hvor det rå materiale møder din krops intelligens. Når den er stærk, har du appetit, du kan rumme det du møder, og du føler dig næret. Når den er svækket eller overbelastet, mærker du det som kvalme, oppustethed, mangel på appetit, eller en fornemmelse af at du har taget mere ind end du kan håndtere.',
+    'Mavesækken hører til Jord-elementet og sensommeren, den tid hvor høsten modnes. Dens tid på døgnet er mellem 7 og 9 om morgenen — det naturlige tidspunkt for at give din krop det den har brug for. Mærk efter: hvordan tager du imod det din dag bringer dig? Med ro og åbenhed, eller med en mave der allerede er fuld?'
+  ],
+  milt: [
+    'Der er et sted i dig der stille og tålmodigt omsætter alt det du tager ind til noget du kan bruge. Det er Milten. Du mærker den ikke, når den fungerer — du mærker bare at du har energi, at din tanke er klar, at dine muskler bærer dig.',
+    'Milten transformerer. Den tager det bedste fra din mad og løfter det opad som ren energi til resten af din krop. Men hun er sårbar overfor fugt — både den fysiske og den mentale. For mange søde ting, for mange bekymringer, for mange tanker der kører i ring uden at lande nogen steder — det svækker Milten. Du mærker det som træthed efter mad, tunge lemmer, hævede fingre om morgenen, en tanke der ikke kan finde fokus.',
+    'Milten hører til Jord-elementet og sensommeren, og hendes tid er mellem 9 og 11 om formiddagen. Bekymring er hendes følelse — ikke den skarpe angst, men den tunge grublerier der maler og maler. Mærk efter: er dine tanker klare og nærede, eller tunge og klæbrige? Det er Milten der taler.'
+  ],
+  hjerte: [
+    'Læg hånden på dit bryst. Mærk det der banker derinde — ikke kun som en muskel, men som sædet for din bevidsthed, dit nærvær, det i dig der ved at du er til. I TCM huser Hjertet din Shen — din ånd, din klarhed, dit lys.',
+    'Når Hjertet er i balance, er der en varme i dig der er rolig og stabil. Du kan møde andre mennesker åbent, du sover dybt, dine øjne har glans, og du mærker en glæde der ikke afhænger af ydre omstændigheder. Når Hjertet er uroligt, mærker du det som angst, søvnløshed, hjertebanken, en rastløshed der ikke kan lande, eller en glæde der tipper over i mani — for meget, for hurtigt, for spredt.',
+    'Hjertet tilhører Ild-elementet og sommeren, den tid hvor alt blomstrer og åbner sig. Dets tid på døgnet er mellem 11 og 13, midt på dagen, hvor lyset er stærkest. Mærk efter: er dit indre lys klart og varmt, eller flakkende og uroligt? Dit Hjerte fortæller dig hvordan din Shen har det.'
+  ],
+  tyndtarm: [
+    'Der er et sted i dig der sorterer. Hele tiden, uden at du tænker over det — hvad er næring og hvad er affald, hvad er sandt og hvad er støj, hvad hører til dig og hvad hører til en anden. Det er Tyndtarmen.',
+    'Tyndtarmen er Hjertets makker og bærer evnen til at skelne — den klarhed der gør at du kan tage det rene til dig og sende resten videre. Når den fungerer godt, har du en intuitiv fornemmelse af hvad der er rigtigt for dig. Når den er svækket, bliver alt mudret: du kan ikke skelne vigtige beslutninger fra uvæsentlige, du absorberer andres følelser uden filter, eller din krop reagerer med uro i maven efter et måltid den ikke kan sortere.',
+    'Tyndtarmen hører til Ild-elementet og dens tid er mellem 13 og 15, de tidlige eftermiddagstimer. Det er ikke tilfældigt at du kan føle dig tåget efter frokost — din krop sorterer, og det kræver energi. Mærk efter: hvor god er du til at sortere det der kommer ind? Ikke kun mad, men indtryk, krav og forventninger?'
+  ],
+  blaere: [
+    'Mærk det sted i din ryg der bærer mest. Blærens meridian løber i to lange linjer fra hoved til tå, ned langs hele din rygsøjle — den længste meridian i kroppen. Den bærer alt det du lægger på dine skuldre.',
+    'Blæren handler om fleksibilitet. Ikke kun i din krop — selvom stivhed i ryg og nakke ofte er Blærens signal — men i din evne til at tilpasse dig det livet bringer. Blæren lagrer og frigiver, holder og slipper, og hendes samspil med Nyrerne binder hende til din dybeste reserve. Når Blæren er stærk, er du smidig i krop og sind. Når hun er svækket, mærker du det som spændinger i ryggen, hyppig vandladning, eller en følelse af at være konstant på vagt.',
+    'Blæren tilhører Vand-elementet og vinteren, og dens tid er mellem 15 og 17 — den sene eftermiddag, hvor energien naturligt begynder at synke. Mærk efter: er din ryg smidig og bærende, eller stiv og belastet? Det er Blæren der inviterer dig til at mærke forskellen.'
+  ],
+  nyrer: [
+    'Der er et sted i dig der ligger dybere end alt det daglige. Under træthed, under præstation, under det du viser verden — der bor dine Nyrer. De bærer din essens, din medfødte vitalitet, det fundament du bygger hele dit liv på.',
+    'Nyrerne lagrer det i TCM der hedder Jing — den essens du fik med fra dine forældre, og som langsomt bruges over et helt liv. Det er den energi der styrer din vækst, din forplantning, din aldring, dine knogler og din hørelse. Når Nyrerne er stærke, mærker du det som en dyb, stille kraft — en tillid til at du kan bære det livet bringer. Når de er svækkede, mærker du det i lænden, i knæene, i en træthed der ikke forsvinder med søvn, i håret der tynder, eller i en frygt der siver ind fra kanten.',
+    'Nyrerne tilhører Vand-elementet og vinteren, den mørkeste tid, og deres tid på døgnet er mellem 17 og 19. Frygt er Nyrernes følelse — men ikke kun den angstfyldte. Også den stille, eksistentielle: er jeg nok? Har jeg nok? Mærk efter i din krop lige nu — har du kontakt til noget stille og bærende i dig, eller føler du dig tømt?'
+  ],
+  pericardium: [
+    'Du kender det måske — den der åbner sig for hurtigt og bliver såret, eller den der har lukket så meget af at ingenting slipper ind. Pericardium er din hjertebeskytter, det organ der bestemmer hvem og hvad der får adgang til dit inderste.',
+    'I TCM er Pericardium Hjertets ambassadør — den der møder verden på Hjertets vegne, så Hjertet selv kan bevare sin ro. Pericardium styrer din evne til intimitet, til at åbne og lukke med visdom, til at beskytte uden at isolere. Når Pericardium er i balance, kan du være nærværende i tætte relationer uden at miste dig selv. Når det er svækket, mærker du det som følelsesmæssig sårbarhed, svært ved at sætte grænser, eller en mur der holder alt og alle ude.',
+    'Pericardium tilhører Ild-elementet, og dets tid er mellem 19 og 21 om aftenen — det tidspunkt hvor du naturligt søger nærvær, forbindelse, intimitet. Mærk efter: hvordan er din port lige nu? Åben, lukket, eller et sted midt imellem?'
+  ],
+  sanjiao: [
+    'Der er et organ i TCM der ikke har en fysisk form — og alligevel forbinder det alt. San Jiao, den tredobbelte varmer, er den passage der sikrer at energi, varme og væske kan bevæge sig frit mellem din krops tre rum: det øvre (bryst), det midterste (mave) og det nedre (bækken).',
+    'San Jiao er regulatoren. Den sørger for at varmen fra dit Hjerte når ned til dine Nyrer, at væsken fra dine Nyrer fordamper opad, at din krop fungerer som ét sammenhængende system og ikke som tre adskilte etager. Når San Jiao fungerer, mærker du en let, harmonisk fornemmelse — alt flyder. Når den er blokeret, mærker du det som temperaturforskelle i kroppen (varmt hoved, kolde fødder), væskeproblemer, eller en generel følelse af at noget ikke hænger sammen.',
+    'San Jiaos tid er mellem 21 og 23 — den overgang fra dag til nat, fra aktivitet til hvile, hvor kroppen begynder at lukke ned. Mærk efter: kan du mærke en naturlig ro falde over dig om aftenen? Eller kæmper du mod søvnen, stadig tændt, stadig i gang?'
+  ],
+  galdeblaere: [
+    'Kender du den følelse af at stå ved en skillevej og ikke vide hvad du skal vælge? Den tvivl der holder dig vågen? Det er Galdeblæren der arbejder — eller kæmper.',
+    'Galdeblæren er beslutningstageren. Hvor Leveren laver planen, er det Galdeblæren der sætter den i gang — med mod, rettidig handling og den form for beslutsomhed der ikke kræver at du har alle svar, bare at du tør tage det næste skridt. Når Galdeblæren er stærk, er du modig og handlekraftig. Når hun er svækket, mærker du det som ubeslutsomhed, tøven, en tendens til at dreje tingene rundt i hovedet uden at komme nogen vegne — eller som spændinger i tindingerne og siderne af kroppen.',
+    'Galdeblæren tilhører Træ-elementet og foråret, og hendes tid er mellem 23 og 1 om natten. Det er midt i den dybeste søvn — og vågner du her med urolige tanker, er der sandsynligvis en beslutning du ikke har truffet. Mærk efter: er der noget du udskyder lige nu? Noget der venter på dit mod?'
+  ],
+  lever: [
+    'Leveren er den i dig der drømmer, planlægger og sætter retning. Når alt flyder frit, mærker du det som kreativitet, handlekraft og en klar fornemmelse af hvor du er på vej hen. Men når energien stagnerer — af stress, frustration, ting du holder inde — begynder den at presse sig opad. Hovedpine i tindingerne. Spændinger i nakken og skuldrene. En irritabilitet der ikke helt har en adresse.',
+    'Leveren styrer dine sener og din fleksibilitet — både den fysiske og den mentale. En stiv krop og et stift sind hænger ofte sammen, og begge peger mod Leveren. Hun lagrer blodet og renser det om natten, og hun sikrer at din menstruation, din fordøjelse og dine følelser kan bevæge sig frit. Stagnation i Leveren er en af de hyppigste ubalancer i vores tid — fordi vi lever i en verden der konstant kræver at vi holder vores frustration inde.',
+    'Leveren tilhører Træ-elementet og foråret, og hendes tid er mellem 1 og 3 om natten. Vrede er hendes følelse — ikke den destruktive, men den der siger: noget skal ændre sig. Mærk efter: er der noget i dit liv der presser sig på, som du ikke giver plads? Det er Leveren der banker på.'
+  ]
+};
+
+const patternTexts = {
+  'Hovedpine': {
+    connection: 'Hovedpine er aldrig tilfældig i TCM. Energi der ikke kan bevæge sig frit, søger opad — som varme der stiger — og samler sig i hovedet. Men *hvor* den samler sig, fortæller dig noget vigtigt. Banker det i tindingerne, er det Galdeblæren der råber op. Presser det bag øjnene og op over issen, er det Leveren der kæmper med at holde sin energi flydende. Sidder smerten i baghovedet, følger den Blærens meridian ned langs nakken. Og tyngden over panden? Den hører til Mavesækken — som om din fordøjelse af livet er gået i stå. Læg mærke til stedet. Det er din krops måde at pege på.',
+    reflections: [
+      'Hvornår mærkede du første gang denne hovedpine? Var der noget i dit liv der ændrede sig på det tidspunkt — noget du begyndte at holde fast i, eller holde tilbage?',
+      'Hvis du blev stille og lyttede til presset i dit hoved — hvad ville det fortælle dig om det, du ikke giver plads til at bevæge sig?',
+      'Læg mærke til om din hovedpine har en rytme. Kommer den på bestemte tidspunkter af dagen, i bestemte situationer, eller i bestemte årstider?'
+    ],
+    exercise: {
+      title: 'Lad energien synke',
+      duration: '1-2 minutter',
+      instruction: 'Sæt dig ned og læg begge tommelfingres puder i fordybningen ved tindingens hårlinje — det punkt der er ømt, ved du godt. Pres blidt ind og lav små, langsomme cirkler mens du trækker vejret helt ned i maven. Forestil dig at varmen i dit hoved langsomt synker nedad — som vand der finder vej fra issen, ned gennem kroppen, og ud gennem fodsålerne. Lad tyngdekraften hjælpe.',
+      effect: 'Inviterer stagneret energi til at finde sin naturlige nedadgående retning.'
+    }
+  },
+  'Søvnproblemer': {
+    connection: 'Søvn kræver at sindet har et sted at hvile — og det sted er Hjertet. I TCM huser Hjertet din Shen, din bevidsthed, og når Shen er urolig, kan du ikke synke ned i søvnens mørke. Men det er sjældent Hjertet alene. Leveren arbejder om natten med at rense og forny blodet, og hvis dens energi er stagneret, vågner du mellem klokken 1 og 3. Galdeblæren — som træffer beslutninger — rumsterer mellem 23 og 1, og holder dig vågen med alt det uafklarede. Pericardium beskytter Hjertets rum, og Nyrerne forankrer hele systemet i dybden. Søvnløshed er sjældent ét organ. Det er et samspil — og tidspunktet for din uro peger mod det organ der kalder.',
+    reflections: [
+      'Hvornår vågner du, og hvad møder dig i de første sekunder? Er det tanker der vælter ind, en følelse i kroppen, eller bare en uro uden navn?',
+      'Hvad bærer du med ind i natten som du ikke fik sat ned i løbet af dagen — noget uforløst, uafsluttet, eller usagt?',
+      'Hvis din søvnløshed var en besked fra din krop, hvad ville den bede dig om at give slip på, for at du kunne synke?'
+    ],
+    exercise: {
+      title: 'Find dit anker',
+      duration: '2-3 minutter',
+      instruction: 'Læg dig på ryggen og placer én hånd på brystet, én på maven lige under navlen. Luk øjnene. Mærk forskellen mellem de to hænder — hvilken bevæger sig mest? Begynd langsomt at sende åndedrættet ned til den nederste hånd, som om du fylder et bæger fra bunden. For hver udånding, forestil dig at din bevidsthed synker lidt dybere ned — fra hoved til bryst til mave. Du behøver ikke sove. Du skal bare synke.',
+      effect: 'Hjælper din Shen med at finde hvile ved at føre opmærksomheden fra hoved til krop.'
+    }
+  },
+  'Fordøjelsesproblemer': {
+    connection: 'Din Milt og Mavesæk er de to organer der tager imod alt det du indtager — ikke kun mad, men også indtryk, oplevelser, tanker. Milten transformerer og løfter det rene opad, Mavesækken sender det tunge nedad. Når dette samspil fungerer, føler du dig næret og klar. Men Leveren spiller en afgørende rolle her, for det er Leverens frie flow der holder hele fordøjelsen i bevægelse. Stagnerer Leveren — af stress, frustration, tilbageholdt vrede — så invaderer den Milten. Du mærker det som oppustethed, kvalme, vekslende afføring, en fornemmelse af at maden bare ligger der. Fordøjelsesproblemer handler sjældent om maven alene. De handler om hele den bevægelse, der bærer næring igennem dig.',
+    reflections: [
+      'Hvornår på dagen er din fordøjelse mest urolig — og hvad sker der lige inden? Er det efter et måltid, eller efter en situation?',
+      'Hvad fordøjer du i dit liv lige nu, som er svært at nedbryde — noget du har taget ind, men som du endnu ikke har kunnet omsætte til mening?',
+      'Mærk efter: bærer din mave en spænding der ikke handler om mad? Hvad holder du fast i din midte, som din krop forsøger at bevæge videre?'
+    ],
+    exercise: {
+      title: 'Varm din midte',
+      duration: '2 minutter',
+      instruction: 'Gnid dine hænder mod hinanden indtil de er varme. Læg dem i en blød cirkel over din mave — den ene hånd over den anden — lige over navlen. Lav langsomme, store cirkler med uret, som om du rørte i noget langsomt og tålmodigt. Mærk varmen synke ind. Lad din mave blødgøre sig under dine hænder.',
+      effect: 'Støtter Miltens og Mavesækkens transformerende arbejde og inviterer stagneret energi til at bevæge sig.'
+    }
+  },
+  'Emotionel ustabilitet': {
+    connection: 'I TCM bærer hvert organ sin egen følelsesmæssige kvalitet — ikke som noget der skal fjernes, men som noget der hører til. Leveren bærer vreden og frustrationen, Hjertet bærer glæden men også den rastløse uro, Milten bærer bekymringen og grubleriet, og Nyrerne bærer frygten og den eksistentielle usikkerhed. Når du oplever at dine følelser svinger hurtigt eller vælter dig, er det sjældent fordi der er noget galt med dig. Det er fordi flere organer samtidig er i ubalance — og deres følelser blander sig i hinanden, som stemmer der taler i munden på hinanden. At lytte til *hvilken* følelse der er stærkest, er begyndelsen på at forstå hvad din krop forsøger at kommunikere.',
+    reflections: [
+      'Hvornår på døgnet er dine følelser mest intense — og kan du mærke om det er vrede, bekymring, frygt eller uro der fylder mest?',
+      'Er der en følelse du ikke giver dig selv lov til at have — noget du skubber væk, eller hurtigt dækker over med en anden følelse?',
+      'Hvad hvis dine svingende følelser ikke er kaos, men en samtale mellem flere dele af dig? Hvad forsøger de tilsammen at fortælle dig?'
+    ],
+    exercise: {
+      title: 'Mærk hvad der fylder mest',
+      duration: '1-2 minutter',
+      instruction: 'Sæt dig stille og luk øjnene. Tag tre dybe vejrtrækninger. Spørg dig selv helt simpelt: hvad føler jeg lige nu? Vent. Lad svaret komme som en fornemmelse i kroppen, ikke som et ord i hovedet. Mærk *hvor* i kroppen følelsen sidder — er den i brystet, i maven, i halsen, i benene? Bliv der. Du behøver ikke ændre noget. Bare mærk hvad der fylder mest, lige nu.',
+      effect: 'Skaber et øjebliks klarhed ved at give den dominerende følelse din fulde opmærksomhed.'
+    }
+  },
+  'Hudproblemer': {
+    connection: 'Huden er i TCM Lungernes spejl — det yderste lag af dig, det der møder verden. Når Lungerne er svækkede, mister huden sin evne til at beskytte og regulere, og du bliver sårbar overfor vind, kulde og tørhed. Men huden er også dybt forbundet med det der sker indeni. Tyktarmen — Lungernes makkerorgan — renser kroppen indefra, og når den renselse stagnerer, søger urenheder udad gennem huden. Leveren renser blodet og sørger for at energien flyder frit — stagnerer den, kan varme samle sig og vise sig som rødme, udslæt eller irritation. Og Milten, der transformerer fugt, spiller med: for meget fugt i systemet kan vise sig som hævelser, væskende eksem eller klam hud. Det du ser på din hud er altid et vindue til noget dybere.',
+    reflections: [
+      'Hvornår blusser din hud op — er der et mønster i årstid, stressniveau, eller bestemte perioder af dit liv?',
+      'Hvad viser du til verden, og hvad holder du inde? Er der noget du bærer under overfladen, som søger et udtryk?',
+      'Hvis din hud kunne tale, hvad ville den bede dig om — mere beskyttelse, mere udluftning, mere blødhed?'
+    ],
+    exercise: {
+      title: 'Åbn din hud',
+      duration: '1-2 minutter',
+      instruction: 'Stå oprejst og stræk armene ud til siden i skulderhøjde med håndfladerne opad. Tag en lang, dyb indånding gennem næsen — forestil dig at du åbner hele din brystkasse, som om din hud kunne ånde. Hold vejret et kort øjeblik i toppen. Pust langsomt ud gennem munden med en blød lyd, og lad armene synke tungt ned langs siderne. Gentag tre gange. Mærk forskellen i din hud bagefter.',
+      effect: 'Støtter Lungernes evne til at sprede Qi til hudens overflade og inviterer til åbenhed.'
+    }
+  },
+  'Rygsmerter': {
+    connection: 'Ryggen er din krops bærende akse, og i TCM er den gennemvævet af meridianer der fortæller dig præcist hvad der er på spil. Smerter i lænden peger næsten altid mod Nyrerne — de organer der lagrer din dybeste essens og bærer hele din konstitutionelle kraft. Langs rygsøjlen løber Blærens meridian i to lange linjer, og spændinger her afspejler ofte det du bærer på ryggen — ansvar, belastning, udmattelse. Siderne af ryggen tilhører Galdeblæren, og smerter der kan hænge sammen med beslutninger du kæmper med eller en følelse af at sidde fast. Leveren styrer dine sener og din fleksibilitet — og en stiv ryg kan være et udtryk for en Lever der ikke flyder. Din ryg bærer dig. Spørgsmålet er, hvad du bærer den med.',
+    reflections: [
+      'Hvornår er din ryg værst — om morgenen, om aftenen, efter bestemte aktiviteter, eller i bestemte perioder af dit liv?',
+      'Hvad bærer du lige nu, som er tungt — ikke kun fysisk, men i dit liv, dine relationer, dit ansvar?',
+      'Mærk efter: er din ryg stiv og fast, eller træt og svag? Der er en forskel — stivhed taler om stagnation, svaghed om udtømning. Hvilken fortæller din rygs historie?'
+    ],
+    exercise: {
+      title: 'Varm dine nyrer',
+      duration: '2 minutter',
+      instruction: 'Gnid dine hænder varme. Læg dem på lænden med fingrene pegende nedad — lige over nyrerne, på begge sider af rygsøjlen. Gnid op og ned i et fast, varmt tempo indtil hele området gløder. Stå stille bagefter og mærk varmen brede sig. Forestil dig at du fylder dine nyrer op med noget varmt og nærende, som vinterlys der trænger ind.',
+      effect: 'Styrker Nyrernes Yang-energi og bringer varme og støtte til lænden.'
+    }
+  },
+  'Træthed/lav energi': {
+    connection: 'Energi i TCM er ikke én ting — den opstår i et samspil mellem flere organer, hvert med sin egen rolle. Milten er den der tager din mad og omsætter den til brugbar energi, dag efter dag. Svækkes Milten, føles det som om maden ikke nærer dig, uanset hvad du spiser. Nyrerne lagrer din dybeste reserve — den medfødte essens du fik med fra dine forældre — og når den er lav, er det en træthed der ikke forsvinder med søvn. Lungerne tager imod Qi fra luften med hvert åndedrag, og en svag Lunge giver en træthed der føles som mangel på luft, på rum, på inspiration. Hjertet styrer kredsløbet og bærer din Shen — og når Hjertet er udmattet, bliver trætheden tåget og fjern. Spørg dig selv: er din træthed tung, tom, flad eller tåget? Svaret peger mod det organ der har brug for din opmærksomhed.',
+    reflections: [
+      'Hvornår på dagen er din energi lavest — og hvad gør du typisk lige inden? Er der et mønster der gentager sig?',
+      'Hvad giver dig energi, og hvad dræner dig — ikke i teorien, men helt konkret i dit liv lige nu?',
+      'Hvis din træthed ikke er en fejl men en besked, hvad forsøger din krop at bede dig om? Mere hvile, mere næring, mere mening — eller mindre af noget?'
+    ],
+    exercise: {
+      title: 'Væk din midte',
+      duration: '1-2 minutter',
+      instruction: 'Bank let med en løs knytnæve på punktet fire fingersbredder under knæskallen, på ydersiden af skinnebenet — Mavesæk 36, et af kroppens mest styrkende punkter. Bank i et roligt tempo, 30 gange på hvert ben. Mærk efter. Det kan føles som en lille bølge af varme eller lethed der stiger op fra benene.',
+      effect: 'Aktiverer Miltens og Mavesækkens Qi og hjælper kroppen med at mobilisere energi fra den mad du allerede har spist.'
+    }
+  },
+  'Angst og frygt': {
+    connection: 'Frygt bor i Nyrerne — det er TCM\'s klare udsagn. Ikke den kortvarige forskrækkelse, men den dybe, eksistentielle frygt der siver ind i knoglerne og gør dig usikker på din egen grund. Angst — den uro der flagrer og ikke kan lande — hører til Hjertet, som om din Shen har mistet sit anker og flakker rundt. Galdeblæren er modet og beslutningskraften, og når den er svag, tøver du, tvivler, og selv små valg bliver overvældende. Leveren holder det hele i bevægelse, og stagnerer den, omdannes frustration ofte til en indre uro der ligner angst men egentlig er energi uden udløb. Angst og frygt er ikke det samme, selvom de ofte blander sig. At mærke forskellen i din krop er det første skridt til at forstå hvad der egentlig er på spil.',
+    reflections: [
+      'Hvornår i dit liv begyndte frygten eller angsten at fylde mere — og hvad skete der på det tidspunkt, som måske stadig lever i dig?',
+      'Mærk efter: er det du føler en frygt der trækker nedad og ind — eller en uro der stiger opad og ud? Der er en forskel. Hvad fortæller den dig?',
+      'Hvad ville du gøre, hvis frygten ikke var der? Hvad holder den dig fra — og er det muligt at den også beskytter dig mod noget?'
+    ],
+    exercise: {
+      title: 'Find din grund',
+      duration: '2 minutter',
+      instruction: 'Stå med fødderne i skulderbredde og luk øjnene. Mærk dine fodsåler mod gulvet — hele fladen. Bøj let i knæene og forestil dig at du synker to centimeter dybere ned i jorden. Læg dine hænder over det nederste af maven, under navlen. Træk vejret ind gennem næsen og ned til dine hænder. Pust langsomt ud og forestil dig at udåndingen fortsætter ned gennem benene og ud gennem fodsålerne. Gentag fem gange. Mærk hvor du er.',
+      effect: 'Forankrer din energi i Nyrerne og inviterer din opmærksomhed ned fra hoved til krop.'
+    }
+  },
+  'Øjenproblemer': {
+    connection: 'I TCM åbner Leveren til øjnene — al øjenproblematik involverer Leveren på den ene eller den anden måde. Tørre øjne, sløret syn, lysfølsomhed, røde øjne, flimren — alt sammen kan være Leverens måde at fortælle dig at dens blod er udtømt, eller at dens energi er stagneret og er begyndt at udvikle varme. Galdeblæren, Leverens makker, bidrager ofte med spændinger i tindingerne og bag øjnene. Nyrerne nærer Leveren i dybden — de to organer deler en fælles rod — og en svækkelse i Nyrerne kan vise sig som gradvist faldende syn eller træthed i øjnene. Hjertet sender blodet til øjnene og giver dem deres glans. Dine øjne afspejler ikke kun hvad du ser — de afspejler hvordan du har det indeni.',
+    reflections: [
+      'Hvornår er dine øjne mest belastede — og hvad har du brugt dem til, eller kigget på, eller kigget væk fra?',
+      'Er der noget i dit liv du ikke vil se, ikke kan overskue, eller har svært ved at holde blikket på? Hvad sker der, når du mærker efter?',
+      'Mærk sammenhængen: er dine øjenproblemer ledsaget af irritabilitet, spændingshovedpine, eller en følelse af indre pres? Hvad fortæller det dig om Leverens tilstand?'
+    ],
+    exercise: {
+      title: 'Lad øjnene hvile',
+      duration: '2 minutter',
+      instruction: 'Gnid dine håndflader varme mod hinanden. Luk øjnene og læg de varme håndflader som skåle over øjnene — uden at presse. Lad mørket og varmen synke ind. Træk vejret roligt og forestil dig at dine øjne trækker sig tilbage, blødgøres, hviler i deres huler som i en varm skål. Bliv der i et helt minut. Når du tager hænderne væk, hold øjnene lukkede lidt endnu.',
+      effect: 'Nærer Leverens blod til øjnene og giver Shen et øjebliks hvile fra den konstante strøm af indtryk.'
+    }
+  },
+  'Menstruationsproblemer': {
+    connection: 'Menstruationen er et af de mest præcise spejle af din indre balance. Leveren lagrer blodet og sikrer dets frie bevægelse — og stagnerer Leverens Qi, mærker du det som PMS, smerter, klumper i blodet, eller en cyklus der er uregelmæssig og uforudsigelig. Milten holder blodet i karrene og sikrer at blødningen har sin rette styrke — svækkes den, kan blødningen blive for kraftig eller trække ud i tid. Nyrerne forankrer hele den hormonelle cyklus i dybden og bærer forbindelsen mellem din menstruation og din grundlæggende vitalitet. Og Chong Mai — en af de ekstraordinære meridianer, kaldet blodets hav — samler og styrer den rytme der gør menstruationen til det den er: en månedlig cyklus af opbygning, frigivelse og fornyelse. Din cyklus er ikke noget der bare sker. Den er et sprog.',
+    reflections: [
+      'Hvad fortæller din cyklus dig lige nu — er den regelmæssig, kaotisk, fraværende, smertefuld? Og har det ændret sig i takt med noget i dit liv?',
+      'Hvordan er din relation til din menstruation — er det noget du ignorerer, kæmper med, eller lytter til? Hvad ville ændre sig, hvis du betragtede den som information?',
+      'Mærk efter i dagene op til din menstruation: hvad stiger op i dig? Irritation, sårbarhed, træthed, kreativitet? Det der kommer frem, peger mod det organ der søger din opmærksomhed.'
+    ],
+    exercise: {
+      title: 'Hold dit bækkens varme',
+      duration: '2-3 minutter',
+      instruction: 'Læg dig på ryggen med bøjede knæ og fodsålerne mod gulvet. Læg begge hænder under navlen, over livmoderen. Luk øjnene. Træk vejret dybt ned til dine hænder og forestil dig at hver indånding bringer varme og blødhed ned i dit bækken. For hver udånding, lad spænding og krampe sive ud — som is der langsomt smelter. Bliv der, blidt og tålmodigt.',
+      effect: 'Inviterer fri bevægelse i Leverens Qi og bringer varme til Chong Mai, blodets hav.'
+    }
+  },
+  'Ødemer/væskeophobning': {
+    connection: 'Vand i kroppen er ikke bare vand — det er bevægelse, transformation og udskillelse, styret af tre organers samspil. Lungerne spreder væsken som en fin tåge udad og nedad, som dug der lægger sig over et landskab. Milten transformerer fugt og løfter det rene opad — svækkes den, samler fugten sig som tyngde i lemmer, mave og tanker. Nyrerne står for den dybe udskillelse, og når deres Yang-ild er lav, kan kroppen ikke fordampe og frigive det overflødige. San Jiao — den tredobbelte varmer — er den passage der forbinder alle tre og sikrer at væsken kan bevæge sig frit mellem kroppens øvre, midterste og nedre del. Ødemer er aldrig bare vand der står stille. Det er bevægelse der er gået i stå.',
+    reflections: [
+      'Hvornår mærker du mest til hævelse eller tyngde — om morgenen, om aftenen, i bestemte årstider, eller i bestemte perioder af dit liv?',
+      'Er der noget i dit liv der ikke flyder — noget der samler sig, hober sig op, eller ikke finder sin naturlige udgang?',
+      'Mærk efter i din krop: er tyngden kold og tung, eller varm og spændt? Forskellen fortæller dig om det er Yang der mangler, eller bevægelse der er blokeret.'
+    ],
+    exercise: {
+      title: 'Åbn passagerne',
+      duration: '2 minutter',
+      instruction: 'Stå oprejst og løft armene langsomt op over hovedet med en dyb indånding — stræk dig som om du rækker op mod loftet. Hold et øjeblik. Bøj dig langsomt forover med udåndingen, lad armene og overkroppen hænge tungt ned mod gulvet. Lad tyngdekraften trække. Rul langsomt op igen med den næste indånding. Gentag fem gange. Mærk hvordan bevægelsen inviterer væske og energi til at finde nye veje.',
+      effect: 'Mobiliserer San Jiaos passage og hjælper Lungerne med at sprede og Nyrerne med at udskille.'
+    }
+  },
+  'Hjertebanken': {
+    connection: 'Hjertet huser din Shen — din bevidsthed, din tilstedeværelse, det i dig der er vågen og ved at du er til. Når Shen er rolig, banker hjertet stabilt og usynligt. Men når noget forstyrrer det rum — uro, chok, udmattelse, en følelse du ikke kan rumme — mærker du pludselig dit eget hjerte. Pericardium, hjertets beskytter, er det organ der absorberer de stød som Hjertet ikke skal rammes af, og når Pericardium er overbelastet, slipper uroen igennem. Nyrerne forankrer Hjertet i dybden — Vand og Ild holder hinanden i balance — og når Nyrernes vand er lavt, stiger Hjertets ild ukontrolleret opad. Milten nærer blodet som Hjertet sender rundt, og er Milten svag, har Hjertet simpelthen ikke nok substans at arbejde med. Hjertebanken er din krops måde at sige: noget har forstyrret det sted, hvor din bevidsthed bor.',
+    reflections: [
+      'Hvornår mærker du dit hjerte banke — er det om natten, i stille øjeblikke, efter kaffe, eller i situationer med følelsesmæssig intensitet?',
+      'Hvad har du ikke givet dig selv lov til at føle helt færdigt? Chok, sorg, begejstring, frygt — er der noget der stadig vibrerer i dig uden at have fundet ro?',
+      'Mærk efter: er din hjertebanken hurtig og flagrende, eller hård og bankende? Forskellen peger i forskellige retninger — den ene mod uro i Shen, den anden mod varme eller substansmangel.'
+    ],
+    exercise: {
+      title: 'Berolig dit hjerte',
+      duration: '2 minutter',
+      instruction: 'Læg din højre hånd midt på brystet, over hjertet. Læg din venstre hånd ovenpå. Luk øjnene. Træk vejret langsomt ind på fire tæl, hold i to, pust ud på seks tæl. Gentag. Med hver udånding, forestil dig at dine hænder sender tyngde og varme ind til dit hjerte — som om du lagde en varm hånd på et uroligt barn. Du siger ikke noget. Du er bare der.',
+      effect: 'Inviterer Shen til at vende hjem til sit naturlige hvilested og støtter Pericardiums beskyttende funktion.'
+    }
+  },
+  'Høreproblemer/tinnitus': {
+    connection: 'Nyrerne åbner til ørerne — det er et af TCM\'s mest direkte udsagn. Din hørelse afspejler dine Nyrers vitalitet, og gradvist høretab eller en konstant susen kan være et tegn på at Nyrernes essens er ved at blive lav. Men tinnitus er ikke altid den stille, dybe form. En høj, skarp ringen hører ofte til Galdeblæren og Leveren — det er varme og stagnation der stiger opad og forstyrrer ørerne med sin intensitet. San Jiao, den tredobbelte varmer, styrer passagerne omkring øret, og blokering her kan skabe en fornemmelse af fyldhed, pres eller nedsat hørelse. Lyden i dine ører fortæller dig noget. Spørgsmålet er om den hvisker eller skriger — for det peger i forskellige retninger.',
+    reflections: [
+      'Hvornår begyndte lyden, eller hvornår blev den værre — og hvad skete der i dit liv omkring det tidspunkt?',
+      'Er din tinnitus lav og rislende, eller høj og gennemtrængende? Mærk forskellen — den ene fortæller om tomhed, den anden om overskud der ikke har noget sted at gå hen.',
+      'Hvad ville det betyde for dig at lytte indad i stedet for udad? Er der noget din krop forsøger at overdøve, eller noget den forsøger at gøre dig opmærksom på?'
+    ],
+    exercise: {
+      title: 'Trommeslag på himmelporten',
+      duration: '1-2 minutter',
+      instruction: 'Læg begge hænder over ørerne med fingrene bagud mod nakken. Dine pegefingre hviler ovenpå langfingrene. Lad pegefingrene glide af langfingrene og tromme let ned mod nakken — det giver en dyb, dæmpet banken inde i dit hoved. Gentag 20-30 gange i et roligt tempo. Lyt til lyden. Fjern hænderne langsomt og mærk stilheden bagefter.',
+      effect: 'En klassisk TCM-teknik der stimulerer Nyrernes energi til ørerne og beroliger indre uro.'
+    }
+  },
+  'Smerter i ekstremiteter': {
+    connection: 'Dine arme og ben er det sted, hvor kroppens indre tilstand møder bevægelse og handling. I TCM styrer hvert organ sit eget væv: Leveren nærer senerne og giver dem smidighed, Milten bærer musklerne og giver dem fylde, Nyrerne forankrer knoglerne og giver dem styrke. Blærens lange meridian løber ned langs hele bagsiden af kroppen og ud i benene, og smerter der afspejler ofte det du bærer og den vej du går. Smerter i leddene kan handle om fugt og vind der har sat sig — men også om stagnation i de organer der nærer det pågældende væv. En sene der er stram taler om Leveren. En muskel der er svag taler om Milten. En knogle der ømmer sig taler om Nyrerne. Din krop er præcis. Det handler om at lære dens sprog.',
+    reflections: [
+      'Hvor i dine arme eller ben sidder smerten — og er det sener, muskler eller knogler der taler? Mærk efter: er det stramt, svagt eller dybt?',
+      'Hvornår forværres det — i kulde, i fugt, i stilstand, eller i overbelastning? Mønsteret fortæller dig noget om hvad der forstyrrer flowet.',
+      'Hvad kan du ikke bevæge dig hen imod, eller hvad kan du ikke gå væk fra, i dit liv lige nu? Mærk om der er en forbindelse mellem din krops stivhed og din livssituations stivhed.'
+    ],
+    exercise: {
+      title: 'Ryst det løs',
+      duration: '1-2 minutter',
+      instruction: 'Stå med bløde knæ og begynd at ryste hele din krop — start fra benene og lad rystelserne brede sig opad. Lad armene, hænderne, skuldrene, hovedet ryste med. Ikke kontrolleret, ikke pænt — bare rysten. Forestil dig at du ryster stagnation, fugt og tyngde ud af dine led, sener og muskler. Gør det i et helt minut. Stop. Stå stille. Mærk hvad der har ændret sig.',
+      effect: 'Mobiliserer Qi og Blod i alle fire lemmer og hjælper Leveren, Milten og Nyrerne med at frigive stagnation.'
+    }
+  },
+  'Vejrtrækningsproblemer': {
+    connection: 'Lungerne styrer indåndingen — det ved de fleste. Men i TCM er vejrtrækning et samspil der rækker langt dybere. Nyrerne har til opgave at "gribe" den Qi som Lungerne tager ind og trække den helt ned i kroppens bund. Når Nyrerne er svage, bliver åndedrættet overfladisk — du kan trække vejret ind, men det når aldrig helt ned. Milten transformerer fugt, og overskydende slim i luftvejene er ofte Miltens signal om at den er overbelastet. Hjertet og Lungerne deler brystkassen og arbejder tæt sammen — Lungerne bevæger Qi, Hjertet bevæger Blod — og når det ene svækkes, mærker det andet det. Vejrtrækningsproblemer handler ikke kun om luft. De handler om din krops evne til at tage imod, føre ned og sende videre.',
+    reflections: [
+      'Hvornår mærker du mest til din vejrtrækning — i hvile, ved anstrengelse, i bestemte følelsesmæssige tilstande, eller i bestemte årstider?',
+      'Hvad giver dig luft i dit liv — og hvad tager det fra dig? Mærk om der er en forbindelse mellem de steder du føler dig begrænset, og din krops evne til at trække vejret frit.',
+      'Mærk efter: er din vejrtrækning overfladisk og hurtig, eller tung og besværet? Forskellen fortæller dig om det er Qi der mangler, eller bevægelse der er blokeret af slim, spænding eller følelser.'
+    ],
+    exercise: {
+      title: 'Ånd helt ned',
+      duration: '2-3 minutter',
+      instruction: 'Sæt dig med fødderne i gulvet og hænderne på låret. Træk vejret ind gennem næsen og forestil dig at luften ikke stopper i brystet men fortsætter ned — gennem mellemgulvet, gennem maven, helt ned til et punkt fire fingersbredder under navlen. Lad maven udvide sig blidt. Hold et øjeblik. Pust langsomt ud og mærk hvordan maven trækker sig ind. Med hver indånding, forestil dig at du sender rødder ned i jorden. Med hver udånding, lad spænding i brystet løsne.',
+      effect: 'Støtter Nyrernes evne til at gribe Qi og trække åndedrættet ned til dets naturlige dybde.'
+    }
   }
 };
 
@@ -3423,6 +4030,7 @@ const organs = [
     time: '03-05',
     color: '#a8c4d6',
     icon: '肺',
+    tags: ['sorg', 'tab', 'at slippe', 'hud', 'vejrtrækning', 'næse', 'immunforsvar', 'kuldefølsomhed', 'tørhed', 'efterår', 'grænser', 'stemme', 'bryst', 'skuldre'],
     description: [
       'Lungerne kaldes "Den Skrøbelige Organtype" og er det mest udsatte organ for ydre sygdomsfaktorer. Som det øverste organ i kroppen er de først til at møde sygdom fra omverdenen og fungerer som kroppens første forsvarslinje.',
       'Lungerne distribuerer forsvars-energien til huden og muskelvævet, hvor det fungerer som et "usynligt skjold" mod bakterier, vira og klimatiske påvirkninger som kulde og vind.',
@@ -3517,6 +4125,7 @@ const organs = [
     time: '05-07',
     color: '#a8c4d6',
     icon: '腸',
+    tags: ['at slippe', 'fastholden', 'sorg', 'forstoppelse', 'afføring', 'hud', 'grænser', 'kontrol', 'morgen', 'udrensning', 'stivhed', 'efterår', 'mave'],
     description: [
       'Tyktarmen kaldes "Transportørens Mester" og er ansvarlig for at modtage affaldsprodukter fra tyndtarmen, absorbere væskeindhold og danne afføring til elimination.',
       'Tyktarmen fungerer ikke kun som fysisk rensningsorgan, men fjerner også mentalt og emotionelt "skrald" fra alle kropsfunktioner. Når dette organ fungerer optimalt, opstår der ikke kun en ren krop, men også et klart sind.',
@@ -3610,6 +4219,7 @@ const organs = [
     time: '07-09',
     color: '#deb87a',
     icon: '胃',
+    tags: ['fordøjelse', 'appetit', 'kvalme', 'bekymring', 'overtænkning', 'mund', 'læber', 'oppustethed', 'sure opstød', 'morgen', 'sensommer', 'jordforbindelse', 'næring'],
     description: [
       'Mavesækken kaldes sammen med milten "Roden af Det Postnatale" og er fundamentet for fordøjelsen og produktionen af energi efter fødslen.',
       'Mavesækken modtager føden og "modner og rådner" den gennem en fermenteringsproces, som nedbryder maden til en tilstand, hvor næringsstofferne kan ekstraheres.',
@@ -3703,6 +4313,7 @@ const organs = [
     time: '09-11',
     color: '#deb87a',
     icon: '脾',
+    tags: ['bekymring', 'overtænkning', 'træthed', 'fordøjelse', 'oppustethed', 'muskler', 'nedsynkning', 'sødme', 'fugt', 'sensommer', 'næring', 'koncentration', 'blå mærker', 'tyngde'],
     description: [
       'Milten kaldes "Roden af Det Postnatale" og er grundlaget for energi- og blodproduktion efter fødslen. En svag milt kan påvirke alle andre organer, da den er kroppens centrale energikilde.',
       'Milten transformerer føde til næring og transporterer den til hele kroppen. Svag milt-funktion resulterer i dårlig absorption af næring, træthed og svaghed.',
@@ -3796,6 +4407,7 @@ const organs = [
     time: '11-13',
     color: '#e88585',
     icon: '心',
+    tags: ['glæde', 'angst', 'søvnløshed', 'rastløshed', 'tale', 'tunge', 'ansigtsfarve', 'blodcirkulation', 'sved', 'sommer', 'bevidsthed', 'ånd', 'hjertebanken', 'urolig søvn'],
     description: [
       'Hjertet kaldes "Kejseren" af alle organer og er det vigtigste organ. Det regerer blod og blodkar, mens det huser sindet - bevidsthed og sjæl.',
       'Hjertet kontrollerer mental aktivitet, hukommelse, tankeprocesser og alle emotioner. Det åbner til tungen og viser sig i ansigtsfarven.',
@@ -3889,6 +4501,7 @@ const organs = [
     time: '13-15',
     color: '#e88585',
     icon: '小',
+    tags: ['skelneevne', 'sortering', 'klarhed', 'forvirring', 'skuldersmerter', 'nakke', 'kæbe', 'øre', 'vandladning', 'sommer', 'beslutningsevne', 'mental klarhed', 'mave'],
     description: [
       'Tyndtarmen kaldes "Separatoren af det Rene fra det Urene" og har både fysiske og mentale funktioner.',
       'Fysisk modtager den føde fra mavesækken og adskiller brugbare næringsstoffer fra affaldsprodukter. Mentalt adskiller den klare tanker fra uklare.',
@@ -3982,6 +4595,7 @@ const organs = [
     time: '15-17',
     color: '#7ba4da',
     icon: '膀',
+    tags: ['frygt', 'mod', 'rygsmerter', 'rygsøjle', 'vandladning', 'hovedpine', 'stivhed', 'kuldefølsomhed', 'vinter', 'fleksibilitet', 'viljestyrke', 'autonome nervesystem', 'ben'],
     description: [
       'Blæren kaldes "Reservoirets Minister" og er ansvarlig for at lagre og udskille væskeaffald samt regulere væskemetabolismen.',
       'Som den længste energibane i kroppen løber den fra øjenkrog over hovedet ned langs rygsøjlen til lilletå, central for ryg-, nakke- og benproblemer.',
@@ -4075,6 +4689,7 @@ const organs = [
     time: '17-19',
     color: '#7ba4da',
     icon: '腎',
+    tags: ['frygt', 'viljestyrke', 'knogler', 'tænder', 'hørelse', 'ører', 'lænd', 'knæ', 'vitalitet', 'aldring', 'vinter', 'seksualitet', 'hår', 'essens', 'kuldefølsomhed', 'træthed'],
     description: [
       'Nyrerne kaldes "Livets Rod" og er det vigtigste organ, da de lagrer livs-essensen og er roden til al energi i kroppen.',
       'Nyrerne kontrollerer vækst, udvikling, reproduktion og aldring gennem livscyklusser på 7 år for kvinder og 8 år for mænd.',
@@ -4168,6 +4783,7 @@ const organs = [
     time: '19-21',
     color: '#d98e8e',
     icon: '包',
+    tags: ['følelsesmæssig beskyttelse', 'glæde', 'relationer', 'intimitet', 'sårbarhed', 'trykken i brystet', 'hjertebanken', 'angst', 'sommer', 'cirkulation', 'varme', 'åbenhed'],
     description: [
       'Pericardium kaldes "Hjertets Beskytter" og er den første forsvarslinje mod sygdom udefra og emotionelle skader.',
       'Det fungerer som et fysisk og psykologisk skjold for hjertet. Ved akutte febersygdomme rammes pericardiet først - ikke hjertet.',
@@ -4261,6 +4877,7 @@ const organs = [
     time: '21-23',
     color: '#d98e8e',
     icon: '焦',
+    tags: ['vandstofskifte', 'temperaturregulering', 'væskebalance', 'koordination', 'øre', 'kroppens side', 'ødemer', 'hormoner', 'sommer', 'kommunikation', 'fordeling', 'stofskifte'],
     description: [
       'San Jiao er det mest mystiske koncept i kroppen - "organet der har navn men ingen form". Det er en funktionel enhed der koordinerer tre "brændere".',
       'Øvre brænder: hjerte og lunger. Mellem brænder: milt og mave. Nedre brænder: lever, nyrer og tarm.',
@@ -4354,6 +4971,7 @@ const organs = [
     time: '23-01',
     color: '#5cc98e',
     icon: '膽',
+    tags: ['beslutningsevne', 'mod', 'ubeslutsom', 'vrede', 'frustration', 'hovedpine', 'migræne', 'kroppens sider', 'hofter', 'øjne', 'forår', 'bitterhed', 'dristighed', 'dømmekraft'],
     description: [
       'Galdeblæren kaldes "Beslutningstageren" og arbejder tæt sammen med leveren. Den har kroppens længste energibane.',
       'Galdeblærens hovedopgave er at lagre galdevæske og sende den til tarmen for at nedbryde fedt.',
@@ -4447,6 +5065,7 @@ const organs = [
     time: '01-03',
     color: '#5cc98e',
     icon: '肝',
+    tags: ['vrede', 'frustration', 'planlægning', 'kreativitet', 'øjne', 'sener', 'menstruation', 'forår', 'stagnation', 'depression', 'hovedpine', 'fleksibilitet', 'blodlagring', 'drømme', 'negle'],
     description: [
       'Leveren kaldes "Generalen" og er kroppens vigtigste organ for at få energien til at flyde frit. Blokeret lever-energi er et af de mest almindelige problemer i dag.',
       'Leverens vigtigste opgave er at sikre at energien flyder glat og frit. Stress, frustrationer og uopfyldte ønsker påvirker direkte leverens evne.',
@@ -5059,50 +5678,50 @@ const symptomReference = [
 ];
 
 // ============================================
-// Conversation Structure Proposal
+// Udforskningsguide
 // ============================================
 const conversationStructure = {
-  title: 'Samtalestruktur Forslag',
-  subtitle: 'Et forslag til at strukturere den indledende samtale med klienten',
+  title: 'Udforskningsguide',
+  subtitle: 'En foreslået vej til at udforske dine egne mønstre',
   sections: [
     {
-      heading: 'Mødet',
+      heading: 'At Ankomme',
       items: [
-        { label: 'Åben lytning', text: 'Invitér klienten til at fortælle frit. Lad dem fortælle i deres eget tempo.' },
-        { label: 'Lad klienten fortælle først', text: 'Stil åbne spørgsmål, lyt efter hvad der fylder.' },
-        { label: 'Første Møde — Klienten fortæller', text: 'Hvad ønsker de hjælp til? Hvad er deres situation?' }
+        { label: 'Stop op og land', text: 'Tag et øjeblik til at lande i dig selv. Hvad bragte dig hertil? Hvad beder om din opmærksomhed?' },
+        { label: 'Lyt til din krop først', text: 'Før du tænker, så mærk hvad du føler. Hvor i din krop er der spænding, lethed eller fornemmelse?' },
+        { label: 'Sæt ord på det vigtigste', text: 'Hvad ønsker du allermest at forstå ved dig selv lige nu?' }
       ]
     },
     {
-      heading: 'Åben Lytning: Klienten Kommer til Orde',
+      heading: 'Åben Lytning: Din Fortælling',
       items: [
-        { label: 'Aktiv lytning', text: 'Hvordan føler klienten sig? Hvor i kroppen mærker de det?' },
-        { label: 'De 3 indledende temaer', text: 'Medicin, generelle livsomstændigheder, historik (sygdomme, begivenheder, arvæv).' },
-        { label: 'Kontekstforståelse', text: 'Hvad er konteksten for deres liv — arbejde, familie, relationer?' }
+        { label: 'Hvordan har du det?', text: 'Bredt set, hvordan har du det lige nu? Hvor i kroppen mærker du det mest?' },
+        { label: 'De 3 starttemaer', text: 'Eventuel medicin, dine generelle livsomstændigheder, og din historik (sygdomme, vendepunkter, arvæv).' },
+        { label: 'Livskontekst', text: 'Hvad er konteksten for dit liv lige nu — arbejde, relationer, daglige rytmer?' }
       ]
     },
     {
-      heading: 'Tema Lytte: Klinikerens Intuition',
+      heading: 'At Mærke Dybere: Følg Din Intuition',
       items: [
-        { label: 'Let efter mønstre', text: 'Hvilke organsystemer peger klientens fortælling mod?' },
-        { label: 'Tidsmønstre', text: 'Er der tidspunkter, hvor symptomer forværres? Brug organuret.' },
-        { label: 'Emotionelle temaer', text: 'Hvilke emotioner fylder? Kobl til de relevante organer.' }
+        { label: 'Læg mærke til hvad der resonerer', text: 'Når du læser om organerne og elementerne, hvilke synes at tale til din oplevelse?' },
+        { label: 'Tidsmønstre', text: 'Er der tidspunkter, hvor dine symptomer forværres? Udforsk organuret.' },
+        { label: 'Følelsesmæssige temaer', text: 'Hvilke følelser besøger dig oftest? Se hvilke organer de forbinder sig til.' }
       ]
     },
     {
-      heading: 'Tema Forventninger af Mønster',
+      heading: 'At Opdage Mønstre',
       items: [
-        { label: 'Mønster-hypotese', text: 'Hvilke mønstre tegner sig? Stil specifikke spørgsmål for at verificere.' },
-        { label: 'De 8 kortlæggende temaer', text: 'Brug de 8 temaer for det relevante organ til at uddybe.' },
-        { label: 'Verificér eller juster', text: 'Stemmer mønstret overens? Eller peger det i en anden retning?' }
+        { label: 'Følg en tråd', text: 'Hvilke mønstre begynder at tegne sig? Udforsk de 8 temaer for det organ.' },
+        { label: 'Gå dybere', text: 'Brug temaerne til at mærke ind i områder, du måske ikke havde overvejet.' },
+        { label: 'Bliv åben', text: 'Føles mønstret rigtigt? Eller peger din krop dig et uventet sted hen?' }
       ]
     },
     {
-      heading: 'Integration i Din Klinik',
+      heading: 'At Leve med Det Du Finder',
       items: [
-        { label: 'Hvile dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
-        { label: 'Tag det i dit eget tempo', text: 'Begynd med ét organ, ét element. Lad det vokse naturligt.' },
-        { label: 'Kombiner med din praksis', text: 'Brug TCM-forståelsen som inspiration, ikke som protokol.' }
+        { label: 'Hold det let', text: 'TCM er et kort — ikke et mål. Din krop og din fornemmelse viser vejen.' },
+        { label: 'Tag det i dit eget tempo', text: 'Begynd med ét organ, ét element. Lad forståelsen vokse naturligt.' },
+        { label: 'Stol på processen', text: 'Brug dette som en kilde til undren, ikke et sæt svar. Mønstrene vil vise sig over tid.' }
       ]
     }
   ]
@@ -5118,6 +5737,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Pericardium-punkt 6',
     partnerMeridian: 'Yin Wei Mai',
     icon: '衝',
+    tags: ['blod', 'fertilitet', 'menstruation', 'bryst', 'mave', 'angst', 'oprør', 'kvalme', 'konstitutionel', 'essens', 'vitalitet'],
     level: 'Den dybeste konstitutionelle kanal — grundlaget for al energi og blod i kroppen',
     relatedOrgans: ['Milt', 'Nyrer', 'Lever', 'Hjerte'],
     pathway: [
@@ -5218,6 +5838,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Nyre-punkt 6',
     partnerMeridian: 'Yin Qiao Mai',
     icon: '任',
+    tags: ['fertilitet', 'yin', 'næring', 'mave', 'urogenital', 'tilknytning', 'egenomsorg', 'kulde', 'konstitutionel', 'reproduktion'],
     level: 'Kroppens primære yin-kanal — nærer, køler og modtager',
     relatedOrgans: ['Nyrer', 'Lunger', 'Hjerte', 'Lever'],
     pathway: [
@@ -5318,6 +5939,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Blære-punkt 62',
     partnerMeridian: 'Yang Qiao Mai',
     icon: '督',
+    tags: ['rygsøjle', 'yang', 'styrke', 'viljestyrke', 'hjerne', 'holdning', 'rygsmerter', 'vitalitet', 'konstitutionel', 'lederskab'],
     level: 'Kroppens primære yang-kanal — styrer, løfter og beskytter',
     relatedOrgans: ['Nyrer', 'Hjerte', 'Hjerne'],
     pathway: [
@@ -5419,6 +6041,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'San Jiao-punkt 5',
     partnerMeridian: 'Yang Wei Mai',
     icon: '帶',
+    tags: ['bælte', 'hofter', 'talje', 'fugt', 'udflåd', 'urinvejsproblemer', 'indeslutning', 'fastholden', 'stagnation', 'galdeblære', 'lever'],
     level: 'Kroppens horisontale integrator — binder alle vertikale kanaler sammen',
     relatedOrgans: ['Galdeblære', 'Lever', 'Nyrer', 'Milt'],
     pathway: [
@@ -5519,6 +6142,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Lunge-punkt 7',
     partnerMeridian: 'Ren Mai',
     icon: '蹻',
+    tags: ['søvn', 'søvnløshed', 'indersiden af ben', 'øjne', 'introversion', 'selvoptagethed', 'yin-overskud', 'tilbagetrækning'],
     level: 'Bevægelsens yin-side — indadvendthed, søvn og selvindsigt',
     relatedOrgans: ['Nyrer', 'Lunger', 'Blære'],
     pathway: [
@@ -5619,6 +6243,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Tyndtarms-punkt 3',
     partnerMeridian: 'Du Mai',
     icon: '陽',
+    tags: ['søvn', 'søvnløshed', 'ydersiden af ben', 'øjne', 'ekstroversion', 'hyperaktivitet', 'yang-overskud', 'hofter', 'projektion'],
     level: 'Bevægelsens yang-side — årvågenhed, handling og engagement',
     relatedOrgans: ['Blære', 'Tyndtarm', 'Galdeblære'],
     pathway: [
@@ -5719,6 +6344,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Milt-punkt 4',
     partnerMeridian: 'Chong Mai',
     icon: '維',
+    tags: ['hjerte', 'brystsmerter', 'følelsesmæssig beskyttelse', 'angst', 'indre forbindelse', 'fortid', 'følelsesmæssig fastholden', 'sårbarhed'],
     level: 'Det indre bindeled — sammenhæng, mening og emotionel dybde',
     relatedOrgans: ['Pericardium', 'Milt', 'Hjerte', 'Lever'],
     pathway: [
@@ -5819,6 +6445,7 @@ const extraordinaryMeridians = [
     coupledPoint: 'Galdeblære-punkt 41',
     partnerMeridian: 'Dai Mai',
     icon: '衛',
+    tags: ['ydre forbindelse', 'kroppens sider', 'tindingehovedpine', 'feber', 'kulderystelser', 'beskyttelse', 'ydre forsvar', 'nuet'],
     level: 'Det ydre bindeled — beskyttelse, transformation og ydre styrke',
     relatedOrgans: ['San Jiao', 'Galdeblære', 'Tyndtarm', 'Blære'],
     pathway: [
@@ -5937,6 +6564,7 @@ const fiveElements = [
     name: 'Træ',
     chineseName: '木 Mù',
     color: '#5cc98e',
+    tags: ['vrede', 'frustration', 'forår', 'vækst', 'planlægning', 'vision', 'kreativitet', 'fleksibilitet', 'lever', 'galdeblære', 'øjne', 'sener', 'vind', 'grøn'],
     organs: ['Lever', 'Galdeblære'],
     season: 'Forår',
     emotion: 'Vrede',
@@ -5987,6 +6615,7 @@ const fiveElements = [
     name: 'Ild',
     chineseName: '火 Huǒ',
     color: '#e88585',
+    tags: ['glæde', 'angst', 'sommer', 'forbindelse', 'varme', 'kommunikation', 'kærlighed', 'bevidsthed', 'hjerte', 'tyndtarm', 'tunge', 'blodkar', 'hede', 'rød'],
     organs: ['Hjerte', 'Tyndtarm', 'Pericardium', 'San Jiao'],
     season: 'Sommer',
     emotion: 'Glæde',
@@ -6037,6 +6666,7 @@ const fiveElements = [
     name: 'Jord',
     chineseName: '土 Tǔ',
     color: '#deb87a',
+    tags: ['bekymring', 'overtænkning', 'sensommer', 'næring', 'stabilitet', 'jordforbindelse', 'fordøjelse', 'omsorg', 'milt', 'mavesæk', 'mund', 'muskler', 'fugt', 'gul'],
     organs: ['Milt', 'Mavesæk'],
     season: 'Sen sommer',
     emotion: 'Bekymring',
@@ -6087,6 +6717,7 @@ const fiveElements = [
     name: 'Metal',
     chineseName: '金 Jīn',
     color: '#a8c4d6',
+    tags: ['sorg', 'at slippe', 'efterår', 'renhed', 'grænser', 'præcision', 'struktur', 'vejrtrækning', 'lunger', 'tyktarm', 'næse', 'hud', 'tørhed', 'hvid'],
     organs: ['Lunger', 'Tyktarm'],
     season: 'Efterår',
     emotion: 'Sorg',
@@ -6137,6 +6768,7 @@ const fiveElements = [
     name: 'Vand',
     chineseName: '水 Shuǐ',
     color: '#7ba4da',
+    tags: ['frygt', 'visdom', 'vinter', 'stilhed', 'viljestyrke', 'dybde', 'hvile', 'essens', 'nyrer', 'blære', 'ører', 'knogler', 'kulde', 'blå-sort'],
     organs: ['Nyrer', 'Blære'],
     season: 'Vinter',
     emotion: 'Frygt',
@@ -6226,7 +6858,7 @@ const tcmFoundation = {
     description: [
       'Hvert yin-organ er parret med et yang-organ indenfor det samme element. De deler meridian-forbindelser, emotionelle temaer og påvirker hinanden direkte.',
       'Yin-organerne er de "solide" organer der lagrer essens, blod og væsker. Yang-organerne er de "hule" organer der modtager, transformerer og transporterer. Sammen skaber hvert par en komplet funktionel enhed.',
-      'Når vi behandler et organ i TCM, overvejer vi altid dets partner. En ubalance i det ene organ påvirker uundgåeligt det andet — ligesom to sider af samme mønt.'
+      'I TCM ses et organ altid i sammenhæng med dets partner. En ubalance i det ene organ påvirker uundgåeligt det andet — ligesom to sider af samme mønt.'
     ],
     pairs: [
       { yin: 'Lever', yang: 'Galdeblære', element: 'Træ', theme: 'Planlægning og beslutning' },
@@ -6239,7 +6871,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation, seasonsData, elementToSeason, patternTexts, homeWelcome, seasonWelcomes, organPortraits, elementPortraits };
 })();
 
 const datasets = { en, da };

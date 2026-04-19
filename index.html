@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Mønstrene Bag — En rejse gennem de fem årstider</title>
+  <title>Mønstrene Bag — TCM Opslagsværk</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="app">
@@ -15,107 +15,391 @@
          Home Screen — Hub
          ============================================ -->
     <div id="screen-home" class="screen active">
-      <main class="home-glow">
-        <!-- Brand -->
-        <header class="home-brand-still">
-          <h1 class="home-brand-name">mønstrene bag</h1>
-          <p class="home-brand-tagline">en rejse gennem de fem årstider</p>
-        </header>
+      <div class="hero">
+        <img src="Billede 08.10.2025 kl. 16.14.png" alt="Mønstrene Bag" class="hero-img" />
+      </div>
 
-        <!-- Eyebrow: DIN ÅRSTID -->
-        <p class="home-eyebrow" id="home-eyebrow">DIN ÅRSTID</p>
+      <div class="home-brand">
+        <h1 class="home-brand-title">The Patterns Behind</h1>
+        <p class="home-brand-subtitle">Traditional Chinese Medicine in Practice</p>
+      </div>
 
-        <!-- Årstids-komposit glød-illustration -->
-        <div class="home-composite" id="home-composite"></div>
+      <main class="home-hub">
+        <p class="home-intro">Explore organs, meridians and elements — and discover patterns in your practice.</p>
 
-        <!-- Kinesisk glyph -->
-        <div class="home-glyph" id="home-glyph"></div>
+        <div class="hub-grid">
+          <button class="hub-card" data-hub="practice">
+            <div class="hub-card-illustration">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Two focus points with connecting threads -->
+                <circle cx="28" cy="40" r="8" stroke="var(--ill-jade)" stroke-width="1" opacity="0.3"/>
+                <circle cx="28" cy="40" r="3" fill="var(--ill-jade)" opacity="0.5" class="hub-anim"/>
+                <circle cx="52" cy="40" r="8" stroke="var(--ill-rose)" stroke-width="1" opacity="0.3"/>
+                <circle cx="52" cy="40" r="3" fill="var(--ill-rose)" opacity="0.5" class="hub-anim" style="animation-delay:1.5s"/>
+                <path d="M32 36 Q40 28 48 36" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.35" class="hub-flow"/>
+                <path d="M32 44 Q40 52 48 44" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.25" class="hub-flow" style="animation-delay:0.8s"/>
+                <circle cx="40" cy="32" r="1.5" fill="var(--ill-indigo)" opacity="0.4" class="hub-anim" style="animation-delay:0.7s"/>
+              </svg>
+            </div>
+            <div class="hub-card-text">
+              <div class="hub-card-title">In Practice</div>
+              <div class="hub-card-desc">Guidance for dialogue and pattern discovery</div>
+            </div>
+            <svg class="hub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
 
-        <!-- Årstid navn + italic undertitel -->
-        <button class="home-season-hero" id="home-season-hero" type="button">
-          <span class="home-season-name" id="home-season-name"></span>
-          <span class="home-season-subtitle" id="home-season-subtitle"></span>
+          <button class="hub-card" data-hub="organs">
+            <div class="hub-card-illustration">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Minimal clock ring with orbiting dot -->
+                <circle cx="40" cy="40" r="26" stroke="var(--ill-amber)" stroke-width="1" opacity="0.25"/>
+                <circle cx="40" cy="40" r="16" stroke="var(--ill-amber)" stroke-width="0.8" opacity="0.15"/>
+                <circle cx="40" cy="40" r="3" fill="var(--ill-amber)" opacity="0.5" class="hub-anim"/>
+                <circle cx="40" cy="14" r="2" fill="var(--ill-jade)" opacity="0.4"/>
+                <circle cx="66" cy="40" r="2" fill="var(--ill-rose)" opacity="0.4"/>
+                <circle cx="40" cy="66" r="2" fill="var(--ill-indigo)" opacity="0.4"/>
+                <circle cx="14" cy="40" r="2" fill="var(--ill-silver)" opacity="0.4"/>
+                <g style="transform-origin:40px 40px;animation:rotate-slow 12s linear infinite">
+                  <circle cx="40" cy="14" r="2.5" fill="var(--ill-amber)" opacity="0.7"/>
+                </g>
+              </svg>
+            </div>
+            <div class="hub-card-text">
+              <div class="hub-card-title">The 12 Organs</div>
+              <div class="hub-card-desc">Organ systems, meridians and the organ clock</div>
+            </div>
+            <svg class="hub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <div class="hub-breath" aria-hidden="true">
+            <span class="breath-char">氣</span>
+          </div>
+
+          <button class="hub-card" data-hub="elements">
+            <div class="hub-card-illustration">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pentagon with luminous element nodes -->
+                <path d="M40,14 L60,28 L54,52 L26,52 L20,28 Z" stroke="var(--accent-gold)" stroke-width="0.8" opacity="0.15"/>
+                <circle cx="40" cy="14" r="5" fill="var(--el-wood)" opacity="0.25"/>
+                <circle cx="60" cy="28" r="5" fill="var(--el-fire)" opacity="0.25"/>
+                <circle cx="54" cy="52" r="5" fill="var(--el-earth)" opacity="0.25"/>
+                <circle cx="26" cy="52" r="5" fill="var(--el-metal)" opacity="0.25"/>
+                <circle cx="20" cy="28" r="5" fill="var(--el-water)" opacity="0.25"/>
+                <circle cx="40" cy="14" r="2.5" fill="var(--el-wood)" opacity="0.7" class="hub-drift"/>
+                <circle cx="60" cy="28" r="2.5" fill="var(--el-fire)" opacity="0.7" class="hub-drift" style="animation-delay:0.8s"/>
+                <circle cx="54" cy="52" r="2.5" fill="var(--el-earth)" opacity="0.7" class="hub-drift" style="animation-delay:1.6s"/>
+                <circle cx="26" cy="52" r="2.5" fill="var(--el-metal)" opacity="0.7" class="hub-drift" style="animation-delay:2.4s"/>
+                <circle cx="20" cy="28" r="2.5" fill="var(--el-water)" opacity="0.7" class="hub-drift" style="animation-delay:3.2s"/>
+              </svg>
+            </div>
+            <div class="hub-card-text">
+              <div class="hub-card-title">Five Elements</div>
+              <div class="hub-card-desc">Wood, Fire, Earth, Metal, Water and core principles</div>
+            </div>
+            <svg class="hub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <button class="hub-card" data-hub="meridians">
+            <div class="hub-card-illustration">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Flowing meridian waves with nodes -->
+                <path d="M12 50 Q24 20 40 40 Q56 60 68 30" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.35" class="hub-flow"/>
+                <path d="M12 55 Q28 30 44 45 Q60 62 68 38" stroke="var(--ill-jade)" stroke-width="1" opacity="0.2" class="hub-flow" style="animation-delay:0.6s"/>
+                <circle cx="40" cy="40" r="3" fill="var(--ill-indigo)" opacity="0.5" class="hub-anim"/>
+                <circle cx="24" cy="34" r="2" fill="var(--ill-jade)" opacity="0.4" class="hub-anim" style="animation-delay:1s"/>
+                <circle cx="56" cy="46" r="2" fill="var(--ill-rose)" opacity="0.4" class="hub-anim" style="animation-delay:2s"/>
+              </svg>
+            </div>
+            <div class="hub-card-text">
+              <div class="hub-card-title">The 8 Extraordinary</div>
+              <div class="hub-card-desc">Deeper energy systems and meridians</div>
+            </div>
+            <svg class="hub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <div class="hub-breath" aria-hidden="true">
+            <span class="breath-char">道</span>
+          </div>
+
+          <button class="hub-card" data-hub="overviews">
+            <div class="hub-card-illustration">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Intersecting circles — patterns and connections -->
+                <circle cx="32" cy="36" r="14" stroke="var(--ill-amber)" stroke-width="1" opacity="0.25"/>
+                <circle cx="48" cy="36" r="14" stroke="var(--ill-jade)" stroke-width="1" opacity="0.25"/>
+                <circle cx="40" cy="48" r="14" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.25"/>
+                <circle cx="40" cy="38" r="2" fill="var(--accent-gold)" opacity="0.5" class="hub-anim"/>
+              </svg>
+            </div>
+            <div class="hub-card-text">
+              <div class="hub-card-title">Overviews</div>
+              <div class="hub-card-desc">Quick reference for organs, symptoms and dialogue</div>
+            </div>
+            <svg class="hub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </main>
+
+    </div>
+
+    <!-- ============================================
+         Section Screen — I Praksis
+         ============================================ -->
+    <div id="screen-section-practice" class="screen">
+      <header class="section-screen-header">
+        <button class="back-btn" data-back="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Home</span>
         </button>
-
-        <!-- Kort-stak -->
-        <div class="home-cards" id="home-cards"></div>
-
-        <!-- Horisontal 5-element timeline -->
-        <div class="element-timeline" id="home-element-timeline"></div>
-
-        <!-- Mere kort-stak under timeline -->
-        <div class="home-cards" id="home-cards-after"></div>
-
-        <!-- Byline / credit nederst -->
-        <footer class="home-byline-foot">
-          <p class="home-byline-text">
-            inspireret af <em>Isabelle Evita Søndergaards</em><br>
-            De 5 Årstiders Energi &amp; Mine 5 Årstiders Energi
-          </p>
-        </footer>
+        <div class="section-screen-title-area">
+          <div class="section-screen-illustration section-ill-practice">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Two luminous focal points -->
+              <circle cx="60" cy="60" r="18" stroke="var(--ill-jade)" stroke-width="1" opacity="0.2"/>
+              <circle cx="60" cy="60" r="28" stroke="var(--ill-jade)" stroke-width="0.5" opacity="0.1"/>
+              <circle cx="60" cy="60" r="4" fill="var(--ill-jade)" opacity="0.6" class="glow"/>
+              <circle class="ripple" cx="60" cy="60" r="2" stroke="var(--ill-jade)" stroke-width="0.8" fill="none" opacity="0"/>
+              <circle class="ripple" cx="60" cy="60" r="2" stroke="var(--ill-jade)" stroke-width="0.8" fill="none" opacity="0"/>
+              <circle class="ripple" cx="60" cy="60" r="2" stroke="var(--ill-jade)" stroke-width="0.8" fill="none" opacity="0"/>
+              <!-- Second focal point -->
+              <circle cx="140" cy="60" r="18" stroke="var(--ill-rose)" stroke-width="1" opacity="0.2"/>
+              <circle cx="140" cy="60" r="28" stroke="var(--ill-rose)" stroke-width="0.5" opacity="0.1"/>
+              <circle cx="140" cy="60" r="4" fill="var(--ill-rose)" opacity="0.6" class="glow"/>
+              <circle class="ripple" cx="140" cy="60" r="2" stroke="var(--ill-rose)" stroke-width="0.8" fill="none" opacity="0"/>
+              <circle class="ripple" cx="140" cy="60" r="2" stroke="var(--ill-rose)" stroke-width="0.8" fill="none" opacity="0"/>
+              <circle class="ripple" cx="140" cy="60" r="2" stroke="var(--ill-rose)" stroke-width="0.8" fill="none" opacity="0"/>
+              <!-- Connecting threads -->
+              <path class="thread" d="M68 52 Q100 30 132 52" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.3"/>
+              <path class="thread" d="M68 60 Q100 42 132 60" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.2"/>
+              <path class="thread" d="M68 68 Q100 86 132 68" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.2"/>
+              <!-- Midpoint glow -->
+              <circle cx="100" cy="48" r="2.5" fill="var(--ill-indigo)" opacity="0.45" class="glow" style="animation-delay:0.8s"/>
+            </svg>
+          </div>
+          <h1>In Practice</h1>
+          <p class="section-screen-subtitle">Guidance · Dialogue · Pattern Discovery</p>
+        </div>
+      </header>
+      <main class="section-screen-content">
+        <div class="section-intro" id="intro-practice"></div>
+        <div class="section-breath" aria-hidden="true"><span class="section-breath-char">聽</span></div>
+        <div class="practice-grid" id="practice-grid"></div>
       </main>
     </div>
 
     <!-- ============================================
-         Explore Screen — svgExploreColumn (lodret årstids-søjle)
+         Section Screen — Organer
          ============================================ -->
-    <div id="screen-explore" class="screen">
-      <main class="screen-glow">
-        <p class="screen-eyebrow">UDFORSK</p>
-        <div class="screen-hero screen-hero-tall" id="explore-hero"></div>
-        <p class="screen-caption"><em>sushumna — kanalen energien rejser gennem</em></p>
-        <div class="screen-header">
-          <h1 class="screen-title">De fem</h1>
-          <p class="screen-subtitle">Tre veje ind: årstider, organer, elementer</p>
-        </div>
-        <div class="screen-cards" id="explore-cards"></div>
-      </main>
-    </div>
-
-    <!-- Explore sub-screens — stille typografiske lister -->
-    <div id="screen-explore-seasons" class="screen">
-      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
-      <main class="explore-list-still">
-        <div class="screen-illustration size-tiny" id="explore-seasons-illustration"></div>
-        <p class="explore-list-label">Årstider</p>
-        <div class="explore-list-items" id="explore-seasons-list"></div>
-      </main>
-    </div>
-
-    <div id="screen-explore-organs" class="screen">
-      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
-      <main class="explore-list-still">
-        <div class="screen-illustration size-tiny" id="explore-organs-illustration"></div>
-        <p class="explore-list-label">Organer</p>
-        <div class="explore-list-items" id="explore-organs-list"></div>
-      </main>
-    </div>
-
-    <div id="screen-explore-elements" class="screen">
-      <button class="still-back" data-back-to-explore="true" aria-label="Tilbage">←</button>
-      <main class="explore-list-still">
-        <div class="screen-illustration size-tiny" id="explore-elements-illustration"></div>
-        <p class="explore-list-label">Elementer</p>
-        <div class="explore-list-items" id="explore-elements-list"></div>
-      </main>
-    </div>
-
-    <!-- Search Screen — svgSearchCompass -->
-    <div id="screen-search" class="screen">
-      <button class="still-back" data-back-to="home" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow">LYT INDAD</p>
-        <div class="screen-hero" id="search-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title">Hvad mærker du?</h1>
-          <p class="screen-subtitle">Skriv et ord — eller vælg en fornemmelse nedenfor</p>
-        </div>
-        <div class="screen-cards" id="search-cards">
-          <div class="card card-static">
-            <input type="text" class="search-still-input" id="search-still-input" placeholder="Skriv et ord..." autocomplete="off" />
+    <div id="screen-section-organs" class="screen">
+      <header class="section-screen-header">
+        <button class="back-btn" data-back="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Home</span>
+        </button>
+        <div class="section-screen-title-area">
+          <div class="section-screen-illustration section-ill-organs">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Ethereal concentric rings -->
+              <circle class="ring-glow" cx="100" cy="60" r="50" stroke="var(--ill-amber)" stroke-width="0.8" opacity="0.2"/>
+              <circle class="ring-glow" cx="100" cy="60" r="36" stroke="var(--ill-jade)" stroke-width="0.8" opacity="0.2"/>
+              <circle class="ring-glow" cx="100" cy="60" r="22" stroke="var(--ill-rose)" stroke-width="0.8" opacity="0.25"/>
+              <!-- 12 markers — subtle dots around outer ring -->
+              <circle cx="100" cy="10" r="2" fill="var(--el-wood)" opacity="0.45"/>
+              <circle cx="125" cy="14" r="1.5" fill="var(--el-wood)" opacity="0.3"/>
+              <circle cx="145" cy="30" r="1.5" fill="var(--el-fire)" opacity="0.3"/>
+              <circle cx="150" cy="60" r="2" fill="var(--el-fire)" opacity="0.45"/>
+              <circle cx="145" cy="90" r="1.5" fill="var(--el-earth)" opacity="0.3"/>
+              <circle cx="125" cy="106" r="1.5" fill="var(--el-earth)" opacity="0.3"/>
+              <circle cx="100" cy="110" r="2" fill="var(--el-metal)" opacity="0.45"/>
+              <circle cx="75" cy="106" r="1.5" fill="var(--el-metal)" opacity="0.3"/>
+              <circle cx="55" cy="90" r="1.5" fill="var(--el-water)" opacity="0.3"/>
+              <circle cx="50" cy="60" r="2" fill="var(--el-water)" opacity="0.45"/>
+              <circle cx="55" cy="30" r="1.5" fill="var(--el-water)" opacity="0.3"/>
+              <circle cx="75" cy="14" r="1.5" fill="var(--el-wood)" opacity="0.3"/>
+              <!-- Orbiting particles -->
+              <circle class="orbit-particle" cx="100" cy="60" r="3" fill="var(--ill-amber)" opacity="0.7"/>
+              <circle class="orbit-particle" cx="100" cy="60" r="2.5" fill="var(--ill-jade)" opacity="0.6"/>
+              <circle class="orbit-particle" cx="100" cy="60" r="2" fill="var(--ill-rose)" opacity="0.6"/>
+              <!-- Center glow -->
+              <circle cx="100" cy="60" r="8" fill="var(--ill-amber)" opacity="0.08"/>
+              <circle class="center-glow" cx="100" cy="60" r="4" fill="var(--ill-amber)" opacity="0.5"/>
+            </svg>
           </div>
-          <div id="search-still-words"></div>
-          <div class="search-still-results" id="search-still-results"></div>
+          <h1>The 12 Organs</h1>
+          <p class="section-screen-subtitle">Meridians & Organ Systems</p>
+        </div>
+      </header>
+      <main class="section-screen-content">
+        <div class="section-intro" id="intro-organs"></div>
+        <div class="section-breath" aria-hidden="true"><span class="section-breath-char">臟</span></div>
+        <div class="organ-grid" id="organ-grid"></div>
+
+        <div class="section-divider">
+          <span>The Organ Clock</span>
+        </div>
+        <div class="clock-container" id="organ-clock"></div>
+      </main>
+    </div>
+
+    <!-- ============================================
+         Section Screen — Elementer & Grundprincipper
+         ============================================ -->
+    <div id="screen-section-elements" class="screen">
+      <header class="section-screen-header">
+        <button class="back-btn" data-back="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Home</span>
+        </button>
+        <div class="section-screen-title-area">
+          <div class="section-screen-illustration section-ill-elements">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sheng cycle — flowing connections -->
+              <path class="cycle-line" d="M100,14 Q138,12 148,40" stroke="var(--el-wood)" stroke-width="1.5" opacity="0.4"/>
+              <path class="cycle-line" d="M148,40 Q154,72 132,92" stroke="var(--el-fire)" stroke-width="1.5" opacity="0.4"/>
+              <path class="cycle-line" d="M132,92 Q108,108 68,92" stroke="var(--el-earth)" stroke-width="1.5" opacity="0.4"/>
+              <path class="cycle-line" d="M68,92 Q46,72 52,40" stroke="var(--el-metal)" stroke-width="1.5" opacity="0.4"/>
+              <path class="cycle-line" d="M52,40 Q62,12 100,14" stroke="var(--el-water)" stroke-width="1.5" opacity="0.4"/>
+              <!-- Ke cycle — inner star, very subtle -->
+              <line x1="100" y1="14" x2="132" y2="92" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
+              <line x1="132" y1="92" x2="52" y2="40" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
+              <line x1="52" y1="40" x2="148" y2="40" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
+              <line x1="148" y1="40" x2="68" y2="92" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
+              <line x1="68" y1="92" x2="100" y2="14" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
+              <!-- Element halos -->
+              <circle cx="100" cy="14" r="14" fill="var(--el-wood)" opacity="0.08"/>
+              <circle cx="148" cy="40" r="14" fill="var(--el-fire)" opacity="0.08"/>
+              <circle cx="132" cy="92" r="14" fill="var(--el-earth)" opacity="0.08"/>
+              <circle cx="68" cy="92" r="14" fill="var(--el-metal)" opacity="0.08"/>
+              <circle cx="52" cy="40" r="14" fill="var(--el-water)" opacity="0.08"/>
+              <!-- Element cores — floating -->
+              <circle class="el-node" cx="100" cy="14" r="5" fill="var(--el-wood)" opacity="0.65"/>
+              <circle class="el-node" cx="148" cy="40" r="5" fill="var(--el-fire)" opacity="0.65"/>
+              <circle class="el-node" cx="132" cy="92" r="5" fill="var(--el-earth)" opacity="0.65"/>
+              <circle class="el-node" cx="68" cy="92" r="5" fill="var(--el-metal)" opacity="0.65"/>
+              <circle class="el-node" cx="52" cy="40" r="5" fill="var(--el-water)" opacity="0.65"/>
+              <!-- Chinese characters -->
+              <text x="100" y="18" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">木</text>
+              <text x="148" y="44" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">火</text>
+              <text x="132" y="96" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">土</text>
+              <text x="68" y="96" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">金</text>
+              <text x="52" y="44" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">水</text>
+            </svg>
+          </div>
+          <h1>Five Elements</h1>
+          <p class="section-screen-subtitle">Wood · Fire · Earth · Metal · Water</p>
+        </div>
+      </header>
+      <main class="section-screen-content">
+        <div class="section-intro" id="intro-elements"></div>
+        <div class="section-breath" aria-hidden="true"><span class="section-breath-char">行</span></div>
+        <div class="elements-grid" id="elements-grid"></div>
+
+        <div class="section-divider">
+          <span>Core Principles</span>
+        </div>
+        <div class="section-intro" id="intro-foundation"></div>
+        <div class="section-breath" aria-hidden="true"><span class="section-breath-char">陰陽</span></div>
+        <div class="foundation-grid" id="foundation-grid"></div>
+      </main>
+    </div>
+
+    <!-- ============================================
+         Section Screen — Meridianer
+         ============================================ -->
+    <div id="screen-section-meridians" class="screen">
+      <header class="section-screen-header">
+        <button class="back-btn" data-back="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Home</span>
+        </button>
+        <div class="section-screen-title-area">
+          <div class="section-screen-illustration section-ill-meridians">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Central axis — subtle -->
+              <line x1="100" y1="8" x2="100" y2="112" stroke="var(--ill-silver)" stroke-width="0.5" opacity="0.15"/>
+              <!-- 6 flowing meridian paths — varied colors -->
+              <path class="flow-path" d="M100 10 Q78 30 70 55 Q64 80 72 110" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.4"/>
+              <path class="flow-path" d="M100 10 Q122 30 130 55 Q136 80 128 110" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.4"/>
+              <path class="flow-path" d="M100 14 Q70 40 55 65 Q45 88 54 110" stroke="var(--ill-jade)" stroke-width="1" opacity="0.3"/>
+              <path class="flow-path" d="M100 14 Q130 40 145 65 Q155 88 146 110" stroke="var(--ill-jade)" stroke-width="1" opacity="0.3"/>
+              <!-- Du & Ren Mai — close to center -->
+              <path class="flow-path" d="M96 10 Q90 38 92 60 Q94 82 95 110" stroke="var(--ill-rose)" stroke-width="1" opacity="0.3"/>
+              <path class="flow-path" d="M104 10 Q110 38 108 60 Q106 82 105 110" stroke="var(--ill-rose)" stroke-width="1" opacity="0.3"/>
+              <!-- Dai Mai — horizontal belt -->
+              <path class="flow-path" d="M48 56 Q74 50 100 53 Q126 50 152 56" stroke="var(--ill-amber)" stroke-width="1" opacity="0.25"/>
+              <!-- Glowing acupoint nodes -->
+              <circle class="node-glow" cx="100" cy="12" r="4" fill="var(--ill-indigo)" opacity="0.5"/>
+              <circle class="node-glow" cx="76" cy="42" r="3" fill="var(--ill-jade)" opacity="0.4"/>
+              <circle class="node-glow" cx="124" cy="42" r="3" fill="var(--ill-jade)" opacity="0.4"/>
+              <circle class="node-glow" cx="100" cy="55" r="3.5" fill="var(--ill-amber)" opacity="0.45"/>
+              <circle class="node-glow" cx="66" cy="78" r="2.5" fill="var(--ill-rose)" opacity="0.35"/>
+              <circle class="node-glow" cx="134" cy="78" r="2.5" fill="var(--ill-rose)" opacity="0.35"/>
+            </svg>
+          </div>
+          <h1>The 8 Extraordinary</h1>
+          <p class="section-screen-subtitle">Deeper Energy Systems</p>
+        </div>
+      </header>
+      <main class="section-screen-content">
+        <div class="section-intro" id="intro-extraordinary"></div>
+        <div class="section-breath" aria-hidden="true"><span class="section-breath-char">經</span></div>
+        <div class="meridian-grid" id="meridian-grid"></div>
+      </main>
+    </div>
+
+    <!-- ============================================
+         Section Screen — Oversigter
+         ============================================ -->
+    <div id="screen-section-overviews" class="screen">
+      <header class="section-screen-header">
+        <button class="back-btn" data-back="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Home</span>
+        </button>
+        <div class="section-screen-title-area">
+          <div class="section-screen-illustration section-ill-overviews">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Four elegant reference cards with soft glow -->
+              <rect class="ov-card" x="30" y="15" width="60" height="36" rx="6" stroke="var(--ill-jade)" stroke-width="1" fill="var(--ill-jade)" fill-opacity="0.04" opacity="0.4"/>
+              <rect class="ov-card" x="110" y="15" width="60" height="36" rx="6" stroke="var(--ill-rose)" stroke-width="1" fill="var(--ill-rose)" fill-opacity="0.04" opacity="0.4"/>
+              <rect class="ov-card" x="30" y="65" width="60" height="36" rx="6" stroke="var(--ill-indigo)" stroke-width="1" fill="var(--ill-indigo)" fill-opacity="0.04" opacity="0.4"/>
+              <rect class="ov-card" x="110" y="65" width="60" height="36" rx="6" stroke="var(--ill-amber)" stroke-width="1" fill="var(--ill-amber)" fill-opacity="0.04" opacity="0.4"/>
+              <!-- Minimal content lines -->
+              <line x1="40" y1="28" x2="72" y2="28" stroke="var(--ill-jade)" stroke-width="0.8" opacity="0.25"/>
+              <line x1="40" y1="35" x2="62" y2="35" stroke="var(--ill-jade)" stroke-width="0.6" opacity="0.15"/>
+              <line x1="120" y1="28" x2="152" y2="28" stroke="var(--ill-rose)" stroke-width="0.8" opacity="0.25"/>
+              <line x1="120" y1="35" x2="146" y2="35" stroke="var(--ill-rose)" stroke-width="0.6" opacity="0.15"/>
+              <line x1="40" y1="78" x2="72" y2="78" stroke="var(--ill-indigo)" stroke-width="0.8" opacity="0.25"/>
+              <line x1="40" y1="85" x2="66" y2="85" stroke="var(--ill-indigo)" stroke-width="0.6" opacity="0.15"/>
+              <line x1="120" y1="78" x2="152" y2="78" stroke="var(--ill-amber)" stroke-width="0.8" opacity="0.25"/>
+              <line x1="120" y1="85" x2="148" y2="85" stroke="var(--ill-amber)" stroke-width="0.6" opacity="0.15"/>
+              <!-- Connecting dots between cards -->
+              <circle cx="100" cy="58" r="2" fill="var(--accent-gold)" opacity="0.3" class="ov-card" style="animation-delay:1.5s"/>
+            </svg>
+          </div>
+          <h1>Overviews</h1>
+          <p class="section-screen-subtitle">Quick Reference · Organs · Meridians · Dialogue</p>
+        </div>
+      </header>
+      <main class="section-screen-content">
+        <div class="section-intro" id="intro-overviews"></div>
+        <div class="overview-tabs" id="overview-tabs">
+          <button class="overview-tab active" data-ov-tab="organs">Organs</button>
+          <button class="overview-tab" data-ov-tab="meridians">Meridians</button>
+          <button class="overview-tab" data-ov-tab="symptoms">Symptoms</button>
+          <button class="overview-tab" data-ov-tab="conversation">Dialogue</button>
+        </div>
+        <div class="overview-tab-content active" id="ov-tab-organs">
+          <div class="overview-grid" id="overview-organ-grid"></div>
+        </div>
+        <div class="overview-tab-content" id="ov-tab-meridians">
+          <div class="overview-grid" id="overview-meridian-grid"></div>
+        </div>
+        <div class="overview-tab-content" id="ov-tab-symptoms">
+          <div id="overview-symptoms-content"></div>
+        </div>
+        <div class="overview-tab-content" id="ov-tab-conversation">
+          <div id="overview-conversation-content"></div>
         </div>
       </main>
     </div>
@@ -124,161 +408,138 @@
          Detail Screens (unchanged)
          ============================================ -->
 
-    <!-- Season Portrait Screen — årstid-portal med breathing constellation -->
-    <div id="screen-season" class="screen">
-      <button class="still-back" id="btn-back-season" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="season-eyebrow"></p>
-        <div class="screen-hero" id="season-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title" id="season-name-still"></h1>
-          <p class="screen-subtitle" id="season-meta-still"></p>
-        </div>
-        <div class="screen-cards" id="season-cards"></div>
-      </main>
-    </div>
-
-    <!-- Nær dig selv — Rising warmth -->
-    <div id="screen-season-food" class="screen">
-      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="food-eyebrow"></p>
-        <div class="screen-hero" id="food-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title">Nær dig selv</h1>
-          <p class="screen-subtitle" id="food-subtitle"></p>
-        </div>
-        <div class="screen-cards" id="food-cards"></div>
-      </main>
-    </div>
-
-    <!-- Bevæg dig — Tai Chi flow -->
-    <div id="screen-season-movement" class="screen">
-      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="movement-eyebrow"></p>
-        <div class="screen-hero" id="movement-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title">Bevæg dig</h1>
-          <p class="screen-subtitle" id="movement-subtitle"></p>
-        </div>
-        <div class="screen-cards" id="movement-cards"></div>
-      </main>
-    </div>
-
-    <!-- Bliv stille — Radiating bell -->
-    <div id="screen-season-stillness" class="screen">
-      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="stillness-eyebrow"></p>
-        <div class="screen-hero" id="stillness-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title">Bliv stille</h1>
-          <p class="screen-subtitle" id="stillness-subtitle"></p>
-        </div>
-        <div class="screen-cards" id="stillness-cards"></div>
-      </main>
-    </div>
-
-    <!-- Reflektér — Inward spiral -->
-    <div id="screen-season-reflection" class="screen">
-      <button class="still-back" data-back-to="season" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="reflection-eyebrow"></p>
-        <div class="screen-hero" id="reflection-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title">Reflektér</h1>
-          <p class="screen-subtitle" id="reflection-subtitle"></p>
-        </div>
-        <div class="screen-cards" id="reflection-cards"></div>
-      </main>
-    </div>
-
-    <!-- Pattern Result Screen -->
-    <div id="screen-pattern" class="screen">
+    <!-- Practice Guide Detail Screen -->
+    <div id="screen-practice" class="screen">
       <header class="detail-header">
-        <button class="back-btn" id="btn-back-pattern">
+        <button class="back-btn" id="btn-back-practice">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           <span>Back</span>
         </button>
         <div class="detail-title-area">
-          <span class="detail-icon" id="pattern-detail-icon">紋</span>
-          <h1 id="pattern-detail-title"></h1>
-          <p class="detail-nickname" id="pattern-detail-subtitle"></p>
+          <span class="detail-icon" id="practice-detail-icon"></span>
+          <h1 id="practice-detail-title"></h1>
+          <p class="detail-nickname" id="practice-detail-subtitle"></p>
         </div>
       </header>
+
       <main class="detail-content">
-        <div class="pattern-detail-body" id="pattern-detail-body"></div>
+        <div class="practice-detail-body" id="practice-detail-body"></div>
       </main>
     </div>
 
-    <!-- Organ Portrait — svgOrganSignature -->
+    <!-- Organ Detail Screen -->
     <div id="screen-organ" class="screen">
-      <button class="still-back" id="btn-back-organ" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="organ-eyebrow"></p>
-        <div class="screen-hero" id="organ-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title" id="organ-name-still"></h1>
-          <p class="screen-subtitle" id="organ-meta-still"></p>
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-organ">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="organ-detail-icon"></span>
+          <h1 id="organ-detail-name"></h1>
+          <p class="detail-nickname" id="organ-detail-nickname"></p>
         </div>
-        <div class="screen-cards" id="organ-cards"></div>
+        <div class="detail-meta" id="organ-detail-meta"></div>
+      </header>
+
+      <main class="detail-content">
+        <nav class="detail-tabs">
+          <button class="tab active" data-tab="overview">Overview</button>
+          <button class="tab" data-tab="themes">8 Themes</button>
+          <button class="tab" data-tab="keypoints">Key Points</button>
+        </nav>
+
+        <div class="tab-content active" id="tab-overview">
+          <div class="description-text" id="organ-description"></div>
+        </div>
+
+        <div class="tab-content" id="tab-themes">
+          <div class="themes-list" id="organ-themes"></div>
+        </div>
+
+        <div class="tab-content" id="tab-keypoints">
+          <div class="keypoints-list" id="organ-keypoints"></div>
+        </div>
       </main>
-      <div id="organ-description" style="display:none"></div>
-      <div id="organ-glyph-still" style="display:none"></div>
-      <div id="organ-portrait-links" style="display:none"></div>
     </div>
 
-    <!-- Organ Themes — svgThemesMandala -->
-    <div id="screen-organ-themes" class="screen">
-      <button class="still-back" id="btn-back-organ-themes" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="organ-themes-eyebrow"></p>
-        <div class="screen-hero" id="organ-themes-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title" id="organ-themes-title"></h1>
-          <p class="screen-subtitle" id="organ-themes-subtitle"></p>
-        </div>
-        <div class="screen-cards" id="organ-themes-flow"></div>
-      </main>
-      <div id="organ-themes-icon" style="display:none"></div>
-      <div id="organ-themes-clock" style="display:none"></div>
-    </div>
-
-    <!-- Element Portrait — svgElementRadiance -->
+    <!-- Element Detail Screen -->
     <div id="screen-element" class="screen">
-      <button class="still-back" id="btn-back-element" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow" id="element-eyebrow"></p>
-        <div class="screen-hero" id="element-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title" id="element-detail-name"></h1>
-          <p class="screen-subtitle" id="element-detail-chinese"></p>
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-element">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="element-detail-icon"></span>
+          <h1 id="element-detail-name"></h1>
+          <p class="detail-nickname" id="element-detail-chinese"></p>
         </div>
-        <div class="screen-cards" id="element-cards"></div>
+        <div class="detail-meta" id="element-detail-meta"></div>
+      </header>
+
+      <main class="detail-content">
+        <nav class="detail-tabs">
+          <button class="tab active" data-tab="el-overview">Overview</button>
+          <button class="tab" data-tab="el-correspondences">Correspondences</button>
+          <button class="tab" data-tab="el-cycles">Cycles</button>
+          <button class="tab" data-tab="el-seasonal">Seasonal Wisdom</button>
+        </nav>
+
+        <div class="tab-content active" id="tab-el-overview">
+          <div class="description-text" id="element-description"></div>
+          <div class="element-organs-nav" id="element-organs-nav"></div>
+        </div>
+
+        <div class="tab-content" id="tab-el-correspondences">
+          <div class="correspondences-list" id="element-correspondences"></div>
+        </div>
+
+        <div class="tab-content" id="tab-el-cycles">
+          <div class="cycles-content" id="element-cycles"></div>
+        </div>
+
+        <div class="tab-content" id="tab-el-seasonal">
+          <div class="seasonal-list" id="element-seasonal"></div>
+        </div>
       </main>
-      <div id="element-description" style="display:none"></div>
-      <div id="element-organs-nav" style="display:none"></div>
-      <div id="element-portrait-links" style="display:none"></div>
-      <div id="element-detail-meta" style="display:none"></div>
-      <span id="element-detail-icon" style="display:none"></span>
-      <div id="element-glyph-still" style="display:none"></div>
     </div>
 
-    <!-- Element Cycles — svgPentagramCycle -->
-    <div id="screen-element-cycles" class="screen">
-      <button class="still-back" id="btn-back-element-cycles" aria-label="Tilbage">←</button>
-      <main class="screen-glow">
-        <p class="screen-eyebrow">FEM FASER</p>
-        <div class="screen-hero screen-hero-wide" id="element-cycles-hero"></div>
-        <div class="screen-header">
-          <h1 class="screen-title" id="element-cycles-title">De fem elementers dans</h1>
-          <p class="screen-subtitle">Hvert element næres af et andet, og holder et andet i balance</p>
+    <!-- Foundation Detail Screen -->
+    <div id="screen-foundation" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-foundation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <h1 id="foundation-detail-title"></h1>
+          <p class="detail-nickname" id="foundation-detail-subtitle"></p>
         </div>
-        <div class="screen-cards" id="element-cycles-cards"></div>
+      </header>
+
+      <main class="detail-content">
+        <div class="tab-content active" id="foundation-body"></div>
       </main>
-      <div id="element-cycles-icon" style="display:none"></div>
-      <div id="element-cycles-flow" style="display:none"></div>
+    </div>
+
+    <!-- Overview Detail Screen -->
+    <div id="screen-overview" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-overview">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="overview-detail-icon"></span>
+          <h1 id="overview-detail-name"></h1>
+          <p class="detail-nickname" id="overview-detail-nickname"></p>
+        </div>
+      </header>
+
+      <main class="detail-content">
+        <div id="overview-detail-body"></div>
+      </main>
     </div>
 
     <!-- Meridian Detail Screen -->
@@ -324,43 +585,27 @@
     </div>
   </div>
 
-  <!-- Bottom Navigation — 5 items -->
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav" id="bottom-nav">
     <button class="bottom-nav-item active" data-nav="home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
-        <circle cx="12" cy="12" r="9"/>
-        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
-      </svg>
-      <span>Hjem</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
     </button>
-    <button class="bottom-nav-item" data-nav="season">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
-        <path d="M12 3 Q16 8 16 12 Q16 16 12 21 Q8 16 8 12 Q8 8 12 3 Z"/>
-        <line x1="12" y1="3" x2="12" y2="21" stroke-width="1"/>
-      </svg>
-      <span>Årstid</span>
+    <button class="bottom-nav-item" data-nav="practice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <span>Practice</span>
     </button>
-    <button class="bottom-nav-item" data-nav="journal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
-        <path d="M5 4 H17 A2 2 0 0 1 19 6 V20 L17 19 L15 20 L13 19 L11 20 L9 19 L7 20 L5 19 Z"/>
-        <line x1="8" y1="9"  x2="16" y2="9"/>
-        <line x1="8" y1="13" x2="14" y2="13"/>
-      </svg>
-      <span>Journal</span>
+    <button class="bottom-nav-item" data-nav="organs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <span>Organs</span>
     </button>
-    <button class="bottom-nav-item" data-nav="explore">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 3 Q14 12 12 21 M3 12 Q12 14 21 12"/>
-      </svg>
-      <span>Udforsk</span>
+    <button class="bottom-nav-item" data-nav="elements">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Elements</span>
     </button>
-    <button class="bottom-nav-item" data-nav="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="22" height="22" aria-hidden="true">
-        <circle cx="11" cy="11" r="7"/>
-        <line x1="20" y1="20" x2="16" y2="16"/>
-      </svg>
-      <span>Søg</span>
+    <button class="bottom-nav-item" data-nav="meridians">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <span>Meridians</span>
     </button>
   </nav>
 
@@ -370,7 +615,10 @@
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
   </button>
-  <button class="top-float-btn top-float-right" id="search-btn" aria-label="Search">
+  <button class="top-float-btn top-float-right" id="theme-toggle" aria-label="Skift mellem lyst og mørkt tema">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+  <button class="top-float-btn top-float-right-2" id="search-btn" aria-label="Søg">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
   </button>
 
@@ -408,15 +656,7 @@
         </button>
         <button class="hamburger-link" data-nav="practice">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-          Your Exploration
-        </button>
-        <button class="hamburger-link" data-nav="seasons">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20"/><circle cx="12" cy="12" r="3"/></svg>
-          Your Season
-        </button>
-        <button class="hamburger-link" data-nav="patterns">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><circle cx="16" cy="8" r="3"/><line x1="10.5" y1="9.5" x2="13.5" y2="14.5"/><line x1="13" y1="8" x2="11" y2="8"/></svg>
-          Explore Your Patterns
+          In Practice
         </button>
         <button class="hamburger-link" data-nav="organs">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -446,30 +686,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           How to Use the App
         </button>
-      </div>
-
-      <div class="hamburger-section">
-        <div class="hamburger-section-label" id="menu-label-appearance">Appearance</div>
-        <button class="hamburger-link" id="theme-toggle">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <span id="theme-label">Switch to light mode</span>
-        </button>
-      </div>
-
-      <div class="hamburger-section">
-        <div class="hamburger-section-label" id="menu-label-language">Language</div>
-        <button class="hamburger-link" id="lang-toggle">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          <span id="lang-label">Dansk</span>
-        </button>
-      </div>
-
-      <div class="hamburger-section">
-        <div class="hamburger-section-label">Version</div>
-        <a class="hamburger-link" href="faglig/index.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-          <span>Fagligt opslagsværk</span>
-        </a>
       </div>
 
     </div>
