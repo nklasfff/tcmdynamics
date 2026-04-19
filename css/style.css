@@ -410,6 +410,11 @@ body.is-screen-home .top-float-btn {
   50%      { transform: translateX(4px); }
 }
 
+@keyframes ray-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50%      { transform: rotate(2deg); }
+}
+
 @keyframes rotate-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -559,6 +564,9 @@ body.is-screen-home .top-float-btn {
 }
 .section-screen-illustration .hub-snake {
   animation: snake-sway 6s ease-in-out infinite;
+}
+.section-screen-illustration .ray-sway {
+  animation: ray-sway 7s ease-in-out infinite;
 }
 
 .section-screen-title-area h1 {
