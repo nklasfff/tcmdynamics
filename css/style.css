@@ -540,33 +540,77 @@ body.is-screen-home .top-float-btn {
 .section-ill-overviews .ov-card:nth-of-type(3) { animation-delay: 2s; }
 .section-ill-overviews .ov-card:nth-of-type(4) { animation-delay: 3s; }
 
-/* Hub card + section illustration animations */
+/* Hub card + section illustration animations
+   --- Stabilitet på iOS standalone (Add to Home Screen) ---
+   - will-change: giver GPU-hint så animations altid starter konsekvent
+   - animation-fill-mode: both → første og sidste frame er låst fra start
+   - -webkit-animation fallback: ældre WebKit respekterer kun prefixed form */
 .hub-card-illustration .hub-anim,
 .section-screen-illustration .hub-anim {
-  animation: pulse-glow 4s ease-in-out infinite;
+  -webkit-animation: pulse-glow 4s ease-in-out infinite both;
+  animation: pulse-glow 4s ease-in-out infinite both;
   transform-origin: center;
   transform-box: fill-box;
+  will-change: transform, opacity;
 }
 .hub-card-illustration .hub-orbit,
 .section-screen-illustration .hub-orbit {
-  animation: orbit 10s linear infinite;
+  -webkit-animation: orbit 10s linear infinite both;
+  animation: orbit 10s linear infinite both;
+  will-change: transform;
 }
 .hub-card-illustration .hub-drift,
 .section-screen-illustration .hub-drift {
-  animation: float-drift 3.5s ease-in-out infinite;
+  -webkit-animation: float-drift 3.5s ease-in-out infinite both;
+  animation: float-drift 3.5s ease-in-out infinite both;
   transform-origin: center;
   transform-box: fill-box;
+  will-change: transform, opacity;
 }
 .hub-card-illustration .hub-flow,
 .section-screen-illustration .hub-flow {
   stroke-dasharray: 8 6;
-  animation: dash-flow 1.8s linear infinite;
+  -webkit-animation: dash-flow 1.8s linear infinite both;
+  animation: dash-flow 1.8s linear infinite both;
+  will-change: stroke-dashoffset;
 }
 .section-screen-illustration .hub-snake {
-  animation: snake-sway 6s ease-in-out infinite;
+  -webkit-animation: snake-sway 6s ease-in-out infinite both;
+  animation: snake-sway 6s ease-in-out infinite both;
+  will-change: transform;
 }
 .section-screen-illustration .ray-sway {
-  animation: ray-sway 7s ease-in-out infinite;
+  -webkit-animation: ray-sway 7s ease-in-out infinite both;
+  animation: ray-sway 7s ease-in-out infinite both;
+  will-change: transform;
+}
+
+/* Respektér brugerens valg om reduceret bevægelse — men behold
+   en blid opacity-fade så illustrationerne stadig "ånder" subtilt */
+@media (prefers-reduced-motion: reduce) {
+  .hub-card-illustration .hub-anim,
+  .section-screen-illustration .hub-anim,
+  .hub-card-illustration .hub-drift,
+  .section-screen-illustration .hub-drift {
+    -webkit-animation: gentle-fade 5s ease-in-out infinite both;
+    animation: gentle-fade 5s ease-in-out infinite both;
+    transform: none !important;
+  }
+  .hub-card-illustration .hub-flow,
+  .section-screen-illustration .hub-flow,
+  .section-screen-illustration .hub-snake,
+  .section-screen-illustration .ray-sway,
+  .hub-card-illustration .hub-orbit,
+  .section-screen-illustration .hub-orbit {
+    -webkit-animation: none;
+    animation: none;
+    transform: none !important;
+  }
+}
+
+@keyframes gentle-fade {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.95; }
 }
 
 .section-screen-title-area h1 {

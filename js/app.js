@@ -548,16 +548,34 @@ function scrollWindowToTop() {
   document.body.scrollTop = 0;
 }
 
+// iOS Safari starter nogle gange ikke CSS-animationer i standalone
+// (Add to Home Screen) mode. Denne tvinger animation restart ved at
+// toggle parent-klassen — browser rebuilds animation timeline.
+function kickAnimations(root) {
+  const scope = root || document;
+  scope.querySelectorAll('.hub-anim, .hub-drift, .hub-flow, .hub-snake, .ray-sway, .hub-orbit').forEach(el => {
+    const prev = el.style.animation;
+    el.style.animation = 'none';
+    // læs en layout-property → tvinger reflow
+    void el.offsetWidth;
+    el.style.animation = prev;
+  });
+}
+
 function showScreen(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(`screen-${screenId}`).classList.add('active');
+  const screen = document.getElementById(`screen-${screenId}`);
+  screen.classList.add('active');
   previousScreen = currentScreen;
   currentScreen = screenId;
   document.body.classList.toggle('is-screen-home', screenId === 'home');
   scrollWindowToTop();
   // Gentag efter næste layout-frame så scroll også virker når ny
   // skærm har andet indhold/højde end den vi kom fra.
-  requestAnimationFrame(scrollWindowToTop);
+  requestAnimationFrame(() => {
+    scrollWindowToTop();
+    kickAnimations(screen);
+  });
 }
 
 // Map section screen IDs to bottom nav IDs
@@ -1956,6 +1974,17 @@ function init() {
 
   // Update clock every minute
   setInterval(renderOrganClock, 60000);
+
+  // iOS standalone fix: tving animations til at starte efter first paint.
+  // Uden dette: animationerne starter nogle gange ikke når appen åbnes
+  // fra hjemmeskærm. Double-kick (paint + load) dækker begge timing-cases.
+  requestAnimationFrame(() => kickAnimations());
+  window.addEventListener('load', () => kickAnimations());
+  // Også ved visibilitychange — iOS paruserer animationer når app er
+  // i baggrunden; ved resume skal vi tvinge restart.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') kickAnimations();
+  });
 }
 
 try {
