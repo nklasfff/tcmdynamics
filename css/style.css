@@ -530,17 +530,25 @@ body.is-screen-home .top-float-btn {
 .section-ill-overviews .ov-card:nth-of-type(3) { animation-delay: 2s; }
 .section-ill-overviews .ov-card:nth-of-type(4) { animation-delay: 3s; }
 
-/* Hub card illustration animations */
-.hub-card-illustration .hub-anim {
+/* Hub card + section illustration animations */
+.hub-card-illustration .hub-anim,
+.section-screen-illustration .hub-anim {
   animation: pulse-glow 4s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
 }
-.hub-card-illustration .hub-orbit {
+.hub-card-illustration .hub-orbit,
+.section-screen-illustration .hub-orbit {
   animation: orbit 10s linear infinite;
 }
-.hub-card-illustration .hub-drift {
+.hub-card-illustration .hub-drift,
+.section-screen-illustration .hub-drift {
   animation: float-drift 3.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
 }
-.hub-card-illustration .hub-flow {
+.hub-card-illustration .hub-flow,
+.section-screen-illustration .hub-flow {
   stroke-dasharray: 6 4;
   animation: dash-flow 2.5s linear infinite;
 }
