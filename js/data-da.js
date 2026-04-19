@@ -1976,7 +1976,7 @@ export const conversationStructure = {
     {
       heading: 'Integration i Din Klinik',
       items: [
-        { label: 'Hvile dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
+        { label: 'Benyt dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
         { label: 'Tag det i dit eget tempo', text: 'Begynd med ét organ, ét element. Lad det vokse naturligt.' },
         { label: 'Kombiner med din praksis', text: 'Brug TCM-forståelsen som inspiration, ikke som protokol.' }
       ]

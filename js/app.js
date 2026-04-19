@@ -542,13 +542,22 @@ function setupLanguageToggle() {
 // ============================================
 // Navigation
 // ============================================
+function scrollWindowToTop() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
 function showScreen(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(`screen-${screenId}`).classList.add('active');
   previousScreen = currentScreen;
   currentScreen = screenId;
   document.body.classList.toggle('is-screen-home', screenId === 'home');
-  window.scrollTo(0, 0);
+  scrollWindowToTop();
+  // Gentag efter næste layout-frame så scroll også virker når ny
+  // skærm har andet indhold/højde end den vi kom fra.
+  requestAnimationFrame(scrollWindowToTop);
 }
 
 // Map section screen IDs to bottom nav IDs
