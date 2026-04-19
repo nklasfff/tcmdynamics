@@ -50,7 +50,7 @@ export const practiceGuide = [
       {
         heading: 'De Grundlæggende Trin',
         paragraphs: [
-          'Den generelle indgang til den første behandling med en ny klient indeholder bestemte trin: en invitation til at fortælle, hvad de gerne vil have hjælp til, og en lytning til deres situation og de ønsker, de har for behandlingen.',
+          'Den generelle indgang til den første behandling med en ny klient indeholder bestemte trin: en invitation til at fortælle, hvad de gerne vil have hjælp til, og en lytten til deres situation og de ønsker, de har for behandlingen.',
           'Mens de fortæller, opstår der ofte en dialog — spørgsmål undervejs gør det til en dynamisk samtale, hvor fortællingen får så mange nuancer med som muligt.'
         ]
       },
@@ -1944,15 +1944,15 @@ export const conversationStructure = {
     {
       heading: 'Mødet',
       items: [
-        { label: 'Åben lytning', text: 'Invitér klienten til at fortælle frit. Lad dem fortælle i deres eget tempo.' },
+        { label: 'Åben lytten', text: 'Invitér klienten til at fortælle frit. Lad dem fortælle i deres eget tempo.' },
         { label: 'Lad klienten fortælle først', text: 'Stil åbne spørgsmål, lyt efter hvad der fylder.' },
         { label: 'Første Møde — Klienten fortæller', text: 'Hvad ønsker de hjælp til? Hvad er deres situation?' }
       ]
     },
     {
-      heading: 'Åben Lytning: Klienten Kommer til Orde',
+      heading: 'Åben Lytten: Klienten Kommer til Orde',
       items: [
-        { label: 'Aktiv lytning', text: 'Hvordan føler klienten sig? Hvor i kroppen mærker de det?' },
+        { label: 'Aktiv lytten', text: 'Hvordan føler klienten sig? Hvor i kroppen mærker de det?' },
         { label: 'De 3 indledende temaer', text: 'Medicin, generelle livsomstændigheder, historik (sygdomme, begivenheder, arvæv).' },
         { label: 'Kontekstforståelse', text: 'Hvad er konteksten for deres liv — arbejde, familie, relationer?' }
       ]

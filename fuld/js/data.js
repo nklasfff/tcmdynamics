@@ -5693,7 +5693,7 @@ const conversationStructure = {
       ]
     },
     {
-      heading: 'Åben Lytning: Din Fortælling',
+      heading: 'Åben Lytten: Din Fortælling',
       items: [
         { label: 'Hvordan har du det?', text: 'Bredt set, hvordan har du det lige nu? Hvor i kroppen mærker du det mest?' },
         { label: 'De 3 starttemaer', text: 'Eventuel medicin, dine generelle livsomstændigheder, og din historik (sygdomme, vendepunkter, arvæv).' },

@@ -201,7 +201,7 @@ const translations = {
     hubOverviews: 'Overblik',
     hubOverviewsDesc: 'Hurtigreference for organer, symptomer og udforskning',
     sectionPracticeTitle: 'Din Udforskning',
-    sectionPracticeSubtitle: 'Lytning · Fornemmelse · Mønsteropdagelse',
+    sectionPracticeSubtitle: 'Lytten · Fornemmelse · Mønsteropdagelse',
     sectionOrgansTitle: 'De 12 Organer',
     sectionOrgansSubtitle: 'Meridianer & Organsystemer',
     sectionElementsTitle: 'Fem Elementer',
