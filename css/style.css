@@ -278,10 +278,10 @@ body.is-screen-home .top-float-btn {
 
 .breath-char {
   font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-  font-size: 28px;
+  font-size: 44px;
   font-weight: 300;
   color: var(--accent-gold);
-  opacity: 0.15;
+  opacity: 0.55;
   letter-spacing: 8px;
 }
 
