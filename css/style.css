@@ -322,7 +322,12 @@ body.is-screen-home .top-float-btn {
 }
 
 /* Global SVG grammar for illustrations — the red thread */
-.hub-card-illustration svg * {
+.hub-card-illustration svg *,
+.bottom-nav svg *,
+.hamburger-link svg *,
+.section-illustration svg *,
+.top-float-btn svg *,
+.home-top-btn svg * {
   stroke-linecap: round;
   stroke-linejoin: round;
 }

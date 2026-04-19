@@ -185,26 +185,23 @@
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-practice">
             <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Two luminous focal points -->
-              <circle cx="60" cy="60" r="18" stroke="var(--ill-jade)" stroke-width="1" opacity="0.2"/>
-              <circle cx="60" cy="60" r="28" stroke="var(--ill-jade)" stroke-width="0.5" opacity="0.1"/>
-              <circle cx="60" cy="60" r="4" fill="var(--ill-jade)" opacity="0.6" class="glow"/>
-              <circle class="ripple" cx="60" cy="60" r="2" stroke="var(--ill-jade)" stroke-width="0.8" fill="none" opacity="0"/>
-              <circle class="ripple" cx="60" cy="60" r="2" stroke="var(--ill-jade)" stroke-width="0.8" fill="none" opacity="0"/>
-              <circle class="ripple" cx="60" cy="60" r="2" stroke="var(--ill-jade)" stroke-width="0.8" fill="none" opacity="0"/>
-              <!-- Second focal point -->
-              <circle cx="140" cy="60" r="18" stroke="var(--ill-rose)" stroke-width="1" opacity="0.2"/>
-              <circle cx="140" cy="60" r="28" stroke="var(--ill-rose)" stroke-width="0.5" opacity="0.1"/>
-              <circle cx="140" cy="60" r="4" fill="var(--ill-rose)" opacity="0.6" class="glow"/>
-              <circle class="ripple" cx="140" cy="60" r="2" stroke="var(--ill-rose)" stroke-width="0.8" fill="none" opacity="0"/>
-              <circle class="ripple" cx="140" cy="60" r="2" stroke="var(--ill-rose)" stroke-width="0.8" fill="none" opacity="0"/>
-              <circle class="ripple" cx="140" cy="60" r="2" stroke="var(--ill-rose)" stroke-width="0.8" fill="none" opacity="0"/>
-              <!-- Connecting threads -->
-              <path class="thread" d="M68 52 Q100 30 132 52" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.3"/>
-              <path class="thread" d="M68 60 Q100 42 132 60" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.2"/>
-              <path class="thread" d="M68 68 Q100 86 132 68" stroke="var(--ill-indigo)" stroke-width="1" opacity="0.2"/>
-              <!-- Midpoint glow -->
-              <circle cx="100" cy="48" r="2.5" fill="var(--ill-indigo)" opacity="0.45" class="glow" style="animation-delay:0.8s"/>
+              <!-- I Praksis: tre akupunkturnåle der åbner et delt felt -->
+              <circle cx="70" cy="18" r="2.8" stroke="rgba(var(--ink-soft), 0.55)" stroke-width="1"/>
+              <line x1="70" y1="21" x2="70" y2="62" stroke="rgba(var(--ink-deep), 0.60)" stroke-width="1.1"/>
+              <circle cx="70" cy="64" r="2.8" fill="var(--accent-gold)" opacity="0.65" class="hub-anim"/>
+
+              <circle cx="100" cy="14" r="2.8" stroke="rgba(var(--ink-soft), 0.55)" stroke-width="1"/>
+              <line x1="100" y1="17" x2="100" y2="66" stroke="rgba(var(--ink-deep), 0.65)" stroke-width="1.2"/>
+              <circle cx="100" cy="68" r="3.2" fill="var(--accent-gold)" opacity="0.70" class="hub-anim" style="animation-delay:0.7s"/>
+
+              <circle cx="130" cy="18" r="2.8" stroke="rgba(var(--ink-soft), 0.55)" stroke-width="1"/>
+              <line x1="130" y1="21" x2="130" y2="62" stroke="rgba(var(--ink-deep), 0.60)" stroke-width="1.1"/>
+              <circle cx="130" cy="64" r="2.8" fill="var(--accent-gold)" opacity="0.65" class="hub-anim" style="animation-delay:1.4s"/>
+
+              <!-- Energifelt der udstråler -->
+              <path d="M32,84 Q100,70 168,84" stroke="rgba(var(--ink-soft), 0.45)" stroke-width="1.1" class="hub-flow"/>
+              <path d="M22,96 Q100,80 178,96" stroke="rgba(var(--ink-soft), 0.30)" stroke-width="1" class="hub-flow" style="animation-delay:0.6s"/>
+              <path d="M12,108 Q100,90 188,108" stroke="rgba(var(--ink-soft), 0.18)" stroke-width="0.9" class="hub-flow" style="animation-delay:1.2s"/>
             </svg>
           </div>
           <h1>In Practice</h1>
@@ -230,30 +227,23 @@
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-organs">
             <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Ethereal concentric rings -->
-              <circle class="ring-glow" cx="100" cy="60" r="50" stroke="var(--ill-amber)" stroke-width="0.8" opacity="0.2"/>
-              <circle class="ring-glow" cx="100" cy="60" r="36" stroke="var(--ill-jade)" stroke-width="0.8" opacity="0.2"/>
-              <circle class="ring-glow" cx="100" cy="60" r="22" stroke="var(--ill-rose)" stroke-width="0.8" opacity="0.25"/>
-              <!-- 12 markers — subtle dots around outer ring -->
-              <circle cx="100" cy="10" r="2" fill="var(--el-wood)" opacity="0.45"/>
-              <circle cx="125" cy="14" r="1.5" fill="var(--el-wood)" opacity="0.3"/>
-              <circle cx="145" cy="30" r="1.5" fill="var(--el-fire)" opacity="0.3"/>
-              <circle cx="150" cy="60" r="2" fill="var(--el-fire)" opacity="0.45"/>
-              <circle cx="145" cy="90" r="1.5" fill="var(--el-earth)" opacity="0.3"/>
-              <circle cx="125" cy="106" r="1.5" fill="var(--el-earth)" opacity="0.3"/>
-              <circle cx="100" cy="110" r="2" fill="var(--el-metal)" opacity="0.45"/>
-              <circle cx="75" cy="106" r="1.5" fill="var(--el-metal)" opacity="0.3"/>
-              <circle cx="55" cy="90" r="1.5" fill="var(--el-water)" opacity="0.3"/>
-              <circle cx="50" cy="60" r="2" fill="var(--el-water)" opacity="0.45"/>
-              <circle cx="55" cy="30" r="1.5" fill="var(--el-water)" opacity="0.3"/>
-              <circle cx="75" cy="14" r="1.5" fill="var(--el-wood)" opacity="0.3"/>
-              <!-- Orbiting particles -->
-              <circle class="orbit-particle" cx="100" cy="60" r="3" fill="var(--ill-amber)" opacity="0.7"/>
-              <circle class="orbit-particle" cx="100" cy="60" r="2.5" fill="var(--ill-jade)" opacity="0.6"/>
-              <circle class="orbit-particle" cx="100" cy="60" r="2" fill="var(--ill-rose)" opacity="0.6"/>
-              <!-- Center glow -->
-              <circle cx="100" cy="60" r="8" fill="var(--ill-amber)" opacity="0.08"/>
-              <circle class="center-glow" cx="100" cy="60" r="4" fill="var(--ill-amber)" opacity="0.5"/>
+              <!-- 12 Organer: større kropskort — 12 akupunkturpunkter langs Ren Mai -->
+              <circle cx="100" cy="16" r="7" stroke="rgba(var(--ink-soft), 0.50)" stroke-width="1"/>
+              <path d="M82,32 Q100,34 118,32" stroke="rgba(var(--ink-soft), 0.45)" stroke-width="1"/>
+              <path d="M84,32 L78,100" stroke="rgba(var(--ink-soft), 0.40)" stroke-width="1"/>
+              <path d="M116,32 L122,100" stroke="rgba(var(--ink-soft), 0.40)" stroke-width="1"/>
+              <path d="M78,100 Q100,108 122,100" stroke="rgba(var(--ink-soft), 0.35)" stroke-width="1"/>
+              <line x1="82" y1="36" x2="62" y2="56" stroke="rgba(var(--ink-soft), 0.28)" stroke-width="0.9"/>
+              <line x1="118" y1="36" x2="138" y2="56" stroke="rgba(var(--ink-soft), 0.28)" stroke-width="0.9"/>
+              <!-- 12 Ren Mai-punkter langs midterlinjen -->
+              <circle cx="100" cy="38" r="1.8" fill="rgba(var(--ink-glow), 0.70)" class="hub-anim"/>
+              <circle cx="100" cy="46" r="1.8" fill="rgba(var(--ink-glow), 0.60)"/>
+              <circle cx="100" cy="54" r="2.0" fill="var(--accent-gold)" opacity="0.70" class="hub-anim" style="animation-delay:0.6s"/>
+              <circle cx="100" cy="62" r="1.8" fill="rgba(var(--ink-glow), 0.60)"/>
+              <circle cx="100" cy="70" r="2.0" fill="var(--accent-gold)" opacity="0.55" class="hub-anim" style="animation-delay:1.2s"/>
+              <circle cx="100" cy="78" r="1.8" fill="rgba(var(--ink-glow), 0.60)"/>
+              <circle cx="100" cy="86" r="1.8" fill="rgba(var(--ink-glow), 0.55)"/>
+              <circle cx="100" cy="94" r="1.6" fill="rgba(var(--ink-glow), 0.50)"/>
             </svg>
           </div>
           <h1>The 12 Organs</h1>
@@ -284,36 +274,30 @@
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-elements">
             <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Sheng cycle — flowing connections -->
-              <path class="cycle-line" d="M100,14 Q138,12 148,40" stroke="var(--el-wood)" stroke-width="1.5" opacity="0.4"/>
-              <path class="cycle-line" d="M148,40 Q154,72 132,92" stroke="var(--el-fire)" stroke-width="1.5" opacity="0.4"/>
-              <path class="cycle-line" d="M132,92 Q108,108 68,92" stroke="var(--el-earth)" stroke-width="1.5" opacity="0.4"/>
-              <path class="cycle-line" d="M68,92 Q46,72 52,40" stroke="var(--el-metal)" stroke-width="1.5" opacity="0.4"/>
-              <path class="cycle-line" d="M52,40 Q62,12 100,14" stroke="var(--el-water)" stroke-width="1.5" opacity="0.4"/>
-              <!-- Ke cycle — inner star, very subtle -->
-              <line x1="100" y1="14" x2="132" y2="92" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
-              <line x1="132" y1="92" x2="52" y2="40" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
-              <line x1="52" y1="40" x2="148" y2="40" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
-              <line x1="148" y1="40" x2="68" y2="92" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
-              <line x1="68" y1="92" x2="100" y2="14" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.1"/>
-              <!-- Element halos -->
-              <circle cx="100" cy="14" r="14" fill="var(--el-wood)" opacity="0.08"/>
-              <circle cx="148" cy="40" r="14" fill="var(--el-fire)" opacity="0.08"/>
-              <circle cx="132" cy="92" r="14" fill="var(--el-earth)" opacity="0.08"/>
-              <circle cx="68" cy="92" r="14" fill="var(--el-metal)" opacity="0.08"/>
-              <circle cx="52" cy="40" r="14" fill="var(--el-water)" opacity="0.08"/>
-              <!-- Element cores — floating -->
-              <circle class="el-node" cx="100" cy="14" r="5" fill="var(--el-wood)" opacity="0.65"/>
-              <circle class="el-node" cx="148" cy="40" r="5" fill="var(--el-fire)" opacity="0.65"/>
-              <circle class="el-node" cx="132" cy="92" r="5" fill="var(--el-earth)" opacity="0.65"/>
-              <circle class="el-node" cx="68" cy="92" r="5" fill="var(--el-metal)" opacity="0.65"/>
-              <circle class="el-node" cx="52" cy="40" r="5" fill="var(--el-water)" opacity="0.65"/>
-              <!-- Chinese characters -->
-              <text x="100" y="18" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">木</text>
-              <text x="148" y="44" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">火</text>
-              <text x="132" y="96" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">土</text>
-              <text x="68" y="96" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">金</text>
-              <text x="52" y="44" text-anchor="middle" fill="var(--text-primary)" font-size="6" opacity="0.75">水</text>
+              <!-- Fem Elementer: sheng-cyklus + fem unikke mikro-motiver ved knuderne -->
+              <path d="M100,14 Q138,12 148,40" stroke="rgba(var(--ink-soft), 0.30)" stroke-width="1"/>
+              <path d="M148,40 Q154,72 132,92" stroke="rgba(var(--ink-soft), 0.30)" stroke-width="1"/>
+              <path d="M132,92 Q108,108 68,92" stroke="rgba(var(--ink-soft), 0.30)" stroke-width="1"/>
+              <path d="M68,92 Q46,72 52,40" stroke="rgba(var(--ink-soft), 0.30)" stroke-width="1"/>
+              <path d="M52,40 Q62,12 100,14" stroke="rgba(var(--ink-soft), 0.30)" stroke-width="1"/>
+              <!-- Ke-cyklus: indre stjerne (stiplet, diskret) -->
+              <line x1="100" y1="14" x2="132" y2="92" stroke="rgba(var(--ink-soft), 0.15)" stroke-width="0.8" stroke-dasharray="2 3"/>
+              <line x1="132" y1="92" x2="52" y2="40" stroke="rgba(var(--ink-soft), 0.15)" stroke-width="0.8" stroke-dasharray="2 3"/>
+              <line x1="52" y1="40" x2="148" y2="40" stroke="rgba(var(--ink-soft), 0.15)" stroke-width="0.8" stroke-dasharray="2 3"/>
+              <line x1="148" y1="40" x2="68" y2="92" stroke="rgba(var(--ink-soft), 0.15)" stroke-width="0.8" stroke-dasharray="2 3"/>
+              <line x1="68" y1="92" x2="100" y2="14" stroke="rgba(var(--ink-soft), 0.15)" stroke-width="0.8" stroke-dasharray="2 3"/>
+              <!-- Træ (top): gren med spire -->
+              <path d="M100,20 L100,6 M100,11 L95,6 M100,12 L105,7" stroke="var(--el-wood)" stroke-width="1.3" opacity="0.80"/>
+              <!-- Ild (øverst højre): flamme -->
+              <path d="M145,34 Q148,38 147,42 Q150,38 152,42 Q149,45 145,45" stroke="var(--el-fire)" stroke-width="1.3" opacity="0.80"/>
+              <!-- Jord (nederst højre): bjerg-trekant -->
+              <path d="M124,98 L132,88 L140,98" stroke="var(--el-earth)" stroke-width="1.3" opacity="0.80"/>
+              <!-- Metal (nederst venstre): klokke/cirkel -->
+              <circle cx="68" cy="92" r="5" stroke="var(--el-metal)" stroke-width="1.3" opacity="0.80"/>
+              <!-- Vand (øverst venstre): bølger -->
+              <path d="M44,38 Q48,35 52,38 Q56,41 60,38" stroke="var(--el-water)" stroke-width="1.3" opacity="0.80"/>
+              <!-- Centralt hjerte -->
+              <circle cx="100" cy="53" r="2.2" fill="var(--accent-gold)" opacity="0.65" class="hub-anim"/>
             </svg>
           </div>
           <h1>Five Elements</h1>
@@ -348,23 +332,19 @@
             <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Central axis — subtle -->
               <line x1="100" y1="8" x2="100" y2="112" stroke="var(--ill-silver)" stroke-width="0.5" opacity="0.15"/>
-              <!-- 6 flowing meridian paths — varied colors -->
-              <path class="flow-path" d="M100 10 Q78 30 70 55 Q64 80 72 110" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.4"/>
-              <path class="flow-path" d="M100 10 Q122 30 130 55 Q136 80 128 110" stroke="var(--ill-indigo)" stroke-width="1.5" opacity="0.4"/>
-              <path class="flow-path" d="M100 14 Q70 40 55 65 Q45 88 54 110" stroke="var(--ill-jade)" stroke-width="1" opacity="0.3"/>
-              <path class="flow-path" d="M100 14 Q130 40 145 65 Q155 88 146 110" stroke="var(--ill-jade)" stroke-width="1" opacity="0.3"/>
-              <!-- Du & Ren Mai — close to center -->
-              <path class="flow-path" d="M96 10 Q90 38 92 60 Q94 82 95 110" stroke="var(--ill-rose)" stroke-width="1" opacity="0.3"/>
-              <path class="flow-path" d="M104 10 Q110 38 108 60 Q106 82 105 110" stroke="var(--ill-rose)" stroke-width="1" opacity="0.3"/>
-              <!-- Dai Mai — horizontal belt -->
-              <path class="flow-path" d="M48 56 Q74 50 100 53 Q126 50 152 56" stroke="var(--ill-amber)" stroke-width="1" opacity="0.25"/>
-              <!-- Glowing acupoint nodes -->
-              <circle class="node-glow" cx="100" cy="12" r="4" fill="var(--ill-indigo)" opacity="0.5"/>
-              <circle class="node-glow" cx="76" cy="42" r="3" fill="var(--ill-jade)" opacity="0.4"/>
-              <circle class="node-glow" cx="124" cy="42" r="3" fill="var(--ill-jade)" opacity="0.4"/>
-              <circle class="node-glow" cx="100" cy="55" r="3.5" fill="var(--ill-amber)" opacity="0.45"/>
-              <circle class="node-glow" cx="66" cy="78" r="2.5" fill="var(--ill-rose)" opacity="0.35"/>
-              <circle class="node-glow" cx="134" cy="78" r="2.5" fill="var(--ill-rose)" opacity="0.35"/>
+              <!-- 8 Ekstraordinære: dobbelt-helix med 8 hvilepunkter + central akse -->
+              <line x1="100" y1="6" x2="100" y2="114" stroke="rgba(var(--ink-soft), 0.18)" stroke-width="0.8" stroke-dasharray="3 5"/>
+              <path d="M60,6 Q120,30 60,60 Q0,90 60,114" stroke="rgba(var(--ink-deep), 0.65)" stroke-width="1.2"/>
+              <path d="M140,6 Q80,30 140,60 Q200,90 140,114" stroke="rgba(var(--ink-soft), 0.50)" stroke-width="1.1"/>
+              <!-- 8 hvilepunkter langs midterakse -->
+              <circle cx="100" cy="18" r="2.2" fill="rgba(var(--ink-glow), 0.65)"/>
+              <circle cx="100" cy="30" r="2.0" fill="rgba(var(--ink-soft), 0.55)"/>
+              <circle cx="100" cy="42" r="2.4" fill="var(--accent-gold)" opacity="0.65" class="hub-anim"/>
+              <circle cx="100" cy="54" r="2.0" fill="rgba(var(--ink-glow), 0.60)"/>
+              <circle cx="100" cy="66" r="2.0" fill="rgba(var(--ink-glow), 0.60)"/>
+              <circle cx="100" cy="78" r="2.4" fill="var(--accent-gold)" opacity="0.55" class="hub-anim" style="animation-delay:1.2s"/>
+              <circle cx="100" cy="90" r="2.0" fill="rgba(var(--ink-soft), 0.55)"/>
+              <circle cx="100" cy="102" r="2.2" fill="rgba(var(--ink-glow), 0.65)"/>
             </svg>
           </div>
           <h1>The 8 Extraordinary</h1>
@@ -390,22 +370,25 @@
         <div class="section-screen-title-area">
           <div class="section-screen-illustration section-ill-overviews">
             <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Four elegant reference cards with soft glow -->
-              <rect class="ov-card" x="30" y="15" width="60" height="36" rx="6" stroke="var(--ill-jade)" stroke-width="1" fill="var(--ill-jade)" fill-opacity="0.04" opacity="0.4"/>
-              <rect class="ov-card" x="110" y="15" width="60" height="36" rx="6" stroke="var(--ill-rose)" stroke-width="1" fill="var(--ill-rose)" fill-opacity="0.04" opacity="0.4"/>
-              <rect class="ov-card" x="30" y="65" width="60" height="36" rx="6" stroke="var(--ill-indigo)" stroke-width="1" fill="var(--ill-indigo)" fill-opacity="0.04" opacity="0.4"/>
-              <rect class="ov-card" x="110" y="65" width="60" height="36" rx="6" stroke="var(--ill-amber)" stroke-width="1" fill="var(--ill-amber)" fill-opacity="0.04" opacity="0.4"/>
-              <!-- Minimal content lines -->
-              <line x1="40" y1="28" x2="72" y2="28" stroke="var(--ill-jade)" stroke-width="0.8" opacity="0.25"/>
-              <line x1="40" y1="35" x2="62" y2="35" stroke="var(--ill-jade)" stroke-width="0.6" opacity="0.15"/>
-              <line x1="120" y1="28" x2="152" y2="28" stroke="var(--ill-rose)" stroke-width="0.8" opacity="0.25"/>
-              <line x1="120" y1="35" x2="146" y2="35" stroke="var(--ill-rose)" stroke-width="0.6" opacity="0.15"/>
-              <line x1="40" y1="78" x2="72" y2="78" stroke="var(--ill-indigo)" stroke-width="0.8" opacity="0.25"/>
-              <line x1="40" y1="85" x2="66" y2="85" stroke="var(--ill-indigo)" stroke-width="0.6" opacity="0.15"/>
-              <line x1="120" y1="78" x2="152" y2="78" stroke="var(--ill-amber)" stroke-width="0.8" opacity="0.25"/>
-              <line x1="120" y1="85" x2="148" y2="85" stroke="var(--ill-amber)" stroke-width="0.6" opacity="0.15"/>
-              <!-- Connecting dots between cards -->
-              <circle cx="100" cy="58" r="2" fill="var(--accent-gold)" opacity="0.3" class="ov-card" style="animation-delay:1.5s"/>
+              <!-- Overblik: udbredt vifte med hvilepunkter langs strålerne -->
+              <circle cx="100" cy="104" r="3" fill="var(--accent-gold)" opacity="0.70"/>
+              <line x1="100" y1="104" x2="20" y2="80" stroke="rgba(var(--ink-soft), 0.40)" stroke-width="1"/>
+              <line x1="100" y1="104" x2="38" y2="36" stroke="rgba(var(--ink-soft), 0.50)" stroke-width="1"/>
+              <line x1="100" y1="104" x2="70" y2="18" stroke="rgba(var(--ink-soft), 0.60)" stroke-width="1"/>
+              <line x1="100" y1="104" x2="100" y2="10" stroke="rgba(var(--ink-deep), 0.65)" stroke-width="1.1"/>
+              <line x1="100" y1="104" x2="130" y2="18" stroke="rgba(var(--ink-soft), 0.60)" stroke-width="1"/>
+              <line x1="100" y1="104" x2="162" y2="36" stroke="rgba(var(--ink-soft), 0.50)" stroke-width="1"/>
+              <line x1="100" y1="104" x2="180" y2="80" stroke="rgba(var(--ink-soft), 0.40)" stroke-width="1"/>
+              <!-- Bue over vifte -->
+              <path d="M20,80 Q100,4 180,80" stroke="rgba(var(--ink-soft), 0.22)" stroke-width="0.8" stroke-dasharray="3 5"/>
+              <!-- Hvilepunkter langs strålerne -->
+              <circle cx="40" cy="74" r="1.6" fill="rgba(var(--ink-glow), 0.60)" class="hub-anim"/>
+              <circle cx="52" cy="52" r="1.6" fill="rgba(var(--ink-glow), 0.60)" class="hub-anim" style="animation-delay:0.4s"/>
+              <circle cx="80" cy="38" r="1.8" fill="rgba(var(--ink-glow), 0.70)" class="hub-anim" style="animation-delay:0.8s"/>
+              <circle cx="100" cy="32" r="2.0" fill="rgba(var(--ink-glow), 0.75)" class="hub-anim" style="animation-delay:1.2s"/>
+              <circle cx="120" cy="38" r="1.8" fill="rgba(var(--ink-glow), 0.70)" class="hub-anim" style="animation-delay:1.6s"/>
+              <circle cx="148" cy="52" r="1.6" fill="rgba(var(--ink-glow), 0.60)" class="hub-anim" style="animation-delay:2.0s"/>
+              <circle cx="160" cy="74" r="1.6" fill="rgba(var(--ink-glow), 0.60)" class="hub-anim" style="animation-delay:2.4s"/>
             </svg>
           </div>
           <h1>Overviews</h1>
@@ -619,23 +602,28 @@
   <!-- Bottom Navigation -->
   <nav class="bottom-nav" id="bottom-nav">
     <button class="bottom-nav-item active" data-nav="home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <!-- Hjem: åndedrags-cirkel med lille hjerte-prik -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="22" height="22"><circle cx="12" cy="12" r="9" opacity="0.5"/><circle cx="12" cy="12" r="5" opacity="0.7"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
       <span>Home</span>
     </button>
     <button class="bottom-nav-item" data-nav="practice">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <!-- I Praksis: mini-nål + en bue (mini af hub-motiv) -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="22" height="22"><circle cx="12" cy="4" r="1.2" opacity="0.7"/><line x1="12" y1="5.5" x2="12" y2="14"/><circle cx="12" cy="14.8" r="1.4" fill="currentColor" stroke="none"/><path d="M5,19 Q12,16 19,19" opacity="0.55"/><path d="M3,22 Q12,17 21,22" opacity="0.35"/></svg>
       <span>Practice</span>
     </button>
     <button class="bottom-nav-item" data-nav="organs">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <!-- 12 Organer: mini-kropskort med midterpunkter -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="22" height="22"><circle cx="12" cy="6" r="2.2" opacity="0.55"/><path d="M8,10 Q12,11 16,10 L15,20 Q12,21.5 9,20 Z" opacity="0.45"/><circle cx="12" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" opacity="0.7"/></svg>
       <span>Organs</span>
     </button>
     <button class="bottom-nav-item" data-nav="elements">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <!-- Fem Elementer: pentagon-skelet med 5 prikker -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="22" height="22"><path d="M12,3 L20,9 L17,19 L7,19 L4,9 Z" opacity="0.45"/><circle cx="12" cy="3" r="1.4" fill="currentColor" stroke="none"/><circle cx="20" cy="9" r="1.2" fill="currentColor" stroke="none" opacity="0.8"/><circle cx="17" cy="19" r="1.2" fill="currentColor" stroke="none" opacity="0.7"/><circle cx="7" cy="19" r="1.2" fill="currentColor" stroke="none" opacity="0.6"/><circle cx="4" cy="9" r="1.2" fill="currentColor" stroke="none" opacity="0.7"/></svg>
       <span>Elements</span>
     </button>
     <button class="bottom-nav-item" data-nav="meridians">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <!-- 8 Meridianer: dobbelt-slynge omkring midterakse -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="22" height="22"><path d="M8,3 Q14,8 8,12 Q2,16 8,21" opacity="0.7"/><path d="M16,3 Q10,8 16,12 Q22,16 16,21" opacity="0.5"/><circle cx="12" cy="8" r="1" fill="currentColor" stroke="none" opacity="0.8"/><circle cx="12" cy="16" r="1" fill="currentColor" stroke="none" opacity="0.7"/></svg>
       <span>Meridians</span>
     </button>
   </nav>
@@ -682,27 +670,28 @@
       <div class="hamburger-section">
         <div class="hamburger-section-label" id="menu-label-sections">Sections</div>
         <button class="hamburger-link" data-nav="home">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="12" r="9" opacity="0.5"/><circle cx="12" cy="12" r="5" opacity="0.7"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
           Home
         </button>
         <button class="hamburger-link" data-nav="practice">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="4" r="1.2" opacity="0.7"/><line x1="12" y1="5.5" x2="12" y2="14"/><circle cx="12" cy="14.8" r="1.4" fill="currentColor" stroke="none"/><path d="M5,19 Q12,16 19,19" opacity="0.55"/><path d="M3,22 Q12,17 21,22" opacity="0.35"/></svg>
           In Practice
         </button>
         <button class="hamburger-link" data-nav="organs">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="6" r="2.2" opacity="0.55"/><path d="M8,10 Q12,11 16,10 L15,20 Q12,21.5 9,20 Z" opacity="0.45"/><circle cx="12" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" opacity="0.7"/></svg>
           The 12 Organs
         </button>
         <button class="hamburger-link" data-nav="elements">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><path d="M12,3 L20,9 L17,19 L7,19 L4,9 Z" opacity="0.45"/><circle cx="12" cy="3" r="1.4" fill="currentColor" stroke="none"/><circle cx="20" cy="9" r="1.2" fill="currentColor" stroke="none" opacity="0.8"/><circle cx="17" cy="19" r="1.2" fill="currentColor" stroke="none" opacity="0.7"/><circle cx="7" cy="19" r="1.2" fill="currentColor" stroke="none" opacity="0.6"/><circle cx="4" cy="9" r="1.2" fill="currentColor" stroke="none" opacity="0.7"/></svg>
           Five Elements & Core Principles
         </button>
         <button class="hamburger-link" data-nav="meridians">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><path d="M8,3 Q14,8 8,12 Q2,16 8,21" opacity="0.7"/><path d="M16,3 Q10,8 16,12 Q22,16 16,21" opacity="0.5"/><circle cx="12" cy="8" r="1" fill="currentColor" stroke="none" opacity="0.8"/><circle cx="12" cy="16" r="1" fill="currentColor" stroke="none" opacity="0.7"/></svg>
           The 8 Extraordinary Meridians
         </button>
         <button class="hamburger-link" data-nav="overviews">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <!-- Overblik: vifte af stråler -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="19" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="19" x2="4" y2="14" opacity="0.45"/><line x1="12" y1="19" x2="7" y2="7" opacity="0.55"/><line x1="12" y1="19" x2="12" y2="4" opacity="0.7"/><line x1="12" y1="19" x2="17" y2="7" opacity="0.55"/><line x1="12" y1="19" x2="20" y2="14" opacity="0.45"/></svg>
           Overviews
         </button>
       </div>
@@ -710,11 +699,13 @@
       <div class="hamburger-section">
         <div class="hamburger-section-label" id="menu-label-info">Information</div>
         <button class="hamburger-link" data-info="about">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <!-- Om: cirkel med lodret prik-linje (informations-tegn) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="12" r="9" opacity="0.6"/><circle cx="12" cy="8.5" r="1" fill="currentColor" stroke="none"/><line x1="12" y1="12" x2="12" y2="16.5" opacity="0.7"/></svg>
           About The Patterns Behind
         </button>
         <button class="hamburger-link" data-info="howto">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <!-- Sådan bruger du appen: cirkel med spørgende bue -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="12" r="9" opacity="0.6"/><path d="M9.5,9.5 Q12,7 14.5,9.5 Q14.5,12 12,13 L12,14.5" opacity="0.75"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>
           How to Use the App
         </button>
       </div>
