@@ -332,22 +332,29 @@ function toggleTheme() {
 
 function updateThemeIcon() {
   const label = document.getElementById('theme-label');
-  const btn = document.getElementById('theme-toggle');
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   if (label) label.textContent = isLight ? t('themeDarkMode') : t('themeLightMode');
-  if (btn) {
-    const svg = btn.querySelector('svg');
-    if (svg) {
-      svg.innerHTML = isLight
-        ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
-        : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-    }
-  }
+  const newInner = isLight
+    ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
+    : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  document.querySelectorAll('#theme-toggle svg, [data-forward="theme-toggle"] svg').forEach(svg => {
+    svg.innerHTML = newInner;
+  });
 }
 
 function setupThemeToggle() {
   const btn = document.getElementById('theme-toggle');
   if (btn) btn.addEventListener('click', toggleTheme);
+}
+
+function setupHomeTopForwarders() {
+  document.querySelectorAll('[data-forward]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById(btn.dataset.forward);
+      if (target) target.click();
+    });
+  });
 }
 
 // ============================================
@@ -540,6 +547,7 @@ function showScreen(screenId) {
   document.getElementById(`screen-${screenId}`).classList.add('active');
   previousScreen = currentScreen;
   currentScreen = screenId;
+  document.body.classList.toggle('is-screen-home', screenId === 'home');
   window.scrollTo(0, 0);
 }
 
@@ -1912,6 +1920,7 @@ function showOverviewDetail(ov, type) {
 // Init
 // ============================================
 function init() {
+  document.body.classList.add('is-screen-home');
   try { initTheme(); } catch(e) { console.error('initTheme:', e); }
   try { setupThemeToggle(); } catch(e) { console.error('setupThemeToggle:', e); }
   try { setupLanguageToggle(); } catch(e) { console.error('setupLanguageToggle:', e); }
@@ -1934,6 +1943,7 @@ function init() {
   try { setupHubCards(); } catch(e) { console.error('setupHubCards:', e); }
   try { setupHamburger(); } catch(e) { console.error('setupHamburger:', e); }
   try { setupSearch(); } catch(e) { console.error('setupSearch:', e); }
+  try { setupHomeTopForwarders(); } catch(e) { console.error('setupHomeTopForwarders:', e); }
 
   // Update clock every minute
   setInterval(renderOrganClock, 60000);
