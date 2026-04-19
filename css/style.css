@@ -1272,12 +1272,6 @@ body.is-screen-home .top-float-btn {
   line-height: 1.7;
 }
 
-.description-text p:first-child::first-line {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  color: var(--text-primary);
-}
-
 /* ============================================
    Themes (Accordion)
    ============================================ */
