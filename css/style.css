@@ -405,6 +405,11 @@ body.is-screen-home .top-float-btn {
   50% { transform: translateY(-8px); opacity: 1; }
 }
 
+@keyframes snake-sway {
+  0%, 100% { transform: translateX(-4px); }
+  50%      { transform: translateX(4px); }
+}
+
 @keyframes rotate-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -551,6 +556,9 @@ body.is-screen-home .top-float-btn {
 .section-screen-illustration .hub-flow {
   stroke-dasharray: 8 6;
   animation: dash-flow 1.8s linear infinite;
+}
+.section-screen-illustration .hub-snake {
+  animation: snake-sway 6s ease-in-out infinite;
 }
 
 .section-screen-title-area h1 {
