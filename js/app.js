@@ -139,7 +139,31 @@ const translations = {
     ariaMenu: 'Menu',
     ariaSearch: 'Search',
     ariaCloseSearch: 'Close search',
-    ariaCloseMenu: 'Close menu'
+    ariaCloseMenu: 'Close menu',
+    saTitle: 'Symptom Analysis',
+    saSubtitle: 'Resonance · Entry Point · Pattern Discovery',
+    saIntro: 'Select between 3 and 9 of your client’s symptoms below. The app shows which organ systems emerge through the cross-references in the material.',
+    saDisclaimer: 'This is not a diagnosis. The result is an entry point for further dialogue and palpation — a starting place for the pattern, not a conclusion.',
+    saCounter: 'selected',
+    saCounterRange: '3–9',
+    saReset: 'Clear',
+    saAnalyse: 'Analyse pattern',
+    saResultsHeading: 'Organ Resonance',
+    saResultsLead: 'Based on the symptoms you selected, these organs stand out:',
+    saHits: 'symptoms',
+    saHitsOf: 'of',
+    saPrimary: 'Primary',
+    saSecondary: 'Secondary',
+    saTertiary: 'Tertiary',
+    saNotesHeading: 'Clinical Notes',
+    saNotesLead: 'Notes from the cross-reference table for the symptoms you selected:',
+    saNextHeading: 'Next Step',
+    saNextBody: 'Open the primary organ’s page and use the 8 mapping themes to deepen the dialogue with your client.',
+    saOpenOrgan: 'Open',
+    saMinHint: 'Select at least 3 symptoms',
+    saMaxHint: 'Maximum 9 reached',
+    saPracticeCardTitle: 'Symptom Analysis',
+    saPracticeCardDesc: 'Select 3–9 symptoms — see which organs resonate'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -275,7 +299,31 @@ const translations = {
     ariaMenu: 'Menu',
     ariaSearch: 'Søg',
     ariaCloseSearch: 'Luk søgning',
-    ariaCloseMenu: 'Luk menu'
+    ariaCloseMenu: 'Luk menu',
+    saTitle: 'Symptom-Analyse',
+    saSubtitle: 'Resonans · Indgangsvinkel · Mønsteropdagelse',
+    saIntro: 'Vælg mellem 3 og 9 af din klients symptomer nedenfor. Appen viser hvilke organsystemer der træder frem gennem materialet’s krydsreferencer.',
+    saDisclaimer: 'Dette er ikke en diagnose. Resultatet er en indgangsvinkel til videre samtale og palpation — et udgangspunkt for mønsteret, ikke en konklusion.',
+    saCounter: 'valgt',
+    saCounterRange: '3–9',
+    saReset: 'Nulstil',
+    saAnalyse: 'Analysér mønster',
+    saResultsHeading: 'Organ-resonans',
+    saResultsLead: 'Baseret på de symptomer du har valgt, træder disse organer frem:',
+    saHits: 'symptomer',
+    saHitsOf: 'af',
+    saPrimary: 'Primær',
+    saSecondary: 'Sekundær',
+    saTertiary: 'Tertiær',
+    saNotesHeading: 'Kliniske noter',
+    saNotesLead: 'Noter fra krydsreferencetabellen for de symptomer du valgte:',
+    saNextHeading: 'Næste skridt',
+    saNextBody: 'Åbn det primære organs side og brug de 8 kortlægningstemaer til at uddybe samtalen med klienten.',
+    saOpenOrgan: 'Åbn',
+    saMinHint: 'Vælg mindst 3 symptomer',
+    saMaxHint: 'Maksimum 9 nået',
+    saPracticeCardTitle: 'Symptom-Analyse',
+    saPracticeCardDesc: 'Vælg 3–9 symptomer — se hvilke organer der resonerer'
   }
 };
 
@@ -388,6 +436,7 @@ function switchLanguage() {
   renderOverviewMeridianGrid();
   renderOverviewSymptoms();
   renderOverviewConversation();
+  renderSymptomAnalysis();
 
   // Update labels
   updateLangLabel();
@@ -1223,7 +1272,7 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice'];
+  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'symptom-analysis'];
   const sectionScreens = ['section-practice', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
@@ -1286,7 +1335,19 @@ showScreen = function(screenId) {
 // ============================================
 function renderPracticeGrid() {
   const grid = document.getElementById('practice-grid');
-  grid.innerHTML = practiceGuide.map(item => `
+  const featuredCard = `
+    <div class="practice-card practice-card-featured" data-practice-tool="symptom-analysis">
+      <span class="practice-card-icon">◈</span>
+      <div class="practice-card-info">
+        <div class="practice-card-title">${t('saPracticeCardTitle')}</div>
+        <div class="practice-card-desc">${t('saPracticeCardDesc')}</div>
+      </div>
+      <svg class="practice-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </div>
+  `;
+  const guideCards = practiceGuide.map(item => `
     <div class="practice-card" data-practice="${item.id}">
       <span class="practice-card-icon">${item.icon}</span>
       <div class="practice-card-info">
@@ -1298,13 +1359,19 @@ function renderPracticeGrid() {
       </svg>
     </div>
   `).join('');
+  grid.innerHTML = featuredCard + guideCards;
 
-  grid.querySelectorAll('.practice-card').forEach(card => {
+  grid.querySelectorAll('.practice-card[data-practice]').forEach(card => {
     card.addEventListener('click', () => {
       const item = practiceGuide.find(p => p.id === card.dataset.practice);
       if (item) showPracticeDetail(item);
     });
   });
+
+  const featured = grid.querySelector('.practice-card[data-practice-tool="symptom-analysis"]');
+  if (featured) {
+    featured.addEventListener('click', () => showSymptomAnalysis());
+  }
 }
 
 // ============================================
@@ -1944,6 +2011,227 @@ function showOverviewDetail(ov, type) {
 }
 
 // ============================================
+// Symptom Analysis — Resonance Engine
+// ============================================
+const SA_MAX = 9;
+const SA_MIN = 3;
+let saSelected = new Set();
+
+function renderSymptomAnalysis() {
+  const intro = document.getElementById('sa-intro');
+  const disclaimer = document.getElementById('sa-disclaimer');
+  const grid = document.getElementById('sa-symptom-grid');
+  const analyseBtn = document.getElementById('sa-analyse-btn');
+  const resetBtn = document.getElementById('sa-reset-btn');
+  const titleEl = document.getElementById('symptom-analysis-title');
+  const subtitleEl = document.getElementById('symptom-analysis-subtitle');
+  if (!grid) return;
+
+  if (titleEl) titleEl.textContent = t('saTitle');
+  if (subtitleEl) subtitleEl.textContent = t('saSubtitle');
+  if (intro) intro.textContent = t('saIntro');
+  if (disclaimer) disclaimer.textContent = t('saDisclaimer');
+  if (analyseBtn) {
+    const label = analyseBtn.querySelector('.sa-analyse-label');
+    if (label) label.textContent = t('saAnalyse');
+  }
+  if (resetBtn) resetBtn.textContent = t('saReset');
+
+  grid.innerHTML = symptomReference.map((item, i) => `
+    <button class="sa-chip" type="button" data-sa-symptom="${i}">
+      <span class="sa-chip-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 13l4 4L19 7"/></svg>
+      </span>
+      <span class="sa-chip-label">${item.symptom}</span>
+    </button>
+  `).join('');
+
+  grid.querySelectorAll('.sa-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const idx = parseInt(chip.dataset.saSymptom, 10);
+      if (saSelected.has(idx)) {
+        saSelected.delete(idx);
+      } else if (saSelected.size < SA_MAX) {
+        saSelected.add(idx);
+      }
+      updateSAState();
+    });
+  });
+
+  updateSAState();
+}
+
+function updateSAState() {
+  const count = saSelected.size;
+  const counter = document.getElementById('sa-counter');
+  const analyseBtn = document.getElementById('sa-analyse-btn');
+  const grid = document.getElementById('sa-symptom-grid');
+  const results = document.getElementById('sa-results');
+
+  if (counter) counter.textContent = `${count} ${t('saHitsOf')} ${SA_MAX} ${t('saCounter')}`;
+
+  if (grid) {
+    grid.querySelectorAll('.sa-chip').forEach(chip => {
+      const idx = parseInt(chip.dataset.saSymptom, 10);
+      const selected = saSelected.has(idx);
+      chip.classList.toggle('selected', selected);
+      chip.classList.toggle('disabled', !selected && count >= SA_MAX);
+    });
+  }
+
+  if (analyseBtn) {
+    const ready = count >= SA_MIN;
+    analyseBtn.disabled = !ready;
+    analyseBtn.classList.toggle('ready', ready);
+  }
+
+  // Hide stale results when selection changes
+  if (results && !results.hidden) {
+    results.hidden = true;
+    results.innerHTML = '';
+  }
+}
+
+function resetSymptomAnalysis() {
+  saSelected.clear();
+  updateSAState();
+  const results = document.getElementById('sa-results');
+  if (results) {
+    results.hidden = true;
+    results.innerHTML = '';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function computeSymptomResonance() {
+  const picked = Array.from(saSelected).map(i => symptomReference[i]).filter(Boolean);
+  const scores = {};
+  const hits = {};
+  picked.forEach(sym => {
+    const w = sym.organs.length > 0 ? 1 / sym.organs.length : 0;
+    sym.organs.forEach(orgName => {
+      scores[orgName] = (scores[orgName] || 0) + w;
+      hits[orgName] = (hits[orgName] || 0) + 1;
+    });
+  });
+  const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+  const tally = Object.entries(scores)
+    .map(([name, score]) => ({
+      name,
+      score,
+      hits: hits[name] || 0,
+      percentage: totalScore > 0 ? score / totalScore : 0
+    }))
+    .sort((a, b) => b.score - a.score || b.hits - a.hits);
+  return { picked, tally };
+}
+
+function renderSymptomAnalysisResults() {
+  const { picked, tally } = computeSymptomResonance();
+  const results = document.getElementById('sa-results');
+  if (!results || picked.length < SA_MIN) return;
+
+  const top = tally.slice(0, 3);
+  const tierLabels = [t('saPrimary'), t('saSecondary'), t('saTertiary')];
+
+  const topHTML = top.map((row, i) => {
+    const organ = organs.find(o => o.name === row.name);
+    const icon = organ ? organ.icon : '〇';
+    const color = organ ? organ.color : 'var(--accent-gold)';
+    const widthPct = Math.max(8, Math.round(row.percentage * 100));
+    return `
+      <div class="sa-result-row sa-tier-${i + 1}" data-organ-id="${organ ? organ.id : ''}" style="--row-accent: ${color}">
+        <div class="sa-result-header">
+          <span class="sa-result-tier">${tierLabels[i]}</span>
+          <span class="sa-result-organ-icon">${icon}</span>
+          <span class="sa-result-organ-name">${row.name}</span>
+          <span class="sa-result-hits">${row.hits} ${t('saHitsOf')} ${picked.length} ${t('saHits')}</span>
+        </div>
+        <div class="sa-result-bar">
+          <div class="sa-result-bar-fill" style="width: ${widthPct}%"></div>
+        </div>
+        ${organ ? `
+          <button class="sa-result-link" type="button" data-sa-open-organ="${organ.id}">
+            ${t('saOpenOrgan')} ${organ.name}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        ` : ''}
+      </div>
+    `;
+  }).join('');
+
+  const notesHTML = picked.map(sym => `
+    <div class="sa-note-card">
+      <div class="sa-note-symptom">${sym.symptom}</div>
+      <div class="sa-note-organs">
+        ${sym.organs.map(org => `<span class="sa-note-organ">${org}</span>`).join('')}
+      </div>
+      <p class="sa-note-text">${sym.note}</p>
+    </div>
+  `).join('');
+
+  const primary = top[0];
+  const primaryOrgan = primary ? organs.find(o => o.name === primary.name) : null;
+
+  results.innerHTML = `
+    <div class="sa-results-inner">
+      <h2 class="sa-results-heading">${t('saResultsHeading')}</h2>
+      <p class="sa-results-lead">${t('saResultsLead')}</p>
+      <div class="sa-results-list">${topHTML}</div>
+
+      <h3 class="sa-results-subheading">${t('saNotesHeading')}</h3>
+      <p class="sa-results-lead">${t('saNotesLead')}</p>
+      <div class="sa-notes-list">${notesHTML}</div>
+
+      <div class="sa-next-step">
+        <div class="sa-next-step-heading">${t('saNextHeading')}</div>
+        <p class="sa-next-step-body">${t('saNextBody')}</p>
+        ${primaryOrgan ? `
+          <button class="sa-next-step-cta" type="button" data-sa-open-organ="${primaryOrgan.id}">
+            ${primaryOrgan.icon} ${t('saOpenOrgan')} ${primaryOrgan.name}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        ` : ''}
+      </div>
+    </div>
+  `;
+
+  results.hidden = false;
+
+  results.querySelectorAll('[data-sa-open-organ]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const organ = organs.find(o => o.id === btn.dataset.saOpenOrgan);
+      if (organ) showOrganDetail(organ);
+    });
+  });
+
+  // Smooth scroll so user sees the results appearing below the button
+  requestAnimationFrame(() => {
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+function setupSymptomAnalysis() {
+  const analyseBtn = document.getElementById('sa-analyse-btn');
+  const resetBtn = document.getElementById('sa-reset-btn');
+  const backBtn = document.getElementById('btn-back-symptom-analysis');
+
+  if (analyseBtn) {
+    analyseBtn.addEventListener('click', () => {
+      if (saSelected.size >= SA_MIN) renderSymptomAnalysisResults();
+    });
+  }
+  if (resetBtn) resetBtn.addEventListener('click', resetSymptomAnalysis);
+  if (backBtn) backBtn.addEventListener('click', goBack);
+}
+
+function showSymptomAnalysis() {
+  renderSymptomAnalysis();
+  showScreen('symptom-analysis');
+}
+
+// ============================================
 // Init
 // ============================================
 function init() {
@@ -1964,6 +2252,8 @@ function init() {
   try { renderOverviewMeridianGrid(); } catch(e) { console.error('renderOverviewMeridianGrid:', e); }
   try { renderOverviewSymptoms(); } catch(e) { console.error('renderOverviewSymptoms:', e); }
   try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
+  try { renderSymptomAnalysis(); } catch(e) { console.error('renderSymptomAnalysis:', e); }
+  try { setupSymptomAnalysis(); } catch(e) { console.error('setupSymptomAnalysis:', e); }
   try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
   try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }

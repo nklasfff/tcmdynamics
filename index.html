@@ -499,6 +499,45 @@
       </main>
     </div>
 
+    <!-- Symptom Analysis Screen -->
+    <div id="screen-symptom-analysis" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-symptom-analysis">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon" id="symptom-analysis-icon">◈</span>
+          <h1 id="symptom-analysis-title">Symptom-Analyse</h1>
+          <p class="detail-nickname" id="symptom-analysis-subtitle">Resonans · Indgangsvinkel · Mønsteropdagelse</p>
+        </div>
+      </header>
+
+      <main class="detail-content">
+        <div class="symptom-analysis-body">
+          <div class="sa-intro" id="sa-intro"></div>
+
+          <div class="sa-disclaimer" id="sa-disclaimer"></div>
+
+          <div class="sa-counter-row">
+            <div class="sa-counter" id="sa-counter">0 af 9 valgt</div>
+            <button class="sa-reset-btn" id="sa-reset-btn" type="button">Nulstil</button>
+          </div>
+
+          <div class="sa-symptom-grid" id="sa-symptom-grid"></div>
+
+          <div class="sa-action-row">
+            <button class="sa-analyse-btn" id="sa-analyse-btn" type="button" disabled>
+              <span class="sa-analyse-label">Analysér mønster</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <div class="sa-results" id="sa-results" hidden></div>
+        </div>
+      </main>
+    </div>
+
     <!-- Organ Detail Screen -->
     <div id="screen-organ" class="screen">
       <header class="detail-header">
