@@ -1,5 +1,5 @@
 // The Patterns Behind — App Logic v2
-import { getLangData } from './data.js?v=4';
+import { getLangData } from './data.js?v=5';
 
 // ============================================
 // Internationalization (inlined)
@@ -167,7 +167,9 @@ const translations = {
     saElementHeading: 'Element Resonance',
     saElementLead: 'Together, the selected symptoms point to this element:',
     saElementOrgans: 'Organs in this element',
-    saElementOpen: 'Explore'
+    saElementOpen: 'Explore',
+    saMeridianHeading: 'Meridian Resonance',
+    saMeridianLead: 'These extraordinary meridians are also activated by the symptoms you selected:'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -331,7 +333,9 @@ const translations = {
     saElementHeading: 'Element-resonans',
     saElementLead: 'Tilsammen peger de valgte symptomer mod dette element:',
     saElementOrgans: 'Organer i elementet',
-    saElementOpen: 'Udforsk'
+    saElementOpen: 'Udforsk',
+    saMeridianHeading: 'Meridian-resonans',
+    saMeridianLead: 'Disse ekstraordinære meridianer aktiveres også af de valgte symptomer:'
   }
 };
 
@@ -2248,6 +2252,24 @@ function computeElementResonance(tally) {
     .sort((a, b) => b.score - a.score);
 }
 
+function computeMeridianResonance(tally) {
+  return tally
+    .map(row => {
+      const m = extraordinaryMeridians.find(x => x.name === row.name);
+      if (!m) return null;
+      return { ...row, ref: m };
+    })
+    .filter(Boolean);
+}
+
+function findResonanceEntity(name) {
+  const organ = organs.find(o => o.name === name);
+  if (organ) return { kind: 'organ', name: organ.name, id: organ.id, icon: organ.icon, color: organ.color, ref: organ };
+  const meridian = extraordinaryMeridians.find(m => m.name === name);
+  if (meridian) return { kind: 'meridian', name: meridian.name, id: meridian.id, icon: meridian.icon || '〇', color: 'var(--accent-gold)', ref: meridian };
+  return { kind: 'unknown', name, icon: '〇', color: 'var(--accent-gold)', ref: null };
+}
+
 function renderSymptomAnalysisResults() {
   const { picked, tally } = computeSymptomResonance();
   const results = document.getElementById('sa-results');
@@ -2274,25 +2296,45 @@ function renderSymptomAnalysisResults() {
     </button>
   ` : '';
 
+  const meridianTally = computeMeridianResonance(tally);
+  const meridianHTML = meridianTally.length ? `
+    <h3 class="sa-results-subheading">${t('saMeridianHeading')}</h3>
+    <p class="sa-results-lead">${t('saMeridianLead')}</p>
+    <div class="sa-meridian-list">
+      ${meridianTally.map(row => `
+        <button class="sa-meridian-card" type="button" data-sa-open-meridian="${row.ref.id}">
+          <span class="sa-meridian-icon">${row.ref.icon || '〇'}</span>
+          <div class="sa-meridian-info">
+            <div class="sa-meridian-name">${row.ref.name}</div>
+            <div class="sa-meridian-nick">"${row.ref.nickname}"</div>
+          </div>
+          <span class="sa-meridian-hits">${row.hits} ${t('saHits')}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      `).join('')}
+    </div>
+  ` : '';
+
   const topHTML = top.map((row, i) => {
-    const organ = organs.find(o => o.name === row.name);
-    const icon = organ ? organ.icon : '〇';
-    const color = organ ? organ.color : 'var(--accent-gold)';
+    const entity = findResonanceEntity(row.name);
     const widthPct = Math.max(8, Math.round(row.percentage * 100));
+    const linkAttr = entity.kind === 'organ' ? `data-sa-open-organ="${entity.id}"`
+                   : entity.kind === 'meridian' ? `data-sa-open-meridian="${entity.id}"`
+                   : '';
     return `
-      <div class="sa-result-row sa-tier-${i + 1}" data-organ-id="${organ ? organ.id : ''}" style="--row-accent: ${color}">
+      <div class="sa-result-row sa-tier-${i + 1}" style="--row-accent: ${entity.color}">
         <div class="sa-result-header">
           <span class="sa-result-tier">${tierLabels[i]}</span>
-          <span class="sa-result-organ-icon">${icon}</span>
-          <span class="sa-result-organ-name">${row.name}</span>
+          <span class="sa-result-organ-icon">${entity.icon}</span>
+          <span class="sa-result-organ-name">${entity.name}</span>
           <span class="sa-result-hits">${row.hits} ${t('saHitsOf')} ${picked.length} ${t('saHits')}</span>
         </div>
         <div class="sa-result-bar">
           <div class="sa-result-bar-fill" style="width: ${widthPct}%"></div>
         </div>
-        ${organ ? `
-          <button class="sa-result-link" type="button" data-sa-open-organ="${organ.id}">
-            ${t('saOpenOrgan')} ${organ.name}
+        ${entity.ref ? `
+          <button class="sa-result-link" type="button" ${linkAttr}>
+            ${t('saOpenOrgan')} ${entity.name}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         ` : ''}
@@ -2311,7 +2353,8 @@ function renderSymptomAnalysisResults() {
   `).join('');
 
   const primary = top[0];
-  const primaryOrgan = primary ? organs.find(o => o.name === primary.name) : null;
+  const primaryEntity = primary ? findResonanceEntity(primary.name) : null;
+  const primaryRef = primaryEntity && primaryEntity.ref;
 
   results.innerHTML = `
     <div class="sa-results-inner">
@@ -2321,6 +2364,8 @@ function renderSymptomAnalysisResults() {
 
       ${elementHTML}
 
+      ${meridianHTML}
+
       <h3 class="sa-results-subheading">${t('saNotesHeading')}</h3>
       <p class="sa-results-lead">${t('saNotesLead')}</p>
       <div class="sa-notes-list">${notesHTML}</div>
@@ -2328,9 +2373,9 @@ function renderSymptomAnalysisResults() {
       <div class="sa-next-step">
         <div class="sa-next-step-heading">${t('saNextHeading')}</div>
         <p class="sa-next-step-body">${t('saNextBody')}</p>
-        ${primaryOrgan ? `
-          <button class="sa-next-step-cta" type="button" data-sa-open-organ="${primaryOrgan.id}">
-            ${primaryOrgan.icon} ${t('saOpenOrgan')} ${primaryOrgan.name}
+        ${primaryRef ? `
+          <button class="sa-next-step-cta" type="button" ${primaryEntity.kind === 'meridian' ? `data-sa-open-meridian="${primaryRef.id}"` : `data-sa-open-organ="${primaryRef.id}"`}>
+            ${primaryEntity.icon} ${t('saOpenOrgan')} ${primaryEntity.name}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         ` : ''}
@@ -2345,6 +2390,14 @@ function renderSymptomAnalysisResults() {
       e.stopPropagation();
       const organ = organs.find(o => o.id === btn.dataset.saOpenOrgan);
       if (organ) showOrganDetail(organ);
+    });
+  });
+
+  results.querySelectorAll('[data-sa-open-meridian]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const m = extraordinaryMeridians.find(x => x.id === btn.dataset.saOpenMeridian);
+      if (m) showMeridianDetail(m);
     });
   });
 
