@@ -2017,6 +2017,72 @@ const SA_MAX = 9;
 const SA_MIN = 3;
 let saSelected = new Set();
 
+const SA_DOMAINS = [
+  {
+    id: 'vitalitet',
+    title: 'Energi & Vitalitet',
+    symptoms: ['Træthed/energimangel', 'Hyppige forkølelser', 'Hårtab eller for tidlig grånen']
+  },
+  {
+    id: 'soevn-affekt',
+    title: 'Søvn & Affekt',
+    symptoms: ['Søvnproblemer', 'Emotionel ustabilitet', 'Angst og frygt', 'Hjertebanken', 'Vedvarende sorg/melankoli', 'Kronisk irritabilitet/vrede']
+  },
+  {
+    id: 'fordoejelse',
+    title: 'Fordøjelse',
+    symptoms: ['Fordøjelsesproblemer', 'Oppustethed efter måltider', 'Forstoppelse med tørre afføringer', 'Morgendiarré kl. 5-7']
+  },
+  {
+    id: 'termo',
+    title: 'Termoregulation & Sved',
+    symptoms: ['Kolde hænder og fødder', 'Hedeture', 'Natlige svedudbrud', 'Spontan svedtendens i dagtimerne']
+  },
+  {
+    id: 'slim-vaesker',
+    title: 'Slim, Sinus & Væsker',
+    symptoms: ['Overdreven slim/opspyt', 'Kronisk næsetilstopning', 'Sæsonbaseret rhinitis/allergi', 'Ødem/væskeretention', 'Tør mund med lyst til småslurke']
+  },
+  {
+    id: 'hoved-sanser',
+    title: 'Hoved & Sanser',
+    symptoms: ['Hovedpine', 'Svimmelhed', 'Øjenproblemer', 'Høreproblemer/tinnitus', 'Tab af lugte- eller smagssans']
+  },
+  {
+    id: 'krop-hud',
+    title: 'Krop, Hud & Vejrtrækning',
+    symptoms: ['Rygsmerter', 'Smerter i ekstremiteter', 'Hudproblemer', 'Vejrtrækningsproblemer', 'Klump i halsen (globus)']
+  },
+  {
+    id: 'reproduktiv',
+    title: 'Reproduktiv & Urogenital',
+    symptoms: ['Menstruationsproblemer', 'Reduceret libido', 'Hyppig vandladning om natten']
+  }
+];
+
+function buildSADomainView() {
+  const view = SA_DOMAINS.map(d => ({
+    ...d,
+    indices: d.symptoms
+      .map(name => symptomReference.findIndex(s => s.symptom === name))
+      .filter(i => i >= 0)
+  }));
+  // Catch any uncategorized symptoms so the app can't silently drop new entries
+  const seen = new Set(view.flatMap(d => d.indices));
+  const orphans = symptomReference
+    .map((s, i) => ({ s, i }))
+    .filter(({ i }) => !seen.has(i));
+  if (orphans.length) {
+    view.push({
+      id: 'andre',
+      title: 'Andre',
+      symptoms: orphans.map(o => o.s.symptom),
+      indices: orphans.map(o => o.i)
+    });
+  }
+  return view;
+}
+
 function renderSymptomAnalysis() {
   const intro = document.getElementById('sa-intro');
   const disclaimer = document.getElementById('sa-disclaimer');
@@ -2037,17 +2103,41 @@ function renderSymptomAnalysis() {
   }
   if (resetBtn) resetBtn.textContent = t('saReset');
 
-  grid.innerHTML = symptomReference.map((item, i) => `
-    <button class="sa-chip" type="button" data-sa-symptom="${i}">
-      <span class="sa-chip-check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 13l4 4L19 7"/></svg>
-      </span>
-      <span class="sa-chip-label">${item.symptom}</span>
-    </button>
+  const domains = buildSADomainView();
+  grid.innerHTML = domains.map(d => `
+    <div class="sa-domain" data-sa-domain="${d.id}">
+      <button class="sa-domain-header" type="button">
+        <span class="sa-domain-title">${d.title}</span>
+        <span class="sa-domain-meta" data-sa-domain-meta="${d.id}">0 / ${d.indices.length}</span>
+        <svg class="sa-domain-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="sa-domain-body">
+        <div class="sa-domain-grid">
+          ${d.indices.map(i => `
+            <button class="sa-chip" type="button" data-sa-symptom="${i}">
+              <span class="sa-chip-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span class="sa-chip-label">${symptomReference[i].symptom}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    </div>
   `).join('');
 
+  grid.querySelectorAll('.sa-domain-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+
   grid.querySelectorAll('.sa-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
       const idx = parseInt(chip.dataset.saSymptom, 10);
       if (saSelected.has(idx)) {
         saSelected.delete(idx);
@@ -2077,6 +2167,16 @@ function updateSAState() {
       chip.classList.toggle('selected', selected);
       chip.classList.toggle('disabled', !selected && count >= SA_MAX);
     });
+    // Update per-domain meta counts
+    const domains = buildSADomainView();
+    domains.forEach(d => {
+      const meta = grid.querySelector(`[data-sa-domain-meta="${d.id}"]`);
+      if (!meta) return;
+      const groupCount = d.indices.filter(i => saSelected.has(i)).length;
+      meta.textContent = `${groupCount} / ${d.indices.length}`;
+      const domainEl = grid.querySelector(`.sa-domain[data-sa-domain="${d.id}"]`);
+      if (domainEl) domainEl.classList.toggle('has-selection', groupCount > 0);
+    });
   }
 
   if (analyseBtn) {
@@ -2100,6 +2200,9 @@ function resetSymptomAnalysis() {
     results.hidden = true;
     results.innerHTML = '';
   }
+  // Collapse all opened domains
+  const grid = document.getElementById('sa-symptom-grid');
+  if (grid) grid.querySelectorAll('.sa-domain.open').forEach(el => el.classList.remove('open'));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
