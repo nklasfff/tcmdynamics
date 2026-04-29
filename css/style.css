@@ -410,16 +410,6 @@ body.is-screen-home .top-float-btn {
   50%      { transform: translateX(4px); }
 }
 
-/* Snake winder gennem rækken — hver prik/nål pulserer i sekvens
-   så bevægelsen vandrer ned ad centerlinjen som en slange.
-   Ingen sidelæns translation. Opacity multipliceres med base
-   opacity på child-elementer, så individuel lysstyrke bevares. */
-@keyframes snake-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  12%      { opacity: 1;    transform: scale(1.45); }
-  30%      { opacity: 0.35; transform: scale(1); }
-}
-
 @keyframes ray-sway {
   0%, 100% { transform: rotate(-2deg); }
   50%      { transform: rotate(2deg); }
@@ -587,13 +577,11 @@ body.is-screen-home .top-float-btn {
   will-change: stroke-dashoffset;
 }
 .section-screen-illustration .hub-snake {
-  -webkit-animation: snake-pulse 6s ease-in-out infinite both;
-  animation: snake-pulse 6s ease-in-out infinite both;
+  -webkit-animation: snake-sway 6s ease-in-out infinite both;
+  animation: snake-sway 6s ease-in-out infinite both;
   -webkit-animation-delay: var(--delay, 0s);
   animation-delay: var(--delay, 0s);
-  transform-origin: center;
-  transform-box: fill-box;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 .section-screen-illustration .ray-sway {
   -webkit-animation: ray-sway 7s ease-in-out infinite both;
