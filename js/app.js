@@ -1,5 +1,5 @@
 // The Patterns Behind — App Logic v2
-import { getLangData } from './data.js?v=6';
+import { getLangData } from './data.js?v=7';
 
 // ============================================
 // Internationalization (inlined)
@@ -2058,7 +2058,7 @@ const SA_DOMAINS = [
   {
     id: 'soevn-affekt',
     title: 'Søvn & Affekt',
-    symptoms: ['Søvnproblemer', 'Emotionel ustabilitet', 'Angst og frygt', 'Hjertebanken', 'Vedvarende sorg/melankoli', 'Kronisk irritabilitet/vrede']
+    symptoms: ['Søvnproblemer', 'Emotionel ustabilitet', 'Angst og frygt', 'Hjertebanken', 'Vedvarende sorg/melankoli', 'Kronisk irritabilitet/vrede', 'Udtalt søvnighed i dagtimerne', 'Søvnløshed med rastløshed', 'Trykkende brystsmerte med indre angst']
   },
   {
     id: 'fordoejelse',
@@ -2068,7 +2068,7 @@ const SA_DOMAINS = [
   {
     id: 'termo',
     title: 'Termoregulation & Sved',
-    symptoms: ['Kolde hænder og fødder', 'Hedeture', 'Natlige svedudbrud', 'Spontan svedtendens i dagtimerne']
+    symptoms: ['Kolde hænder og fødder', 'Hedeture', 'Natlige svedudbrud', 'Spontan svedtendens i dagtimerne', 'Skiftevis kulde- og hedefornemmelser']
   },
   {
     id: 'slim-vaesker',
@@ -2082,13 +2082,13 @@ const SA_DOMAINS = [
   },
   {
     id: 'krop-hud',
-    title: 'Krop, Hud & Vejrtrækning',
-    symptoms: ['Rygsmerter', 'Smerter i ekstremiteter', 'Hudproblemer', 'Vejrtrækningsproblemer', 'Klump i halsen (globus)']
+    title: 'Krop, Lemmer & Vejrtrækning',
+    symptoms: ['Rygsmerter', 'Smerter i ekstremiteter', 'Hudproblemer', 'Vejrtrækningsproblemer', 'Klump i halsen (globus)', 'Tunghed og svaghed i benene', 'Kramper indersiden af benene', 'Ensidig iskias på ydersiden af benet', 'Ledsmerter med følelsesløshed og prikken', 'Smerter langs kroppens side']
   },
   {
     id: 'reproduktiv',
     title: 'Reproduktiv & Urogenital',
-    symptoms: ['Menstruationsproblemer', 'Reduceret libido', 'Hyppig vandladning om natten']
+    symptoms: ['Menstruationsproblemer', 'Reduceret libido', 'Hyppig vandladning om natten', 'Vedvarende vaginalt udflåd']
   }
 ];
 

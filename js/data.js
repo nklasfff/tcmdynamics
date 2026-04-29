@@ -5155,6 +5155,56 @@ const symptomReference = [
     symptom: 'Hårtab eller for tidlig grånen',
     organs: ['Nyrer', 'Lever'],
     note: 'Håret er "Blodets blomst" og "Nyre-Essensens overflod". For tidlig grånen + lændesvaghed + tinnitus = Nyre-Essens svigter (især hvis arveligt eller efter langvarig stress). Diffust hårtab + bleg ansigtsfarve + tør hud + kraftesløse negle = Lever-Blod-svigt (Leveren lagrer Blod og nærer hår/negle). Pletvis pludseligt hårtab = ofte Lever-Qi-stagnation med Blod-Hede.'
+  },
+  {
+    symptom: 'Vedvarende vaginalt udflåd',
+    organs: ['Dai Mai', 'Milt', 'Nyrer', 'Lever'],
+    note: 'Klassisk Dai Mai-symptom. Rigeligt klart/hvidt udflåd uden lugt + træthed + bleg tunge = Milt-Qi synker, Dai Mai er "for løst". Tykt gult ildelugtende udflåd + tørst + kløe = Damp-Hede der siver ned i Dai Mai (typisk fra Lever/Galdeblære). Klart vandigt + kuldskærhed + lændesvaghed = Nyre-Yang og Dai Mai-tomhed.'
+  },
+  {
+    symptom: 'Tunghed og svaghed i benene',
+    organs: ['Dai Mai', 'Milt', 'Nyrer'],
+    note: 'Klassisk "Wei-syndrom" billede knyttet til Dai Mai. Følelse af at benene "ikke vil bære" + tunge lemmer + opsvulmet abdomen omkring taljen = Dai Mai for løst, Spleen/Kidney-Qi synker. Hvis ledsaget af kolde knæ, klar urin, lændesvaghed: primært Nyre-Yang. Hvis træthed efter måltider og dårlig appetit dominerer: primært Milt. Adskil fra ren udmattelse: her er det specifikt UNDERKROPPEN der svigter.'
+  },
+  {
+    symptom: 'Udtalt søvnighed i dagtimerne',
+    organs: ['Yin Qiao Mai', 'Nyrer', 'Milt'],
+    note: 'Klassisk Yin Qiao-tegn: "øjnene vil lukke" (Ling Shu kap. 21). Wei Qi forbliver i Yin og kommer ikke ud i Yang. Adskil fra almindelig træthed: her vil personen aktivt SOVE midt på dagen. Hvis ledsaget af tung hovedbund, slim og fugtighed: Milt-Damp blokerer Yin Qiaos opadstigning. Hvis ledsaget af kuldskærhed og lændesvaghed: Nyre-Yang understøtter ikke Yin Qiao tilstrækkeligt.'
+  },
+  {
+    symptom: 'Kramper indersiden af benene',
+    organs: ['Yin Qiao Mai', 'Lever', 'Nyrer'],
+    note: 'Yin Qiao kontrollerer tonus af de mediale benmuskler. Når Yin Qiao er i Fuldhed: indersiden trækker sammen, foden vender indad ved gang. Vigtig diskriminator: hvis kramperne primært er på YDERSIDEN = Yang Qiao Mai i stedet. Hvis ledsaget af tørre tånegle og blodmangel = også Lever-Blod-svigt. Klassisk indikation: tendens til at "snuble" pga. ubalance mellem indre/ydre bentonus.'
+  },
+  {
+    symptom: 'Søvnløshed med rastløshed',
+    organs: ['Yang Qiao Mai', 'Hjerte', 'Lever'],
+    note: 'Klassisk Yang Qiao-tegn: "øjnene kan ikke lukke" (Ling Shu kap. 80). Wei Qi forbliver i Yang. Vigtig diskriminator versus almindelig Hjerte/Lever-søvnløshed: her er der MOTORISK rastløshed — personen kan ikke ligge stille, vender og drejer sig, måske maniske træk. Hvis ledsaget af palpitationer og angst: Hjerte-Ild som rod. Hvis ledsaget af irritabilitet og temporal hovedpine: Lever-Yang stiger og Yang Qiao kan ikke absorbere overskuddet.'
+  },
+  {
+    symptom: 'Ensidig iskias på ydersiden af benet',
+    organs: ['Yang Qiao Mai', 'Galdeblære', 'Blære'],
+    note: 'Yang Qiao Mai er særligt indikeret når smerten dækker MERE end én Yang-meridian (typisk Blære + Galdeblære, evt. også Mavesæk). Vigtigt: smerten skal være ENSIDIG (bilateral peger på andre vessels). Hvis smerten primært følger Galdeblærens forløb (yderside): tænk også Yang Wei Mai. Hvis pulsen er Fuld-Wiry og personen står frem som "tonisk anspændt" på ydersiden af benet med løse mediale muskler: klassisk Yang Qiao.'
+  },
+  {
+    symptom: 'Trykkende brystsmerte med indre angst',
+    organs: ['Yin Wei Mai', 'Hjerte', 'Pericardium'],
+    note: 'Klassisk Nan Jing kap. 29: "Når Yin Wei Mai er syg, er der hjertesmerte og depression". Vigtig diskriminator versus akut Hjerte-smerte: dette er DUMP, vedvarende ømhed/tryk i brystregionen, IKKE skarp stikkende smerte (sidstnævnte = Chong Mai/Blod-stase). Ledsages typisk af følelse af "at synke", emotionel sårbarhed, gråd uden tydelig årsag. Pulsen er Choppy eller Fine (Tomhed-mønster). Hyppig hos kvinder med Blod-svigt, postpartum.'
+  },
+  {
+    symptom: 'Ledsmerter med følelsesløshed og prikken',
+    organs: ['Yin Wei Mai', 'Lever', 'Milt'],
+    note: 'Yin Wei Mai-Bi-syndrom: ledsmerter UDEN hævelse eller hede, men med markant numbness og prikken — typisk multipel lokalisation. Adskil fra Yang Wei-Bi (mere lateralt, mere akut, ofte med varme) og fra Lever-Vind-Bi (mere spasmer/trækninger). Ses især hos kvinder med Blod-svigt: blege negle, blege læber, sparsom menstruation, lette svimmelhed. Klassisk Mai Jing: "Bi-syndrom med tingling".'
+  },
+  {
+    symptom: 'Skiftevis kulde- og hedefornemmelser',
+    organs: ['Yang Wei Mai', 'Galdeblære', 'San Jiao'],
+    note: 'Klassisk Yang Wei-tegn: Nan Jing kap. 29: "Når Yang Wei Mai er syg, er der [skiftevis følelse af] hede og [følelse af] kulde og irritabilitet". Skal IKKE forveksles med menopausale hedeture (Chong Mai) — her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem. Klassisk Shao Yang: pathogenen er fanget halvt i ydre og halvt i indre. Pulsen er Floating. Adskil fra ren Lunge-Qi-svaghed: her er der INTERMITTENS, ikke svaghed.'
+  },
+  {
+    symptom: 'Smerter langs kroppens side',
+    organs: ['Yang Wei Mai', 'Galdeblære', 'Lever'],
+    note: 'Yang Wei Mai er domæne for "siderne" — smerte/spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hofte og lateralt på lår. Adskil fra ren Lever-Qi-stagnation (mere emotionel trigger, mere distensiv kvalitet, mindre fast lokaliseret) og fra Dai Mai (mere "bælte"-fornemmelse omkring taljen, ofte med leucorrhea). Yang Wei kommer ind i billedet især ved KRONISK ensidig flanke-/hofte-/skuldersmerte med Floating puls.'
   }
 ];
 
