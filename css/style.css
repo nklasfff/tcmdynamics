@@ -3609,6 +3609,45 @@ html[data-theme-transitioning] * {
   color: #ffffff;
 }
 
+/* Copy summary button */
+.sa-result-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.sa-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.sa-copy-btn:hover,
+.sa-copy-btn:active {
+  border-color: var(--border-active);
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.sa-copy-btn.copied {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: var(--accent-gold-dim);
+}
+
+.sa-copy-btn.copied svg {
+  display: none;
+}
+
 /* Smaller screens */
 @media (max-width: 360px) {
   .sa-result-header {
