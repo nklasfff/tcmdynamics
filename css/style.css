@@ -3440,6 +3440,186 @@ html[data-theme-transitioning] * {
   flex-shrink: 0;
 }
 
+/* Pattern resonance list */
+.sa-pattern-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.sa-pattern-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.sa-pattern-card:hover {
+  border-color: var(--border-active);
+}
+
+.sa-pattern-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  padding: 14px 38px 14px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  position: relative;
+  transition: background 0.18s ease;
+}
+
+.sa-pattern-header:hover,
+.sa-pattern-header:active {
+  background: var(--bg-card-hover);
+}
+
+.sa-pattern-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sa-pattern-name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sa-pattern-chinese {
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.sa-pattern-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sa-pattern-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  padding: 2px 8px;
+  letter-spacing: 0.3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sa-pattern-tag-nature {
+  color: var(--accent-gold);
+  background: var(--accent-gold-dim);
+}
+
+.sa-pattern-score {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.3px;
+}
+
+.sa-pattern-hits {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.sa-pattern-hits-label {
+  color: var(--text-secondary);
+  margin-right: 2px;
+}
+
+.sa-pattern-hits-label + * {
+  margin-right: 8px;
+}
+
+.sa-pattern-chevron {
+  position: absolute;
+  right: 14px;
+  top: 18px;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.sa-pattern-card.open .sa-pattern-chevron {
+  transform: rotate(180deg);
+  color: var(--text-secondary);
+}
+
+.sa-pattern-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  border-top: 1px solid transparent;
+}
+
+.sa-pattern-card.open .sa-pattern-body {
+  max-height: 1500px;
+  border-top-color: var(--border-subtle);
+  padding: 14px 14px 16px;
+}
+
+.sa-pattern-section {
+  margin-bottom: 14px;
+}
+
+.sa-pattern-section:last-child {
+  margin-bottom: 0;
+}
+
+.sa-pattern-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.sa-pattern-section-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.sa-pattern-symptoms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sa-pattern-symptom {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  padding: 3px 10px;
+  letter-spacing: 0.2px;
+}
+
+.sa-pattern-symptom-key {
+  background: var(--accent-gold-dim);
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
 /* Meridian resonance list */
 .sa-meridian-list {
   display: flex;

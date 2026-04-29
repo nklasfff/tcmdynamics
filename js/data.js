@@ -5209,6 +5209,168 @@ const symptomReference = [
 ];
 
 // ============================================
+// Pattern Library — Klassiske TCM-syndromer
+// ============================================
+const patternLibrary = [
+  {
+    id: 'milt-qi-mangel',
+    name: 'Milt Qi-mangel',
+    chinese: '脾氣虛',
+    organ: 'Milt',
+    element: 'Jord',
+    nature: 'Qi-mangel',
+    description: 'Den hyppigste mangel-tilstand i klinisk praksis. Milt-Qi er roden af Post-Heaven Qi — den producerer energi og blod fra det vi spiser, holder organer på plads, holder blod i karrene og styrer transformation af væsker. Når den svigter, bliver hele systemet underforsynet.',
+    keySymptoms: ['Træthed/energimangel', 'Oppustethed efter måltider', 'Spontan svedtendens i dagtimerne'],
+    supportingSymptoms: ['Forstoppelse med tørre afføringer', 'Hyppige forkølelser', 'Vedvarende sorg/melankoli', 'Vedvarende vaginalt udflåd', 'Svimmelhed'],
+    differential: 'Skelnes fra Milt-Yang-mangel ved fravær af klare kuldsymptomer (kolde lemmer, klar urin). Ved tilstedeværelse af kulde → Milt-Yang. Ofte til stede sammen med Lunge-Qi-mangel (Yu Ping Feng San-billede).',
+    treatment: 'Stødt og opvarm Milten gennem regelmæssige måltider, sød og varm kost (kogte grøntsager, ris, rodfrugter); undgå kolde og rå fødevarer, mejeriprodukter, sukker. Reducer mental belastning og overdreven bekymring.'
+  },
+  {
+    id: 'milt-yang-mangel',
+    name: 'Milt Yang-mangel',
+    chinese: '脾陽虛',
+    organ: 'Milt',
+    element: 'Jord',
+    nature: 'Yang-mangel',
+    description: 'En dybere udvikling af Milt-Qi-mangel hvor Yang også svigter. Milten kan ikke længere varme transformations-processen, og kuldsymptomer dominerer. Typisk efter langvarig kold/rå kost eller udmattelse.',
+    keySymptoms: ['Morgendiarré kl. 5-7', 'Kolde hænder og fødder', 'Tunghed og svaghed i benene'],
+    supportingSymptoms: ['Træthed/energimangel', 'Ødem/væskeretention', 'Oppustethed efter måltider'],
+    differential: 'Adskiller sig fra Nyre-Yang-mangel ved fokus på fordøjelses- og kulde-i-mavsymptomer. Hvis lænd og knæ er svage og kolde → også Nyre-Yang involveret (klassisk: Milt+Nyre Yang-mangel sammen).',
+    treatment: 'Varm Milt-Yang gennem ingefær, kanel, varme supper, fast tilberedt kost; undgå alt råt og koldt, undgå kolde drikke. Beskyt mavekulden.'
+  },
+  {
+    id: 'nyre-yang-mangel',
+    name: 'Nyre Yang-mangel',
+    chinese: '腎陽虛',
+    organ: 'Nyrer',
+    element: 'Vand',
+    nature: 'Yang-mangel',
+    description: 'Ming Men Fire — kroppens fundamentale opvarmnings- og transformations-energi — er svækket. Konstitutionel eller efter langvarig udmattelse, kronisk sygdom, overdreven seksuel aktivitet eller kulde.',
+    keySymptoms: ['Kolde hænder og fødder', 'Hyppig vandladning om natten', 'Reduceret libido', 'Morgendiarré kl. 5-7'],
+    supportingSymptoms: ['Hyppige forkølelser', 'Hårtab eller for tidlig grånen', 'Tunghed og svaghed i benene', 'Ødem/væskeretention'],
+    differential: 'Skelnes fra Milt-Yang ved markant lændesvaghed og kolde knæ. Skelnes fra Nyre-Yin ved kuldsymptomerne (ikke nattesved/hedeture). Ofte underbygger Milt-Yang-svigt sekundært.',
+    treatment: 'Varm Nyre-Yang gennem varm fed kost (knoglesuppe, lammekød), regelmæssig hvile, undgå overdreven aktivitet og kold eksponering. Beskyt lænd mod kulde. Undgå late nights.'
+  },
+  {
+    id: 'nyre-yin-mangel',
+    name: 'Nyre Yin-mangel',
+    chinese: '腎陰虛',
+    organ: 'Nyrer',
+    element: 'Vand',
+    nature: 'Yin-mangel',
+    description: 'Den fundamentale Yin-energi i Nyrerne svigter — Tom Hede stiger og kan ikke balanceres af Yin. Klassisk i menopausal overgang, efter langvarigt overarbejde, eller hos personer der har "brændt deres Essens" gennem stress og late nights.',
+    keySymptoms: ['Hedeture', 'Natlige svedudbrud', 'Hårtab eller for tidlig grånen'],
+    supportingSymptoms: ['Tør mund med lyst til småslurke', 'Høreproblemer/tinnitus', 'Reduceret libido', 'Hyppig vandladning om natten', 'Søvnløshed med rastløshed'],
+    differential: 'Skelnes fra Lever-Yin-mangel ved fokus på lænd, hørelse og hår. Hedeture med svedudbrud peger særligt på Nyre-Yin (ofte sammen med Lever-Yang stiger som manifestation).',
+    treatment: 'Nær Yin gennem væsker, kølende men ikke kolde fødevarer (havregrød, mungbønner, melon), reducer overarbejde og late nights, beskyt mod overdreven seksuel aktivitet og udmattelse.'
+  },
+  {
+    id: 'lever-qi-stagnation',
+    name: 'Lever Qi-stagnation',
+    chinese: '肝氣鬱結',
+    organ: 'Lever',
+    element: 'Træ',
+    nature: 'Stagnation',
+    description: 'Lever-Qi flyder ikke frit — emotionel undertrykt frustration, vedvarende stress eller livsomstændigheder skaber blokering. Det hyppigste mønster i moderne klinisk praksis. Kan udvikle sig til Ild eller Blod-stase ved kronicitet.',
+    keySymptoms: ['Kronisk irritabilitet/vrede', 'Klump i halsen (globus)', 'Menstruationsproblemer'],
+    supportingSymptoms: ['Oppustethed efter måltider', 'Søvnproblemer', 'Hovedpine', 'Forstoppelse med tørre afføringer', 'Smerter langs kroppens side'],
+    differential: 'Skelnes fra Lever-Yang stiger ved fravær af opadstigende hede-symptomer. Skelnes fra Lever-Blod-svigt ved fravær af mangel-symptomer (blege negle, sparsom menstruation). Forværres typisk ved stress og lindres ved bevægelse.',
+    treatment: 'Frigør Lever-Qi gennem bevægelse, vandring i naturen, stress-reduktion, regelmæssig rytme. Sur smag i moderate mængder (citron, eddike). Undgå undertrykt frustration — find udtryk.'
+  },
+  {
+    id: 'lever-yang-stiger',
+    name: 'Lever Yang stiger',
+    chinese: '肝陽上亢',
+    organ: 'Lever',
+    element: 'Træ',
+    nature: 'Yang-overskud',
+    description: 'Lever-Yang stiger uhindret opad — typisk fordi Nyre-Yin eller Lever-Yin ikke længere kan forankre det. Manifestationen kan være akut og dramatisk, men roden ligger oftest i en underliggende Yin-mangel.',
+    keySymptoms: ['Hovedpine', 'Svimmelhed', 'Hedeture', 'Kronisk irritabilitet/vrede'],
+    supportingSymptoms: ['Søvnproblemer', 'Øjenproblemer', 'Søvnløshed med rastløshed'],
+    differential: 'Roden er ofte Yin-mangel (Nyre-Yin/Lever-Yin) — så hvis ledsaget af nattesved og lændesvaghed, behandl roden samtidig med manifestationen, ikke kun manifestationen.',
+    treatment: 'Dæmp Lever-Yang via kølende fødevarer, mintte, krysantemumthe, stress-reduktion. Hvis Yin-mangel er roden: nær Yin samtidig. Undgå alkohol, stærkt krydret mad, late nights.'
+  },
+  {
+    id: 'lever-blod-mangel',
+    name: 'Lever Blod-mangel',
+    chinese: '肝血虛',
+    organ: 'Lever',
+    element: 'Træ',
+    nature: 'Blod-mangel',
+    description: 'Leveren lagrer Blod og forsyner sener, øjne, hår og menstruation. Når Blodet er utilstrækkeligt, svigter disse funktioner — typisk hos kvinder efter fødsel, langvarig blødning, eller efter udmattelse og kronisk stress.',
+    keySymptoms: ['Hårtab eller for tidlig grånen', 'Øjenproblemer', 'Menstruationsproblemer'],
+    supportingSymptoms: ['Svimmelhed', 'Kramper indersiden af benene', 'Smerter i ekstremiteter', 'Ledsmerter med følelsesløshed og prikken'],
+    differential: 'Skelnes fra Hjerte-Blod-svigt ved fokus på sener, øjne og hår (mod Hjerte-Blod: palpitationer og søvnproblemer). Ofte er begge til stede samtidig (Lever/Hjerte-Blod-svigt).',
+    treatment: 'Nær Lever-Blod gennem mørke grøntsager (spinat, rødbede), rødt kød i moderation, sorte sesamfrø, regelmæssighed, hvile og dyb søvn. Beskyt mod overdreven blødning.'
+  },
+  {
+    id: 'hjerte-blod-mangel',
+    name: 'Hjerte Blod-mangel',
+    chinese: '心血虛',
+    organ: 'Hjerte',
+    element: 'Ild',
+    nature: 'Blod-mangel',
+    description: 'Hjertet huser Shen og kontrollerer Blod. Når Blodet er utilstrækkeligt, kan Shen ikke "hvile" og søvn/emotionel stabilitet svigter. Typisk efter langvarig overtænkning, bekymring, eller blodtab.',
+    keySymptoms: ['Hjertebanken', 'Søvnproblemer', 'Emotionel ustabilitet'],
+    supportingSymptoms: ['Kolde hænder og fødder', 'Svimmelhed', 'Hårtab eller for tidlig grånen'],
+    differential: 'Skelnes fra Hjerte-Yin-mangel ved fravær af nattesved og rastløshed (Hjerte-Yin har klare hede-tegn). Skelnes fra Hjerte-Qi-mangel ved fokus på blodmangel (bleghed, svimmelhed) frem for ren energimangel.',
+    treatment: 'Nær Hjerte-Blod gennem rødbede, longanfrugt, jujube, sød mild næring; reducer overdreven mental aktivitet og bekymring. Skab rolige aftener og regelmæssig søvn.'
+  },
+  {
+    id: 'hjerte-yin-mangel',
+    name: 'Hjerte Yin-mangel',
+    chinese: '心陰虛',
+    organ: 'Hjerte',
+    element: 'Ild',
+    nature: 'Yin-mangel',
+    description: 'Hjerte-Yin svigter, og Tom Hede uroliger Shen. Klassisk efter langvarig stress, overarbejde eller hos perimenopausale kvinder. Ofte sekundært til Nyre-Yin-mangel (Hjerte-og-Nyrer kommunikerer ikke).',
+    keySymptoms: ['Hjertebanken', 'Søvnløshed med rastløshed', 'Natlige svedudbrud'],
+    supportingSymptoms: ['Trykkende brystsmerte med indre angst', 'Emotionel ustabilitet', 'Hedeture'],
+    differential: 'Skelnes fra Hjerte-Blod-svigt ved nattesved og motorisk rastløshed. Skelnes fra Yang Qiao Mai (også søvnløshed med rastløshed) ved Hjerte-Yins specifikke nattesved og varme indersiden af håndleddene.',
+    treatment: 'Nær Hjerte-Yin gennem stille bevægelse, meditation, regelmæssig søvn, kølende næring (lotusfrø, lily-bulb). Undgå stimulanter, late nights, overdreven mental aktivitet.'
+  },
+  {
+    id: 'lunge-qi-mangel',
+    name: 'Lunge Qi-mangel',
+    chinese: '肺氣虛',
+    organ: 'Lunger',
+    element: 'Metal',
+    nature: 'Qi-mangel',
+    description: 'Lunge-Qi styrer åndedræt, Wei Qi (immunforsvar) og porer. Når den svigter, åbnes overfladen for Vind-invasioner og energien til hele kroppen er svag. Hyppigt knyttet til langvarig sorg eller efter forkølelser der ikke er gået helt over.',
+    keySymptoms: ['Hyppige forkølelser', 'Spontan svedtendens i dagtimerne', 'Vejrtrækningsproblemer'],
+    supportingSymptoms: ['Vedvarende sorg/melankoli', 'Sæsonbaseret rhinitis/allergi', 'Træthed/energimangel'],
+    differential: 'Skelnes fra Milt-Qi-mangel ved fokus på vejrtrækning og forkølelse-tendens. Ofte er begge til stede sammen (klassisk Yu Ping Feng San-billede). Adskiller sig fra Wei Qi-svaghed ved tydeligere fokus på Lungerne specifikt.',
+    treatment: 'Tonificer Lunge-Qi gennem dyb vejrtrækning, klar luft, undgå overdreven sorg, beskyt mod kold vind. Beskyt nakke/hals — Wind-Cold invaderer typisk her.'
+  },
+  {
+    id: 'slim-damp',
+    name: 'Slim-Damp',
+    chinese: '痰濕',
+    organ: 'Milt + Lunger',
+    element: 'Jord/Metal',
+    nature: 'Patologisk substans',
+    description: 'Klassisk Pi Wei Lun-billede: "Milt skaber Slim, Lungerne lagrer den". Når Milten ikke transformerer væsker korrekt, ophobes Damp og kondenseres til Slim. Slim blokerer kanaler, sløver Shen og forværrer fordøjelsen.',
+    keySymptoms: ['Overdreven slim/opspyt', 'Kronisk næsetilstopning', 'Svimmelhed'],
+    supportingSymptoms: ['Sæsonbaseret rhinitis/allergi', 'Tab af lugte- eller smagssans', 'Ødem/væskeretention', 'Oppustethed efter måltider'],
+    differential: 'Skelnes fra Slim-Hede ved fravær af gul slim og varmesymptomer. Hvis tyk gul slim → Slim-Hede (typisk i Lunger eller Galdeblære-meridianen). Slim-Damp er som regel kølig/neutral.',
+    treatment: 'Reducer slimskabende fødevarer (mejeriprodukter, sukker, råt og koldt, hvedemel); styrk Milten gennem varm tilberedt kost, ingefær. Støt Lungerne. Undgå at spise når man ikke er sulten.'
+  },
+  {
+    id: 'wei-qi-svaghed',
+    name: 'Wei Qi-svaghed',
+    chinese: '衛氣虛',
+    organ: 'Lunger + Milt + Nyrer',
+    element: 'Metal/Jord/Vand',
+    nature: 'Overflade-svaghed',
+    description: 'Wei Qi (defensiv overflade-energi) udspringer af Nyrerne, dannes af Milten og fordeles af Lungerne. Når én eller flere af disse svigter, svækkes overflade-forsvaret. Personen er konstant sårbar over for Vind-invasioner.',
+    keySymptoms: ['Hyppige forkølelser', 'Sæsonbaseret rhinitis/allergi', 'Spontan svedtendens i dagtimerne'],
+    supportingSymptoms: ['Træthed/energimangel', 'Kronisk næsetilstopning', 'Kolde hænder og fødder'],
+    differential: 'Roden bestemmes af hvilket organ der primært svigter: hvis kulde og lænd → Nyre-Yang er roden; hvis fordøjelse og bleghed → Milt; hvis åndedræt og hud → Lunger. Klassisk formel-billede er Yu Ping Feng San.',
+    treatment: 'Adresser primær-organet (se ovenfor). Beskyt mod kold vind især i nakke/hals. Dybe åndedrætsøvelser, qigong. Undgå at "presse igennem" forkølelser.'
+  }
+];
+
+// ============================================
 // Conversation Structure Proposal
 // ============================================
 const conversationStructure = {
@@ -6389,7 +6551,7 @@ const tcmFoundation = {
   }
 };
 
-  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation };
+  return { APP_INFO, practiceGuide, sectionIntros, organs, organOverviews, meridianOverviews, symptomReference, patternLibrary, conversationStructure, extraordinaryMeridians, organClock, fiveElements, tcmFoundation };
 })();
 
 const datasets = { en, da };
