@@ -1,5 +1,5 @@
 // The Patterns Behind — App Logic v2
-import { getLangData } from './data.js';
+import { getLangData } from './data.js?v=4';
 
 // ============================================
 // Internationalization (inlined)
@@ -2117,39 +2117,26 @@ function renderSymptomAnalysis() {
 
   const domains = buildSADomainView();
   grid.innerHTML = domains.map(d => `
-    <div class="sa-domain" data-sa-domain="${d.id}">
-      <button class="sa-domain-header" type="button">
+    <section class="sa-domain" data-sa-domain="${d.id}">
+      <header class="sa-domain-header">
         <span class="sa-domain-title">${d.title}</span>
         <span class="sa-domain-meta" data-sa-domain-meta="${d.id}">0 / ${d.indices.length}</span>
-        <svg class="sa-domain-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-      <div class="sa-domain-body">
-        <div class="sa-domain-grid">
-          ${d.indices.map(i => `
-            <button class="sa-chip" type="button" data-sa-symptom="${i}">
-              <span class="sa-chip-check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 13l4 4L19 7"/></svg>
-              </span>
-              <span class="sa-chip-label">${symptomReference[i].symptom}</span>
-            </button>
-          `).join('')}
-        </div>
+      </header>
+      <div class="sa-domain-grid">
+        ${d.indices.map(i => `
+          <button class="sa-chip" type="button" data-sa-symptom="${i}">
+            <span class="sa-chip-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 13l4 4L19 7"/></svg>
+            </span>
+            <span class="sa-chip-label">${symptomReference[i].symptom}</span>
+          </button>
+        `).join('')}
       </div>
-    </div>
+    </section>
   `).join('');
 
-  grid.querySelectorAll('.sa-domain-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const item = header.parentElement;
-      item.classList.toggle('open');
-    });
-  });
-
   grid.querySelectorAll('.sa-chip').forEach(chip => {
-    chip.addEventListener('click', (e) => {
-      e.stopPropagation();
+    chip.addEventListener('click', () => {
       const idx = parseInt(chip.dataset.saSymptom, 10);
       if (saSelected.has(idx)) {
         saSelected.delete(idx);

@@ -3061,99 +3061,59 @@ html[data-theme-transitioning] * {
   color: var(--text-primary);
 }
 
-/* Symptom domain stack */
+/* Symptom domain stack — sections always visible, no accordion */
 .sa-symptom-grid {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 18px;
   margin-bottom: 24px;
 }
 
-/* Foldable domain group */
 .sa-domain {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: border-color 0.18s ease;
-}
-
-.sa-domain.has-selection {
-  border-color: var(--border-active);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sa-domain-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  padding: 14px 16px;
-  cursor: pointer;
-  font-family: inherit;
-  text-align: left;
-  transition: background 0.18s ease;
-}
-
-.sa-domain-header:hover,
-.sa-domain-header:active {
-  background: var(--bg-card-hover);
+  align-items: baseline;
+  gap: 10px;
+  padding: 0 2px 6px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .sa-domain-title {
   flex: 1;
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--text-primary);
-  letter-spacing: 0.2px;
+  color: var(--text-accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .sa-domain-meta {
-  font-size: 12px;
+  font-size: 11px;
   font-variant-numeric: tabular-nums;
   color: var(--text-muted);
-  background: var(--bg-elevated);
-  border-radius: 999px;
-  padding: 2px 10px;
-  letter-spacing: 0.3px;
-  transition: all 0.18s ease;
+  letter-spacing: 0.5px;
+  transition: color 0.18s ease;
+}
+
+.sa-domain.has-selection .sa-domain-header {
+  border-bottom-color: var(--accent-gold);
 }
 
 .sa-domain.has-selection .sa-domain-meta {
   color: var(--accent-gold);
-  background: var(--accent-gold-dim);
-}
-
-.sa-domain-chevron {
-  color: var(--text-muted);
-  transition: transform 0.25s ease;
-  flex-shrink: 0;
-}
-
-.sa-domain.open .sa-domain-chevron {
-  transform: rotate(180deg);
-  color: var(--text-secondary);
-}
-
-.sa-domain-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.sa-domain.open .sa-domain-body {
-  max-height: 800px;
+  font-weight: 500;
 }
 
 .sa-domain-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 4px 16px 16px;
-  border-top: 1px solid var(--border-subtle);
+  gap: 6px;
 }
 
 .sa-chip {
