@@ -163,7 +163,11 @@ const translations = {
     saMinHint: 'Select at least 3 symptoms',
     saMaxHint: 'Maximum 9 reached',
     saPracticeCardTitle: 'Symptom Analysis',
-    saPracticeCardDesc: 'Select 3–9 symptoms — see which organs resonate'
+    saPracticeCardDesc: 'Select 3–9 symptoms — see which organs resonate',
+    saElementHeading: 'Element Resonance',
+    saElementLead: 'Together, the selected symptoms point to this element:',
+    saElementOrgans: 'Organs in this element',
+    saElementOpen: 'Explore'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -323,7 +327,11 @@ const translations = {
     saMinHint: 'Vælg mindst 3 symptomer',
     saMaxHint: 'Maksimum 9 nået',
     saPracticeCardTitle: 'Symptom-Analyse',
-    saPracticeCardDesc: 'Vælg 3–9 symptomer — se hvilke organer der resonerer'
+    saPracticeCardDesc: 'Vælg 3–9 symptomer — se hvilke organer der resonerer',
+    saElementHeading: 'Element-resonans',
+    saElementLead: 'Tilsammen peger de valgte symptomer mod dette element:',
+    saElementOrgans: 'Organer i elementet',
+    saElementOpen: 'Udforsk'
   }
 };
 
@@ -1281,6 +1289,10 @@ function goBack() {
       showScreen(previousScreen);
       const navId = sectionToNav[previousScreen] || 'home';
       if (window._updateBottomNav) window._updateBottomNav(navId);
+    } else if (previousScreen === 'symptom-analysis') {
+      // Drilled into organ/element from symptom-analysis — return there
+      showScreen('symptom-analysis');
+      if (window._updateBottomNav) window._updateBottomNav('practice');
     } else {
       showScreen('home');
       if (window._updateBottomNav) window._updateBottomNav('home');
@@ -2229,6 +2241,26 @@ function computeSymptomResonance() {
   return { picked, tally };
 }
 
+function computeElementResonance(tally) {
+  const scores = {};
+  const hits = {};
+  tally.forEach(row => {
+    const organ = organs.find(o => o.name === row.name);
+    if (!organ || !organ.element) return; // skip extraordinary meridians
+    const el = organ.element;
+    scores[el] = (scores[el] || 0) + row.score;
+    hits[el] = (hits[el] || 0) + row.hits;
+  });
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+  return Object.entries(scores)
+    .map(([name, score]) => ({
+      name, score,
+      hits: hits[name] || 0,
+      percentage: total > 0 ? score / total : 0
+    }))
+    .sort((a, b) => b.score - a.score);
+}
+
 function renderSymptomAnalysisResults() {
   const { picked, tally } = computeSymptomResonance();
   const results = document.getElementById('sa-results');
@@ -2236,6 +2268,24 @@ function renderSymptomAnalysisResults() {
 
   const top = tally.slice(0, 3);
   const tierLabels = [t('saPrimary'), t('saSecondary'), t('saTertiary')];
+  const elementTally = computeElementResonance(tally);
+  const topElement = elementTally[0];
+  const elementData = topElement ? fiveElements.find(e => e.name === topElement.name) : null;
+
+  const elementHTML = elementData ? `
+    <h3 class="sa-results-subheading">${t('saElementHeading')}</h3>
+    <p class="sa-results-lead">${t('saElementLead')}</p>
+    <button class="sa-element-card" type="button" data-sa-open-element="${elementData.id}" style="--el-accent: ${elementData.color}">
+      <span class="sa-element-icon">${elementData.icon}</span>
+      <div class="sa-element-info">
+        <div class="sa-element-name">${elementData.name} <span class="sa-element-chinese">${elementData.chineseName}</span></div>
+        <div class="sa-element-meta">${elementData.season} · ${elementData.emotion}</div>
+        <div class="sa-element-organs">${elementData.organs.join(' · ')}</div>
+      </div>
+      <span class="sa-element-pct">${Math.round(topElement.percentage * 100)}%</span>
+      <svg class="sa-element-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  ` : '';
 
   const topHTML = top.map((row, i) => {
     const organ = organs.find(o => o.name === row.name);
@@ -2282,6 +2332,8 @@ function renderSymptomAnalysisResults() {
       <p class="sa-results-lead">${t('saResultsLead')}</p>
       <div class="sa-results-list">${topHTML}</div>
 
+      ${elementHTML}
+
       <h3 class="sa-results-subheading">${t('saNotesHeading')}</h3>
       <p class="sa-results-lead">${t('saNotesLead')}</p>
       <div class="sa-notes-list">${notesHTML}</div>
@@ -2306,6 +2358,14 @@ function renderSymptomAnalysisResults() {
       e.stopPropagation();
       const organ = organs.find(o => o.id === btn.dataset.saOpenOrgan);
       if (organ) showOrganDetail(organ);
+    });
+  });
+
+  results.querySelectorAll('[data-sa-open-element]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const el = fiveElements.find(x => x.id === btn.dataset.saOpenElement);
+      if (el) showElementDetail(el);
     });
   });
 

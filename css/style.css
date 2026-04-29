@@ -3395,6 +3395,91 @@ html[data-theme-transitioning] * {
   background: var(--bg-card-hover);
 }
 
+/* Element resonance card */
+.sa-element-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--el-accent, var(--accent-gold));
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  transition: all 0.18s ease;
+}
+
+.sa-element-card:hover,
+.sa-element-card:active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  transform: translateY(-1px);
+}
+
+.sa-element-icon {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--el-accent, var(--accent-gold));
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.sa-element-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sa-element-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.sa-element-chinese {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.sa-element-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+
+.sa-element-organs {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.sa-element-pct {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--el-accent, var(--accent-gold));
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  padding: 4px 10px;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+
+.sa-element-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
 /* Notes list */
 .sa-notes-list {
   display: flex;
