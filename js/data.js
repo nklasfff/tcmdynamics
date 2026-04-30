@@ -5009,7 +5009,7 @@ const symptomReference = [
   {
     symptom: 'Rygsmerter',
     organs: ['Nyrer', 'Blære', 'Lever', 'Du Mai'],
-    note: 'Lænden relaterer specifikt til Nyrerne, mens hele rygsøjlen tilhører Blæren og Du Mai. Når smerten forværres ved kulde og er kronisk, peger det mod Nyre-Yang; akut og bevægelses-relateret peger derimod mod Blære-meridianen.'
+    note: 'Lænden relaterer specifikt til Nyrerne, mens hele rygsøjlen tilhører Blæren og Du Mai. Når smerten forværres ved kulde og er kronisk, peger det mod en svigtende dyb varmekraft i Nyrerne; akut og bevægelses-relateret peger derimod mod Blære-meridianen.'
   },
   {
     symptom: 'Træthed/energimangel',
@@ -5044,12 +5044,12 @@ const symptomReference = [
   {
     symptom: 'Høreproblemer/tinnitus',
     organs: ['Nyrer', 'Galdeblære', 'San Jiao', 'Tyndtarm'],
-    note: 'Nyrerne åbner til ørerne, og Galdeblære- og San Jiao-meridianerne løber forbi øret. Lav, dump tinnitus over år peger mod Nyre-svaghed; pludseligt skarp og høj peger derimod mod energi i Leveren der stiger uden modvægt.'
+    note: 'Nyrerne åbner til ørerne, og Galdeblære- og San Jiao-meridianerne løber forbi øret. Lav, dump tinnitus over år peger mod svage Nyrer; pludseligt skarp og høj peger derimod mod energi i Leveren der stiger uden modvægt.'
   },
   {
     symptom: 'Smerter i ekstremiteter',
     organs: ['Lever', 'Milt', 'Galdeblære', 'Blære'],
-    note: 'Leveren styrer sener, Milten styrer muskler, og meridianforløbet bestemmer hvilken side smerten breder sig på. Stikkende lokal smerte peger på blod-stase, dump og vandrende på Vind, kold og fast på Kulde.'
+    note: 'Leveren styrer sener, Milten styrer muskler, og meridianforløbet bestemmer hvilken side smerten breder sig på. Stikkende lokal smerte peger på stagneret blod, dump og vandrende på ydre påvirkninger, kold og fast på kulde der har sat sig i kroppen.'
   },
   {
     symptom: 'Vejrtrækningsproblemer',
@@ -5114,7 +5114,7 @@ const symptomReference = [
   {
     symptom: 'Kronisk næsetilstopning',
     organs: ['Lunger', 'Milt', 'Galdeblære'],
-    note: 'En akut tilstoppet næse med klar slim efter en forkølelse er Lungerne ramt af noget udefra. Tyk, gul slim over længere tid sammen med frontal hovedpine og presfornemmelse over kindbenene peger på varm slim — der har sat sig i både Lungerne og Galdeblære-meridianen. Vandig næseflod sammen med Milt-svaghed og træthed er fugt og slim der stiger op fra en svag Milt.'
+    note: 'En akut tilstoppet næse med klar slim efter en forkølelse er Lungerne ramt af noget udefra. Tyk, gul slim over længere tid sammen med frontal hovedpine og presfornemmelse over kindbenene peger på varm slim — der har sat sig i både Lungerne og Galdeblære-meridianen. Vandig næseflod sammen med dårlig fordøjelse og træthed er fugt og slim der stiger op fra en svag Milt.'
   },
   {
     symptom: 'Hedeture',
@@ -5189,7 +5189,7 @@ const symptomReference = [
   {
     symptom: 'Trykkende brystsmerte med indre angst',
     organs: ['Yin Wei Mai', 'Hjerte', 'Pericardium'],
-    note: 'Det klassiske Yin Wei Mai-billede — hvor man traditionelt siger der er "hjertesmerte og tungsind". En vigtig diskriminator overfor akut Hjerte-smerte: dette er en DUMP, vedvarende ømhed eller tryk i brystregionen, ikke en skarp stikkende smerte — sidstnævnte peger mod Chong Mai eller Blod-stase. Ledsages typisk af en følelse af "at synke", emotionel sårbarhed og gråd uden tydelig årsag. Hyppig hos kvinder med Blod-svigt, særligt postpartum.'
+    note: 'Det klassiske Yin Wei Mai-billede — hvor man traditionelt siger der er "hjertesmerte og tungsind". En vigtig diskriminator overfor akut Hjerte-smerte: dette er en DUMP, vedvarende ømhed eller tryk i brystregionen, ikke en skarp stikkende smerte — sidstnævnte peger mod Chong Mai eller stagneret blod. Ledsages typisk af en følelse af "at synke", emotionel sårbarhed og gråd uden tydelig årsag. Hyppig hos kvinder med en udtømt blodreserve, særligt postpartum.'
   },
   {
     symptom: 'Ledsmerter med følelsesløshed og prikken',
