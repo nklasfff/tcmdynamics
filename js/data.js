@@ -5074,7 +5074,7 @@ const symptomReference = [
   {
     symptom: 'Hyppig vandladning om natten',
     organs: ['Nyrer', 'Blære'],
-    note: 'Klar og rigelig urin sammen med kolde lænder, knæ og generel kuldskærhed peger mod Nyre-Yang-svigt. Sparsom, hyppig urin uden kulde-tegn men med tørst om natten peger derimod mod Nyre-Yin. Forsinket vandladning der forværres af stress eller frygt fortæller at Nyre-Qi\'en ikke længere kan holde fast — frygten lader noget slippe.'
+    note: 'Klar og rigelig urin sammen med kolde lænder, knæ og generel kuldskærhed peger mod en svækket dyb varmekraft i Nyrerne. Sparsom, hyppig urin uden kulde-tegn men med tørst om natten peger derimod mod en svækket kølende reserve i Nyrerne. Forsinket vandladning der forværres af stress eller frygt fortæller at Nyrernes greb om energien er for svagt — frygten lader noget slippe.'
   },
   {
     symptom: 'Kolde hænder og fødder',
@@ -5094,12 +5094,12 @@ const symptomReference = [
   {
     symptom: 'Forstoppelse med tørre afføringer',
     organs: ['Tyktarm', 'Lever', 'Milt', 'Nyrer'],
-    note: 'Tørre, småpebberlignende afføringer ledsaget af udspilet mave, irritabilitet og lettelse efter besøget peger på Lever-Qi-stagnation der invaderer Tyktarmen. Tørre afføringer kombineret med tør mund er Yin- og væske-svigt — særligt hos ældre. Vanskelig afføring uden tørhed, hvor klienten føler sig udmattet efter besøget, fortæller om Milt-Qi-svigt der mangler drivkraften.'
+    note: 'Tørre, småpebberlignende afføringer ledsaget af udspilet mave, irritabilitet og lettelse efter besøget peger på Leverens energi der er sat fast og presser ind i Tyktarmen. Tørre afføringer kombineret med tør mund er kølende reserve og væsker der er løbet tør — særligt hos ældre. Vanskelig afføring uden tørhed, hvor klienten føler sig udmattet efter besøget, fortæller om en svag Milt der mangler drivkraften.'
   },
   {
     symptom: 'Oppustethed efter måltider',
     organs: ['Milt', 'Mavesæk', 'Lever'],
-    note: 'Når oppustetheden forværres af mad generelt og ledsages af træthed, er det Milt-Qi-svigt. Forværres den af specifikke fødevarer — fede, kolde eller rå — sammen med raben og sure opstød, er det Mavesæk-Qi der løber i modløb. Forværring ved stress og følelser uafhængigt af mad, sammen med smerter under ribbenene, fortæller at Leveren invaderer Milten.'
+    note: 'Når oppustetheden forværres af mad generelt og ledsages af træthed, er det en svag Milt. Forværres den af specifikke fødevarer — fede, kolde eller rå — sammen med raben og sure opstød, er det Mavesækkens energi der løber den forkerte vej op. Forværring ved stress og følelser uafhængigt af mad, sammen med smerter under ribbenene, fortæller at Leveren presser ind på Milten.'
   },
   {
     symptom: 'Overdreven slim/opspyt',
@@ -5109,7 +5109,7 @@ const symptomReference = [
   {
     symptom: 'Tab af lugte- eller smagssans',
     organs: ['Lunger', 'Milt', 'Mavesæk'],
-    note: 'Lugtesansen er Lungernes domæne — den åbner til næsen; smagssansen tilhører Milt og Mavesæk og åbner til munden. Tab af lugt med tilstoppet næse og tyk slim er Slim-Hede der blokerer Lungerne. Tab af smag sammen med manglende appetit peger mod Mavesæk-Yin. Og reduceret smag med en slim-fornemmelse i munden er Milt-Damp.'
+    note: 'Lugtesansen er Lungernes domæne — den åbner til næsen; smagssansen tilhører Milt og Mavesæk og åbner til munden. Tab af lugt med tilstoppet næse og tyk slim er varm slim der blokerer Lungerne. Tab af smag sammen med manglende appetit peger mod en svækket kølende reserve i Mavesækken. Og reduceret smag med en slim-fornemmelse i munden er fugt der har sat sig i Milten.'
   },
   {
     symptom: 'Kronisk næsetilstopning',
@@ -5119,7 +5119,7 @@ const symptomReference = [
   {
     symptom: 'Hedeture',
     organs: ['Nyrer', 'Lever', 'Hjerte', 'Chong Mai'],
-    note: 'Pludselig opadstigende hede med svedudbrud — særligt i ansigt og bryst, typisk perimenopausalt — fortæller at Nyre-Yin svigter og Lever-Yang stiger uden modvægt. Følges det af palpitationer og søvnløshed, er Hjerte-Yin også involveret. Chong Mai aktiveres typisk ved hormonelle skift, og opadstrømmen følger dens akse fra underliv til bryst.'
+    note: 'Pludselig opadstigende hede med svedudbrud — særligt i ansigt og bryst, typisk perimenopausalt — fortæller at Nyrernes kølende reserve er løbet tør og energien i Leveren stiger uden modvægt. Følges det af palpitationer og søvnløshed, er Hjertets kølende ro også svækket. Chong Mai aktiveres typisk ved hormonelle skift, og opadstrømmen følger dens akse fra underliv til bryst.'
   },
   {
     symptom: 'Spontan svedtendens i dagtimerne',
