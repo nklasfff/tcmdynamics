@@ -4082,6 +4082,73 @@ html[data-theme-transitioning] * {
   margin-top: 18px;
 }
 
+.clients-actions-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 460px;
+  margin: 10px auto 0;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Element decoration row on info screens */
+.info-element-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 4px 0 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.info-element-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1.5px solid;
+  user-select: none;
+}
+
+.info-element-tree { color: #5cc98e; border-color: rgba(92, 201, 142, 0.4); background: rgba(92, 201, 142, 0.06); }
+.info-element-fire { color: #e88585; border-color: rgba(232, 133, 133, 0.4); background: rgba(232, 133, 133, 0.06); }
+.info-element-earth { color: #deb87a; border-color: rgba(222, 184, 122, 0.4); background: rgba(222, 184, 122, 0.06); }
+.info-element-metal { color: #a8c4d6; border-color: rgba(168, 196, 214, 0.4); background: rgba(168, 196, 214, 0.06); }
+.info-element-water { color: #7ba4da; border-color: rgba(123, 164, 218, 0.4); background: rgba(123, 164, 218, 0.06); }
+
+/* FAQ Q&A items */
+.info-qa-item {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.info-qa-item:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.info-qa-q {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.info-qa-a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+
 .clients-action-btn {
   display: inline-flex;
   align-items: center;

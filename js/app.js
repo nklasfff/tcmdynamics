@@ -129,8 +129,10 @@ const translations = {
     aboutTitle: 'About The Patterns Behind',
     aboutBody: [
       'The Patterns Behind is an app built as a companion tool to the material of the same name. It gives practitioners a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
+      'The clinical content draws on "The Patterns Behind" by Niklas Patursson, supplemented by classical sources from Giovanni Maciocia (The Foundations of Chinese Medicine, The Practice of Chinese Medicine, The Channels of Acupuncture, The Psyche in Chinese Medicine), Peter Deadman (A Manual of Acupuncture), and Cheng Xinnong (Chinese Acupuncture and Moxibustion).',
       'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.',
-      'It also includes a symptom analysis tool that, through cross-references, points to the organs, elements, meridians and 12 classical patterns most consistent with your client’s picture — and a local client archive so you can follow a course of treatment over time.'
+      'It also includes a symptom analysis tool that, through cross-references, points to the organs, elements, meridians and 12 classical patterns most consistent with your client’s picture — and a local client archive so you can follow a course of treatment over time.',
+      'The thought behind it: this app is not an authority that delivers a diagnosis. It is an entry tool that points to where you can begin listening. The pattern behind — what binds the symptoms together — is discovered in conversation and palpation, not in a spreadsheet. The app can remind you where to look; it cannot see the client for you.'
     ],
     howtoTitle: 'How to Use the App',
     howtoBody: [
@@ -140,6 +142,26 @@ const translations = {
       'My Clients: save analyses per client using a code (e.g. K01) — everything stays on your device. Follow the course over time with pattern bars, an element pentagon and a what-changed-since-last view. Export or import your archive as a JSON backup.',
       'Overviews: a quick reference to organs, the 12 patterns, symptoms and the conversation structure — even outside an active analysis. Tap any pattern or symptom to expand it.'
     ],
+    privacyTitle: 'Privacy and Data',
+    privacyBody: [
+      'Everything about your clients is stored locally on your device. Nothing is sent to a server, nothing to a cloud service, nothing to a third party. The app has no account, no login, no tracking.',
+      'When you save an analysis to a client, it is kept in your browser\'s local storage. That also means if you clear browser data or switch to a different device or browser, the data is gone — unless you exported it as a backup first.',
+      'Your responsibility: use a client code (e.g. K01 or a journal number), never a full name. The link between code and person stays safely in your clinic\'s own journal. The app does not know who the client is — only which symptoms and patterns have shown up over time.',
+      'Export saves a .json file to your device\'s default Download folder. Import opens the same folder so you can pick a previous file. That is your backup when you switch device or browser. You can also move the file between devices via email, AirDrop or a USB key.'
+    ],
+    faqTitle: 'Questions and Answers',
+    faqBody: [
+      ['Can I use the app offline?', 'Yes. Once you have opened the site once, it works without internet. It is a web page, so you can save it to the home screen or as a bookmark.'],
+      ['Where is my client data stored?', 'Only locally in your browser, on the device you use. Nothing is sent to a server. See "Privacy and Data" for more.'],
+      ['Can I share an analysis with my client?', 'Yes. On the analysis result there is a "Copy summary" button that puts a plain summary on your clipboard. You can then paste it into an email, a note, or wherever.'],
+      ['Where is my exported archive?', 'The file tcm-clients-YYYYMMDD.json is saved in your device\'s default Download folder (Files app → Downloads on iPhone/iPad, Downloads folder on Mac/Windows/Android). When you import, you pick it from the same place.'],
+      ['Can I move my archive to a different device?', 'Yes. Export on one device, send the file to yourself (e.g. via email or AirDrop), save it on the other device, and import.'],
+      ['What do I do when a pattern does not clearly match?', 'That is normal. The result is an entry point — not a diagnosis. Use the dominant organ or element as a start, and let the conversation and palpation lead you deeper. If several patterns are tied without a clear lead, one of the extraordinary meridians may be the entry.'],
+      ['What is the difference between the live analysis and the one I save to a client?', 'They show the same result. The difference is that the saved version is remembered chronologically in My Clients, so you can see pattern shifts and the course over time.'],
+      ['Should I use the app as a practitioner tool or a client tool?', 'It is built for practitioners. The client sees nothing in the app directly — it helps you structure your view and your course of treatment.']
+    ],
+    menuPrivacy: 'Privacy and Data',
+    menuFaq: 'Questions and Answers',
     clockActiveNow: 'is active now',
     ariaMenu: 'Menu',
     ariaSearch: 'Search',
@@ -231,6 +253,7 @@ const translations = {
     importDone: 'Imported',
     importDoneSuffix: 'client(s)',
     importError: 'Could not read the file — is it a valid client archive?',
+    clientsActionsHint: 'Export saves a JSON file to your device\'s Download folder (Files app → Downloads on iPhone/iPad, Downloads on Mac/Windows). Import opens the same place so you can pick a previous file.',
     progressTitle: 'Progression',
     progressLead: 'How the primary pattern shifts across sessions',
     progressNoPattern: 'No clear pattern',
@@ -364,8 +387,10 @@ const translations = {
     aboutTitle: 'Om Mønstrene Bag',
     aboutBody: [
       'Mønstrene Bag er en app bygget som et følgeværktøj til materialet af samme navn. Den giver behandlere en praktisk reference til at forstå og kortlægge mønstre hos deres klienter baseret på Traditionel Kinesisk Medicin.',
+      'Det faglige indhold bygger på "Mønstrene Bag" af Niklas Patursson, suppleret med klassiske kilder fra blandt andre Giovanni Maciocia (The Foundations of Chinese Medicine, The Practice of Chinese Medicine, The Channels of Acupuncture, The Psyche in Chinese Medicine), Peter Deadman (A Manual of Acupuncture) og Cheng Xinnong (Chinese Acupuncture and Moxibustion).',
       'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element-teori, organuret og de grundlæggende TCM-principper — alt præsenteret med konkrete spørgsmål og temaer til brug i praksis.',
-      'Den indeholder også et symptom-analyse-værktøj der via krydsreferencer peger mod de organer, elementer, meridianer og 12 klassiske mønstre der bedst stemmer overens med klientens billede — samt et lokalt klient-arkiv så du kan følge et forløb over tid.'
+      'Den indeholder også et symptom-analyse-værktøj der via krydsreferencer peger mod de organer, elementer, meridianer og 12 klassiske mønstre der bedst stemmer overens med klientens billede — samt et lokalt klient-arkiv så du kan følge et forløb over tid.',
+      'Tanken bag: appen er ikke en autoritet der leverer en diagnose. Den er et indgangs-værktøj der peger på hvor du kan begynde at lytte. Mønstret bag — det der binder symptomerne sammen — opdages i samtalen og palpationen, ikke i et regneark. Appen kan minde dig om hvor du kan kigge; den kan ikke se klienten for dig.'
     ],
     howtoTitle: 'Sådan bruger du appen',
     howtoBody: [
@@ -375,6 +400,26 @@ const translations = {
       'Mine klienter: gem analyser per klient med en kode (fx K01) — alt opbevares lokalt på din enhed. Følg forløbet over tid med mønster-bar\'er, et element-pentagon og en oversigt over hvad der er kommet til eller sluppet siden sidste session. Eksportér eller importér dit arkiv som JSON-backup.',
       'Overblik: hurtigreference til organer, de 12 mønstre, symptomer og samtalestruktur — også uden for en aktiv analyse. Tryk på et mønster eller symptom for at folde det ud.'
     ],
+    privacyTitle: 'Privatliv og data',
+    privacyBody: [
+      'Alt om dine klienter gemmes lokalt på din enhed. Der sendes intet til en server, intet til en sky-tjeneste, intet til tredjepart. Appen har ingen konto, ingen indlogning, ingen sporing.',
+      'Når du gemmer en analyse til en klient, opbevares det i din browsers lokale lager (localStorage). Det betyder også at hvis du sletter browser-data eller skifter til en anden enhed eller browser, er data væk — medmindre du først har eksporteret dem som backup.',
+      'Dit ansvar: brug en klient-kode (fx K01 eller et journalnummer), aldrig et fuldt navn. Koblingen kode↔person ligger sikkert i din egen kliniks journal. Appen ved ikke hvem klienten er — kun hvilke symptomer og mønstre der har vist sig over tid.',
+      'Eksport gemmer en .json-fil i din enheds standard Download-mappe. Import åbner samme mappe så du kan vælge en tidligere fil. Det er din backup når du skifter enhed eller browser. Du kan også flytte filen mellem enheder via email, AirDrop eller en USB-nøgle.'
+    ],
+    faqTitle: 'Spørgsmål og svar',
+    faqBody: [
+      ['Kan jeg bruge appen offline?', 'Ja. Når du har åbnet siden én gang, virker den uden internet. Det er en webside, så du kan gemme den på hjemmeskærmen eller som bogmærke.'],
+      ['Hvor gemmes mine klient-data?', 'Kun lokalt i din browser, på den enhed du bruger. Der sendes intet til en server. Læs mere under "Privatliv og data".'],
+      ['Kan jeg dele en analyse med min klient?', 'Ja. På analyseresultatet er der en "Kopier resumé"-knap der lægger en plain-dansk opsummering på din udklipsholder. Du kan så indsætte den i en email, et notat eller hvor som helst.'],
+      ['Hvor er mit eksporterede arkiv?', 'Filen tcm-klienter-YYYYMMDD.json gemmes i din enheds standard Download-mappe (Files-appen → Downloads på iPhone/iPad, Downloads-mappen på Mac/Windows/Android). Når du importerer, vælger du den fra samme sted.'],
+      ['Kan jeg flytte mit arkiv til en anden enhed?', 'Ja. Eksportér på den ene enhed, send filen til dig selv (fx via email eller AirDrop), gem den på den anden enhed, og importér.'],
+      ['Hvad gør jeg når et mønster ikke matcher noget tydeligt?', 'Det er normalt. Resultatet er en indgangsvinkel — ikke en diagnose. Brug det dominerende organ eller element som start, og lad samtalen og palpationen lede dig dybere. Hvis flere mønstre bobler tæt sammen uden et klart hovedbillede, kan en af de ekstraordinære meridianer være indgangen.'],
+      ['Hvad er forskellen på live analyse og den jeg gemmer til en klient?', 'De viser samme resultat. Forskellen er at den gemte version huskes kronologisk i Mine klienter, så du over tid kan se mønster-skift og forløbet.'],
+      ['Skal jeg bruge appen som behandler-værktøj eller klient-værktøj?', 'Den er bygget til behandlere. Klienten ser ikke noget i appen direkte — den hjælper dig med at strukturere dit blik og dit forløb.']
+    ],
+    menuPrivacy: 'Privatliv og data',
+    menuFaq: 'Spørgsmål og svar',
     clockActiveNow: 'er aktivt nu',
     ariaMenu: 'Menu',
     ariaSearch: 'Søg',
@@ -466,6 +511,7 @@ const translations = {
     importDone: 'Importeret',
     importDoneSuffix: 'klient(er)',
     importError: 'Kunne ikke læse filen — er det et gyldigt klient-arkiv?',
+    clientsActionsHint: 'Eksport gemmer en JSON-fil i din enheds Download-mappe (Files-appen → Downloads på iPhone/iPad, Downloads-mappen på Mac/Windows). Import åbner samme sted så du kan vælge en tidligere fil.',
     progressTitle: 'Forløb',
     progressLead: 'Sådan har det primære mønster bevæget sig på tværs af sessioner',
     progressNoPattern: 'Intet klart mønster',
@@ -721,6 +767,8 @@ function updateUILanguage() {
     if (!text || text.nodeType !== 3) return;
     if (info === 'about') text.textContent = '\n          ' + t('menuAbout') + '\n        ';
     if (info === 'howto') text.textContent = '\n          ' + t('menuHowTo') + '\n        ';
+    if (info === 'privacy') text.textContent = '\n          ' + t('menuPrivacy') + '\n        ';
+    if (info === 'faq') text.textContent = '\n          ' + t('menuFaq') + '\n        ';
   });
 
   // Aria labels
@@ -1721,14 +1769,10 @@ function setupHamburger() {
 
 function showInfoModal(infoId) {
   const content = {
-    about: {
-      title: t('aboutTitle'),
-      body: t('aboutBody')
-    },
-    howto: {
-      title: t('howtoTitle'),
-      body: t('howtoBody')
-    }
+    about: { title: t('aboutTitle'), body: t('aboutBody'), kind: 'paragraphs' },
+    howto: { title: t('howtoTitle'), body: t('howtoBody'), kind: 'paragraphs' },
+    privacy: { title: t('privacyTitle'), body: t('privacyBody'), kind: 'paragraphs' },
+    faq: { title: t('faqTitle'), body: t('faqBody'), kind: 'qa' }
   };
 
   const info = content[infoId];
@@ -1738,9 +1782,34 @@ function showInfoModal(infoId) {
   document.getElementById('practice-detail-title').textContent = info.title;
   document.getElementById('practice-detail-subtitle').textContent = '';
 
+  let bodyHTML = '';
+  if (info.kind === 'qa') {
+    bodyHTML = info.body.map(([q, a]) => `
+      <div class="info-qa-item">
+        <div class="info-qa-q">${q}</div>
+        <p class="info-qa-a">${a}</p>
+      </div>
+    `).join('');
+  } else {
+    bodyHTML = info.body.map(p => `<p class="practice-section-text">${p}</p>`).join('');
+  }
+
+  // Add a small element-illustration row at the top of about + faq + privacy
+  const decoratedScreens = ['about', 'privacy', 'faq'];
+  const decoration = decoratedScreens.includes(infoId) ? `
+    <div class="info-element-row" aria-hidden="true">
+      <span class="info-element-dot info-element-tree" title="Træ">木</span>
+      <span class="info-element-dot info-element-fire" title="Ild">火</span>
+      <span class="info-element-dot info-element-earth" title="Jord">土</span>
+      <span class="info-element-dot info-element-metal" title="Metal">金</span>
+      <span class="info-element-dot info-element-water" title="Vand">水</span>
+    </div>
+  ` : '';
+
   document.getElementById('practice-detail-body').innerHTML = `
     <div class="practice-section">
-      ${info.body.map(p => `<p class="practice-section-text">${p}</p>`).join('')}
+      ${decoration}
+      ${bodyHTML}
     </div>
   `;
 
@@ -3132,6 +3201,8 @@ function renderClientsScreen() {
   if (discEl) discEl.textContent = t('clientsDisclaimer');
   if (exportLabel) exportLabel.textContent = t('exportArchive');
   if (importLabel) importLabel.textContent = t('importArchive');
+  const hintEl = screen.querySelector('#clients-actions-hint');
+  if (hintEl) hintEl.textContent = t('clientsActionsHint');
 
   const clients = listClients();
   if (!clients.length) {
