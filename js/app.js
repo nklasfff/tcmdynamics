@@ -128,14 +128,17 @@ const translations = {
     patternsIntro: 'Tap a pattern to see its description, differential, and treatment guidance',
     aboutTitle: 'About The Patterns Behind',
     aboutBody: [
-      'The Patterns Behind is an app built as a companion tool to the material of the same name. It provides practitioners with a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
-      'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.'
+      'The Patterns Behind is an app built as a companion tool to the material of the same name. It gives practitioners a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
+      'The app covers the 12 organs and meridians, the 8 extraordinary meridians, five element theory, the organ clock and the core TCM principles — all presented with concrete questions and themes for use in practice.',
+      'It also includes a symptom analysis tool that, through cross-references, points to the organs, elements, meridians and 12 classical patterns most consistent with your client’s picture — and a local client archive so you can follow a course of treatment over time.'
     ],
     howtoTitle: 'How to Use the App',
     howtoBody: [
-      'Use the bottom navigation to quickly jump between sections. "In Practice" provides guidance for the conversation with your client and the eight foundational questions.',
-      'Under each organ you will find 8 mapping themes with concrete questions you can ask your client. Use the organ clock to understand time patterns, and the five element section to see relationships between organs.',
-      'Tap an organ, element or meridian to see details. Use the tab navigation at the top to switch between overview, themes and key points.'
+      'Use the bottom navigation to jump between sections. "In Practice" guides the conversation with your client and the eight foundational questions.',
+      'Under each organ you find 8 mapping themes with concrete questions to ask. Use the organ clock to read time patterns and the five element section to see relationships between organs.',
+      'Symptom Analysis: pick 3–9 of the client’s symptoms and the app shows which organs, elements, meridians and patterns emerge. The result is an entry point for further dialogue and palpation — never a diagnosis.',
+      'My Clients: save analyses per client using a code (e.g. K01) — everything stays on your device. Follow the course over time with pattern bars, an element pentagon and a what-changed-since-last view. Export or import your archive as a JSON backup.',
+      'Overviews: a quick reference to organs, the 12 patterns, symptoms and the conversation structure — even outside an active analysis. Tap any pattern or symptom to expand it.'
     ],
     clockActiveNow: 'is active now',
     ariaMenu: 'Menu',
@@ -361,13 +364,16 @@ const translations = {
     aboutTitle: 'Om Mønstrene Bag',
     aboutBody: [
       'Mønstrene Bag er en app bygget som et følgeværktøj til materialet af samme navn. Den giver behandlere en praktisk reference til at forstå og kortlægge mønstre hos deres klienter baseret på Traditionel Kinesisk Medicin.',
-      'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element teori, organuret og de grundlæggende TCM-principper — alt præsenteret med konkrete spørgsmål og temaer til brug i praksis.'
+      'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element-teori, organuret og de grundlæggende TCM-principper — alt præsenteret med konkrete spørgsmål og temaer til brug i praksis.',
+      'Den indeholder også et symptom-analyse-værktøj der via krydsreferencer peger mod de organer, elementer, meridianer og 12 klassiske mønstre der bedst stemmer overens med klientens billede — samt et lokalt klient-arkiv så du kan følge et forløb over tid.'
     ],
-    howtoTitle: 'Sådan Bruger Du Appen',
+    howtoTitle: 'Sådan bruger du appen',
     howtoBody: [
-      'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "I Praksis" giver vejledning til samtalen med din klient og de otte grundlæggende spørgsmål.',
-      'Under hvert organ finder du 8 kortlægningstemaer med konkrete spørgsmål du kan stille din klient. Brug organuret til at forstå tidsmønstre, og fem-element sektionen til at se relationer mellem organer.',
-      'Tryk på et organ, element eller meridian for at se detaljer. Brug fanenavigationen øverst til at skifte mellem overblik, temaer og nøglepunkter.'
+      'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "I praksis" giver vejledning til samtalen med din klient og de otte grundlæggende spørgsmål.',
+      'Under hvert organ finder du 8 kortlægningstemaer med konkrete spørgsmål du kan stille klienten. Brug organuret til at forstå tidsmønstre, og fem-element-sektionen til at se relationer mellem organerne.',
+      'Symptom-Analyse: vælg 3-9 af klientens symptomer, og appen viser hvilke organer, elementer, meridianer og mønstre der træder frem. Resultatet er en indgangsvinkel til videre samtale og palpation — aldrig en diagnose.',
+      'Mine klienter: gem analyser per klient med en kode (fx K01) — alt opbevares lokalt på din enhed. Følg forløbet over tid med mønster-bar\'er, et element-pentagon og en oversigt over hvad der er kommet til eller sluppet siden sidste session. Eksportér eller importér dit arkiv som JSON-backup.',
+      'Overblik: hurtigreference til organer, de 12 mønstre, symptomer og samtalestruktur — også uden for en aktiv analyse. Tryk på et mønster eller symptom for at folde det ud.'
     ],
     clockActiveNow: 'er aktivt nu',
     ariaMenu: 'Menu',
