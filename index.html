@@ -694,7 +694,85 @@
         </div>
       </main>
     </div>
+
+    <!-- Clients List Screen -->
+    <div id="screen-clients" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-clients">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon">◈</span>
+          <h1 id="clients-title">Mine klienter</h1>
+          <p class="detail-nickname" id="clients-subtitle">Lokale forløbs-skitser. Forlader aldrig din enhed.</p>
+        </div>
+      </header>
+      <main class="detail-content">
+        <div class="clients-body">
+          <div class="clients-list" id="clients-list"></div>
+          <p class="clients-empty" id="clients-empty" hidden></p>
+          <p class="clients-disclaimer" id="clients-disclaimer"></p>
+        </div>
+      </main>
+    </div>
+
+    <!-- Client Detail Screen -->
+    <div id="screen-client-detail" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-client-detail">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon">◈</span>
+          <h1 id="client-detail-title"></h1>
+          <p class="detail-nickname" id="client-detail-subtitle"></p>
+        </div>
+      </header>
+      <main class="detail-content">
+        <div class="client-detail-body">
+          <div class="client-sessions-list" id="client-sessions-list"></div>
+          <p class="clients-empty" id="client-sessions-empty" hidden></p>
+          <button class="client-delete-btn" id="client-delete-btn" type="button">Slet klient</button>
+        </div>
+      </main>
+    </div>
   </div>
+
+  <!-- Save Dialog Modal -->
+  <div class="save-dialog" id="save-dialog" hidden>
+    <div class="save-dialog-backdrop"></div>
+    <div class="save-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="save-dialog-title">
+      <h2 class="save-dialog-title" id="save-dialog-title">Gem analyse</h2>
+      <div class="save-dialog-tabs">
+        <button class="save-dialog-tab" type="button" data-save-tab="existing">Eksisterende klient</button>
+        <button class="save-dialog-tab" type="button" data-save-tab="new">Ny klient</button>
+      </div>
+      <div class="save-dialog-body">
+        <div class="save-dialog-field" data-mode-only="existing">
+          <label class="save-dialog-label" for="save-existing-client" id="save-label-existing">Vælg klient</label>
+          <select id="save-existing-client" class="save-dialog-input"></select>
+        </div>
+        <div class="save-dialog-field" data-mode-only="new">
+          <label class="save-dialog-label" for="save-new-client-id" id="save-label-clientid">Klient-kode</label>
+          <input id="save-new-client-id" class="save-dialog-input" type="text" maxlength="32" autocomplete="off" />
+          <p class="save-dialog-hint" id="save-hint-clientid">Brug en kode, ikke et navn (fx K01, JN-1234)</p>
+        </div>
+        <div class="save-dialog-field">
+          <label class="save-dialog-label" for="save-notes" id="save-label-notes">Notater (valgfri)</label>
+          <textarea id="save-notes" class="save-dialog-input save-dialog-textarea" rows="3" maxlength="500"></textarea>
+        </div>
+      </div>
+      <div class="save-dialog-actions">
+        <button class="save-dialog-btn save-dialog-cancel" type="button" data-save-cancel>Annuller</button>
+        <button class="save-dialog-btn save-dialog-commit" type="button" data-save-commit>Gem</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save Toast -->
+  <div class="save-toast" id="save-toast">Gemt</div>
 
   <!-- Bottom Navigation -->
   <nav class="bottom-nav" id="bottom-nav">
@@ -790,6 +868,11 @@
           <!-- Overblik: vifte af stråler -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="19" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="19" x2="4" y2="14" opacity="0.45"/><line x1="12" y1="19" x2="7" y2="7" opacity="0.55"/><line x1="12" y1="19" x2="12" y2="4" opacity="0.7"/><line x1="12" y1="19" x2="17" y2="7" opacity="0.55"/><line x1="12" y1="19" x2="20" y2="14" opacity="0.45"/></svg>
           Overviews
+        </button>
+        <button class="hamburger-link" data-nav="clients" id="menu-clients-link">
+          <!-- Mine klienter: stiliseret journal-mappe -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><path d="M4 6 L10 6 L11.5 8 L20 8 L20 19 L4 19 Z" opacity="0.6"/><line x1="7" y1="12" x2="17" y2="12" opacity="0.5"/><line x1="7" y1="15" x2="14" y2="15" opacity="0.5"/></svg>
+          Mine klienter
         </button>
       </div>
 

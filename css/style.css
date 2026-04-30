@@ -3860,3 +3860,499 @@ html[data-theme-transitioning] * {
     min-width: 0;
   }
 }
+
+/* ============================================
+   Client History (Phase 1)
+   ============================================ */
+
+/* Save button alongside copy button */
+.sa-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.sa-save-btn:hover,
+.sa-save-btn:active {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.sa-result-actions {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Clients list screen */
+.clients-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 0 32px;
+}
+
+.clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.client-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: var(--font-sans);
+  text-align: left;
+}
+
+.client-card:hover {
+  border-color: var(--accent-gold);
+  background: var(--bg-card-hover);
+}
+
+.client-card-id {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--text-primary);
+  font-weight: 500;
+  flex: 0 0 auto;
+  min-width: 80px;
+}
+
+.client-card-meta {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.client-card-chevron {
+  color: var(--text-secondary);
+  flex: 0 0 auto;
+  opacity: 0.6;
+}
+
+.clients-empty {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 32px 16px;
+}
+
+.clients-disclaimer {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  font-style: italic;
+  opacity: 0.75;
+  padding: 16px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 24px;
+}
+
+/* Client detail */
+.client-detail-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 0 32px;
+}
+
+.client-sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.session-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.session-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-align: left;
+  color: inherit;
+}
+
+.session-card-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.session-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 0 0 auto;
+  min-width: 88px;
+}
+
+.session-card-num {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.session-card-date {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.session-card-summary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.session-card-organ {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.session-card-pattern {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.session-card-pattern-none {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.session-card-pct {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.session-card-chevron {
+  color: var(--text-secondary);
+  flex: 0 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.session-card.open .session-card-chevron {
+  transform: rotate(180deg);
+}
+
+.session-card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.session-card.open .session-card-body {
+  max-height: 1500px;
+  border-top: 1px solid var(--border-subtle);
+  padding: 14px 16px 16px;
+}
+
+.session-card-section {
+  margin-bottom: 12px;
+}
+
+.session-card-section:last-of-type {
+  margin-bottom: 8px;
+}
+
+.session-card-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.session-card-row {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.session-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.session-card-chip {
+  font-size: 12px;
+  padding: 3px 9px;
+  background: var(--bg-card-hover);
+  color: var(--text-secondary);
+  border-radius: 12px;
+}
+
+.session-card-notes {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.55;
+  background: var(--bg-card-hover);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  white-space: pre-wrap;
+}
+
+.session-delete-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  margin-top: 6px;
+  transition: all 0.18s ease;
+}
+
+.session-delete-btn:hover {
+  border-color: #c43c3c;
+  color: #c43c3c;
+}
+
+.client-delete-btn {
+  display: block;
+  margin: 24px auto 0;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.client-delete-btn:hover {
+  border-color: #c43c3c;
+  color: #c43c3c;
+}
+
+/* Save dialog */
+.save-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.save-dialog.open {
+  display: flex;
+}
+
+.save-dialog[hidden] {
+  display: none;
+}
+
+.save-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.save-dialog-panel {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 22px 22px 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.save-dialog-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin: 0 0 16px;
+  color: var(--text-primary);
+}
+
+.save-dialog-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card-hover);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  margin-bottom: 18px;
+}
+
+.save-dialog-tab {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-radius: calc(var(--radius-sm) - 2px);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.save-dialog-tab.active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.save-dialog-tab:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+.save-dialog[data-mode="existing"] [data-mode-only="new"],
+.save-dialog[data-mode="new"] [data-mode-only="existing"] {
+  display: none;
+}
+
+.save-dialog-field {
+  margin-bottom: 14px;
+}
+
+.save-dialog-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.save-dialog-input {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+}
+
+.save-dialog-input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+}
+
+.save-dialog-textarea {
+  resize: vertical;
+  min-height: 70px;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.save-dialog-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 4px 0 0;
+  font-style: italic;
+}
+
+.save-dialog-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.save-dialog-btn {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.save-dialog-cancel {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.save-dialog-cancel:hover {
+  color: var(--text-primary);
+}
+
+.save-dialog-commit {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-primary);
+  font-weight: 500;
+}
+
+.save-dialog-commit:hover {
+  filter: brightness(1.08);
+}
+
+[data-theme="light"] .save-dialog-commit {
+  color: #ffffff;
+}
+
+/* Save toast */
+.save-toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  padding: 10px 22px;
+  border-radius: 22px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1100;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.save-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+[data-theme="light"] .save-toast {
+  color: #ffffff;
+}

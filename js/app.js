@@ -189,7 +189,38 @@ const translations = {
     saPatternDifferential: 'Differential',
     saPatternTreatment: 'Approach',
     saPatternMatchedSymptoms: 'Symptoms in your selection that match',
-    saPatternEmpty: 'None of the 12 patterns clearly match your selection — try adjusting symptoms or treat the organ-resonance as the primary guide.'
+    saPatternEmpty: 'None of the 12 patterns clearly match your selection — try adjusting symptoms or treat the organ-resonance as the primary guide.',
+    menuClients: 'My Clients',
+    clientsTitle: 'My Clients',
+    clientsSubtitle: 'Local progression-sketches. Never leave your device.',
+    clientsEmpty: 'No saved clients yet. Save an analysis to start tracking a client over time.',
+    clientsDisclaimer: 'This is not a journal — it is your own progression-sketch. Use your clinic journal system for formal documentation.',
+    clientsSessionsLabel: 'sessions',
+    clientsSessionLabel: 'session',
+    clientsLastSession: 'Last',
+    saSaveToClient: 'Save to client',
+    saveDialogTitle: 'Save analysis',
+    saveDialogExisting: 'Existing client',
+    saveDialogNew: 'New client',
+    saveDialogClientId: 'Client code',
+    saveDialogClientIdHint: 'Use a code, not a name (e.g. K01, JN-1234)',
+    saveDialogNotes: 'Notes (optional)',
+    saveDialogNotesPlaceholder: 'Notes for this session...',
+    saveDialogSave: 'Save',
+    saveDialogCancel: 'Cancel',
+    saveDialogSaved: 'Saved',
+    saveDialogPickClient: 'Pick a client',
+    clientDetailDeleteClient: 'Delete client',
+    clientDetailDeleteSession: 'Delete session',
+    clientDetailConfirmDeleteClient: 'Delete this client and all sessions? This cannot be undone.',
+    clientDetailConfirmDeleteSession: 'Delete this session? This cannot be undone.',
+    clientDetailEmpty: 'No sessions saved.',
+    clientDetailSessionsTitle: 'Sessions',
+    sessionPrimary: 'Primary',
+    sessionPattern: 'Primary pattern',
+    sessionSymptoms: 'Symptoms',
+    sessionNotes: 'Notes',
+    sessionNoPattern: 'No clear pattern'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -375,7 +406,38 @@ const translations = {
     saPatternDifferential: 'Differential',
     saPatternTreatment: 'Tilgang',
     saPatternMatchedSymptoms: 'Symptomer i din udvælgelse der matcher',
-    saPatternEmpty: 'Ingen af de 12 mønstre matcher klart de valgte symptomer — overvej at justere udvælgelsen eller brug organ-resonansen som primær vejledning.'
+    saPatternEmpty: 'Ingen af de 12 mønstre matcher klart de valgte symptomer — overvej at justere udvælgelsen eller brug organ-resonansen som primær vejledning.',
+    menuClients: 'Mine klienter',
+    clientsTitle: 'Mine klienter',
+    clientsSubtitle: 'Lokale forløbs-skitser. Forlader aldrig din enhed.',
+    clientsEmpty: 'Ingen gemte klienter endnu. Gem en analyse for at begynde at følge en klient over tid.',
+    clientsDisclaimer: 'Dette er ikke en journal — det er din egen forløbs-skitse. Brug din kliniks journalsystem til formel dokumentation.',
+    clientsSessionsLabel: 'sessioner',
+    clientsSessionLabel: 'session',
+    clientsLastSession: 'Seneste',
+    saSaveToClient: 'Gem til klient',
+    saveDialogTitle: 'Gem analyse',
+    saveDialogExisting: 'Eksisterende klient',
+    saveDialogNew: 'Ny klient',
+    saveDialogClientId: 'Klient-kode',
+    saveDialogClientIdHint: 'Brug en kode, ikke et navn (fx K01, JN-1234)',
+    saveDialogNotes: 'Notater (valgfri)',
+    saveDialogNotesPlaceholder: 'Notater til denne session...',
+    saveDialogSave: 'Gem',
+    saveDialogCancel: 'Annuller',
+    saveDialogSaved: 'Gemt',
+    saveDialogPickClient: 'Vælg klient',
+    clientDetailDeleteClient: 'Slet klient',
+    clientDetailDeleteSession: 'Slet session',
+    clientDetailConfirmDeleteClient: 'Slet denne klient og alle sessioner? Dette kan ikke fortrydes.',
+    clientDetailConfirmDeleteSession: 'Slet denne session? Dette kan ikke fortrydes.',
+    clientDetailEmpty: 'Ingen sessioner gemt.',
+    clientDetailSessionsTitle: 'Sessioner',
+    sessionPrimary: 'Primært',
+    sessionPattern: 'Primært mønster',
+    sessionSymptoms: 'Symptomer',
+    sessionNotes: 'Notater',
+    sessionNoPattern: 'Intet klart mønster'
   }
 };
 
@@ -613,7 +675,7 @@ function updateUILanguage() {
     const nav = link.dataset.nav;
     const text = link.childNodes[link.childNodes.length - 1];
     if (!text || text.nodeType !== 3) return;
-    const menuMap = { home: 'menuHome', practice: 'menuPractice', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews' };
+    const menuMap = { home: 'menuHome', practice: 'menuPractice', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews', clients: 'menuClients' };
     if (menuMap[nav]) text.textContent = '\n          ' + t(menuMap[nav]) + '\n        ';
   });
 
@@ -1541,6 +1603,9 @@ function handleNavigation(navId) {
     case 'overviews':
       showScreen('section-overviews');
       break;
+    case 'clients':
+      showClientsScreen();
+      break;
   }
 }
 
@@ -2164,7 +2229,6 @@ function renderSymptomAnalysis() {
     <section class="sa-domain" data-sa-domain="${d.id}">
       <header class="sa-domain-header">
         <span class="sa-domain-title">${d.title}</span>
-        <span class="sa-domain-meta" data-sa-domain-meta="${d.id}">0 / ${d.indices.length}</span>
       </header>
       <div class="sa-domain-grid">
         ${d.indices.map(i => `
@@ -2210,13 +2274,10 @@ function updateSAState() {
       chip.classList.toggle('selected', selected);
       chip.classList.toggle('disabled', !selected && count >= SA_MAX);
     });
-    // Update per-domain meta counts
+    // Update per-domain selected-state highlight
     const domains = buildSADomainView();
     domains.forEach(d => {
-      const meta = grid.querySelector(`[data-sa-domain-meta="${d.id}"]`);
-      if (!meta) return;
       const groupCount = d.indices.filter(i => saSelected.has(i)).length;
-      meta.textContent = `${groupCount} / ${d.indices.length}`;
       const domainEl = grid.querySelector(`.sa-domain[data-sa-domain="${d.id}"]`);
       if (domainEl) domainEl.classList.toggle('has-selection', groupCount > 0);
     });
@@ -2618,6 +2679,14 @@ function renderSymptomAnalysisResults() {
           </svg>
           <span class="sa-copy-label">${t('saCopySummary')}</span>
         </button>
+        <button class="sa-save-btn" type="button" data-sa-save>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          <span class="sa-save-label">${t('saSaveToClient')}</span>
+        </button>
       </div>
     </div>
   `;
@@ -2655,6 +2724,13 @@ function renderSymptomAnalysisResults() {
     });
   });
 
+  results.querySelectorAll('[data-sa-save]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openSaveDialog();
+    });
+  });
+
   results.querySelectorAll('[data-sa-pattern-toggle]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -2689,6 +2765,387 @@ function showSymptomAnalysis() {
 }
 
 // ============================================
+// Client History (Phase 1) — local-only storage
+// ============================================
+const CLIENT_STORAGE_KEY = 'tcm-clients';
+const CLIENT_STORAGE_VERSION = 1;
+let activeClientId = null;
+
+function loadClientStorage() {
+  try {
+    const raw = localStorage.getItem(CLIENT_STORAGE_KEY);
+    if (!raw) return { version: CLIENT_STORAGE_VERSION, clients: {} };
+    const parsed = JSON.parse(raw);
+    if (!parsed || !parsed.clients) return { version: CLIENT_STORAGE_VERSION, clients: {} };
+    return parsed;
+  } catch (e) {
+    console.error('Failed to load client storage', e);
+    return { version: CLIENT_STORAGE_VERSION, clients: {} };
+  }
+}
+
+function persistClientStorage(data) {
+  try {
+    localStorage.setItem(CLIENT_STORAGE_KEY, JSON.stringify(data));
+    return true;
+  } catch (e) {
+    console.error('Failed to save client storage', e);
+    return false;
+  }
+}
+
+function listClients() {
+  const data = loadClientStorage();
+  return Object.values(data.clients).sort((a, b) => {
+    const aDate = a.updated || a.created || '';
+    const bDate = b.updated || b.created || '';
+    return bDate.localeCompare(aDate);
+  });
+}
+
+function getClientRecord(clientId) {
+  const data = loadClientStorage();
+  return data.clients[clientId] || null;
+}
+
+function saveClientSession(clientId, sessionData) {
+  const trimmed = (clientId || '').trim();
+  if (!trimmed) return false;
+  const data = loadClientStorage();
+  const now = new Date().toISOString();
+  if (!data.clients[trimmed]) {
+    data.clients[trimmed] = { id: trimmed, created: now, sessions: [] };
+  }
+  data.clients[trimmed].sessions.push({
+    id: 'sess-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+    date: now,
+    ...sessionData
+  });
+  data.clients[trimmed].updated = now;
+  return persistClientStorage(data);
+}
+
+function deleteClientRecord(clientId) {
+  const data = loadClientStorage();
+  delete data.clients[clientId];
+  return persistClientStorage(data);
+}
+
+function deleteClientSession(clientId, sessionId) {
+  const data = loadClientStorage();
+  const client = data.clients[clientId];
+  if (!client) return false;
+  client.sessions = client.sessions.filter(s => s.id !== sessionId);
+  client.updated = new Date().toISOString();
+  return persistClientStorage(data);
+}
+
+function buildSessionFromCurrentAnalysis(notes) {
+  const { picked, tally } = computeSymptomResonance();
+  const elementTally = computeElementResonance(tally);
+  const meridianTally = computeMeridianResonance(tally);
+  const patternResonance = computePatternResonance(picked);
+  return {
+    symptoms: picked.map(s => s.symptom),
+    organs: tally.slice(0, 5).map(o => ({ name: o.name, hits: o.hits, pct: Math.round(o.percentage * 100) })),
+    element: elementTally[0] ? { name: elementTally[0].name, pct: Math.round(elementTally[0].percentage * 100) } : null,
+    meridians: meridianTally.slice(0, 3).map(m => ({ name: m.ref.name, hits: m.hits })),
+    patterns: patternResonance.slice(0, 3).map(p => ({ name: p.pattern.name, score: Math.round(p.score * 100) })),
+    notes: (notes || '').trim()
+  };
+}
+
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// ----- Save dialog -----
+function openSaveDialog() {
+  const dialog = document.getElementById('save-dialog');
+  if (!dialog) return;
+  const existingClients = listClients();
+  const select = dialog.querySelector('#save-existing-client');
+  const newInput = dialog.querySelector('#save-new-client-id');
+  const notes = dialog.querySelector('#save-notes');
+  const titleEl = dialog.querySelector('#save-dialog-title');
+  const tabExisting = dialog.querySelector('[data-save-tab="existing"]');
+  const tabNew = dialog.querySelector('[data-save-tab="new"]');
+  const labelClientId = dialog.querySelector('#save-label-clientid');
+  const hintClientId = dialog.querySelector('#save-hint-clientid');
+  const labelNotes = dialog.querySelector('#save-label-notes');
+  const cancelBtn = dialog.querySelector('[data-save-cancel]');
+  const commitBtn = dialog.querySelector('[data-save-commit]');
+
+  if (titleEl) titleEl.textContent = t('saveDialogTitle');
+  if (tabExisting) tabExisting.textContent = t('saveDialogExisting');
+  if (tabNew) tabNew.textContent = t('saveDialogNew');
+  if (labelClientId) labelClientId.textContent = t('saveDialogClientId');
+  if (hintClientId) hintClientId.textContent = t('saveDialogClientIdHint');
+  if (labelNotes) labelNotes.textContent = t('saveDialogNotes');
+  if (cancelBtn) cancelBtn.textContent = t('saveDialogCancel');
+  if (commitBtn) commitBtn.textContent = t('saveDialogSave');
+  if (notes) notes.placeholder = t('saveDialogNotesPlaceholder');
+
+  if (select) {
+    select.innerHTML = `<option value="">${escapeHtml(t('saveDialogPickClient'))}</option>` +
+      existingClients.map(c => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.id)}</option>`).join('');
+  }
+  if (newInput) newInput.value = '';
+  if (notes) notes.value = '';
+
+  const startMode = existingClients.length > 0 ? 'existing' : 'new';
+  setSaveDialogMode(startMode);
+
+  // Hide "existing" tab if no clients yet
+  if (tabExisting) tabExisting.hidden = existingClients.length === 0;
+
+  dialog.hidden = false;
+  dialog.classList.add('open');
+  document.body.classList.add('save-dialog-open');
+}
+
+function closeSaveDialog() {
+  const dialog = document.getElementById('save-dialog');
+  if (!dialog) return;
+  dialog.classList.remove('open');
+  dialog.hidden = true;
+  document.body.classList.remove('save-dialog-open');
+}
+
+function setSaveDialogMode(mode) {
+  const dialog = document.getElementById('save-dialog');
+  if (!dialog) return;
+  dialog.dataset.mode = mode;
+  dialog.querySelectorAll('[data-save-tab]').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.saveTab === mode);
+  });
+}
+
+function commitSaveDialog() {
+  const dialog = document.getElementById('save-dialog');
+  if (!dialog) return;
+  const mode = dialog.dataset.mode || 'new';
+  const select = dialog.querySelector('#save-existing-client');
+  const newInput = dialog.querySelector('#save-new-client-id');
+  const notes = dialog.querySelector('#save-notes');
+  let clientId = '';
+  if (mode === 'existing') {
+    clientId = (select?.value || '').trim();
+  } else {
+    clientId = (newInput?.value || '').trim();
+  }
+  if (!clientId) {
+    if (mode === 'existing' && select) select.focus();
+    if (mode === 'new' && newInput) newInput.focus();
+    return;
+  }
+  const sessionData = buildSessionFromCurrentAnalysis(notes?.value || '');
+  const ok = saveClientSession(clientId, sessionData);
+  if (ok) {
+    closeSaveDialog();
+    showSavedToast();
+  }
+}
+
+function showSavedToast() {
+  const toast = document.getElementById('save-toast');
+  if (!toast) return;
+  toast.textContent = t('saveDialogSaved');
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+// ----- Client list screen -----
+function renderClientsScreen() {
+  const screen = document.getElementById('screen-clients');
+  if (!screen) return;
+  const titleEl = screen.querySelector('#clients-title');
+  const subEl = screen.querySelector('#clients-subtitle');
+  const listEl = screen.querySelector('#clients-list');
+  const emptyEl = screen.querySelector('#clients-empty');
+  const discEl = screen.querySelector('#clients-disclaimer');
+  if (titleEl) titleEl.textContent = t('clientsTitle');
+  if (subEl) subEl.textContent = t('clientsSubtitle');
+  if (discEl) discEl.textContent = t('clientsDisclaimer');
+
+  const clients = listClients();
+  if (!clients.length) {
+    if (listEl) listEl.innerHTML = '';
+    if (emptyEl) {
+      emptyEl.textContent = t('clientsEmpty');
+      emptyEl.hidden = false;
+    }
+    return;
+  }
+  if (emptyEl) emptyEl.hidden = true;
+  if (!listEl) return;
+  const dateLocale = getLanguage() === 'da' ? 'da-DK' : 'en-US';
+  listEl.innerHTML = clients.map(c => {
+    const sessionCount = c.sessions.length;
+    const lastDate = c.sessions[c.sessions.length - 1]?.date;
+    const lastStr = lastDate ? new Date(lastDate).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+    const sessionLabel = sessionCount === 1 ? t('clientsSessionLabel') : t('clientsSessionsLabel');
+    return `
+      <button class="client-card" data-client-id="${escapeHtml(c.id)}" type="button">
+        <div class="client-card-id">${escapeHtml(c.id)}</div>
+        <div class="client-card-meta">${sessionCount} ${escapeHtml(sessionLabel)} · ${escapeHtml(t('clientsLastSession'))} ${escapeHtml(lastStr)}</div>
+        <svg class="client-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    `;
+  }).join('');
+  listEl.querySelectorAll('[data-client-id]').forEach(card => {
+    card.addEventListener('click', () => {
+      activeClientId = card.dataset.clientId;
+      showClientDetail();
+    });
+  });
+}
+
+function showClientsScreen() {
+  renderClientsScreen();
+  showScreen('clients');
+}
+
+// ----- Client detail screen -----
+function renderClientDetail() {
+  const screen = document.getElementById('screen-client-detail');
+  if (!screen || !activeClientId) return;
+  const client = getClientRecord(activeClientId);
+  if (!client) {
+    showClientsScreen();
+    return;
+  }
+  const titleEl = screen.querySelector('#client-detail-title');
+  const subEl = screen.querySelector('#client-detail-subtitle');
+  const listEl = screen.querySelector('#client-sessions-list');
+  const emptyEl = screen.querySelector('#client-sessions-empty');
+  const deleteBtn = screen.querySelector('#client-delete-btn');
+  if (titleEl) titleEl.textContent = client.id;
+  const dateLocale = getLanguage() === 'da' ? 'da-DK' : 'en-US';
+  if (subEl) {
+    const count = client.sessions.length;
+    const label = count === 1 ? t('clientsSessionLabel') : t('clientsSessionsLabel');
+    subEl.textContent = `${count} ${label}`;
+  }
+  if (deleteBtn) deleteBtn.textContent = t('clientDetailDeleteClient');
+
+  if (!client.sessions.length) {
+    if (listEl) listEl.innerHTML = '';
+    if (emptyEl) {
+      emptyEl.textContent = t('clientDetailEmpty');
+      emptyEl.hidden = false;
+    }
+    return;
+  }
+  if (emptyEl) emptyEl.hidden = true;
+  if (!listEl) return;
+
+  const sessions = [...client.sessions].sort((a, b) => b.date.localeCompare(a.date));
+  listEl.innerHTML = sessions.map((s, i) => {
+    const dateStr = new Date(s.date).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+    const primaryOrgan = s.organs?.[0];
+    const primaryPattern = s.patterns?.[0];
+    const num = sessions.length - i;
+    return `
+      <div class="session-card" data-session-id="${escapeHtml(s.id)}">
+        <button class="session-card-header" type="button" data-session-toggle>
+          <div class="session-card-meta">
+            <span class="session-card-num">#${num}</span>
+            <span class="session-card-date">${escapeHtml(dateStr)}</span>
+          </div>
+          <div class="session-card-summary">
+            ${primaryOrgan ? `<span class="session-card-organ">${escapeHtml(primaryOrgan.name)}</span>` : ''}
+            ${primaryPattern ? `<span class="session-card-pattern">${escapeHtml(primaryPattern.name)} <span class="session-card-pct">${primaryPattern.score}%</span></span>` : `<span class="session-card-pattern session-card-pattern-none">${escapeHtml(t('sessionNoPattern'))}</span>`}
+          </div>
+          <svg class="session-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="session-card-body">
+          ${s.symptoms?.length ? `
+            <div class="session-card-section">
+              <div class="session-card-section-label">${escapeHtml(t('sessionSymptoms'))}</div>
+              <div class="session-card-chips">
+                ${s.symptoms.map(sym => `<span class="session-card-chip">${escapeHtml(sym)}</span>`).join('')}
+              </div>
+            </div>` : ''}
+          ${s.element ? `
+            <div class="session-card-section">
+              <div class="session-card-section-label">Element</div>
+              <div class="session-card-row">${escapeHtml(s.element.name)} (${s.element.pct}%)</div>
+            </div>` : ''}
+          ${s.organs?.length ? `
+            <div class="session-card-section">
+              <div class="session-card-section-label">Organer</div>
+              <div class="session-card-row">${s.organs.map(o => `${escapeHtml(o.name)} (${o.hits})`).join(' · ')}</div>
+            </div>` : ''}
+          ${s.patterns?.length ? `
+            <div class="session-card-section">
+              <div class="session-card-section-label">Mønstre</div>
+              <div class="session-card-row">${s.patterns.map(p => `${escapeHtml(p.name)} (${p.score}%)`).join(' · ')}</div>
+            </div>` : ''}
+          ${s.notes ? `
+            <div class="session-card-section">
+              <div class="session-card-section-label">${escapeHtml(t('sessionNotes'))}</div>
+              <div class="session-card-notes">${escapeHtml(s.notes)}</div>
+            </div>` : ''}
+          <button class="session-delete-btn" type="button" data-session-delete="${escapeHtml(s.id)}">${escapeHtml(t('clientDetailDeleteSession'))}</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  listEl.querySelectorAll('[data-session-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.session-card');
+      if (card) card.classList.toggle('open');
+    });
+  });
+  listEl.querySelectorAll('[data-session-delete]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (confirm(t('clientDetailConfirmDeleteSession'))) {
+        deleteClientSession(activeClientId, btn.dataset.sessionDelete);
+        renderClientDetail();
+      }
+    });
+  });
+}
+
+function showClientDetail() {
+  renderClientDetail();
+  showScreen('client-detail');
+}
+
+function setupClientHistory() {
+  const backFromClients = document.getElementById('btn-back-clients');
+  if (backFromClients) backFromClients.addEventListener('click', () => showScreen('home'));
+  const backFromDetail = document.getElementById('btn-back-client-detail');
+  if (backFromDetail) backFromDetail.addEventListener('click', () => showClientsScreen());
+
+  const dialog = document.getElementById('save-dialog');
+  if (dialog) {
+    dialog.querySelectorAll('[data-save-tab]').forEach(tab => {
+      tab.addEventListener('click', () => setSaveDialogMode(tab.dataset.saveTab));
+    });
+    dialog.querySelector('[data-save-cancel]')?.addEventListener('click', closeSaveDialog);
+    dialog.querySelector('[data-save-commit]')?.addEventListener('click', commitSaveDialog);
+    dialog.querySelector('.save-dialog-backdrop')?.addEventListener('click', closeSaveDialog);
+  }
+
+  const deleteClientBtn = document.getElementById('client-delete-btn');
+  if (deleteClientBtn) {
+    deleteClientBtn.addEventListener('click', () => {
+      if (!activeClientId) return;
+      if (confirm(t('clientDetailConfirmDeleteClient'))) {
+        deleteClientRecord(activeClientId);
+        activeClientId = null;
+        showClientsScreen();
+      }
+    });
+  }
+}
+
+// ============================================
 // Init
 // ============================================
 function init() {
@@ -2711,6 +3168,7 @@ function init() {
   try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
   try { renderSymptomAnalysis(); } catch(e) { console.error('renderSymptomAnalysis:', e); }
   try { setupSymptomAnalysis(); } catch(e) { console.error('setupSymptomAnalysis:', e); }
+  try { setupClientHistory(); } catch(e) { console.error('setupClientHistory:', e); }
   try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
   try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }
