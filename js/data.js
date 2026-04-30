@@ -5159,12 +5159,12 @@ const symptomReference = [
   {
     symptom: 'Vedvarende vaginalt udflåd',
     organs: ['Dai Mai', 'Milt', 'Nyrer', 'Lever'],
-    note: 'Et klassisk Dai Mai-symptom. Rigeligt klart eller hvidt udflåd uden lugt sammen med træthed fortæller at Milt-Qi synker og Dai Mai er "for løst". Tykt, gult og ildelugtende udflåd med tørst og kløe er Damp-Hede der siver ned i Dai Mai — typisk fra Lever eller Galdeblære. Klart, vandigt udflåd kombineret med kuldskærhed og lændesvaghed er Nyre-Yang og Dai Mai-tomhed der mødes.'
+    note: 'Et klassisk Dai Mai-symptom. Rigeligt klart eller hvidt udflåd uden lugt sammen med træthed fortæller at Miltens energi synker og Dai Mai er "for løst". Tykt, gult og ildelugtende udflåd med tørst og kløe er fugt og varme der siver ned i Dai Mai — typisk fra Lever eller Galdeblære. Klart, vandigt udflåd kombineret med kuldskærhed og lændesvaghed er en svigtende dyb varmekraft i Nyrerne og Dai Mai-tomhed der mødes.'
   },
   {
     symptom: 'Tunghed og svaghed i benene',
     organs: ['Dai Mai', 'Milt', 'Nyrer'],
-    note: 'Et klassisk billede knyttet til Dai Mai. Følelsen af at benene "ikke vil bære" kombineret med tunge lemmer og en opsvulmet mave omkring taljen fortæller at Dai Mai er "for løst" og Milt- og Nyre-Qi synker. Følges det af kolde knæ, klar urin og lændesvaghed, er Nyre-Yang primært involveret. Dominerer træthed efter måltider og dårlig appetit derimod, er det Milten. Vigtigt at adskille fra almindelig udmattelse — her svigter specifikt UNDERKROPPEN.'
+    note: 'Et klassisk billede knyttet til Dai Mai. Følelsen af at benene "ikke vil bære" kombineret med tunge lemmer og en opsvulmet mave omkring taljen fortæller at Dai Mai er "for løst" og energien i Milten og Nyrerne synker. Følges det af kolde knæ, klar urin og lændesvaghed, er den dybe varmekraft i Nyrerne primært involveret. Dominerer træthed efter måltider og dårlig appetit derimod, er det Milten. Vigtigt at adskille fra almindelig udmattelse — her svigter specifikt UNDERKROPPEN.'
   },
   {
     symptom: 'Udtalt søvnighed i dagtimerne',
@@ -5174,7 +5174,7 @@ const symptomReference = [
   {
     symptom: 'Kramper indersiden af benene',
     organs: ['Yin Qiao Mai', 'Lever', 'Nyrer'],
-    note: 'Yin Qiao kontrollerer tonus i benenes mediale muskulatur. Når Yin Qiao er i Fuldhed, trækker indersiden sig sammen og foden vender indad ved gang. En vigtig diskriminator: er kramperne primært på YDERSIDEN, peger det i stedet mod Yang Qiao Mai. Følges de af tørre tånegle og blod-mangel, er Lever-Blod også involveret. En klassisk indikation: tendens til at "snuble" på grund af ubalancen mellem indre og ydre bentonus.'
+    note: 'Yin Qiao kontrollerer tonus i benenes mediale muskulatur. Når Yin Qiao er i Fuldhed, trækker indersiden sig sammen og foden vender indad ved gang. En vigtig diskriminator: er kramperne primært på YDERSIDEN, peger det i stedet mod Yang Qiao Mai. Følges de af tørre tånegle og blod-mangel, er Leverens blodreserve også involveret. En klassisk indikation: tendens til at "snuble" på grund af ubalancen mellem indre og ydre bentonus.'
   },
   {
     symptom: 'Søvnløshed med rastløshed',
@@ -5194,7 +5194,7 @@ const symptomReference = [
   {
     symptom: 'Ledsmerter med følelsesløshed og prikken',
     organs: ['Yin Wei Mai', 'Lever', 'Milt'],
-    note: 'Et klassisk Yin Wei Mai-billede: ledsmerter UDEN hævelse eller hede, men med markant følelsesløshed og prikken — typisk på flere steder samtidig. Adskil fra Yang Wei (mere lateralt, mere akut, ofte med varme) og fra Lever-Vind (mere spasmer eller trækninger). Ses især hos kvinder med Blod-svigt: blege negle, blege læber, sparsom menstruation og let svimmelhed der vidner om reservens dybde.'
+    note: 'Et klassisk Yin Wei Mai-billede: ledsmerter UDEN hævelse eller hede, men med markant følelsesløshed og prikken — typisk på flere steder samtidig. Adskil fra Yang Wei (mere lateralt, mere akut, ofte med varme) og fra spasmer der udspringer fra en urolig Lever (mere spasmer eller trækninger). Ses især hos kvinder med en udtømt blodreserve: blege negle, blege læber, sparsom menstruation og let svimmelhed der vidner om reservens dybde.'
   },
   {
     symptom: 'Skiftevis kulde- og hedefornemmelser',
@@ -5204,7 +5204,7 @@ const symptomReference = [
   {
     symptom: 'Smerter langs kroppens side',
     organs: ['Yang Wei Mai', 'Galdeblære', 'Lever'],
-    note: 'Yang Wei Mai er domæne for "siderne" — smerter eller spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hoften og lateralt langs låret. Adskil fra ren Lever-Qi-stagnation, der har en mere emotionel trigger, mere distensiv kvalitet og er mindre fast lokaliseret. Adskil også fra Dai Mai, hvor det mere er en "bælte"-fornemmelse omkring taljen, ofte med vaginalt udflåd. Yang Wei kommer særligt ind i billedet ved kronisk ensidig flanke-, hofte- eller skuldersmerte.'
+    note: 'Yang Wei Mai er domæne for "siderne" — smerter eller spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hoften og lateralt langs låret. Adskil fra ren Lever-energi der sidder fast, der har en mere emotionel trigger, mere distensiv kvalitet og er mindre fast lokaliseret. Adskil også fra Dai Mai, hvor det mere er en "bælte"-fornemmelse omkring taljen, ofte med vaginalt udflåd. Yang Wei kommer særligt ind i billedet ved kronisk ensidig flanke-, hofte- eller skuldersmerte.'
   }
 ];
 
