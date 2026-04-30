@@ -2010,18 +2010,27 @@ body.is-screen-home .top-float-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  padding: 6px 4px;
+  gap: 2px;
+  padding: 6px 2px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text-muted);
   font-family: var(--font-sans);
-  font-size: 10px;
-  letter-spacing: 0.2px;
+  font-size: 9px;
+  letter-spacing: 0.1px;
+  line-height: 1.2;
   transition: color 0.2s;
   flex: 1;
+  min-width: 0;
   -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item span {
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .bottom-nav-item svg {
