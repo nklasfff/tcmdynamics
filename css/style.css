@@ -3594,6 +3594,19 @@ html[data-theme-transitioning] * {
   margin: 0 0 18px 0;
 }
 
+.sa-pattern-plain {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 4px 0 8px;
+}
+
+.session-card-intensity {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
 .sa-pattern-section {
   margin-bottom: 14px;
 }

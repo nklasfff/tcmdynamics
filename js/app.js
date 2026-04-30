@@ -2449,7 +2449,7 @@ function buildSymptomAnalysisSummary() {
   const topPattern = patternResonance[0];
   if (topPattern) {
     lines.push(`${T.patternBehind}:`);
-    lines.push(`${topPattern.pattern.name} — ${Math.round(topPattern.score * 100)}% match`);
+    lines.push(`${topPattern.pattern.plainName || topPattern.pattern.name} — ${intensityWord(Math.round(topPattern.score * 100))}`);
     if (topPattern.pattern.summaryDescription) {
       lines.push(topPattern.pattern.summaryDescription);
     }
@@ -2528,7 +2528,7 @@ function renderSymptomAnalysisResults() {
         <div class="sa-element-meta">${elementData.season} · ${elementData.emotion}</div>
         <div class="sa-element-organs">${elementData.organs.join(' · ')}</div>
       </div>
-      <span class="sa-element-pct">${Math.round(topElement.percentage * 100)}%</span>
+      <span class="sa-element-pct">${intensityWord(Math.round(topElement.percentage * 100))}</span>
       <svg class="sa-element-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
     </button>
   ` : '';
@@ -2565,10 +2565,11 @@ function renderSymptomAnalysisResults() {
               <span class="sa-pattern-name">${row.pattern.name}</span>
               <span class="sa-pattern-chinese">${row.pattern.chinese}</span>
             </div>
+            ${row.pattern.plainName ? `<div class="sa-pattern-plain">${row.pattern.plainName}</div>` : ''}
             <div class="sa-pattern-meta-row">
               <span class="sa-pattern-tag">${row.pattern.organ}</span>
               <span class="sa-pattern-tag sa-pattern-tag-nature">${row.pattern.nature}</span>
-              <span class="sa-pattern-score">${Math.round(row.score * 100)}% ${t('saPatternMatch')}</span>
+              <span class="sa-pattern-score">${intensityWord(Math.round(row.score * 100))}</span>
             </div>
             <div class="sa-pattern-hits">
               ${row.keyHits.length ? `<span class="sa-pattern-hits-label">${t('saPatternKey')}:</span> ${row.keyHits.length}` : ''}
@@ -2859,6 +2860,20 @@ function escapeHtml(str) {
   return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+function intensityWord(pct) {
+  const isDa = getLanguage() === 'da';
+  if (pct < 40) return isDa ? 'antydet' : 'hint of';
+  if (pct < 60) return isDa ? 'tydelig' : 'clear';
+  if (pct < 80) return isDa ? 'markant' : 'marked';
+  return isDa ? 'udtalt' : 'pronounced';
+}
+
+function patternPlainName(name) {
+  if (!Array.isArray(patternLibrary)) return name;
+  const p = patternLibrary.find(x => x.name === name);
+  return (p && p.plainName) ? p.plainName : name;
+}
+
 // ----- Save dialog -----
 function openSaveDialog() {
   const dialog = document.getElementById('save-dialog');
@@ -3056,7 +3071,7 @@ function renderClientDetail() {
           </div>
           <div class="session-card-summary">
             ${primaryOrgan ? `<span class="session-card-organ">${escapeHtml(primaryOrgan.name)}</span>` : ''}
-            ${primaryPattern ? `<span class="session-card-pattern">${escapeHtml(primaryPattern.name)} <span class="session-card-pct">${primaryPattern.score}%</span></span>` : `<span class="session-card-pattern session-card-pattern-none">${escapeHtml(t('sessionNoPattern'))}</span>`}
+            ${primaryPattern ? `<span class="session-card-pattern">${escapeHtml(patternPlainName(primaryPattern.name))} <span class="session-card-intensity">— ${escapeHtml(intensityWord(primaryPattern.score))}</span></span>` : `<span class="session-card-pattern session-card-pattern-none">${escapeHtml(t('sessionNoPattern'))}</span>`}
           </div>
           <svg class="session-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -3071,7 +3086,7 @@ function renderClientDetail() {
           ${s.element ? `
             <div class="session-card-section">
               <div class="session-card-section-label">Element</div>
-              <div class="session-card-row">${escapeHtml(s.element.name)} (${s.element.pct}%)</div>
+              <div class="session-card-row">${escapeHtml(s.element.name)}-elementet — ${escapeHtml(intensityWord(s.element.pct))}</div>
             </div>` : ''}
           ${s.organs?.length ? `
             <div class="session-card-section">
@@ -3081,7 +3096,7 @@ function renderClientDetail() {
           ${s.patterns?.length ? `
             <div class="session-card-section">
               <div class="session-card-section-label">Mønstre</div>
-              <div class="session-card-row">${s.patterns.map(p => `${escapeHtml(p.name)} (${p.score}%)`).join(' · ')}</div>
+              <div class="session-card-row">${s.patterns.map(p => `${escapeHtml(patternPlainName(p.name))} (${escapeHtml(intensityWord(p.score))})`).join(' · ')}</div>
             </div>` : ''}
           ${s.notes ? `
             <div class="session-card-section">
