@@ -225,7 +225,14 @@ const translations = {
     importArchive: 'Import archive',
     importDone: 'Imported',
     importDoneSuffix: 'client(s)',
-    importError: 'Could not read the file — is it a valid client archive?'
+    importError: 'Could not read the file — is it a valid client archive?',
+    progressTitle: 'Progression',
+    progressLead: 'How the primary pattern shifts across sessions',
+    progressNoPattern: 'No clear pattern',
+    progressDiffTitle: 'Since last session',
+    progressDiffNew: 'Appeared',
+    progressDiffGone: 'Resolved',
+    progressDiffStable: 'No change in selected symptoms'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -447,7 +454,14 @@ const translations = {
     importArchive: 'Importér arkiv',
     importDone: 'Importeret',
     importDoneSuffix: 'klient(er)',
-    importError: 'Kunne ikke læse filen — er det et gyldigt klient-arkiv?'
+    importError: 'Kunne ikke læse filen — er det et gyldigt klient-arkiv?',
+    progressTitle: 'Forløb',
+    progressLead: 'Sådan har det primære mønster bevæget sig på tværs af sessioner',
+    progressNoPattern: 'Intet klart mønster',
+    progressDiffTitle: 'Siden sidst',
+    progressDiffNew: 'Kommet til',
+    progressDiffGone: 'Sluppet',
+    progressDiffStable: 'Ingen ændring i valgte symptomer'
   }
 };
 
@@ -3097,6 +3111,118 @@ function showClientsScreen() {
   showScreen('clients');
 }
 
+// ----- Progression visualization (Phase 2) -----
+function elementColor(name) {
+  const map = {
+    'Træ': '#5cc98e', 'Wood': '#5cc98e',
+    'Ild': '#e88585', 'Fire': '#e88585',
+    'Jord': '#deb87a', 'Earth': '#deb87a',
+    'Metal': '#a8c4d6',
+    'Vand': '#7ba4da', 'Water': '#7ba4da'
+  };
+  return map[name] || 'var(--accent-gold)';
+}
+
+function intensityWidth(pct) {
+  if (pct < 40) return 28;
+  if (pct < 60) return 52;
+  if (pct < 80) return 76;
+  return 100;
+}
+
+function renderProgressionHTML(sessionsAsc) {
+  if (!sessionsAsc || sessionsAsc.length < 2) return '';
+
+  const dateLocale = getLanguage() === 'da' ? 'da-DK' : 'en-US';
+  const fmtDate = d => new Date(d).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short' });
+
+  const rows = sessionsAsc.map((s, i) => {
+    const dateStr = fmtDate(s.date);
+    const num = i + 1;
+    const pat = s.patterns?.[0];
+    if (!pat) {
+      return `
+        <div class="progress-row">
+          <div class="progress-meta-col">
+            <div class="progress-num">#${num}</div>
+            <div class="progress-date">${escapeHtml(dateStr)}</div>
+          </div>
+          <div class="progress-bar-col">
+            <div class="progress-bar-track"></div>
+            <div class="progress-pattern progress-pattern-none">${escapeHtml(t('progressNoPattern'))}</div>
+          </div>
+        </div>
+      `;
+    }
+    const plainName = patternPlainName(pat.name);
+    const intensity = intensityWord(pat.score);
+    const width = intensityWidth(pat.score);
+    const elName = s.element?.name || '';
+    const color = elementColor(elName);
+    return `
+      <div class="progress-row">
+        <div class="progress-meta-col">
+          <div class="progress-num">#${num}</div>
+          <div class="progress-date">${escapeHtml(dateStr)}</div>
+        </div>
+        <div class="progress-bar-col">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: ${width}%; background: ${color}"></div>
+          </div>
+          <div class="progress-pattern">
+            <div class="progress-pattern-name">${escapeHtml(plainName)}</div>
+            <div class="progress-pattern-meta"><span class="progress-pattern-intensity">${escapeHtml(intensity)}</span>${elName ? ` · ${escapeHtml(elName)}-elementet` : ''}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Symptom diff between latest and previous
+  let diffHTML = '';
+  const last = sessionsAsc[sessionsAsc.length - 1];
+  const prev = sessionsAsc[sessionsAsc.length - 2];
+  const lastSyms = new Set(last.symptoms || []);
+  const prevSyms = new Set(prev.symptoms || []);
+  const newOnes = [...lastSyms].filter(s => !prevSyms.has(s));
+  const goneOnes = [...prevSyms].filter(s => !lastSyms.has(s));
+  if (newOnes.length || goneOnes.length) {
+    diffHTML = `
+      <div class="symptom-diff">
+        <div class="symptom-diff-label">${escapeHtml(t('progressDiffTitle'))}</div>
+        ${newOnes.length ? `
+          <div class="diff-row diff-new">
+            <span class="diff-arrow">↑</span>
+            <span class="diff-label">${escapeHtml(t('progressDiffNew'))}:</span>
+            <span class="diff-syms">${newOnes.map(s => `<span class="diff-chip diff-chip-new">${escapeHtml(s)}</span>`).join('')}</span>
+          </div>` : ''}
+        ${goneOnes.length ? `
+          <div class="diff-row diff-gone">
+            <span class="diff-arrow">↓</span>
+            <span class="diff-label">${escapeHtml(t('progressDiffGone'))}:</span>
+            <span class="diff-syms">${goneOnes.map(s => `<span class="diff-chip diff-chip-gone">${escapeHtml(s)}</span>`).join('')}</span>
+          </div>` : ''}
+      </div>
+    `;
+  } else {
+    diffHTML = `
+      <div class="symptom-diff symptom-diff-stable">
+        <div class="symptom-diff-label">${escapeHtml(t('progressDiffTitle'))}</div>
+        <div class="diff-row"><span class="diff-stable">${escapeHtml(t('progressDiffStable'))}</span></div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="client-progress">
+      <h3 class="client-progress-title">${escapeHtml(t('progressTitle'))}</h3>
+      <p class="client-progress-lead">${escapeHtml(t('progressLead'))}</p>
+      <div class="progress-rows">${rows}</div>
+      ${diffHTML}
+    </div>
+  `;
+}
+
 // ----- Client detail screen -----
 function renderClientDetail() {
   const screen = document.getElementById('screen-client-detail');
@@ -3120,8 +3246,11 @@ function renderClientDetail() {
   }
   if (deleteBtn) deleteBtn.textContent = t('clientDetailDeleteClient');
 
+  const progressEl = screen.querySelector('#client-progress-wrap');
+
   if (!client.sessions.length) {
     if (listEl) listEl.innerHTML = '';
+    if (progressEl) progressEl.innerHTML = '';
     if (emptyEl) {
       emptyEl.textContent = t('clientDetailEmpty');
       emptyEl.hidden = false;
@@ -3130,6 +3259,12 @@ function renderClientDetail() {
   }
   if (emptyEl) emptyEl.hidden = true;
   if (!listEl) return;
+
+  // Progression block (only if 2+ sessions)
+  if (progressEl) {
+    const sessionsAsc = [...client.sessions].sort((a, b) => a.date.localeCompare(b.date));
+    progressEl.innerHTML = renderProgressionHTML(sessionsAsc);
+  }
 
   const sessions = [...client.sessions].sort((a, b) => b.date.localeCompare(a.date));
   listEl.innerHTML = sessions.map((s, i) => {
