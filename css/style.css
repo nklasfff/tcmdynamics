@@ -3588,6 +3588,13 @@ html[data-theme-transitioning] * {
   padding: 14px 14px 16px;
 }
 
+.sa-pattern-summary {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 0 18px 0;
+}
+
 .sa-pattern-section {
   margin-bottom: 14px;
 }

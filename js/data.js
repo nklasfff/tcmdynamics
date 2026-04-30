@@ -5084,22 +5084,22 @@ const symptomReference = [
   {
     symptom: 'Svimmelhed',
     organs: ['Lever', 'Nyrer', 'Milt'],
-    note: 'Pludselig, voldsom svimmelhed ved stillingsskift + irritabilitet + rød tunge = Lever-Yang stiger. Tung, dump svimmelhed med kvalme og fornemmelse af vat i hovedet = Slim-Damp (Milt). Gradvis, forværres ved træthed + tinnitus + dårlig hukommelse = Nyre-Essens-svigt. Let svimmelhed efter måltider eller ved stress = Milt-Qi-svigt.'
+    note: 'Pludselig, voldsom svimmelhed ved stillingsskift + irritabilitet = Lever-Yang stiger. Tung, dump svimmelhed med kvalme og fornemmelse af vat i hovedet = Slim-Damp (Milt). Gradvis, forværres ved træthed + tinnitus + dårlig hukommelse = Nyre-Essens-svigt. Let svimmelhed efter måltider eller ved stress = Milt-Qi-svigt.'
   },
   {
     symptom: 'Tør mund med lyst til småslurke',
     organs: ['Mavesæk', 'Nyrer', 'Lunger'],
-    note: 'Lyst til småslurke (ikke store mængder) er nøglen — adskiller Yin-svigt fra Fuldhede. Tør mund + dårlig appetit på trods af sult + sprække i tungemidten = Mavesæk-Yin. Tør om natten + tinnitus + lændesmerter = Nyre-Yin. Tør hoste + tør næse + hæshed = Lunge-Yin.'
+    note: 'Lyst til småslurke (ikke store mængder) er nøglen — adskiller Yin-svigt fra Fuldhede. Tør mund + dårlig appetit på trods af sult = Mavesæk-Yin. Tør om natten + tinnitus + lændesmerter = Nyre-Yin. Tør hoste + tør næse + hæshed = Lunge-Yin.'
   },
   {
     symptom: 'Forstoppelse med tørre afføringer',
     organs: ['Tyktarm', 'Lever', 'Milt', 'Nyrer'],
-    note: 'Tørre småpebberlignende afføringer + udspilet mave + irritabilitet/sukken + lindring efter afføring = Lever-Qi-stagnation invaderer Tyktarm. Tørre afføringer + tør mund + rød tunge uden belægning = Yin/Væske-svigt (især hos ældre). Vanskelig afføring uden tørhed + udmattelse efter wc-besøg + bleg tunge = Milt-Qi-svigt med svag drivkraft.'
+    note: 'Tørre småpebberlignende afføringer + udspilet mave + irritabilitet/sukken + lindring efter afføring = Lever-Qi-stagnation invaderer Tyktarm. Tørre afføringer + tør mund = Yin/Væske-svigt (især hos ældre). Vanskelig afføring uden tørhed + udmattelse efter wc-besøg = Milt-Qi-svigt med svag drivkraft.'
   },
   {
     symptom: 'Oppustethed efter måltider',
     organs: ['Milt', 'Mavesæk', 'Lever'],
-    note: 'Forværres af mad generelt + træthed + bleg tunge = Milt-Qi-svigt. Forværres af specifikke (fede, kolde, rå) fødevarer + raben/sure opstød = Mavesæk-Qi i modløb. Forværres ved stress/følelser (uafhængigt af mad) + smerter under ribben = Lever invaderer Milt.'
+    note: 'Forværres af mad generelt + træthed = Milt-Qi-svigt. Forværres af specifikke (fede, kolde, rå) fødevarer + raben/sure opstød = Mavesæk-Qi i modløb. Forværres ved stress/følelser (uafhængigt af mad) + smerter under ribben = Lever invaderer Milt.'
   },
   {
     symptom: 'Overdreven slim/opspyt',
@@ -5109,7 +5109,7 @@ const symptomReference = [
   {
     symptom: 'Tab af lugte- eller smagssans',
     organs: ['Lunger', 'Milt', 'Mavesæk'],
-    note: 'Lugtesans er Lungernes domæne (åbnes til næsen); smagssans er Milt/Mavesæk (åbnes til munden). Tab af lugt med tilstoppet næse + tyk slim = Slim-Hede blokerer Lungerne. Tab af smag + manglende appetit + tør tunge uden belægning = Mavesæk-Yin. Reduceret smag + slim på tunge = Milt-Damp.'
+    note: 'Lugtesans er Lungernes domæne (åbnes til næsen); smagssans er Milt/Mavesæk (åbnes til munden). Tab af lugt med tilstoppet næse + tyk slim = Slim-Hede blokerer Lungerne. Tab af smag + manglende appetit = Mavesæk-Yin. Reduceret smag + slim-fornemmelse i munden = Milt-Damp.'
   },
   {
     symptom: 'Kronisk næsetilstopning',
@@ -5124,7 +5124,7 @@ const symptomReference = [
   {
     symptom: 'Spontan svedtendens i dagtimerne',
     organs: ['Lunger', 'Hjerte', 'Milt'],
-    note: 'Sved uden anstrengelse, forværres ved selv let aktivitet, stopper i hvile = Wei Qi/Lunge-Qi-svigt (Lungerne kontrollerer porene). Sved primært på bryst/ansigt + palpitationer + bleghed = Hjerte-Qi-svigt. Sved på pande/torso + træthed efter måltider + bleg tunge med tandmærker = Milt-Qi kan ikke holde på væsker. Adskil fra nattesved (Yin-svigt).'
+    note: 'Sved uden anstrengelse, forværres ved selv let aktivitet, stopper i hvile = Wei Qi/Lunge-Qi-svigt (Lungerne kontrollerer porene). Sved primært på bryst/ansigt + palpitationer + bleghed = Hjerte-Qi-svigt. Sved på pande/torso + træthed efter måltider = Milt-Qi kan ikke holde på væsker. Adskil fra nattesved (Yin-svigt).'
   },
   {
     symptom: 'Reduceret libido',
@@ -5134,7 +5134,7 @@ const symptomReference = [
   {
     symptom: 'Sæsonbaseret rhinitis/allergi',
     organs: ['Lunger', 'Milt', 'Nyrer'],
-    note: 'Akutte symptomer (nys, klar næseflod, kløende øjne) = Wei Qi-svaghed på overfladen, Lungerne kan ikke modstå Vind. Den underliggende svaghed afgøres af konstitution: træthed + dårlig appetit + bleg tunge = Milt-Qi (Wei Qi-roden). Kronisk fra barndom + kuldskærhed + lændesvaghed = Nyre-Yang (konstitutionel svaghed).'
+    note: 'Akutte symptomer (nys, klar næseflod, kløende øjne) = Wei Qi-svaghed på overfladen, Lungerne kan ikke modstå Vind. Den underliggende svaghed afgøres af konstitution: træthed + dårlig appetit = Milt-Qi (Wei Qi-roden). Kronisk fra barndom + kuldskærhed + lændesvaghed = Nyre-Yang (konstitutionel svaghed).'
   },
   {
     symptom: 'Vedvarende sorg/melankoli',
@@ -5159,7 +5159,7 @@ const symptomReference = [
   {
     symptom: 'Vedvarende vaginalt udflåd',
     organs: ['Dai Mai', 'Milt', 'Nyrer', 'Lever'],
-    note: 'Klassisk Dai Mai-symptom. Rigeligt klart/hvidt udflåd uden lugt + træthed + bleg tunge = Milt-Qi synker, Dai Mai er "for løst". Tykt gult ildelugtende udflåd + tørst + kløe = Damp-Hede der siver ned i Dai Mai (typisk fra Lever/Galdeblære). Klart vandigt + kuldskærhed + lændesvaghed = Nyre-Yang og Dai Mai-tomhed.'
+    note: 'Klassisk Dai Mai-symptom. Rigeligt klart/hvidt udflåd uden lugt + træthed = Milt-Qi synker, Dai Mai er "for løst". Tykt gult ildelugtende udflåd + tørst + kløe = Damp-Hede der siver ned i Dai Mai (typisk fra Lever/Galdeblære). Klart vandigt + kuldskærhed + lændesvaghed = Nyre-Yang og Dai Mai-tomhed.'
   },
   {
     symptom: 'Tunghed og svaghed i benene',
@@ -5184,12 +5184,12 @@ const symptomReference = [
   {
     symptom: 'Ensidig iskias på ydersiden af benet',
     organs: ['Yang Qiao Mai', 'Galdeblære', 'Blære'],
-    note: 'Yang Qiao Mai er særligt indikeret når smerten dækker MERE end én Yang-meridian (typisk Blære + Galdeblære, evt. også Mavesæk). Vigtigt: smerten skal være ENSIDIG (bilateral peger på andre vessels). Hvis smerten primært følger Galdeblærens forløb (yderside): tænk også Yang Wei Mai. Hvis pulsen er Fuld-Wiry og personen står frem som "tonisk anspændt" på ydersiden af benet med løse mediale muskler: klassisk Yang Qiao.'
+    note: 'Yang Qiao Mai er særligt indikeret når smerten dækker MERE end én Yang-meridian (typisk Blære + Galdeblære, evt. også Mavesæk). Vigtigt: smerten skal være ENSIDIG (bilateral peger på andre vessels). Hvis smerten primært følger Galdeblærens forløb (yderside): tænk også Yang Wei Mai. Hvis personen står frem som "tonisk anspændt" på ydersiden af benet med løse mediale muskler: klassisk Yang Qiao.'
   },
   {
     symptom: 'Trykkende brystsmerte med indre angst',
     organs: ['Yin Wei Mai', 'Hjerte', 'Pericardium'],
-    note: 'Klassisk Nan Jing kap. 29: "Når Yin Wei Mai er syg, er der hjertesmerte og depression". Vigtig diskriminator versus akut Hjerte-smerte: dette er DUMP, vedvarende ømhed/tryk i brystregionen, IKKE skarp stikkende smerte (sidstnævnte = Chong Mai/Blod-stase). Ledsages typisk af følelse af "at synke", emotionel sårbarhed, gråd uden tydelig årsag. Pulsen er Choppy eller Fine (Tomhed-mønster). Hyppig hos kvinder med Blod-svigt, postpartum.'
+    note: 'Klassisk Nan Jing kap. 29: "Når Yin Wei Mai er syg, er der hjertesmerte og depression". Vigtig diskriminator versus akut Hjerte-smerte: dette er DUMP, vedvarende ømhed/tryk i brystregionen, IKKE skarp stikkende smerte (sidstnævnte = Chong Mai/Blod-stase). Ledsages typisk af følelse af "at synke", emotionel sårbarhed, gråd uden tydelig årsag. Hyppig hos kvinder med Blod-svigt, postpartum.'
   },
   {
     symptom: 'Ledsmerter med følelsesløshed og prikken',
@@ -5199,12 +5199,12 @@ const symptomReference = [
   {
     symptom: 'Skiftevis kulde- og hedefornemmelser',
     organs: ['Yang Wei Mai', 'Galdeblære', 'San Jiao'],
-    note: 'Klassisk Yang Wei-tegn: Nan Jing kap. 29: "Når Yang Wei Mai er syg, er der [skiftevis følelse af] hede og [følelse af] kulde og irritabilitet". Skal IKKE forveksles med menopausale hedeture (Chong Mai) — her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem. Klassisk Shao Yang: pathogenen er fanget halvt i ydre og halvt i indre. Pulsen er Floating. Adskil fra ren Lunge-Qi-svaghed: her er der INTERMITTENS, ikke svaghed.'
+    note: 'Klassisk Yang Wei-tegn: Nan Jing kap. 29: "Når Yang Wei Mai er syg, er der [skiftevis følelse af] hede og [følelse af] kulde og irritabilitet". Skal IKKE forveksles med menopausale hedeture (Chong Mai) — her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem. Klassisk Shao Yang: pathogenen er fanget halvt i ydre og halvt i indre. Adskil fra ren Lunge-Qi-svaghed: her er der INTERMITTENS, ikke svaghed.'
   },
   {
     symptom: 'Smerter langs kroppens side',
     organs: ['Yang Wei Mai', 'Galdeblære', 'Lever'],
-    note: 'Yang Wei Mai er domæne for "siderne" — smerte/spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hofte og lateralt på lår. Adskil fra ren Lever-Qi-stagnation (mere emotionel trigger, mere distensiv kvalitet, mindre fast lokaliseret) og fra Dai Mai (mere "bælte"-fornemmelse omkring taljen, ofte med leucorrhea). Yang Wei kommer ind i billedet især ved KRONISK ensidig flanke-/hofte-/skuldersmerte med Floating puls.'
+    note: 'Yang Wei Mai er domæne for "siderne" — smerte/spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hofte og lateralt på lår. Adskil fra ren Lever-Qi-stagnation (mere emotionel trigger, mere distensiv kvalitet, mindre fast lokaliseret) og fra Dai Mai (mere "bælte"-fornemmelse omkring taljen, ofte med leucorrhea). Yang Wei kommer ind i billedet især ved KRONISK ensidig flanke-/hofte-/skuldersmerte.'
   }
 ];
 
@@ -5219,11 +5219,12 @@ const patternLibrary = [
     organ: 'Milt',
     element: 'Jord',
     nature: 'Qi-mangel',
-    description: 'Den hyppigste mangel-tilstand i klinisk praksis. Milt-Qi er roden af Post-Heaven Qi — den producerer energi og blod fra det vi spiser, holder organer på plads, holder blod i karrene og styrer transformation af væsker. Når den svigter, bliver hele systemet underforsynet.',
+    summaryDescription: 'Milten er svækket og har svært ved at omsætte mad og næring til den energi kroppen skal bruge. Det viser sig som træthed, oppustethed efter måltider og en tendens til let at blive forkølet. Bag billedet ligger ofte uregelmæssige måltider, kolde fødevarer eller for meget bekymring og overtænkning.',
+    description: 'Den mest udbredte mangel-tilstand vi møder. Milten har til opgave at omsætte mad til energi og blod, holde organerne på plads og holde væskerne i bevægelse. Når den svigter, bliver hele systemet underforsynet — energien siver, fordøjelsen bliver tung, og kroppen mister sin grundlæggende næring fra det den spiser.',
     keySymptoms: ['Træthed/energimangel', 'Oppustethed efter måltider', 'Spontan svedtendens i dagtimerne'],
     supportingSymptoms: ['Forstoppelse med tørre afføringer', 'Hyppige forkølelser', 'Vedvarende sorg/melankoli', 'Vedvarende vaginalt udflåd', 'Svimmelhed'],
-    differential: 'Skelnes fra Milt-Yang-mangel ved fravær af klare kuldsymptomer (kolde lemmer, klar urin). Ved tilstedeværelse af kulde → Milt-Yang. Ofte til stede sammen med Lunge-Qi-mangel (Yu Ping Feng San-billede).',
-    treatment: 'Stødt og opvarm Milten gennem regelmæssige måltider, sød og varm kost (kogte grøntsager, ris, rodfrugter); undgå kolde og rå fødevarer, mejeriprodukter, sukker. Reducer mental belastning og overdreven bekymring.'
+    differential: 'Hvis der er klare tegn på kulde — kolde lemmer, klar urin, kuldskærhed — peger det videre til Milt Yang-mangel. Uden kulde-tegn er det ren Qi-mangel. Mønstret optræder ofte sammen med en svækkelse af Lungerne, hvor klienten både er træt og let får forkølelser.',
+    treatment: 'Næring og varme er det centrale: regelmæssige måltider, varm tilberedt mad (kogte grøntsager, ris, rodfrugter, supper). Hold pause fra det kolde og rå — herunder mejeriprodukter, sukker og salat fra køleskabet. Skab plads i hverdagen til ro fra mental aktivitet — overdreven bekymring og overtænkning er det der ofte tærer Milten.'
   },
   {
     id: 'milt-yang-mangel',
@@ -5232,11 +5233,12 @@ const patternLibrary = [
     organ: 'Milt',
     element: 'Jord',
     nature: 'Yang-mangel',
-    description: 'En dybere udvikling af Milt-Qi-mangel hvor Yang også svigter. Milten kan ikke længere varme transformations-processen, og kuldsymptomer dominerer. Typisk efter langvarig kold/rå kost eller udmattelse.',
+    summaryDescription: 'Milten har mistet sin indre varme og kan ikke længere fordøje og omsætte mad ordentligt. Klienten oplever ofte kuldfornemmelse, morgendiarré og tunge ben. Det er en dybere udvikling af samme svaghed — kulden er nu kommet ind hvor energien før blot var lav.',
+    description: 'En dybere udvikling af Milt Qi-mangel hvor selve varmen i Milten er svækket. Den kan ikke længere fordøje og omsætte mad ordentligt, og kulden begynder at sætte sig indvendigt. Det ses ofte efter mange år med kold og rå kost, eller hos en der har trukket for længe på sin egen energi uden at fylde op.',
     keySymptoms: ['Morgendiarré kl. 5-7', 'Kolde hænder og fødder', 'Tunghed og svaghed i benene'],
     supportingSymptoms: ['Træthed/energimangel', 'Ødem/væskeretention', 'Oppustethed efter måltider'],
-    differential: 'Adskiller sig fra Nyre-Yang-mangel ved fokus på fordøjelses- og kulde-i-mavsymptomer. Hvis lænd og knæ er svage og kolde → også Nyre-Yang involveret (klassisk: Milt+Nyre Yang-mangel sammen).',
-    treatment: 'Varm Milt-Yang gennem ingefær, kanel, varme supper, fast tilberedt kost; undgå alt råt og koldt, undgå kolde drikke. Beskyt mavekulden.'
+    differential: 'Adskiller sig fra Nyre Yang-mangel ved at fokus ligger på fordøjelse og kulde i maven, snarere end på lænd og knæ. Hvis BÅDE lænd og knæ er svage og kolde, er også Nyre-Yang involveret — i praksis ser man tit at de to optræder sammen og forstærker hinanden.',
+    treatment: 'Varm Milten med ingefær, kanel og varme supper. Hold dig til fast tilberedt kost — og undgå alt råt og koldt, herunder kolde drikke. Det handler om at beskytte og genopbygge varmen i maven, så fordøjelsen igen kan komme i gang.'
   },
   {
     id: 'nyre-yang-mangel',
@@ -5245,11 +5247,12 @@ const patternLibrary = [
     organ: 'Nyrer',
     element: 'Vand',
     nature: 'Yang-mangel',
-    description: 'Ming Men Fire — kroppens fundamentale opvarmnings- og transformations-energi — er svækket. Konstitutionel eller efter langvarig udmattelse, kronisk sygdom, overdreven seksuel aktivitet eller kulde.',
+    summaryDescription: 'Den dybe varmekraft i kroppen er svækket. Klienten føler sig kold, særligt i lænd og knæ, og oplever nedsat livskraft, hyppig vandladning om natten og lavt drev. Ofte kommer det efter langvarig udmattelse eller hos en der konstitutionelt har lidt for lidt indre varme med fra start.',
+    description: 'Den dybe varmekraft i kroppen — det der opvarmer og driver alle de andre organer — er svækket. Det ses som en konstitutionel svaghed (man har det med fra start), eller efter mange år med udmattelse, kronisk sygdom, overdreven seksuel aktivitet eller kraftig kuldepåvirkning.',
     keySymptoms: ['Kolde hænder og fødder', 'Hyppig vandladning om natten', 'Reduceret libido', 'Morgendiarré kl. 5-7'],
     supportingSymptoms: ['Hyppige forkølelser', 'Hårtab eller for tidlig grånen', 'Tunghed og svaghed i benene', 'Ødem/væskeretention'],
-    differential: 'Skelnes fra Milt-Yang ved markant lændesvaghed og kolde knæ. Skelnes fra Nyre-Yin ved kuldsymptomerne (ikke nattesved/hedeture). Ofte underbygger Milt-Yang-svigt sekundært.',
-    treatment: 'Varm Nyre-Yang gennem varm fed kost (knoglesuppe, lammekød), regelmæssig hvile, undgå overdreven aktivitet og kold eksponering. Beskyt lænd mod kulde. Undgå late nights.'
+    differential: 'Adskiller sig fra Milt Yang-mangel ved at lænden og knæene er markant svage og kolde, snarere end fordøjelsen primært. Adskiller sig fra Nyre Yin-mangel ved at klienten har klare kuldsymptomer — ikke nattesved og hedeture som ved Yin-mangel. Ofte trækker den Milt-Yang ned med sig efterhånden som svagheden forplanter sig.',
+    treatment: 'Genopbyg den dybe varme gennem fed, varm kost — knoglesuppe, lammekød, varme supper. Sørg for regelmæssig hvile, og undgå overdreven aktivitet og kold eksponering. Beskyt lænd og knæ mod kulde, og kom tidligt i seng — sene nætter brænder hurtigere på den allerede tomme reserve.'
   },
   {
     id: 'nyre-yin-mangel',
@@ -5258,11 +5261,12 @@ const patternLibrary = [
     organ: 'Nyrer',
     element: 'Vand',
     nature: 'Yin-mangel',
-    description: 'Den fundamentale Yin-energi i Nyrerne svigter — Tom Hede stiger og kan ikke balanceres af Yin. Klassisk i menopausal overgang, efter langvarigt overarbejde, eller hos personer der har "brændt deres Essens" gennem stress og late nights.',
+    summaryDescription: 'Kroppens kølende, nærende reserve er løbet tør. Det skaber en indre tørke der viser sig som hedeture, natlig svedudbrud, susen for ørerne og uro indvendigt. Hyppigt i menopausal overgang eller hos en der har brændt for længe på begge ender og glemt at fylde op.',
+    description: 'Den fundamentale kølende, nærende reserve i Nyrerne er løbet tør. Når den ikke længere kan dæmpe og balancere kroppens varme, opstår en indre tørke — kroppen har stadig nok varme, men ingen kølighed til at modvirke den. Hyppigt i menopausal overgang, eller hos en der gennem mange år har brændt for meget af kroppens dybe reserver gennem stress og for korte nætter.',
     keySymptoms: ['Hedeture', 'Natlige svedudbrud', 'Hårtab eller for tidlig grånen'],
     supportingSymptoms: ['Tør mund med lyst til småslurke', 'Høreproblemer/tinnitus', 'Reduceret libido', 'Hyppig vandladning om natten', 'Søvnløshed med rastløshed'],
-    differential: 'Skelnes fra Lever-Yin-mangel ved fokus på lænd, hørelse og hår. Hedeture med svedudbrud peger særligt på Nyre-Yin (ofte sammen med Lever-Yang stiger som manifestation).',
-    treatment: 'Nær Yin gennem væsker, kølende men ikke kolde fødevarer (havregrød, mungbønner, melon), reducer overarbejde og late nights, beskyt mod overdreven seksuel aktivitet og udmattelse.'
+    differential: 'Adskiller sig fra Lever Blod-mangel ved at have fokus på lænd, hørelse og hår frem for sener og øjne. Hedeture med svedudbrud, særligt om natten, peger særligt på Nyre Yin — og ses ofte sammen med tegn på opadstigende energi i Leveren, som ikke længere kan forankres ordentligt.',
+    treatment: 'Genopbyg de kølende reserver gennem vand, supper, kølige (men ikke kolde) fødevarer som havregrød, mungbønner og melon. Reducer overarbejde og lange aftner — det er der reserven bliver brændt af. Beskyt også mod overdreven seksuel aktivitet og generel udmattelse, som tærer på samme dybe lager.'
   },
   {
     id: 'lever-qi-stagnation',
@@ -5271,11 +5275,12 @@ const patternLibrary = [
     organ: 'Lever',
     element: 'Træ',
     nature: 'Stagnation',
-    description: 'Lever-Qi flyder ikke frit — emotionel undertrykt frustration, vedvarende stress eller livsomstændigheder skaber blokering. Det hyppigste mønster i moderne klinisk praksis. Kan udvikle sig til Ild eller Blod-stase ved kronicitet.',
+    summaryDescription: 'Leverens energi flyder ikke frit — typisk ved undertrykt frustration eller vedvarende stress. Det giver irritabilitet, klump i halsen, og hos kvinder ofte menstruationsproblemer. Det er det mønster vi møder allermest i dag, og ofte selve indgangen til andre forstyrrelser senere hen.',
+    description: 'Leverens energi kommer ikke ud af stedet. Det skyldes som regel undertrykt frustration eller vedvarende stress — energien forsøger at bevæge sig, men finder ingen vej ud, og samles indvendigt som en blokering. Hvis det får lov at stå over år, kan det udvikle sig til mere voldsomme tilstande med varme eller stagneret blod.',
     keySymptoms: ['Kronisk irritabilitet/vrede', 'Klump i halsen (globus)', 'Menstruationsproblemer'],
     supportingSymptoms: ['Oppustethed efter måltider', 'Søvnproblemer', 'Hovedpine', 'Forstoppelse med tørre afføringer', 'Smerter langs kroppens side'],
-    differential: 'Skelnes fra Lever-Yang stiger ved fravær af opadstigende hede-symptomer. Skelnes fra Lever-Blod-svigt ved fravær af mangel-symptomer (blege negle, sparsom menstruation). Forværres typisk ved stress og lindres ved bevægelse.',
-    treatment: 'Frigør Lever-Qi gennem bevægelse, vandring i naturen, stress-reduktion, regelmæssig rytme. Sur smag i moderate mængder (citron, eddike). Undgå undertrykt frustration — find udtryk.'
+    differential: 'Adskiller sig fra Lever Yang stiger ved at her er der ikke (endnu) opadstigende hede — ingen markant hovedpine eller hedeture, blot den indvendige opbygning. Adskiller sig fra Lever Blod-mangel ved at klienten ikke er udtømt og bleg; her er der noget der forsøger at komme ud, ikke noget der mangler. Forværres typisk når klienten holder noget tilbage og lindres af bevægelse og udtryk.',
+    treatment: 'Bevægelse er det vigtigste — gåture, vandring i naturen, dynamisk yoga eller anden form for kroppen-i-bevægelse. Skab regelmæssighed og rytme i hverdagen, og find måder at lade frustrationen finde udtryk på, frem for at holde den indeni. Sur smag i små mængder (lidt citron, lidt eddike) understøtter også Leverens flow.'
   },
   {
     id: 'lever-yang-stiger',
@@ -5284,11 +5289,12 @@ const patternLibrary = [
     organ: 'Lever',
     element: 'Træ',
     nature: 'Yang-overskud',
-    description: 'Lever-Yang stiger uhindret opad — typisk fordi Nyre-Yin eller Lever-Yin ikke længere kan forankre det. Manifestationen kan være akut og dramatisk, men roden ligger oftest i en underliggende Yin-mangel.',
+    summaryDescription: 'Energien i Leveren bevæger sig opad uden modvægt, som regel fordi de kølende, forankrende reserver er svage. Det giver hovedpine, svimmelhed, hedeture og kort lunte. Roden ligger som regel et lag dybere i en udmattet reserve der ikke kan forankre den opadgående bevægelse.',
+    description: 'Energien i Leveren bevæger sig opad uden modvægt. Det sker typisk fordi de kølende, forankrende reserver — særligt i Nyrer og Lever — er svage og ikke længere kan holde den nede. Symptomerne kan være akutte og dramatiske, men roden ligger som regel i en stille, underliggende Yin-mangel.',
     keySymptoms: ['Hovedpine', 'Svimmelhed', 'Hedeture', 'Kronisk irritabilitet/vrede'],
     supportingSymptoms: ['Søvnproblemer', 'Øjenproblemer', 'Søvnløshed med rastløshed'],
-    differential: 'Roden er ofte Yin-mangel (Nyre-Yin/Lever-Yin) — så hvis ledsaget af nattesved og lændesvaghed, behandl roden samtidig med manifestationen, ikke kun manifestationen.',
-    treatment: 'Dæmp Lever-Yang via kølende fødevarer, mintte, krysantemumthe, stress-reduktion. Hvis Yin-mangel er roden: nær Yin samtidig. Undgå alkohol, stærkt krydret mad, late nights.'
+    differential: 'Selvom det ser voldsomt ud udadtil, ligger roden tit en etage dybere i en Yin-mangel. Hvis klienten også har nattesved og svage lænder, skal man behandle bunden af problemet samtidigt — ikke kun den udadgående manifestation.',
+    treatment: 'Dæmp den opadgående bevægelse med kølende fødevarer, mynte- eller krysantemumthe og stress-reduktion. Hvis Yin-manglen er det egentlige rod, så fyld også der op samtidig. Undgå alkohol, stærkt krydret mad og sene nætter — alt der trækker yderligere på den allerede tomme reserve.'
   },
   {
     id: 'lever-blod-mangel',
@@ -5297,11 +5303,12 @@ const patternLibrary = [
     organ: 'Lever',
     element: 'Træ',
     nature: 'Blod-mangel',
-    description: 'Leveren lagrer Blod og forsyner sener, øjne, hår og menstruation. Når Blodet er utilstrækkeligt, svigter disse funktioner — typisk hos kvinder efter fødsel, langvarig blødning, eller efter udmattelse og kronisk stress.',
+    summaryDescription: 'Det blod Leveren skulle nære sener, øjne, hår og menstruation med er utilstrækkeligt. Ses ofte hos kvinder efter fødsel, langvarig blødning eller udmattelse. Klienten kan virke bleg, sener trækker sig sammen som kramper, øjnene bliver tørre og menstruationen bliver sparsom eller udebliver helt.',
+    description: 'Leveren lagrer det blod der nærer sener, øjne, hår og menstruation. Når blodet er utilstrækkeligt, svigter alle disse funktioner. Det ses typisk hos kvinder efter fødsel, langvarig blødning, eller hos enhver der har trukket for længe på reserverne gennem udmattelse og kronisk stress.',
     keySymptoms: ['Hårtab eller for tidlig grånen', 'Øjenproblemer', 'Menstruationsproblemer'],
     supportingSymptoms: ['Svimmelhed', 'Kramper indersiden af benene', 'Smerter i ekstremiteter', 'Ledsmerter med følelsesløshed og prikken'],
-    differential: 'Skelnes fra Hjerte-Blod-svigt ved fokus på sener, øjne og hår (mod Hjerte-Blod: palpitationer og søvnproblemer). Ofte er begge til stede samtidig (Lever/Hjerte-Blod-svigt).',
-    treatment: 'Nær Lever-Blod gennem mørke grøntsager (spinat, rødbede), rødt kød i moderation, sorte sesamfrø, regelmæssighed, hvile og dyb søvn. Beskyt mod overdreven blødning.'
+    differential: 'Adskiller sig fra Hjerte Blod-mangel ved fokus på sener, øjne og hår, snarere end på hjertebanken og søvnproblemer. I praksis ser man dog tit at begge er til stede samtidig — blod-manglen breder sig ofte fra den ene til den anden.',
+    treatment: 'Næring af blodet sker gennem mørke grøntsager (spinat, rødbede), rødt kød i moderation, sorte sesamfrø — og regelmæssighed, hvile og dyb søvn. Beskyt også mod yderligere blødning, og giv kroppen tid til at fylde op.'
   },
   {
     id: 'hjerte-blod-mangel',
@@ -5310,11 +5317,12 @@ const patternLibrary = [
     organ: 'Hjerte',
     element: 'Ild',
     nature: 'Blod-mangel',
-    description: 'Hjertet huser Shen og kontrollerer Blod. Når Blodet er utilstrækkeligt, kan Shen ikke "hvile" og søvn/emotionel stabilitet svigter. Typisk efter langvarig overtænkning, bekymring, eller blodtab.',
+    summaryDescription: 'Hjertet huser sindets ro — når blodet er for sparsomt, kan sindet ikke hvile. Det viser sig som hjertebanken, søvnbesvær og emotionel ustabilitet. Kommer hyppigt efter langvarig overtænkning, bekymring eller blodtab, og minder os om at hjertet næres gennem ro og regelmæssighed.',
+    description: 'Hjertet huser sindets ro og styrer blodet. Når blodet er for sparsomt, kan sindet ikke længere finde hvile, og søvn og emotionel stabilitet begynder at svigte. Det ses typisk efter lange perioder med overtænkning, vedvarende bekymring, eller efter blodtab af forskellig art.',
     keySymptoms: ['Hjertebanken', 'Søvnproblemer', 'Emotionel ustabilitet'],
     supportingSymptoms: ['Kolde hænder og fødder', 'Svimmelhed', 'Hårtab eller for tidlig grånen'],
-    differential: 'Skelnes fra Hjerte-Yin-mangel ved fravær af nattesved og rastløshed (Hjerte-Yin har klare hede-tegn). Skelnes fra Hjerte-Qi-mangel ved fokus på blodmangel (bleghed, svimmelhed) frem for ren energimangel.',
-    treatment: 'Nær Hjerte-Blod gennem rødbede, longanfrugt, jujube, sød mild næring; reducer overdreven mental aktivitet og bekymring. Skab rolige aftener og regelmæssig søvn.'
+    differential: 'Adskiller sig fra Hjerte Yin-mangel ved at klienten ikke har nattesved og indre uro — der er ingen klare hede-tegn her, blot mangel. Adskiller sig fra ren Hjerte Qi-mangel ved at det specifikt er blodet der er for lidt af (bleghed, svimmelhed), frem for energien generelt.',
+    treatment: 'Nær blodet gennem rødbede, longanfrugt, jujube og blid sød kost. Reducer overdreven mental aktivitet og bekymring, og skab rolige aftener med regelmæssig søvn — det er der hjertet får mulighed for at fylde op.'
   },
   {
     id: 'hjerte-yin-mangel',
@@ -5323,11 +5331,12 @@ const patternLibrary = [
     organ: 'Hjerte',
     element: 'Ild',
     nature: 'Yin-mangel',
-    description: 'Hjerte-Yin svigter, og Tom Hede uroliger Shen. Klassisk efter langvarig stress, overarbejde eller hos perimenopausale kvinder. Ofte sekundært til Nyre-Yin-mangel (Hjerte-og-Nyrer kommunikerer ikke).',
+    summaryDescription: 'De kølende, beroligende reserver omkring hjertet er svækkede, og en indre uro siver igennem. Klienten oplever rastløs søvnløshed, natlig sved og en grundlæggende uro indvendigt. Ofte sekundært til en udtømt nyrereserve — hjertet og nyrerne taler ikke længere sammen som de skulle.',
+    description: 'Hjertets kølende, beroligende reserve er svækket, og en indre uro begynder at uroligge sindets ro. Det ses ofte efter mange år med stress og overarbejde, eller hos kvinder i perimenopausen. Tit ligger der en udtømt nyrereserve under — hjertet og nyrerne taler ikke længere sammen som de skulle.',
     keySymptoms: ['Hjertebanken', 'Søvnløshed med rastløshed', 'Natlige svedudbrud'],
     supportingSymptoms: ['Trykkende brystsmerte med indre angst', 'Emotionel ustabilitet', 'Hedeture'],
-    differential: 'Skelnes fra Hjerte-Blod-svigt ved nattesved og motorisk rastløshed. Skelnes fra Yang Qiao Mai (også søvnløshed med rastløshed) ved Hjerte-Yins specifikke nattesved og varme indersiden af håndleddene.',
-    treatment: 'Nær Hjerte-Yin gennem stille bevægelse, meditation, regelmæssig søvn, kølende næring (lotusfrø, lily-bulb). Undgå stimulanter, late nights, overdreven mental aktivitet.'
+    differential: 'Adskiller sig fra Hjerte Blod-mangel ved nattesved og en motorisk rastløshed der gør det svært at slappe af. Adskiller sig fra Yang Qiao Mai-søvnløshed (som også giver rastløshed) ved den specifikke nattesved og varme der opleves indersiden af håndleddene.',
+    treatment: 'Nær reserven gennem stille bevægelse, meditation, regelmæssig søvn og kølende næring som lotusfrø og lily-bulb. Undgå stimulanter, sene nætter og overdreven mental aktivitet — alt det der trækker yderligere på en allerede tom kølighed.'
   },
   {
     id: 'lunge-qi-mangel',
@@ -5336,11 +5345,12 @@ const patternLibrary = [
     organ: 'Lunger',
     element: 'Metal',
     nature: 'Qi-mangel',
-    description: 'Lunge-Qi styrer åndedræt, Wei Qi (immunforsvar) og porer. Når den svigter, åbnes overfladen for Vind-invasioner og energien til hele kroppen er svag. Hyppigt knyttet til langvarig sorg eller efter forkølelser der ikke er gået helt over.',
+    summaryDescription: 'Lungerne forsyner kroppens overflade med beskyttelse. Når de er svækkede, åbnes kroppen for udefrakommende belastning — hyppige forkølelser, dagsved og stille sorg følger ofte. Lungerne bærer også tabet — kronisk uudtrykt sorg kan over tid svække dem og åbne for andre tilstande.',
+    description: 'Lungerne styrer åndedræt, kroppens overflade-forsvar og porerne i huden. Når Lunge-energien svigter, åbnes kroppen for kulde og vind udefra, og hele kroppens energi bliver svag. Det ses ofte hos en der har båret langvarig sorg, eller hvor en forkølelse aldrig rigtig er gået helt over.',
     keySymptoms: ['Hyppige forkølelser', 'Spontan svedtendens i dagtimerne', 'Vejrtrækningsproblemer'],
     supportingSymptoms: ['Vedvarende sorg/melankoli', 'Sæsonbaseret rhinitis/allergi', 'Træthed/energimangel'],
-    differential: 'Skelnes fra Milt-Qi-mangel ved fokus på vejrtrækning og forkølelse-tendens. Ofte er begge til stede sammen (klassisk Yu Ping Feng San-billede). Adskiller sig fra Wei Qi-svaghed ved tydeligere fokus på Lungerne specifikt.',
-    treatment: 'Tonificer Lunge-Qi gennem dyb vejrtrækning, klar luft, undgå overdreven sorg, beskyt mod kold vind. Beskyt nakke/hals — Wind-Cold invaderer typisk her.'
+    differential: 'Adskiller sig fra Milt Qi-mangel ved at fokus ligger på vejrtrækning og let modtagelighed for forkølelser, snarere end fordøjelse. I praksis er begge ofte til stede sammen som en samlet Lunge-Milt-akse. Adskiller sig fra den bredere overflade-forsvar-svaghed ved et tydeligere fokus på Lungerne specifikt.',
+    treatment: 'Styrk Lunge-energien gennem dybe åndedrætsøvelser, klar luft og bevidst rummelighed for sorg. Beskyt mod kold vind — særligt nakke og hals, hvor kulden typisk trænger ind først.'
   },
   {
     id: 'slim-damp',
@@ -5349,11 +5359,12 @@ const patternLibrary = [
     organ: 'Milt + Lunger',
     element: 'Jord/Metal',
     nature: 'Patologisk substans',
-    description: 'Klassisk Pi Wei Lun-billede: "Milt skaber Slim, Lungerne lagrer den". Når Milten ikke transformerer væsker korrekt, ophobes Damp og kondenseres til Slim. Slim blokerer kanaler, sløver Shen og forværrer fordøjelsen.',
+    summaryDescription: 'Kroppens evne til at omsætte væsker er nedsat — slim ophobes og tynger fordøjelse, hoved og åndedræt. Klienten føler sig tung, fyldt og ofte sløv. Skabes hyppigt af for meget sukker, mejeriprodukter eller kolde fødevarer kombineret med en i forvejen svækket fordøjelseskraft.',
+    description: 'Som det siges: "Milten skaber slim, Lungerne lagrer den". Når Milten ikke længere kan omsætte væsker ordentligt, ophobes der Damp i kroppen, der over tid kondenseres til Slim. Slimet blokerer kanalerne, sløver sindet og tynger fordøjelsen yderligere.',
     keySymptoms: ['Overdreven slim/opspyt', 'Kronisk næsetilstopning', 'Svimmelhed'],
     supportingSymptoms: ['Sæsonbaseret rhinitis/allergi', 'Tab af lugte- eller smagssans', 'Ødem/væskeretention', 'Oppustethed efter måltider'],
-    differential: 'Skelnes fra Slim-Hede ved fravær af gul slim og varmesymptomer. Hvis tyk gul slim → Slim-Hede (typisk i Lunger eller Galdeblære-meridianen). Slim-Damp er som regel kølig/neutral.',
-    treatment: 'Reducer slimskabende fødevarer (mejeriprodukter, sukker, råt og koldt, hvedemel); styrk Milten gennem varm tilberedt kost, ingefær. Støt Lungerne. Undgå at spise når man ikke er sulten.'
+    differential: 'Adskiller sig fra Slim-Hede ved fravær af gul slim og varmesymptomer. Hvis slimet er tykt og gult, peger det videre til Slim-Hede (typisk i Lunger eller langs Galdeblære-meridianen). Slim-Damp er som regel kølig eller neutral i karakter.',
+    treatment: 'Reducer det der skaber slim — mejeriprodukter, sukker, råt og koldt, hvedemel. Styrk Milten gennem varm tilberedt kost og ingefær, og støt Lungerne i deres rensende funktion. Spis kun når du er sulten — det aflaster fordøjelsen og giver den plads til at gøre sit arbejde.'
   },
   {
     id: 'wei-qi-svaghed',
@@ -5362,11 +5373,12 @@ const patternLibrary = [
     organ: 'Lunger + Milt + Nyrer',
     element: 'Metal/Jord/Vand',
     nature: 'Overflade-svaghed',
-    description: 'Wei Qi (defensiv overflade-energi) udspringer af Nyrerne, dannes af Milten og fordeles af Lungerne. Når én eller flere af disse svigter, svækkes overflade-forsvaret. Personen er konstant sårbar over for Vind-invasioner.',
+    summaryDescription: 'Kroppens overflade-forsvar er svækket. Klienten er konstant sårbar over for skift i vejret, forkølelser og allergier — kroppens første værn holder ikke. Ofte ligger en dybere udmattelse i bunden, og forsvaret er det kroppen først skærer fra når reserverne er for små.',
+    description: 'Kroppens overflade-forsvar — det første værn mod udefrakommende belastning — udspringer af Nyrerne, dannes af Milten og fordeles af Lungerne. Når én eller flere af disse svigter, svækkes forsvaret, og klienten bliver konstant sårbar over for vind, kulde og allergener.',
     keySymptoms: ['Hyppige forkølelser', 'Sæsonbaseret rhinitis/allergi', 'Spontan svedtendens i dagtimerne'],
     supportingSymptoms: ['Træthed/energimangel', 'Kronisk næsetilstopning', 'Kolde hænder og fødder'],
-    differential: 'Roden bestemmes af hvilket organ der primært svigter: hvis kulde og lænd → Nyre-Yang er roden; hvis fordøjelse og bleghed → Milt; hvis åndedræt og hud → Lunger. Klassisk formel-billede er Yu Ping Feng San.',
-    treatment: 'Adresser primær-organet (se ovenfor). Beskyt mod kold vind især i nakke/hals. Dybe åndedrætsøvelser, qigong. Undgå at "presse igennem" forkølelser.'
+    differential: 'Roden bestemmes af hvilket organ der primært svigter: hvis kulde og svag lænd dominerer, er Nyre-Yang det centrale; hvis fordøjelse og bleghed dominerer, er Milten det; hvis åndedræt og huden er primært, er Lungerne. I praksis ser man tit en kombination, hvor det dybeste organ — Nyrerne — bærer hovedansvaret.',
+    treatment: 'Behandl det organ der primært svigter (se ovenfor). Beskyt mod kold vind, særligt i nakke og hals, hvor kulden typisk trænger ind. Dyb vejrtrækning og rolige bevægelses-praksisser som qigong styrker forsvaret. Undgå at "presse igennem" en forkølelse — det udmatter reserverne yderligere og forlænger problemet.'
   }
 ];
 

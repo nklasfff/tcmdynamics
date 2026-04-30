@@ -2327,63 +2327,84 @@ function buildSymptomAnalysisSummary() {
   const { picked, tally } = computeSymptomResonance();
   if (picked.length < SA_MIN) return '';
 
+  const isDa = getLanguage() === 'da';
+  const T = isDa ? {
+    client: 'Klienten oplever',
+    symptomsWord: 'symptomer',
+    emerging: 'Hvad der træder frem',
+    primary: 'Primært',
+    secondary: 'Sekundært',
+    of: 'ud af',
+    pointHere: 'peger derhen',
+    elementSuffix: '-elementet dominerer',
+    patternBehind: 'Mønstret bag',
+    nextStep: 'Næste skridt',
+    openSide: 'Åbn',
+    sideInApp: 'siden i appen og gennemgå de 8 kortlægningstemaer sammen med klienten.',
+    disclaimer: 'Dette er en indgangsvinkel — ikke en diagnose.'
+  } : {
+    client: 'The client is experiencing',
+    symptomsWord: 'symptoms',
+    emerging: 'What stands out',
+    primary: 'Primary',
+    secondary: 'Secondary',
+    of: 'of',
+    pointHere: 'point here',
+    elementSuffix: ' element stands out',
+    patternBehind: 'The pattern behind',
+    nextStep: 'Next step',
+    openSide: 'Open',
+    sideInApp: 'side in the app and go through the 8 mapping themes with the client.',
+    disclaimer: 'This is an entry point — not a diagnosis.'
+  };
+
   const lines = [];
-  const dateLocale = getLanguage() === 'da' ? 'da-DK' : 'en-US';
+  const dateLocale = isDa ? 'da-DK' : 'en-US';
   const dateStr = new Date().toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
   lines.push(`${t('saSummaryTitle')} — ${dateStr}`);
   lines.push('');
 
-  lines.push(`${t('saSummarySymptoms')} (${picked.length}):`);
+  lines.push(`${T.client} (${picked.length} ${T.symptomsWord}):`);
   picked.forEach(s => lines.push(`- ${s.symptom}`));
   lines.push('');
 
-  const top = tally.slice(0, 3);
-  lines.push(t('saResultsHeading'));
-  top.forEach((row, i) => {
-    const pct = Math.round(row.percentage * 100);
-    lines.push(`${i + 1}. ${row.name} — ${row.hits}/${picked.length} ${t('saHits')} (${pct}%)`);
-  });
-  lines.push('');
-
+  const top = tally.slice(0, 4);
+  lines.push(`${T.emerging}:`);
+  if (top[0]) {
+    lines.push(`- ${T.primary}: ${top[0].name} (${top[0].hits} ${T.of} ${picked.length} ${T.pointHere})`);
+  }
+  const secondaryNames = top.slice(1, 3).map(r => r.name).filter(Boolean);
+  if (secondaryNames.length) {
+    lines.push(`- ${T.secondary}: ${secondaryNames.join(', ')}`);
+  }
   const elementTally = computeElementResonance(tally);
   const topElement = elementTally[0];
-  const elementData = topElement ? fiveElements.find(e => e.name === topElement.name) : null;
-  if (elementData) {
-    lines.push(t('saElementHeading'));
-    lines.push(`${elementData.name} (${Math.round(topElement.percentage * 100)}%) — ${elementData.organs.join(' + ')}`);
-    lines.push(`${elementData.season} · ${elementData.emotion}`);
-    lines.push('');
+  if (topElement) {
+    lines.push(`- ${topElement.name}${T.elementSuffix}`);
   }
-
-  const meridianTally = computeMeridianResonance(tally);
-  if (meridianTally.length) {
-    lines.push(t('saMeridianHeading'));
-    meridianTally.forEach(row => lines.push(`${row.ref.name} — ${row.hits} ${t('saHits')}`));
-    lines.push('');
-  }
+  lines.push('');
 
   const patternResonance = computePatternResonance(picked);
-  const topPatterns = patternResonance.slice(0, 3);
-  if (topPatterns.length) {
-    lines.push(t('saPatternHeading'));
-    topPatterns.forEach(row => {
-      lines.push(`${row.pattern.name} (${row.pattern.chinese}) — ${Math.round(row.score * 100)}% match · ${row.pattern.organ}, ${row.pattern.nature}`);
-    });
+  const topPattern = patternResonance[0];
+  if (topPattern) {
+    lines.push(`${T.patternBehind}:`);
+    lines.push(`${topPattern.pattern.name} — ${Math.round(topPattern.score * 100)}% match`);
+    if (topPattern.pattern.summaryDescription) {
+      lines.push(topPattern.pattern.summaryDescription);
+    }
     lines.push('');
   }
-
-  lines.push(t('saNotesHeading'));
-  picked.forEach(s => lines.push(`• ${s.symptom}: ${s.note}`));
-  lines.push('');
 
   const primary = top[0];
   const primaryEntity = primary ? findResonanceEntity(primary.name) : null;
   if (primaryEntity && primaryEntity.ref) {
-    lines.push(`${t('saNextHeading')}: ${t('saSummaryOpenPrimary')} ${primaryEntity.name} ${t('saSummaryAndUseThemes')}`);
+    lines.push(`${T.nextStep}:`);
+    lines.push(`${T.openSide} ${primaryEntity.name}-${T.sideInApp}`);
     lines.push('');
   }
 
-  lines.push(t('saSummaryDisclaimer'));
+  lines.push('—');
+  lines.push(T.disclaimer);
   return lines.join('\n');
 }
 
@@ -2495,6 +2516,7 @@ function renderSymptomAnalysisResults() {
             <svg class="sa-pattern-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="sa-pattern-body">
+            ${row.pattern.summaryDescription ? `<p class="sa-pattern-summary">${row.pattern.summaryDescription}</p>` : ''}
             <div class="sa-pattern-section">
               <div class="sa-pattern-section-label">${t('saPatternDescription')}</div>
               <p class="sa-pattern-section-text">${row.pattern.description}</p>
