@@ -5014,7 +5014,7 @@ const symptomReference = [
   {
     symptom: 'Træthed/energimangel',
     organs: ['Milt', 'Nyrer', 'Lunger', 'Hjerte'],
-    note: 'Milt-Qi-svigt er den hyppigste årsag — typisk forværret efter måltider og af bekymring. Når trætheden er dyb, kronisk og ledsages af kuldskærhed og lændesvaghed, er det Nyrerne der ikke længere kan bære.'
+    note: 'En svag Milt er den hyppigste årsag — typisk forværret efter måltider og af bekymring. Når trætheden er dyb, kronisk og ledsages af kuldskærhed og lændesvaghed, er det Nyrerne der ikke længere kan bære.'
   },
   {
     symptom: 'Angst og frygt',
@@ -5039,12 +5039,12 @@ const symptomReference = [
   {
     symptom: 'Hjertebanken',
     organs: ['Hjerte', 'Pericardium', 'Nyrer', 'Milt'],
-    note: 'Kan skyldes Hjerte-Blod-mangel, Pericardium-ild eller Nyre-Vand der ikke længere kontrollerer Hjertets ild. Spørg om det opstår i hvile eller ved anstrengelse — og om det ledsages af angst eller af en træthed der mærkes dybt.'
+    note: 'Kan skyldes en sparsom blodreserve i Hjertet, ild der har sat sig i Pericardium, eller at Nyrernes vand ikke længere kan dæmpe Hjertets ild. Spørg om det opstår i hvile eller ved anstrengelse — og om det ledsages af angst eller af en træthed der mærkes dybt.'
   },
   {
     symptom: 'Høreproblemer/tinnitus',
     organs: ['Nyrer', 'Galdeblære', 'San Jiao', 'Tyndtarm'],
-    note: 'Nyrerne åbner til ørerne, og Galdeblære- og San Jiao-meridianerne løber forbi øret. Lav, dump tinnitus over år peger mod Nyre-svaghed; pludseligt skarp og høj peger derimod mod Lever-Yang stiger.'
+    note: 'Nyrerne åbner til ørerne, og Galdeblære- og San Jiao-meridianerne løber forbi øret. Lav, dump tinnitus over år peger mod Nyre-svaghed; pludseligt skarp og høj peger derimod mod energi i Leveren der stiger uden modvægt.'
   },
   {
     symptom: 'Smerter i ekstremiteter',
@@ -5169,7 +5169,7 @@ const symptomReference = [
   {
     symptom: 'Udtalt søvnighed i dagtimerne',
     organs: ['Yin Qiao Mai', 'Nyrer', 'Milt'],
-    note: 'Et klassisk Yin Qiao-tegn — "øjnene vil lukke". Den vågne energi forbliver i Yin og kommer ikke ud i Yang igen. Vigtigt at adskille fra almindelig træthed: her vil personen aktivt SOVE midt på dagen, ikke bare være træt. Følges det af tung hovedbund med slim og fugtighed, er det Milt-Damp der blokerer Yin Qiaos opadstigning. Følges det af kuldskærhed og lændesvaghed, er det Nyre-Yang der ikke kan understøtte Yin Qiao tilstrækkeligt.'
+    note: 'Et klassisk Yin Qiao-tegn — "øjnene vil lukke". Den vågne energi forbliver i Yin og kommer ikke ud i Yang igen. Vigtigt at adskille fra almindelig træthed: her vil personen aktivt SOVE midt på dagen, ikke bare være træt. Følges det af tung hovedbund med slim og fugtighed, er det fugt og slim fra Milten der blokerer Yin Qiaos opadstigning. Følges det af kuldskærhed og lændesvaghed, er det den dybe varmekraft i Nyrerne der ikke kan understøtte Yin Qiao tilstrækkeligt.'
   },
   {
     symptom: 'Kramper indersiden af benene',
@@ -5199,7 +5199,7 @@ const symptomReference = [
   {
     symptom: 'Skiftevis kulde- og hedefornemmelser',
     organs: ['Yang Wei Mai', 'Galdeblære', 'San Jiao'],
-    note: 'Det klassiske Yang Wei Mai-billede — hvor traditionen taler om "skiftevis følelse af hede og kulde med irritabilitet". Forveksl det IKKE med menopausale hedeture, der ligger på Chong Mai: her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem skiftene. Det klassiske Shao Yang-billede er at en patogen er fanget halvt i det ydre og halvt i det indre. Adskil fra ren Lunge-Qi-svaghed: her er der INTERMITTENS i temperaturreguleringen, ikke generel svaghed.'
+    note: 'Det klassiske Yang Wei Mai-billede — hvor traditionen taler om "skiftevis følelse af hede og kulde med irritabilitet". Forveksl det IKKE med menopausale hedeture, der ligger på Chong Mai: her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem skiftene. Det klassiske Shao Yang-billede er at en patogen er fanget halvt i det ydre og halvt i det indre. Adskil fra en svag Lunge-energi: her er der INTERMITTENS i temperaturreguleringen, ikke generel svaghed.'
   },
   {
     symptom: 'Smerter langs kroppens side',
