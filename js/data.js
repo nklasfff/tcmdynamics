@@ -4994,7 +4994,7 @@ const symptomReference = [
   {
     symptom: 'Fordøjelsesproblemer',
     organs: ['Milt', 'Mavesæk', 'Lever', 'Tyktarm', 'Tyndtarm'],
-    note: 'Lever-Qi-stagnation er den hyppigste årsag, men Milt-Qi-svigt og Mavesæk-modløb kan også stå bag. Spørg om symptomerne forværres ved stress eller ved bestemte fødevarer — det åbner sporet.'
+    note: 'Leverens energi der sidder fast er den hyppigste årsag, men en svag Milt eller Mavesækkens energi der løber den forkerte vej op kan også stå bag. Spørg om symptomerne forværres ved stress eller ved bestemte fødevarer — det åbner sporet.'
   },
   {
     symptom: 'Emotionel ustabilitet',
@@ -5024,7 +5024,7 @@ const symptomReference = [
   {
     symptom: 'Øjenproblemer',
     organs: ['Lever', 'Galdeblære', 'Blære', 'Hjerte'],
-    note: 'Leveren åbner til øjnene, og Lever-Blod-mangel viser sig som tørre, slørede eller lette øjne — særligt om aftenen efter en lang dag. Røde øjne med kløe peger derimod mod Lever-Yang stiger eller indre varme.'
+    note: 'Leveren åbner til øjnene, og når Leverens blodreserve er sparsom, viser det sig som tørre, slørede eller lette øjne — særligt om aftenen efter en lang dag. Røde øjne med kløe peger derimod mod energi i Leveren der stiger uden modvægt eller en indre varme.'
   },
   {
     symptom: 'Menstruationsproblemer',
@@ -5129,7 +5129,7 @@ const symptomReference = [
   {
     symptom: 'Reduceret libido',
     organs: ['Nyrer', 'Lever', 'Hjerte', 'Ren Mai'],
-    note: 'Kuldskærhed sammen med lændesvaghed, impotens eller frigiditet og klar urin er Nyre-Yang der svigter. Tørhed — herunder vaginal tørhed — sammen med nattesved og irritabilitet peger mod Nyre-Yin. Aversion mod intimitet, følelsesmæssig blokering og brystudspiling fortæller om Lever-Qi-stagnation. Manglende lyst der bunder i dyb angst eller sorg ligger hos Hjertet og sindets ro. Ren Mai — Konceptionskarret — er det centrale akse for al reproduktiv vitalitet.'
+    note: 'Kuldskærhed sammen med lændesvaghed, impotens eller frigiditet og klar urin er den dybe varmekraft i Nyrerne der svigter. Tørhed — herunder vaginal tørhed — sammen med nattesved og irritabilitet peger mod en svækket kølende reserve i Nyrerne. Aversion mod intimitet, følelsesmæssig blokering og brystudspiling fortæller om Leverens energi der sidder fast. Manglende lyst der bunder i dyb angst eller sorg ligger hos Hjertet og sindets ro. Ren Mai — Konceptionskarret — er den centrale akse for al reproduktiv vitalitet.'
   },
   {
     symptom: 'Sæsonbaseret rhinitis/allergi',
@@ -5154,7 +5154,7 @@ const symptomReference = [
   {
     symptom: 'Hårtab eller for tidlig grånen',
     organs: ['Nyrer', 'Lever'],
-    note: 'Håret er "Blodets blomst" og "Nyre-Essensens overflod" — to akser der mødes i hårsækkene. For tidlig grånen sammen med lændesvaghed og tinnitus fortæller at Nyre-Essensen svigter, særligt hvis det er arveligt eller efter langvarig stress. Diffust hårtab med bleg ansigtsfarve, tør hud og kraftesløse negle er Lever-Blod-svigt — Leveren lagrer Blodet der nærer både hår og negle. Pletvis, pludseligt hårtab er ofte Lever-Qi-stagnation kombineret med Blod-Hede.'
+    note: 'Håret er "Blodets blomst" og "Nyrernes dybeste reserves overflod" — to akser der mødes i hårsækkene. For tidlig grånen sammen med lændesvaghed og tinnitus fortæller at Nyrernes dybeste reserve svigter, særligt hvis det er arveligt eller efter langvarig stress. Diffust hårtab med bleg ansigtsfarve, tør hud og kraftesløse negle er en sparsom blodreserve i Leveren — Leveren lagrer det blod der nærer både hår og negle. Pletvis, pludseligt hårtab er ofte Leverens energi der sidder fast kombineret med varme i blodet.'
   },
   {
     symptom: 'Vedvarende vaginalt udflåd',
@@ -5179,7 +5179,7 @@ const symptomReference = [
   {
     symptom: 'Søvnløshed med rastløshed',
     organs: ['Yang Qiao Mai', 'Hjerte', 'Lever'],
-    note: 'Et klassisk Yang Qiao-tegn — "øjnene kan ikke lukke". Den vågne energi forbliver i Yang og kan ikke trække sig tilbage. En vigtig diskriminator overfor almindelig Hjerte- eller Lever-søvnløshed: her er rastløsheden MOTORISK — personen kan ikke ligge stille, vender og drejer sig, måske med maniske træk. Følges det af palpitationer og angst, er Hjerte-Ild rod. Følges det af irritabilitet og temporal hovedpine, er det Lever-Yang stiger som Yang Qiao ikke længere kan absorbere overskuddet af.'
+    note: 'Et klassisk Yang Qiao-tegn — "øjnene kan ikke lukke". Den vågne energi forbliver i Yang og kan ikke trække sig tilbage. En vigtig diskriminator overfor almindelig Hjerte- eller Lever-søvnløshed: her er rastløsheden MOTORISK — personen kan ikke ligge stille, vender og drejer sig, måske med maniske træk. Følges det af palpitationer og angst, er det ild i hjertet der er rod. Følges det af irritabilitet og temporal hovedpine, er det energi i Leveren der stiger uden modvægt — som Yang Qiao ikke længere kan absorbere overskuddet af.'
   },
   {
     symptom: 'Ensidig iskias på ydersiden af benet',
