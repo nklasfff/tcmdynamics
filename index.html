@@ -712,6 +712,17 @@
         <div class="clients-body">
           <div class="clients-list" id="clients-list"></div>
           <p class="clients-empty" id="clients-empty" hidden></p>
+          <div class="clients-actions">
+            <button class="clients-action-btn" id="export-archive-btn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span id="export-archive-label">Eksportér arkiv</span>
+            </button>
+            <button class="clients-action-btn" id="import-archive-btn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span id="import-archive-label">Importér arkiv</span>
+            </button>
+            <input type="file" id="import-file-input" accept="application/json,.json" hidden>
+          </div>
           <p class="clients-disclaimer" id="clients-disclaimer"></p>
         </div>
       </main>

@@ -220,7 +220,12 @@ const translations = {
     sessionPattern: 'Primary pattern',
     sessionSymptoms: 'Symptoms',
     sessionNotes: 'Notes',
-    sessionNoPattern: 'No clear pattern'
+    sessionNoPattern: 'No clear pattern',
+    exportArchive: 'Export archive',
+    importArchive: 'Import archive',
+    importDone: 'Imported',
+    importDoneSuffix: 'client(s)',
+    importError: 'Could not read the file — is it a valid client archive?'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -437,7 +442,12 @@ const translations = {
     sessionPattern: 'Primært mønster',
     sessionSymptoms: 'Symptomer',
     sessionNotes: 'Notater',
-    sessionNoPattern: 'Intet klart mønster'
+    sessionNoPattern: 'Intet klart mønster',
+    exportArchive: 'Eksportér arkiv',
+    importArchive: 'Importér arkiv',
+    importDone: 'Importeret',
+    importDoneSuffix: 'klient(er)',
+    importError: 'Kunne ikke læse filen — er det et gyldigt klient-arkiv?'
   }
 };
 
@@ -2963,12 +2973,73 @@ function commitSaveDialog() {
 }
 
 function showSavedToast() {
+  showToast(t('saveDialogSaved'));
+}
+
+function showToast(text) {
   const toast = document.getElementById('save-toast');
   if (!toast) return;
-  toast.textContent = t('saveDialogSaved');
+  toast.textContent = text;
   toast.classList.add('show');
   clearTimeout(toast._timer);
-  toast._timer = setTimeout(() => toast.classList.remove('show'), 1800);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+// ----- Export / Import (Phase 3) -----
+function exportClientArchive() {
+  const data = loadClientStorage();
+  const out = {
+    version: CLIENT_STORAGE_VERSION,
+    exported: new Date().toISOString(),
+    clients: data.clients || {}
+  };
+  const json = JSON.stringify(out, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  a.href = url;
+  a.download = `tcm-klienter-${today}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function importClientArchive(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result);
+        if (!parsed || typeof parsed !== 'object') throw new Error('Invalid format');
+        if (!parsed.clients || typeof parsed.clients !== 'object') throw new Error('No clients in file');
+        const existing = loadClientStorage();
+        let importedCount = 0;
+        for (const [id, client] of Object.entries(parsed.clients)) {
+          if (!client || typeof client !== 'object' || !Array.isArray(client.sessions)) continue;
+          if (!existing.clients[id]) {
+            existing.clients[id] = client;
+          } else {
+            const existingSessionIds = new Set(existing.clients[id].sessions.map(s => s.id));
+            for (const s of client.sessions) {
+              if (!existingSessionIds.has(s.id)) {
+                existing.clients[id].sessions.push(s);
+              }
+            }
+            existing.clients[id].updated = new Date().toISOString();
+          }
+          importedCount++;
+        }
+        persistClientStorage(existing);
+        resolve(importedCount);
+      } catch (e) {
+        reject(e);
+      }
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsText(file);
+  });
 }
 
 // ----- Client list screen -----
@@ -2980,9 +3051,13 @@ function renderClientsScreen() {
   const listEl = screen.querySelector('#clients-list');
   const emptyEl = screen.querySelector('#clients-empty');
   const discEl = screen.querySelector('#clients-disclaimer');
+  const exportLabel = screen.querySelector('#export-archive-label');
+  const importLabel = screen.querySelector('#import-archive-label');
   if (titleEl) titleEl.textContent = t('clientsTitle');
   if (subEl) subEl.textContent = t('clientsSubtitle');
   if (discEl) discEl.textContent = t('clientsDisclaimer');
+  if (exportLabel) exportLabel.textContent = t('exportArchive');
+  if (importLabel) importLabel.textContent = t('importArchive');
 
   const clients = listClients();
   if (!clients.length) {
@@ -3155,6 +3230,29 @@ function setupClientHistory() {
         deleteClientRecord(activeClientId);
         activeClientId = null;
         showClientsScreen();
+      }
+    });
+  }
+
+  const exportBtn = document.getElementById('export-archive-btn');
+  if (exportBtn) exportBtn.addEventListener('click', exportClientArchive);
+
+  const importBtn = document.getElementById('import-archive-btn');
+  const importInput = document.getElementById('import-file-input');
+  if (importBtn && importInput) {
+    importBtn.addEventListener('click', () => importInput.click());
+    importInput.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const count = await importClientArchive(file);
+        renderClientsScreen();
+        showToast(`${t('importDone')} ${count} ${t('importDoneSuffix')}`);
+      } catch (err) {
+        console.error('Import failed', err);
+        showToast(t('importError'));
+      } finally {
+        importInput.value = '';
       }
     });
   }
