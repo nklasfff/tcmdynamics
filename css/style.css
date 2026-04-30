@@ -124,7 +124,7 @@ body {
 }
 
 #app {
-  max-width: 700px;
+  max-width: 640px;
   margin: 0 auto;
   min-height: 100vh;
   min-height: 100dvh;
@@ -2989,29 +2989,29 @@ body.is-screen-home .top-float-btn {
 @media (min-width: 768px) {
   /* Centrer alle skærme */
   .screen {
-    max-width: 700px;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
   }
 
   /* Centrer bundnavigation */
   .bottom-nav {
-    max-width: 700px;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
   }
 
   /* Centrer floating buttons inden for rammen */
   .top-float-left {
-    left: calc(50% - 350px + 16px);
+    left: calc(50% - 320px + 16px);
   }
 
   .top-float-right {
-    right: calc(50% - 350px + 16px);
+    right: calc(50% - 320px + 16px);
   }
 
   .top-float-right-2 {
-    right: calc(50% - 350px + 64px);
+    right: calc(50% - 320px + 64px);
   }
 
   /* Tynd vertikal ramme langs begge sider */
@@ -3022,7 +3022,7 @@ body.is-screen-home .top-float-btn {
     bottom: 0;
     left: 0;
     right: 0;
-    max-width: 700px;
+    max-width: 640px;
     margin: 0 auto;
     border-left: 1.5px solid var(--accent-gold);
     border-right: 1.5px solid var(--accent-gold);
@@ -3033,11 +3033,11 @@ body.is-screen-home .top-float-btn {
 
   /* Flyt hamburger-menu ind i rammen */
   .hamburger-menu {
-    left: calc(50% - 350px);
+    left: calc(50% - 320px);
   }
 
   .hamburger-overlay {
-    max-width: 700px;
+    max-width: 640px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -3046,7 +3046,7 @@ body.is-screen-home .top-float-btn {
 
   /* Centrer søge-overlay */
   .search-overlay .search-container {
-    max-width: 700px;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -4240,19 +4240,9 @@ html[data-theme-transitioning] * {
 
 .element-balance-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  overflow-x: auto;
   padding: 2px 2px 6px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.element-balance-row::-webkit-scrollbar {
-  height: 4px;
-}
-
-.element-balance-row::-webkit-scrollbar-thumb {
-  background: var(--border-light);
-  border-radius: 2px;
 }
 
 .element-pentagon-cell {
