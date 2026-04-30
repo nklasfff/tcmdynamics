@@ -29,7 +29,7 @@ const translations = {
     sectionMeridiansTitle: 'The 8 Extraordinary',
     sectionMeridiansSubtitle: 'Deeper Energy Systems',
     sectionOverviewsTitle: 'Overviews',
-    sectionOverviewsSubtitle: 'Quick Reference · Organs · Meridians · Dialogue',
+    sectionOverviewsSubtitle: 'Quick reference · Organs · Patterns · Symptoms · Dialogue',
     navHome: 'Home',
     navPractice: 'Practice',
     navOrgans: 'Organs',
@@ -38,10 +38,11 @@ const translations = {
     backHome: 'Home',
     btnOrganClock: 'The Organ Clock',
     btnCorePrinciples: 'Core Principles',
-    tabOrgans: 'Organs',
-    tabMeridians: 'Meridians',
+    tabOrgans: 'Organs & The 12 Meridians',
+    tabMeridians: 'Extraordinary Meridians',
     tabSymptoms: 'Symptoms',
     tabDialogue: 'Dialogue',
+    tabPatterns: 'Patterns',
     tabOverview: 'Overview',
     tab8Themes: '8 Themes',
     tabKeyPoints: 'Key Points',
@@ -124,6 +125,7 @@ const translations = {
     ovManifestations: 'Manifestations',
     ovEnergetics: 'Energetics & Emotions',
     symptomIntro: 'Tap a symptom to see the primary organs to investigate',
+    patternsIntro: 'Tap a pattern to see its description, differential, and treatment guidance',
     aboutTitle: 'About The Patterns Behind',
     aboutBody: [
       'The Patterns Behind is an app built as a companion tool to the material of the same name. It provides practitioners with a practical reference for understanding and mapping patterns in their clients based on Traditional Chinese Medicine.',
@@ -259,7 +261,7 @@ const translations = {
     sectionMeridiansTitle: 'Ekstraordinære Meridianer',
     sectionMeridiansSubtitle: 'Dybere Energisystemer',
     sectionOverviewsTitle: 'Overblik',
-    sectionOverviewsSubtitle: 'Hurtigreference · Organer · Meridianer · Dialog',
+    sectionOverviewsSubtitle: 'Hurtigreference · Organer · Mønstre · Symptomer · Dialog',
     navHome: 'Hjem',
     navPractice: 'I praksis & Mønstrene Bag',
     navOrgans: 'Organer & De 12 Meridianer',
@@ -268,10 +270,11 @@ const translations = {
     backHome: 'Hjem',
     btnOrganClock: 'Organuret',
     btnCorePrinciples: 'Grundprincipper',
-    tabOrgans: 'Organer',
-    tabMeridians: 'Meridianer',
+    tabOrgans: 'Organer & De 12 Meridianer',
+    tabMeridians: 'Ekstraordinære Meridianer',
     tabSymptoms: 'Symptomer',
     tabDialogue: 'Dialog',
+    tabPatterns: 'Mønstre',
     tabOverview: 'Overblik',
     tab8Themes: '8 Temaer',
     tabKeyPoints: 'Nøglepunkter',
@@ -354,6 +357,7 @@ const translations = {
     ovManifestations: 'Manifestationer',
     ovEnergetics: 'Energetik & Emotioner',
     symptomIntro: 'Tryk på et symptom for at se de primære organer at undersøge',
+    patternsIntro: 'Tryk på et mønster for at se beskrivelse, differential og tilgang',
     aboutTitle: 'Om Mønstrene Bag',
     aboutBody: [
       'Mønstrene Bag er en app bygget som et følgeværktøj til materialet af samme navn. Den giver behandlere en praktisk reference til at forstå og kortlægge mønstre hos deres klienter baseret på Traditionel Kinesisk Medicin.',
@@ -640,7 +644,7 @@ function updateUILanguage() {
   });
 
   // Overview tabs
-  const ovTabMap = { organs: 'tabOrgans', meridians: 'tabMeridians', symptoms: 'tabSymptoms', conversation: 'tabDialogue' };
+  const ovTabMap = { organs: 'tabOrgans', patterns: 'tabPatterns', meridians: 'tabMeridians', symptoms: 'tabSymptoms', conversation: 'tabDialogue' };
   document.querySelectorAll('.overview-tab[data-ov-tab]').forEach(tab => {
     const key = ovTabMap[tab.dataset.ovTab];
     if (key) tab.textContent = t(key);
@@ -2000,6 +2004,54 @@ function renderOverviewSymptoms() {
       e.stopPropagation();
       const organ = organs.find(o => o.id === tag.dataset.organId);
       if (organ) showOrganDetail(organ);
+    });
+  });
+}
+
+function renderOverviewPatterns() {
+  const container = document.getElementById('overview-patterns-content');
+  if (!container || !Array.isArray(patternLibrary)) return;
+  container.innerHTML = `
+    <div class="symptom-ref-intro">
+      <p>${escapeHtml(t('patternsIntro'))}</p>
+    </div>
+    ${patternLibrary.map(p => `
+      <div class="pattern-ref-item">
+        <div class="pattern-ref-header">
+          <div class="pattern-ref-title-row">
+            <span class="pattern-ref-name">${escapeHtml(p.name)}</span>
+            ${p.chinese ? `<span class="pattern-ref-chinese">${escapeHtml(p.chinese)}</span>` : ''}
+          </div>
+          ${p.plainName ? `<div class="pattern-ref-plain">${escapeHtml(p.plainName)}</div>` : ''}
+          <svg class="pattern-ref-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="pattern-ref-body">
+          ${p.summaryDescription ? `<p class="pattern-ref-summary">${escapeHtml(p.summaryDescription)}</p>` : ''}
+          ${p.description ? `
+            <div class="pattern-ref-section">
+              <div class="pattern-ref-label">${escapeHtml(t('saPatternDescription'))}</div>
+              <p class="pattern-ref-text">${escapeHtml(p.description)}</p>
+            </div>` : ''}
+          ${p.differential ? `
+            <div class="pattern-ref-section">
+              <div class="pattern-ref-label">${escapeHtml(t('saPatternDifferential'))}</div>
+              <p class="pattern-ref-text">${escapeHtml(p.differential)}</p>
+            </div>` : ''}
+          ${p.treatment ? `
+            <div class="pattern-ref-section">
+              <div class="pattern-ref-label">${escapeHtml(t('saPatternTreatment'))}</div>
+              <p class="pattern-ref-text">${escapeHtml(p.treatment)}</p>
+            </div>` : ''}
+        </div>
+      </div>
+    `).join('')}
+  `;
+  container.querySelectorAll('.pattern-ref-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const wasOpen = item.classList.contains('open');
+      container.querySelectorAll('.pattern-ref-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
     });
   });
 }
@@ -3518,6 +3570,7 @@ function init() {
   try { renderOverviewOrganGrid(); } catch(e) { console.error('renderOverviewOrganGrid:', e); }
   try { renderOverviewMeridianGrid(); } catch(e) { console.error('renderOverviewMeridianGrid:', e); }
   try { renderOverviewSymptoms(); } catch(e) { console.error('renderOverviewSymptoms:', e); }
+  try { renderOverviewPatterns(); } catch(e) { console.error('renderOverviewPatterns:', e); }
   try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
   try { renderSymptomAnalysis(); } catch(e) { console.error('renderSymptomAnalysis:', e); }
   try { setupSymptomAnalysis(); } catch(e) { console.error('setupSymptomAnalysis:', e); }

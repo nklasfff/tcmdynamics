@@ -2638,6 +2638,112 @@ body.is-screen-home .top-float-btn {
   background: rgba(200, 169, 110, 0.3);
 }
 
+/* Pattern reference (Overblik > Mønstre tab) */
+.pattern-ref-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  margin: 0 0 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.pattern-ref-item.open {
+  border-color: var(--border-light);
+}
+
+.pattern-ref-header {
+  position: relative;
+  padding: 14px 40px 14px 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pattern-ref-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pattern-ref-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.pattern-ref-chinese {
+  font-size: 14px;
+  color: var(--accent-gold);
+  opacity: 0.85;
+}
+
+.pattern-ref-plain {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 3px;
+}
+
+.pattern-ref-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.pattern-ref-item.open .pattern-ref-chevron {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.pattern-ref-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.pattern-ref-item.open .pattern-ref-body {
+  max-height: 1200px;
+  padding: 0 16px 14px;
+}
+
+.pattern-ref-summary {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pattern-ref-section {
+  margin-bottom: 12px;
+}
+
+.pattern-ref-section:last-child {
+  margin-bottom: 0;
+}
+
+.pattern-ref-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 5px;
+}
+
+.pattern-ref-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
 .symptom-ref-note {
   padding: 0 16px 14px;
   font-family: var(--font-serif);
@@ -3227,7 +3333,7 @@ html[data-theme-transitioning] * {
 /* Results */
 .sa-results {
   margin-top: 8px;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 240px;
 }
 
 .sa-results-inner {
