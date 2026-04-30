@@ -232,7 +232,8 @@ const translations = {
     progressDiffTitle: 'Since last session',
     progressDiffNew: 'Appeared',
     progressDiffGone: 'Resolved',
-    progressDiffStable: 'No change in selected symptoms'
+    progressDiffStable: 'No change in selected symptoms',
+    progressElementsTitle: 'Element balance over time'
   },
   da: {
     pageTitle: 'Mønstrene Bag — TCM i Praksis',
@@ -461,7 +462,8 @@ const translations = {
     progressDiffTitle: 'Siden sidst',
     progressDiffNew: 'Kommet til',
     progressDiffGone: 'Sluppet',
-    progressDiffStable: 'Ingen ændring i valgte symptomer'
+    progressDiffStable: 'Ingen ændring i valgte symptomer',
+    progressElementsTitle: 'Element-balance over tid'
   }
 };
 
@@ -3130,6 +3132,91 @@ function intensityWidth(pct) {
   return 100;
 }
 
+function computeOrganTallyFromSymptoms(symptomNames) {
+  if (!Array.isArray(symptomNames) || !symptomReference) return [];
+  const scores = {};
+  const hits = {};
+  symptomNames.forEach(name => {
+    const sym = symptomReference.find(r => r.symptom === name);
+    if (!sym) return;
+    const w = sym.organs.length > 0 ? 1 / sym.organs.length : 0;
+    sym.organs.forEach(org => {
+      scores[org] = (scores[org] || 0) + w;
+      hits[org] = (hits[org] || 0) + 1;
+    });
+  });
+  const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+  return Object.entries(scores).map(([name, score]) => ({
+    name, score, hits: hits[name] || 0,
+    percentage: totalScore > 0 ? score / totalScore : 0
+  }));
+}
+
+function renderElementPentagonSVG(symptomNames) {
+  const tally = computeOrganTallyFromSymptoms(symptomNames);
+  const elTally = computeElementResonance(tally);
+  const elMap = { 'Træ': 0, 'Ild': 0, 'Jord': 0, 'Metal': 0, 'Vand': 0 };
+  elTally.forEach(e => { if (e.name in elMap) elMap[e.name] = e.percentage; });
+
+  // Clockwise from top: Ild, Jord, Metal, Vand, Træ
+  const order = [
+    { el: 'Ild',   angle: -90,  label: 'I' },
+    { el: 'Jord',  angle: -18,  label: 'J' },
+    { el: 'Metal', angle: 54,   label: 'M' },
+    { el: 'Vand',  angle: 126,  label: 'V' },
+    { el: 'Træ',   angle: 198,  label: 'T' }
+  ];
+  const cx = 50, cy = 52, rOut = 32;
+
+  const verts = order.map(o => {
+    const a = (o.angle * Math.PI) / 180;
+    const pct = elMap[o.el] || 0;
+    return {
+      el: o.el,
+      label: o.label,
+      angle: o.angle,
+      pct,
+      x: cx + Math.cos(a) * rOut,
+      y: cy + Math.sin(a) * rOut,
+      color: elementColor(o.el)
+    };
+  });
+
+  // Outer reference pentagon (faint)
+  const outerPts = verts.map(v => `${v.x.toFixed(1)},${v.y.toFixed(1)}`).join(' ');
+  const outerPolygon = `<polygon points="${outerPts}" fill="none" stroke="rgba(184,149,46,0.18)" stroke-width="0.6"/>`;
+
+  // Inner polygon: vertices pulled toward center based on percentage
+  // Map: 0% -> 0.15 of radius, 50%+ -> 1.0
+  const scaleFor = p => Math.max(0.15, Math.min(1.0, 0.15 + (p / 0.5) * 0.85));
+  const innerVerts = verts.map(v => {
+    const s = scaleFor(v.pct);
+    return {
+      ...v,
+      ix: cx + (v.x - cx) * s,
+      iy: cy + (v.y - cy) * s
+    };
+  });
+  const innerPts = innerVerts.map(v => `${v.ix.toFixed(1)},${v.iy.toFixed(1)}`).join(' ');
+  const innerPolygon = `<polygon points="${innerPts}" fill="rgba(184,149,46,0.10)" stroke="rgba(232,224,208,0.45)" stroke-width="0.7"/>`;
+
+  // Colored dots at inner polygon vertices, slightly bigger for stronger element
+  const dots = innerVerts.map(v => {
+    const r = 1.6 + Math.min(v.pct, 0.5) / 0.5 * 1.8;
+    return `<circle cx="${v.ix.toFixed(1)}" cy="${v.iy.toFixed(1)}" r="${r.toFixed(1)}" fill="${v.color}"/>`;
+  }).join('');
+
+  // Labels outside pentagon
+  const labels = verts.map(v => {
+    const a = (v.angle * Math.PI) / 180;
+    const lx = cx + Math.cos(a) * (rOut + 7);
+    const ly = cy + Math.sin(a) * (rOut + 7) + 2;
+    return `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" fill="${v.color}" font-size="8" font-family="var(--font-sans)" opacity="0.8">${v.label}</text>`;
+  }).join('');
+
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="element-pentagon">${outerPolygon}${innerPolygon}${dots}${labels}</svg>`;
+}
+
 function renderProgressionHTML(sessionsAsc) {
   if (!sessionsAsc || sessionsAsc.length < 2) return '';
 
@@ -3213,11 +3300,29 @@ function renderProgressionHTML(sessionsAsc) {
     `;
   }
 
+  // Element-balance pentagons row (one per session, oldest first)
+  const dateLocaleShort = getLanguage() === 'da' ? 'da-DK' : 'en-US';
+  const fmtShort = d => new Date(d).toLocaleDateString(dateLocaleShort, { day: 'numeric', month: 'short' });
+  const pentagonsHTML = `
+    <div class="element-balance">
+      <div class="element-balance-label">${escapeHtml(t('progressElementsTitle'))}</div>
+      <div class="element-balance-row">
+        ${sessionsAsc.map((s, i) => `
+          <div class="element-pentagon-cell">
+            ${renderElementPentagonSVG(s.symptoms || [])}
+            <div class="element-pentagon-meta">#${i+1} · ${escapeHtml(fmtShort(s.date))}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
   return `
     <div class="client-progress">
       <h3 class="client-progress-title">${escapeHtml(t('progressTitle'))}</h3>
       <p class="client-progress-lead">${escapeHtml(t('progressLead'))}</p>
       <div class="progress-rows">${rows}</div>
+      ${pentagonsHTML}
       ${diffHTML}
     </div>
   `;
