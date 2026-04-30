@@ -4984,227 +4984,227 @@ const symptomReference = [
   {
     symptom: 'Hovedpine',
     organs: ['Lever', 'Galdeblære', 'Blære', 'Mavesæk'],
-    note: 'Lokation er afgørende: tindinger (Galdeblære), top (Lever), baghoved (Blære), pande (Mavesæk)'
+    note: 'Lokationen er afgørende — tindinger hører til Galdeblæren, toppen til Leveren, baghovedet til Blæren, panden til Mavesækken. Kvaliteten siger næsten lige så meget: pulserende, dump eller pressende fortæller dig mønstret.'
   },
   {
     symptom: 'Søvnproblemer',
     organs: ['Hjerte', 'Lever', 'Galdeblære', 'Pericardium', 'Nyrer'],
-    note: 'Tidspunkt for opvågning peger mod specifikt organ via organuret'
+    note: 'Tidspunktet for opvågning peger næsten altid mod et bestemt organ via organuret. Hold også øje med om problemet er at falde i søvn eller at blive vækket midt i natten — det fortæller forskellige ting.'
   },
   {
     symptom: 'Fordøjelsesproblemer',
     organs: ['Milt', 'Mavesæk', 'Lever', 'Tyktarm', 'Tyndtarm'],
-    note: 'Lever-qi stagnation er hyppig årsag til fordøjelsesproblemer'
+    note: 'Lever-Qi-stagnation er den hyppigste årsag, men Milt-Qi-svigt og Mavesæk-modløb kan også stå bag. Spørg om symptomerne forværres ved stress eller ved bestemte fødevarer — det åbner sporet.'
   },
   {
     symptom: 'Emotionel ustabilitet',
     organs: ['Hjerte', 'Lever', 'Pericardium', 'Nyrer'],
-    note: 'Alle emotioner ender med at påvirke hjertet — men roden kan ligge andetsteds'
+    note: 'Alle emotioner ender med at påvirke hjertet, men roden kan ligge andetsteds. Vrede peger mod Leveren, bekymring mod Milten, sorg mod Lungerne, frygt mod Nyrerne — den dominerende følelse fortæller dig hvor du skal lytte først.'
   },
   {
     symptom: 'Hudproblemer',
     organs: ['Lunger', 'Tyktarm', 'Milt', 'Lever'],
-    note: 'Lunger og tyktarm styrer huden; intern varme og fugt fra milt/lever viser sig i hud'
+    note: 'Lungerne og Tyktarmen styrer huden i Yin-Yang-par, mens intern varme og fugt fra Milt og Lever viser sig på overfladen. Hvad der er pårørt — tørhed, kløe, betændelse eller udslæt — fortæller dig om den primære retning.'
   },
   {
     symptom: 'Rygsmerter',
     organs: ['Nyrer', 'Blære', 'Lever', 'Du Mai'],
-    note: 'Lænden relaterer til nyrer; hele rygsøjlen til blæren og Du Mai'
+    note: 'Lænden relaterer specifikt til Nyrerne, mens hele rygsøjlen tilhører Blæren og Du Mai. Når smerten forværres ved kulde og er kronisk, peger det mod Nyre-Yang; akut og bevægelses-relateret peger derimod mod Blære-meridianen.'
   },
   {
     symptom: 'Træthed/energimangel',
     organs: ['Milt', 'Nyrer', 'Lunger', 'Hjerte'],
-    note: 'Milt qi-mangel er hyppigste årsag; kronisk træthed peger mod nyrer'
+    note: 'Milt-Qi-svigt er den hyppigste årsag — typisk forværret efter måltider og af bekymring. Når trætheden er dyb, kronisk og ledsages af kuldskærhed og lændesvaghed, er det Nyrerne der ikke længere kan bære.'
   },
   {
     symptom: 'Angst og frygt',
     organs: ['Nyrer', 'Hjerte', 'Pericardium', 'Galdeblære'],
-    note: 'Frygt er nyrernes emotion; angst involverer ofte hjerte og pericardium'
+    note: 'Frygt er Nyrernes emotion, mens angst-tilstande oftere involverer Hjertet og Pericardium. Spørg til kvaliteten: en bundløs uro mod fremtiden peger mod Nyrerne, mens en flagrende rastløshed i brystet peger mod Hjertet.'
   },
   {
     symptom: 'Øjenproblemer',
     organs: ['Lever', 'Galdeblære', 'Blære', 'Hjerte'],
-    note: 'Leveren åbner til øjnene; blodmangel i lever giver tørre/slørede øjne'
+    note: 'Leveren åbner til øjnene, og Lever-Blod-mangel viser sig som tørre, slørede eller lette øjne — særligt om aftenen efter en lang dag. Røde øjne med kløe peger derimod mod Lever-Yang stiger eller indre varme.'
   },
   {
     symptom: 'Menstruationsproblemer',
     organs: ['Lever', 'Milt', 'Nyrer', 'Chong Mai', 'Ren Mai'],
-    note: 'Lever lagrer blod og styrer fri flow; Chong Mai og Ren Mai er nøglemeridianer'
+    note: 'Leveren lagrer Blod og styrer den frie flow, mens Chong Mai og Ren Mai er de centrale meridianer for kvinders cyklus. Spørg til regelmæssighed, mængde, smerter, og om noget skifter med klientens sindstilstand.'
   },
   {
     symptom: 'Ødem/væskeretention',
     organs: ['Milt', 'Nyrer', 'Lunger', 'San Jiao', 'Blære'],
-    note: 'Milt transformerer væsker; nyrer styrer vandmetabolisme; San Jiao regulerer vandpassager'
+    note: 'Milten transformerer væsker, Nyrerne styrer vandmetabolismen, og San Jiao regulerer vandpassagerne. Hvor ødemet sidder fortæller dig hvilken akse der er svagest — fødderne ved Nyrerne, ansigtet ved Lungerne, maven ved Milten.'
   },
   {
     symptom: 'Hjertebanken',
     organs: ['Hjerte', 'Pericardium', 'Nyrer', 'Milt'],
-    note: 'Kan skyldes hjerte-blod mangel, pericardium-ild, eller nyre-vand der ikke kontrollerer ild'
+    note: 'Kan skyldes Hjerte-Blod-mangel, Pericardium-ild eller Nyre-Vand der ikke længere kontrollerer Hjertets ild. Spørg om det opstår i hvile eller ved anstrengelse — og om det ledsages af angst eller af en træthed der mærkes dybt.'
   },
   {
     symptom: 'Høreproblemer/tinnitus',
     organs: ['Nyrer', 'Galdeblære', 'San Jiao', 'Tyndtarm'],
-    note: 'Nyrer åbner til ørerne; galdeblære og San Jiao meridianer løber forbi øret'
+    note: 'Nyrerne åbner til ørerne, og Galdeblære- og San Jiao-meridianerne løber forbi øret. Lav, dump tinnitus over år peger mod Nyre-svaghed; pludseligt skarp og høj peger derimod mod Lever-Yang stiger.'
   },
   {
     symptom: 'Smerter i ekstremiteter',
     organs: ['Lever', 'Milt', 'Galdeblære', 'Blære'],
-    note: 'Lever styrer sener; milt styrer muskler; meridianforløb bestemmer hvilken side'
+    note: 'Leveren styrer sener, Milten styrer muskler, og meridianforløbet bestemmer hvilken side smerten breder sig på. Stikkende lokal smerte peger på blod-stase, dump og vandrende på Vind, kold og fast på Kulde.'
   },
   {
     symptom: 'Vejrtrækningsproblemer',
     organs: ['Lunger', 'Nyrer', 'Hjerte', 'Milt'],
-    note: 'Lunger styrer vejrtrækning; nyrer "griber" qi; milt producerer slim'
+    note: 'Lungerne styrer vejrtrækning, Nyrerne "griber" Qi nedefra, og Milten producerer den slim der kan tynge åndedrættet. Åndenød ved indånding peger mod Nyrerne; ved udånding mod Lungerne.'
   },
   {
     symptom: 'Morgendiarré kl. 5-7',
     organs: ['Nyrer', 'Milt', 'Tyktarm'],
-    note: 'Klassisk "hanegal-diarré" — tidspunktet er diagnostisk afgørende. Hvis ledsaget af kolde knæ, lænd og generel kuldskærhed: primært Nyrer (Yang-svigt). Hvis træthed efter måltider og udspilet mave dominerer: Milt-Yang. Tyktarm er det funktionelle organ.'
+    note: 'Den klassiske "hanegal-diarré" — tidspunktet alene er diagnostisk afgørende. Når den ledsages af kolde knæ, svag lænd og generel kuldskærhed, er Nyre-Yang-svigt rod. Dominerer træthed efter måltider og udspilet mave, peger sporet mod Milt-Yang. Tyktarmen er det organ der manifesterer afføringsforstyrrelsen, men sjældent rod i sig selv.'
   },
   {
     symptom: 'Natlige svedudbrud',
     organs: ['Nyrer', 'Hjerte', 'Lunger'],
-    note: 'Sved KUN under søvn (stopper ved opvågning) = Yin-svigt med Tom Hede. Lokalisation hjælper: bryst/øvre krop = Hjerte-Yin; hele kroppen + lændesmerter + tinnitus = Nyre-Yin; ledsaget af tør hoste = Lunge-Yin. Spontan dagsved tyder i stedet på Qi-svigt.'
+    note: 'Sved kun under søvn — der stopper når klienten vågner — er det klassiske tegn på Yin-svigt. Lokalisationen hjælper dig videre: sved på bryst og øvre krop peger mod Hjerte-Yin, hele kroppen sammen med lændesmerter og tinnitus mod Nyre-Yin, og ledsaget af tør hoste mod Lunge-Yin. Spontan dagsved derimod tyder på Qi-svigt — en helt anden retning.'
   },
   {
     symptom: 'Klump i halsen (globus)',
     organs: ['Lever', 'Lunger', 'Milt', 'Mavesæk'],
-    note: 'Klassisk "blommesten-Qi" (Mei He Qi) — fornemmelse af klump der hverken kan synkes eller hostes op, mens mad og drikke passerer normalt. Forværres ved emotionel stress (Lever-Qi-stagnation som rod), Slim fra Milt/Mavesæk binder sig i halsen via Lungernes nedadgående Qi. Hvis stress er primær trigger: Lever; hvis ledsaget af opspyt og tung mave: Milt/Mavesæk.'
+    note: 'Den klassiske "blommesten-Qi" — en klump i halsen der hverken kan synkes eller hostes op, mens mad og drikke passerer normalt. Den dukker op under emotionel belastning, hvor Leveren stuver energi op og slim fra Milten binder sig i halsen. Stress som tydelig udløser peger på Leveren som rod; følger der opspyt og tung mave med, er Milten medspiller. Lyt efter sukken og klemte sætninger — kroppen viser det indvendige tryk.'
   },
   {
     symptom: 'Hyppig vandladning om natten',
     organs: ['Nyrer', 'Blære'],
-    note: 'Klar, rigelig urin + kolde lænd/knæ + kuldskærhed = Nyre-Yang. Sparsom, hyppig urin uden kuldetegn + tørst om natten = Nyre-Yin. Forsinket vandladning forværret af stress/frygt = "Nyre-Qi ikke fast" (Kidney Qi not Firm).'
+    note: 'Klar og rigelig urin sammen med kolde lænder, knæ og generel kuldskærhed peger mod Nyre-Yang-svigt. Sparsom, hyppig urin uden kulde-tegn men med tørst om natten peger derimod mod Nyre-Yin. Forsinket vandladning der forværres af stress eller frygt fortæller at Nyre-Qi\'en ikke længere kan holde fast — frygten lader noget slippe.'
   },
   {
     symptom: 'Kolde hænder og fødder',
     organs: ['Nyrer', 'Milt', 'Lever', 'Hjerte'],
-    note: 'Vigtig diskriminator: kolde hele lemmer + lænd/mave + generel kuldskærhed = Nyre-/Milt-Yang. KUN fingre/tæer kolde, resten af kroppen normal/varm + irritabilitet/sukken = Lever-Qi-stagnation (varmen når ikke ud). Kolde hænder + palpitationer + bleg ansigt = Hjerte-Blod-svigt.'
+    note: 'Kolde hele lemmer sammen med lænd og mave og generel kuldskærhed peger mod Nyre- eller Milt-Yang. Hvis derimod KUN fingre og tæer er kolde mens resten af kroppen er normal — og klienten er irritabel og sukker — er det Lever-Qi-stagnation, hvor varmen ikke når ud til det yderste. Kolde hænder med palpitationer og bleg ansigtsfarve peger mod Hjerte-Blod-svigt.'
   },
   {
     symptom: 'Svimmelhed',
     organs: ['Lever', 'Nyrer', 'Milt'],
-    note: 'Pludselig, voldsom svimmelhed ved stillingsskift + irritabilitet = Lever-Yang stiger. Tung, dump svimmelhed med kvalme og fornemmelse af vat i hovedet = Slim-Damp (Milt). Gradvis, forværres ved træthed + tinnitus + dårlig hukommelse = Nyre-Essens-svigt. Let svimmelhed efter måltider eller ved stress = Milt-Qi-svigt.'
+    note: 'Pludselig, voldsom svimmelhed ved stillingsskift sammen med irritabilitet peger mod Lever-Yang stiger. En tung, dump svimmelhed med kvalme og fornemmelse af vat i hovedet er Slim-Damp fra Milten. Når svimmelheden er gradvis og forværres af træthed, sammen med tinnitus og dårlig hukommelse, er det Nyre-Essens der svinder. Let svimmelhed udelukkende efter måltider eller ved stress peger på simpel Milt-Qi-svigt.'
   },
   {
     symptom: 'Tør mund med lyst til småslurke',
     organs: ['Mavesæk', 'Nyrer', 'Lunger'],
-    note: 'Lyst til småslurke (ikke store mængder) er nøglen — adskiller Yin-svigt fra Fuldhede. Tør mund + dårlig appetit på trods af sult = Mavesæk-Yin. Tør om natten + tinnitus + lændesmerter = Nyre-Yin. Tør hoste + tør næse + hæshed = Lunge-Yin.'
+    note: 'Lyst til småslurke — ikke store mængder — er nøglen, og adskiller Yin-svigt fra Fuldhede. Tør mund med dårlig appetit på trods af sult peger mod Mavesæk-Yin. Tørhed der forværres om natten sammen med tinnitus og lændesmerter peger mod Nyre-Yin. Og tør hoste med tør næse og hæshed peger mod Lunge-Yin — alle tre er forskellige Yin-mangel-billeder.'
   },
   {
     symptom: 'Forstoppelse med tørre afføringer',
     organs: ['Tyktarm', 'Lever', 'Milt', 'Nyrer'],
-    note: 'Tørre småpebberlignende afføringer + udspilet mave + irritabilitet/sukken + lindring efter afføring = Lever-Qi-stagnation invaderer Tyktarm. Tørre afføringer + tør mund = Yin/Væske-svigt (især hos ældre). Vanskelig afføring uden tørhed + udmattelse efter wc-besøg = Milt-Qi-svigt med svag drivkraft.'
+    note: 'Tørre, småpebberlignende afføringer ledsaget af udspilet mave, irritabilitet og lettelse efter besøget peger på Lever-Qi-stagnation der invaderer Tyktarmen. Tørre afføringer kombineret med tør mund er Yin- og væske-svigt — særligt hos ældre. Vanskelig afføring uden tørhed, hvor klienten føler sig udmattet efter besøget, fortæller om Milt-Qi-svigt der mangler drivkraften.'
   },
   {
     symptom: 'Oppustethed efter måltider',
     organs: ['Milt', 'Mavesæk', 'Lever'],
-    note: 'Forværres af mad generelt + træthed = Milt-Qi-svigt. Forværres af specifikke (fede, kolde, rå) fødevarer + raben/sure opstød = Mavesæk-Qi i modløb. Forværres ved stress/følelser (uafhængigt af mad) + smerter under ribben = Lever invaderer Milt.'
+    note: 'Når oppustetheden forværres af mad generelt og ledsages af træthed, er det Milt-Qi-svigt. Forværres den af specifikke fødevarer — fede, kolde eller rå — sammen med raben og sure opstød, er det Mavesæk-Qi der løber i modløb. Forværring ved stress og følelser uafhængigt af mad, sammen med smerter under ribbenene, fortæller at Leveren invaderer Milten.'
   },
   {
     symptom: 'Overdreven slim/opspyt',
     organs: ['Milt', 'Lunger', 'Nyrer'],
-    note: 'Tyk hvid slim + tung mave + appetitløshed = Milt skaber Slim. Tynd vandig slim fra næsen + kuldskærhed = Lunge-Kulde. Sej skummende slim + åndenød ved anstrengelse + lændesvaghed = Nyrer kan ikke modtage Qi (kronisk). Klassisk: "Milt skaber Slim, Lungerne lagrer den".'
+    note: 'Tyk hvid slim sammen med tung mave og appetitløshed fortæller at Milten skaber Slim. Tynd og vandig slim fra næsen ledsaget af kuldskærhed peger mod Lunge-Kulde. Sej, skummende slim med åndenød ved anstrengelse og lændesvaghed er kronisk — Nyrerne kan ikke længere modtage Qi\'en nedefra. Som det siges: "Milten skaber Slim, Lungerne lagrer den".'
   },
   {
     symptom: 'Tab af lugte- eller smagssans',
     organs: ['Lunger', 'Milt', 'Mavesæk'],
-    note: 'Lugtesans er Lungernes domæne (åbnes til næsen); smagssans er Milt/Mavesæk (åbnes til munden). Tab af lugt med tilstoppet næse + tyk slim = Slim-Hede blokerer Lungerne. Tab af smag + manglende appetit = Mavesæk-Yin. Reduceret smag + slim-fornemmelse i munden = Milt-Damp.'
+    note: 'Lugtesansen er Lungernes domæne — den åbner til næsen; smagssansen tilhører Milt og Mavesæk og åbner til munden. Tab af lugt med tilstoppet næse og tyk slim er Slim-Hede der blokerer Lungerne. Tab af smag sammen med manglende appetit peger mod Mavesæk-Yin. Og reduceret smag med en slim-fornemmelse i munden er Milt-Damp.'
   },
   {
     symptom: 'Kronisk næsetilstopning',
     organs: ['Lunger', 'Milt', 'Galdeblære'],
-    note: 'Akut tilstoppet næse med klar slim efter forkølelse = Lungerne invaderet af Vind. Kronisk tyk gul slim + frontal hovedpine + presfornemmelse over kindben = Slim-Hede i Lunger og Galdeblære-meridianen. Vandig næse + Milt-svaghed + træthed = Slim-Damp opstigende fra Milt.'
+    note: 'En akut tilstoppet næse med klar slim efter en forkølelse er Lungerne invaderet af Vind. Tyk, gul slim over længere tid sammen med frontal hovedpine og presfornemmelse over kindbenene peger på Slim-Hede i både Lungerne og Galdeblære-meridianen. Vandig næseflod sammen med Milt-svaghed og træthed er Slim-Damp der stiger op fra Milten.'
   },
   {
     symptom: 'Hedeture',
     organs: ['Nyrer', 'Lever', 'Hjerte', 'Chong Mai'],
-    note: 'Pludselig opadstigende hede + svedudbrud især ansigt/bryst, typisk perimenopausalt = Nyre-Yin svigter, Lever-Yang stiger uhindret. Hvis ledsaget af palpitationer og søvnløshed: Hjerte-Yin også involveret. Chong Mai aktiveres typisk ved hormonelle skift — opadstrømmen følger Chong Mai-aksen fra underliv til bryst.'
+    note: 'Pludselig opadstigende hede med svedudbrud — særligt i ansigt og bryst, typisk perimenopausalt — fortæller at Nyre-Yin svigter og Lever-Yang stiger uden modvægt. Følges det af palpitationer og søvnløshed, er Hjerte-Yin også involveret. Chong Mai aktiveres typisk ved hormonelle skift, og opadstrømmen følger dens akse fra underliv til bryst.'
   },
   {
     symptom: 'Spontan svedtendens i dagtimerne',
     organs: ['Lunger', 'Hjerte', 'Milt'],
-    note: 'Sved uden anstrengelse, forværres ved selv let aktivitet, stopper i hvile = Wei Qi/Lunge-Qi-svigt (Lungerne kontrollerer porene). Sved primært på bryst/ansigt + palpitationer + bleghed = Hjerte-Qi-svigt. Sved på pande/torso + træthed efter måltider = Milt-Qi kan ikke holde på væsker. Adskil fra nattesved (Yin-svigt).'
+    note: 'Sved uden anstrengelse der forværres ved selv let aktivitet og stopper i hvile peger mod Lunge-Qi-svigt — Lungerne kontrollerer porerne i huden. Sved primært på bryst og ansigt sammen med palpitationer og bleghed er Hjerte-Qi-svigt. Sved på pande og torso sammen med træthed efter måltider fortæller at Milt-Qi\'en ikke kan holde på væskerne. Vigtigt: adskil fra nattesved, som peger mod Yin-svigt — det er en helt anden retning.'
   },
   {
     symptom: 'Reduceret libido',
     organs: ['Nyrer', 'Lever', 'Hjerte', 'Ren Mai'],
-    note: 'Kuldskærhed + lændesvaghed + impotens/frigiditet + klar urin = Nyre-Yang/Ming Men Fire svigter. Tørhed, vaginal tørhed, nattesved + irritabilitet = Nyre-Yin. Aversion mod intimitet + følelsesmæssig blokering + brystudspiling = Lever-Qi-stagnation. Manglende lyst pga. dyb angst eller sorg = Hjerte/Shen. Ren Mai (Konception-karret) er centralt for reproduktiv vitalitet.'
+    note: 'Kuldskærhed sammen med lændesvaghed, impotens eller frigiditet og klar urin er Nyre-Yang der svigter. Tørhed — herunder vaginal tørhed — sammen med nattesved og irritabilitet peger mod Nyre-Yin. Aversion mod intimitet, følelsesmæssig blokering og brystudspiling fortæller om Lever-Qi-stagnation. Manglende lyst der bunder i dyb angst eller sorg ligger hos Hjertet og sindets ro. Ren Mai — Konceptionskarret — er det centrale akse for al reproduktiv vitalitet.'
   },
   {
     symptom: 'Sæsonbaseret rhinitis/allergi',
     organs: ['Lunger', 'Milt', 'Nyrer'],
-    note: 'Akutte symptomer (nys, klar næseflod, kløende øjne) = Wei Qi-svaghed på overfladen, Lungerne kan ikke modstå Vind. Den underliggende svaghed afgøres af konstitution: træthed + dårlig appetit = Milt-Qi (Wei Qi-roden). Kronisk fra barndom + kuldskærhed + lændesvaghed = Nyre-Yang (konstitutionel svaghed).'
+    note: 'Akutte symptomer som nys, klar næseflod og kløende øjne fortæller at kroppens overflade-forsvar er svækket — Lungerne kan ikke modstå Vind. Den underliggende konstitutionelle svaghed afgør hvor du går videre: træthed og dårlig appetit peger mod Milt-Qi som rod af forsvaret. Kronisk fra barndom sammen med kuldskærhed og lændesvaghed peger derimod mod Nyre-Yang som konstitutionel svaghed.'
   },
   {
     symptom: 'Vedvarende sorg/melankoli',
     organs: ['Lunger', 'Hjerte', 'Milt'],
-    note: 'Sorg er Lungernes emotion (sender Qi nedad og opløser den) — kronisk sorg viser sig som åndenød, sukken, svag stemme, kuldskærhed, gentagne forkølelser. Hvis ledsaget af konstant grublen og fordøjelsesbesvær: Milt også involveret (worry = Milt). Hjerte-Shen viser sig som apati og glædesløshed snarere end sorg.'
+    note: 'Sorg er Lungernes emotion — den sender Qi nedad og opløser den. Kronisk sorg viser sig som åndenød, hyppig sukken, svag stemme, kuldskærhed og gentagne forkølelser. Følges sorgen af konstant grublen og fordøjelsesbesvær, er Milten også involveret — bekymring tærer på den. Hjertet viser sig som apati og glædesløshed snarere end sorg, og det er en mere stille tilstand.'
   },
   {
     symptom: 'Kronisk irritabilitet/vrede',
     organs: ['Lever', 'Galdeblære', 'Hjerte'],
-    note: 'Eksplosiv vrede + rødt ansigt + hovedpine = Lever-Ild eller Lever-Yang stiger. Indeholdt frustration + sukken + brystudspiling + PMS = Lever-Qi-stagnation (kronisk underdrejet form). Beslutsomhedsbesvær + tøven kombineret med irritabilitet = Galdeblære involveret. Hvis vrede vender indad som selvbebrejdelse + søvnløshed: Hjerte-Ild fra langvarig Lever-stagnation.'
+    note: 'Eksplosiv vrede sammen med rødt ansigt og hovedpine peger på Lever-Ild eller Lever-Yang stiger. Indeholdt frustration med sukken, brystudspiling og PMS er den kroniske underdrejede form: Lever-Qi-stagnation. Beslutsomhedsbesvær og tøven sammen med irritabilitet fortæller at Galdeblæren også er involveret. Når vreden vender indad som selvbebrejdelse og søvnløshed, er det Hjerte-Ild der har udviklet sig fra langvarig Lever-stagnation.'
   },
   {
     symptom: 'Hyppige forkølelser',
     organs: ['Lunger', 'Milt', 'Nyrer'],
-    note: 'Wei Qi (defensiv Qi) udspringer af Nyrerne, dannes af Milten og fordeles af Lungerne. Hvis personen er bleg + fordøjelsesproblemer + spontan dagsved = Lunge/Milt-Qi-svigt (klassisk Yu Ping Feng San-billede). Hvis kronisk fra barndom + kuldskærhed + svage knæ + nokturi = Nyre-Yang utilstrækkelig til at understøtte Wei Qi. Forkølelser der "sætter sig i bronkier" tyder på Lunge-Qi specifikt.'
+    note: 'Kroppens overflade-forsvar er ikke ét organs ansvar — det udspringer af Nyrerne, dannes af Milten og fordeles af Lungerne. Bleghed, dårlig fordøjelse og spontan dagsved tegner Lunge-Milt-aksen som rod. Går svagheden længere tilbage — kuldskærhed, svage knæ, nattevandladning siden barndommen — er det Nyrerne der ikke kan understøtte forsvaret. Forkølelser der "sætter sig i bronkierne" peger på Lungerne specifikt.'
   },
   {
     symptom: 'Hårtab eller for tidlig grånen',
     organs: ['Nyrer', 'Lever'],
-    note: 'Håret er "Blodets blomst" og "Nyre-Essensens overflod". For tidlig grånen + lændesvaghed + tinnitus = Nyre-Essens svigter (især hvis arveligt eller efter langvarig stress). Diffust hårtab + bleg ansigtsfarve + tør hud + kraftesløse negle = Lever-Blod-svigt (Leveren lagrer Blod og nærer hår/negle). Pletvis pludseligt hårtab = ofte Lever-Qi-stagnation med Blod-Hede.'
+    note: 'Håret er "Blodets blomst" og "Nyre-Essensens overflod" — to akser der mødes i hårsækkene. For tidlig grånen sammen med lændesvaghed og tinnitus fortæller at Nyre-Essensen svigter, særligt hvis det er arveligt eller efter langvarig stress. Diffust hårtab med bleg ansigtsfarve, tør hud og kraftesløse negle er Lever-Blod-svigt — Leveren lagrer Blodet der nærer både hår og negle. Pletvis, pludseligt hårtab er ofte Lever-Qi-stagnation kombineret med Blod-Hede.'
   },
   {
     symptom: 'Vedvarende vaginalt udflåd',
     organs: ['Dai Mai', 'Milt', 'Nyrer', 'Lever'],
-    note: 'Klassisk Dai Mai-symptom. Rigeligt klart/hvidt udflåd uden lugt + træthed = Milt-Qi synker, Dai Mai er "for løst". Tykt gult ildelugtende udflåd + tørst + kløe = Damp-Hede der siver ned i Dai Mai (typisk fra Lever/Galdeblære). Klart vandigt + kuldskærhed + lændesvaghed = Nyre-Yang og Dai Mai-tomhed.'
+    note: 'Et klassisk Dai Mai-symptom. Rigeligt klart eller hvidt udflåd uden lugt sammen med træthed fortæller at Milt-Qi synker og Dai Mai er "for løst". Tykt, gult og ildelugtende udflåd med tørst og kløe er Damp-Hede der siver ned i Dai Mai — typisk fra Lever eller Galdeblære. Klart, vandigt udflåd kombineret med kuldskærhed og lændesvaghed er Nyre-Yang og Dai Mai-tomhed der mødes.'
   },
   {
     symptom: 'Tunghed og svaghed i benene',
     organs: ['Dai Mai', 'Milt', 'Nyrer'],
-    note: 'Klassisk "Wei-syndrom" billede knyttet til Dai Mai. Følelse af at benene "ikke vil bære" + tunge lemmer + opsvulmet abdomen omkring taljen = Dai Mai for løst, Spleen/Kidney-Qi synker. Hvis ledsaget af kolde knæ, klar urin, lændesvaghed: primært Nyre-Yang. Hvis træthed efter måltider og dårlig appetit dominerer: primært Milt. Adskil fra ren udmattelse: her er det specifikt UNDERKROPPEN der svigter.'
+    note: 'Et klassisk billede knyttet til Dai Mai. Følelsen af at benene "ikke vil bære" kombineret med tunge lemmer og en opsvulmet mave omkring taljen fortæller at Dai Mai er "for løst" og Milt- og Nyre-Qi synker. Følges det af kolde knæ, klar urin og lændesvaghed, er Nyre-Yang primært involveret. Dominerer træthed efter måltider og dårlig appetit derimod, er det Milten. Vigtigt at adskille fra almindelig udmattelse — her svigter specifikt UNDERKROPPEN.'
   },
   {
     symptom: 'Udtalt søvnighed i dagtimerne',
     organs: ['Yin Qiao Mai', 'Nyrer', 'Milt'],
-    note: 'Klassisk Yin Qiao-tegn: "øjnene vil lukke" (Ling Shu kap. 21). Wei Qi forbliver i Yin og kommer ikke ud i Yang. Adskil fra almindelig træthed: her vil personen aktivt SOVE midt på dagen. Hvis ledsaget af tung hovedbund, slim og fugtighed: Milt-Damp blokerer Yin Qiaos opadstigning. Hvis ledsaget af kuldskærhed og lændesvaghed: Nyre-Yang understøtter ikke Yin Qiao tilstrækkeligt.'
+    note: 'Et klassisk Yin Qiao-tegn — "øjnene vil lukke". Den vågne energi forbliver i Yin og kommer ikke ud i Yang igen. Vigtigt at adskille fra almindelig træthed: her vil personen aktivt SOVE midt på dagen, ikke bare være træt. Følges det af tung hovedbund med slim og fugtighed, er det Milt-Damp der blokerer Yin Qiaos opadstigning. Følges det af kuldskærhed og lændesvaghed, er det Nyre-Yang der ikke kan understøtte Yin Qiao tilstrækkeligt.'
   },
   {
     symptom: 'Kramper indersiden af benene',
     organs: ['Yin Qiao Mai', 'Lever', 'Nyrer'],
-    note: 'Yin Qiao kontrollerer tonus af de mediale benmuskler. Når Yin Qiao er i Fuldhed: indersiden trækker sammen, foden vender indad ved gang. Vigtig diskriminator: hvis kramperne primært er på YDERSIDEN = Yang Qiao Mai i stedet. Hvis ledsaget af tørre tånegle og blodmangel = også Lever-Blod-svigt. Klassisk indikation: tendens til at "snuble" pga. ubalance mellem indre/ydre bentonus.'
+    note: 'Yin Qiao kontrollerer tonus i benenes mediale muskulatur. Når Yin Qiao er i Fuldhed, trækker indersiden sig sammen og foden vender indad ved gang. En vigtig diskriminator: er kramperne primært på YDERSIDEN, peger det i stedet mod Yang Qiao Mai. Følges de af tørre tånegle og blod-mangel, er Lever-Blod også involveret. En klassisk indikation: tendens til at "snuble" på grund af ubalancen mellem indre og ydre bentonus.'
   },
   {
     symptom: 'Søvnløshed med rastløshed',
     organs: ['Yang Qiao Mai', 'Hjerte', 'Lever'],
-    note: 'Klassisk Yang Qiao-tegn: "øjnene kan ikke lukke" (Ling Shu kap. 80). Wei Qi forbliver i Yang. Vigtig diskriminator versus almindelig Hjerte/Lever-søvnløshed: her er der MOTORISK rastløshed — personen kan ikke ligge stille, vender og drejer sig, måske maniske træk. Hvis ledsaget af palpitationer og angst: Hjerte-Ild som rod. Hvis ledsaget af irritabilitet og temporal hovedpine: Lever-Yang stiger og Yang Qiao kan ikke absorbere overskuddet.'
+    note: 'Et klassisk Yang Qiao-tegn — "øjnene kan ikke lukke". Den vågne energi forbliver i Yang og kan ikke trække sig tilbage. En vigtig diskriminator overfor almindelig Hjerte- eller Lever-søvnløshed: her er rastløsheden MOTORISK — personen kan ikke ligge stille, vender og drejer sig, måske med maniske træk. Følges det af palpitationer og angst, er Hjerte-Ild rod. Følges det af irritabilitet og temporal hovedpine, er det Lever-Yang stiger som Yang Qiao ikke længere kan absorbere overskuddet af.'
   },
   {
     symptom: 'Ensidig iskias på ydersiden af benet',
     organs: ['Yang Qiao Mai', 'Galdeblære', 'Blære'],
-    note: 'Yang Qiao Mai er særligt indikeret når smerten dækker MERE end én Yang-meridian (typisk Blære + Galdeblære, evt. også Mavesæk). Vigtigt: smerten skal være ENSIDIG (bilateral peger på andre vessels). Hvis smerten primært følger Galdeblærens forløb (yderside): tænk også Yang Wei Mai. Hvis personen står frem som "tonisk anspændt" på ydersiden af benet med løse mediale muskler: klassisk Yang Qiao.'
+    note: 'Yang Qiao Mai er særligt indikeret når smerten dækker mere end én Yang-meridian — typisk Blære og Galdeblære, evt. også Mavesæk. Vigtigt: smerten skal være ENSIDIG; bilateral smerte peger mod andre meridianer. Følger smerten primært Galdeblærens forløb langs ydersiden, så tænk også Yang Wei Mai med. Står personen frem som "tonisk anspændt" på ydersiden af benet med løse mediale muskler, er det det klassiske Yang Qiao-billede.'
   },
   {
     symptom: 'Trykkende brystsmerte med indre angst',
     organs: ['Yin Wei Mai', 'Hjerte', 'Pericardium'],
-    note: 'Klassisk Nan Jing kap. 29: "Når Yin Wei Mai er syg, er der hjertesmerte og depression". Vigtig diskriminator versus akut Hjerte-smerte: dette er DUMP, vedvarende ømhed/tryk i brystregionen, IKKE skarp stikkende smerte (sidstnævnte = Chong Mai/Blod-stase). Ledsages typisk af følelse af "at synke", emotionel sårbarhed, gråd uden tydelig årsag. Hyppig hos kvinder med Blod-svigt, postpartum.'
+    note: 'Det klassiske Yin Wei Mai-billede — hvor man traditionelt siger der er "hjertesmerte og tungsind". En vigtig diskriminator overfor akut Hjerte-smerte: dette er en DUMP, vedvarende ømhed eller tryk i brystregionen, ikke en skarp stikkende smerte — sidstnævnte peger mod Chong Mai eller Blod-stase. Ledsages typisk af en følelse af "at synke", emotionel sårbarhed og gråd uden tydelig årsag. Hyppig hos kvinder med Blod-svigt, særligt postpartum.'
   },
   {
     symptom: 'Ledsmerter med følelsesløshed og prikken',
     organs: ['Yin Wei Mai', 'Lever', 'Milt'],
-    note: 'Yin Wei Mai-Bi-syndrom: ledsmerter UDEN hævelse eller hede, men med markant numbness og prikken — typisk multipel lokalisation. Adskil fra Yang Wei-Bi (mere lateralt, mere akut, ofte med varme) og fra Lever-Vind-Bi (mere spasmer/trækninger). Ses især hos kvinder med Blod-svigt: blege negle, blege læber, sparsom menstruation, lette svimmelhed. Klassisk Mai Jing: "Bi-syndrom med tingling".'
+    note: 'Et klassisk Yin Wei Mai-billede: ledsmerter UDEN hævelse eller hede, men med markant følelsesløshed og prikken — typisk på flere steder samtidig. Adskil fra Yang Wei (mere lateralt, mere akut, ofte med varme) og fra Lever-Vind (mere spasmer eller trækninger). Ses især hos kvinder med Blod-svigt: blege negle, blege læber, sparsom menstruation og let svimmelhed der vidner om reservens dybde.'
   },
   {
     symptom: 'Skiftevis kulde- og hedefornemmelser',
     organs: ['Yang Wei Mai', 'Galdeblære', 'San Jiao'],
-    note: 'Klassisk Yang Wei-tegn: Nan Jing kap. 29: "Når Yang Wei Mai er syg, er der [skiftevis følelse af] hede og [følelse af] kulde og irritabilitet". Skal IKKE forveksles med menopausale hedeture (Chong Mai) — her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem. Klassisk Shao Yang: pathogenen er fanget halvt i ydre og halvt i indre. Adskil fra ren Lunge-Qi-svaghed: her er der INTERMITTENS, ikke svaghed.'
+    note: 'Det klassiske Yang Wei Mai-billede — hvor traditionen taler om "skiftevis følelse af hede og kulde med irritabilitet". Forveksl det IKKE med menopausale hedeture, der ligger på Chong Mai: her er kulden og heden adskilte og afløser hinanden, ofte med irritabilitet imellem skiftene. Det klassiske Shao Yang-billede er at en patogen er fanget halvt i det ydre og halvt i det indre. Adskil fra ren Lunge-Qi-svaghed: her er der INTERMITTENS i temperaturreguleringen, ikke generel svaghed.'
   },
   {
     symptom: 'Smerter langs kroppens side',
     organs: ['Yang Wei Mai', 'Galdeblære', 'Lever'],
-    note: 'Yang Wei Mai er domæne for "siderne" — smerte/spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hofte og lateralt på lår. Adskil fra ren Lever-Qi-stagnation (mere emotionel trigger, mere distensiv kvalitet, mindre fast lokaliseret) og fra Dai Mai (mere "bælte"-fornemmelse omkring taljen, ofte med leucorrhea). Yang Wei kommer ind i billedet især ved KRONISK ensidig flanke-/hofte-/skuldersmerte.'
+    note: 'Yang Wei Mai er domæne for "siderne" — smerter eller spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hoften og lateralt langs låret. Adskil fra ren Lever-Qi-stagnation, der har en mere emotionel trigger, mere distensiv kvalitet og er mindre fast lokaliseret. Adskil også fra Dai Mai, hvor det mere er en "bælte"-fornemmelse omkring taljen, ofte med vaginalt udflåd. Yang Wei kommer særligt ind i billedet ved kronisk ensidig flanke-, hofte- eller skuldersmerte.'
   }
 ];
 

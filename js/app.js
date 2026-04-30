@@ -155,8 +155,8 @@ const translations = {
     saPrimary: 'Primary',
     saSecondary: 'Secondary',
     saTertiary: 'Tertiary',
-    saNotesHeading: 'Clinical Notes',
-    saNotesLead: 'Notes from the cross-reference table for the symptoms you selected:',
+    saNotesHeading: 'Specific observations',
+    saNotesLead: 'What to look for and listen for behind each symptom you selected:',
     saNextHeading: 'Next Step',
     saNextBody: 'Open the primary organ’s page and use the 8 mapping themes to deepen the dialogue with your client.',
     saOpenOrgan: 'Open',
@@ -341,8 +341,8 @@ const translations = {
     saPrimary: 'Primær',
     saSecondary: 'Sekundær',
     saTertiary: 'Tertiær',
-    saNotesHeading: 'Kliniske noter',
-    saNotesLead: 'Noter fra krydsreferencetabellen for de symptomer du valgte:',
+    saNotesHeading: 'Særlige observationer',
+    saNotesLead: 'Hvad du skal lytte og se efter bag hvert symptom du valgte:',
     saNextHeading: 'Næste skridt',
     saNextBody: 'Åbn det primære organs side og brug de 8 kortlægningstemaer til at uddybe samtalen med klienten.',
     saOpenOrgan: 'Åbn',
@@ -2599,7 +2599,7 @@ function renderSymptomAnalysisResults() {
       <p class="sa-results-lead">${t('saNotesLead')}</p>
       <div class="sa-notes-list">${notesHTML}</div>
 
-      <div class="sa-next-step">
+      <div class="sa-next-step"${primaryEntity ? ` style="--row-accent: ${primaryEntity.color}"` : ''}>
         <div class="sa-next-step-heading">${t('saNextHeading')}</div>
         <p class="sa-next-step-body">${t('saNextBody')}</p>
         ${primaryRef ? `
