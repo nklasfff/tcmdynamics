@@ -5059,7 +5059,7 @@ const symptomReference = [
   {
     symptom: 'Morgendiarré kl. 5-7',
     organs: ['Nyrer', 'Milt', 'Tyktarm'],
-    note: 'Den klassiske "hanegal-diarré" — tidspunktet alene er diagnostisk afgørende. Når den ledsages af kolde knæ, svag lænd og generel kuldskærhed, er Nyre-Yang-svigt rod. Dominerer træthed efter måltider og udspilet mave, peger sporet mod Milt-Yang. Tyktarmen er det organ der manifesterer afføringsforstyrrelsen, men sjældent rod i sig selv.'
+    note: 'Den klassiske "hanegal-diarré" — tidspunktet alene er afgørende for sporet. Når den ledsages af kolde knæ, svag lænd og generel kuldskærhed, er den dybe varmekraft i Nyrerne svækket. Dominerer træthed efter måltider og udspilet mave, peger sporet mod Milten der har mistet sin indre varme. Tyktarmen er det organ der manifesterer afføringsforstyrrelsen, men sjældent rod i sig selv.'
   },
   {
     symptom: 'Natlige svedudbrud',
@@ -5079,12 +5079,12 @@ const symptomReference = [
   {
     symptom: 'Kolde hænder og fødder',
     organs: ['Nyrer', 'Milt', 'Lever', 'Hjerte'],
-    note: 'Kolde hele lemmer sammen med lænd og mave og generel kuldskærhed peger mod Nyre- eller Milt-Yang. Hvis derimod KUN fingre og tæer er kolde mens resten af kroppen er normal — og klienten er irritabel og sukker — er det Lever-Qi-stagnation, hvor varmen ikke når ud til det yderste. Kolde hænder med palpitationer og bleg ansigtsfarve peger mod Hjerte-Blod-svigt.'
+    note: 'Kolde hele lemmer sammen med lænd og mave og generel kuldskærhed peger mod en svigtende dyb varme i Nyrerne eller Milten. Hvis derimod KUN fingre og tæer er kolde mens resten af kroppen er normal — og klienten er irritabel og sukker — er det Leverens energi der er sat fast og ikke når ud til det yderste. Kolde hænder med palpitationer og bleg ansigtsfarve peger mod et hjerte der mangler det blod der skulle nære ro og varme.'
   },
   {
     symptom: 'Svimmelhed',
     organs: ['Lever', 'Nyrer', 'Milt'],
-    note: 'Pludselig, voldsom svimmelhed ved stillingsskift sammen med irritabilitet peger mod Lever-Yang stiger. En tung, dump svimmelhed med kvalme og fornemmelse af vat i hovedet er Slim-Damp fra Milten. Når svimmelheden er gradvis og forværres af træthed, sammen med tinnitus og dårlig hukommelse, er det Nyre-Essens der svinder. Let svimmelhed udelukkende efter måltider eller ved stress peger på simpel Milt-Qi-svigt.'
+    note: 'Pludselig, voldsom svimmelhed ved stillingsskift sammen med irritabilitet peger mod energi i Leveren der stiger uden modvægt. En tung, dump svimmelhed med kvalme og fornemmelse af vat i hovedet er fugt og slim fra en svag Milt. Når svimmelheden er gradvis og forværres af træthed, sammen med tinnitus og dårlig hukommelse, er det Nyrernes dybeste reserve der svinder. Let svimmelhed udelukkende efter måltider eller ved stress peger på en svag Milt — fordøjelsens drivkraft er ikke stærk nok.'
   },
   {
     symptom: 'Tør mund med lyst til småslurke',
@@ -5124,7 +5124,7 @@ const symptomReference = [
   {
     symptom: 'Spontan svedtendens i dagtimerne',
     organs: ['Lunger', 'Hjerte', 'Milt'],
-    note: 'Sved uden anstrengelse der forværres ved selv let aktivitet og stopper i hvile peger mod Lunge-Qi-svigt — Lungerne kontrollerer porerne i huden. Sved primært på bryst og ansigt sammen med palpitationer og bleghed er Hjerte-Qi-svigt. Sved på pande og torso sammen med træthed efter måltider fortæller at Milt-Qi\'en ikke kan holde på væskerne. Vigtigt: adskil fra nattesved, som peger mod Yin-svigt — det er en helt anden retning.'
+    note: 'Sved uden anstrengelse der forværres ved selv let aktivitet og stopper i hvile peger mod en svag Lunge-energi — Lungerne kontrollerer porerne i huden. Sved primært på bryst og ansigt sammen med palpitationer og bleghed peger mod en svag energi i Hjertet. Sved på pande og torso sammen med træthed efter måltider fortæller at Miltens energi ikke kan holde på væskerne. Vigtigt: adskil fra nattesved, som peger mod en svækket kølende reserve — det er en helt anden retning.'
   },
   {
     symptom: 'Reduceret libido',
@@ -5144,7 +5144,7 @@ const symptomReference = [
   {
     symptom: 'Kronisk irritabilitet/vrede',
     organs: ['Lever', 'Galdeblære', 'Hjerte'],
-    note: 'Eksplosiv vrede sammen med rødt ansigt og hovedpine peger på Lever-Ild eller Lever-Yang stiger. Indeholdt frustration med sukken, brystudspiling og PMS er den kroniske underdrejede form: Lever-Qi-stagnation. Beslutsomhedsbesvær og tøven sammen med irritabilitet fortæller at Galdeblæren også er involveret. Når vreden vender indad som selvbebrejdelse og søvnløshed, er det Hjerte-Ild der har udviklet sig fra langvarig Lever-stagnation.'
+    note: 'Eksplosiv vrede sammen med rødt ansigt og hovedpine peger på ild der flammer op i Leveren — eller energi der stiger uden modvægt. Indeholdt frustration med sukken, brystudspiling og PMS er den kroniske underdrejede form: Leverens energi sidder fast. Beslutsomhedsbesvær og tøven sammen med irritabilitet fortæller at Galdeblæren også er involveret. Når vreden vender indad som selvbebrejdelse og søvnløshed, er det hjertet der er gået i brand efter mange års stuvet Lever-energi.'
   },
   {
     symptom: 'Hyppige forkølelser',
