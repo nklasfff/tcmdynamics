@@ -5064,7 +5064,7 @@ const symptomReference = [
   {
     symptom: 'Natlige svedudbrud',
     organs: ['Nyrer', 'Hjerte', 'Lunger'],
-    note: 'Sved kun under søvn — der stopper når klienten vågner — er det klassiske tegn på Yin-svigt. Lokalisationen hjælper dig videre: sved på bryst og øvre krop peger mod Hjerte-Yin, hele kroppen sammen med lændesmerter og tinnitus mod Nyre-Yin, og ledsaget af tør hoste mod Lunge-Yin. Spontan dagsved derimod tyder på Qi-svigt — en helt anden retning.'
+    note: 'Sved kun under søvn — der stopper når klienten vågner — er det klassiske tegn på at kroppens kølende, beroligende reserve er svækket. Lokalisationen hjælper dig videre: sved på bryst og øvre krop peger mod Hjertet, hele kroppen sammen med lændesmerter og tinnitus mod Nyrerne, og ledsaget af tør hoste mod Lungerne. Spontan dagsved derimod tyder på at energien selv er svag — en helt anden retning.'
   },
   {
     symptom: 'Klump i halsen (globus)',
@@ -5089,7 +5089,7 @@ const symptomReference = [
   {
     symptom: 'Tør mund med lyst til småslurke',
     organs: ['Mavesæk', 'Nyrer', 'Lunger'],
-    note: 'Lyst til småslurke — ikke store mængder — er nøglen, og adskiller Yin-svigt fra Fuldhede. Tør mund med dårlig appetit på trods af sult peger mod Mavesæk-Yin. Tørhed der forværres om natten sammen med tinnitus og lændesmerter peger mod Nyre-Yin. Og tør hoste med tør næse og hæshed peger mod Lunge-Yin — alle tre er forskellige Yin-mangel-billeder.'
+    note: 'Lyst til småslurke — ikke store mængder — er nøglen, og adskiller en svækket kølende reserve fra et indre overskud af varme. Tør mund med dårlig appetit på trods af sult peger mod Mavesækken. Tørhed der forværres om natten sammen med tinnitus og lændesmerter peger mod Nyrerne. Og tør hoste med tør næse og hæshed peger mod Lungerne — alle tre er forskellige billeder af samme svaghed: kroppens kølende, nærende reserve er løbet tør.'
   },
   {
     symptom: 'Forstoppelse med tørre afføringer',
@@ -5104,7 +5104,7 @@ const symptomReference = [
   {
     symptom: 'Overdreven slim/opspyt',
     organs: ['Milt', 'Lunger', 'Nyrer'],
-    note: 'Tyk hvid slim sammen med tung mave og appetitløshed fortæller at Milten skaber Slim. Tynd og vandig slim fra næsen ledsaget af kuldskærhed peger mod Lunge-Kulde. Sej, skummende slim med åndenød ved anstrengelse og lændesvaghed er kronisk — Nyrerne kan ikke længere modtage Qi\'en nedefra. Som det siges: "Milten skaber Slim, Lungerne lagrer den".'
+    note: 'Tyk hvid slim sammen med tung mave og appetitløshed fortæller at Milten skaber slim. Tynd og vandig slim fra næsen ledsaget af kuldskærhed peger mod kulde der har sat sig i Lungerne. Sej, skummende slim med åndenød ved anstrengelse og lændesvaghed er kronisk — Nyrerne kan ikke længere holde fast om energien nedefra. Som det siges: "Milten skaber slim, Lungerne lagrer den".'
   },
   {
     symptom: 'Tab af lugte- eller smagssans',
@@ -5114,7 +5114,7 @@ const symptomReference = [
   {
     symptom: 'Kronisk næsetilstopning',
     organs: ['Lunger', 'Milt', 'Galdeblære'],
-    note: 'En akut tilstoppet næse med klar slim efter en forkølelse er Lungerne invaderet af Vind. Tyk, gul slim over længere tid sammen med frontal hovedpine og presfornemmelse over kindbenene peger på Slim-Hede i både Lungerne og Galdeblære-meridianen. Vandig næseflod sammen med Milt-svaghed og træthed er Slim-Damp der stiger op fra Milten.'
+    note: 'En akut tilstoppet næse med klar slim efter en forkølelse er Lungerne ramt af noget udefra. Tyk, gul slim over længere tid sammen med frontal hovedpine og presfornemmelse over kindbenene peger på varm slim — der har sat sig i både Lungerne og Galdeblære-meridianen. Vandig næseflod sammen med Milt-svaghed og træthed er fugt og slim der stiger op fra en svag Milt.'
   },
   {
     symptom: 'Hedeture',
@@ -5134,7 +5134,7 @@ const symptomReference = [
   {
     symptom: 'Sæsonbaseret rhinitis/allergi',
     organs: ['Lunger', 'Milt', 'Nyrer'],
-    note: 'Akutte symptomer som nys, klar næseflod og kløende øjne fortæller at kroppens overflade-forsvar er svækket — Lungerne kan ikke modstå Vind. Den underliggende konstitutionelle svaghed afgør hvor du går videre: træthed og dårlig appetit peger mod Milt-Qi som rod af forsvaret. Kronisk fra barndom sammen med kuldskærhed og lændesvaghed peger derimod mod Nyre-Yang som konstitutionel svaghed.'
+    note: 'Akutte symptomer som nys, klar næseflod og kløende øjne fortæller at kroppens overflade-forsvar er svækket — Lungerne kan ikke holde de udefrakommende påvirkninger ude. Den underliggende konstitutionelle svaghed afgør hvor du går videre: træthed og dårlig appetit peger mod Milten — det er der forsvaret bygges fra. Kronisk svaghed fra barndom sammen med kuldskærhed og lændesvaghed peger derimod mod Nyrerne, der bærer den dybe konstitutionelle ressource.'
   },
   {
     symptom: 'Vedvarende sorg/melankoli',
