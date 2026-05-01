@@ -5413,11 +5413,23 @@ html[data-theme-transitioning] * {
   body * {
     visibility: hidden !important;
   }
+  /* In-app handout */
   #screen-client-handout,
   #screen-client-handout * {
     visibility: visible !important;
   }
   #screen-client-handout {
+    position: absolute;
+    inset: 0;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+  /* Standalone share.html — the client's view */
+  #share-page,
+  #share-page * {
+    visibility: visible !important;
+  }
+  #share-page {
     position: absolute;
     inset: 0;
     background: #ffffff !important;
