@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Til dit hjem — Hjem-anvisning</title>
+  <meta name="description" content="Et lille brev fra din behandler — råd og øvelser til hjemme.">
+
+  <!-- Open Graph (used by iMessage, WhatsApp, Facebook, LinkedIn etc.) -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mønstrene Bag">
+  <meta property="og:title" content="Til dit hjem — Hjem-anvisning">
+  <meta property="og:description" content="Et lille brev fra din behandler — råd og øvelser til hjemme.">
+  <meta property="og:image" content="https://nklasfff.github.io/tcmdynamics/yinyang_highres.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Yinyang — symbol for balance og bevægelse">
+  <meta property="og:url" content="https://nklasfff.github.io/tcmdynamics/share.html">
+  <meta property="og:locale" content="da_DK">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Til dit hjem — Hjem-anvisning">
+  <meta name="twitter:description" content="Et lille brev fra din behandler — råd og øvelser til hjemme.">
+  <meta name="twitter:image" content="https://nklasfff.github.io/tcmdynamics/yinyang_highres.png">
+
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* Standalone share page — no app chrome, light cream background. */
+    body {
+      background: #eae6de;
+      margin: 0;
+    }
+    .share-page {
+      min-height: 100vh;
+      padding: 28px 16px 56px;
+      display: flex;
+      justify-content: center;
+    }
+    .share-loading,
+    .share-error {
+      width: 100%;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 40px 24px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      color: #5a554d;
+      background: #fbf7ee;
+      border-radius: 6px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+    .share-error h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      margin: 0 0 12px;
+      color: #1a1815;
+    }
+    .share-footer {
+      max-width: 720px;
+      margin: 26px auto 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: #8a857d;
+      letter-spacing: 0.06em;
+    }
+    .share-footer a {
+      color: #9a7b3c;
+      text-decoration: none;
+    }
+    .share-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="share-page" id="share-page">
+    <article class="handout-document" id="share-document">
+      <div class="share-loading">Henter…</div>
+    </article>
+  </div>
+
+  <script type="module">
+    import { getLangData } from './js/data.js';
+
+    const escapeHtml = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const data = getLangData('da');
+    const pattern = data.patternLibrary.find(p => p.id === id);
+    const docEl = document.getElementById('share-document');
+
+    if (!pattern || !pattern.homePractice) {
+      docEl.outerHTML = `
+        <div class="share-error">
+          <h1>Hjem-anvisning ikke fundet</h1>
+          <p>Linket er måske udløbet eller forkert. Prøv at åbne det igen fra din behandlers besked.</p>
+        </div>
+      `;
+    } else {
+      const hp = pattern.homePractice;
+      const practices = [
+        { label: 'Indre billede',  glyph: '心', text: hp.innerImage },
+        { label: 'Mad og varme',   glyph: '食', text: hp.diet },
+        { label: 'Bevægelse',      glyph: '行', text: hp.movement },
+        { label: 'Akupressur',     glyph: '穴', text: hp.acupressure },
+        { label: 'Opmærksomhed',   glyph: '觀', text: hp.awareness }
+      ];
+
+      const footerText = 'Det her er ikke ekstra arbejde. Det er måder at lytte til kroppen på i hverdagen. Vælg det der taler til dig — eller bare ét af dem til at starte med.\n\nHvis du vil dele det med mig næste gang, kan du notere hvad du har prøvet, og hvad du har mærket.';
+
+      docEl.innerHTML = `
+        <header class="handout-letterhead">
+          <img class="handout-seal" src="yinyang_highres.png" alt="" />
+          <div class="handout-letterhead-text">
+            <div class="handout-eyebrow">Til dit hjem</div>
+            <h1 class="handout-title">${escapeHtml(pattern.plainName || pattern.name)}</h1>
+          </div>
+        </header>
+
+        <section class="handout-section handout-section-summary">
+          <h2 class="handout-h2">Det vi har set sammen i dag</h2>
+          <p class="handout-lede">${escapeHtml(pattern.summaryDescription || '')}</p>
+        </section>
+
+        <section class="handout-section">
+          <h2 class="handout-h2">Hvad du selv kan gøre</h2>
+          <div class="handout-practices">
+            ${practices.map(row => `
+              <div class="handout-practice">
+                <div class="handout-practice-glyph" aria-hidden="true">${row.glyph}</div>
+                <div class="handout-practice-body">
+                  <div class="handout-practice-label">${escapeHtml(row.label)}</div>
+                  <p class="handout-practice-text">${escapeHtml(row.text)}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <footer class="handout-footer">
+          <div class="handout-rule"></div>
+          <p class="handout-footer-text">${escapeHtml(footerText)}</p>
+        </footer>
+      `;
+
+      document.title = `${pattern.plainName || pattern.name} — Til dit hjem`;
+      const desc = (pattern.summaryDescription || '').slice(0, 160);
+      const descEl = document.querySelector('meta[name="description"]');
+      if (descEl && desc) descEl.setAttribute('content', desc);
+
+      // Small footer link back to the main app, for the curious
+      const footerEl = document.createElement('div');
+      footerEl.className = 'share-footer';
+      footerEl.innerHTML = `<a href="./">Mønstrene Bag</a>`;
+      document.getElementById('share-page').appendChild(footerEl);
+    }
+  </script>
+</body>
+</html>

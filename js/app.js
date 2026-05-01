@@ -204,7 +204,7 @@ const translations = {
     saResultSavePrimary: 'Save analysis',
     saResultSavePrimaryHint: 'to a client in your archive',
     saResultActionsNote: 'Once saved, you\'ll find it under Mine klienter in the menu — there you can open the home-practice handout for the client and copy a summary for your own notes.',
-    sessionHandoutHint: 'send via Mail, SMS, WhatsApp — or print the document with illustration',
+    sessionHandoutHint: 'send a link via Mail, SMS, WhatsApp — or print the document with illustration',
     sessionCopySummary: 'Copy summary for my notes',
     sessionCopySummaryHint: 'paste the analysis into your own journal system or notes app — for the practitioner, not the client',
     saCopiedConfirm: 'Copied ✓',
@@ -496,7 +496,7 @@ const translations = {
     saResultSavePrimary: 'Gem analyse',
     saResultSavePrimaryHint: 'i en klients forløbs-arkiv',
     saResultActionsNote: 'Når den er gemt, finder du den under Mine klienter i menuen — dér kan du åbne hjem-anvisningen til klienten og kopiere resuméet til dine egne noter.',
-    sessionHandoutHint: 'send via Mail, SMS, WhatsApp — eller print dokumentet med illustration',
+    sessionHandoutHint: 'send link via Mail, SMS, WhatsApp — eller print dokumentet med illustration',
     sessionCopySummary: 'Kopier resumé til mine noter',
     sessionCopySummaryHint: 'indsæt analysen i dit eget journalsystem eller notes-app — til behandleren, ikke klienten',
     saCopiedConfirm: 'Kopieret ✓',
@@ -3231,16 +3231,21 @@ function showHandoutFromSession(session, clientId) {
 }
 
 async function shareHandout() {
-  const text = buildClientHandoutText();
-  if (!text) return;
   const ctx = currentHandoutContext;
-  const dateStr = ctx ? ctx.dateStr : formatHandoutDate(new Date());
-  const title = `Til dit hjem — ${dateStr}`;
+  if (!ctx || !ctx.pattern || !ctx.pattern.id) return;
+
+  // Build absolute URL to the share page so messaging apps can fetch
+  // OG meta tags and render a preview with the yinyang.
+  const shareUrl = new URL('share.html', window.location.href);
+  shareUrl.searchParams.set('id', ctx.pattern.id);
+
+  const title = `Til dit hjem — ${ctx.pattern.plainName || ctx.pattern.name}`;
+  const text = ctx.pattern.summaryDescription || '';
 
   // Mobile path: native share sheet (Mail, Messages, WhatsApp, etc.)
   if (navigator.share) {
     try {
-      await navigator.share({ title, text });
+      await navigator.share({ title, text, url: shareUrl.href });
       return;
     } catch (e) {
       if (e && e.name === 'AbortError') return;
@@ -3249,7 +3254,8 @@ async function shareHandout() {
   }
 
   // Desktop fallback: open the user's mail client with subject + body prefilled.
-  const mailto = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text)}`;
+  const body = `${text}\n\n${shareUrl.href}`;
+  const mailto = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailto;
 }
 
