@@ -201,6 +201,12 @@ const translations = {
     saCopySummaryHint: 'for my notes',
     saSaveToClientHint: 'in client archive',
     saClientHandoutHint: 'home practice',
+    saResultSavePrimary: 'Save analysis',
+    saResultSavePrimaryHint: 'to a client in your archive',
+    saResultActionsNote: 'Once saved, you\'ll find it under Mine klienter in the menu — there you can open the home-practice handout for the client and copy a summary for your own notes.',
+    sessionHandoutHint: 'a printable A4 / save-as-PDF for the client to take home',
+    sessionCopySummary: 'Copy summary',
+    sessionCopySummaryHint: 'pastes the analysis text into your own journal or notes app',
     saCopiedConfirm: 'Copied ✓',
     saCopyFailed: 'Could not copy',
     saSummaryTitle: 'Symptom Analysis',
@@ -487,6 +493,12 @@ const translations = {
     saCopySummaryHint: 'til mine noter',
     saSaveToClientHint: 'i forløbs-arkiv',
     saClientHandoutHint: 'hjem-anvisning',
+    saResultSavePrimary: 'Gem analyse',
+    saResultSavePrimaryHint: 'i en klients forløbs-arkiv',
+    saResultActionsNote: 'Når den er gemt, finder du den under Mine klienter i menuen — dér kan du åbne hjem-anvisningen til klienten og kopiere resuméet til dine egne noter.',
+    sessionHandoutHint: 'et printbart A4 / gem-som-PDF til klienten at tage med hjem',
+    sessionCopySummary: 'Kopier resumé',
+    sessionCopySummaryHint: 'indsætter analysen som tekst i din egen journal eller notes-app',
     saCopiedConfirm: 'Kopieret ✓',
     saCopyFailed: 'Kunne ikke kopiere',
     saSummaryTitle: 'Symptom-Analyse',
@@ -2602,9 +2614,37 @@ function computePatternResonance(picked) {
     .sort((a, b) => b.score - a.score || b.keyHits.length - a.keyHits.length);
 }
 
-function buildSymptomAnalysisSummary() {
-  const { picked, tally } = computeSymptomResonance();
-  if (picked.length < SA_MIN) return '';
+function buildSymptomAnalysisSummary(sessionData) {
+  // sessionData (optional) = saved client session record.
+  // Without it, we compute live from the current SA selection.
+  let symptoms, tallyTop, topElementName, topPattern, topPatternScore, summaryDate;
+  if (sessionData) {
+    symptoms = (sessionData.symptoms || []).map(name => ({ symptom: name }));
+    if (symptoms.length === 0) return '';
+    tallyTop = (sessionData.organs || []).slice(0, 4);
+    topElementName = sessionData.element ? sessionData.element.name : null;
+    if (Array.isArray(sessionData.patterns) && sessionData.patterns.length && Array.isArray(patternLibrary)) {
+      const ref = patternLibrary.find(p => p.name === sessionData.patterns[0].name);
+      if (ref) {
+        topPattern = ref;
+        topPatternScore = sessionData.patterns[0].score; // already 0-100
+      }
+    }
+    summaryDate = new Date(sessionData.date);
+  } else {
+    const live = computeSymptomResonance();
+    if (live.picked.length < SA_MIN) return '';
+    symptoms = live.picked;
+    tallyTop = live.tally.slice(0, 4);
+    const elementTally = computeElementResonance(live.tally);
+    topElementName = elementTally[0] ? elementTally[0].name : null;
+    const patternResonance = computePatternResonance(live.picked);
+    if (patternResonance[0]) {
+      topPattern = patternResonance[0].pattern;
+      topPatternScore = Math.round(patternResonance[0].score * 100);
+    }
+    summaryDate = new Date();
+  }
 
   const isDa = getLanguage() === 'da';
   const T = isDa ? {
@@ -2639,42 +2679,37 @@ function buildSymptomAnalysisSummary() {
 
   const lines = [];
   const dateLocale = isDa ? 'da-DK' : 'en-US';
-  const dateStr = new Date().toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+  const dateStr = summaryDate.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
   lines.push(`${t('saSummaryTitle')} — ${dateStr}`);
   lines.push('');
 
-  lines.push(`${T.client} (${picked.length} ${T.symptomsWord}):`);
-  picked.forEach(s => lines.push(`- ${s.symptom}`));
+  lines.push(`${T.client} (${symptoms.length} ${T.symptomsWord}):`);
+  symptoms.forEach(s => lines.push(`- ${s.symptom}`));
   lines.push('');
 
-  const top = tally.slice(0, 4);
   lines.push(`${T.emerging}:`);
-  if (top[0]) {
-    lines.push(`- ${T.primary}: ${top[0].name} (${top[0].hits} ${T.of} ${picked.length} ${T.pointHere})`);
+  if (tallyTop[0]) {
+    lines.push(`- ${T.primary}: ${tallyTop[0].name} (${tallyTop[0].hits} ${T.of} ${symptoms.length} ${T.pointHere})`);
   }
-  const secondaryNames = top.slice(1, 3).map(r => r.name).filter(Boolean);
+  const secondaryNames = tallyTop.slice(1, 3).map(r => r.name).filter(Boolean);
   if (secondaryNames.length) {
     lines.push(`- ${T.secondary}: ${secondaryNames.join(', ')}`);
   }
-  const elementTally = computeElementResonance(tally);
-  const topElement = elementTally[0];
-  if (topElement) {
-    lines.push(`- ${topElement.name}${T.elementSuffix}`);
+  if (topElementName) {
+    lines.push(`- ${topElementName}${T.elementSuffix}`);
   }
   lines.push('');
 
-  const patternResonance = computePatternResonance(picked);
-  const topPattern = patternResonance[0];
   if (topPattern) {
     lines.push(`${T.patternBehind}:`);
-    lines.push(`${topPattern.pattern.plainName || topPattern.pattern.name} — ${intensityWord(Math.round(topPattern.score * 100))}`);
-    if (topPattern.pattern.summaryDescription) {
-      lines.push(topPattern.pattern.summaryDescription);
+    lines.push(`${topPattern.plainName || topPattern.name} — ${intensityWord(topPatternScore)}`);
+    if (topPattern.summaryDescription) {
+      lines.push(topPattern.summaryDescription);
     }
     lines.push('');
   }
 
-  const primary = top[0];
+  const primary = tallyTop[0];
   const primaryEntity = primary ? findResonanceEntity(primary.name) : null;
   if (primaryEntity && primaryEntity.ref) {
     lines.push(`${T.nextStep}:`);
@@ -2973,38 +3008,19 @@ function renderSymptomAnalysisResults() {
         ` : ''}
       </div>
 
-      <div class="sa-result-actions">
-        <button class="sa-copy-btn" type="button" data-sa-copy>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
-            <rect x="9" y="9" width="13" height="13" rx="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-          </svg>
-          <span class="sa-action-text">
-            <span class="sa-copy-label">${t('saCopySummary')}</span>
-            <span class="sa-action-hint">${t('saCopySummaryHint')}</span>
-          </span>
-        </button>
-        <button class="sa-save-btn" type="button" data-sa-save>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
+      <div class="sa-result-actions sa-result-actions-single">
+        <button class="sa-save-btn sa-save-btn-primary" type="button" data-sa-save>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
             <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
             <polyline points="17 21 17 13 7 13 7 21"/>
             <polyline points="7 3 7 8 15 8"/>
           </svg>
           <span class="sa-action-text">
-            <span class="sa-save-label">${t('saSaveToClient')}</span>
-            <span class="sa-action-hint">${t('saSaveToClientHint')}</span>
+            <span class="sa-save-label">${t('saResultSavePrimary')}</span>
+            <span class="sa-action-hint">${t('saResultSavePrimaryHint')}</span>
           </span>
         </button>
-        <button class="sa-client-btn" type="button" data-sa-client>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
-            <path d="M4 12 L20 12 M4 17 L14 17 M4 7 L20 7"/>
-            <circle cx="20" cy="17" r="2.5" stroke-width="1.5"/>
-          </svg>
-          <span class="sa-action-text">
-            <span class="sa-client-label">${t('saClientHandout')}</span>
-            <span class="sa-action-hint">${t('saClientHandoutHint')}</span>
-          </span>
-        </button>
+        <p class="sa-result-actions-note">${t('saResultActionsNote')}</p>
       </div>
     </div>
   `;
@@ -3907,11 +3923,23 @@ function renderClientDetail() {
               <div class="session-card-notes">${escapeHtml(s.notes)}</div>
             </div>` : ''}
           ${renderFollowupSectionHTML(s)}
-          ${sessionHasHandout(s) ? `
-            <button class="session-handout-btn" type="button" data-session-handout="${escapeHtml(s.id)}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
-              <span>Åbn hjem-anvisning</span>
-            </button>` : ''}
+          <div class="session-actions">
+            ${sessionHasHandout(s) ? `
+              <button class="session-action-btn session-action-handout" type="button" data-session-handout="${escapeHtml(s.id)}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+                <span class="session-action-text">
+                  <span class="session-action-label">${escapeHtml(t('saClientHandout'))}</span>
+                  <span class="session-action-hint">${escapeHtml(t('sessionHandoutHint'))}</span>
+                </span>
+              </button>` : ''}
+            <button class="session-action-btn session-action-summary" type="button" data-session-copy="${escapeHtml(s.id)}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span class="session-action-text">
+                <span class="session-action-label">${escapeHtml(t('sessionCopySummary'))}</span>
+                <span class="session-action-hint">${escapeHtml(t('sessionCopySummaryHint'))}</span>
+              </span>
+            </button>
+          </div>
           <button class="session-delete-btn" type="button" data-session-delete="${escapeHtml(s.id)}">${escapeHtml(t('clientDetailDeleteSession'))}</button>
         </div>
       </div>
@@ -3939,6 +3967,33 @@ function renderClientDetail() {
       const client = getClientRecord(activeClientId);
       const session = client && client.sessions.find(x => x.id === btn.dataset.sessionHandout);
       if (session) showHandoutFromSession(session, activeClientId);
+    });
+  });
+  listEl.querySelectorAll('[data-session-copy]').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const client = getClientRecord(activeClientId);
+      const session = client && client.sessions.find(x => x.id === btn.dataset.sessionCopy);
+      if (!session) return;
+      const text = buildSymptomAnalysisSummary(session);
+      if (!text) return;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        showToast(t('saveDialogSaved'));
+      } catch (err) {
+        console.error('Failed to copy session summary', err);
+      }
     });
   });
   // Followup pill clicks
