@@ -282,8 +282,8 @@ const translations = {
     sessionSymptoms: 'Symptoms',
     sessionNotes: 'Notes',
     sessionNoPattern: 'No clear pattern',
-    exportArchive: 'Export archive',
-    importArchive: 'Import archive',
+    exportArchive: 'Save a copy',
+    importArchive: 'Restore a copy',
     importDone: 'Imported',
     importDoneSuffix: 'client(s)',
     importError: 'Could not read the file — is it a valid client archive?',
@@ -574,8 +574,8 @@ const translations = {
     sessionSymptoms: 'Symptomer',
     sessionNotes: 'Notater',
     sessionNoPattern: 'Intet klart mønster',
-    exportArchive: 'Eksportér arkiv',
-    importArchive: 'Importér arkiv',
+    exportArchive: 'Gem en kopi',
+    importArchive: 'Hent en kopi tilbage',
     importDone: 'Importeret',
     importDoneSuffix: 'klient(er)',
     importError: 'Kunne ikke læse filen — er det et gyldigt klient-arkiv?',
@@ -1826,7 +1826,11 @@ function setupHamburger() {
     link.addEventListener('click', () => {
       const infoId = link.dataset.info;
       closeMenu();
-      showInfoModal(infoId);
+      if (infoId === 'backup') {
+        openBackupDialog();
+      } else {
+        showInfoModal(infoId);
+      }
     });
   });
 
@@ -3569,8 +3573,9 @@ function renderClientsScreen() {
   const listEl = screen.querySelector('#clients-list');
   const emptyEl = screen.querySelector('#clients-empty');
   const discEl = screen.querySelector('#clients-disclaimer');
-  const exportLabel = screen.querySelector('#export-archive-label');
-  const importLabel = screen.querySelector('#import-archive-label');
+  // Backup button labels live on the global backup-dialog now, not in this screen.
+  const exportLabel = document.getElementById('export-archive-label');
+  const importLabel = document.getElementById('import-archive-label');
   if (titleEl) titleEl.textContent = t('clientsTitle');
   if (subEl) subEl.textContent = t('clientsSubtitle');
   if (discEl) discEl.textContent = t('clientsDisclaimer');
@@ -4080,6 +4085,27 @@ function showClientDetail() {
   showScreen('client-detail');
 }
 
+function openBackupDialog() {
+  const d = document.getElementById('backup-dialog');
+  if (d) d.hidden = false;
+}
+
+function closeBackupDialog() {
+  const d = document.getElementById('backup-dialog');
+  if (d) d.hidden = true;
+}
+
+function setupBackupDialog() {
+  const d = document.getElementById('backup-dialog');
+  if (!d) return;
+  d.querySelectorAll('[data-backup-cancel]').forEach(el => {
+    el.addEventListener('click', closeBackupDialog);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !d.hidden) closeBackupDialog();
+  });
+}
+
 function setupClientHistory() {
   const backFromClients = document.getElementById('btn-back-clients');
   if (backFromClients) backFromClients.addEventListener('click', () => showScreen('home'));
@@ -4109,7 +4135,10 @@ function setupClientHistory() {
   }
 
   const exportBtn = document.getElementById('export-archive-btn');
-  if (exportBtn) exportBtn.addEventListener('click', exportClientArchive);
+  if (exportBtn) exportBtn.addEventListener('click', () => {
+    exportClientArchive();
+    closeBackupDialog();
+  });
 
   const importBtn = document.getElementById('import-archive-btn');
   const importInput = document.getElementById('import-file-input');
@@ -4127,6 +4156,7 @@ function setupClientHistory() {
         showToast(t('importError'));
       } finally {
         importInput.value = '';
+        closeBackupDialog();
       }
     });
   }
@@ -4158,6 +4188,7 @@ function init() {
   try { setupSymptomAnalysis(); } catch(e) { console.error('setupSymptomAnalysis:', e); }
   try { setupClientHandout(); } catch(e) { console.error('setupClientHandout:', e); }
   try { setupClientHistory(); } catch(e) { console.error('setupClientHistory:', e); }
+  try { setupBackupDialog(); } catch(e) { console.error('setupBackupDialog:', e); }
   try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
   try { setupBottomNav(); } catch(e) { console.error('setupBottomNav:', e); }
