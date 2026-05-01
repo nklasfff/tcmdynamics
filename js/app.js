@@ -226,6 +226,20 @@ const translations = {
     handoutWeSawTitle: 'What we saw together today',
     handoutWhatYouCanDoTitle: 'What you can do yourself',
     handoutFooter: 'This is not extra work. These are ways of listening to the body in everyday life. Pick the one that speaks to you — or just one of them to start with.\n\nIf you would like to share it with me next time, you can note what you tried, and what you noticed.',
+    followupTitle: 'Follow-up',
+    followupLead: 'What did the client try, and what did it do? Update freely between sessions.',
+    followupTriedQ: 'Tried?',
+    followupHelpedQ: 'Helped?',
+    followupTriedNo: 'No',
+    followupTriedSome: 'A bit',
+    followupTriedYes: 'Yes',
+    followupHelpedNo: 'Not really',
+    followupHelpedSome: 'A bit',
+    followupHelpedClearly: 'Clearly',
+    followupNotesLabel: 'Notes from the follow-up',
+    followupNotesPlaceholder: 'What surprised? What stood out?',
+    followupResponded: 'What responded best across the course',
+    followupNoData: 'No follow-up data yet',
     saPatternMatchedSymptoms: 'Symptoms in your selection that match',
     saPatternEmpty: 'None of the 12 patterns clearly match your selection — try adjusting symptoms or treat the organ-resonance as the primary guide.',
     menuClients: 'My Clients',
@@ -495,6 +509,20 @@ const translations = {
     handoutWeSawTitle: 'Det vi har set sammen i dag',
     handoutWhatYouCanDoTitle: 'Hvad du selv kan gøre',
     handoutFooter: 'Det her er ikke ekstra arbejde. Det er måder at lytte til kroppen på i hverdagen. Vælg det der taler til dig — eller bare ét af dem til at starte med.\n\nHvis du vil dele det med mig næste gang, kan du notere hvad du har prøvet, og hvad du har mærket.',
+    followupTitle: 'Opfølgning',
+    followupLead: 'Hvad har klienten prøvet, og hvad gjorde det? Opdater frit mellem sessioner.',
+    followupTriedQ: 'Prøvet?',
+    followupHelpedQ: 'Hjalp?',
+    followupTriedNo: 'Nej',
+    followupTriedSome: 'Lidt',
+    followupTriedYes: 'Ja',
+    followupHelpedNo: 'Ikke',
+    followupHelpedSome: 'Lidt',
+    followupHelpedClearly: 'Tydeligt',
+    followupNotesLabel: 'Noter fra opfølgningen',
+    followupNotesPlaceholder: 'Hvad overraskede? Hvad trådte frem?',
+    followupResponded: 'Hvad har responderet bedst i forløbet',
+    followupNoData: 'Ingen opfølgnings-data endnu',
     saPatternMatchedSymptoms: 'Symptomer i din udvælgelse der matcher',
     saPatternEmpty: 'Ingen af de 12 mønstre matcher klart de valgte symptomer — overvej at justere udvælgelsen eller brug organ-resonansen som primær vejledning.',
     menuClients: 'Mine klienter',
@@ -3106,6 +3134,27 @@ function deleteClientRecord(clientId) {
   return persistClientStorage(data);
 }
 
+function updateSessionFollowup(clientId, sessionId, areaKey, field, value) {
+  const data = loadClientStorage();
+  const client = data.clients[clientId];
+  if (!client) return false;
+  const session = client.sessions.find(s => s.id === sessionId);
+  if (!session) return false;
+  if (!session.followup) session.followup = {};
+  if (areaKey === 'notes') {
+    session.followup.notes = value;
+  } else {
+    if (!session.followup[areaKey]) session.followup[areaKey] = {};
+    if (value === null) {
+      delete session.followup[areaKey][field];
+    } else {
+      session.followup[areaKey][field] = value;
+    }
+  }
+  client.updated = new Date().toISOString();
+  return persistClientStorage(data);
+}
+
 function deleteClientSession(clientId, sessionId) {
   const data = loadClientStorage();
   const client = data.clients[clientId];
@@ -3668,6 +3717,7 @@ function renderClientDetail() {
               <div class="session-card-section-label">${escapeHtml(t('sessionNotes'))}</div>
               <div class="session-card-notes">${escapeHtml(s.notes)}</div>
             </div>` : ''}
+          ${renderFollowupSectionHTML(s)}
           <button class="session-delete-btn" type="button" data-session-delete="${escapeHtml(s.id)}">${escapeHtml(t('clientDetailDeleteSession'))}</button>
         </div>
       </div>
@@ -3689,6 +3739,83 @@ function renderClientDetail() {
       }
     });
   });
+  // Followup pill clicks
+  listEl.querySelectorAll('[data-followup-set]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const [sessionId, areaKey, field, value] = btn.dataset.followupSet.split('|');
+      const isActive = btn.classList.contains('active');
+      // Toggle: clicking active deselects; clicking inactive selects
+      updateSessionFollowup(activeClientId, sessionId, areaKey, field, isActive ? null : value);
+      renderClientDetail();
+      // Re-open the same session
+      const reopened = listEl.querySelector(`.session-card[data-session-id="${sessionId}"]`);
+      if (reopened) reopened.classList.add('open');
+    });
+  });
+  // Followup notes textarea
+  listEl.querySelectorAll('[data-followup-notes]').forEach(textarea => {
+    let saveTimer;
+    textarea.addEventListener('input', () => {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        updateSessionFollowup(activeClientId, textarea.dataset.followupNotes, 'notes', null, textarea.value);
+      }, 400);
+    });
+    // Stop propagation on click so it doesn't toggle the card
+    textarea.addEventListener('click', (e) => e.stopPropagation());
+  });
+}
+
+function renderFollowupSectionHTML(session) {
+  const fb = session.followup || {};
+  const areas = [
+    { key: 'diet', labelKey: 'hpDiet' },
+    { key: 'movement', labelKey: 'hpMovement' },
+    { key: 'acupressure', labelKey: 'hpAcupressure' },
+    { key: 'awareness', labelKey: 'hpAwareness' }
+  ];
+  const triedOpts = [
+    { v: 'nej', label: 'followupTriedNo' },
+    { v: 'lidt', label: 'followupTriedSome' },
+    { v: 'ja', label: 'followupTriedYes' }
+  ];
+  const helpedOpts = [
+    { v: 'ikke', label: 'followupHelpedNo' },
+    { v: 'lidt', label: 'followupHelpedSome' },
+    { v: 'tydeligt', label: 'followupHelpedClearly' }
+  ];
+
+  const renderPills = (areaKey, field, opts, currentValue) => opts.map(opt =>
+    `<button type="button" class="followup-pill ${currentValue === opt.v ? 'active' : ''}" data-followup-set="${escapeHtml(session.id)}|${areaKey}|${field}|${opt.v}">${escapeHtml(t(opt.label))}</button>`
+  ).join('');
+
+  return `
+    <div class="session-card-section session-followup">
+      <div class="session-card-section-label">${escapeHtml(t('followupTitle'))}</div>
+      <p class="followup-lead">${escapeHtml(t('followupLead'))}</p>
+      ${areas.map(area => {
+        const data = fb[area.key] || {};
+        return `
+          <div class="followup-row">
+            <div class="followup-area-label">${escapeHtml(t(area.labelKey))}</div>
+            <div class="followup-question">
+              <span class="followup-question-label">${escapeHtml(t('followupTriedQ'))}</span>
+              <div class="followup-pills">${renderPills(area.key, 'tried', triedOpts, data.tried)}</div>
+            </div>
+            <div class="followup-question">
+              <span class="followup-question-label">${escapeHtml(t('followupHelpedQ'))}</span>
+              <div class="followup-pills">${renderPills(area.key, 'helped', helpedOpts, data.helped)}</div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+      <div class="followup-notes-row">
+        <label class="followup-notes-label">${escapeHtml(t('followupNotesLabel'))}</label>
+        <textarea class="followup-notes" rows="2" data-followup-notes="${escapeHtml(session.id)}" placeholder="${escapeHtml(t('followupNotesPlaceholder'))}">${escapeHtml(fb.notes || '')}</textarea>
+      </div>
+    </div>
+  `;
 }
 
 function showClientDetail() {

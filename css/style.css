@@ -4609,6 +4609,127 @@ html[data-theme-transitioning] * {
   white-space: pre-wrap;
 }
 
+/* Session followup section (Phase C) */
+.session-followup {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.followup-lead {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0 0 14px;
+}
+
+.followup-row {
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.followup-row:last-of-type {
+  border-bottom: 0;
+  margin-bottom: 8px;
+}
+
+.followup-area-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.followup-question {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.followup-question:last-child {
+  margin-bottom: 0;
+}
+
+.followup-question-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex: 0 0 auto;
+  min-width: 56px;
+}
+
+.followup-pills {
+  display: inline-flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.followup-pill {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: 14px;
+  padding: 4px 11px;
+  font-size: 12px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.followup-pill:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.followup-pill.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-primary);
+  font-weight: 500;
+}
+
+[data-theme="light"] .followup-pill.active {
+  color: #ffffff;
+}
+
+.followup-notes-row {
+  margin-top: 12px;
+}
+
+.followup-notes-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.followup-notes {
+  width: 100%;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 50px;
+}
+
+.followup-notes:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+}
+
 .session-delete-btn {
   background: transparent;
   border: 1px solid var(--border-light);
