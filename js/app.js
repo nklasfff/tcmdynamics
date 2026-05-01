@@ -204,9 +204,9 @@ const translations = {
     saResultSavePrimary: 'Save analysis',
     saResultSavePrimaryHint: 'to a client in your archive',
     saResultActionsNote: 'Once saved, you\'ll find it under Mine klienter in the menu — there you can open the home-practice handout for the client and copy a summary for your own notes.',
-    sessionHandoutHint: 'a printable A4 / save-as-PDF for the client to take home',
-    sessionCopySummary: 'Copy summary',
-    sessionCopySummaryHint: 'pastes the analysis text into your own journal or notes app',
+    sessionHandoutHint: 'send via Mail, SMS, WhatsApp — or print the document with illustration',
+    sessionCopySummary: 'Copy summary for my notes',
+    sessionCopySummaryHint: 'paste the analysis into your own journal system or notes app — for the practitioner, not the client',
     saCopiedConfirm: 'Copied ✓',
     saCopyFailed: 'Could not copy',
     saSummaryTitle: 'Symptom Analysis',
@@ -496,9 +496,9 @@ const translations = {
     saResultSavePrimary: 'Gem analyse',
     saResultSavePrimaryHint: 'i en klients forløbs-arkiv',
     saResultActionsNote: 'Når den er gemt, finder du den under Mine klienter i menuen — dér kan du åbne hjem-anvisningen til klienten og kopiere resuméet til dine egne noter.',
-    sessionHandoutHint: 'et printbart A4 / gem-som-PDF til klienten at tage med hjem',
-    sessionCopySummary: 'Kopier resumé',
-    sessionCopySummaryHint: 'indsætter analysen som tekst i din egen journal eller notes-app',
+    sessionHandoutHint: 'send via Mail, SMS, WhatsApp — eller print dokumentet med illustration',
+    sessionCopySummary: 'Kopier resumé til mine noter',
+    sessionCopySummaryHint: 'indsæt analysen i dit eget journalsystem eller notes-app — til behandleren, ikke klienten',
     saCopiedConfirm: 'Kopieret ✓',
     saCopyFailed: 'Kunne ikke kopiere',
     saSummaryTitle: 'Symptom-Analyse',
@@ -3230,10 +3230,33 @@ function showHandoutFromSession(session, clientId) {
   showClientHandout({ pattern, dateStr, clientId });
 }
 
+async function shareHandout() {
+  const text = buildClientHandoutText();
+  if (!text) return;
+  const ctx = currentHandoutContext;
+  const dateStr = ctx ? ctx.dateStr : formatHandoutDate(new Date());
+  const title = `Til dit hjem — ${dateStr}`;
+
+  // Mobile path: native share sheet (Mail, Messages, WhatsApp, etc.)
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text });
+      return;
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
+      // fall through to mailto fallback
+    }
+  }
+
+  // Desktop fallback: open the user's mail client with subject + body prefilled.
+  const mailto = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text)}`;
+  window.location.href = mailto;
+}
+
 function setupClientHandout() {
   const backBtn = document.getElementById('btn-back-handout');
   const printBtn = document.getElementById('handout-print-btn');
-  const copyBtn = document.getElementById('handout-copy-btn');
+  const shareBtn = document.getElementById('handout-share-btn');
   const signatureEl = document.getElementById('handout-therapist-name');
 
   if (backBtn) backBtn.addEventListener('click', () => {
@@ -3246,29 +3269,7 @@ function setupClientHandout() {
     }
   });
   if (printBtn) printBtn.addEventListener('click', () => window.print());
-  if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-      const text = buildClientHandoutText();
-      if (!text) return;
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-        showToast(t('saveDialogSaved'));
-      } catch (e) {
-        console.error('Failed to copy handout', e);
-      }
-    });
-  }
+  if (shareBtn) shareBtn.addEventListener('click', shareHandout);
   if (signatureEl) {
     signatureEl.addEventListener('blur', () => {
       try { localStorage.setItem(HANDOUT_THERAPIST_KEY, signatureEl.textContent.trim()); } catch (e) {}
