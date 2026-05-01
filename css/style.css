@@ -2913,14 +2913,6 @@ body.is-screen-home .top-float-btn {
   line-height: 1.1;
 }
 
-.hamburger-subtitle {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
 .hamburger-close {
   position: absolute;
   top: calc(14px + var(--safe-top));
