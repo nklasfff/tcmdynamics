@@ -4979,3 +4979,369 @@ html[data-theme-transitioning] * {
 [data-theme="light"] .save-toast {
   color: #ffffff;
 }
+
+/* ============================================
+   Client Handout — printable home practice document
+   ============================================ */
+
+#screen-client-handout {
+  background: var(--bg-secondary);
+  padding-bottom: 64px;
+}
+
+.handout-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--accent-gold-dim);
+}
+
+.handout-toolbar-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.handout-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-gold-dim);
+  border-radius: 22px;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.handout-tool-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--accent-gold);
+}
+
+.handout-tool-btn-primary {
+  background: var(--accent-gold-dim);
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.handout-tool-btn-primary:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+.handout-page-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 28px 16px 48px;
+}
+
+.handout-document {
+  width: 100%;
+  max-width: 720px;
+  background: #fbf7ee;
+  color: #1a1815;
+  border-radius: 6px;
+  padding: 56px 56px 48px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.55;
+}
+
+[data-theme="light"] .handout-document {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.handout-letterhead {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(154, 123, 60, 0.35);
+  margin-bottom: 28px;
+}
+
+.handout-seal {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+}
+
+.handout-letterhead-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.handout-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a7b3c;
+  margin-bottom: 4px;
+}
+
+.handout-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  color: #1a1815;
+}
+
+.handout-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #5a554d;
+  letter-spacing: 0.04em;
+}
+
+.handout-meta-sep {
+  opacity: 0.5;
+}
+
+.handout-meta-client {
+  outline: none;
+  border-bottom: 1px dashed transparent;
+  padding: 0 2px;
+  cursor: text;
+  min-width: 60px;
+}
+
+.handout-meta-client:hover,
+.handout-meta-client:focus {
+  border-bottom-color: rgba(154, 123, 60, 0.5);
+}
+
+.handout-meta-client:empty::before,
+.handout-signature:empty::before {
+  content: attr(data-placeholder);
+  color: #b0a89a;
+  font-style: italic;
+}
+
+.handout-section {
+  margin-bottom: 26px;
+}
+
+.handout-h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 12px;
+  color: #1a1815;
+  letter-spacing: 0.01em;
+}
+
+.handout-lede {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #2a2620;
+  margin: 0;
+}
+
+.handout-practices {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.handout-practice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.handout-practice-glyph {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(154, 123, 60, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #9a7b3c;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.handout-practice-body {
+  min-width: 0;
+}
+
+.handout-practice-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9a7b3c;
+  margin-bottom: 4px;
+}
+
+.handout-practice-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1815;
+  margin: 0;
+}
+
+.handout-footer {
+  margin-top: 36px;
+}
+
+.handout-rule {
+  width: 32px;
+  height: 1px;
+  background: rgba(154, 123, 60, 0.5);
+  margin: 0 auto 18px;
+}
+
+.handout-footer-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #5a554d;
+  margin: 0 0 22px;
+  white-space: pre-line;
+}
+
+.handout-signature-line {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  color: #2a2620;
+}
+
+.handout-signature-dash {
+  color: #9a7b3c;
+}
+
+.handout-signature {
+  outline: none;
+  border-bottom: 1px dashed transparent;
+  padding: 0 4px;
+  min-width: 120px;
+  cursor: text;
+}
+
+.handout-signature:hover,
+.handout-signature:focus {
+  border-bottom-color: rgba(154, 123, 60, 0.5);
+}
+
+@media (max-width: 600px) {
+  .handout-page-wrap {
+    padding: 16px 10px 40px;
+  }
+  .handout-document {
+    padding: 32px 26px 32px;
+  }
+  .handout-letterhead {
+    gap: 16px;
+  }
+  .handout-seal {
+    width: 56px;
+    height: 56px;
+  }
+  .handout-title {
+    font-size: 24px;
+  }
+  .handout-toolbar {
+    padding: 12px 14px;
+  }
+  .handout-tool-btn span {
+    display: none;
+  }
+  .handout-tool-btn {
+    padding: 9px 11px;
+  }
+}
+
+/* Print: only the document, on white paper, in colour. */
+@media print {
+  @page {
+    margin: 16mm;
+    size: A4;
+  }
+  html, body {
+    background: #ffffff !important;
+    color: #1a1815 !important;
+  }
+  body * {
+    visibility: hidden !important;
+  }
+  #screen-client-handout,
+  #screen-client-handout * {
+    visibility: visible !important;
+  }
+  #screen-client-handout {
+    position: absolute;
+    inset: 0;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+  .no-print,
+  .top-float-btn,
+  .bottom-nav,
+  .hamburger-overlay,
+  .save-dialog,
+  .save-toast,
+  .search-overlay {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  .handout-page-wrap {
+    padding: 0 !important;
+  }
+  .handout-document {
+    max-width: none;
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: #ffffff !important;
+    color: #1a1815 !important;
+  }
+  .handout-section,
+  .handout-practice {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .handout-meta-client,
+  .handout-signature {
+    border-bottom: none !important;
+  }
+  .handout-meta-client:empty::before,
+  .handout-signature:empty::before {
+    content: '';
+  }
+}

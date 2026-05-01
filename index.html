@@ -737,6 +737,61 @@
       </main>
     </div>
 
+    <!-- Client Handout Screen — printable home practice document -->
+    <div id="screen-client-handout" class="screen">
+      <header class="handout-toolbar no-print">
+        <button class="back-btn" id="btn-back-handout" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Tilbage</span>
+        </button>
+        <div class="handout-toolbar-actions">
+          <button class="handout-tool-btn" id="handout-copy-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>Kopier som tekst</span>
+          </button>
+          <button class="handout-tool-btn handout-tool-btn-primary" id="handout-print-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Print / Gem som PDF</span>
+          </button>
+        </div>
+      </header>
+      <main class="handout-page-wrap">
+        <article class="handout-document" id="handout-document">
+          <header class="handout-letterhead">
+            <img class="handout-seal" src="yinyang_highres.png" alt="" />
+            <div class="handout-letterhead-text">
+              <div class="handout-eyebrow">Til dit hjem</div>
+              <h1 class="handout-title" id="handout-title"></h1>
+              <div class="handout-meta">
+                <span class="handout-meta-date" id="handout-date"></span>
+                <span class="handout-meta-sep" id="handout-meta-sep">·</span>
+                <span class="handout-meta-client" id="handout-client" contenteditable="true" data-placeholder="Klient-kode"></span>
+              </div>
+            </div>
+          </header>
+
+          <section class="handout-section handout-section-summary">
+            <h2 class="handout-h2">Det vi har set sammen i dag</h2>
+            <p class="handout-lede" id="handout-summary"></p>
+          </section>
+
+          <section class="handout-section">
+            <h2 class="handout-h2">Hvad du selv kan gøre</h2>
+            <div class="handout-practices" id="handout-practices"></div>
+          </section>
+
+          <footer class="handout-footer">
+            <div class="handout-rule"></div>
+            <p class="handout-footer-text" id="handout-footer-text"></p>
+            <div class="handout-signature-line">
+              <span class="handout-signature-dash">—</span>
+              <span class="handout-signature" id="handout-therapist-name" contenteditable="true" data-placeholder="Tilføj dit navn"></span>
+            </div>
+          </footer>
+        </article>
+      </main>
+    </div>
+
     <!-- Client Detail Screen -->
     <div id="screen-client-detail" class="screen">
       <header class="detail-header">
@@ -924,6 +979,6 @@
     </div>
   </div>
 
-  <script type="module" src="js/app.js?v=8"></script>
+  <script type="module" src="js/app.js?v=9"></script>
 </body>
 </html>
