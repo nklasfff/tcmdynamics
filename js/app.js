@@ -198,6 +198,9 @@ const translations = {
     saMeridianHeading: 'Meridian Resonance',
     saMeridianLead: 'These extraordinary meridians are also activated by the symptoms you selected:',
     saCopySummary: 'Copy summary',
+    saCopySummaryHint: 'for my notes',
+    saSaveToClientHint: 'in client archive',
+    saClientHandoutHint: 'home practice',
     saCopiedConfirm: 'Copied ✓',
     saCopyFailed: 'Could not copy',
     saSummaryTitle: 'Symptom Analysis',
@@ -481,6 +484,9 @@ const translations = {
     saMeridianHeading: 'Meridian-resonans',
     saMeridianLead: 'Disse ekstraordinære meridianer aktiveres også af de valgte symptomer:',
     saCopySummary: 'Kopier resumé',
+    saCopySummaryHint: 'til mine noter',
+    saSaveToClientHint: 'i forløbs-arkiv',
+    saClientHandoutHint: 'hjem-anvisning',
     saCopiedConfirm: 'Kopieret ✓',
     saCopyFailed: 'Kunne ikke kopiere',
     saSummaryTitle: 'Symptom-Analyse',
@@ -2966,7 +2972,10 @@ function renderSymptomAnalysisResults() {
             <rect x="9" y="9" width="13" height="13" rx="2"/>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
           </svg>
-          <span class="sa-copy-label">${t('saCopySummary')}</span>
+          <span class="sa-action-text">
+            <span class="sa-copy-label">${t('saCopySummary')}</span>
+            <span class="sa-action-hint">${t('saCopySummaryHint')}</span>
+          </span>
         </button>
         <button class="sa-save-btn" type="button" data-sa-save>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
@@ -2974,14 +2983,20 @@ function renderSymptomAnalysisResults() {
             <polyline points="17 21 17 13 7 13 7 21"/>
             <polyline points="7 3 7 8 15 8"/>
           </svg>
-          <span class="sa-save-label">${t('saSaveToClient')}</span>
+          <span class="sa-action-text">
+            <span class="sa-save-label">${t('saSaveToClient')}</span>
+            <span class="sa-action-hint">${t('saSaveToClientHint')}</span>
+          </span>
         </button>
         <button class="sa-client-btn" type="button" data-sa-client>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
             <path d="M4 12 L20 12 M4 17 L14 17 M4 7 L20 7"/>
             <circle cx="20" cy="17" r="2.5" stroke-width="1.5"/>
           </svg>
-          <span class="sa-client-label">${t('saClientHandout')}</span>
+          <span class="sa-action-text">
+            <span class="sa-client-label">${t('saClientHandout')}</span>
+            <span class="sa-action-hint">${t('saClientHandoutHint')}</span>
+          </span>
         </button>
       </div>
     </div>
