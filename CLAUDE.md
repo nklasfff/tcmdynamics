@@ -119,3 +119,10 @@ npx http-server . -p 8080 -c-1
 - Branch: `main`
 - Remote: `origin/main`
 - Arkiv: tag `archive/full-2026-04-19`, branch `archive/full-version`
+
+### Workflow
+Når en feature-branch er færdig: merge til `main` med det samme via
+GitHub PR (squash). Vent ikke på ekstra godkendelse — `denne nu og
+altid herefter` (instruks fra ejer, 2026-05-01). Hvis Claude Code-
+harnessen tvinger arbejde på en feature-branch, opret PR, mark som
+ready, og squash-merge til `main` så snart commits er pushet.
