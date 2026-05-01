@@ -720,18 +720,6 @@
         <div class="clients-body">
           <div class="clients-list" id="clients-list"></div>
           <p class="clients-empty" id="clients-empty" hidden></p>
-          <div class="clients-actions">
-            <button class="clients-action-btn" id="export-archive-btn" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              <span id="export-archive-label">Eksportér arkiv</span>
-            </button>
-            <button class="clients-action-btn" id="import-archive-btn" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span id="import-archive-label">Importér arkiv</span>
-            </button>
-            <input type="file" id="import-file-input" accept="application/json,.json" hidden>
-          </div>
-          <p class="clients-actions-hint" id="clients-actions-hint">Eksport gemmer en JSON-fil i din enheds Download-mappe (Files-appen → Downloads på iPhone/iPad, Downloads-mappen på Mac/Windows). Import åbner samme sted så du kan vælge en tidligere fil.</p>
           <p class="clients-disclaimer" id="clients-disclaimer"></p>
         </div>
       </main>
@@ -844,6 +832,30 @@
         <button class="save-dialog-btn save-dialog-cancel" type="button" data-save-cancel>Annuller</button>
         <button class="save-dialog-btn save-dialog-commit" type="button" data-save-commit>Gem</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Backup Dialog -->
+  <div class="backup-dialog" id="backup-dialog" hidden>
+    <div class="backup-dialog-backdrop" data-backup-cancel></div>
+    <div class="backup-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="backup-dialog-title">
+      <button class="backup-dialog-close" type="button" data-backup-cancel aria-label="Luk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <h2 class="backup-dialog-title" id="backup-dialog-title">Sikkerhedskopi af arkiv</h2>
+      <p class="backup-dialog-lead">Du kan gemme alle dine klient-forløb som en fil — eller hente en tidligere kopi tilbage. Filen ligger lokalt på din enhed, ikke i en sky.</p>
+      <div class="backup-dialog-actions">
+        <button class="clients-action-btn" id="export-archive-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span id="export-archive-label">Gem en kopi</span>
+        </button>
+        <button class="clients-action-btn" id="import-archive-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="import-archive-label">Hent en kopi tilbage</span>
+        </button>
+        <input type="file" id="import-file-input" accept="application/json,.json" hidden>
+      </div>
+      <p class="backup-dialog-hint">Filen ender i din Download-mappe. Hvis du skifter telefon eller computer, kan du flytte filen over og bruge "Hent en kopi tilbage".</p>
     </div>
   </div>
 
@@ -977,11 +989,16 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><circle cx="12" cy="12" r="9" opacity="0.6"/><path d="M9.5 9.5 Q12 7 14.5 9.5 Q14.5 11.5 12 12.5 L12 14" opacity="0.85"/><circle cx="12" cy="16.5" r="0.9" fill="currentColor" stroke="none"/></svg>
           Spørgsmål og svar
         </button>
+        <button class="hamburger-link" data-info="backup">
+          <!-- Sikkerhedskopi: lille sky med pil -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" width="20" height="20"><path d="M6 16 Q3 16 3 13 Q3 10.5 5.5 10 Q5.5 6.5 9 6 Q12 6 13 8.5 Q15 8 16.5 9.5 Q18.5 9.5 19 11.5 Q21 11.8 21 14 Q21 16 18 16 Z" opacity="0.55"/><path d="M12 11 L12 18 M9 15 L12 18 L15 15" opacity="0.85"/></svg>
+          Sikkerhedskopi af arkiv
+        </button>
       </div>
 
     </div>
   </div>
 
-  <script type="module" src="js/app.js?v=11"></script>
+  <script type="module" src="js/app.js?v=12"></script>
 </body>
 </html>

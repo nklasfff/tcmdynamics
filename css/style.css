@@ -4188,25 +4188,6 @@ html[data-theme-transitioning] * {
   padding: 32px 16px;
 }
 
-.clients-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.clients-actions-hint {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-align: center;
-  line-height: 1.5;
-  max-width: 460px;
-  margin: 10px auto 0;
-  font-style: italic;
-  opacity: 0.85;
-}
-
 /* Element decoration row on info screens */
 .info-element-row {
   display: flex;
@@ -5452,4 +5433,110 @@ html[data-theme-transitioning] * {
   .handout-signature:empty::before {
     content: '';
   }
+}
+
+/* ============================================
+   Backup dialog (Sikkerhedskopi af arkiv)
+   ============================================ */
+.backup-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.backup-dialog[hidden] {
+  display: none;
+}
+
+.backup-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+}
+
+.backup-dialog-panel {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 26px 26px 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.backup-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.backup-dialog-close:hover {
+  color: var(--text-primary);
+}
+
+.backup-dialog-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin: 0 0 10px;
+  color: var(--text-primary);
+}
+
+.backup-dialog-lead {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 18px;
+}
+
+.backup-dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.backup-dialog-actions .clients-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.backup-dialog-actions .clients-action-btn:hover {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold-dim);
+  color: var(--accent-gold);
+}
+
+.backup-dialog-hint {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
 }
