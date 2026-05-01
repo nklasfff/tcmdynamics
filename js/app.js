@@ -221,6 +221,11 @@ const translations = {
     hpMovement: 'Movement',
     hpAcupressure: 'Acupressure',
     hpAwareness: 'Awareness',
+    saClientHandout: 'For the client',
+    handoutHeading: 'For your home',
+    handoutWeSawTitle: 'What we saw together today',
+    handoutWhatYouCanDoTitle: 'What you can do yourself',
+    handoutFooter: 'This is not extra work. These are ways of listening to the body in everyday life. Pick the one that speaks to you — or just one of them to start with.\n\nIf you would like to share it with me next time, you can note what you tried, and what you noticed.',
     saPatternMatchedSymptoms: 'Symptoms in your selection that match',
     saPatternEmpty: 'None of the 12 patterns clearly match your selection — try adjusting symptoms or treat the organ-resonance as the primary guide.',
     menuClients: 'My Clients',
@@ -485,6 +490,11 @@ const translations = {
     hpMovement: 'Bevægelse',
     hpAcupressure: 'Akupressur',
     hpAwareness: 'Opmærksomhed',
+    saClientHandout: 'Til klienten',
+    handoutHeading: 'Til dit hjem',
+    handoutWeSawTitle: 'Det vi har set sammen i dag',
+    handoutWhatYouCanDoTitle: 'Hvad du selv kan gøre',
+    handoutFooter: 'Det her er ikke ekstra arbejde. Det er måder at lytte til kroppen på i hverdagen. Vælg det der taler til dig — eller bare ét af dem til at starte med.\n\nHvis du vil dele det med mig næste gang, kan du notere hvad du har prøvet, og hvad du har mærket.',
     saPatternMatchedSymptoms: 'Symptomer i din udvælgelse der matcher',
     saPatternEmpty: 'Ingen af de 12 mønstre matcher klart de valgte symptomer — overvej at justere udvælgelsen eller brug organ-resonansen som primær vejledning.',
     menuClients: 'Mine klienter',
@@ -2643,6 +2653,72 @@ function buildSymptomAnalysisSummary() {
   return lines.join('\n');
 }
 
+function buildClientHandoutText() {
+  const { picked } = computeSymptomResonance();
+  if (picked.length < SA_MIN) return '';
+  const patternResonance = computePatternResonance(picked);
+  const top = patternResonance[0];
+  if (!top || !top.pattern.homePractice) return '';
+
+  const isDa = getLanguage() === 'da';
+  const dateLocale = isDa ? 'da-DK' : 'en-US';
+  const dateStr = new Date().toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+  const hp = top.pattern.homePractice;
+  const summary = top.pattern.summaryDescription || '';
+
+  const lines = [];
+  lines.push(`${t('handoutHeading')} — ${dateStr}`);
+  lines.push('');
+  lines.push(t('handoutWeSawTitle'));
+  if (summary) lines.push(summary);
+  lines.push('');
+  lines.push(`${t('handoutWhatYouCanDoTitle')}:`);
+  lines.push('');
+  lines.push(t('hpInnerImage'));
+  lines.push(hp.innerImage);
+  lines.push('');
+  lines.push(t('hpDiet'));
+  lines.push(hp.diet);
+  lines.push('');
+  lines.push(t('hpMovement'));
+  lines.push(hp.movement);
+  lines.push('');
+  lines.push(t('hpAcupressure'));
+  lines.push(hp.acupressure);
+  lines.push('');
+  lines.push(t('hpAwareness'));
+  lines.push(hp.awareness);
+  lines.push('');
+  lines.push('—');
+  lines.push(t('handoutFooter'));
+  return lines.join('\n');
+}
+
+async function copyClientHandoutToClipboard(btn) {
+  const text = buildClientHandoutText();
+  if (!text) return;
+  const labelEl = btn.querySelector('.sa-client-label');
+  const setLabel = (key) => { if (labelEl) labelEl.textContent = t(key); };
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    showToast(t('saveDialogSaved'));
+  } catch (e) {
+    console.error('Failed to copy client handout', e);
+  }
+}
+
 async function copySummaryToClipboard(btn) {
   const text = buildSymptomAnalysisSummary();
   if (!text) return;
@@ -2872,6 +2948,13 @@ function renderSymptomAnalysisResults() {
           </svg>
           <span class="sa-save-label">${t('saSaveToClient')}</span>
         </button>
+        <button class="sa-client-btn" type="button" data-sa-client>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
+            <path d="M4 12 L20 12 M4 17 L14 17 M4 7 L20 7"/>
+            <circle cx="20" cy="17" r="2.5" stroke-width="1.5"/>
+          </svg>
+          <span class="sa-client-label">${t('saClientHandout')}</span>
+        </button>
       </div>
     </div>
   `;
@@ -2913,6 +2996,13 @@ function renderSymptomAnalysisResults() {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       openSaveDialog();
+    });
+  });
+
+  results.querySelectorAll('[data-sa-client]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      copyClientHandoutToClipboard(btn);
     });
   });
 

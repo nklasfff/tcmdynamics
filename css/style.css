@@ -4029,7 +4029,8 @@ html[data-theme-transitioning] * {
    ============================================ */
 
 /* Save button alongside copy button */
-.sa-save-btn {
+.sa-save-btn,
+.sa-client-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -4045,7 +4046,9 @@ html[data-theme-transitioning] * {
 }
 
 .sa-save-btn:hover,
-.sa-save-btn:active {
+.sa-save-btn:active,
+.sa-client-btn:hover,
+.sa-client-btn:active {
   border-color: var(--accent-gold);
   color: var(--accent-gold);
 }
