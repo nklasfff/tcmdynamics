@@ -215,6 +215,12 @@ const translations = {
     saPatternDescription: 'Description',
     saPatternDifferential: 'Differential',
     saPatternTreatment: 'Approach',
+    saHomePractice: 'For the client at home',
+    hpInnerImage: 'Inner picture',
+    hpDiet: 'Diet',
+    hpMovement: 'Movement',
+    hpAcupressure: 'Acupressure',
+    hpAwareness: 'Awareness',
     saPatternMatchedSymptoms: 'Symptoms in your selection that match',
     saPatternEmpty: 'None of the 12 patterns clearly match your selection — try adjusting symptoms or treat the organ-resonance as the primary guide.',
     menuClients: 'My Clients',
@@ -473,6 +479,12 @@ const translations = {
     saPatternDescription: 'Beskrivelse',
     saPatternDifferential: 'Differential',
     saPatternTreatment: 'Tilgang',
+    saHomePractice: 'Til klienten derhjemme',
+    hpInnerImage: 'Indre billede',
+    hpDiet: 'Kost',
+    hpMovement: 'Bevægelse',
+    hpAcupressure: 'Akupressur',
+    hpAwareness: 'Opmærksomhed',
     saPatternMatchedSymptoms: 'Symptomer i din udvælgelse der matcher',
     saPatternEmpty: 'Ingen af de 12 mønstre matcher klart de valgte symptomer — overvej at justere udvælgelsen eller brug organ-resonansen som primær vejledning.',
     menuClients: 'Mine klienter',
@@ -2117,6 +2129,15 @@ function renderOverviewPatterns() {
               <div class="pattern-ref-label">${escapeHtml(t('saPatternTreatment'))}</div>
               <p class="pattern-ref-text">${escapeHtml(p.treatment)}</p>
             </div>` : ''}
+          ${p.homePractice ? `
+            <div class="sa-pattern-homepractice">
+              <div class="sa-pattern-homepractice-title">${escapeHtml(t('saHomePractice'))}</div>
+              <div class="hp-section"><span class="hp-label">${escapeHtml(t('hpInnerImage'))}</span><p class="hp-text">${escapeHtml(p.homePractice.innerImage)}</p></div>
+              <div class="hp-section"><span class="hp-label">${escapeHtml(t('hpDiet'))}</span><p class="hp-text">${escapeHtml(p.homePractice.diet)}</p></div>
+              <div class="hp-section"><span class="hp-label">${escapeHtml(t('hpMovement'))}</span><p class="hp-text">${escapeHtml(p.homePractice.movement)}</p></div>
+              <div class="hp-section"><span class="hp-label">${escapeHtml(t('hpAcupressure'))}</span><p class="hp-text">${escapeHtml(p.homePractice.acupressure)}</p></div>
+              <div class="hp-section"><span class="hp-label">${escapeHtml(t('hpAwareness'))}</span><p class="hp-text">${escapeHtml(p.homePractice.awareness)}</p></div>
+            </div>` : ''}
         </div>
       </div>
     `).join('')}
@@ -2751,6 +2772,16 @@ function renderSymptomAnalysisResults() {
               <div class="sa-pattern-section-label">${t('saPatternTreatment')}</div>
               <p class="sa-pattern-section-text">${row.pattern.treatment}</p>
             </div>
+            ${row.pattern.homePractice ? `
+              <div class="sa-pattern-homepractice">
+                <div class="sa-pattern-homepractice-title">${t('saHomePractice')}</div>
+                <div class="hp-section"><span class="hp-label">${t('hpInnerImage')}</span><p class="hp-text">${row.pattern.homePractice.innerImage}</p></div>
+                <div class="hp-section"><span class="hp-label">${t('hpDiet')}</span><p class="hp-text">${row.pattern.homePractice.diet}</p></div>
+                <div class="hp-section"><span class="hp-label">${t('hpMovement')}</span><p class="hp-text">${row.pattern.homePractice.movement}</p></div>
+                <div class="hp-section"><span class="hp-label">${t('hpAcupressure')}</span><p class="hp-text">${row.pattern.homePractice.acupressure}</p></div>
+                <div class="hp-section"><span class="hp-label">${t('hpAwareness')}</span><p class="hp-text">${row.pattern.homePractice.awareness}</p></div>
+              </div>
+            ` : ''}
           </div>
         </div>
       `).join('')}

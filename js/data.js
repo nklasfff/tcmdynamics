@@ -5225,7 +5225,14 @@ const patternLibrary = [
     keySymptoms: ['Træthed/energimangel', 'Oppustethed efter måltider', 'Spontan svedtendens i dagtimerne'],
     supportingSymptoms: ['Forstoppelse med tørre afføringer', 'Hyppige forkølelser', 'Vedvarende sorg/melankoli', 'Vedvarende vaginalt udflåd', 'Svimmelhed'],
     differential: 'Hvis der er klare tegn på kulde — kolde lemmer, klar urin, kuldskærhed — peger det videre til Milt Yang-mangel. Uden kulde-tegn er det ren Qi-mangel. Mønstret optræder ofte sammen med en svækkelse af Lungerne, hvor klienten både er træt og let får forkølelser.',
-    treatment: 'Næring og varme er det centrale: regelmæssige måltider, varm tilberedt mad (kogte grøntsager, ris, rodfrugter, supper). Hold pause fra det kolde og rå — herunder mejeriprodukter, sukker og salat fra køleskabet. Skab plads i hverdagen til ro fra mental aktivitet — overdreven bekymring og overtænkning er det der ofte tærer Milten.'
+    treatment: 'Næring og varme er det centrale: regelmæssige måltider, varm tilberedt mad (kogte grøntsager, ris, rodfrugter, supper). Hold pause fra det kolde og rå — herunder mejeriprodukter, sukker og salat fra køleskabet. Skab plads i hverdagen til ro fra mental aktivitet — overdreven bekymring og overtænkning er det der ofte tærer Milten.',
+    homePractice: {
+      innerImage: 'Din krop har svært ved at omsætte det den får til den energi du har brug for. Du mærker det som træthed efter måltider, oppustethed, en grundlæggende mathed. Det er ikke fordi du gør for lidt — ofte er det fordi du trækker på den samme reserve uden at fylde tilbage.',
+      diet: 'Spis varmt og tilberedt — kogte grøntsager, supper, ris, rodfrugter, havregrød. Det er den mad Milten kan omsætte uden at skulle kæmpe for det. Hold pause fra det rå og kolde — salater, smoothies, koldt fra køleskabet, mejeriprodukter, hvidt sukker. De tærer på en allerede tom reserve.',
+      movement: 'Mild og regelmæssig er bedre end intens og sjælden. Daglige gåture, blid yoga, eller Ba Duan Jin-øvelse 3 ("Hænder mod himmel og jord") som direkte styrker Milten. Undgå udmattende træning på tom mave — det dræner mere end det giver.',
+      acupressure: 'Massér blidt og opmærksomt ST36 — på forsiden af underbenet, ca. 4 fingerbredder under knæskallen, en fingerbredd udad fra skinnebenet. 60 sekunder pr. ben morgen og aften. Det er det klassiske punkt der giver kroppen energi igen.',
+      awareness: 'Læg mærke til hvor meget du bekymrer dig — og særligt hvor meget du tænker for andre. Bekymring og overtænkning er det der mest direkte dræner Milten. Find små rum hver dag hvor du må ikke-tænke. Det er ikke ekstra arbejde, det er det der genopbygger.'
+    }
   },
   {
     id: 'milt-yang-mangel',
@@ -5240,7 +5247,14 @@ const patternLibrary = [
     keySymptoms: ['Morgendiarré kl. 5-7', 'Kolde hænder og fødder', 'Tunghed og svaghed i benene'],
     supportingSymptoms: ['Træthed/energimangel', 'Ødem/væskeretention', 'Oppustethed efter måltider'],
     differential: 'Adskiller sig fra Nyre Yang-mangel ved at fokus ligger på fordøjelse og kulde i maven, snarere end på lænd og knæ. Hvis BÅDE lænd og knæ er svage og kolde, er også Nyre-Yang involveret — i praksis ser man tit at de to optræder sammen og forstærker hinanden.',
-    treatment: 'Varm Milten med ingefær, kanel og varme supper. Hold dig til fast tilberedt kost — og undgå alt råt og koldt, herunder kolde drikke. Det handler om at beskytte og genopbygge varmen i maven, så fordøjelsen igen kan komme i gang.'
+    treatment: 'Varm Milten med ingefær, kanel og varme supper. Hold dig til fast tilberedt kost — og undgå alt råt og koldt, herunder kolde drikke. Det handler om at beskytte og genopbygge varmen i maven, så fordøjelsen igen kan komme i gang.',
+    homePractice: {
+      innerImage: 'Din krop har mistet noget af sin indre varme. Det betyder at fordøjelsen ikke længere kan omsætte mad ordentligt — den skal kæmpe for det. Du mærker det som kuldskærhed, morgendiarré, tunge ben, en mathed der følger med. Det er en dybere udvikling af Milt-svaghed — kulden er nu trængt ind hvor energien før blot var lav.',
+      diet: 'Spis varmt og krydret med blide, opvarmende krydderier — ingefær, kanel, kardemomme, fennikel. Knoglesuppe, lammekød, gryderetter, kogte rodfrugter. Hold dig fra alt råt og koldt — særligt kolde drikke, salater fra køleskabet, smoothies, mejeriprodukter. En kop varmt vand med ingefær om morgenen er en simpel og kraftig medicin.',
+      movement: 'Bevæg dig blidt for at vække varmen — gåture i solen når den er der, blid yoga, qigong. Hold dig varm når du træner; hold pause før du bliver kold. Træn aldrig på tom mave eller i kulde der trækker den indre varme ud.',
+      acupressure: 'Massér blidt og opmærksomt SP6 — fire fingerbredder over indre ankelknogle, lige bag skinnebenets bagkant. 60 sekunder pr. ben morgen og aften. Det er punktet der samler de tre Yin-meridianer i benet og styrker fordøjelsens varme. Du kan også varme ST36 (på forsiden af underbenet) med moxa eller en varm hånd.',
+      awareness: 'Læg mærke til om du har det med at trække på din egen varme uden at fylde op — særligt med koldt vejr, kolde drikke, eller med at presse dig selv gennem træthed. Den indre varme er det der gør dig i stand til at fordøje livet. Beskyt den.'
+    }
   },
   {
     id: 'nyre-yang-mangel',
@@ -5255,7 +5269,14 @@ const patternLibrary = [
     keySymptoms: ['Kolde hænder og fødder', 'Hyppig vandladning om natten', 'Reduceret libido', 'Morgendiarré kl. 5-7'],
     supportingSymptoms: ['Hyppige forkølelser', 'Hårtab eller for tidlig grånen', 'Tunghed og svaghed i benene', 'Ødem/væskeretention'],
     differential: 'Adskiller sig fra Milt Yang-mangel ved at lænden og knæene er markant svage og kolde, snarere end fordøjelsen primært. Adskiller sig fra Nyre Yin-mangel ved at klienten har klare kuldsymptomer — ikke nattesved og hedeture som ved Yin-mangel. Ofte trækker den Milt-Yang ned med sig efterhånden som svagheden forplanter sig.',
-    treatment: 'Genopbyg den dybe varme gennem fed, varm kost — knoglesuppe, lammekød, varme supper. Sørg for regelmæssig hvile, og undgå overdreven aktivitet og kold eksponering. Beskyt lænd og knæ mod kulde, og kom tidligt i seng — sene nætter brænder hurtigere på den allerede tomme reserve.'
+    treatment: 'Genopbyg den dybe varme gennem fed, varm kost — knoglesuppe, lammekød, varme supper. Sørg for regelmæssig hvile, og undgå overdreven aktivitet og kold eksponering. Beskyt lænd og knæ mod kulde, og kom tidligt i seng — sene nætter brænder hurtigere på den allerede tomme reserve.',
+    homePractice: {
+      innerImage: 'Den dybe varmekraft i din krop — det der opvarmer og driver alt det andet — er svækket. Du mærker det som vedvarende kulde, særligt i lænd og knæ, hyppig vandladning om natten, lavt drev, en grundlæggende træthed der ikke går væk med søvn. Det er ikke noget du har gjort forkert — ofte er det enten konstitutionelt eller efter mange års udmattelse.',
+      diet: 'Spis varmt, fedt og opvarmende — knoglesuppe, lammekød, ingefær, kanel, hvidløg, varme supper og gryderetter. Sorte fødevarer (sorte sesamfrø, sorte bønner, valnødder) støtter Nyrerne specifikt. Hold dig helt fra rå og kolde fødevarer — de dræner den allerede svage varme. En lille mængde salt i kosten støtter Nyrernes funktion.',
+      movement: 'Bevægelse skal være blid og genopbyggende — daglige gåture, qigong, tai chi. Undgå udmattende træning der dræner reserven yderligere. Hold lænd og knæ varme — beskyt dem mod vind og kulde med passende beklædning. Træn aldrig om aftenen.',
+      acupressure: 'Massér blidt og opmærksomt KI3 — i fordybningen mellem indre ankelknoglen og akilles-senen. 60 sekunder pr. fod, gerne morgen og aften. Det er det klassiske punkt for at varme Nyrerne nedefra. Du kan også varme korsbenet (lige over halebensregionen) med en varmedunk i 10-15 minutter — der ligger Ming Men-området der nærer den dybe varme.',
+      awareness: 'Læg mærke til hvor meget du presser igennem på den allerede svage reserve — sene nætter, overarbejde, kronisk stress, kold eksponering. Den dybe varme er det der bærer hele dit fundament. Det handler ikke om perfekt livsstil, men om at finde de små rum hvor du kan trække stikket og lade reserven varme op igen.'
+    }
   },
   {
     id: 'nyre-yin-mangel',
@@ -5270,7 +5291,14 @@ const patternLibrary = [
     keySymptoms: ['Hedeture', 'Natlige svedudbrud', 'Hårtab eller for tidlig grånen'],
     supportingSymptoms: ['Tør mund med lyst til småslurke', 'Høreproblemer/tinnitus', 'Reduceret libido', 'Hyppig vandladning om natten', 'Søvnløshed med rastløshed'],
     differential: 'Adskiller sig fra Lever Blod-mangel ved at have fokus på lænd, hørelse og hår frem for sener og øjne. Hedeture med svedudbrud, særligt om natten, peger særligt på Nyre Yin — og ses ofte sammen med tegn på opadstigende energi i Leveren, som ikke længere kan forankres ordentligt.',
-    treatment: 'Genopbyg de kølende reserver gennem vand, supper, kølige (men ikke kolde) fødevarer som havregrød, mungbønner og melon. Reducer overarbejde og lange aftner — det er der reserven bliver brændt af. Beskyt også mod overdreven seksuel aktivitet og generel udmattelse, som tærer på samme dybe lager.'
+    treatment: 'Genopbyg de kølende reserver gennem vand, supper, kølige (men ikke kolde) fødevarer som havregrød, mungbønner og melon. Reducer overarbejde og lange aftner — det er der reserven bliver brændt af. Beskyt også mod overdreven seksuel aktivitet og generel udmattelse, som tærer på samme dybe lager.',
+    homePractice: {
+      innerImage: 'Den dybe, kølende reserve i din krop er løbet tør. Som en kilde der har givet for længe uden at fylde op. Du mærker det som hedeture, nattesved, en uro der bliver tydeligst når lyset er ude. Kroppen har stadig nok varme — men den mangler den modstand der dæmper den.',
+      diet: 'Spis kølige (men ikke kolde) næringsrige fødevarer — havregrød, mungbønner, sorte sesamfrø, melon, bær, kogte rodfrugter. Drik vand i små slurke gennem dagen. Tilsæt salt i moderation — det støtter Nyrernes funktion. Reducer kraftigt krydret, alkohol og kaffe — alt der øger den indre varme yderligere.',
+      movement: 'Vælg det blide og genopbyggende — vandring, svømning, yin yoga, qigong. Undgå udmattende træning på tom mave eller om aftenen. Gå tidligt i seng — søvnen mellem 22 og 02 er der hvor Nyrernes reserve fylder op.',
+      acupressure: 'Massér blidt og opmærksomt KI3 — i fordybningen mellem indre ankelknoglen og akilles-senen. 60 sekunder pr. fod, gerne morgen og aften. Det er det klassiske punkt der nærer den dybe reserve. Du kan også massere KI1, midt på fodsålen, ved at gå barfodet på græs.',
+      awareness: 'Læg mærke til hvor og hvornår du brænder af mere end du fylder op. Sene aftener, overarbejde, kronisk stress, presset seksualitet — alt det dræner samme dybe lag. Det handler ikke om at gøre alting "rigtigt", men om at finde de små vinduer hvor reserven får lov at fylde op igen.'
+    }
   },
   {
     id: 'lever-qi-stagnation',
@@ -5285,7 +5313,14 @@ const patternLibrary = [
     keySymptoms: ['Kronisk irritabilitet/vrede', 'Klump i halsen (globus)', 'Menstruationsproblemer'],
     supportingSymptoms: ['Oppustethed efter måltider', 'Søvnproblemer', 'Hovedpine', 'Forstoppelse med tørre afføringer', 'Smerter langs kroppens side'],
     differential: 'Adskiller sig fra Lever Yang stiger ved at her er der ikke (endnu) opadstigende hede — ingen markant hovedpine eller hedeture, blot den indvendige opbygning. Adskiller sig fra Lever Blod-mangel ved at klienten ikke er udtømt og bleg; her er der noget der forsøger at komme ud, ikke noget der mangler. Forværres typisk når klienten holder noget tilbage og lindres af bevægelse og udtryk.',
-    treatment: 'Bevægelse er det vigtigste — gåture, vandring i naturen, dynamisk yoga eller anden form for kroppen-i-bevægelse. Skab regelmæssighed og rytme i hverdagen, og find måder at lade frustrationen finde udtryk på, frem for at holde den indeni. Sur smag i små mængder (lidt citron, lidt eddike) understøtter også Leverens flow.'
+    treatment: 'Bevægelse er det vigtigste — gåture, vandring i naturen, dynamisk yoga eller anden form for kroppen-i-bevægelse. Skab regelmæssighed og rytme i hverdagen, og find måder at lade frustrationen finde udtryk på, frem for at holde den indeni. Sur smag i små mængder (lidt citron, lidt eddike) understøtter også Leverens flow.',
+    homePractice: {
+      innerImage: 'Energien i din krop forsøger at bevæge sig, men finder ingen vej ud. Som et træ der ikke får lov at vokse mod lyset. Du mærker det som irritation, en klump i halsen, eller en uro der ikke helt kan placeres. Det er ikke din skyld — det er det vi alle bærer på, særligt i dag.',
+      diet: 'Spis bittre grønne — mælkebøtte, ruccola, grønkål, artiskok. De løsner Lever-energien. Tilsæt sur smag i små mængder: lidt citronsaft i lunkent vand om morgenen, æbleeddike på salaten. Pause fra alkohol, kaffe og stærkt krydret mad i en periode — de presser Leveren yderligere.',
+      movement: 'Find dig selv i bevægelse hver dag — også når lysten ikke er der. En 20-minutters gåtur i naturen åbner det der er stuvet inde. Yoga, stretching og dans er andre veje. Sidde-arbejde i lange stræk er det der mest typisk holder energien fast.',
+      acupressure: 'Massér blidt og opmærksomt LR3 — på oversiden af foden, i furen mellem stortåen og 2. tå, ca. 2 fingerbredder mod ankelen. 60 sekunder pr. fod, åndedræt roligt. Gentag 1-2 gange dagligt. Det er det klassiske punkt for at "åbne Leveren" når noget er låst.',
+      awareness: 'Find ét sted hver dag hvor frustrationen får et udtryk — på papir, i bevægelse, i samtale med en der lytter. Pointen er ikke at blive af med følelsen, men at lade den komme ud. Det undertrykte er det der over tid bliver til mønstre i kroppen.'
+    }
   },
   {
     id: 'lever-yang-stiger',
@@ -5300,7 +5335,14 @@ const patternLibrary = [
     keySymptoms: ['Hovedpine', 'Svimmelhed', 'Hedeture', 'Kronisk irritabilitet/vrede'],
     supportingSymptoms: ['Søvnproblemer', 'Øjenproblemer', 'Søvnløshed med rastløshed'],
     differential: 'Selvom det ser voldsomt ud udadtil, ligger roden tit en etage dybere i en Yin-mangel. Hvis klienten også har nattesved og svage lænder, skal man behandle bunden af problemet samtidigt — ikke kun den udadgående manifestation.',
-    treatment: 'Dæmp den opadgående bevægelse med kølende fødevarer, mynte- eller krysantemumthe og stress-reduktion. Hvis Yin-manglen er det egentlige rod, så fyld også der op samtidig. Undgå alkohol, stærkt krydret mad og sene nætter — alt der trækker yderligere på den allerede tomme reserve.'
+    treatment: 'Dæmp den opadgående bevægelse med kølende fødevarer, mynte- eller krysantemumthe og stress-reduktion. Hvis Yin-manglen er det egentlige rod, så fyld også der op samtidig. Undgå alkohol, stærkt krydret mad og sene nætter — alt der trækker yderligere på den allerede tomme reserve.',
+    homePractice: {
+      innerImage: 'Energien i din Lever bevæger sig opad uden den kølende modvægt der skal holde den nede. Du mærker det som hovedpine — særligt i tindinger eller toppen af hovedet — svimmelhed der kommer pludseligt, hedeture, kort lunte. Det føles dramatisk, men roden ligger som regel et lag dybere: en udmattet kølende reserve der ikke længere kan forankre den opadgående bevægelse.',
+      diet: 'Spis kølende, vandholdige fødevarer — agurk, melon, mungbønner, lotus-frø, peberminte. Drik chrysanthemum- eller mynte-te i stedet for kaffe. Hold pause fra alt der øger den indre varme: alkohol, stærkt krydret mad, kaffe, sene måltider. Spis frem for alt regelmæssigt — uregelmæssighed forværrer det opadgående.',
+      movement: 'Vælg det jordnære og forankrende — gåture, blid yoga, vandring i naturen, svømning. Undgå intens og opadgående træning som tunge løft eller HIIT, særligt sent på dagen. Yin yoga med fokus på fødder og ben hjælper med at trække energien ned igen.',
+      acupressure: 'Massér blidt og opmærksomt LR3 — på oversiden af foden, i furen mellem stortåen og 2. tå. 60 sekunder pr. fod, åndedræt roligt. Du kan også massere KI1 — midt på fodsålen — for at trække energien helt ned i fundamentet. Sæt dig gerne på græsset eller jorden mens du gør det.',
+      awareness: 'Læg mærke til hvad der presser dig opad — stress, frustration, tankemylder, sene aftener. Det handler ikke kun om at "tage roen", men om at finde det der reelt giver dig kontakt med jorden igen. Søvnen, særligt før midnat, er det der mest direkte fylder den kølende reserve op.'
+    }
   },
   {
     id: 'lever-blod-mangel',
@@ -5315,7 +5357,14 @@ const patternLibrary = [
     keySymptoms: ['Hårtab eller for tidlig grånen', 'Øjenproblemer', 'Menstruationsproblemer'],
     supportingSymptoms: ['Svimmelhed', 'Kramper indersiden af benene', 'Smerter i ekstremiteter', 'Ledsmerter med følelsesløshed og prikken'],
     differential: 'Adskiller sig fra Hjerte Blod-mangel ved fokus på sener, øjne og hår, snarere end på hjertebanken og søvnproblemer. I praksis ser man dog tit at begge er til stede samtidig — blod-manglen breder sig ofte fra den ene til den anden.',
-    treatment: 'Næring af blodet sker gennem mørke grøntsager (spinat, rødbede), rødt kød i moderation, sorte sesamfrø — og regelmæssighed, hvile og dyb søvn. Beskyt også mod yderligere blødning, og giv kroppen tid til at fylde op.'
+    treatment: 'Næring af blodet sker gennem mørke grøntsager (spinat, rødbede), rødt kød i moderation, sorte sesamfrø — og regelmæssighed, hvile og dyb søvn. Beskyt også mod yderligere blødning, og giv kroppen tid til at fylde op.',
+    homePractice: {
+      innerImage: 'Leveren lagrer det blod der nærer dine sener, øjne, hår og menstruation. Når blodet er sparsomt, mærker du det som tørre eller lette øjne, kraftesløse negle, kramper i benene, sparsom eller udeblivende menstruation, en bleg fornemmelse i ansigtet. Det opstår ofte hos kvinder efter fødsel, langvarig blødning, eller hos enhver der har trukket for længe på reserverne uden at fylde op.',
+      diet: 'Spis blod-byggende fødevarer — mørke grøntsager (spinat, rødbede, grønkål), rødt kød i moderation, lever (hvis du tåler det), sorte sesamfrø, dadler, goji-bær. Spis varmt og tilberedt — det er nemmere for kroppen at omdanne til blod. En suppe med rødbede, gulerod og et par dadler er en simpel medicin.',
+      movement: 'Vælg det blide og genopbyggende — gåture, blid yoga, tai chi. Undgå udmattende kardio og styrketræning på tom mave. Bevægelse er fint — men det skal nære, ikke dræne. Sov 8 timer hvis muligt — det er der blodet fyldes op.',
+      acupressure: 'Massér blidt og opmærksomt SP6 — fire fingerbredder over indre ankelknogle, lige bag skinnebenets bagkant. 60 sekunder pr. ben. Det punkt nærer blod og Yin på tværs af tre meridianer (Milt, Lever, Nyrer). Du kan også massere LR8 (på indersiden af knæleddet, hvor knæfolden mødes med kropssiden) for at nære Lever-blodet specifikt.',
+      awareness: 'Læg mærke til hvor du giver mere blod (i overført forstand) end du fylder på — pårørende-rolle, omsorg for andre, langvarigt arbejde uden hvile. Lever-blod nærer både kroppen og det indre liv: drømme, vision, kreativitet. Når blodet er sparsomt, er det også svært at se langt frem.'
+    }
   },
   {
     id: 'hjerte-blod-mangel',
@@ -5330,7 +5379,14 @@ const patternLibrary = [
     keySymptoms: ['Hjertebanken', 'Søvnproblemer', 'Emotionel ustabilitet'],
     supportingSymptoms: ['Kolde hænder og fødder', 'Svimmelhed', 'Hårtab eller for tidlig grånen'],
     differential: 'Adskiller sig fra Hjerte Yin-mangel ved at klienten ikke har nattesved og indre uro — der er ingen klare hede-tegn her, blot mangel. Adskiller sig fra ren Hjerte Qi-mangel ved at det specifikt er blodet der er for lidt af (bleghed, svimmelhed), frem for energien generelt.',
-    treatment: 'Nær blodet gennem rødbede, longanfrugt, jujube og blid sød kost. Reducer overdreven mental aktivitet og bekymring, og skab rolige aftener med regelmæssig søvn — det er der hjertet får mulighed for at fylde op.'
+    treatment: 'Nær blodet gennem rødbede, longanfrugt, jujube og blid sød kost. Reducer overdreven mental aktivitet og bekymring, og skab rolige aftener med regelmæssig søvn — det er der hjertet får mulighed for at fylde op.',
+    homePractice: {
+      innerImage: 'Hjertet huser sindets ro — og når blodet der skal nære den ro er sparsomt, kan sindet ikke længere finde hvile. Du mærker det som hjertebanken, søvnbesvær (særligt svært ved at falde i søvn), uro, en bleg fornemmelse, måske svimmelhed når du rejser dig. Det opstår ofte efter lange perioder med overtænkning, vedvarende bekymring eller blodtab.',
+      diet: 'Spis nærende, varme måltider med blod-byggende fødevarer — rødbeder, longanfrugt, jujube (rød daddel), hirse, havregrød. Bland gerne lidt kanel og en knivspids ingefær i — de leder næringen til hjertet. Hold pause fra stimulanter (kaffe, energidrikke) der presser hjertet uden at fylde det.',
+      movement: 'Skab rolige aftener uden skærm i de sidste par timer før sengetid. Blid bevægelse om dagen — gåture, qigong, blid yoga — men intet intensivt om aftenen. Mediter eller lyt til rolig musik før søvn. Hjertet næres gennem regelmæssighed mere end gennem træning.',
+      acupressure: 'Massér blidt og opmærksomt HT7 — i furen ved håndleddets indre side, lige under lillefingeren, ind mod knoglen. 60 sekunder pr. håndled, gerne om aftenen før søvn. Det er hjertets eget punkt for at få sindet til at hvile. PC6 (tre fingerbredder over håndleddet, midt på underarmens inderside) støtter også brystets ro.',
+      awareness: 'Læg mærke til hvor meget du tænker dig selv ind i bekymring — særligt om aftenen. Tankerne kan være drivkraften der dræner blodet og holder hjertet på vagt. Skriv dine tanker ned før du går i seng, eller læg dem i en "imorgen-mappe". Det at lade noget være til imorgen er en ægte praksis.'
+    }
   },
   {
     id: 'hjerte-yin-mangel',
@@ -5345,7 +5401,14 @@ const patternLibrary = [
     keySymptoms: ['Hjertebanken', 'Søvnløshed med rastløshed', 'Natlige svedudbrud'],
     supportingSymptoms: ['Trykkende brystsmerte med indre angst', 'Emotionel ustabilitet', 'Hedeture'],
     differential: 'Adskiller sig fra Hjerte Blod-mangel ved nattesved og en motorisk rastløshed der gør det svært at slappe af. Adskiller sig fra Yang Qiao Mai-søvnløshed (som også giver rastløshed) ved den specifikke nattesved og varme der opleves indersiden af håndleddene.',
-    treatment: 'Nær reserven gennem stille bevægelse, meditation, regelmæssig søvn og kølende næring som lotusfrø og lily-bulb. Undgå stimulanter, sene nætter og overdreven mental aktivitet — alt det der trækker yderligere på en allerede tom kølighed.'
+    treatment: 'Nær reserven gennem stille bevægelse, meditation, regelmæssig søvn og kølende næring som lotusfrø og lily-bulb. Undgå stimulanter, sene nætter og overdreven mental aktivitet — alt det der trækker yderligere på en allerede tom kølighed.',
+    homePractice: {
+      innerImage: 'Den kølende, beroligende reserve omkring hjertet er svækket. En indre uro siver igennem — du oplever rastløs søvnløshed, nattesved, en grundlæggende uro der bliver tydeligst om aftenen. Det er ofte sekundært til en udtømt reserve i Nyrerne — hjertet og nyrerne taler ikke længere ordentligt sammen. Det ses særligt hos kvinder i perimenopausen og hos enhver efter mange år med høj indre belastning.',
+      diet: 'Spis Yin-nærende, kølige (men ikke kolde) fødevarer — lotus-frø, lily-bulb, bær, agurk, æg, mungbønner, havregrød. Drik små mængder vand gennem dagen, gerne lunkent. Reducer kraftigt det stimulerende: kaffe, alkohol, sukker, sene måltider. En kop kølig peberminte- eller chrysanthemum-te om aftenen kan blødt køle indvendigt.',
+      movement: 'Vælg det blide og indadvendte — yin yoga, qigong, tai chi, vandring. Undgå intens træning, særligt om aftenen. Mediter eller bare sid stille i 10-15 minutter dagligt. Søvn før midnat er den vigtigste praksis — der fyldes Yin-reserven mest direkte.',
+      acupressure: 'Massér blidt og opmærksomt HT7 — i furen ved håndleddets indre side, lige under lillefingeren. 60 sekunder pr. håndled, gerne om aftenen. KI6 (lige under indre ankelknogle) nærer både Nyre- og Hjerte-Yin. Du kan også sove med fødderne tildækkede og holde lænderegionen varm — det støtter den dybe Yin-reserve.',
+      awareness: 'Læg mærke til hvor og hvornår du brænder af mere end du fylder op. Stress, overarbejde, perfektionisme, indre uro der ikke får lov at lægge sig — alt det tærer på samme dybe lag. Yin opbygges ikke ved at gøre mere; det opbygges ved at lade noget hvile. Det er en svær medicin når man er vant til at præstere.'
+    }
   },
   {
     id: 'lunge-qi-mangel',
@@ -5360,7 +5423,14 @@ const patternLibrary = [
     keySymptoms: ['Hyppige forkølelser', 'Spontan svedtendens i dagtimerne', 'Vejrtrækningsproblemer'],
     supportingSymptoms: ['Vedvarende sorg/melankoli', 'Sæsonbaseret rhinitis/allergi', 'Træthed/energimangel'],
     differential: 'Adskiller sig fra Milt Qi-mangel ved at fokus ligger på vejrtrækning og let modtagelighed for forkølelser, snarere end fordøjelse. I praksis er begge ofte til stede sammen som en samlet Lunge-Milt-akse. Adskiller sig fra den bredere overflade-forsvar-svaghed ved et tydeligere fokus på Lungerne specifikt.',
-    treatment: 'Styrk Lunge-energien gennem dybe åndedrætsøvelser, klar luft og bevidst rummelighed for sorg. Beskyt mod kold vind — særligt nakke og hals, hvor kulden typisk trænger ind først.'
+    treatment: 'Styrk Lunge-energien gennem dybe åndedrætsøvelser, klar luft og bevidst rummelighed for sorg. Beskyt mod kold vind — særligt nakke og hals, hvor kulden typisk trænger ind først.',
+    homePractice: {
+      innerImage: 'Lungerne forsyner kroppens overflade med beskyttelse mod udefrakommende belastning. Når Lungernes energi er svag, åbnes kroppen for vind, kulde og virus — du mærker det som hyppige forkølelser, dagsved selv ved minimal anstrengelse, åndenød, en stille sorg eller tristhed der følger med. Lungerne bærer også tabet — uudtrykt sorg kan over tid svække dem.',
+      diet: 'Spis lunge-nærende fødevarer — pære, mandler, hvid svamp, honning, daikon, hvidløg, ingefær. Hvide og lyse fødevarer støtter Metal-elementet. Drik varmt vand og krydrede teer om morgenen — særligt i koldt vejr. Hold pause fra det rå og kolde der dræner Lungernes varme.',
+      movement: 'Dyb vejrtrækning er den centrale praksis — selv 5 minutter dagligt. Stå op, indånd dybt gennem næsen mens du løfter armene over hovedet, ud gennem munden mens du sænker. Gå i frisk luft hver dag — ren skov-luft, særligt om morgenen. Beskyt nakke og hals mod vind og kulde med tørklæde eller halsedisse.',
+      acupressure: 'Massér blidt og opmærksomt LU9 — på indersiden af håndleddet, i furen lige under tommelfingeren. 60 sekunder pr. håndled. Det er Lungernes eget tonificerende punkt. LI4 (mellem tommelfinger og pegefinger, i den kødfulde del) styrker også overflade-forsvaret. Brug ikke LI4 hvis du er gravid.',
+      awareness: 'Læg mærke til om der er sorg eller tab du bærer på — det der ikke har fået plads til at blive udtrykt. Sorg er Lungernes emotion, og uudtrykt sorg er det der mest direkte svækker dem. Tillad gråden plads. Skriv et brev du aldrig sender. Sorg er ikke et problem der skal løses; det er en bevægelse der har brug for plads.'
+    }
   },
   {
     id: 'slim-damp',
@@ -5375,7 +5445,14 @@ const patternLibrary = [
     keySymptoms: ['Overdreven slim/opspyt', 'Kronisk næsetilstopning', 'Svimmelhed'],
     supportingSymptoms: ['Sæsonbaseret rhinitis/allergi', 'Tab af lugte- eller smagssans', 'Ødem/væskeretention', 'Oppustethed efter måltider'],
     differential: 'Adskiller sig fra Slim-Hede ved fravær af gul slim og varmesymptomer. Hvis slimet er tykt og gult, peger det videre til Slim-Hede (typisk i Lunger eller langs Galdeblære-meridianen). Slim-Damp er som regel kølig eller neutral i karakter.',
-    treatment: 'Reducer det der skaber slim — mejeriprodukter, sukker, råt og koldt, hvedemel. Styrk Milten gennem varm tilberedt kost og ingefær, og støt Lungerne i deres rensende funktion. Spis kun når du er sulten — det aflaster fordøjelsen og giver den plads til at gøre sit arbejde.'
+    treatment: 'Reducer det der skaber slim — mejeriprodukter, sukker, råt og koldt, hvedemel. Styrk Milten gennem varm tilberedt kost og ingefær, og støt Lungerne i deres rensende funktion. Spis kun når du er sulten — det aflaster fordøjelsen og giver den plads til at gøre sit arbejde.',
+    homePractice: {
+      innerImage: 'Din krops evne til at omsætte væsker er nedsat. Slim ophobes og tynger fordøjelsen, hovedet, åndedrættet. Du mærker det som tunghed i kroppen, sløvhed, slim i halsen, tung mave, fyldt fornemmelse, måske vat-i-hovedet. Det skabes hyppigt af for meget sukker, mejeriprodukter eller kolde fødevarer kombineret med en i forvejen svækket fordøjelseskraft.',
+      diet: 'Hold pause fra det der skaber slim — mejeriprodukter, hvidt sukker, hvedemel, råt og koldt, fed og frituret mad, alt for stærkt krydret. Spis enkelt og varmt — kogte grøntsager, ris, bygmel, hirse, ingefær, peberkål. Tilsæt orange-skal eller fennikel til te eller mad — de hjælper med at omsætte fugt. Spis kun når du er sulten.',
+      movement: 'Bevæg dig dagligt — det er en af de vigtigste medicin mod fugt og slim. Gåture, dans, moderat kardio, qigong. Sved gerne let — det hjælper med at flytte fugten ud. Undgå at sidde i lange stræk. Beskyt mod fugt udefra: fugtige bolig-områder, sokker der bliver våde, damp.',
+      acupressure: 'Massér blidt og opmærksomt ST40 — på forsiden af underbenet, midt mellem knæet og anklen, en fingerbredd udad fra skinnebenet. 60 sekunder pr. ben. Det er det klassiske punkt for at omsætte slim og fugt. SP9 (lige under indre knæ-knogle) støtter at lede væske ud af kroppen.',
+      awareness: 'Læg mærke til hvor du måske "samler" mere end du har brug for — i fysisk forstand (mad, ting), men også mentalt (informationer, bekymringer, andres følelser). Slim er kroppens måde at sige at noget ikke er blevet omsat. Gør plads til at noget kan slippe — udvend i hjemmet, mentalt, kropsligt.'
+    }
   },
   {
     id: 'wei-qi-svaghed',
@@ -5390,7 +5467,14 @@ const patternLibrary = [
     keySymptoms: ['Hyppige forkølelser', 'Sæsonbaseret rhinitis/allergi', 'Spontan svedtendens i dagtimerne'],
     supportingSymptoms: ['Træthed/energimangel', 'Kronisk næsetilstopning', 'Kolde hænder og fødder'],
     differential: 'Roden bestemmes af hvilket organ der primært svigter: hvis kulde og svag lænd dominerer, er Nyre-Yang det centrale; hvis fordøjelse og bleghed dominerer, er Milten det; hvis åndedræt og huden er primært, er Lungerne. I praksis ser man tit en kombination, hvor det dybeste organ — Nyrerne — bærer hovedansvaret.',
-    treatment: 'Behandl det organ der primært svigter (se ovenfor). Beskyt mod kold vind, særligt i nakke og hals, hvor kulden typisk trænger ind. Dyb vejrtrækning og rolige bevægelses-praksisser som qigong styrker forsvaret. Undgå at "presse igennem" en forkølelse — det udmatter reserverne yderligere og forlænger problemet.'
+    treatment: 'Behandl det organ der primært svigter (se ovenfor). Beskyt mod kold vind, særligt i nakke og hals, hvor kulden typisk trænger ind. Dyb vejrtrækning og rolige bevægelses-praksisser som qigong styrker forsvaret. Undgå at "presse igennem" en forkølelse — det udmatter reserverne yderligere og forlænger problemet.',
+    homePractice: {
+      innerImage: 'Kroppens overflade-forsvar er svækket. Du mærker det som konstant sårbarhed over for skift i vejret, gentagne forkølelser, allergier, en porøs fornemmelse — som om kroppen ikke har en ordentlig grænse mod det udefra. Ofte ligger en dybere udmattelse i bunden — forsvaret er det kroppen først skærer fra når reserverne er for små.',
+      diet: 'Spis nærende, varme måltider — supper, gryderetter, kogte rodfrugter, kogt korn. Tilsæt opvarmende krydderier — ingefær, kanel, hvidløg, fennikel. Hold pause fra det rå og kolde, der svækker den allerede tomme reserve. En kop varm bouillon eller knoglesuppe dagligt er en simpel og kraftig medicin.',
+      movement: 'Mild og regelmæssig bevægelse — gåture, qigong, tai chi. Undgå udmattende træning der dræner forsvaret yderligere. Beskyt nakken med tørklæde, særligt i træk og kulde. Kom i seng tidligt — søvn er der hvor forsvaret bygges op igen.',
+      acupressure: 'Massér blidt og opmærksomt LU9 — på indersiden af håndleddet, i furen lige under tommelfingeren. 60 sekunder pr. håndled. ST36 (på forsiden af underbenet) styrker den dybe energi der driver forsvaret. Du kan også gnubbe nakkens og øvre rygges meridian-bane GB20 (i fordybningen ved skallens base, bag øret) i et halvt minut når du mærker du har "trukket noget".',
+      awareness: 'Læg mærke til om du presser igennem på en allerede tom reserve — særligt om vinteren, ved dårligt vejr, ved mangel på søvn. Forsvaret er det der lader dig være i verden uden at blive udmattet af den. Det handler ikke om at undgå alt belastende, men om at give kroppen tilstrækkelig hvile mellem belastningerne.'
+    }
   }
 ];
 

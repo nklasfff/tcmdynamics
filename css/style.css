@@ -3709,6 +3709,49 @@ html[data-theme-transitioning] * {
   margin: 4px 0 8px;
 }
 
+.sa-pattern-homepractice {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sa-pattern-homepractice-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.hp-section {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.hp-section:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.hp-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 4px;
+}
+
+.hp-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0;
+}
+
 .session-card-intensity {
   color: var(--accent-gold);
   font-weight: 500;
