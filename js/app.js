@@ -2688,17 +2688,24 @@ function buildSymptomAnalysisSummary() {
 }
 
 function buildClientHandoutText() {
-  const { picked } = computeSymptomResonance();
-  if (picked.length < SA_MIN) return '';
-  const patternResonance = computePatternResonance(picked);
-  const top = patternResonance[0];
-  if (!top || !top.pattern.homePractice) return '';
-
-  const isDa = getLanguage() === 'da';
-  const dateLocale = isDa ? 'da-DK' : 'en-US';
-  const dateStr = new Date().toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
-  const hp = top.pattern.homePractice;
-  const summary = top.pattern.summaryDescription || '';
+  // Prefer the resolved handout context (covers both SA and saved sessions);
+  // fall back to live SA data so the helper still works on its own.
+  let pattern, dateStr;
+  if (currentHandoutContext && currentHandoutContext.pattern) {
+    pattern = currentHandoutContext.pattern;
+    dateStr = currentHandoutContext.dateStr;
+  } else {
+    const { picked } = computeSymptomResonance();
+    if (picked.length < SA_MIN) return '';
+    const patternResonance = computePatternResonance(picked);
+    const top = patternResonance[0];
+    if (!top || !top.pattern.homePractice) return '';
+    pattern = top.pattern;
+    dateStr = formatHandoutDate(new Date());
+  }
+  if (!pattern || !pattern.homePractice) return '';
+  const hp = pattern.homePractice;
+  const summary = pattern.summaryDescription || '';
 
   const lines = [];
   lines.push(`${t('handoutHeading')} — ${dateStr}`);
@@ -3086,6 +3093,36 @@ function showSymptomAnalysis() {
 // Client Handout — printable home practice document
 // ============================================
 const HANDOUT_THERAPIST_KEY = 'tcm-handout-therapist-name';
+let currentHandoutContext = null; // { pattern, dateStr, clientId, fromSession }
+
+function resolveHandoutContext(opts) {
+  // opts: { pattern, dateStr, clientId }. If pattern omitted, derive from SA.
+  if (opts && opts.pattern) {
+    return {
+      pattern: opts.pattern,
+      dateStr: opts.dateStr || formatHandoutDate(new Date()),
+      clientId: opts.clientId || null,
+      fromSession: true
+    };
+  }
+  const { picked } = computeSymptomResonance();
+  if (picked.length < SA_MIN) return null;
+  const patternResonance = computePatternResonance(picked);
+  const top = patternResonance[0];
+  if (!top || !top.pattern.homePractice) return null;
+  return {
+    pattern: top.pattern,
+    dateStr: formatHandoutDate(new Date()),
+    clientId: activeClientId || null,
+    fromSession: false
+  };
+}
+
+function formatHandoutDate(d) {
+  const isDa = getLanguage() === 'da';
+  const dateLocale = isDa ? 'da-DK' : 'en-US';
+  return d.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+}
 
 function buildHandoutPracticeRows(hp) {
   // Glyphs use Chinese radicals for the five practice modes —
@@ -3099,16 +3136,10 @@ function buildHandoutPracticeRows(hp) {
   ];
 }
 
-function renderClientHandout() {
-  const { picked } = computeSymptomResonance();
-  if (picked.length < SA_MIN) return false;
-  const patternResonance = computePatternResonance(picked);
-  const top = patternResonance[0];
-  if (!top || !top.pattern.homePractice) return false;
-
-  const isDa = getLanguage() === 'da';
-  const dateLocale = isDa ? 'da-DK' : 'en-US';
-  const dateStr = new Date().toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+function renderClientHandout(opts) {
+  const ctx = resolveHandoutContext(opts);
+  if (!ctx) return false;
+  currentHandoutContext = ctx;
 
   const titleEl = document.getElementById('handout-title');
   const dateEl = document.getElementById('handout-date');
@@ -3118,14 +3149,14 @@ function renderClientHandout() {
   const footerEl = document.getElementById('handout-footer-text');
   const signatureEl = document.getElementById('handout-therapist-name');
 
-  if (titleEl) titleEl.textContent = top.pattern.plainName || top.pattern.name;
-  if (dateEl) dateEl.textContent = dateStr;
-  if (summaryEl) summaryEl.textContent = top.pattern.summaryDescription || '';
+  if (titleEl) titleEl.textContent = ctx.pattern.plainName || ctx.pattern.name;
+  if (dateEl) dateEl.textContent = ctx.dateStr;
+  if (summaryEl) summaryEl.textContent = ctx.pattern.summaryDescription || '';
   if (footerEl) footerEl.textContent = t('handoutFooter');
 
   if (clientEl) {
-    if (activeClientId) {
-      clientEl.textContent = activeClientId;
+    if (ctx.clientId) {
+      clientEl.textContent = ctx.clientId;
       clientEl.setAttribute('contenteditable', 'false');
     } else {
       clientEl.textContent = '';
@@ -3139,7 +3170,7 @@ function renderClientHandout() {
   }
 
   if (practicesEl) {
-    practicesEl.innerHTML = buildHandoutPracticeRows(top.pattern.homePractice).map(row => `
+    practicesEl.innerHTML = buildHandoutPracticeRows(ctx.pattern.homePractice).map(row => `
       <div class="handout-practice">
         <div class="handout-practice-glyph" aria-hidden="true">${row.glyph}</div>
         <div class="handout-practice-body">
@@ -3153,9 +3184,30 @@ function renderClientHandout() {
   return true;
 }
 
-function showClientHandout() {
-  if (!renderClientHandout()) return;
+function showClientHandout(opts) {
+  if (!renderClientHandout(opts)) return;
   showScreen('client-handout');
+}
+
+function sessionHasHandout(session) {
+  if (!session || !Array.isArray(session.patterns) || !session.patterns.length) return false;
+  if (!Array.isArray(patternLibrary)) return false;
+  const p = patternLibrary.find(x => x.name === session.patterns[0].name);
+  return !!(p && p.homePractice);
+}
+
+function showHandoutFromSession(session, clientId) {
+  if (!session || !Array.isArray(session.patterns) || !session.patterns.length) return;
+  const patternName = session.patterns[0].name;
+  const pattern = Array.isArray(patternLibrary)
+    ? patternLibrary.find(p => p.name === patternName)
+    : null;
+  if (!pattern || !pattern.homePractice) {
+    showToast(t('handoutMissing') || 'Hjem-anvisning ikke tilgængelig');
+    return;
+  }
+  const dateStr = formatHandoutDate(new Date(session.date));
+  showClientHandout({ pattern, dateStr, clientId });
 }
 
 function setupClientHandout() {
@@ -3164,7 +3216,15 @@ function setupClientHandout() {
   const copyBtn = document.getElementById('handout-copy-btn');
   const signatureEl = document.getElementById('handout-therapist-name');
 
-  if (backBtn) backBtn.addEventListener('click', goBack);
+  if (backBtn) backBtn.addEventListener('click', () => {
+    // Sessions return to the client-detail screen they came from;
+    // SA results fall through to goBack().
+    if (currentHandoutContext && currentHandoutContext.fromSession) {
+      showClientDetail();
+    } else {
+      goBack();
+    }
+  });
   if (printBtn) printBtn.addEventListener('click', () => window.print());
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
@@ -3847,6 +3907,11 @@ function renderClientDetail() {
               <div class="session-card-notes">${escapeHtml(s.notes)}</div>
             </div>` : ''}
           ${renderFollowupSectionHTML(s)}
+          ${sessionHasHandout(s) ? `
+            <button class="session-handout-btn" type="button" data-session-handout="${escapeHtml(s.id)}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+              <span>Åbn hjem-anvisning</span>
+            </button>` : ''}
           <button class="session-delete-btn" type="button" data-session-delete="${escapeHtml(s.id)}">${escapeHtml(t('clientDetailDeleteSession'))}</button>
         </div>
       </div>
@@ -3866,6 +3931,14 @@ function renderClientDetail() {
         deleteClientSession(activeClientId, btn.dataset.sessionDelete);
         renderClientDetail();
       }
+    });
+  });
+  listEl.querySelectorAll('[data-session-handout]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const client = getClientRecord(activeClientId);
+      const session = client && client.sessions.find(x => x.id === btn.dataset.sessionHandout);
+      if (session) showHandoutFromSession(session, activeClientId);
     });
   });
   // Followup pill clicks
