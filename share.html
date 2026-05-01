@@ -61,21 +61,50 @@
       margin: 0 0 12px;
       color: #1a1815;
     }
-    .share-footer {
+    .share-page {
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .share-save-hint {
+      width: 100%;
       max-width: 720px;
-      margin: 26px auto 0;
-      text-align: center;
+      padding: 22px 24px;
+      background: #fbf7ee;
+      border: 1px solid rgba(154, 123, 60, 0.22);
+      border-radius: 6px;
       font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: #8a857d;
-      letter-spacing: 0.06em;
+      color: #5a554d;
+      text-align: center;
     }
-    .share-footer a {
+    .share-save-hint p {
+      margin: 0 0 14px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .share-save-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(154, 123, 60, 0.12);
+      border: 1px solid #9a7b3c;
+      border-radius: 22px;
       color: #9a7b3c;
-      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
     }
-    .share-footer a:hover {
-      text-decoration: underline;
+    .share-save-btn:hover {
+      background: #9a7b3c;
+      color: #fbf7ee;
+    }
+    @media print {
+      .share-save-hint {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -157,11 +186,19 @@
       const descEl = document.querySelector('meta[name="description"]');
       if (descEl && desc) descEl.setAttribute('content', desc);
 
-      // Small footer link back to the main app, for the curious
-      const footerEl = document.createElement('div');
-      footerEl.className = 'share-footer';
-      footerEl.innerHTML = `<a href="./">Mønstrene Bag</a>`;
-      document.getElementById('share-page').appendChild(footerEl);
+      // Quiet save-hint below the document — the message thread itself is the
+      // simplest "save", and we offer Print/PDF for those who want a file.
+      const hintEl = document.createElement('div');
+      hintEl.className = 'share-save-hint';
+      hintEl.innerHTML = `
+        <p>Linket bliver i din besked-tråd — du kan altid tappe det igen og åbne hjem-anvisningen. Vil du have den som fil på din telefon?</p>
+        <button class="share-save-btn" type="button" id="share-save-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Gem som PDF
+        </button>
+      `;
+      document.getElementById('share-page').appendChild(hintEl);
+      document.getElementById('share-save-btn').addEventListener('click', () => window.print());
     }
   </script>
 </body>
