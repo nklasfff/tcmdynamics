@@ -1526,7 +1526,7 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'symptom-analysis'];
+  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'symptom-analysis', 'client-handout'];
   const sectionScreens = ['section-practice', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
@@ -3045,7 +3045,7 @@ function renderSymptomAnalysisResults() {
   results.querySelectorAll('[data-sa-client]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      copyClientHandoutToClipboard(btn);
+      showClientHandout();
     });
   });
 
@@ -3080,6 +3080,120 @@ function setupSymptomAnalysis() {
 function showSymptomAnalysis() {
   renderSymptomAnalysis();
   showScreen('symptom-analysis');
+}
+
+// ============================================
+// Client Handout — printable home practice document
+// ============================================
+const HANDOUT_THERAPIST_KEY = 'tcm-handout-therapist-name';
+
+function buildHandoutPracticeRows(hp) {
+  // Glyphs use Chinese radicals for the five practice modes —
+  // discreet visual anchors rather than emoji.
+  return [
+    { label: t('hpInnerImage'),  glyph: '心', text: hp.innerImage },
+    { label: t('hpDiet'),        glyph: '食', text: hp.diet },
+    { label: t('hpMovement'),    glyph: '行', text: hp.movement },
+    { label: t('hpAcupressure'), glyph: '穴', text: hp.acupressure },
+    { label: t('hpAwareness'),   glyph: '觀', text: hp.awareness }
+  ];
+}
+
+function renderClientHandout() {
+  const { picked } = computeSymptomResonance();
+  if (picked.length < SA_MIN) return false;
+  const patternResonance = computePatternResonance(picked);
+  const top = patternResonance[0];
+  if (!top || !top.pattern.homePractice) return false;
+
+  const isDa = getLanguage() === 'da';
+  const dateLocale = isDa ? 'da-DK' : 'en-US';
+  const dateStr = new Date().toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+
+  const titleEl = document.getElementById('handout-title');
+  const dateEl = document.getElementById('handout-date');
+  const clientEl = document.getElementById('handout-client');
+  const summaryEl = document.getElementById('handout-summary');
+  const practicesEl = document.getElementById('handout-practices');
+  const footerEl = document.getElementById('handout-footer-text');
+  const signatureEl = document.getElementById('handout-therapist-name');
+
+  if (titleEl) titleEl.textContent = top.pattern.plainName || top.pattern.name;
+  if (dateEl) dateEl.textContent = dateStr;
+  if (summaryEl) summaryEl.textContent = top.pattern.summaryDescription || '';
+  if (footerEl) footerEl.textContent = t('handoutFooter');
+
+  if (clientEl) {
+    if (activeClientId) {
+      clientEl.textContent = activeClientId;
+      clientEl.setAttribute('contenteditable', 'false');
+    } else {
+      clientEl.textContent = '';
+      clientEl.setAttribute('contenteditable', 'true');
+    }
+  }
+
+  if (signatureEl) {
+    const stored = (() => { try { return localStorage.getItem(HANDOUT_THERAPIST_KEY) || ''; } catch (e) { return ''; } })();
+    signatureEl.textContent = stored;
+  }
+
+  if (practicesEl) {
+    practicesEl.innerHTML = buildHandoutPracticeRows(top.pattern.homePractice).map(row => `
+      <div class="handout-practice">
+        <div class="handout-practice-glyph" aria-hidden="true">${row.glyph}</div>
+        <div class="handout-practice-body">
+          <div class="handout-practice-label">${escapeHtml(row.label)}</div>
+          <p class="handout-practice-text">${escapeHtml(row.text)}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  return true;
+}
+
+function showClientHandout() {
+  if (!renderClientHandout()) return;
+  showScreen('client-handout');
+}
+
+function setupClientHandout() {
+  const backBtn = document.getElementById('btn-back-handout');
+  const printBtn = document.getElementById('handout-print-btn');
+  const copyBtn = document.getElementById('handout-copy-btn');
+  const signatureEl = document.getElementById('handout-therapist-name');
+
+  if (backBtn) backBtn.addEventListener('click', goBack);
+  if (printBtn) printBtn.addEventListener('click', () => window.print());
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const text = buildClientHandoutText();
+      if (!text) return;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        showToast(t('saveDialogSaved'));
+      } catch (e) {
+        console.error('Failed to copy handout', e);
+      }
+    });
+  }
+  if (signatureEl) {
+    signatureEl.addEventListener('blur', () => {
+      try { localStorage.setItem(HANDOUT_THERAPIST_KEY, signatureEl.textContent.trim()); } catch (e) {}
+    });
+  }
 }
 
 // ============================================
@@ -3914,6 +4028,7 @@ function init() {
   try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
   try { renderSymptomAnalysis(); } catch(e) { console.error('renderSymptomAnalysis:', e); }
   try { setupSymptomAnalysis(); } catch(e) { console.error('setupSymptomAnalysis:', e); }
+  try { setupClientHandout(); } catch(e) { console.error('setupClientHandout:', e); }
   try { setupClientHistory(); } catch(e) { console.error('setupClientHistory:', e); }
   try { setupTabs(); } catch(e) { console.error('setupTabs:', e); }
   try { setupBackButtons(); } catch(e) { console.error('setupBackButtons:', e); }
