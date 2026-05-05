@@ -5147,6 +5147,49 @@ html[data-theme-transitioning] * {
   max-height: 180px;
 }
 
+/* Lille indfoldelig info-blok der forklarer stigen for behandlere
+   der lige er begyndt at bruge polyvagal-rammen. */
+.pv-ladder-info {
+  margin: 0 0 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-gold-dim);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-family: var(--font-sans);
+}
+
+.pv-ladder-info summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.pv-ladder-info summary::-webkit-details-marker { display: none; }
+
+.pv-ladder-info summary::after {
+  content: '+';
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.pv-ladder-info[open] summary::after { content: '−'; }
+
+.pv-ladder-info-body {
+  margin-top: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.pv-ladder-info-body p { margin: 0 0 10px; }
+.pv-ladder-info-body ul { margin: 0 0 10px; padding-left: 20px; }
+.pv-ladder-info-body li { margin-bottom: 4px; }
+.pv-ladder-info-body strong { color: var(--text-primary); }
+.pv-ladder-info-body em { font-style: italic; color: var(--accent-gold); }
+
 .pv-pattern-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
@@ -5299,6 +5342,38 @@ html[data-theme-transitioning] * {
   font-size: 14px;
   font-weight: 500;
   margin-top: 2px;
+}
+
+/* Anker = co-regulering = polyvagal-arbejdets vigtigste muskel.
+   Markér rækken visuelt så den ikke forsvinder midt på listen. */
+.pv-hp-row-anchor {
+  background: var(--accent-gold-dim);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px 10px;
+  margin-bottom: 14px;
+  margin-left: -14px;
+  margin-right: -14px;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.pv-hp-row-anchor .pv-hp-glyph {
+  background: var(--accent-gold);
+  color: var(--bg-card);
+}
+
+.pv-hp-accent-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--accent-gold);
+  color: var(--bg-card);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 .pv-hp-label {
@@ -5619,6 +5694,37 @@ html[data-theme-transitioning] * {
   grid-template-columns: auto 1fr;
   gap: 14px;
   align-items: start;
+}
+
+/* Anker-rækken på polyvagal-handouts og share-siden — vigtigste
+   element for de fleste klienter, så fremhævet visuelt. */
+.handout-practice-accent {
+  background: rgba(154, 123, 60, 0.10);
+  border-radius: 6px;
+  padding: 14px 16px;
+  border-left: 3px solid #9a7b3c;
+}
+
+.handout-practice-accent .handout-practice-glyph {
+  background: #9a7b3c;
+  color: #fbf7ee;
+  border-color: #9a7b3c;
+}
+
+.handout-practice-accent .handout-practice-label::after {
+  content: 'vigtigste anker';
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #9a7b3c;
+  color: #fbf7ee;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-style: normal;
 }
 
 .handout-practice-glyph {
