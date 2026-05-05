@@ -5357,7 +5357,9 @@ html[data-theme-transitioning] * {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 14px 20px 12px;
+  /* Top padding clears the floating hamburger / theme / search buttons
+     (top: 14+safe-top, 40px tall = ends at 54+safe-top). */
+  padding: calc(64px + var(--safe-top)) 20px 12px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -5678,7 +5680,7 @@ html[data-theme-transitioning] * {
     font-size: 24px;
   }
   .handout-toolbar {
-    padding: 12px 14px;
+    padding: calc(60px + var(--safe-top)) 14px 12px;
   }
   .handout-tool-btn {
     padding: 9px 11px;
