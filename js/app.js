@@ -3346,16 +3346,16 @@ function renderPolyvagalAnalysisResults() {
       <div class="pv-homepractice">
         <div class="pv-homepractice-title">Hjem-anvisning</div>
         ${[
-          { glyph: 'I', label: 'Indre billede', text: topPattern.pattern.homePractice.innerImage },
-          { glyph: 'O', label: 'Orientering',   text: topPattern.pattern.homePractice.orientation },
-          { glyph: 'B', label: 'Bevægelse',     text: topPattern.pattern.homePractice.movement },
-          { glyph: 'A', label: 'Anker',         text: topPattern.pattern.homePractice.anchor },
-          { glyph: 'G', label: 'Øjeblikke',     text: topPattern.pattern.homePractice.glimmer }
+          { key: 'innerImage',  glyph: 'I', label: 'Indre billede', text: topPattern.pattern.homePractice.innerImage },
+          { key: 'orientation', glyph: 'O', label: 'Orientering',   text: topPattern.pattern.homePractice.orientation },
+          { key: 'movement',    glyph: 'B', label: 'Bevægelse',     text: topPattern.pattern.homePractice.movement },
+          { key: 'anchor',      glyph: 'A', label: 'Anker',         text: topPattern.pattern.homePractice.anchor, accent: true },
+          { key: 'glimmer',     glyph: 'G', label: 'Øjeblikke',     text: topPattern.pattern.homePractice.glimmer }
         ].map(row => `
-          <div class="pv-hp-row">
+          <div class="pv-hp-row${row.accent ? ' pv-hp-row-anchor' : ''}">
             <div class="pv-hp-glyph" aria-hidden="true">${row.glyph}</div>
             <div class="pv-hp-body">
-              <div class="pv-hp-label">${escapeHtml(row.label)}</div>
+              <div class="pv-hp-label">${escapeHtml(row.label)}${row.accent ? ' <span class="pv-hp-accent-tag">vigtigste anker</span>' : ''}</div>
               <p class="pv-hp-text">${escapeHtml(row.text)}</p>
             </div>
           </div>
@@ -3386,6 +3386,19 @@ function renderPolyvagalAnalysisResults() {
       <h2 class="sa-results-heading">Hvor er klienten på stigen?</h2>
       <p class="sa-results-lead">Symptomerne, som du valgte, peger på følgende fordeling i autonome nervesystem.</p>
       ${ladderHTML}
+
+      <details class="pv-ladder-info">
+        <summary>Hvad betyder stigen?</summary>
+        <div class="pv-ladder-info-body">
+          <p>Stephen Porges' polyvagale teori beskriver det autonome nervesystem som tre tilstande, vi bevæger os op og ned ad — som trin på en stige (Deb Dana).</p>
+          <ul>
+            <li><strong>Ventral</strong> (øverst): forbindelse, ro, regulering. Vi kan møde os selv og andre.</li>
+            <li><strong>Sympatisk</strong> (mellem): mobilisering, alarm, fight/flight. Designet til kortvarig beskyttelse.</li>
+            <li><strong>Dorsal</strong> (nederst): kollaps, dvale, bevarelse. Når aktivering ikke har hjulpet.</li>
+          </ul>
+          <p>Behandlingens retning er ikke at fjerne sympatisk eller dorsal — de er nødvendige beskyttelser. Det er at bygge fleksibiliteten til at bevæge sig <em>op</em> til ventral igen, særligt gennem co-regulering.</p>
+        </div>
+      </details>
 
       ${patternHTML}
 
@@ -3500,7 +3513,7 @@ function buildHandoutPracticeRows(pattern) {
       { label: 'Indre billede', glyph: 'I', text: hp.innerImage },
       { label: 'Orientering',   glyph: 'O', text: hp.orientation },
       { label: 'Bevægelse',     glyph: 'B', text: hp.movement },
-      { label: 'Anker',         glyph: 'A', text: hp.anchor },
+      { label: 'Anker',         glyph: 'A', text: hp.anchor, accent: true },
       { label: 'Øjeblikke',     glyph: 'G', text: hp.glimmer }
     ];
   }
@@ -3565,7 +3578,7 @@ function renderClientHandout(opts) {
 
   if (practicesEl) {
     practicesEl.innerHTML = buildHandoutPracticeRows(ctx.pattern).map(row => `
-      <div class="handout-practice">
+      <div class="handout-practice${row.accent ? ' handout-practice-accent' : ''}">
         <div class="handout-practice-glyph" aria-hidden="true">${row.glyph}</div>
         <div class="handout-practice-body">
           <div class="handout-practice-label">${escapeHtml(row.label)}</div>
@@ -3605,12 +3618,11 @@ async function shareHandout() {
   if (!ctx || !ctx.pattern || !ctx.pattern.id) return;
 
   // Build absolute URL to the share page so messaging apps can fetch
-  // OG meta tags and render a preview with the yinyang or ladder.
-  const shareUrl = new URL('share.html', window.location.href);
+  // OG meta tags. Polyvagal links land on a dedicated page with the
+  // ladder PNG as og:image; TCM links use the yinyang share page.
+  const sharePage = ctx.pattern.kind === 'polyvagal' ? 'share-polyvagal.html' : 'share.html';
+  const shareUrl = new URL(sharePage, window.location.href);
   shareUrl.searchParams.set('id', ctx.pattern.id);
-  if (ctx.pattern.kind === 'polyvagal') {
-    shareUrl.searchParams.set('kind', 'polyvagal');
-  }
 
   const title = `Til dit hjem — ${ctx.pattern.plainName || ctx.pattern.name}`;
   const text = ctx.pattern.summaryDescription || '';
