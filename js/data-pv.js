@@ -100,7 +100,7 @@ export const polyvagalSymptoms = [
     note: 'Sympatisk har ført, dorsal tager over når reserven er tom. Et tegn på at systemet ikke har ventral som mellemtrin.' },
 
   // — Skrøbelig ventral —
-  { id: 'pv-24', name: 'Glimter af forbindelse forsvinder hurtigt', states: { ventral: 0.9 },
+  { id: 'pv-24', name: 'Øjeblikke af forbindelse forsvinder hurtigt', states: { ventral: 0.9 },
     note: 'Ventrale øjeblikke optræder, men holdes ikke. Kapaciteten er der, den er bare tynd.' },
   { id: 'pv-25', name: 'Behagelige øjeblikke føles upålidelige', states: { ventral: 0.9 },
     note: 'Systemet stoler ikke på at det gode varer. Det er en lært beskyttelse mod skuffelse.' },
@@ -215,7 +215,7 @@ export const polyvagalPatterns = [
     nature: 'Ventral fragilitet',
     summaryDescription: 'Klientens evne til ventral tilstand fungerer, men er tynd. Glimter af ro, forbindelse, glæde dukker op men forsvinder hurtigt igen. Det er en almindelig tilstand efter længere tids dys-regulering, eller i en gennoprejsnings-fase. Bygges over tid med små, gentagne praksisser. Det er en god tilstand at arbejde med — kapaciteten er der, den skal bare næres.',
     description: 'Ikke en alarm- eller kollaps-tilstand. Klienten har ventral kapacitet, men den er tynd som en muskel der har været brugt for lidt. Klassisk efter terapi-arbejde der har lukket op for trauma, eller efter en længere periode i sympatisk eller dorsal. Det er ofte den fase hvor klienten "burde have det godt" men oplever sig selv som skrøbelig.',
-    keySymptoms: ['Glimter af forbindelse forsvinder hurtigt', 'Behagelige øjeblikke føles upålidelige', 'Kan ikke holde fast i "godt"'],
+    keySymptoms: ['Øjeblikke af forbindelse forsvinder hurtigt', 'Behagelige øjeblikke føles upålidelige', 'Kan ikke holde fast i "godt"'],
     supportingSymptoms: ['Skam efter sociale møder', 'Pludselig udmattelse efter socialt møde', 'Kan ikke føle behagelige følelser'],
     differential: 'Ikke en kollaps eller alarm-tilstand — kapaciteten er der, den er bare tynd. Forskel fra blandet sympatisk-dorsal: der er ægte ventrale øjeblikke, ikke fastlåsning. Forskel fra ren dorsal: klienten kan godt mærke godt — det forsvinder bare for hurtigt.',
     treatment: 'Små, gentagne ventrale doser. Styrk neuroception af tryghed via miljø, lyd, lys, mennesker. Undgå at presse ventral frem — det knækker den. Bygge mængde gennem hyppighed, ikke intensitet. Lære klienten at bemærke og blive ved glimterne. Glimmer-praksis (Deb Dana) er kerne-værktøjet.',

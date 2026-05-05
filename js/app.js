@@ -3181,19 +3181,26 @@ function renderPolyvagalAnalysis() {
     blandet: 'Blandede tilstande'
   };
 
+  // Match the TCM symptom-grid structure (sa-domain + sa-chip) so the
+  // polyvagal screen reuses the white-card chip styling already in css.
   const groups = ['sympatisk', 'dorsal', 'blandet', 'ventral']
     .filter(k => byState[k].length > 0)
     .map(k => `
-      <div class="pv-symptom-group">
-        <div class="pv-symptom-group-label">${escapeHtml(groupTitle[k])}</div>
-        <div class="pv-symptom-group-items">
+      <section class="sa-domain" data-pv-group="${k}">
+        <header class="sa-domain-header">
+          <span class="sa-domain-title">${escapeHtml(groupTitle[k])}</span>
+        </header>
+        <div class="sa-domain-grid">
           ${byState[k].map(sym => `
-            <button class="sa-symptom-chip pv-symptom-chip${pvSelected.has(sym.id) ? ' selected' : ''}" type="button" data-pv-sym="${escapeHtml(sym.id)}">
-              <span class="sa-symptom-name">${escapeHtml(sym.name)}</span>
+            <button class="sa-chip${pvSelected.has(sym.id) ? ' selected' : ''}" type="button" data-pv-sym="${escapeHtml(sym.id)}">
+              <span class="sa-chip-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span class="sa-chip-label">${escapeHtml(sym.name)}</span>
             </button>
           `).join('')}
         </div>
-      </div>
+      </section>
     `).join('');
 
   grid.innerHTML = groups;
