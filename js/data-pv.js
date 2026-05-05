@@ -9,7 +9,7 @@ export const polyvagalIntro = {
   title: 'Mønstre i nervesystemet',
   subtitle: 'Polyvagal-perspektivet',
   lead: 'Vælg de symptomer din klient genkender — særligt de følelsesmæssige og kropslige. Mønsteret der træder frem peger på hvor i autonome nervesystem klienten primært befinder sig lige nu.',
-  disclaimer: 'Dette er en indgangsvinkel — ikke en diagnose. Brug det som åbning for samtalen og som ramme for hvor du møder klienten.',
+  disclaimer: 'Dette er en indgangsvinkel — ikke en diagnose. Brug det som åbning for samtalen og som ramme for, hvor du møder klienten.',
   minSymptoms: 3,
   maxSymptoms: 9
 };
@@ -171,18 +171,18 @@ export const polyvagalPatterns = [
     plainName: 'Motoren kører, men håndbremsen er trukket',
     primaryState: 'sympatisk-dorsal',
     nature: 'Sympatisk-dorsal kombineret',
-    summaryDescription: 'Klientens system er i en både-og tilstand: alarm-systemet er aktivt — kroppen er spændt, tankerne maler — og samtidig er der en dyb træthed, kollaps, fjernhed. Det er det klassiske trauma-profil hvor man hverken kan handle eller hvile. Det føles som at sidde fast med motoren kørende.',
-    description: 'Den polyvagalt mest komplekse tilstand: sympatisk og dorsal er aktive på samme tid. Sympatikus producerer mobilisering der ikke kan komme ud; dorsal lukker ned ovenpå for at beskytte mod den ulagrede energi. Klassiske kilder: trauma hvor flugt eller kamp ikke var muligt; vedvarende kompliceret stress; tidlige relationelle skader. Kræver særlig forsigtighed — pres ventral frem og systemet vil snappe tilbage.',
+    summaryDescription: 'Klientens system er i en både-og tilstand: alarm-systemet er aktivt — kroppen er spændt, tankemylder — og samtidig er der en dyb træthed, kollaps og fjernhed. Det er det klassiske trauma-profil, hvor man hverken kan handle eller hvile. Det føles som at sidde fast med motoren kørende.',
+    description: 'Den polyvagalt mest komplekse tilstand: sympatisk og dorsal er aktive på samme tid. Sympatikus producerer mobilisering, der ikke kan forløses; dorsal lukker ned ovenpå for at beskytte mod den intense energi. Klassiske kilder: trauma, hvor flugt eller kamp ikke var muligt; vedvarende kompliceret stress; tidlige relationelle skader. Kræver særlig forsigtighed — forcér ventral tilstand frem, og systemet vil snappe tilbage.',
     keySymptoms: ['"Fastlåst men adrenalin kører"-følelse', 'Vågner træt selv efter mange timers søvn', 'Pludselig kollaps efter høj-aktivitet'],
     supportingSymptoms: ['Tankemylder, særligt om aftenen', 'Tunghed i krop og lemmer', 'Hypervigilans / konstant alarmberedskab', 'Numhed / kan ikke føle', 'Kort lunte / pludselig vrede'],
     differential: 'Vigtigste forskel fra ren sympatisk: der er kollaps under aktiveringen — klienten er træt på trods af motor. Vigtigste forskel fra ren dorsal: der er stadig motor i systemet — klienten er ikke bare lukket ned, men også oppe. Forskel fra rytmisk skift: blandet er samtidig, ikke skiftende.',
-    treatment: 'Arbejd langsomt, sansebaseret, smågrænser. Pres ikke ventral frem; styrk neuroception af tryghed gradvist via gentagne små doser. Co-regulering er kernen, men i meget korte intervaller. Krops-orientering før kognition. Polyvagal-arbejde i grupper med erfaren leder kan være meget virksomt.',
+    treatment: 'Arbejd langsomt, sansebaseret, små grænser. Pres ikke ventral frem; styrk neuroception af tryghed gradvist via gentagne små doser. Co-regulering er kernen, men i meget korte intervaller. Krops-orientering før kognition. Polyvagal-arbejde i grupper med erfaren leder kan være meget virksomt.',
     homePractice: {
-      innerImage: 'Dit system er fanget mellem to retninger samtidig — det vil reagere, men kan ikke; det vil hvile, men kan ikke. Det er en kompliceret tilstand der har brug for mildhed og tid. Hver gang du møder det med blødhed i stedet for pres, lærer systemet at det er trygt at slappe af.',
+      innerImage: 'Dit system er fanget mellem to retninger samtidig — det ønsker at reagere, men kan ikke; det vil hvile, men kan ikke. Det er en kompliceret tilstand der har brug for mildhed og tid. Hver gang du møder det med blødhed i stedet for pres, lærer systemet at det er trygt at slappe af.',
       orientation: 'Find tre punkter af kropskontakt — fødder mod gulv, sæde mod stol, hånd mod hånd. Bliv ved hvert punkt et minut. Det giver systemet noget konkret at orientere sig efter når både aktivering og kollaps trækker.',
       movement: 'Meget langsom rytme er det vigtigste. Vug fra fod til fod. Gå langsomt en kendt rute. Gentag den samme blide bevægelse. Rytme uden mål taler til kroppens dybeste trygheds-systemer.',
       anchor: 'Korte, gentagne kontakter med trygge mennesker — kortere end du tror du behøver. Slut FØR du bliver træt. Det bygger tillid mellem dit system og kontakt. Kvalitet over kvantitet, og hyppighed over længde.',
-      glimmer: 'Den mindste lille fornemmelse af "jeg er her" — en duft, en lyd, et ansigt der mødes — skal mærkes. Ikke analyseres, bare mærkes. Det er der ventral genopstår, ét lille glimt ad gangen.'
+      glimmer: 'Den mindste lille fornemmelse af "jeg er her" — en duft, en lyd, et ansigt der mødes — skal mærkes. Ikke analyseres, bare mærkes. Det er der, at ventral tilstand kan genopstå, ét lille glimt ad gangen.'
     }
   },
   {

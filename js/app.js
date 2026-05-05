@@ -3350,7 +3350,7 @@ function renderPolyvagalAnalysisResults() {
           { glyph: 'O', label: 'Orientering',   text: topPattern.pattern.homePractice.orientation },
           { glyph: 'B', label: 'Bevægelse',     text: topPattern.pattern.homePractice.movement },
           { glyph: 'A', label: 'Anker',         text: topPattern.pattern.homePractice.anchor },
-          { glyph: 'G', label: 'Glimmer',       text: topPattern.pattern.homePractice.glimmer }
+          { glyph: 'G', label: 'Øjeblikke',     text: topPattern.pattern.homePractice.glimmer }
         ].map(row => `
           <div class="pv-hp-row">
             <div class="pv-hp-glyph" aria-hidden="true">${row.glyph}</div>
@@ -3384,7 +3384,7 @@ function renderPolyvagalAnalysisResults() {
   results.innerHTML = `
     <div class="sa-results-inner pv-results-inner">
       <h2 class="sa-results-heading">Hvor er klienten på stigen?</h2>
-      <p class="sa-results-lead">Symptomerne du valgte peger på følgende fordeling i autonome nervesystem.</p>
+      <p class="sa-results-lead">Symptomerne, som du valgte, peger på følgende fordeling i autonome nervesystem.</p>
       ${ladderHTML}
 
       ${patternHTML}
@@ -3501,7 +3501,7 @@ function buildHandoutPracticeRows(pattern) {
       { label: 'Orientering',   glyph: 'O', text: hp.orientation },
       { label: 'Bevægelse',     glyph: 'B', text: hp.movement },
       { label: 'Anker',         glyph: 'A', text: hp.anchor },
-      { label: 'Glimmer',       glyph: 'G', text: hp.glimmer }
+      { label: 'Øjeblikke',     glyph: 'G', text: hp.glimmer }
     ];
   }
   // TCM (default) — Chinese radicals as discreet glyphs
