@@ -3624,13 +3624,20 @@ async function shareHandout() {
   const shareUrl = new URL(sharePage, window.location.href);
   shareUrl.searchParams.set('id', ctx.pattern.id);
 
-  const title = `Til dit hjem — ${ctx.pattern.plainName || ctx.pattern.name}`;
-  const text = ctx.pattern.summaryDescription || '';
+  const patternName = ctx.pattern.plainName || ctx.pattern.name;
+  const title = `Til dit hjem — ${patternName}`;
+  const therapistName = (() => {
+    try { return (localStorage.getItem(HANDOUT_THERAPIST_KEY) || '').trim(); } catch (e) { return ''; }
+  })();
+
+  // Short, warm message for SMS / WhatsApp / native share-sheet —
+  // designed to fit even SMS without truncation.
+  const shortText = `Her er din hjem-anvisning fra i dag — “${patternName}”. Tag den i dit eget tempo.`;
 
   // Mobile path: native share sheet (Mail, Messages, WhatsApp, etc.)
   if (navigator.share) {
     try {
-      await navigator.share({ title, text, url: shareUrl.href });
+      await navigator.share({ title, text: shortText, url: shareUrl.href });
       return;
     } catch (e) {
       if (e && e.name === 'AbortError') return;
@@ -3638,8 +3645,25 @@ async function shareHandout() {
     }
   }
 
-  // Desktop fallback: open the user's mail client with subject + body prefilled.
-  const body = `${text}\n\n${shareUrl.href}`;
+  // Desktop fallback: full email body with greeting, breathing room,
+  // clearly placed link, and a signature line.
+  const signature = therapistName
+    ? `Med varme hilsner,\n${therapistName}`
+    : 'Med varme hilsner';
+
+  const body = [
+    'Hej,',
+    '',
+    `Her er den lille hjem-anvisning fra i dag. Den følger det mønster, vi mærkede frem træde — “${patternName}” — og rummer nogle blide praksisser, du kan tage med ind i ugen.`,
+    '',
+    'Du finder den her:',
+    shareUrl.href,
+    '',
+    'Tag det i dit eget tempo. Vælg det, der taler til dig — eller bare ét af felterne til at starte med. Hvis du vil dele med mig næste gang, kan du notere, hvad du har prøvet, og hvad du har mærket.',
+    '',
+    signature
+  ].join('\n');
+
   const mailto = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailto;
 }
