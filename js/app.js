@@ -67,6 +67,7 @@ const translations = {
     menuSections: 'Sections',
     menuHome: 'Home',
     menuPractice: 'In Practice',
+    menuPolyvagal: 'Patterns in the Nervous System',
     menuOrgans: 'The 12 Organs',
     menuElements: 'Five Elements & Core Principles',
     menuMeridians: 'The 8 Extraordinary Meridians',
@@ -359,6 +360,7 @@ const translations = {
     menuSections: 'Sektioner',
     menuHome: 'Hjem',
     menuPractice: 'I praksis & Mønstrene Bag',
+    menuPolyvagal: 'Mønstre i nervesystemet',
     menuOrgans: 'Organer & De 12 Meridianer',
     menuElements: 'De 5 Elementer',
     menuMeridians: 'Ekstraordinære Meridianer',
@@ -826,7 +828,7 @@ function updateUILanguage() {
     const nav = link.dataset.nav;
     const text = link.childNodes[link.childNodes.length - 1];
     if (!text || text.nodeType !== 3) return;
-    const menuMap = { home: 'menuHome', practice: 'menuPractice', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews', clients: 'menuClients' };
+    const menuMap = { home: 'menuHome', practice: 'menuPractice', polyvagal: 'menuPolyvagal', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews', clients: 'menuClients' };
     if (menuMap[nav]) text.textContent = '\n          ' + t(menuMap[nav]) + '\n        ';
   });
 
@@ -1768,6 +1770,9 @@ function handleNavigation(navId) {
     case 'practice':
       showScreen('section-practice');
       break;
+    case 'polyvagal':
+      showPolyvagalAnalysis();
+      break;
     case 'organs':
       showScreen('section-organs');
       break;
@@ -1842,7 +1847,11 @@ function setupHamburger() {
       closeMenu();
       handleNavigation(navId);
       if (window._updateBottomNav) {
-        window._updateBottomNav(navId === 'overviews' ? 'home' : navId);
+        // Polyvagal lives under "I Praksis" conceptually; map to its tab.
+        const bottomNavId = navId === 'overviews' ? 'home'
+                          : navId === 'polyvagal' ? 'practice'
+                          : navId;
+        window._updateBottomNav(bottomNavId);
       }
     });
   });
