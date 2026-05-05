@@ -426,16 +426,17 @@ const translations = {
       'Mønstrene Bag er en app bygget som et følgeværktøj til materialet af samme navn. Den giver behandlere en praktisk reference til at forstå og kortlægge mønstre hos deres klienter baseret på Traditionel Kinesisk Medicin.',
       'Det faglige indhold bygger på "Mønstrene Bag" af Niklas Patursson, suppleret med klassiske kilder fra blandt andre Giovanni Maciocia (The Foundations of Chinese Medicine, The Practice of Chinese Medicine, The Channels of Acupuncture, The Psyche in Chinese Medicine), Peter Deadman (A Manual of Acupuncture) og Cheng Xinnong (Chinese Acupuncture and Moxibustion).',
       'Appen dækker de 12 organer og meridianer, de 8 ekstraordinære meridianer, fem-element-teori, organuret og de grundlæggende TCM-principper — alt præsenteret med konkrete spørgsmål og temaer til brug i praksis.',
-      'Den indeholder også et symptom-analyse-værktøj der via krydsreferencer peger mod de organer, elementer, meridianer og 12 klassiske mønstre der bedst stemmer overens med klientens billede — samt et lokalt klient-arkiv så du kan følge et forløb over tid.',
+      'Den indeholder to parallelle mønster-værktøjer: en TCM-baseret symptom-analyse der peger mod de organer, elementer, meridianer og 12 klassiske mønstre der bedst stemmer overens med klientens billede — og et polyvagalt spor (Mønstre i nervesystemet) der kortlægger autonome tilstande på Stephen Porges\' stige (ventral, sympatisk, dorsal) og 6 polyvagale mønstre. Begge spor gemmes i samme lokale klient-arkiv, så du kan følge forløbet over tid.',
       'Tanken bag: appen er ikke en autoritet der leverer en diagnose. Den er et indgangs-værktøj der peger på hvor du kan begynde at lytte. Mønstret bag — det der binder symptomerne sammen — opdages i samtalen og palpationen, ikke i et regneark. Appen kan minde dig om hvor du kan kigge; den kan ikke se klienten for dig.'
     ],
     howtoTitle: 'Sådan bruger du appen',
     howtoBody: [
       'Brug bundnavigationen til hurtigt at skifte mellem sektioner. "I praksis" giver vejledning til samtalen med din klient og de otte grundlæggende spørgsmål.',
       'Under hvert organ finder du 8 kortlægningstemaer med konkrete spørgsmål du kan stille klienten. Brug organuret til at forstå tidsmønstre, og fem-element-sektionen til at se relationer mellem organerne.',
-      'Symptom-Analyse: vælg 3-9 af klientens symptomer, og appen viser hvilke organer, elementer, meridianer og mønstre der træder frem. Resultatet er en indgangsvinkel til videre samtale og palpation — aldrig en diagnose.',
-      'Mine klienter: gem analyser per klient med en kode (fx K01) — alt opbevares lokalt på din enhed. Følg forløbet over tid med mønster-bar\'er, et element-pentagon og en oversigt over hvad der er kommet til eller sluppet siden sidste session. Eksportér eller importér dit arkiv som JSON-backup.',
-      'Overblik: hurtigreference til organer, de 12 mønstre, symptomer og samtalestruktur — også uden for en aktiv analyse. Tryk på et mønster eller symptom for at folde det ud.'
+      'Symptom-Analyse (TCM): vælg 3-9 af klientens symptomer, og appen viser hvilke organer, elementer, meridianer og mønstre der træder frem. Mønstre i nervesystemet (Polyvagal): samme udvælgelses-princip på en polyvagalt fraseret symptomliste — resultatet er klientens fordeling på stigen (ventral, sympatisk, dorsal) og det polyvagale mønster der træder frem. Begge resultater er indgangsvinkler til videre samtale og palpation — aldrig en diagnose.',
+      'Mine klienter: gem analyser fra begge spor per klient med en kode (fx K01) — alt opbevares lokalt på din enhed. Følg forløbet over tid med mønster-bar\'er, et element-pentagon (TCM) eller en stige-trace (Polyvagal), og en oversigt over hvad der er kommet til eller sluppet siden sidste session. Eksportér eller importér dit arkiv som backup.',
+      'Hjem-anvisning til klienten: fra hver gemt session kan du åbne en pænt opsat anvisning og sende den direkte til klienten via mail, SMS eller WhatsApp — eller printe den som PDF. Klienten ser et forhåndsvisningsbillede (yinyang for TCM, stige for Polyvagal) i deres besked-app.',
+      'Overblik: hurtigreference til organer, de 12 TCM-mønstre, symptomer og samtalestruktur — også uden for en aktiv analyse. Tryk på et mønster eller symptom for at folde det ud.'
     ],
     privacyTitle: 'Privatliv og data',
     privacyBody: [
@@ -448,12 +449,13 @@ const translations = {
     faqBody: [
       ['Kan jeg bruge appen offline?', 'Ja. Når du har åbnet siden én gang, virker den uden internet. Det er en webside, så du kan gemme den på hjemmeskærmen eller som bogmærke.'],
       ['Hvor gemmes mine klient-data?', 'Kun lokalt i din browser, på den enhed du bruger. Der sendes intet til en server. Læs mere under "Privatliv og data".'],
-      ['Kan jeg dele en analyse med min klient?', 'Ja. På analyseresultatet er der en "Kopier resumé"-knap der lægger en plain-dansk opsummering på din udklipsholder. Du kan så indsætte den i en email, et notat eller hvor som helst.'],
+      ['Hvad er forskellen på Symptom-Analyse og Mønstre i nervesystemet?', 'De er to parallelle mønster-værktøjer der bruger samme udvælgelses-princip, men forskellige paradigmer. Symptom-Analyse kortlægger TCM-organer, elementer og 12 klassiske mønstre. Mønstre i nervesystemet kortlægger autonome tilstande på Stephen Porges\' stige (ventral, sympatisk, dorsal) og 6 polyvagale mønstre. Vælg det spor der matcher den linse du arbejder med på den specifikke klient — eller brug dem komplementært på samme klient.'],
+      ['Kan jeg dele en hjem-anvisning med min klient?', 'Ja. Fra en gemt session kan du åbne en pænt opsat hjem-anvisning og sende et link via mail, SMS eller WhatsApp — klienten ser et forhåndsvisningsbillede (yinyang eller stige). Du kan også printe som PDF, eller kopiere det faglige resumé til dit eget journalsystem.'],
       ['Hvor er mit eksporterede arkiv?', 'Filen tcm-klienter-YYYYMMDD.json gemmes i din enheds standard Download-mappe (Files-appen → Downloads på iPhone/iPad, Downloads-mappen på Mac/Windows/Android). Når du importerer, vælger du den fra samme sted.'],
       ['Kan jeg flytte mit arkiv til en anden enhed?', 'Ja. Eksportér på den ene enhed, send filen til dig selv (fx via email eller AirDrop), gem den på den anden enhed, og importér.'],
-      ['Hvad gør jeg når et mønster ikke matcher noget tydeligt?', 'Det er normalt. Resultatet er en indgangsvinkel — ikke en diagnose. Brug det dominerende organ eller element som start, og lad samtalen og palpationen lede dig dybere. Hvis flere mønstre bobler tæt sammen uden et klart hovedbillede, kan en af de ekstraordinære meridianer være indgangen.'],
-      ['Hvad er forskellen på live analyse og den jeg gemmer til en klient?', 'De viser samme resultat. Forskellen er at den gemte version huskes kronologisk i Mine klienter, så du over tid kan se mønster-skift og forløbet.'],
-      ['Skal jeg bruge appen som behandler-værktøj eller klient-værktøj?', 'Den er bygget til behandlere. Klienten ser ikke noget i appen direkte — den hjælper dig med at strukturere dit blik og dit forløb.']
+      ['Hvad gør jeg når et mønster ikke matcher noget tydeligt?', 'Det er normalt. Resultatet er en indgangsvinkel — ikke en diagnose. Brug det dominerende organ, element eller den dominerende ANS-tilstand som start, og lad samtalen og palpationen lede dig dybere. Hvis flere mønstre bobler tæt sammen uden et klart hovedbillede, kan klienten være i en blandet tilstand — eller en af de ekstraordinære meridianer kan være indgangen.'],
+      ['Hvad er forskellen på live analyse og den jeg gemmer til en klient?', 'De viser samme resultat. Forskellen er at den gemte version huskes kronologisk i Mine klienter, så du over tid kan se mønster-skift og forløbet — både for TCM og polyvagal.'],
+      ['Skal jeg bruge appen som behandler-værktøj eller klient-værktøj?', 'Den er bygget til behandlere. Klienten ser kun det link og den hjem-anvisning du sender — appen i øvrigt hjælper dig med at strukturere dit blik og dit forløb.']
     ],
     menuPrivacy: 'Privatliv og data',
     menuFaq: 'Spørgsmål og svar',
@@ -828,7 +830,7 @@ function updateUILanguage() {
     const nav = link.dataset.nav;
     const text = link.childNodes[link.childNodes.length - 1];
     if (!text || text.nodeType !== 3) return;
-    const menuMap = { home: 'menuHome', practice: 'menuPractice', polyvagal: 'menuPolyvagal', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews', clients: 'menuClients' };
+    const menuMap = { home: 'menuHome', practice: 'menuPractice', organs: 'menuOrgans', elements: 'menuElements', meridians: 'menuMeridians', overviews: 'menuOverviews', clients: 'menuClients' };
     if (menuMap[nav]) text.textContent = '\n          ' + t(menuMap[nav]) + '\n        ';
   });
 
@@ -1770,9 +1772,6 @@ function handleNavigation(navId) {
     case 'practice':
       showScreen('section-practice');
       break;
-    case 'polyvagal':
-      showPolyvagalAnalysis();
-      break;
     case 'organs':
       showScreen('section-organs');
       break;
@@ -1847,11 +1846,7 @@ function setupHamburger() {
       closeMenu();
       handleNavigation(navId);
       if (window._updateBottomNav) {
-        // Polyvagal lives under "I Praksis" conceptually; map to its tab.
-        const bottomNavId = navId === 'overviews' ? 'home'
-                          : navId === 'polyvagal' ? 'practice'
-                          : navId;
-        window._updateBottomNav(bottomNavId);
+        window._updateBottomNav(navId === 'overviews' ? 'home' : navId);
       }
     });
   });
