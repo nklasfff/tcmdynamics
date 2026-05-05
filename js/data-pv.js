@@ -192,7 +192,7 @@ export const polyvagalPatterns = [
     plainName: 'Bevægelsen er låst inde',
     primaryState: 'sympatisk',
     nature: 'Sympatisk med motorisk blokering',
-    summaryDescription: 'Sympatisk aktivering der ikke har fået et udløb. Energien er stadig der — alarmen kører — men musklerne har holdt fast så længe at de er blevet stive. Klienten kan ikke slappe af, men heller ikke bevæge sig frit. Det er som om systemet venter på at noget skal frigives.',
+    summaryDescription: 'Sympatisk aktivering, der ikke har fået et udløb. Energien er stadig der — alarmen kører — men musklerne har holdt fast så længe, at de er blevet stive. Klienten kan ikke slappe af, men heller ikke bevæge sig frit. Det er, som om systemet venter på, at noget skal frigives.',
     description: 'En særlig variant af kronisk sympatisk hvor mobiliserings-energien er kapslet ind i muskel-tonus. Klassisk hos klienter med lang historie af "holde sig sammen", høj funktion under pres, eller tidlige år hvor at vise alarm var farligt. Energien er ikke gået ind i dorsal — den er låst i bevægelses-apparatet. Tremor- og rystearbejde er ofte nøglen.',
     keySymptoms: ['Stive nakke og skuldre', 'Sammenklemt kæbe / tænder skæres', 'Holdt åndedræt / kort indånding', 'Indre uro / kan ikke være stille'],
     supportingSymptoms: ['Stærk reaktion på lyd, lys eller berøring', 'Kan ikke falde til ro om aftenen', 'Vågner kl. 3-4 og kan ikke sove igen', 'Hjertebanken eller bryst-tæthed'],
