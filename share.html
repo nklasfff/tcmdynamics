@@ -117,14 +117,21 @@
 
   <script type="module">
     import { getLangData } from './js/data.js';
+    import { polyvagalPatterns } from './js/data-pv.js';
 
     const escapeHtml = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
+    const kind = params.get('kind');
     const data = getLangData('da');
-    const pattern = data.patternLibrary.find(p => p.id === id);
+    let pattern = null;
+    if (kind === 'polyvagal') {
+      pattern = polyvagalPatterns.find(p => p.id === id);
+    } else {
+      pattern = data.patternLibrary.find(p => p.id === id) || polyvagalPatterns.find(p => p.id === id);
+    }
     const docEl = document.getElementById('share-document');
 
     if (!pattern || !pattern.homePractice) {
@@ -136,7 +143,14 @@
       `;
     } else {
       const hp = pattern.homePractice;
-      const practices = [
+      const isPolyvagal = pattern.kind === 'polyvagal';
+      const practices = isPolyvagal ? [
+        { label: 'Indre billede', glyph: 'I', text: hp.innerImage },
+        { label: 'Orientering',   glyph: 'O', text: hp.orientation },
+        { label: 'Bevægelse',     glyph: 'B', text: hp.movement },
+        { label: 'Anker',         glyph: 'A', text: hp.anchor },
+        { label: 'Glimmer',       glyph: 'G', text: hp.glimmer }
+      ] : [
         { label: 'Indre billede',  glyph: '心', text: hp.innerImage },
         { label: 'Mad og varme',   glyph: '食', text: hp.diet },
         { label: 'Bevægelse',      glyph: '行', text: hp.movement },
@@ -144,11 +158,21 @@
         { label: 'Opmærksomhed',   glyph: '觀', text: hp.awareness }
       ];
 
+      const sealHTML = isPolyvagal
+        ? `<svg class="handout-seal handout-seal-ladder" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+            <line x1="15" y1="6" x2="15" y2="84"/>
+            <line x1="45" y1="6" x2="45" y2="84"/>
+            <line x1="15" y1="20" x2="45" y2="20"/>
+            <line x1="15" y1="45" x2="45" y2="45"/>
+            <line x1="15" y1="70" x2="45" y2="70"/>
+          </svg>`
+        : `<img class="handout-seal" src="yinyang_highres.png" alt="" />`;
+
       const footerText = 'Det her er ikke ekstra arbejde. Det er måder at lytte til kroppen på i hverdagen. Vælg det der taler til dig — eller bare ét af dem til at starte med.\n\nHvis du vil dele det med mig næste gang, kan du notere hvad du har prøvet, og hvad du har mærket.';
 
       docEl.innerHTML = `
         <header class="handout-letterhead">
-          <img class="handout-seal" src="yinyang_highres.png" alt="" />
+          ${sealHTML}
           <div class="handout-letterhead-text">
             <div class="handout-eyebrow">Til dit hjem</div>
             <h1 class="handout-title">${escapeHtml(pattern.plainName || pattern.name)}</h1>

@@ -2649,6 +2649,10 @@ function computePatternResonance(picked) {
 function buildSymptomAnalysisSummary(sessionData) {
   // sessionData (optional) = saved client session record.
   // Without it, we compute live from the current SA selection.
+  // Polyvagal sessions are routed to a dedicated summary builder.
+  if (sessionData && sessionData.kind === 'polyvagal') {
+    return buildPolyvagalSummary(sessionData);
+  }
   let symptoms, tallyTop, topElementName, topPattern, topPatternScore, summaryDate;
   if (sessionData) {
     symptoms = (sessionData.symptoms || []).map(name => ({ symptom: name }));
@@ -2771,8 +2775,8 @@ function buildClientHandoutText() {
     dateStr = formatHandoutDate(new Date());
   }
   if (!pattern || !pattern.homePractice) return '';
-  const hp = pattern.homePractice;
   const summary = pattern.summaryDescription || '';
+  const rows = buildHandoutPracticeRows(pattern);
 
   const lines = [];
   lines.push(`${t('handoutHeading')} — ${dateStr}`);
@@ -2782,21 +2786,11 @@ function buildClientHandoutText() {
   lines.push('');
   lines.push(`${t('handoutWhatYouCanDoTitle')}:`);
   lines.push('');
-  lines.push(t('hpInnerImage'));
-  lines.push(hp.innerImage);
-  lines.push('');
-  lines.push(t('hpDiet'));
-  lines.push(hp.diet);
-  lines.push('');
-  lines.push(t('hpMovement'));
-  lines.push(hp.movement);
-  lines.push('');
-  lines.push(t('hpAcupressure'));
-  lines.push(hp.acupressure);
-  lines.push('');
-  lines.push(t('hpAwareness'));
-  lines.push(hp.awareness);
-  lines.push('');
+  rows.forEach(row => {
+    lines.push(row.label);
+    lines.push(row.text || '');
+    lines.push('');
+  });
   lines.push('—');
   lines.push(t('handoutFooter'));
   return lines.join('\n');
@@ -3400,8 +3394,29 @@ function renderPolyvagalAnalysisResults() {
       <div class="pv-disclaimer-note">
         <p>${escapeHtml(polyvagalIntro.disclaimer)}</p>
       </div>
+
+      <div class="sa-result-actions sa-result-actions-single">
+        <button class="sa-save-btn sa-save-btn-primary" type="button" data-pv-save>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          <span class="sa-action-text">
+            <span class="sa-save-label">Gem analyse</span>
+            <span class="sa-action-hint">i en klients forløbs-arkiv</span>
+          </span>
+        </button>
+        <p class="sa-result-actions-note">Når den er gemt, finder du den under Mine klienter i menuen — dér kan du åbne hjem-anvisningen til klienten og kopiere resuméet til dine egne noter.</p>
+      </div>
     </div>
   `;
+  results.querySelectorAll('[data-pv-save]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openSaveDialog('polyvagal');
+    });
+  });
   results.hidden = false;
 
   requestAnimationFrame(() => {
@@ -3463,9 +3478,33 @@ function formatHandoutDate(d) {
   return d.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-function buildHandoutPracticeRows(hp) {
-  // Glyphs use Chinese radicals for the five practice modes —
-  // discreet visual anchors rather than emoji.
+function findPatternByName(name, kind) {
+  if (kind === 'polyvagal') {
+    return polyvagalPatterns.find(p => p.name === name);
+  }
+  if (kind === 'tcm' && Array.isArray(patternLibrary)) {
+    return patternLibrary.find(p => p.name === name);
+  }
+  // Unknown kind — try both, TCM first (legacy sessions had no kind)
+  if (Array.isArray(patternLibrary)) {
+    const tcm = patternLibrary.find(p => p.name === name);
+    if (tcm) return tcm;
+  }
+  return polyvagalPatterns.find(p => p.name === name);
+}
+
+function buildHandoutPracticeRows(pattern) {
+  const hp = pattern.homePractice || {};
+  if (pattern.kind === 'polyvagal') {
+    return [
+      { label: 'Indre billede', glyph: 'I', text: hp.innerImage },
+      { label: 'Orientering',   glyph: 'O', text: hp.orientation },
+      { label: 'Bevægelse',     glyph: 'B', text: hp.movement },
+      { label: 'Anker',         glyph: 'A', text: hp.anchor },
+      { label: 'Glimmer',       glyph: 'G', text: hp.glimmer }
+    ];
+  }
+  // TCM (default) — Chinese radicals as discreet glyphs
   return [
     { label: t('hpInnerImage'),  glyph: '心', text: hp.innerImage },
     { label: t('hpDiet'),        glyph: '食', text: hp.diet },
@@ -3474,6 +3513,16 @@ function buildHandoutPracticeRows(hp) {
     { label: t('hpAwareness'),   glyph: '觀', text: hp.awareness }
   ];
 }
+
+const LADDER_SVG = `<svg class="handout-seal handout-seal-ladder" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+  <line x1="15" y1="6" x2="15" y2="84"/>
+  <line x1="45" y1="6" x2="45" y2="84"/>
+  <line x1="15" y1="20" x2="45" y2="20"/>
+  <line x1="15" y1="45" x2="45" y2="45"/>
+  <line x1="15" y1="70" x2="45" y2="70"/>
+</svg>`;
+
+const YINYANG_SEAL = `<img class="handout-seal" src="yinyang_highres.png" alt="" />`;
 
 function renderClientHandout(opts) {
   const ctx = resolveHandoutContext(opts);
@@ -3493,6 +3542,12 @@ function renderClientHandout(opts) {
   if (summaryEl) summaryEl.textContent = ctx.pattern.summaryDescription || '';
   if (footerEl) footerEl.textContent = t('handoutFooter');
 
+  // Letterhead seal: ladder for polyvagal, yinyang for TCM
+  const sealWrap = document.getElementById('handout-seal-wrap');
+  if (sealWrap) {
+    sealWrap.innerHTML = ctx.pattern.kind === 'polyvagal' ? LADDER_SVG : YINYANG_SEAL;
+  }
+
   if (clientEl) {
     if (ctx.clientId) {
       clientEl.textContent = ctx.clientId;
@@ -3509,7 +3564,7 @@ function renderClientHandout(opts) {
   }
 
   if (practicesEl) {
-    practicesEl.innerHTML = buildHandoutPracticeRows(ctx.pattern.homePractice).map(row => `
+    practicesEl.innerHTML = buildHandoutPracticeRows(ctx.pattern).map(row => `
       <div class="handout-practice">
         <div class="handout-practice-glyph" aria-hidden="true">${row.glyph}</div>
         <div class="handout-practice-body">
@@ -3530,17 +3585,13 @@ function showClientHandout(opts) {
 
 function sessionHasHandout(session) {
   if (!session || !Array.isArray(session.patterns) || !session.patterns.length) return false;
-  if (!Array.isArray(patternLibrary)) return false;
-  const p = patternLibrary.find(x => x.name === session.patterns[0].name);
+  const p = findPatternByName(session.patterns[0].name, session.kind);
   return !!(p && p.homePractice);
 }
 
 function showHandoutFromSession(session, clientId) {
   if (!session || !Array.isArray(session.patterns) || !session.patterns.length) return;
-  const patternName = session.patterns[0].name;
-  const pattern = Array.isArray(patternLibrary)
-    ? patternLibrary.find(p => p.name === patternName)
-    : null;
+  const pattern = findPatternByName(session.patterns[0].name, session.kind);
   if (!pattern || !pattern.homePractice) {
     showToast(t('handoutMissing') || 'Hjem-anvisning ikke tilgængelig');
     return;
@@ -3554,9 +3605,12 @@ async function shareHandout() {
   if (!ctx || !ctx.pattern || !ctx.pattern.id) return;
 
   // Build absolute URL to the share page so messaging apps can fetch
-  // OG meta tags and render a preview with the yinyang.
+  // OG meta tags and render a preview with the yinyang or ladder.
   const shareUrl = new URL('share.html', window.location.href);
   shareUrl.searchParams.set('id', ctx.pattern.id);
+  if (ctx.pattern.kind === 'polyvagal') {
+    shareUrl.searchParams.set('kind', 'polyvagal');
+  }
 
   const title = `Til dit hjem — ${ctx.pattern.plainName || ctx.pattern.name}`;
   const text = ctx.pattern.summaryDescription || '';
@@ -3705,6 +3759,7 @@ function buildSessionFromCurrentAnalysis(notes) {
   const meridianTally = computeMeridianResonance(tally);
   const patternResonance = computePatternResonance(picked);
   return {
+    kind: 'tcm',
     symptoms: picked.map(s => s.symptom),
     organs: tally.slice(0, 5).map(o => ({ name: o.name, hits: o.hits, pct: Math.round(o.percentage * 100) })),
     element: elementTally[0] ? { name: elementTally[0].name, pct: Math.round(elementTally[0].percentage * 100) } : null,
@@ -3712,6 +3767,73 @@ function buildSessionFromCurrentAnalysis(notes) {
     patterns: patternResonance.slice(0, 3).map(p => ({ name: p.pattern.name, score: Math.round(p.score * 100) })),
     notes: (notes || '').trim()
   };
+}
+
+function buildPolyvagalSessionFromCurrentAnalysis(notes) {
+  const picked = getPickedPolyvagalSymptoms();
+  const stateTally = computePolyvagalStateResonance(picked);
+  const patternResonance = computePolyvagalPatternResonance(picked);
+  return {
+    kind: 'polyvagal',
+    symptoms: picked.map(s => s.name),
+    states: stateTally.map(s => ({ id: s.id, name: s.name, pct: Math.round(s.pct * 100) })),
+    patterns: patternResonance.slice(0, 3).map(p => ({ name: p.pattern.name, score: Math.round(p.score * 100) })),
+    notes: (notes || '').trim()
+  };
+}
+
+function buildPolyvagalSummary(sessionData) {
+  // Practitioner-facing summary for a polyvagal session — paste into journal.
+  const symptoms = sessionData.symptoms || [];
+  const states = sessionData.states || [];
+  const patterns = sessionData.patterns || [];
+  if (symptoms.length === 0) return '';
+
+  const dateLocale = 'da-DK';
+  const dateStr = new Date(sessionData.date || Date.now()).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+
+  const lines = [];
+  lines.push(`Polyvagal-analyse — ${dateStr}`);
+  lines.push('');
+
+  lines.push(`Klienten oplever (${symptoms.length} symptomer):`);
+  symptoms.forEach(s => lines.push(`- ${s}`));
+  lines.push('');
+
+  if (states.length) {
+    lines.push('Fordeling på stigen:');
+    states.forEach(s => lines.push(`- ${s.name}: ${s.pct}%`));
+    lines.push('');
+  }
+
+  if (patterns[0]) {
+    const pattern = findPatternByName(patterns[0].name, 'polyvagal');
+    lines.push('Primært mønster:');
+    lines.push(`${(pattern && pattern.plainName) || patterns[0].name} — ${intensityWord(patterns[0].score)}`);
+    if (pattern && pattern.summaryDescription) {
+      lines.push(pattern.summaryDescription);
+    }
+    lines.push('');
+  }
+
+  if (patterns.length > 1) {
+    lines.push('Andre mønstre der spiller med:');
+    patterns.slice(1).forEach(p => {
+      const pl = findPatternByName(p.name, 'polyvagal');
+      lines.push(`- ${(pl && pl.plainName) || p.name} (${intensityWord(p.score)})`);
+    });
+    lines.push('');
+  }
+
+  if (sessionData.notes) {
+    lines.push('Noter:');
+    lines.push(sessionData.notes);
+    lines.push('');
+  }
+
+  lines.push('—');
+  lines.push('Dette er en indgangsvinkel — ikke en diagnose.');
+  return lines.join('\n');
 }
 
 function escapeHtml(str) {
@@ -3726,16 +3848,19 @@ function intensityWord(pct) {
   return isDa ? 'udtalt' : 'pronounced';
 }
 
-function patternPlainName(name) {
-  if (!Array.isArray(patternLibrary)) return name;
-  const p = patternLibrary.find(x => x.name === name);
+function patternPlainName(name, kind) {
+  const p = findPatternByName(name, kind);
   return (p && p.plainName) ? p.plainName : name;
 }
 
 // ----- Save dialog -----
-function openSaveDialog() {
+let saveDialogKind = 'tcm';
+
+function openSaveDialog(kind = 'tcm') {
+  saveDialogKind = kind;
   const dialog = document.getElementById('save-dialog');
   if (!dialog) return;
+  dialog.dataset.saveKind = kind;
   const existingClients = listClients();
   const select = dialog.querySelector('#save-existing-client');
   const newInput = dialog.querySelector('#save-new-client-id');
@@ -3812,7 +3937,9 @@ function commitSaveDialog() {
     if (mode === 'new' && newInput) newInput.focus();
     return;
   }
-  const sessionData = buildSessionFromCurrentAnalysis(notes?.value || '');
+  const sessionData = saveDialogKind === 'polyvagal'
+    ? buildPolyvagalSessionFromCurrentAnalysis(notes?.value || '')
+    : buildSessionFromCurrentAnalysis(notes?.value || '');
   const ok = saveClientSession(clientId, sessionData);
   if (ok) {
     closeSaveDialog();
@@ -4220,8 +4347,10 @@ function renderClientDetail() {
             <span class="session-card-date">${escapeHtml(dateStr)}</span>
           </div>
           <div class="session-card-summary">
+            ${s.kind === 'polyvagal' ? `<span class="session-card-kind">Polyvagal</span>` : ''}
             ${primaryOrgan ? `<span class="session-card-organ">${escapeHtml(primaryOrgan.name)}</span>` : ''}
-            ${primaryPattern ? `<span class="session-card-pattern">${escapeHtml(patternPlainName(primaryPattern.name))} <span class="session-card-intensity">— ${escapeHtml(intensityWord(primaryPattern.score))}</span></span>` : `<span class="session-card-pattern session-card-pattern-none">${escapeHtml(t('sessionNoPattern'))}</span>`}
+            ${s.kind === 'polyvagal' && Array.isArray(s.states) && s.states[0] ? `<span class="session-card-organ">${escapeHtml(s.states[0].name)} ${s.states[0].pct}%</span>` : ''}
+            ${primaryPattern ? `<span class="session-card-pattern">${escapeHtml(patternPlainName(primaryPattern.name, s.kind))} <span class="session-card-intensity">— ${escapeHtml(intensityWord(primaryPattern.score))}</span></span>` : `<span class="session-card-pattern session-card-pattern-none">${escapeHtml(t('sessionNoPattern'))}</span>`}
           </div>
           <svg class="session-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -4233,12 +4362,17 @@ function renderClientDetail() {
                 ${s.symptoms.map(sym => `<span class="session-card-chip">${escapeHtml(sym)}</span>`).join('')}
               </div>
             </div>` : ''}
-          ${s.element ? `
+          ${s.kind === 'polyvagal' && Array.isArray(s.states) && s.states.length ? `
+            <div class="session-card-section">
+              <div class="session-card-section-label">Tilstande på stigen</div>
+              <div class="session-card-row">${s.states.map(st => `${escapeHtml(st.name)} ${st.pct}%`).join(' · ')}</div>
+            </div>` : ''}
+          ${s.kind !== 'polyvagal' && s.element ? `
             <div class="session-card-section">
               <div class="session-card-section-label">Element</div>
               <div class="session-card-row">${escapeHtml(s.element.name)}-elementet — ${escapeHtml(intensityWord(s.element.pct))}</div>
             </div>` : ''}
-          ${s.organs?.length ? `
+          ${s.kind !== 'polyvagal' && s.organs?.length ? `
             <div class="session-card-section">
               <div class="session-card-section-label">Organer</div>
               <div class="session-card-row">${s.organs.map(o => `${escapeHtml(o.name)} (${o.hits})`).join(' · ')}</div>
@@ -4246,7 +4380,7 @@ function renderClientDetail() {
           ${s.patterns?.length ? `
             <div class="session-card-section">
               <div class="session-card-section-label">Mønstre</div>
-              <div class="session-card-row">${s.patterns.map(p => `${escapeHtml(patternPlainName(p.name))} (${escapeHtml(intensityWord(p.score))})`).join(' · ')}</div>
+              <div class="session-card-row">${s.patterns.map(p => `${escapeHtml(patternPlainName(p.name, s.kind))} (${escapeHtml(intensityWord(p.score))})`).join(' · ')}</div>
             </div>` : ''}
           ${s.notes ? `
             <div class="session-card-section">
