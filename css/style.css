@@ -5070,6 +5070,308 @@ html[data-theme-transitioning] * {
 }
 
 /* ============================================
+   Polyvagal analysis — ladder, state bars, pattern card
+   ============================================ */
+
+.practice-card-polyvagal .practice-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+}
+
+.pv-detail-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+}
+
+.pv-symptom-group {
+  margin-bottom: 18px;
+}
+
+.pv-symptom-group-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin: 8px 4px 10px;
+}
+
+.pv-symptom-group-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pv-symptom-chip {
+  /* Inherits sa-symptom-chip styles */
+}
+
+.pv-results-inner {
+  /* Lean on existing sa-results-inner spacing */
+}
+
+.pv-ladder {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  margin: 18px 0 24px;
+  color: var(--text-primary);
+}
+
+.pv-ladder-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+}
+
+.pv-pattern-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--pv-state-color, var(--accent-gold));
+  border-radius: var(--radius-md);
+  padding: 22px 22px 18px;
+  margin-bottom: 22px;
+}
+
+.pv-pattern-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pv-state-color, var(--accent-gold));
+  margin-bottom: 6px;
+}
+
+.pv-pattern-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 4px;
+  color: var(--text-primary);
+}
+
+.pv-pattern-plain {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.pv-pattern-summary {
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+}
+
+.pv-pattern-details {
+  margin: 12px 0 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-sans);
+}
+
+.pv-pattern-details summary {
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  padding: 4px 0;
+  list-style: none;
+}
+
+.pv-pattern-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.pv-pattern-details[open] summary::after {
+  content: '−';
+  margin-left: 8px;
+}
+
+.pv-pattern-details summary::after {
+  content: '+';
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.pv-pattern-section {
+  margin: 12px 0;
+}
+
+.pv-pattern-section-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.pv-pattern-section p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.pv-symptom-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pv-symptom-chip-tag {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: var(--bg-card-hover);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.pv-symptom-chip-tag.pv-symptom-chip-key {
+  background: var(--accent-gold-dim);
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.pv-homepractice {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--accent-gold-dim);
+}
+
+.pv-homepractice-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.pv-hp-row {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.pv-hp-glyph {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--accent-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.pv-hp-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 2px;
+}
+
+.pv-hp-text {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.pv-other-patterns {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+
+.pv-other-patterns-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.pv-other-pattern {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pv-other-pattern:last-child {
+  border-bottom: none;
+}
+
+.pv-other-pattern-name {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.pv-other-pattern-score {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.pv-no-match {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+}
+
+.pv-no-match p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.pv-disclaimer-note {
+  margin-top: 22px;
+  padding: 14px 18px;
+  background: var(--bg-card-hover);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ============================================
    Client Handout — printable home practice document
    ============================================ */
 

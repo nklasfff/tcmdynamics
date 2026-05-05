@@ -1,5 +1,6 @@
 // The Patterns Behind — App Logic v2
 import { getLangData } from './data.js?v=8';
+import { polyvagalIntro, polyvagalStates, polyvagalSymptoms, polyvagalPatterns } from './data-pv.js?v=1';
 
 // ============================================
 // Internationalization (inlined)
@@ -1538,7 +1539,7 @@ function setupThemeAccordion(containerId) {
 // ============================================
 function goBack() {
   // Determine where to go back to
-  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'symptom-analysis', 'client-handout'];
+  const detailScreens = ['organ', 'element', 'foundation', 'overview', 'meridian', 'practice', 'symptom-analysis', 'polyvagal-analysis', 'client-handout'];
   const sectionScreens = ['section-practice', 'section-organs', 'section-elements', 'section-meridians', 'section-overviews'];
 
   if (detailScreens.includes(currentScreen)) {
@@ -1617,6 +1618,26 @@ function renderPracticeGrid() {
       </svg>
     </div>
   `;
+  const polyvagalCard = `
+    <div class="practice-card practice-card-featured practice-card-polyvagal" data-practice-tool="polyvagal-analysis">
+      <span class="practice-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" width="20" height="30">
+          <line x1="15" y1="6" x2="15" y2="84"/>
+          <line x1="45" y1="6" x2="45" y2="84"/>
+          <line x1="15" y1="20" x2="45" y2="20"/>
+          <line x1="15" y1="45" x2="45" y2="45"/>
+          <line x1="15" y1="70" x2="45" y2="70"/>
+        </svg>
+      </span>
+      <div class="practice-card-info">
+        <div class="practice-card-title">Mønstre i nervesystemet</div>
+        <div class="practice-card-desc">Polyvagal-perspektivet — autonome tilstande</div>
+      </div>
+      <svg class="practice-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </div>
+  `;
   const guideCards = practiceGuide.map(item => `
     <div class="practice-card" data-practice="${item.id}">
       <span class="practice-card-icon">${item.icon}</span>
@@ -1629,7 +1650,7 @@ function renderPracticeGrid() {
       </svg>
     </div>
   `).join('');
-  grid.innerHTML = featuredCard + guideCards;
+  grid.innerHTML = featuredCard + polyvagalCard + guideCards;
 
   grid.querySelectorAll('.practice-card[data-practice]').forEach(card => {
     card.addEventListener('click', () => {
@@ -1641,6 +1662,10 @@ function renderPracticeGrid() {
   const featured = grid.querySelector('.practice-card[data-practice-tool="symptom-analysis"]');
   if (featured) {
     featured.addEventListener('click', () => showSymptomAnalysis());
+  }
+  const pvCard = grid.querySelector('.practice-card[data-practice-tool="polyvagal-analysis"]');
+  if (pvCard) {
+    pvCard.addEventListener('click', () => showPolyvagalAnalysis());
   }
 }
 
@@ -2371,6 +2396,9 @@ function showOverviewDetail(ov, type) {
 const SA_MAX = 9;
 const SA_MIN = 3;
 let saSelected = new Set();
+const PV_MAX = 9;
+const PV_MIN = 3;
+let pvSelected = new Set();
 
 const SA_DOMAINS = [
   {
@@ -3107,6 +3135,290 @@ function setupSymptomAnalysis() {
 function showSymptomAnalysis() {
   renderSymptomAnalysis();
   showScreen('symptom-analysis');
+}
+
+// ============================================
+// Polyvagal Analysis — parallel to symptom-analysis,
+// scoring against ANS states (ventral/sympatisk/dorsal)
+// ============================================
+
+function renderPolyvagalAnalysis() {
+  const introEl = document.getElementById('pv-intro');
+  const discEl = document.getElementById('pv-disclaimer');
+  const titleEl = document.getElementById('polyvagal-analysis-title');
+  const subEl = document.getElementById('polyvagal-analysis-subtitle');
+  const grid = document.getElementById('pv-symptom-grid');
+  const counter = document.getElementById('pv-counter');
+  const analyseBtn = document.getElementById('pv-analyse-btn');
+  if (!grid) return;
+
+  if (titleEl) titleEl.textContent = polyvagalIntro.title;
+  if (subEl) subEl.textContent = polyvagalIntro.subtitle;
+  if (introEl) introEl.innerHTML = `<p>${escapeHtml(polyvagalIntro.lead)}</p>`;
+  if (discEl) discEl.textContent = polyvagalIntro.disclaimer;
+
+  // Group symptoms by primary state for visual clarity
+  const byState = { sympatisk: [], dorsal: [], ventral: [], blandet: [] };
+  polyvagalSymptoms.forEach(sym => {
+    const states = sym.states || {};
+    const entries = Object.entries(states);
+    if (entries.length === 0) { byState.blandet.push(sym); return; }
+    // Find dominant state
+    entries.sort((a, b) => b[1] - a[1]);
+    const top = entries[0];
+    const second = entries[1];
+    if (second && Math.abs(second[1] - top[1]) < 0.15) {
+      byState.blandet.push(sym);
+    } else {
+      (byState[top[0]] || byState.blandet).push(sym);
+    }
+  });
+
+  const groupTitle = {
+    sympatisk: 'Sympatisk aktivering',
+    dorsal: 'Dorsal nedslukning',
+    ventral: 'Ventral / forbindelse',
+    blandet: 'Blandede tilstande'
+  };
+
+  const groups = ['sympatisk', 'dorsal', 'blandet', 'ventral']
+    .filter(k => byState[k].length > 0)
+    .map(k => `
+      <div class="pv-symptom-group">
+        <div class="pv-symptom-group-label">${escapeHtml(groupTitle[k])}</div>
+        <div class="pv-symptom-group-items">
+          ${byState[k].map(sym => `
+            <button class="sa-symptom-chip pv-symptom-chip${pvSelected.has(sym.id) ? ' selected' : ''}" type="button" data-pv-sym="${escapeHtml(sym.id)}">
+              <span class="sa-symptom-name">${escapeHtml(sym.name)}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+  grid.innerHTML = groups;
+
+  grid.querySelectorAll('[data-pv-sym]').forEach(btn => {
+    btn.addEventListener('click', () => togglePolyvagalSymptom(btn.dataset.pvSym));
+  });
+
+  updatePolyvagalCounter();
+}
+
+function togglePolyvagalSymptom(id) {
+  if (pvSelected.has(id)) {
+    pvSelected.delete(id);
+  } else {
+    if (pvSelected.size >= PV_MAX) return;
+    pvSelected.add(id);
+  }
+  document.querySelectorAll(`#pv-symptom-grid [data-pv-sym="${CSS.escape(id)}"]`).forEach(el => {
+    el.classList.toggle('selected', pvSelected.has(id));
+  });
+  updatePolyvagalCounter();
+}
+
+function updatePolyvagalCounter() {
+  const counter = document.getElementById('pv-counter');
+  const analyseBtn = document.getElementById('pv-analyse-btn');
+  if (counter) counter.textContent = `${pvSelected.size} af ${PV_MAX} valgt`;
+  if (analyseBtn) analyseBtn.disabled = pvSelected.size < PV_MIN;
+}
+
+function resetPolyvagalAnalysis() {
+  pvSelected.clear();
+  const results = document.getElementById('pv-results');
+  if (results) {
+    results.innerHTML = '';
+    results.hidden = true;
+  }
+  renderPolyvagalAnalysis();
+}
+
+function getPickedPolyvagalSymptoms() {
+  return polyvagalSymptoms.filter(s => pvSelected.has(s.id));
+}
+
+function computePolyvagalStateResonance(picked) {
+  const totals = { ventral: 0, sympatisk: 0, dorsal: 0 };
+  picked.forEach(s => {
+    Object.entries(s.states || {}).forEach(([k, v]) => {
+      if (totals[k] !== undefined) totals[k] += v;
+    });
+  });
+  const sum = totals.ventral + totals.sympatisk + totals.dorsal;
+  return polyvagalStates.map(state => ({
+    id: state.id,
+    name: state.name,
+    rung: state.rung,
+    color: state.color,
+    description: state.description,
+    weight: totals[state.id] || 0,
+    pct: sum > 0 ? (totals[state.id] || 0) / sum : 0
+  })).sort((a, b) => b.pct - a.pct);
+}
+
+function computePolyvagalPatternResonance(picked) {
+  if (picked.length === 0) return [];
+  const pickedNames = new Set(picked.map(s => s.name));
+  return polyvagalPatterns.map(pattern => {
+    const keyHits = pattern.keySymptoms.filter(s => pickedNames.has(s));
+    const supportingHits = (pattern.supportingSymptoms || []).filter(s => pickedNames.has(s));
+    const score = (keyHits.length + 0.5 * supportingHits.length) / picked.length;
+    return { pattern, keyHits, supportingHits, totalHits: keyHits.length + supportingHits.length, score };
+  })
+  .filter(r => r.totalHits > 0)
+  .sort((a, b) => b.score - a.score || b.keyHits.length - a.keyHits.length);
+}
+
+function renderPolyvagalAnalysisResults() {
+  const picked = getPickedPolyvagalSymptoms();
+  const results = document.getElementById('pv-results');
+  if (!results || picked.length < PV_MIN) return;
+
+  const stateTally = computePolyvagalStateResonance(picked);
+  const patternTally = computePolyvagalPatternResonance(picked);
+  const topPattern = patternTally[0];
+  const topState = stateTally[0];
+
+  // Ladder visualisation: 3 rungs, top=ventral, middle=sympatisk, bottom=dorsal,
+  // each annotated with the percentage from the analysis.
+  const rungs = [
+    { id: 'ventral',   label: 'Ventral',   y: 22, sub: 'forbindelse · ro' },
+    { id: 'sympatisk', label: 'Sympatisk', y: 50, sub: 'mobilisering · alarm' },
+    { id: 'dorsal',    label: 'Dorsal',    y: 78, sub: 'kollaps · dvale' }
+  ];
+  const stateById = Object.fromEntries(stateTally.map(s => [s.id, s]));
+
+  const ladderHTML = `
+    <div class="pv-ladder">
+      <svg class="pv-ladder-svg" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="14" x2="40" y2="106" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="80" y1="14" x2="80" y2="106" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        ${rungs.map(r => `<line x1="40" y1="${r.y}" x2="80" y2="${r.y}" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>`).join('')}
+        ${rungs.map(r => {
+          const s = stateById[r.id];
+          const pct = s ? Math.round(s.pct * 100) : 0;
+          const radius = 4 + (pct / 100) * 9;
+          const color = s && s.color ? s.color : 'currentColor';
+          return `
+            <circle cx="60" cy="${r.y}" r="${radius}" fill="${color}" opacity="${0.25 + (pct / 100) * 0.6}"/>
+            <text x="100" y="${r.y - 1}" font-family="Cormorant Garamond, serif" font-size="14" fill="currentColor" font-weight="500">${r.label}</text>
+            <text x="100" y="${r.y + 13}" font-family="Inter, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" opacity="0.6">${r.sub.toUpperCase()}</text>
+            <text x="290" y="${r.y + 5}" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="${color}" text-anchor="end">${pct}%</text>
+          `;
+        }).join('')}
+      </svg>
+    </div>
+  `;
+
+  const patternHTML = topPattern ? `
+    <div class="pv-pattern-card" style="--pv-state-color: ${stateById[topPattern.pattern.primaryState] ? stateById[topPattern.pattern.primaryState].color : 'var(--accent-gold)'}">
+      <div class="pv-pattern-eyebrow">Primært mønster — ${escapeHtml(intensityWord(Math.round(topPattern.score * 100)))}</div>
+      <h3 class="pv-pattern-title">${escapeHtml(topPattern.pattern.name)}</h3>
+      <div class="pv-pattern-plain">${escapeHtml(topPattern.pattern.plainName)}</div>
+      <p class="pv-pattern-summary">${escapeHtml(topPattern.pattern.summaryDescription)}</p>
+
+      <details class="pv-pattern-details">
+        <summary>Klinisk beskrivelse og differentiering</summary>
+        <div class="pv-pattern-section">
+          <div class="pv-pattern-section-label">Beskrivelse</div>
+          <p>${escapeHtml(topPattern.pattern.description)}</p>
+        </div>
+        <div class="pv-pattern-section">
+          <div class="pv-pattern-section-label">Differentiering</div>
+          <p>${escapeHtml(topPattern.pattern.differential)}</p>
+        </div>
+        <div class="pv-pattern-section">
+          <div class="pv-pattern-section-label">Behandlings-retning</div>
+          <p>${escapeHtml(topPattern.pattern.treatment)}</p>
+        </div>
+        <div class="pv-pattern-section">
+          <div class="pv-pattern-section-label">Matchede symptomer</div>
+          <div class="pv-symptom-chips">
+            ${topPattern.keyHits.map(s => `<span class="pv-symptom-chip-tag pv-symptom-chip-key">${escapeHtml(s)}</span>`).join('')}
+            ${topPattern.supportingHits.map(s => `<span class="pv-symptom-chip-tag">${escapeHtml(s)}</span>`).join('')}
+          </div>
+        </div>
+      </details>
+
+      <div class="pv-homepractice">
+        <div class="pv-homepractice-title">Hjem-anvisning</div>
+        ${[
+          { glyph: 'I', label: 'Indre billede', text: topPattern.pattern.homePractice.innerImage },
+          { glyph: 'O', label: 'Orientering',   text: topPattern.pattern.homePractice.orientation },
+          { glyph: 'B', label: 'Bevægelse',     text: topPattern.pattern.homePractice.movement },
+          { glyph: 'A', label: 'Anker',         text: topPattern.pattern.homePractice.anchor },
+          { glyph: 'G', label: 'Glimmer',       text: topPattern.pattern.homePractice.glimmer }
+        ].map(row => `
+          <div class="pv-hp-row">
+            <div class="pv-hp-glyph" aria-hidden="true">${row.glyph}</div>
+            <div class="pv-hp-body">
+              <div class="pv-hp-label">${escapeHtml(row.label)}</div>
+              <p class="pv-hp-text">${escapeHtml(row.text)}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : `
+    <div class="pv-no-match">
+      <p>Ingen klart mønster trådte frem af dine valg. Det kan betyde at klienten er i en mere blandet eller stabil tilstand — eller at flere symptomer hjælper.</p>
+    </div>
+  `;
+
+  // Other patterns that scored
+  const othersHTML = patternTally.slice(1, 4).length ? `
+    <div class="pv-other-patterns">
+      <div class="pv-other-patterns-label">Andre mønstre der spiller med</div>
+      ${patternTally.slice(1, 4).map(row => `
+        <div class="pv-other-pattern">
+          <div class="pv-other-pattern-name">${escapeHtml(row.pattern.name)}</div>
+          <div class="pv-other-pattern-score">${escapeHtml(intensityWord(Math.round(row.score * 100)))}</div>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  results.innerHTML = `
+    <div class="sa-results-inner pv-results-inner">
+      <h2 class="sa-results-heading">Hvor er klienten på stigen?</h2>
+      <p class="sa-results-lead">Symptomerne du valgte peger på følgende fordeling i autonome nervesystem.</p>
+      ${ladderHTML}
+
+      ${patternHTML}
+
+      ${othersHTML}
+
+      <div class="pv-disclaimer-note">
+        <p>${escapeHtml(polyvagalIntro.disclaimer)}</p>
+      </div>
+    </div>
+  `;
+  results.hidden = false;
+
+  requestAnimationFrame(() => {
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+function setupPolyvagalAnalysis() {
+  const analyseBtn = document.getElementById('pv-analyse-btn');
+  const resetBtn = document.getElementById('pv-reset-btn');
+  const backBtn = document.getElementById('btn-back-polyvagal-analysis');
+
+  if (analyseBtn) {
+    analyseBtn.addEventListener('click', () => {
+      if (pvSelected.size >= PV_MIN) renderPolyvagalAnalysisResults();
+    });
+  }
+  if (resetBtn) resetBtn.addEventListener('click', resetPolyvagalAnalysis);
+  if (backBtn) backBtn.addEventListener('click', goBack);
+}
+
+function showPolyvagalAnalysis() {
+  renderPolyvagalAnalysis();
+  showScreen('polyvagal-analysis');
 }
 
 // ============================================
@@ -4193,6 +4505,7 @@ function init() {
   try { renderOverviewConversation(); } catch(e) { console.error('renderOverviewConversation:', e); }
   try { renderSymptomAnalysis(); } catch(e) { console.error('renderSymptomAnalysis:', e); }
   try { setupSymptomAnalysis(); } catch(e) { console.error('setupSymptomAnalysis:', e); }
+  try { setupPolyvagalAnalysis(); } catch(e) { console.error('setupPolyvagalAnalysis:', e); }
   try { setupClientHandout(); } catch(e) { console.error('setupClientHandout:', e); }
   try { setupClientHistory(); } catch(e) { console.error('setupClientHistory:', e); }
   try { setupBackupDialog(); } catch(e) { console.error('setupBackupDialog:', e); }

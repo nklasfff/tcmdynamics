@@ -507,6 +507,52 @@
       </main>
     </div>
 
+    <!-- Polyvagal Analysis Screen — parallel to symptom-analysis, ANS-focused -->
+    <div id="screen-polyvagal-analysis" class="screen">
+      <header class="detail-header">
+        <button class="back-btn" id="btn-back-polyvagal-analysis">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+        <div class="detail-title-area">
+          <span class="detail-icon pv-detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" width="22" height="32">
+              <line x1="15" y1="6" x2="15" y2="84"/>
+              <line x1="45" y1="6" x2="45" y2="84"/>
+              <line x1="15" y1="20" x2="45" y2="20"/>
+              <line x1="15" y1="45" x2="45" y2="45"/>
+              <line x1="15" y1="70" x2="45" y2="70"/>
+            </svg>
+          </span>
+          <h1 id="polyvagal-analysis-title">Mønstre i nervesystemet</h1>
+          <p class="detail-nickname" id="polyvagal-analysis-subtitle">Polyvagal-perspektivet</p>
+        </div>
+      </header>
+
+      <main class="detail-content">
+        <div class="symptom-analysis-body">
+          <div class="sa-intro" id="pv-intro"></div>
+          <div class="sa-disclaimer" id="pv-disclaimer"></div>
+
+          <div class="sa-counter-row">
+            <div class="sa-counter" id="pv-counter">0 af 9 valgt</div>
+            <button class="sa-reset-btn" id="pv-reset-btn" type="button">Nulstil</button>
+          </div>
+
+          <div class="sa-symptom-grid" id="pv-symptom-grid"></div>
+
+          <div class="sa-action-row">
+            <button class="sa-analyse-btn" id="pv-analyse-btn" type="button" disabled>
+              <span class="sa-analyse-label">Analysér mønster</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <div class="sa-results" id="pv-results" hidden></div>
+        </div>
+      </main>
+    </div>
+
     <!-- Symptom Analysis Screen -->
     <div id="screen-symptom-analysis" class="screen">
       <header class="detail-header">
@@ -1005,6 +1051,6 @@
     </div>
   </div>
 
-  <script type="module" src="js/app.js?v=14"></script>
+  <script type="module" src="js/app.js?v=15"></script>
 </body>
 </html>
