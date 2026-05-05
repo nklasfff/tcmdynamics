@@ -4391,6 +4391,50 @@ html[data-theme-transitioning] * {
   margin-bottom: 18px;
 }
 
+.client-progress-polyvagal {
+  margin-top: 22px;
+}
+
+.pv-progress-ladders {
+  margin-bottom: 18px;
+}
+
+.pv-progress-ladders-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.pv-progress-ladders-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 2px 2px 6px;
+  color: var(--text-secondary);
+}
+
+.pv-progress-cell {
+  flex: 0 0 auto;
+  width: 86px;
+  text-align: center;
+}
+
+.pv-progress-ladder {
+  width: 86px;
+  height: 92px;
+  display: block;
+}
+
+.pv-progress-cell-meta {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  letter-spacing: 0.4px;
+}
+
 .element-balance-label {
   font-size: 11px;
   font-weight: 500;

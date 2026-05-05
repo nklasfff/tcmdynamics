@@ -4179,6 +4179,143 @@ function renderElementPentagonSVG(symptomNames) {
   return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="element-pentagon">${outerPolygon}${innerPolygon}${dots}${labels}</svg>`;
 }
 
+function renderPolyvagalProgressionHTML(sessionsAsc) {
+  if (!sessionsAsc || sessionsAsc.length < 2) return '';
+
+  const dateLocale = 'da-DK';
+  const fmtDate = d => new Date(d).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short' });
+  const stateColor = id => {
+    const s = polyvagalStates.find(x => x.id === id);
+    return s ? s.color : 'var(--accent-gold)';
+  };
+
+  const rows = sessionsAsc.map((s, i) => {
+    const dateStr = fmtDate(s.date);
+    const num = i + 1;
+    const pat = s.patterns?.[0];
+    if (!pat) {
+      return `
+        <div class="progress-row">
+          <div class="progress-meta-col">
+            <div class="progress-num">#${num}</div>
+            <div class="progress-date">${escapeHtml(dateStr)}</div>
+          </div>
+          <div class="progress-bar-col">
+            <div class="progress-bar-track"></div>
+            <div class="progress-pattern progress-pattern-none">Intet klart mønster</div>
+          </div>
+        </div>
+      `;
+    }
+    const plainName = patternPlainName(pat.name, 'polyvagal');
+    const intensity = intensityWord(pat.score);
+    const width = intensityWidth(pat.score);
+    const pattern = findPatternByName(pat.name, 'polyvagal');
+    const primaryStateId = pattern && pattern.primaryState;
+    const color = primaryStateId && primaryStateId !== 'mixed' && primaryStateId !== 'sympatisk-dorsal'
+      ? stateColor(primaryStateId)
+      : 'var(--accent-gold)';
+    const stateName = primaryStateId === 'sympatisk-dorsal' ? 'blandet'
+                    : primaryStateId === 'mixed' ? 'skift'
+                    : (polyvagalStates.find(x => x.id === primaryStateId) || {}).name || '';
+    return `
+      <div class="progress-row">
+        <div class="progress-meta-col">
+          <div class="progress-num">#${num}</div>
+          <div class="progress-date">${escapeHtml(dateStr)}</div>
+        </div>
+        <div class="progress-bar-col">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: ${width}%; background: ${color}"></div>
+          </div>
+          <div class="progress-pattern">
+            <div class="progress-pattern-name">${escapeHtml(plainName)}</div>
+            <div class="progress-pattern-meta"><span class="progress-pattern-intensity">${escapeHtml(intensity)}</span>${stateName ? ` · ${escapeHtml(stateName)}` : ''}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Mini ladder per session showing state-distribution.
+  const laddersHTML = `
+    <div class="pv-progress-ladders">
+      <div class="pv-progress-ladders-label">Bevægelse på stigen</div>
+      <div class="pv-progress-ladders-row">
+        ${sessionsAsc.map((s, i) => {
+          const states = Array.isArray(s.states) ? s.states : [];
+          const byId = Object.fromEntries(states.map(x => [x.id, x.pct || 0]));
+          const v = byId.ventral || 0;
+          const sy = byId.sympatisk || 0;
+          const d = byId.dorsal || 0;
+          const r = pct => 3 + (pct / 100) * 7;
+          const a = pct => 0.25 + (pct / 100) * 0.6;
+          return `
+            <div class="pv-progress-cell">
+              <svg viewBox="0 0 80 100" class="pv-progress-ladder">
+                <line x1="22" y1="14" x2="22" y2="86" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="58" y1="14" x2="58" y2="86" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="22" y1="22" x2="58" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="22" y1="50" x2="58" y2="50" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="22" y1="78" x2="58" y2="78" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="40" cy="22" r="${r(v)}" fill="${stateColor('ventral')}" opacity="${a(v)}"/>
+                <circle cx="40" cy="50" r="${r(sy)}" fill="${stateColor('sympatisk')}" opacity="${a(sy)}"/>
+                <circle cx="40" cy="78" r="${r(d)}" fill="${stateColor('dorsal')}" opacity="${a(d)}"/>
+              </svg>
+              <div class="pv-progress-cell-meta">#${i + 1} · ${escapeHtml(fmtDate(s.date))}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+
+  // Symptom diff between latest and previous polyvagal session
+  let diffHTML = '';
+  const last = sessionsAsc[sessionsAsc.length - 1];
+  const prev = sessionsAsc[sessionsAsc.length - 2];
+  const lastSyms = new Set(last.symptoms || []);
+  const prevSyms = new Set(prev.symptoms || []);
+  const newOnes = [...lastSyms].filter(s => !prevSyms.has(s));
+  const goneOnes = [...prevSyms].filter(s => !lastSyms.has(s));
+  if (newOnes.length || goneOnes.length) {
+    diffHTML = `
+      <div class="symptom-diff">
+        <div class="symptom-diff-label">Siden sidst</div>
+        ${newOnes.length ? `
+          <div class="diff-row diff-new">
+            <span class="diff-arrow">↑</span>
+            <span class="diff-label">Kommet til:</span>
+            <span class="diff-syms">${newOnes.map(s => `<span class="diff-chip diff-chip-new">${escapeHtml(s)}</span>`).join('')}</span>
+          </div>` : ''}
+        ${goneOnes.length ? `
+          <div class="diff-row diff-gone">
+            <span class="diff-arrow">↓</span>
+            <span class="diff-label">Sluppet:</span>
+            <span class="diff-syms">${goneOnes.map(s => `<span class="diff-chip diff-chip-gone">${escapeHtml(s)}</span>`).join('')}</span>
+          </div>` : ''}
+      </div>
+    `;
+  } else {
+    diffHTML = `
+      <div class="symptom-diff symptom-diff-stable">
+        <div class="symptom-diff-label">Siden sidst</div>
+        <div class="diff-row"><span class="diff-stable">Mønstret er stabilt</span></div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="client-progress client-progress-polyvagal">
+      <h3 class="client-progress-title">Forløb — Polyvagal</h3>
+      <p class="client-progress-lead">Sådan har stigen bevæget sig på tværs af sessioner</p>
+      <div class="progress-rows">${rows}</div>
+      ${laddersHTML}
+      ${diffHTML}
+    </div>
+  `;
+}
+
 function renderProgressionHTML(sessionsAsc) {
   if (!sessionsAsc || sessionsAsc.length < 2) return '';
 
@@ -4327,10 +4464,15 @@ function renderClientDetail() {
   if (emptyEl) emptyEl.hidden = true;
   if (!listEl) return;
 
-  // Progression block (only if 2+ sessions)
+  // Progression block (only if 2+ sessions of the same kind)
   if (progressEl) {
     const sessionsAsc = [...client.sessions].sort((a, b) => a.date.localeCompare(b.date));
-    progressEl.innerHTML = renderProgressionHTML(sessionsAsc);
+    const tcmSessions = sessionsAsc.filter(s => s.kind !== 'polyvagal');
+    const pvSessions = sessionsAsc.filter(s => s.kind === 'polyvagal');
+    let html = '';
+    if (tcmSessions.length >= 2) html += renderProgressionHTML(tcmSessions);
+    if (pvSessions.length >= 2) html += renderPolyvagalProgressionHTML(pvSessions);
+    progressEl.innerHTML = html;
   }
 
   const sessions = [...client.sessions].sort((a, b) => b.date.localeCompare(a.date));
@@ -4491,7 +4633,13 @@ function renderClientDetail() {
 
 function renderFollowupSectionHTML(session) {
   const fb = session.followup || {};
-  const areas = [
+  const areas = session.kind === 'polyvagal' ? [
+    { key: 'innerImage',  label: 'Indre billede' },
+    { key: 'orientation', label: 'Orientering' },
+    { key: 'movement',    label: 'Bevægelse' },
+    { key: 'anchor',      label: 'Anker' },
+    { key: 'glimmer',     label: 'Øjeblikke' }
+  ] : [
     { key: 'diet', labelKey: 'hpDiet' },
     { key: 'movement', labelKey: 'hpMovement' },
     { key: 'acupressure', labelKey: 'hpAcupressure' },
@@ -4518,9 +4666,10 @@ function renderFollowupSectionHTML(session) {
       <p class="followup-lead">${escapeHtml(t('followupLead'))}</p>
       ${areas.map(area => {
         const data = fb[area.key] || {};
+        const label = area.label || t(area.labelKey);
         return `
           <div class="followup-row">
-            <div class="followup-area-label">${escapeHtml(t(area.labelKey))}</div>
+            <div class="followup-area-label">${escapeHtml(label)}</div>
             <div class="followup-question">
               <span class="followup-question-label">${escapeHtml(t('followupTriedQ'))}</span>
               <div class="followup-pills">${renderPills(area.key, 'tried', triedOpts, data.tried)}</div>
