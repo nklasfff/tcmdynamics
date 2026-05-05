@@ -3987,13 +3987,13 @@ function showSavedToast() {
   showToast(t('saveDialogSaved'));
 }
 
-function showToast(text) {
+function showToast(text, duration = 2200) {
   const toast = document.getElementById('save-toast');
   if (!toast) return;
   toast.textContent = text;
   toast.classList.add('show');
   clearTimeout(toast._timer);
-  toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), duration);
 }
 
 // ----- Export / Import (Phase 3) -----
@@ -4620,6 +4620,10 @@ function renderClientDetail() {
       if (!session) return;
       const text = buildSymptomAnalysisSummary(session);
       if (!text) return;
+      const labelEl = btn.querySelector('.session-action-label');
+      const originalLabel = labelEl ? labelEl.textContent : '';
+      const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || '');
+      const shortcut = isMac ? '⌘V' : 'Ctrl+V';
       try {
         if (navigator.clipboard && window.isSecureContext) {
           await navigator.clipboard.writeText(text);
@@ -4633,9 +4637,20 @@ function renderClientDetail() {
           document.execCommand('copy');
           document.body.removeChild(ta);
         }
-        showToast(t('saveDialogSaved'));
+        if (labelEl) labelEl.textContent = 'Kopieret ✓';
+        btn.classList.add('session-action-btn-copied');
+        showToast(`Resumé kopieret. Indsæt nu med ${shortcut} i din notes-app eller dit journalsystem.`, 4000);
+        setTimeout(() => {
+          if (labelEl) labelEl.textContent = originalLabel;
+          btn.classList.remove('session-action-btn-copied');
+        }, 2400);
       } catch (err) {
         console.error('Failed to copy session summary', err);
+        if (labelEl) labelEl.textContent = 'Kunne ikke kopiere — prøv igen';
+        showToast('Kunne ikke kopiere resuméet. Prøv igen, eller kontakt support.', 4000);
+        setTimeout(() => {
+          if (labelEl) labelEl.textContent = originalLabel;
+        }, 2400);
       }
     });
   });

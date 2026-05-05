@@ -4870,6 +4870,21 @@ html[data-theme-transitioning] * {
   background: var(--accent-gold-dim);
 }
 
+/* Brief "Kopieret ✓" confirmation state on the copy button. */
+.session-action-btn-copied {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold);
+}
+
+.session-action-btn-copied .session-action-label,
+.session-action-btn-copied .session-action-hint {
+  color: var(--bg-card);
+}
+
+.session-action-btn-copied svg {
+  color: var(--bg-card) !important;
+}
+
 .session-action-btn svg {
   flex: 0 0 auto;
   color: var(--accent-gold);
@@ -5092,8 +5107,11 @@ html[data-theme-transitioning] * {
   transform: translateX(-50%) translateY(20px);
   background: var(--accent-gold);
   color: var(--bg-primary);
-  padding: 10px 22px;
-  border-radius: 22px;
+  padding: 12px 22px;
+  border-radius: 18px;
+  max-width: min(520px, calc(100vw - 32px));
+  text-align: center;
+  line-height: 1.4;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
