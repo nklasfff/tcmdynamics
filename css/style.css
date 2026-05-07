@@ -916,9 +916,11 @@ body.is-screen-home .top-float-btn {
   opacity: 0.85;
 }
 
+/* Clock text colours are locked to dark-theme tones because the clock
+   sits on a fixed dark backdrop in both themes. */
 .clock-segment text {
   font-family: var(--font-sans);
-  fill: var(--text-primary);
+  fill: #f0ece4;
   font-size: 10px;
   font-weight: 500;
   pointer-events: none;
@@ -926,14 +928,18 @@ body.is-screen-home .top-float-btn {
 
 .clock-segment .clock-time {
   font-size: 8px;
-  fill: var(--text-muted);
+  fill: #a09b90;
 }
 
 .clock-center-text {
   font-family: var(--font-serif);
-  fill: var(--text-secondary);
+  fill: #a09b90;
   font-size: 11px;
   text-anchor: middle;
+}
+
+.clock-center-muted {
+  fill: #6b6760;
 }
 
 .clock-segment-active path {
@@ -941,7 +947,7 @@ body.is-screen-home .top-float-btn {
 }
 
 .clock-center-active {
-  fill: var(--accent-gold) !important;
+  fill: #c8a96e !important;
   font-weight: 600;
 }
 
@@ -3087,9 +3093,7 @@ body.is-screen-home .top-float-btn {
   background: rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="light"] .clock-segment-active path {
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.1));
-}
+/* Clock backdrop stays dark in both themes, so use the same active glow. */
 
 /* Theme transition */
 html[data-theme-transitioning] * {
