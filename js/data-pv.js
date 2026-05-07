@@ -144,9 +144,9 @@ export const polyvagalPatterns = [
     }
   },
   {
-    id: 'pv-pattern-dorsal-nedslukning',
+    id: 'pv-pattern-dorsal-nedlukning',
     kind: 'polyvagal',
-    name: 'Dorsal nedslukning',
+    name: 'Dorsal nedlukning',
     plainName: 'Energien har trukket sig ind',
     primaryState: 'dorsal',
     nature: 'Dorsal dys-regulering',
