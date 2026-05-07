@@ -1037,7 +1037,16 @@ function renderOrganClock() {
   `;
 
   if (activeOrgan) {
-    let wisdomBox = container.querySelector('.clock-wisdom');
+    // Wisdom box is inserted as a *sibling* of the clock container, not a
+    // child. Search via parent to reuse it instead of appending duplicates
+    // every minute (fixed bug where setInterval kept stacking wisdom boxes).
+    const parent = container.parentElement;
+    let wisdomBox = null;
+    if (parent) {
+      const existing = parent.querySelectorAll('.clock-wisdom');
+      // Keep only the first; remove any duplicates accumulated before the fix.
+      existing.forEach((el, i) => { if (i === 0) wisdomBox = el; else el.remove(); });
+    }
     if (!wisdomBox) {
       wisdomBox = document.createElement('div');
       wisdomBox.className = 'clock-wisdom';
