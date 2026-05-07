@@ -916,8 +916,8 @@ body.is-screen-home .top-float-btn {
   opacity: 0.85;
 }
 
-/* Clock text colours are locked to dark-theme tones because the clock
-   sits on a fixed dark backdrop in both themes. */
+/* Segment text sits on the always-dark backdrop ring, so its colours
+   are locked to dark-theme tones for readability in both themes. */
 .clock-segment text {
   font-family: var(--font-sans);
   fill: #f0ece4;
@@ -931,15 +931,17 @@ body.is-screen-home .top-float-btn {
   fill: #a09b90;
 }
 
+/* Centre text sits inside the inner circle, which follows the global
+   theme — so use theme-aware tokens here. */
 .clock-center-text {
   font-family: var(--font-serif);
-  fill: #a09b90;
+  fill: var(--text-secondary);
   font-size: 11px;
   text-anchor: middle;
 }
 
 .clock-center-muted {
-  fill: #6b6760;
+  fill: var(--text-muted);
 }
 
 .clock-segment-active path {
@@ -947,7 +949,7 @@ body.is-screen-home .top-float-btn {
 }
 
 .clock-center-active {
-  fill: #c8a96e !important;
+  fill: var(--accent-gold) !important;
   font-weight: 600;
 }
 

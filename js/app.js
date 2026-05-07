@@ -1031,7 +1031,7 @@ function renderOrganClock() {
            light and dark themes (matches dark-theme bg-primary). -->
       <circle cx="${cx}" cy="${cy}" r="${outerR}" fill="#0a0a0f"/>
       ${segments}
-      <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="#15151c" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+      <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--bg-primary)" stroke="var(--border-light)" stroke-width="0.5"/>
       <text x="${cx}" y="${cy - 14}" class="clock-center-text" font-size="11">${timeStr}</text>
       <text x="${cx}" y="${cy + 2}" class="clock-center-text clock-center-active" font-size="11">${activeOrgan ? activeOrgan.organ : ''}</text>
       <text x="${cx}" y="${cy + 16}" class="clock-center-text clock-center-muted" font-size="8">${t('clockActiveNow')}</text>
