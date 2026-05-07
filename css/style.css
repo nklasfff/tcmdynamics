@@ -976,6 +976,35 @@ body.is-screen-home .top-float-btn {
   margin: 0;
 }
 
+.clock-wisdom-clickable {
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.clock-wisdom-clickable:hover {
+  border-color: var(--accent-gold);
+  background: var(--bg-card-hover);
+}
+
+.clock-wisdom-clickable:active {
+  transform: translateY(1px);
+}
+
+.clock-wisdom-clickable:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+.clock-wisdom-cta {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
 /* ============================================
    Five Elements
    ============================================ */

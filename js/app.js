@@ -1051,13 +1051,29 @@ function renderOrganClock() {
     }
     if (!wisdomBox) {
       wisdomBox = document.createElement('div');
-      wisdomBox.className = 'clock-wisdom';
+      wisdomBox.className = 'clock-wisdom clock-wisdom-clickable';
+      wisdomBox.setAttribute('role', 'button');
+      wisdomBox.setAttribute('tabindex', '0');
       container.after(wisdomBox);
     }
+    wisdomBox.classList.add('clock-wisdom-clickable');
+    wisdomBox.dataset.organName = activeOrgan.organ;
     wisdomBox.innerHTML = `
       <div class="clock-wisdom-label">${activeOrgan.organ} · ${activeOrgan.time}</div>
       <p class="clock-wisdom-text">${activeOrgan.wisdom}</p>
+      <span class="clock-wisdom-cta">Åbn ${activeOrgan.organ}-siden →</span>
     `;
+    if (!wisdomBox._clickWired) {
+      const open = () => {
+        const organ = organs.find(o => o.name === wisdomBox.dataset.organName);
+        if (organ) showOrganDetail(organ);
+      };
+      wisdomBox.addEventListener('click', open);
+      wisdomBox.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+      });
+      wisdomBox._clickWired = true;
+    }
   }
 
   container.querySelectorAll('.clock-segment').forEach(seg => {
