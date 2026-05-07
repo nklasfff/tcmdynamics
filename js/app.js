@@ -3185,7 +3185,7 @@ function renderPolyvagalAnalysis() {
 
   const groupTitle = {
     sympatisk: 'Sympatisk aktivering',
-    dorsal: 'Dorsal nedslukning',
+    dorsal: 'Dorsal nedlukning',
     ventral: 'Ventral / forbindelse',
     blandet: 'Blandede tilstande'
   };
