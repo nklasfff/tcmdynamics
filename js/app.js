@@ -1003,12 +1003,11 @@ function renderOrganClock() {
     const timeY = cy + timeR * Math.sin(midAngle);
 
     const color = elementColors[item.element] || '#666';
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    // Render the clock with the dark-theme visual recipe regardless of
+    // global theme — so segment colours look identical in light mode.
     const isActive = i === activeIndex;
-    const baseFill = isLight ? 0.15 : 0.2;
-    const fillOpacity = isActive ? '0.55' : String(baseFill);
-    const baseStroke = isLight ? 0.6 : 0.4;
-    const strokeOpacity = isActive ? '0.9' : String(baseStroke);
+    const fillOpacity = isActive ? '0.55' : '0.2';
+    const strokeOpacity = isActive ? '0.9' : '0.4';
     const strokeWidth = isActive ? '2' : '1';
     const textWeight = isActive ? 'bold' : 'normal';
 
@@ -1028,11 +1027,14 @@ function renderOrganClock() {
 
   container.innerHTML = `
     <svg class="clock-svg" viewBox="0 0 ${size} ${size}">
+      <!-- Fixed dark backdrop so segment colours look identical in
+           light and dark themes (matches dark-theme bg-primary). -->
+      <circle cx="${cx}" cy="${cy}" r="${outerR}" fill="#0a0a0f"/>
       ${segments}
-      <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--bg-primary)" stroke="var(--border-light)" stroke-width="0.5"/>
+      <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="#15151c" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
       <text x="${cx}" y="${cy - 14}" class="clock-center-text" font-size="11">${timeStr}</text>
       <text x="${cx}" y="${cy + 2}" class="clock-center-text clock-center-active" font-size="11">${activeOrgan ? activeOrgan.organ : ''}</text>
-      <text x="${cx}" y="${cy + 16}" class="clock-center-text" font-size="8" fill="var(--text-muted)">${t('clockActiveNow')}</text>
+      <text x="${cx}" y="${cy + 16}" class="clock-center-text clock-center-muted" font-size="8">${t('clockActiveNow')}</text>
     </svg>
   `;
 
