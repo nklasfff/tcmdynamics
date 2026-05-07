@@ -5174,7 +5174,7 @@ const symptomReference = [
   {
     symptom: 'Kramper indersiden af benene',
     organs: ['Yin Qiao Mai', 'Lever', 'Nyrer'],
-    note: 'Yin Qiao kontrollerer tonus i benenes mediale muskulatur. Når Yin Qiao er i Fuldhed, trækker indersiden sig sammen og foden vender indad ved gang. En vigtig diskriminator: er kramperne primært på YDERSIDEN, peger det i stedet mod Yang Qiao Mai. Følges de af tørre tånegle og blod-mangel, er Leverens blodreserve også involveret. En klassisk indikation: tendens til at "snuble" på grund af ubalancen mellem indre og ydre bentonus.'
+    note: 'Yin Qiao kontrollerer tonus i benenes mediale muskulatur. Når Yin Qiao er overaktiv (i overskud), trækker indersiden sig sammen og foden vender indad ved gang. En vigtig diskriminator: er kramperne primært på YDERSIDEN, peger det i stedet mod Yang Qiao Mai. Følges de af tørre tånegle og blod-mangel, er Leverens blodreserve også involveret. En klassisk indikation: tendens til at "snuble" på grund af ubalancen mellem indre og ydre bentonus.'
   },
   {
     symptom: 'Søvnløshed med rastløshed',

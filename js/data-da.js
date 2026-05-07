@@ -1965,7 +1965,7 @@ export const symptomReference = [
   {
     symptom: 'Tør mund med lyst til småslurke',
     organs: ['Mavesæk', 'Nyrer', 'Lunger'],
-    note: 'Lyst til småslurke (ikke store mængder) er nøglen — adskiller Yin-svigt fra Fuldhede. Tør mund + dårlig appetit på trods af sult + sprække i tungemidten = Mavesæk-Yin. Tør om natten + tinnitus + lændesmerter = Nyre-Yin. Tør hoste + tør næse + hæshed = Lunge-Yin.'
+    note: 'Lyst til småslurke (ikke store mængder) er nøglen — adskiller Yin-svigt fra overskuds-billeder (hvor klienten ville drikke meget). Tør mund + dårlig appetit på trods af sult + sprække i tungemidten = Mavesæk-Yin. Tør om natten + tinnitus + lændesmerter = Nyre-Yin. Tør hoste + tør næse + hæshed = Lunge-Yin.'
   },
   {
     symptom: 'Forstoppelse med tørre afføringer',
@@ -1990,7 +1990,7 @@ export const symptomReference = [
   {
     symptom: 'Kronisk næsetilstopning',
     organs: ['Lunger', 'Milt', 'Galdeblære'],
-    note: 'Akut tilstoppet næse med klar slim efter forkølelse = Lungerne invaderet af Vind. Kronisk tyk gul slim + frontal hovedpine + presfornemmelse over kindben = Slim-Hede i Lunger og Galdeblære-meridianen. Vandig næse + Milt-svaghed + træthed = Slim-Damp opstigende fra Milt.'
+    note: 'Akut tilstoppet næse med klar slim efter forkølelse = Lungerne ramt af træk og kulde udefra. Kronisk tyk gul slim + frontal hovedpine + presfornemmelse over kindben = Slim-Hede i Lunger og Galdeblære-meridianen. Vandig næse + Milt-svaghed + træthed = Slim-Damp opstigende fra Milt.'
   },
   {
     symptom: 'Hedeture',
@@ -2010,7 +2010,7 @@ export const symptomReference = [
   {
     symptom: 'Sæsonbaseret rhinitis/allergi',
     organs: ['Lunger', 'Milt', 'Nyrer'],
-    note: 'Akutte symptomer (nys, klar næseflod, kløende øjne) = Wei Qi-svaghed på overfladen, Lungerne kan ikke modstå Vind. Den underliggende svaghed afgøres af konstitution: træthed + dårlig appetit + bleg tunge = Milt-Qi (Wei Qi-roden). Kronisk fra barndom + kuldskærhed + lændesvaghed = Nyre-Yang (konstitutionel svaghed).'
+    note: 'Akutte symptomer (nys, klar næseflod, kløende øjne) = Wei Qi-svaghed på overfladen, Lungerne kan ikke modstå træk og kulde udefra. Den underliggende svaghed afgøres af konstitution: træthed + dårlig appetit + bleg tunge = Milt-Qi (Wei Qi-roden). Kronisk fra barndom + kuldskærhed + lændesvaghed = Nyre-Yang (konstitutionel svaghed).'
   },
   {
     symptom: 'Vedvarende sorg/melankoli',
