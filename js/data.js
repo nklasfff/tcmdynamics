@@ -5504,7 +5504,7 @@ const conversationStructure = {
     {
       heading: 'Tema Lytte: Klinikerens Intuition',
       items: [
-        { label: 'Let efter mønstre', text: 'Hvilke organsystemer peger klientens fortælling mod?' },
+        { label: 'Lyt efter mønstre', text: 'Hvilke organsystemer peger klientens fortælling mod?' },
         { label: 'Tidsmønstre', text: 'Er der tidspunkter, hvor symptomer forværres? Brug organuret.' },
         { label: 'Emotionelle temaer', text: 'Hvilke emotioner fylder? Kobl til de relevante organer.' }
       ]
@@ -5520,7 +5520,7 @@ const conversationStructure = {
     {
       heading: 'Integration i Din Klinik',
       items: [
-        { label: 'Hvile dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
+        { label: 'Betragt dette som et kort', text: 'TCM er et kort — ikke et mål. Klienten og deres system viser vejen.' },
         { label: 'Tag det i dit eget tempo', text: 'Begynd med ét organ, ét element. Lad det vokse naturligt.' },
         { label: 'Kombiner med din praksis', text: 'Brug TCM-forståelsen som inspiration, ikke som protokol.' }
       ]
