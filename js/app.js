@@ -1003,11 +1003,15 @@ function renderOrganClock() {
     const timeY = cy + timeR * Math.sin(midAngle);
 
     const color = elementColors[item.element] || '#666';
-    // Render the clock with the dark-theme visual recipe regardless of
-    // global theme — so segment colours look identical in light mode.
+    // Dark theme keeps the original recipe (the practitioner-owner picked it).
+    // Light theme gets a midway treatment so colour-blind users can read the
+    // segments more easily — softer dark-warm backdrop + higher saturation.
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const isActive = i === activeIndex;
-    const fillOpacity = isActive ? '0.55' : '0.2';
-    const strokeOpacity = isActive ? '0.9' : '0.4';
+    const baseFill = isLight ? 0.42 : 0.2;
+    const baseStroke = isLight ? 0.78 : 0.4;
+    const fillOpacity = isActive ? '0.7' : String(baseFill);
+    const strokeOpacity = isActive ? '0.95' : String(baseStroke);
     const strokeWidth = isActive ? '2' : '1';
     const textWeight = isActive ? 'bold' : 'normal';
 
@@ -1025,11 +1029,15 @@ function renderOrganClock() {
   const timeStr = now.toLocaleTimeString(getLanguage() === 'da' ? 'da-DK' : 'en-US', { hour: '2-digit', minute: '2-digit' });
   const activeOrgan = activeIndex >= 0 ? organClock[activeIndex] : null;
 
+  // Backdrop colour: a midway warm-dark in light theme (better contrast for
+  // colour-blind users than full dark, kinder to a cream page than pure
+  // black), and full dark in dark theme.
+  const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+  const clockBackdrop = isLightTheme ? '#3a342c' : '#0a0a0f';
+
   container.innerHTML = `
     <svg class="clock-svg" viewBox="0 0 ${size} ${size}">
-      <!-- Fixed dark backdrop so segment colours look identical in
-           light and dark themes (matches dark-theme bg-primary). -->
-      <circle cx="${cx}" cy="${cy}" r="${outerR}" fill="#0a0a0f"/>
+      <circle cx="${cx}" cy="${cy}" r="${outerR}" fill="${clockBackdrop}"/>
       ${segments}
       <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="var(--bg-primary)" stroke="var(--border-light)" stroke-width="0.5"/>
       <text x="${cx}" y="${cy - 14}" class="clock-center-text" font-size="11">${timeStr}</text>
