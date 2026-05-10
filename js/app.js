@@ -1,5 +1,5 @@
 // The Patterns Behind — App Logic v2
-import { getLangData } from './data.js?v=9';
+import { getLangData } from './data.js?v=10';
 import { polyvagalIntro, polyvagalStates, polyvagalSymptoms, polyvagalPatterns } from './data-pv.js?v=1';
 
 // ============================================

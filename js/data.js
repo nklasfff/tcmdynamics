@@ -5097,6 +5097,11 @@ const symptomReference = [
     note: 'Tørre, småpebberlignende afføringer ledsaget af udspilet mave, irritabilitet og lettelse efter besøget peger på Leverens energi der er sat fast og presser ind i Tyktarmen. Tørre afføringer kombineret med tør mund er kølende reserve og væsker der er løbet tør — særligt hos ældre. Vanskelig afføring uden tørhed, hvor klienten føler sig udmattet efter besøget, fortæller om en svag Milt der mangler drivkraften.'
   },
   {
+    symptom: 'Tynd afføring eller diarré',
+    organs: ['Milt', 'Tyktarm', 'Nyrer', 'Lever'],
+    note: 'Kronisk tynd afføring, evt. med ufordøjede madrester, ledsaget af træthed efter måltider og en bleg tunge med tandmærker, peger på en svag Milt der ikke kan transformere fugtigheden. Forværring tidligt om morgenen (omkring kl. 5-7) sammen med kuldskærhed, svage knæ og lænd peger dybere mod Nyre-Yang — se også "Morgendiarré kl. 5-7". Pludselig tynd afføring der udløses af stress, vekslende med hård afføring og ledsaget af irritabilitet og smerter under ribbenene, peger på Leverens energi der presser ind i Milten. Akut, ildelugtende, brændende diarré efter forkert mad eller infektion er typisk Damp-Hede i tarmene.'
+  },
+  {
     symptom: 'Oppustethed efter måltider',
     organs: ['Milt', 'Mavesæk', 'Lever'],
     note: 'Når oppustetheden forværres af mad generelt og ledsages af træthed, er det en svag Milt. Forværres den af specifikke fødevarer — fede, kolde eller rå — sammen med raben og sure opstød, er det Mavesækkens energi der løber den forkerte vej op. Forværring ved stress og følelser uafhængigt af mad, sammen med smerter under ribbenene, fortæller at Leveren presser ind på Milten.'
