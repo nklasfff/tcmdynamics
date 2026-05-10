@@ -4155,6 +4155,149 @@ html[data-theme-transitioning] * {
   font-style: italic;
 }
 
+/* Post-save panel — replaces the Gem-button after a successful save,
+   so practitioner has direct access to the most likely next steps. */
+.sa-post-save {
+  width: 100%;
+  max-width: 520px;
+  background: var(--accent-gold-dim);
+  border: 1px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 22px 22px 18px;
+  text-align: left;
+}
+
+.sa-post-save-confirm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--accent-gold);
+  margin-bottom: 18px;
+}
+
+.sa-post-save-confirm strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.sa-post-save-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent-gold);
+  color: var(--bg-card);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sa-post-save-heading {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+}
+
+.sa-post-save-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.sa-post-save-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+}
+
+.sa-post-save-btn:hover,
+.sa-post-save-btn:active {
+  border-color: var(--accent-gold);
+  background: var(--bg-card-hover);
+}
+
+.sa-post-save-btn-primary {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+.sa-post-save-btn-primary:hover,
+.sa-post-save-btn-primary:active {
+  filter: brightness(1.06);
+  background: var(--accent-gold);
+}
+
+[data-theme="light"] .sa-post-save-btn-primary {
+  color: #ffffff;
+}
+
+.sa-post-save-btn svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--accent-gold);
+}
+
+.sa-post-save-btn-primary svg {
+  color: inherit;
+}
+
+.sa-post-save-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sa-post-save-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.sa-post-save-hint {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.sa-post-save-btn-primary .sa-post-save-hint {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.sa-post-save-secondary {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-style: italic;
+  cursor: pointer;
+  padding: 6px 0 0;
+  text-align: left;
+}
+
+.sa-post-save-secondary:hover {
+  color: var(--accent-gold);
+  text-decoration: underline;
+}
+
 .sa-action-text {
   display: inline-flex;
   flex-direction: column;

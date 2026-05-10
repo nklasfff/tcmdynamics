@@ -3786,19 +3786,21 @@ function getClientRecord(clientId) {
 
 function saveClientSession(clientId, sessionData) {
   const trimmed = (clientId || '').trim();
-  if (!trimmed) return false;
+  if (!trimmed) return null;
   const data = loadClientStorage();
   const now = new Date().toISOString();
   if (!data.clients[trimmed]) {
     data.clients[trimmed] = { id: trimmed, created: now, sessions: [] };
   }
+  const sessionId = 'sess-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
   data.clients[trimmed].sessions.push({
-    id: 'sess-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+    id: sessionId,
     date: now,
     ...sessionData
   });
   data.clients[trimmed].updated = now;
-  return persistClientStorage(data);
+  if (!persistClientStorage(data)) return null;
+  return { clientId: trimmed, sessionId };
 }
 
 function deleteClientRecord(clientId) {
@@ -4024,15 +4026,111 @@ function commitSaveDialog() {
   const sessionData = saveDialogKind === 'polyvagal'
     ? buildPolyvagalSessionFromCurrentAnalysis(notes?.value || '')
     : buildSessionFromCurrentAnalysis(notes?.value || '');
-  const ok = saveClientSession(clientId, sessionData);
-  if (ok) {
+  const result = saveClientSession(clientId, sessionData);
+  if (result) {
     closeSaveDialog();
     showSavedToast();
+    renderPostSavePanel(result.clientId, result.sessionId, saveDialogKind);
   }
 }
 
 function showSavedToast() {
   showToast(t('saveDialogSaved'));
+}
+
+function renderPostSavePanel(clientId, sessionId, kind) {
+  // After Gem analyse: replace the save-button block on the active result
+  // screen with three concrete next-step actions, so the practitioner
+  // doesn't have to navigate via the menu to send the handout / copy the
+  // resumé / open the full client forløb.
+  const screenId = kind === 'polyvagal' ? 'screen-polyvagal-analysis' : 'screen-symptom-analysis';
+  const screen = document.getElementById(screenId);
+  if (!screen) return;
+  const actionsBlock = screen.querySelector('.sa-result-actions-single');
+  if (!actionsBlock) return;
+
+  const client = getClientRecord(clientId);
+  const session = client && client.sessions.find(s => s.id === sessionId);
+  const hasHandout = session ? sessionHasHandout(session) : false;
+
+  actionsBlock.innerHTML = `
+    <div class="sa-post-save">
+      <div class="sa-post-save-confirm">
+        <span class="sa-post-save-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 13l4 4L19 7"/></svg>
+        </span>
+        <span>Gemt til klient <strong>${escapeHtml(clientId)}</strong></span>
+      </div>
+      <div class="sa-post-save-heading">Hvad nu?</div>
+      <div class="sa-post-save-actions">
+        ${hasHandout ? `
+          <button class="sa-post-save-btn sa-post-save-btn-primary" type="button" data-post-save-handout>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span class="sa-post-save-text">
+              <span class="sa-post-save-label">Send hjem-anvisning til klienten</span>
+              <span class="sa-post-save-hint">via Mail, SMS eller WhatsApp</span>
+            </span>
+          </button>` : ''}
+        <button class="sa-post-save-btn" type="button" data-post-save-copy>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="sa-post-save-text">
+            <span class="sa-post-save-label">Kopier resumé til mine noter</span>
+            <span class="sa-post-save-hint">til dit eget journalsystem</span>
+          </span>
+        </button>
+        <button class="sa-post-save-btn" type="button" data-post-save-client>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><path d="M4 6 L10 6 L11.5 8 L20 8 L20 19 L4 19 Z"/></svg>
+          <span class="sa-post-save-text">
+            <span class="sa-post-save-label">Gå til klientens forløb</span>
+            <span class="sa-post-save-hint">se alle sessioner for ${escapeHtml(clientId)}</span>
+          </span>
+        </button>
+      </div>
+      <button class="sa-post-save-secondary" type="button" data-post-save-another>Eller: gem til en anden klient</button>
+    </div>
+  `;
+
+  if (hasHandout) {
+    actionsBlock.querySelector('[data-post-save-handout]')?.addEventListener('click', () => {
+      const c = getClientRecord(clientId);
+      const s = c && c.sessions.find(x => x.id === sessionId);
+      if (s) showHandoutFromSession(s, clientId);
+    });
+  }
+  actionsBlock.querySelector('[data-post-save-copy]')?.addEventListener('click', async () => {
+    const c = getClientRecord(clientId);
+    const s = c && c.sessions.find(x => x.id === sessionId);
+    if (!s) return;
+    const text = buildSymptomAnalysisSummary(s);
+    if (!text) return;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || '');
+      const shortcut = isMac ? '⌘V' : 'Ctrl+V';
+      showToast(`Resumé kopieret. Indsæt nu med ${shortcut} i din notes-app eller dit journalsystem.`, 4000);
+    } catch (err) {
+      console.error('Failed to copy', err);
+      showToast('Kunne ikke kopiere resuméet. Prøv igen.', 4000);
+    }
+  });
+  actionsBlock.querySelector('[data-post-save-client]')?.addEventListener('click', () => {
+    activeClientId = clientId;
+    showClientDetail();
+  });
+  actionsBlock.querySelector('[data-post-save-another]')?.addEventListener('click', () => {
+    openSaveDialog(kind);
+  });
 }
 
 function showToast(text, duration = 2200) {
