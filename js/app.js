@@ -4126,7 +4126,7 @@ function renderPostSavePanel(clientId, sessionId, kind) {
   });
   actionsBlock.querySelector('[data-post-save-client]')?.addEventListener('click', () => {
     activeClientId = clientId;
-    showClientDetail();
+    showClientDetail(sessionId);
   });
   actionsBlock.querySelector('[data-post-save-another]')?.addEventListener('click', () => {
     openSaveDialog(kind);
@@ -4712,20 +4712,20 @@ function renderClientDetail() {
               <div class="session-card-notes">${escapeHtml(s.notes)}</div>
             </div>` : ''}
           ${renderFollowupSectionHTML(s)}
-          <div class="session-actions">
+          <div class="sa-post-save-actions session-actions">
             ${sessionHasHandout(s) ? `
-              <button class="session-action-btn session-action-handout" type="button" data-session-handout="${escapeHtml(s.id)}">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
-                <span class="session-action-text">
-                  <span class="session-action-label">${escapeHtml(t('saClientHandout'))}</span>
-                  <span class="session-action-hint">${escapeHtml(t('sessionHandoutHint'))}</span>
+              <button class="sa-post-save-btn sa-post-save-btn-primary" type="button" data-session-handout="${escapeHtml(s.id)}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span class="sa-post-save-text">
+                  <span class="sa-post-save-label">Send hjem-anvisning til klienten</span>
+                  <span class="sa-post-save-hint">via Mail, SMS eller WhatsApp</span>
                 </span>
               </button>` : ''}
-            <button class="session-action-btn session-action-summary" type="button" data-session-copy="${escapeHtml(s.id)}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <span class="session-action-text">
-                <span class="session-action-label">${escapeHtml(t('sessionCopySummary'))}</span>
-                <span class="session-action-hint">${escapeHtml(t('sessionCopySummaryHint'))}</span>
+            <button class="sa-post-save-btn" type="button" data-session-copy="${escapeHtml(s.id)}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span class="sa-post-save-text">
+                <span class="sa-post-save-label">Kopier resumé til mine noter</span>
+                <span class="sa-post-save-hint">til dit eget journalsystem</span>
               </span>
             </button>
           </div>
@@ -4741,6 +4741,23 @@ function renderClientDetail() {
       if (card) card.classList.toggle('open');
     });
   });
+
+  // Auto-expand the just-saved session (or the newest if none specified)
+  // and scroll it into view with a brief gold pulse so the user can spot
+  // it after navigating from the post-save panel.
+  const focusId = pendingFocusSessionId || (sessions[0] && sessions[0].id);
+  pendingFocusSessionId = null;
+  if (focusId) {
+    const focusCard = listEl.querySelector(`.session-card[data-session-id="${focusId}"]`);
+    if (focusCard) {
+      focusCard.classList.add('open');
+      requestAnimationFrame(() => {
+        focusCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        focusCard.classList.add('session-card-pulse');
+        setTimeout(() => focusCard.classList.remove('session-card-pulse'), 2200);
+      });
+    }
+  }
   listEl.querySelectorAll('[data-session-delete]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -4766,7 +4783,7 @@ function renderClientDetail() {
       if (!session) return;
       const text = buildSymptomAnalysisSummary(session);
       if (!text) return;
-      const labelEl = btn.querySelector('.session-action-label');
+      const labelEl = btn.querySelector('.sa-post-save-label');
       const originalLabel = labelEl ? labelEl.textContent : '';
       const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || '');
       const shortcut = isMac ? '⌘V' : 'Ctrl+V';
@@ -4784,11 +4801,11 @@ function renderClientDetail() {
           document.body.removeChild(ta);
         }
         if (labelEl) labelEl.textContent = 'Kopieret ✓';
-        btn.classList.add('session-action-btn-copied');
+        btn.classList.add('sa-post-save-btn-copied');
         showToast(`Resumé kopieret. Indsæt nu med ${shortcut} i din notes-app eller dit journalsystem.`, 4000);
         setTimeout(() => {
           if (labelEl) labelEl.textContent = originalLabel;
-          btn.classList.remove('session-action-btn-copied');
+          btn.classList.remove('sa-post-save-btn-copied');
         }, 2400);
       } catch (err) {
         console.error('Failed to copy session summary', err);
@@ -4886,7 +4903,13 @@ function renderFollowupSectionHTML(session) {
   `;
 }
 
-function showClientDetail() {
+// Module-level focus state — set by post-save panel before navigating
+// to client-detail, consumed by renderClientDetail to auto-expand and
+// pulse the just-saved session.
+let pendingFocusSessionId = null;
+
+function showClientDetail(focusSessionId) {
+  if (focusSessionId) pendingFocusSessionId = focusSessionId;
   renderClientDetail();
   showScreen('client-detail');
 }
