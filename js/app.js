@@ -2453,7 +2453,7 @@ const SA_DOMAINS = [
   {
     id: 'fordoejelse',
     title: 'Fordøjelse',
-    symptoms: ['Fordøjelsesproblemer', 'Oppustethed efter måltider', 'Forstoppelse med tørre afføringer', 'Morgendiarré kl. 5-7']
+    symptoms: ['Fordøjelsesproblemer', 'Oppustethed efter måltider', 'Forstoppelse med tørre afføringer', 'Tynd afføring eller diarré', 'Morgendiarré kl. 5-7']
   },
   {
     id: 'termo',
