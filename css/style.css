@@ -4298,6 +4298,22 @@ html[data-theme-transitioning] * {
   text-decoration: underline;
 }
 
+/* Brief 'Kopieret ✓' confirmation state on the secondary post-save button. */
+.sa-post-save-btn-copied {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+.sa-post-save-btn-copied svg,
+.sa-post-save-btn-copied .sa-post-save-hint {
+  color: inherit;
+}
+
+[data-theme="light"] .sa-post-save-btn-copied {
+  color: #ffffff;
+}
+
 .sa-action-text {
   display: inline-flex;
   flex-direction: column;
@@ -5039,6 +5055,19 @@ html[data-theme-transitioning] * {
   flex-direction: column;
   gap: 10px;
   margin: 16px 0 6px;
+}
+
+/* Brief gold pulse on the just-saved session when arriving at client-detail
+   from the post-save panel — so the practitioner spots which session is
+   the new one. */
+@keyframes sessionCardPulse {
+  0%   { box-shadow: 0 0 0 0 var(--accent-gold-glow); border-color: var(--accent-gold); }
+  60%  { box-shadow: 0 0 0 8px transparent; border-color: var(--accent-gold); }
+  100% { box-shadow: 0 0 0 0 transparent; border-color: var(--border-light); }
+}
+
+.session-card-pulse {
+  animation: sessionCardPulse 2.2s ease-out;
 }
 
 .session-action-btn {
