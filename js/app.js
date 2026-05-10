@@ -2582,6 +2582,9 @@ function updateSAState() {
     analyseBtn.classList.toggle('ready', ready);
   }
 
+  const hint = document.getElementById('sa-action-hint');
+  if (hint) hint.hidden = count >= SA_MIN;
+
   // Hide stale results when selection changes
   if (results && !results.hidden) {
     results.hidden = true;
@@ -3253,8 +3256,14 @@ function togglePolyvagalSymptom(id) {
 function updatePolyvagalCounter() {
   const counter = document.getElementById('pv-counter');
   const analyseBtn = document.getElementById('pv-analyse-btn');
+  const hint = document.getElementById('pv-action-hint');
   if (counter) counter.textContent = `${pvSelected.size} af ${PV_MAX} valgt`;
-  if (analyseBtn) analyseBtn.disabled = pvSelected.size < PV_MIN;
+  if (analyseBtn) {
+    const ready = pvSelected.size >= PV_MIN;
+    analyseBtn.disabled = !ready;
+    analyseBtn.classList.toggle('ready', ready);
+  }
+  if (hint) hint.hidden = pvSelected.size >= PV_MIN;
 }
 
 function resetPolyvagalAnalysis() {
