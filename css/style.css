@@ -4604,6 +4604,17 @@ html[data-theme-transitioning] * {
   margin-top: 22px;
 }
 
+/* The 'other track' Forløb sits below the session list with a quiet
+   label so it doesn't compete with the focused track's context. */
+.client-progress-other-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 36px 0 12px;
+}
+
 .pv-progress-ladders {
   margin-bottom: 18px;
 }
