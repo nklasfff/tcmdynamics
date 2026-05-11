@@ -5210,6 +5210,31 @@ const symptomReference = [
     symptom: 'Smerter langs kroppens side',
     organs: ['Yang Wei Mai', 'Galdeblære', 'Lever'],
     note: 'Yang Wei Mai er domæne for "siderne" — smerter eller spænding langs Galdeblære-meridianens forløb fra hypochondrium ned til hoften og lateralt langs låret. Adskil fra ren Lever-energi der sidder fast, der har en mere emotionel trigger, mere distensiv kvalitet og er mindre fast lokaliseret. Adskil også fra Dai Mai, hvor det mere er en "bælte"-fornemmelse omkring taljen, ofte med vaginalt udflåd. Yang Wei kommer særligt ind i billedet ved kronisk ensidig flanke-, hofte- eller skuldersmerte.'
+  },
+  {
+    symptom: 'Kronisk stress',
+    organs: ['Lever', 'Galdeblære'],
+    note: 'Kronisk stress sætter sig først i Leveren — energien får ikke lov til at flyde frit. Viser det sig som irritabilitet, sukken, brystudspiling og PMS, er Lever-Qi-stagnation det primære billede. Beslutsomhedsbesvær, tøven og dårlig søvn-kvalitet trækker Galdeblæren med ind. Hvis stressen har bidt sig fast i hjertet med søvnløshed og hjertebanken, har Pericardium taget over som beskytter — se også Pericardium-mønstre.'
+  },
+  {
+    symptom: 'Udbrændthed',
+    organs: ['Milt', 'Nyrer'],
+    note: 'Udbrændthed er en akse: Milt-Qi-svigt der er gået videre til Nyre-svigt. Tidlige tegn er træthed efter måltider, oppustethed og koncentrationsbesvær (Milt). Når reserven er løbet tør, kommer kuldskærhed, lændesvaghed og en dyb mathed der ikke vil gå væk (Nyrer). Hjertet bliver ofte ramt sekundært med søvnløshed og emotionel ustabilitet. Forløbet starter typisk med langvarig Lever-Qi-stagnation der har trukket på Milten.'
+  },
+  {
+    symptom: 'PTSD eller efter trauma',
+    organs: ['Hjerte', 'Nyrer'],
+    note: 'Trauma sætter sig dybt i sind/ånd (Shen, der bor i Hjertet) og kan ryste hele systemet ud af forankring. Den klassiske præsentation rummer søvnproblemer med mareridt, hjertebanken, hypervigilans og dissociation. Nyrernes essence er ofte trukket på, særligt ved tidlige eller gentagne traumer. Chong Mai (en af de 8 ekstraordinære meridianer) holder oftest rod-historien — undersøg den meridian når trauma er primær henvendelses-årsag. Polyvagal-sporet rummer komplementære input til samme billede.'
+  },
+  {
+    symptom: 'Hjernerystelse eller efter slag mod hovedet',
+    organs: ['Lever', 'Nyrer'],
+    note: 'Hjernerystelse rammer Du Mai (governing vessel langs rygsøjlen) og kan vippe Lever-Yang opad ud af kontrol. Klassiske resterende symptomer: hovedpine, lys- og lyd-følsomhed, koncentrationsbesvær, svimmelhed, irritabilitet, søvnforstyrrelser. Hvis det føles som en dyb mathed der ikke vil gå væk, er Nyre-essensen ramt. Behandlingen kræver tålmodighed — hjernerystelse er ikke kun fysisk, og post-commotio-billedet rammer ofte ind i polyvagalt sympatisk fastfrysning.'
+  },
+  {
+    symptom: 'Piskesmæld eller efter nakkeskade',
+    organs: ['Galdeblære', 'Blære'],
+    note: 'Piskesmæld følger Galdeblære- og Blære-meridianen langs nakken og siderne. Stivhed, smerter og bevægeligheds-tab er det åbenlyse — men også svimmelhed, koncentrationsbesvær, søvnløshed og humørmæssig ustabilitet kan være efter-virkninger. Energien fra slag-momentet kan blive siddende i muskulatur og fascia (sympatisk fastfrysning i polyvagalt sprog) — kropsorienteret arbejde, varme og rystelser er ofte vejen ud.'
   }
 ];
 
