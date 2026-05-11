@@ -4646,15 +4646,47 @@ function renderClientDetail() {
   if (emptyEl) emptyEl.hidden = true;
   if (!listEl) return;
 
-  // Progression block (only if 2+ sessions of the same kind)
-  if (progressEl) {
+  // Progression blocks (only if 2+ sessions of the same kind).
+  // Order: the focused track's Forløb goes on top so the user lands
+  // on context that matches the analysis they just made. The other
+  // track's Forløb goes BELOW the session list — labelled as
+  // "andet spor" — so it doesn't dominate the top of the screen.
+  const progressOtherEl = screen.querySelector('#client-progress-wrap-other');
+  if (progressEl && progressOtherEl) {
     const sessionsAsc = [...client.sessions].sort((a, b) => a.date.localeCompare(b.date));
     const tcmSessions = sessionsAsc.filter(s => s.kind !== 'polyvagal');
     const pvSessions = sessionsAsc.filter(s => s.kind === 'polyvagal');
-    let html = '';
-    if (tcmSessions.length >= 2) html += renderProgressionHTML(tcmSessions);
-    if (pvSessions.length >= 2) html += renderPolyvagalProgressionHTML(pvSessions);
-    progressEl.innerHTML = html;
+
+    // Determine focus track from pending focus session, else newest session.
+    let focusKind = null;
+    const focusSession = pendingFocusSessionId
+      ? client.sessions.find(s => s.id === pendingFocusSessionId)
+      : null;
+    if (focusSession) {
+      focusKind = focusSession.kind === 'polyvagal' ? 'polyvagal' : 'tcm';
+    } else {
+      const newest = [...client.sessions].sort((a, b) => b.date.localeCompare(a.date))[0];
+      if (newest) focusKind = newest.kind === 'polyvagal' ? 'polyvagal' : 'tcm';
+    }
+
+    const tcmHtml = tcmSessions.length >= 2 ? renderProgressionHTML(tcmSessions) : '';
+    const pvHtml = pvSessions.length >= 2 ? renderPolyvagalProgressionHTML(pvSessions) : '';
+
+    let topHtml = '';
+    let bottomHtml = '';
+    if (focusKind === 'polyvagal') {
+      topHtml = pvHtml;
+      bottomHtml = tcmHtml;
+    } else {
+      topHtml = tcmHtml;
+      bottomHtml = pvHtml;
+    }
+    if (bottomHtml) {
+      bottomHtml = `<div class="client-progress-other-label">Forløb i andet spor</div>${bottomHtml}`;
+    }
+
+    progressEl.innerHTML = topHtml;
+    progressOtherEl.innerHTML = bottomHtml;
   }
 
   const sessions = [...client.sessions].sort((a, b) => b.date.localeCompare(a.date));
