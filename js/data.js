@@ -5039,7 +5039,7 @@ const symptomReference = [
   {
     symptom: 'Hjertebanken',
     organs: ['Hjerte', 'Pericardium', 'Nyrer', 'Milt'],
-    note: 'Kan skyldes en sparsom blodreserve i Hjertet, ild der har sat sig i Pericardium, eller at Nyrernes vand ikke længere kan dæmpe Hjertets ild. Spørg om det opstår i hvile eller ved anstrengelse — og om det ledsages af angst eller af en træthed der mærkes dybt.'
+    note: 'Kan skyldes at Hjertet er drænet for blod, en indre uro der har samlet sig i Pericardium, eller at Nyrerne ikke længere kan dæmpe Hjertets uro. Spørg om det opstår i hvile eller ved anstrengelse — og om det ledsages af angst eller af en træthed der mærkes dybt.'
   },
   {
     symptom: 'Høreproblemer/tinnitus',
