@@ -1,6 +1,6 @@
 // The Patterns Behind — App Logic v2
-import { getLangData } from './data.js?v=11';
-import { polyvagalIntro, polyvagalStates, polyvagalSymptoms, polyvagalPatterns } from './data-pv.js?v=1';
+import { getLangData } from './data.js?v=12';
+import { polyvagalIntro, polyvagalStates, polyvagalSymptoms, polyvagalPatterns } from './data-pv.js?v=2';
 
 // ============================================
 // Internationalization (inlined)
@@ -2441,6 +2441,11 @@ let pvSelected = new Set();
 
 const SA_DOMAINS = [
   {
+    id: 'belastning',
+    title: 'Belastning & skade',
+    symptoms: ['Kronisk stress', 'Udbrændthed', 'PTSD eller efter trauma', 'Hjernerystelse eller efter slag mod hovedet', 'Piskesmæld eller efter nakkeskade']
+  },
+  {
     id: 'vitalitet',
     title: 'Energi & Vitalitet',
     symptoms: ['Træthed/energimangel', 'Hyppige forkølelser', 'Hårtab eller for tidlig grånen']
@@ -3193,9 +3198,15 @@ function renderPolyvagalAnalysis() {
   if (introEl) introEl.innerHTML = `<p>${escapeHtml(polyvagalIntro.lead)}</p>`;
   if (discEl) discEl.textContent = polyvagalIntro.disclaimer;
 
-  // Group symptoms by primary state for visual clarity
-  const byState = { sympatisk: [], dorsal: [], ventral: [], blandet: [] };
+  // Group symptoms: 'belastning'-category gets its own group at the top
+  // (henvendelses-årsager — stress, udbrændthed, PTSD, hjernerystelse,
+  // piskesmæld). The rest are grouped by primary ANS state.
+  const byState = { belastning: [], sympatisk: [], dorsal: [], ventral: [], blandet: [] };
   polyvagalSymptoms.forEach(sym => {
+    if (sym.category === 'belastning') {
+      byState.belastning.push(sym);
+      return;
+    }
     const states = sym.states || {};
     const entries = Object.entries(states);
     if (entries.length === 0) { byState.blandet.push(sym); return; }
@@ -3211,6 +3222,7 @@ function renderPolyvagalAnalysis() {
   });
 
   const groupTitle = {
+    belastning: 'Belastning & skade',
     sympatisk: 'Sympatisk aktivering',
     dorsal: 'Dorsal nedlukning',
     ventral: 'Ventral / forbindelse',
@@ -3219,7 +3231,7 @@ function renderPolyvagalAnalysis() {
 
   // Match the TCM symptom-grid structure (sa-domain + sa-chip) so the
   // polyvagal screen reuses the white-card chip styling already in css.
-  const groups = ['sympatisk', 'dorsal', 'blandet', 'ventral']
+  const groups = ['belastning', 'sympatisk', 'dorsal', 'blandet', 'ventral']
     .filter(k => byState[k].length > 0)
     .map(k => `
       <section class="sa-domain" data-pv-group="${k}">

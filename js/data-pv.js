@@ -115,7 +115,19 @@ export const polyvagalSymptoms = [
   { id: 'pv-29', name: 'Energi-peaks om aftenen, kollaps om morgenen', states: { sympatisk: 0.5, dorsal: 0.5 },
     note: 'Døgn-rytmen har vendt sig. Kroppens indre ur og det ydre ur er ude af tryllebånd.' },
   { id: 'pv-30', name: 'Vågner kl. 3-4 og kan ikke sove igen', states: { sympatisk: 0.7, dorsal: 0.3 },
-    note: 'Sympatisk gennembrud i den dybeste søvn-fase. Et signal om at noget er på vej op fra kroppen.' }
+    note: 'Sympatisk gennembrud i den dybeste søvn-fase. Et signal om at noget er på vej op fra kroppen.' },
+
+  // — Belastning & skade (henvendelses-årsager) —
+  { id: 'pv-31', name: 'Kronisk stress', category: 'belastning', states: { sympatisk: 0.9 },
+    note: 'Kronisk stress er det polyvagale parade-eksempel på fastlåst sympatisk aktivering. Systemet får aldrig lov til at lande på det ventrale trin — alarm er blevet baseline. Behandlings-retning: down-regulering via lange udåndinger, perifer-syns-orientering, ventrale ankre.' },
+  { id: 'pv-32', name: 'Udbrændthed', category: 'belastning', states: { dorsal: 0.7, sympatisk: 0.3 },
+    note: 'Udbrændthed er typisk dorsal nedlukning, der er kommet efter længere tids sympatisk aktivering. Energien er trukket dybt ind for at konservere det der er tilbage. Behandlings-retning: ingen pres mod ventral — co-regulering, varme, tid og mikro-aktivering.' },
+  { id: 'pv-33', name: 'PTSD eller efter trauma', category: 'belastning', states: { sympatisk: 0.5, dorsal: 0.5 },
+    note: 'PTSD passer typisk ind i blandet aktivering-kollaps eller skrøbelig ventral. Trauma-typisk: motoren kører, men håndbremsen er trukket. Behandlings-retning: krops-orientering før kognition, co-regulering i meget korte intervaller, ingen pres.' },
+  { id: 'pv-34', name: 'Hjernerystelse eller efter slag mod hovedet', category: 'belastning', states: { sympatisk: 0.6, dorsal: 0.2, ventral: 0.2 },
+    note: 'Post-commotio-syndrom præsenterer sig ofte som sympatisk fastfrysning kombineret med skrøbelig ventral. Hovedpinerne, lys- og lyd-overfølsomhed og koncentrationsbesvær fortæller om et nervesystem der ikke længere kan filtrere stimuli. Behandlings-retning: mikro-orientering, ro, lange restitutions-vinduer.' },
+  { id: 'pv-35', name: 'Piskesmæld eller efter nakkeskade', category: 'belastning', states: { sympatisk: 0.8, dorsal: 0.2 },
+    note: 'Piskesmæld er bogstaveligt talt sympatisk fastfrysning — energi der ikke fik et udløb og sad fast i muskulaturen. Behandlings-retning: tremor- og rystearbejde (TRE), blid berøring, varme, mikro-bevægelse uden mål.' }
 ];
 
 // 6 mønstre. Hver svarer til en typisk klinisk presentation. Match-logikken
